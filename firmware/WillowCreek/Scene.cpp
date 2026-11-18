@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "RodFeedback.h"
 #include "Connected.h"
 #include "Landscape.h"
 #include "FishArt.h"
@@ -121,20 +122,32 @@ void play(const View& v){
   int bobX=312+int(7*std::sin(v.time*.0015f));
   int bobY=184+int(2*std::sin(v.time*.005f));
   if(g.phase==Phase::Flight){float t=creek::limit(g.age/650.f,0,1);bobX=100+int(212*t);bobY=106+int(78*t-216*t*(1-t));}
-  if(g.phase==Phase::Fight){bobX=130+int(178*creek::limit(g.line/g.target,0,1));bobX+=int((g.surge()?26:11)*std::sin(g.age*.004f));bobY=195+int(11*std::sin(g.age*.006f));}
+  if(g.phase==Phase::Fight){
+    bobX=130+int(178*creek::limit(g.line/g.target,0,1)+g.pullOffset());
+    float drift=g.holdingBottom()?0.f:g.fightStyle()==creek::FightStyle::Picker?2.f:8.f;
+    bobY=195+int(drift*std::sin(g.age*.006f));
+  }
   if(g.phase==Phase::Waiting && g.rig==creek::Technique::Spoon)bobX-=int(30*(g.strokes+g.lureTurns));
   if(g.phase==Phase::Waiting && g.rig==creek::Technique::Jig && g.falling)bobY-=int(28*(1-creek::limit((g.age-g.fallStart)/780.f,0,1)));
   if(g.phase==Phase::Bite)bobY+=12;else if(g.teasing())bobY+=4;
   float tilt=creek::limit(v.degrees,-25,80);float wave=std::sin(v.time*.0024f);
   float angle=(48+tilt*.56f+1.2f*wave)*.01745329f;
-  int tipX=12+int(162*std::cos(angle)),tip=248-int(162*std::sin(angle));
-  int midX=(12+tipX)/2+4,midY=(248+tip)/2-5;
+  const float reach=162*std::cos(angle),rise=162*std::sin(angle),load=g.rodLoad();
+  const float sideways=.20f*g.pullOffset();
+  int tipX=12,tip=248;
   for(int n=0;n<14;n++){
     int x=(n*83+int(v.time/(80+n*4)))%472,y=169+(n*19)%78;
     if(std::sin(v.time*.0015f+n)>.15)screen.drawFastHLine(x,y,3+n%7,screen.getFramebuffer()[x*320+319-(y-2)]);
   }
   if(eventActive())label(14,40,eventStatus(),white,1);
-  screen.drawLine(12,246,midX,midY,ink);constexpr int rodColors[]={0x7390,0xb344,0x34f6};screen.drawLine(13,246,midX+1,midY,rodColors[v.rodFinish]);screen.drawLine(midX,midY,tipX,tip,ink);
+  constexpr int rodColors[]={0x7390,0xb344,0x34f6};
+  for(int section=1;section<=5;section++){
+    float t=section*.2f,flex=load*t*t*t;
+    int x=12+int(reach*t+11*flex+sideways*t*t*t),y=248-int(rise*t-41*flex+4*t*(1-t));
+    screen.drawLine(tipX,tip,x,y,ink);
+    if(section<5)screen.drawLine(tipX+1,tip,x+1,y,rodColors[v.rodFinish]);
+    tipX=x;tip=y;
+  }
   if(g.phase==Phase::Ready){
     int hangX=tipX+int(3*std::sin(v.time*.003f));
     screen.drawLine(tipX,tip,hangX,tip+24,0x73ee);screen.fillRect(hangX-2,tip+24,4,6,gold);
@@ -159,8 +172,11 @@ void play(const View& v){
     if(v.sound.cue!=2){head=v.practice?"BITE!  Tap to hook":"BITE!  Lift now";sub="";col=gold;screen.drawRoundRect(bobX-18,bobY-16,36,32,7,gold);}
     else {head="Listen to the line";sub="Listen for the two-note bite.";}break;
   case Phase::Fight:
-    waterStrike(bobX,bobY,g.age,g.surge());
-    head=g.surge()?"Run - ease off":g.beat()==creek::FightBeat::Slack?"Slack - wind now":"Fish turning - gain line";col=g.surge()?gold:white;
+    if(g.holdingBottom()||g.fightStyle()==creek::FightStyle::Picker){
+      int radius=g.holdingBottom()?5+(g.age%1300)/85:3+int(10*load);
+      screen.drawEllipse(bobX,bobY,radius,2+radius/5,0xe73b);
+    }else waterStrike(bobX,bobY,g.age,g.surge());
+    head=creek::fightInstruction(g);col=g.surge()?gold:white;
     snprintf(desc,sizeof(desc),"%.1f turns left  |  %s",g.line,v.practice?"Tap for 1/4 turn":"Watch line tension");sub=desc;
     break;
   case Phase::Landed:{
@@ -272,8 +288,9 @@ void bench(const View& v){
  label(12,175,v.sound.reverse?"Reverse direction: ON":"Reverse direction: OFF",green);
  snprintf(b,sizeof(b),"Cue level %d/3",v.sound.cueVolume);label(12,209,b,gold);label(251,209,"PLAY BITE",white);
  snprintf(b,sizeof(b),"Rumble %d/3",v.rumble);label(12,246,b,gold);label(177,246,"Tease",white);label(286,246,"Bite",white);label(387,246,"Pull",white);
- label(12,279,v.driver?"DRV2605L detected":"No DRV2605L detected",green,1);
- label(12,301,v.audio?"Tap a level to cycle. Tap direction to reverse.":"Audio unavailable - inspect codec / speaker.",paper,1);
+ label(12,279,"Prawn pick",green);label(170,279,"Bottom hold",green);label(333,279,"Fast run",green);
+ label(12,304,v.driver?"DRV2605L detected":"No DRV2605L detected",green,1);
+ label(183,304,v.audio?"Tap a level to cycle":"Inspect codec / speaker",paper,1);
 }
 }
 void paint(const View& v){

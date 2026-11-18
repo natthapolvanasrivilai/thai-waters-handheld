@@ -1,4 +1,4 @@
-# Rev E open-case bench guide · Thai Waters 0.4
+# Rev E open-case bench guide · Thai Waters 0.5
 
 Run the board on USB and connect the kit speaker to J9. The normal reel harness connects the AS5600 to J8. Flash the four images using the command in the firmware README, then open **Menu → Bench test**. The bench page is accessible from the first calibration screen and pauses the fishing clock.
 
@@ -11,6 +11,7 @@ Run the board on USB and connect the kit speaker to J9. The normal reel harness 
 | Encoder and wind direction | Turn the knob one full revolution, then unwind. | Raw angle passes through 4095/0 smoothly. Signed turns rise by about +1.00 in the winding direction and return near zero. Tap **Reverse direction** if needed. Changing direction clears the session turn total. Weak, strong or missing magnetic field gets its own status. |
 | Bite volume | With the speaker fitted, tap **Cue level** to cycle 0–3. Tap **PLAY BITE** at each level. | Level 0 is silent. Higher levels audition the two-note bite at the selected volume, even if gameplay normally uses visual-only cues. The separate music level is under **Sound + controls**. The on-screen level is the digital setting. Loudness must be judged with the actual speaker and grille. |
 | Optional haptics | With power removed, fit the optional parts below. Power up, re-enter Bench test, select rumble 1–3 and tap **Tease**, **Bite**, then **Pull**. | The page detects the driver. A tease is a light single tap, a bite is a distinct double click, and a pull is a buzz. During play, pulls become closer together as tension rises or a fish runs. Level 0 disables all rumble. |
+| Species signatures | In Bench test choose a rumble level and tap **Prawn pick**, **Bottom hold** and **Fast run**. With the case closed, have someone play the samples in a different order while you hold the device normally. | Identify three light pre-bite picks, a broad loaded buzz and a rapid three-tick burst by touch. Check that the motor starts at Low and stops when you leave the bench. In play, prawn picks follow individual tip twitches, a bottom hold repeats its buzz under load and a sprint repeats its burst during the run. |
 | Crosstalk and closure | With the device resting, audition each rumble setting while the reel is stationary. Slowly rotate the knob through a full turn with the motor pulsing. Repeat with music playing, the board seated and the bezel resting on the rim. | No false lift or cast, loss of magnet status, reset, stalled encoder or audible supply glitch. Dry-fit every lead with clearance to the reel, battery pouch and lens. Check the 3.3 V rail under simultaneous display/audio/motor load before enclosed testing. |
 
 ## Rumble wiring and incremental parts

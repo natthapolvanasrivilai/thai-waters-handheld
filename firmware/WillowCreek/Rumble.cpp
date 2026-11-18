@@ -16,9 +16,26 @@ bool initRumble(){
 }
 void stopRumble(){if(online)online=put(0x0c,0);}
 bool driveRumble(Pulse p,uint8_t level,float tension){
- if(!online||!level||p==Pulse::None)return online;
- const uint8_t tease[]={0,63,62,61}, bite[]={0,29,28,27}, pull[]={0,51,50,49};
- uint8_t id=p==Pulse::Tease?tease[level]:p==Pulse::Bite?bite[level]:pull[level];
+ if(p==Pulse::Stop){stopRumble();return online;}
+ if(!online || !level || level>3 || p==Pulse::None)return online;
+ // DRV2605L ROM, library 1. All motifs are finite and use the internal trigger.
+ static constexpr uint8_t effects[][3]={
+   {63,62,61}, {29,28,27}, {51,50,49},
+   {6,5,4}, {51,50,49}, {36,35,34}
+ };
+ const uint8_t index=uint8_t(p==Pulse::PickSample?Pulse::Pick:p)-1;
+ if(index>=sizeof(effects)/sizeof(effects[0]))return online;
+ uint8_t id=effects[index][level-1];
+ if(p==Pulse::PickSample){
+   // Three picks spaced like the pre-strike float. A sequencer wait uses 10 ms units.
+   constexpr uint8_t gap=0x80|34;
+   online=put(0x0c,0)&&put(4,id)&&put(5,gap)&&put(6,id)&&put(7,gap)&&put(8,id)&&put(9,0)&&put(0x0c,1);
+   return online;
+ }
  if(p==Pulse::Pull && tension>.65f && level>1)--id;
- online=put(0x0c,0)&&put(4,id)&&put(0x0c,1);return online;
+ uint8_t tail=0;
+ if(p==Pulse::Bottom)tail=id;                  // Two joined buzzes make a broad load.
+ if(p==Pulse::Dash)tail=uint8_t(27-level);    // Double sharp tick followed by one tick.
+ online=put(0x0c,0)&&put(4,id)&&put(5,tail)&&(!tail||put(6,0))&&put(0x0c,1);
+ return online;
 }

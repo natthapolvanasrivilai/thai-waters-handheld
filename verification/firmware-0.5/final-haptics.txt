@@ -1,0 +1,2 @@
+PASS DRV2605L detection, mute, 18 finite ROM motif/strength sequences, species timing, cancellation and I2C failure.
+PASS sketch-loop bench calibration, live cast/lift counts, signed wrapped encoder and reversal, magnet recovery, independent cue audition, rumble audition, travel, upgrade and saved-state restore including v0.2 journal migration and time selection.

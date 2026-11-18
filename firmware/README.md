@@ -1,4 +1,4 @@
-# Thai Waters · Firmware 0.4
+# Thai Waters · Firmware 0.5
 
 For Waveshare ESP32-S3-Touch-LCD-3.5B (31137), QMI8658, ES8311 and a right-side AS5600 reel at 0x36. The optional DRV2605L at 0x5A adds haptics. The game runs without the haptic module. The bench guide in this folder includes wiring, optional BOM and candidate placement.
 
@@ -31,9 +31,19 @@ Once hooked, reel while the fish recovers, ease or give line during an outward r
 
 The on-screen battery icon reads the AXP2101 gauge. With the screen facing you, the PWR switch is at the left end of the lower service opening. Confirm actuation and gauge behavior on the fit print before closing the enclosure.
 
+### Reading a fight
+
+| Movement | What to look or feel for | How to respond |
+|---|---|---|
+| Prawn picks | Three light taps before the float dives. After hooking, the tip gives paired short tugs and a small ring marks the line. | Wait for the committed bite. Wind gently in the gaps between tugs. |
+| Bottom hold | The tip bows deeply, the line entry stays still, and the grip gives a broad, repeating buzz. | Pause winding. Hold the calibrated rod raised for about half a second to lift the ray free, or wait for it to shift. Retrieve as the rod straightens. |
+| Fast run | The line sweeps sideways, the tip kicks, and the grip gives a quick burst of three pulses. | Ease off or give line during the run. Retrieve on the turn and wind promptly if the line goes slack. |
+
+The fast-run behavior covers queenfish, cobia, great barracuda, giant trevally and sailfish. Compare the three tactile patterns directly from **Bench test** by choosing a rumble level and tapping **Prawn pick**, **Bottom hold**, or **Fast run**. Real motor output requires the optional DRV2605L and ERM assembly.
+
 ## Build and verification
 
-Extract the libraries directory from ../releases/prototypes/Thai-Waters-firmware-0.4.zip alongside the sketch to use the build command below. The source sketch directory retains its v0.1 name for existing build workflows. Use Arduino CLI 1.3.1 and Arduino-ESP32 3.3.10. Waveshare's library revision is c7dd63c70258da7e3b6dae0c621f30ca62b1e1c9.
+Extract the libraries directory from ../releases/prototypes/Thai-Waters-firmware-0.5.zip alongside the sketch to use the build command below. The source sketch directory retains its v0.1 name for existing build workflows. Use Arduino CLI 1.3.1 and Arduino-ESP32 3.3.10. Waveshare's library revision is c7dd63c70258da7e3b6dae0c621f30ca62b1e1c9.
 
 ~~~sh
 arduino-cli core update-index --additional-urls https://espressif.github.io/arduino-esp32/package_esp32_index.json

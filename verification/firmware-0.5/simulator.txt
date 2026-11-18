@@ -1,0 +1,11 @@
+
+> thai-waters-simulator-tests@0.3.0 test
+> node scenery.cjs && node gameplay.cjs && node device.cjs && node rumble.cjs
+
+468 unique scenes. Each time period has 117 distinct paint layouts after stripping color and downsampling to 24 x 16.
+PASS location, catch, collection, mobile motion and distinct loaded-rod visuals for prawn, ray and runner.
+bounds { x: 49, y: 163.1875, width: 982, height: 530.796875 }
+PASS LCD tap casts. Right-side crank reads 1.00 turn clockwise and -1.00 counterclockwise.
+PASS lower-edge power key, paused simulator and battery status modes.
+errors []
+PASS phone haptic patterns, enabled level persistence, silent Off, menu cancellation, visual fallback and live hooked ray.

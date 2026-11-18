@@ -1,5 +1,7 @@
 #include "../WillowCreek/Creek.h"
+#include "../WillowCreek/RodFeedback.h"
 #include "../WillowCreek/Synth.h"
+#include "../WillowCreek/Rumble.h"
 #include "../WillowCreek/Destinations.h"
 using namespace creek;
 static Game g;
@@ -7,6 +9,7 @@ static CreekSynth synth;
 static SoundSettings s;
 static int16_t stereo[512];
 static bool cuePending=false;
+static RumblePlan tactile;
 #define EXPORT __attribute__((visibility("default")))
 extern "C" {
 EXPORT void initialize(unsigned seed){g=Game{};g.seed=seed;synth.begin();}
@@ -25,6 +28,11 @@ EXPORT float fraction(){return g.target?g.line/g.target:1;}
 EXPORT float tension(){return g.heat;}
 EXPORT int surging(){return g.surge();}
 EXPORT int fightBeat(){return int(g.beat());}
+EXPORT int fightStyle(){return int(g.fightStyle());}
+EXPORT int holdingBottom(){return g.holdingBottom();}
+EXPORT float rodLoad(){return g.rodLoad();}
+EXPORT float pullOffset(){return g.pullOffset();}
+EXPORT const char* fightInstruction(){return creek::fightInstruction(g);}
 EXPORT void setTechnique(int i){g.setRig(i);}
 EXPORT int technique(){return int(g.rig);}
 EXPORT int sinking(){return g.falling;}
@@ -59,6 +67,7 @@ EXPORT void resetGesture(){motion=Gesture{};g.rodHeldHigh=false;}
 EXPORT void travel(int i){if(i>=0 && i<siteCount){g.site=i;s.site=i;g.enter(Phase::Ready);cuePending=false;}}
 static Wheel phoneDial; EXPORT float dialSample(int raw,unsigned now){return phoneDial.read(raw,raw>=0 && raw<=4095,now,false);} EXPORT void dialReset(){phoneDial=Wheel{};}
 EXPORT int teasing(){return g.teasing();}
+EXPORT int rumbleEvent(unsigned now,int active){return int(tactile.tick(g,now,active));}
 EXPORT int award(){return g.pointsAwarded;}
 EXPORT int fresh(){return g.newEntry;}
 EXPORT int recordBest(){return g.personalBest;}

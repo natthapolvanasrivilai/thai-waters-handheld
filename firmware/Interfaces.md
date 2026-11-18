@@ -1,6 +1,6 @@
 # Rev E hardware and update interfaces
 
-The USB data port exposes the ESP32-S3 ROM programming path. Release 0.4 runs on controller 31137 with 16 MB flash, OPI PSRAM and the original two 3 MiB OTA slots. The archive contains editable Arduino source and its board dependencies. Reserve these boundaries for compatible incremental releases. A change to the bootloader, partition table, radio architecture, pinout or physical sensor range requires separate migration or a board variant.
+The USB data port exposes the ESP32-S3 ROM programming path. Release 0.5 runs on controller 31137 with 16 MB flash, OPI PSRAM and the original two 3 MiB OTA slots. The archive contains editable Arduino source and its board dependencies. Reserve these boundaries for compatible incremental releases. A change to the bootloader, partition table, radio architecture, pinout or physical sensor range requires separate migration or a board variant.
 
 ## Native drivers and USB API v1
 

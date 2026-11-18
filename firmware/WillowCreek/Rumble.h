@@ -1,17 +1,28 @@
 #pragma once
 #include "Creek.h"
-enum class Pulse {None,Tease,Bite,Pull};
+enum class Pulse {None,Tease,Bite,Pull,Pick,Bottom,Dash,Stop,PickSample};
 struct RumblePlan {
- uint32_t lastPull=0;bool teased=false,bit=false;
+ uint32_t lastPull=0;
+ Pulse previous=Pulse::None;
  Pulse tick(const creek::Game& g,uint32_t now,bool active){
-   if(!active){lastPull=now;return Pulse::None;}
-   if(g.phase!=creek::Phase::Bite)bit=false;
-   if(!g.teasing())teased=false;
-   if(g.teasing()&&!teased){teased=true;return Pulse::Tease;}
-   if(g.phase==creek::Phase::Bite&&!bit){bit=true;return Pulse::Bite;}
-   if(g.phase!=creek::Phase::Fight){lastPull=now;return Pulse::None;}
-   uint32_t period=(g.surge()?680:1200)-uint32_t(350*g.heat);
-   if(now-lastPull>=period){lastPull=now;return Pulse::Pull;}
+   if(!active){previous=Pulse::None;lastPull=now;return Pulse::None;}
+   Pulse cue=Pulse::None;
+   uint32_t interval=0;
+   const auto style=g.fightStyle();
+   if(g.teasing())cue=style==creek::FightStyle::Picker?Pulse::Pick:Pulse::Tease;
+   if(g.phase==creek::Phase::Bite)cue=Pulse::Bite;
+   if(g.phase==creek::Phase::Fight){
+     if(style==creek::FightStyle::Picker)cue=g.surge()?Pulse::Pick:Pulse::None;
+     else if(g.holdingBottom()){cue=Pulse::Bottom;interval=900;}
+     else if(style==creek::FightStyle::Sprinter&&g.surge()){cue=Pulse::Dash;interval=440;}
+     else {cue=Pulse::Pull;interval=(g.surge()?680:1200)-uint32_t(350*g.heat);}
+   }
+   if(cue!=previous){
+     const auto prior=previous;previous=cue;lastPull=now;
+     if(cue==Pulse::None && prior!=Pulse::None && !g.running())return Pulse::Stop;
+     return cue;
+   }
+   if(interval && now-lastPull>=interval){lastPull=now;return cue;}
    return Pulse::None;
  }
 };

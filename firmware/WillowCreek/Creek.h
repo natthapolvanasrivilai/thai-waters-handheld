@@ -53,6 +53,7 @@ enum class Phase : uint8_t { Ready, Flight, Waiting, Bite, Fight, Landed, Lost }
 enum class Reason : uint8_t { None, Early, Late, Snapped, Escaped, Unworked };
 enum class Technique : uint8_t { Float, Spoon, Jig };
 enum class FightBeat : uint8_t { Recover, Run, Slack };
+enum class FightStyle : uint8_t { Standard, Picker, Anchor, Sprinter };
 constexpr const char* techniques[]={"Float drift","Stop-and-go spoon","Vertical jig"};
 struct Game {
   Progress progress;
@@ -67,11 +68,27 @@ struct Game {
   unsigned strokes=0, strokesNeeded=2;
   float lureTurns=0, slack=0;
   bool falling=false,rodHeldHigh=false;
+  uint32_t liftedCycle=UINT32_MAX,steadyLiftMs=0;
   float line=0, target=0, heat=0, idle=0;
   uint32_t randomInt(uint32_t n){seed=1664525u*seed+1013904223u;return (seed>>8)%n;}
   bool running() const {return phase!=Phase::Ready && phase!=Phase::Landed && phase!=Phase::Lost;}
+  FightStyle fightStyle() const {
+    if(fish==prawn)return FightStyle::Picker;
+    if(fish==ray)return FightStyle::Anchor;
+    // Stable catalog IDs: queenfish, cobia, barracuda, trevally and sailfish.
+    if(fish>=47 && fish<=51)return FightStyle::Sprinter;
+    return FightStyle::Standard;
+  }
   bool teasing() const {
     if(phase!=Phase::Waiting)return false;
+    if(fightStyle()==FightStyle::Picker){
+      if(rig!=Technique::Float){
+        const uint32_t fall=age-fallStart;
+        return falling && (fall<90 || (fall>=180 && fall<275) || (fall>=350 && fall<440));
+      }
+      const uint32_t lead=age<waitMs?waitMs-age:0;
+      return (lead>1350 && lead<=1490) || (lead>990 && lead<=1130) || (lead>610 && lead<=770);
+    }
     if(rig!=Technique::Float)return falling && age-fallStart<240;
     uint32_t lead=age<waitMs?waitMs-age:0;
     return (lead>750 && lead<=1000) || ((fish+destination)%3 && lead>1440 && lead<1640);
@@ -79,10 +96,53 @@ struct Game {
   FightBeat beat() const {
     const uint32_t cycle=recoverMs+runMs+slackMs;
     const uint32_t n=age/cycle,t=age%cycle;
+    if(fightStyle()==FightStyle::Anchor || fightStyle()==FightStyle::Sprinter){
+      if(t<runMs)return liftedCycle==n?FightBeat::Recover:FightBeat::Run;
+      return t<runMs+recoverMs?FightBeat::Recover:FightBeat::Slack;
+    }
+    if(fightStyle()==FightStyle::Picker){
+      // Two short tugs during the run window; the gaps can be wound gently.
+      if(t>=recoverMs && t<recoverMs+runMs){
+        const uint32_t tug=t-recoverMs;
+        return (tug<runMs/4 || (tug>=runMs/2 && tug<3*runMs/4))?FightBeat::Run:FightBeat::Recover;
+      }
+      return t<recoverMs?FightBeat::Recover:FightBeat::Slack;
+    }
     const int shift=n?int((n*383+fish*51+destination*31)%701)-350:0;
     return t<recoverMs+shift?FightBeat::Recover:t<recoverMs+runMs?FightBeat::Run:FightBeat::Slack;
   }
   bool surge() const {return phase==Phase::Fight && beat()==FightBeat::Run;}
+  bool holdingBottom() const {return fightStyle()==FightStyle::Anchor && surge();}
+  float rodLoad() const {
+    const FightStyle style=fightStyle();
+    if(phase==Phase::Waiting)return teasing()?(style==FightStyle::Picker?.23f:.16f):0;
+    if(phase==Phase::Bite)return style==FightStyle::Picker?.33f:style==FightStyle::Anchor?.68f:.54f;
+    if(phase!=Phase::Fight)return 0;
+    const FightBeat movement=beat();
+    float bend;
+    switch(style){
+      case FightStyle::Picker: bend=movement==FightBeat::Run?.31f:.10f;break;
+      case FightStyle::Anchor: bend=holdingBottom()?.82f:.38f;break;
+      case FightStyle::Sprinter: bend=movement==FightBeat::Run?.71f+.13f*std::sin(age*.018f):.28f;break;
+      default: bend=movement==FightBeat::Run?.53f:.23f;break;
+    }
+    if(movement==FightBeat::Slack)bend*=.42f;
+    return limit(bend+.16f*heat,0,1);
+  }
+  float pullOffset() const {
+    if(phase!=Phase::Fight)return 0;
+    switch(fightStyle()){
+      case FightStyle::Picker:return (surge()?5.f:1.6f)*std::sin(age*.021f);
+      case FightStyle::Anchor:return holdingBottom()?0:7.f*std::sin(age*.0023f);
+      case FightStyle::Sprinter:{
+        // Travel laterally during each run, then trace a slower arc on recovery.
+        const uint32_t cycle=runMs+recoverMs+slackMs, t=age%cycle;
+        const float side=(age/cycle)%2?-1.f:1.f;
+        return t<runMs?side*48.f*t/runMs:side*48.f*(1.f-float(t-runMs)/(cycle-runMs));
+      }
+      default:return (surge()?26.f:11.f)*std::sin(age*.004f);
+    }
+  }
   int drawWeight(int id) const {
     bool bottom=id==prawn||id==ray||catalog[id].form==2;
     bool chase=catalog[id].form==1;
@@ -120,7 +180,10 @@ struct Game {
       if(++strokes>=strokesNeeded)enter(Phase::Bite);
     }
   }
-  void enter(Phase p){phase=p;age=0;}
+  void enter(Phase p){
+    phase=p;age=0;
+    if(p==Phase::Fight){liftedCycle=UINT32_MAX;steadyLiftMs=0;}
+  }
   void lose(Reason why){reason=why;enter(Phase::Lost);}
   void tick(uint32_t ms,bool cast,bool rise,float turns) {
     age+=ms;
@@ -140,8 +203,13 @@ struct Game {
         strokes=0;strokesNeeded=2+(destination+timeSlot+randomInt(3))%3;
         lureTurns=slack=0;falling=false;
         recoverMs=1600+randomInt(1450);runMs=1050+species.tier*210+randomInt(550);
-        if(fish==ray)runMs+=700;
         slackMs=800+randomInt(500);
+        switch(fightStyle()){
+          case FightStyle::Picker:recoverMs=1200+recoverMs/4;runMs=660+runMs/6;slackMs=450;break;
+          case FightStyle::Anchor:runMs+=700;break;
+          case FightStyle::Sprinter:runMs=720+runMs/4;recoverMs+=400;break;
+          default:break;
+        }
         reason=Reason::None;enter(Phase::Flight);
       }
       break;
@@ -154,13 +222,24 @@ struct Game {
       else if(rise)enter(Phase::Fight);
       break;
     case Phase::Fight:{
+      const FightStyle style=fightStyle();
+      if(holdingBottom() && (rise || rodHeldHigh) && turns<=.10f*dt){
+        steadyLiftMs+=ms;
+        if(steadyLiftMs>=480)liftedCycle=age/(recoverMs+runMs+slackMs);
+      }else steadyLiftMs=0;
       const bool run=surge(), loose=beat()==FightBeat::Slack;
       const float forward=std::max(0.f,turns);
-      // A fleeing fish takes line. An approaching fish creates slack that must
-      // be gathered; winding against a run builds load and makes little headway.
-      float gained=turns*(1.f+.12f*progress.rank[1])*(run&&turns>0?.20f:1.f);
-      line=limit(line-gained+(run?dt*(.22f+catalog[fish].tier*.04f):0),0,target+3);
-      float load=run?.91f+catalog[fish].tier*.065f:.20f;
+      float purchase=1, payout=0, load=.20f;
+      if(run){
+        switch(style){
+          case FightStyle::Picker:purchase=.55f;payout=.05f;load=1.12f;break;
+          case FightStyle::Anchor:purchase=0;payout=0;load=1.38f;break;
+          case FightStyle::Sprinter:purchase=.12f;payout=1.05f+catalog[fish].tier*.08f;load=1.12f;break;
+          default:purchase=.20f;payout=.22f+catalog[fish].tier*.04f;load=.91f+catalog[fish].tier*.065f;break;
+        }
+      }
+      const float gained=turns*(1.f+.12f*progress.rank[1])*(turns>0?purchase:1.f);
+      line=limit(line-gained+dt*payout,0,target+3);
       heat=limit(heat+forward*load*(1.f-.10f*progress.rank[2])+std::min(0.f,turns)*.66f-dt*(run?.18f:.36f),0,1);
       slack=limit(slack+(loose?dt*.80f:0)-forward*1.4f-std::min(0.f,turns)*.55f,0,2.f);
       idle=limit(idle+dt-std::max(0.f,turns)*9.f,0,9);

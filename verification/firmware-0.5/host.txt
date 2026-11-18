@@ -1,0 +1,27 @@
+PASS prawn triple picks and paired fight tugs; ray anchoring, interrupted wind and steady-lift release; fast pelagic run, lateral pull and snap under load.
+PASS 1404 landable spot/time/technique combinations; 1055 fixed-speed fights lost. Idle lures, continuous spoon retrieve, and held-high jigs cannot draw strikes.
+PASS 250000 weighted casts in 20 habitat/time combinations, all 52 species, special hook windows and successful ray/prawn fights, record book, chapter gates, point accounting, three effective upgrades, refund, persistence layout and distinct tease/bite/pull events.
+PASS two-pose calibration and missing-pose rejection
+PASS reversed board axis yields the same raised angle
+PASS fresh lift
+PASS held rod cannot issue another hook
+PASS raised rod swept back to playing pose casts
+PASS slow return cannot cast
+PASS forward wrap
+PASS backward wrap
+PASS persistable reverse mapping
+PASS lost magnet re-acquires without phantom turn
+PASS implausible jump and stale sample ignored
+PASS cast enters flight, waits, and bites
+PASS fresh lift in bite window hooks
+PASS wrapped encoder trace lands one fish
+PASS expired window beats late lift
+PASS early strike and recast
+PASS wrong-way winding pays line back
+PASS abandoned fight escapes
+PASS fast reeling on a surge breaks the line
+PASS 99 single-creek catch and replay scenarios
+PASS four complete ordered location scores
+PASS independent music/cue mute, visual-only, separated bite tones, drift and adaptive arrangements, stereo, loop boundary and PCM headroom
+PASS DRV2605L detection, mute, 18 finite ROM motif/strength sequences, species timing, cancellation and I2C failure.
+PASS sketch-loop bench calibration, live cast/lift counts, signed wrapped encoder and reversal, magnet recovery, independent cue audition, rumble audition, travel, upgrade and saved-state restore including v0.2 journal migration and time selection.

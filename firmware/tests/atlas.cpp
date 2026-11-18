@@ -22,7 +22,11 @@ int main(){
  }
  Game g;auto& p=g.progress;
  assert(p.points()==0 && !p.upgrade(0));
- auto catchFish=[&](int id,int length){g.phase=Phase::Fight;g.fish=id;g.length=length;g.line=.01f;g.target=6;g.tick(16,false,false,.1f);assert(g.phase==Phase::Landed);};
+ auto catchFish=[&](int id,int length){
+   g.fish=id;g.enter(Phase::Fight);
+   if(g.surge())g.age=g.runMs+10; // Journal fixture lands the catch in its recovery window.
+   g.length=length;g.line=.01f;g.target=6;g.tick(16,false,false,.1f);assert(g.phase==Phase::Landed);
+ };
  catchFish(0,21);assert(g.pointsAwarded==1 && p.book.discovered()==1 && p.chapter()==1);
  catchFish(0,16);assert(!g.newEntry && !g.personalBest && p.book.entries[0].count==2 && p.book.entries[0].best==21);
  assert(p.upgrade(0)&&p.points()==0&&!p.upgrade(0));
@@ -33,7 +37,7 @@ int main(){
  assert(p.book.discovered()==fishCount && p.waters()==5 && p.chapter()==5 && p.points()==17);
  p.retrain();assert(p.points()==18);assert(p.upgrade(0)&&p.upgrade(0)&&p.upgrade(0)&&!p.upgrade(0));
  Progress loaded;memcpy(&loaded,&p,sizeof(p));assert(loaded.points()==12&&loaded.book.entries[0].count==2);
- RumblePlan plan;g.enter(Phase::Waiting);g.waitMs=3500;g.age=2550;
+ RumblePlan plan;g.fish=0;g.enter(Phase::Waiting);g.waitMs=3500;g.age=2550;
  assert(plan.tick(g,2500,true)==Pulse::Tease && plan.tick(g,2520,true)==Pulse::None);
  g.enter(Phase::Bite);assert(plan.tick(g,3300,true)==Pulse::Bite && plan.tick(g,3320,true)==Pulse::None);
  g.enter(Phase::Fight);g.heat=.98;assert(plan.tick(g,5330,true)==Pulse::Pull);

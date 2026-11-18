@@ -73,7 +73,27 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
    // Travel through the normal menu to abandon this cast before selecting the next rig.
    await menu('spots');await pg.selectOption('#places',{index:rig+3});await pg.locator('#fishHere').click();await pg.waitForFunction(()=>g.state()===0);
   }
-  assert.equal(errors.length,0,errors.join(';'));console.log('PASS 117 locations and 21 marine filters, dusk prawn catch, pause, metrics/origin, 52 records, tackle persistence, mobile layout and two-pose motion calibration.');
+  const fights=await pg.evaluate(()=>{
+   const curve=ctx.quadraticCurveTo,shots=[];
+   let tip;
+   ctx.quadraticCurveTo=function(cx,cy,x,y){tip=[x,y];return curve.call(this,cx,cy,x,y);};
+   try{
+    for(const [species,pool,time] of [[40,1,2],[41,3,3],[47,4,1]]){
+     let found=false;
+     for(let seed=1;seed<12000&&!found;seed++){
+      g.initialize(seed);g.visit(pool,time);g.advance(16,1,0,0);found=g.species()===species;
+     }
+     if(!found)throw Error('Fixture species unavailable');
+     g.advance(651,0,0,0);g.advance(6500,0,0,0);g.advance(20,0,1,0);
+     draw();shots.push({phase:g.state(),hint:$('message').textContent,tip});
+    }
+   }finally{ctx.quadraticCurveTo=curve;}
+   return shots;
+  });
+  assert(fights.every(s=>s.phase===4));
+  assert.match(fights[0].hint,/wind gently/);assert.match(fights[1].hint,/Holding bottom/);assert.match(fights[2].hint,/Fast run/);
+  assert(fights[1].tip[1]>fights[0].tip[1]+20,'The planted ray should visibly bend the rod more than the picking prawn.');
+  assert.equal(errors.length,0,errors.join(';'));console.log('PASS location, catch, collection, mobile motion and distinct loaded-rod visuals for prawn, ray and runner.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
 

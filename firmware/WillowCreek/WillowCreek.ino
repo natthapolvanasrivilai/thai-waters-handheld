@@ -117,6 +117,12 @@ void change(int x,int y,bool& practiceTap){
     else if(y>=197&&y<233){if(x<233)setCueLevel();else{auditioning=true;audition=millis();SoundSettings sample=view.sound;sample.cue=0;setSound(sample,false,true);}}
     else if(y>=233&&y<274){if(x<157){view.rumble=(view.rumble+1)%4;store.putUChar("rumble",view.rumble);stopRumble();}
       else {Pulse test=x<266?Pulse::Tease:x<368?Pulse::Bite:Pulse::Pull;view.driver=driveRumble(test,view.rumble,.8f);view.benchEvent=!view.driver?"Driver absent":!view.rumble?"Rumble off":test==Pulse::Tease?"Tease audition":test==Pulse::Bite?"Bite audition":"Pull audition";}}
+    else if(y>=274&&y<300){
+      Pulse sample=x<160?Pulse::PickSample:x<320?Pulse::Bottom:Pulse::Dash;
+      view.driver=driveRumble(sample,view.rumble,.4f);
+      view.benchEvent=!view.driver?"Driver absent":!view.rumble?"Rumble off":
+        sample==Pulse::PickSample?"Prawn picking bait":sample==Pulse::Bottom?"Bottom hold":"Fast run";
+    }
     return;
   }
   if(view.page==Page::Options){
@@ -168,7 +174,7 @@ void sampleRod(uint32_t now,uint32_t dt){
 void setup(){
   Serial.begin(115200);restore();view.game.seed=esp_random();beginBoard();view.battery=readBattery();beginConnected();view.driver=initRumble();beginScene();
   view.audio=startSound();setSound(view.sound,false,false);
-  Serial.printf("Thai Waters 0.4 | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d\n",screenOK,imuOK,view.audio,powerOK);
+  Serial.printf("Thai Waters 0.5 | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d\n",screenOK,imuOK,view.audio,powerOK);
   lastTick=millis();paint(view);confirmUpdateHealth(screenOK && imuOK && powerOK && view.audio);
 }
 void loop(){
