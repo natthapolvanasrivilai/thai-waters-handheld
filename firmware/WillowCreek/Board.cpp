@@ -31,6 +31,11 @@ bool screenOK=false,imuOK=false,powerOK=false;
 void beginBoard(){
   Wire.begin(8,7,400000);Wire.setTimeOut(20);
   if(pmu.begin(Wire,AXP2101_SLAVE_ADDRESS,8,7)){
+    pmu.enableGauge();
+    pmu.setPowerKeyPressOnTime(XPOWERS_POWERON_1S);
+    pmu.setPowerKeyPressOffTime(XPOWERS_POWEROFF_4S);
+    pmu.setLongPressPowerOFF();
+    pmu.enableLongPressShutdown();
     powerOK=pmu.setChargeTargetVoltage(XPOWERS_AXP2101_CHG_VOL_4V2)
       && pmu.setChargerConstantCurr(XPOWERS_AXP2101_CHG_CUR_300MA)
       && pmu.getChargeTargetVoltage()==XPOWERS_AXP2101_CHG_VOL_4V2
@@ -43,6 +48,14 @@ void beginBoard(){
     imu.configAccelerometer(SensorQMI8658::ACC_RANGE_4G,SensorQMI8658::ACC_ODR_125Hz,SensorQMI8658::LPF_MODE_2);
     imu.enableAccelerometer();
   }
+}
+BatteryReading readBattery(){
+  uint8_t reg=XPOWERS_AXP2101_STATUS1,status[2],gauge=0;
+  if(!readBytes(AXP2101_SLAVE_ADDRESS,&reg,1,status,2,false))return {};
+  reg=XPOWERS_AXP2101_BAT_PERCENT_DATA;
+  int level=-1;
+  if((status[0]&0x08) && readBytes(AXP2101_SLAVE_ADDRESS,&reg,1,&gauge,1,false))level=gauge;
+  return batteryFromStatus(status[0],status[1],level);
 }
 bool acceleration(creek::Vec& g){return imuOK && imu.getAccelerometer(g.x,g.y,g.z);}
 Field readWheel(int& raw){

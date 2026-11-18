@@ -6,6 +6,7 @@ enum class Page { Play, Options, Rest, Raise, Hub, Waters, Book, Journey, Bench,
 struct View {
   creek::Game game;
   SoundSettings sound;
+  BatteryReading battery;
   Page page=Page::Rest;
   Field field=Field::Missing;
   bool practice=false, audio=false, motion=false, stable=false, badPose=false, raised=false, calibrated=false;

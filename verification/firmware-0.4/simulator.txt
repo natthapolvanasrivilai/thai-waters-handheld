@@ -1,0 +1,10 @@
+
+> thai-waters-simulator-tests@0.3.0 test
+> node scenery.cjs && node gameplay.cjs && node device.cjs
+
+468 unique scenes. Each time period has 117 distinct paint layouts after stripping color and downsampling to 24 x 16.
+PASS 117 locations and 21 marine filters, dusk prawn catch, pause, metrics/origin, 52 records, tackle persistence, mobile layout and two-pose motion calibration.
+bounds { x: 49, y: 163.1875, width: 982, height: 530.796875 }
+PASS LCD tap casts. Right-side crank reads 1.00 turn clockwise and -1.00 counterclockwise.
+PASS lower-edge power key, paused simulator and battery status modes.
+errors []

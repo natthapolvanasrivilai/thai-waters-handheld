@@ -4,6 +4,7 @@
 uint32_t testClock=0;Arduino_Canvas screen;bool screenOK=true,imuOK=true,powerOK=true;
 creek::Vec inputG{0,0,1};int encoder=4070,px=0,py=0,cuePulses=0,motorPulses=0;
 bool touched=false;Field magnet=Field::Good;SoundSettings lastMix;
+BatteryReading readBattery(){return batteryFromStatus(0x28,0x20,57);}
 void beginBoard(){} bool acceleration(creek::Vec& v){v=inputG;return true;}
 Field readWheel(int& a){a=encoder;return magnet;}
 bool touchPoint(int& x,int& y){x=px;y=py;return touched;}
@@ -15,6 +16,10 @@ void confirmUpdateHealth(bool){}void eventTick(int){}void eventCatch(){}void tog
 void step(int count){while(count--){testClock+=16;loop();}}
 void tap(int x,int y){px=x;py=y;touched=true;step(3);touched=false;step(4);}
 int main(){
+ assert(readBattery().present && readBattery().charging && readBattery().percent==57);
+ auto usb=batteryFromStatus(0x20,0,39);assert(usb.usb&&!usb.present&&!usb.charging&&usb.percent<0);
+ auto bad=batteryFromStatus(8,0,127);assert(bad.present&&!bad.usb&&bad.percent<0);
+ auto low=batteryFromStatus(8,0,0);assert(low.percent==0&&!low.charging);
  struct Legacy{Entry entries[40];uint8_t rank[3],pad;};Legacy old{};old.entries[4].count=2;old.entries[4].best=20;store.putBytes("atlas-2",&old,sizeof(old));setup();assert(view.game.progress.book.entries[4].count==2);step(42);assert(view.page==Page::Rest&&view.stable);
  tap(120,250);inputG={0,.64f,.7684f};step(55);tap(125,250);assert(view.calibrated&&view.page==Page::Play);
  inputG={0,0,1};step(30);tap(420,16);tap(65,176);assert(view.page==Page::Bench);

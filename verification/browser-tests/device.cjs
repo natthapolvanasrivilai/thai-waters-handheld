@@ -13,15 +13,40 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   function xy(v){const p=v.clone().project(camera);return [b.x+(p.x+1)*w/2,b.y+(1-p.y)*h/2];}
   await page.mouse.click(...xy(new T.Vector3(0,0,28.53)));await page.waitForFunction(()=>g.state()===1||g.state()===2);
   await page.evaluate(()=>{if(g.state()===1)g.advance(650,0,0,0);g.advance(7500,0,0,0);g.advance(25,0,1,0);});assert.equal(await page.evaluate(()=>g.state()),4);
-  const initial=await page.evaluate(()=>g.remaining());
+  // A running fish takes line independently of the crank. Measure signed
+  // encoder turns at the input boundary, before fight physics modifies line.
+  await page.evaluate(()=>{
+    const read=samplePointerWheel;
+    window.encoderTravel=0;
+    samplePointerWheel=angle=>{const delta=read(angle);window.encoderTravel+=delta;return delta;};
+  });
   function reelPoint(a){return xy(new T.Vector3(65,7.8*Math.cos(a),14.8+7.8*Math.sin(a)));}
   await page.mouse.move(...reelPoint(.9));await page.mouse.down();
-  for(let i=1;i<=44;i++){await page.mouse.move(...reelPoint(.9+i*2*Math.PI/44));await page.waitForTimeout(18);}
+  for(let i=1;i<=44;i++){await page.mouse.move(...reelPoint(.9-i*2*Math.PI/44));await page.waitForTimeout(18);}
   await page.mouse.up();
-  let after=await page.evaluate(()=>g.remaining());assert(after<initial-.55,'Physical drag must retrieve line: '+initial+' -> '+after);
-  console.log('PASS LCD click casts and a full mouse revolution on the 3D grip retrieved '+(initial-after).toFixed(2)+' turns.');
+  const forward=await page.evaluate(()=>window.encoderTravel);
+  assert(Math.abs(forward-1)<.08,'Clockwise turn at the right-side grip: '+forward);
+  await page.mouse.move(...reelPoint(.9));await page.mouse.down();
+  for(let i=1;i<=44;i++){await page.mouse.move(...reelPoint(.9+i*2*Math.PI/44));await page.waitForTimeout(18);}
+  await page.mouse.up();const reverse=await page.evaluate(()=>window.encoderTravel)-forward;
+  assert(Math.abs(reverse+1)<.08,'Counterclockwise turn at the right-side grip: '+reverse);
+  console.log('PASS LCD tap casts. Right-side crank reads '+forward.toFixed(2)+' turn clockwise and '+reverse.toFixed(2)+' counterclockwise.');
   await page.locator('#foldButton').click();assert.equal(await page.locator('#foldButton').innerText(),'Open reel');await page.locator('#foldButton').click();
   await page.locator('#viewMode').click();assert(await page.locator('#flatStage').isVisible());await page.locator('#viewMode').click();
+  await page.locator('#powerPin').click();
+  assert.equal(await page.locator('#simPower').textContent(),'Power on');
+  assert(await page.locator('#act').isDisabled());
+  const pausedAge=await page.evaluate(()=>g.age());
+  await page.waitForTimeout(160);assert.equal(await page.evaluate(()=>g.age()),pausedAge);
+  await page.locator('#simPower').click();assert(!await page.locator('#act').isDisabled());
+  const labels=await page.evaluate(()=>{
+    const labels=[],context=document.createElement('canvas').getContext('2d');
+    context.fillText=text=>labels.push(text);
+    for(const value of ['72','12','42+','USB','--']){$('simBattery').value=value;batteryBadge(context,0,0);}
+    return labels;
+  });
+  assert.deepEqual(labels,['SIM 72%','SIM 12%','SIM +42%','SIM USB','SIM --']);
+  console.log('PASS lower-edge power key, paused simulator and battery status modes.');
   console.log('errors',errors);assert(!errors.length);
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

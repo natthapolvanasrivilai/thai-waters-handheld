@@ -19,6 +19,7 @@ async function makeDevice(host, data, io){
   'Revised housing':[0x819787,.62,0],Bezel:[0x253834,.51,.04],Rotor:[0x30594f,.47,.12],
   'Folding stem':[0xa86a39,.47,.14],Grip:[0xcb8b51,.57,.02],Collar:[0x465f57,.44,.2],
   'Hinge screw':[0x9ea3a1,.22,.92],'Grip retainer':[0xb9b4a1,.26,.85],Magnet:[0x979da1,.26,.9],
+  'PWR switch':[0x45534f,.55,.12],'RESET switch':[0x45534f,.55,.12],'BOOT switch':[0x45534f,.55,.12],
   'Display assembly':[0x17221f,.27,.06],'USB-C socket':[0xa8afb1,.22,.86]};
  function coating(name,config){
   const m=new T.MeshStandardMaterial({color:config[0],roughness:config[1],metalness:config[2],envMapIntensity:.70});
@@ -58,9 +59,11 @@ async function makeDevice(host, data, io){
  }
  const ray=new T.Raycaster(),mouse=new T.Vector2(),point=new T.Vector3(),projectPlane=new T.Plane(new T.Vector3(1,0,0),-65);
  function pointerRay(e){const b=surface.getBoundingClientRect();mouse.set(2*(e.clientX-b.left)/b.width-1,1-2*(e.clientY-b.top)/b.height);ray.setFromCamera(mouse,cam);return ray;}
- function rotation(e){if(!pointerRay(e).ray.intersectPlane(projectPlane,point))return null;return Math.atan2(point.z-pivot.z,point.y-pivot.y);}
+ function rotation(e){if(!pointerRay(e).ray.intersectPlane(projectPlane,point))return null;// Looking inward from +X, a clockwise turn is a negative rotation about X.
+  return -Math.atan2(point.z-pivot.z,point.y-pivot.y);}
  function zone(e){
   const r=pointerRay(e);const hit=r.intersectObjects([...parts,glass],false)[0];
+  if(hit?.object.name==='PWR switch')return {kind:'power'};
   if(hit?.object===glass)return {kind:'lcd',x:hit.uv.x,y:1-hit.uv.y};
   if(hit&&turning.has(hit.object.name))return {kind:'reel'};
   if(!hit&&r.ray.intersectPlane(projectPlane,point)&&Math.hypot(point.y-pivot.y,point.z-pivot.z)<16.8)return {kind:'reel'};
@@ -68,12 +71,13 @@ async function makeDevice(host, data, io){
  }
  surface.onpointerdown=e=>{
   if(e.button!==0)return;const target=zone(e);
+  if(target.kind==='power'){io.power();return;}
   if(target.kind==='lcd'){io.screen(target.x,target.y);return;}
   if(target.kind!=='reel'||!deployed)return;
   const a=rotation(e);if(a===null)return;e.preventDefault();surface.setPointerCapture(e.pointerId);surface.classList.add('winding');drag={id:e.pointerId,a};io.beginWheel(a);
  };
  surface.onpointermove=e=>{
-  if(!drag){surface.style.cursor=zone(e).kind==='reel'&&deployed?'grab':zone(e).kind==='lcd'?'pointer':'default';return;}
+  if(!drag){surface.style.cursor=zone(e).kind==='reel'&&deployed?'grab':['power','lcd'].includes(zone(e).kind)?'pointer':'default';return;}
   if(drag.id!==e.pointerId)return;const next=rotation(e);if(next===null)return;
   const delta=Math.atan2(Math.sin(next-drag.a),Math.cos(next-drag.a));drag.a=next;io.wind(next,delta);surface.style.cursor='grabbing';
  };
@@ -82,11 +86,15 @@ async function makeDevice(host, data, io){
  function fit(){
   const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;
   const aspect=w/h,half=Math.max(41,67/aspect);cam.left=-half*aspect;cam.right=half*aspect;cam.top=half;cam.bottom=-half;cam.updateProjectionMatrix();renderer.setSize(w,h,false);
+  cam.updateMatrixWorld();
+  const opening=new T.Vector3(-25,-34.5,20.3).project(cam);
+  const pin=host.querySelector('#powerPin');pin.hidden=false;
+  pin.style.left=((opening.x+1)*50)+'%';pin.style.top='calc('+((1-opening.y)*50)+'% + 8px)';
  }
  new ResizeObserver(fit).observe(host);pose();fit();
  const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;});observer.observe(host);
  function render(now){requestAnimationFrame(render);if(!visible||host.hidden||document.hidden||now-lastFrame<40)return;lastFrame=now;
-  const current=io.wheel();spin+=current-previousInput;previousInput=current;
+  const current=io.wheel();spin-=current-previousInput;previousInput=current;
   opening+=((deployed?Math.PI/2:0)-opening)*.25;pose();
   io.paint(ctx);tex.needsUpdate=true;renderer.render(world,cam);
  }

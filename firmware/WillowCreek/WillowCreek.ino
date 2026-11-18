@@ -13,7 +13,7 @@ Gesture rod;
 Wheel wheel;
 Vec filtered{},lastStable{};
 bool hasFilter=false,held=false;
-uint32_t steadySince=0,lastTick=0,lastDraw=0,lastTouch=0,lastDown=0;
+uint32_t steadySince=0,lastTick=0,lastDraw=0,lastTouch=0,lastDown=0,lastBattery=0;
 bool everDrawn=false;
 Page returnTo=Page::Play;
 RumblePlan haptics;
@@ -38,8 +38,10 @@ void restore(){
     }
   }
   view.timeMode=store.getUChar("time-mode",4)%5;view.rodFinish=store.getUChar("finish",0)%3;
+  view.game.setRig(store.getUChar("rig",0)%3);
   view.game.timeSlot=view.timeMode<4?view.timeMode:0;
   view.destination=store.getUChar("spot",store.getUChar("water",0)%4)%destinationCount;view.game.site=destinations[view.destination].pool;view.sound.arrangement=view.destination;
+  view.game.destination=view.destination;
   view.rumble=store.getUChar("rumble",0)%4;
   view.page=view.calibrated?Page::Play:Page::Rest;
   view.sound.music=store.getUChar("music",0);view.sound.volume=store.getUChar("volume",2);
@@ -54,6 +56,11 @@ void playPage(){
 void change(int x,int y,bool& practiceTap){
   if((view.page==Page::Play||view.page==Page::Rest||view.page==Page::Raise) && y<40 && x>=365){
     returnTo=view.page;view.page=Page::Hub;rod=Gesture{};stopRumble();return;
+  }
+  if(view.page==Page::Play&&view.game.phase==Phase::Landed&&x>=414&&y>=40&&y<=81){
+    int pool=view.game.site,slot=0;
+    while(slot<stockSize(pool)&&stockId(pool,slot)!=view.game.fish)++slot;
+    returnTo=Page::Play;view.bookPage=pool*2+(slot>=6);view.page=Page::Book;return;
   }
   if(view.page==Page::Hub){
     if(y<40 && x>=365){view.page=returnTo;if(view.page==Page::Play)playPage();return;}
@@ -85,6 +92,7 @@ void change(int x,int y,bool& practiceTap){
       if(x<100||x>=380){int pages=(destinationCount+3)/4;view.spotPage=(view.spotPage+(x<100?pages-1:1))%pages;return;}
       if(view.pendingSite!=view.destination||view.pendingTime!=view.timeMode)view.game.enter(Phase::Ready);
       view.destination=view.pendingSite;view.game.site=destinations[view.destination].pool;view.sound.site=view.game.site%4;view.sound.arrangement=view.destination;view.timeMode=view.pendingTime;
+      view.game.destination=view.destination;
       store.putUChar("spot",view.destination);store.putUChar("time-mode",view.timeMode);
       view.game.timeSlot=view.timeMode==4?pondPeriod():view.timeMode;playPage();
     }return;
@@ -93,6 +101,11 @@ void change(int x,int y,bool& practiceTap){
     if(y>=272){if(x<147)view.bookPage=(view.bookPage+9)%10;else if(x>=330)view.bookPage=(view.bookPage+1)%10;}return;
   }
   if(view.page==Page::Journey){
+    if(y>=55&&y<90){
+      if(view.game.running()){view.notice="Finish this cast to change technique.";return;}
+      view.game.setRig((int(view.game.rig)+1)%3);store.putUChar("rig",int(view.game.rig));
+      view.notice="Technique fitted.";return;
+    }
     if(y>=93&&y<237){int i=(y-93)/48;view.refundConfirm=false;
       if(view.game.progress.upgrade(i)){saveBook();view.notice="Upgrade fitted.";}
       else view.notice=view.game.progress.rank[i]>=3?"Maximum rank.":view.game.progress.rank[i]>=view.game.progress.chapter()?"Advance the story to open this rank.":"Discover more species to earn points.";
@@ -153,15 +166,16 @@ void sampleRod(uint32_t now,uint32_t dt){
 }
 }
 void setup(){
-  Serial.begin(115200);restore();view.game.seed=esp_random();beginBoard();beginConnected();view.driver=initRumble();beginScene();
+  Serial.begin(115200);restore();view.game.seed=esp_random();beginBoard();view.battery=readBattery();beginConnected();view.driver=initRumble();beginScene();
   view.audio=startSound();setSound(view.sound,false,false);
-  Serial.printf("Thai Waters 0.3 | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d\n",screenOK,imuOK,view.audio,powerOK);
+  Serial.printf("Thai Waters 0.4 | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d\n",screenOK,imuOK,view.audio,powerOK);
   lastTick=millis();paint(view);confirmUpdateHealth(screenOK && imuOK && powerOK && view.audio);
 }
 void loop(){
   uint32_t now=millis(),dt=now-lastTick;
   if(dt<12){delay(1);return;}
   lastTick=now;dt=std::min<uint32_t>(dt,100);view.time=now;
+  if(now-lastBattery>=3000){view.battery=readBattery();lastBattery=now;}
   tickConnected();eventTick(view.destination);
   if(view.timeMode==4 && !view.game.running())view.game.timeSlot=pondPeriod();
   sampleRod(now,dt);
@@ -182,6 +196,7 @@ void loop(){
   }
   Phase before=view.game.phase;
   if(view.page==Page::Play && (view.practice||(view.motion&&view.field==Field::Good))){
+    view.game.rodHeldHigh=!view.practice && rod.high;
     view.game.tick(dt,view.practice?tap:rod.cast,view.practice?tap:rod.rise,view.practice?(tap?.25f:0):turns);
   } else if(view.page==Page::Play)rod=Gesture{};
   if(view.game.phase!=before){

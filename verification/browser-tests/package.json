@@ -2,7 +2,7 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "test": "node gameplay.cjs && node device.cjs"
+    "test": "node scenery.cjs && node gameplay.cjs && node device.cjs"
   },
   "devDependencies": {
     "playwright-core": "1.62.1",

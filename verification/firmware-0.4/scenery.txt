@@ -1,0 +1,1 @@
+468 unique scenes. Each time period has 117 distinct paint layouts after stripping color and downsampling to 24 x 16.
