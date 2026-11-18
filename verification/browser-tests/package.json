@@ -1,0 +1,12 @@
+{
+  "version": "0.3.0",
+  "private": true,
+  "scripts": {
+    "test": "node gameplay.cjs && node device.cjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.62.1",
+    "three": "0.180.0"
+  },
+  "name": "thai-waters-simulator-tests"
+}
