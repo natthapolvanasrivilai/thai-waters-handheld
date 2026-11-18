@@ -1,0 +1,1 @@
+PASS absent and wrong driver IDs, ERM initialization, mute, 9 effect/strength commands, sequencer stop and I2C failure.

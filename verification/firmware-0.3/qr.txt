@@ -1,0 +1,1 @@
+PASS physical QR image decoded, private LAN URL served game via verified TLS with a session cookie; anonymous request rejected.

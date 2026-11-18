@@ -1,0 +1,62 @@
+[
+  [
+    "Controller to sensor",
+    0.4736,
+    "A1.005",
+    "A2.00"
+  ],
+  [
+    "Display surface to bezel",
+    0.25,
+    "A1.000",
+    "Bezel"
+  ],
+  [
+    "Controller to cell",
+    6.5,
+    "A1.526",
+    "Cell envelope"
+  ],
+  [
+    "Controller to speaker",
+    7.5498,
+    "A1.527",
+    "Speaker envelope"
+  ],
+  [
+    "Magnet face to AS5600 body",
+    1.2,
+    "Magnet",
+    "A2.16"
+  ],
+  [
+    "Shaft to sensor assembly",
+    1.0826,
+    "Rotor",
+    "A2.16"
+  ],
+  [
+    "Sockets to revised housing",
+    1.5,
+    "A2.07",
+    "Housing"
+  ],
+  [
+    "Battery to lateral shell/fences",
+    0.4,
+    "Cell envelope",
+    "Housing"
+  ],
+  [
+    "Speaker to shell",
+    0.45,
+    "Speaker envelope",
+    "Housing"
+  ],
+  [
+    "Controller substrate to encoder substrate",
+    0.4736,
+    "A1.005",
+    "A2.00"
+  ]
+]

@@ -1,0 +1,3 @@
+Change,Affected revision,Issue,Disposition,Retest,State
+E-001,D to E,Encoder connector intersects Rev D supports,Fit four lands and two registration pins,Physical assembly and reel sensor gap,Nominal CAD verified; fit print pending
+E-002,Rev E production,Haptic motor and pack lead routing,"Review adhesive, harness and thermal stack","Vibration, RF, strain and full-sweep checks",Open

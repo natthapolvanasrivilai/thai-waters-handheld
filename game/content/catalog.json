@@ -1,0 +1,610 @@
+{
+  "sites": [
+    [
+      "Mae Ngat Reservoir",
+      "Lotus at Dawn",
+      "Pond"
+    ],
+    [
+      "Chao Phraya",
+      "Ferry Lanterns",
+      "River"
+    ],
+    [
+      "Cheow Lan Lake",
+      "Karst Echo",
+      "Lake"
+    ],
+    [
+      "Nong Khai Mekong",
+      "Mekong Afterglow",
+      "River"
+    ],
+    [
+      "Coastal waters",
+      "Saltwind",
+      "Sea"
+    ]
+  ],
+  "fish": [
+    {
+      "name": "Climbing perch",
+      "low": 9,
+      "high": 23,
+      "tier": 0,
+      "weight": 16,
+      "form": 0,
+      "site": 0,
+      "lore": "Hatched in the lotus roots beside the potter's steps.",
+      "factor": 14
+    },
+    {
+      "name": "Three-spot gourami",
+      "low": 8,
+      "high": 16,
+      "tier": 0,
+      "weight": 16,
+      "form": 0,
+      "site": 0,
+      "lore": "Raised in the reed beds behind the blue pavilion.",
+      "factor": 15
+    },
+    {
+      "name": "Silver barb",
+      "low": 15,
+      "high": 35,
+      "tier": 0,
+      "weight": 16,
+      "form": 0,
+      "site": 0,
+      "lore": "Followed the first monsoon into the orchard pond.",
+      "factor": 16
+    },
+    {
+      "name": "Walking catfish",
+      "low": 19,
+      "high": 41,
+      "tier": 1,
+      "weight": 7,
+      "form": 2,
+      "site": 0,
+      "lore": "Slipped in through a flooded rice-field gate.",
+      "factor": 13
+    },
+    {
+      "name": "Snakeskin gourami",
+      "low": 13,
+      "high": 25,
+      "tier": 1,
+      "weight": 7,
+      "form": 0,
+      "site": 0,
+      "lore": "Grew up beneath the lotus seller's floating basket.",
+      "factor": 14
+    },
+    {
+      "name": "Nile tilapia",
+      "low": 18,
+      "high": 43,
+      "tier": 1,
+      "weight": 7,
+      "form": 0,
+      "site": 0,
+      "lore": "Came from the little pond behind the clay kiln.",
+      "factor": 15
+    },
+    {
+      "name": "Striped snakehead",
+      "low": 25,
+      "high": 66,
+      "tier": 2,
+      "weight": 3,
+      "form": 1,
+      "site": 0,
+      "lore": "Kept watch in the water lilies of the north inlet.",
+      "factor": 10
+    },
+    {
+      "name": "Broadhead catfish",
+      "low": 20,
+      "high": 38,
+      "tier": 2,
+      "weight": 3,
+      "form": 2,
+      "site": 0,
+      "lore": "Hid among the roots of the old tamarind tree.",
+      "factor": 13
+    },
+    {
+      "name": "Marbled goby",
+      "low": 21,
+      "high": 50,
+      "tier": 3,
+      "weight": 2,
+      "form": 1,
+      "site": 0,
+      "lore": "Born in the gravel shallows below the millstone.",
+      "factor": 8
+    },
+    {
+      "name": "Giant gourami",
+      "low": 37,
+      "high": 68,
+      "tier": 4,
+      "weight": 1,
+      "form": 0,
+      "site": 0,
+      "lore": "Once sheltered in the shade of a floating shrine.",
+      "factor": 15
+    },
+    {
+      "name": "Redtail botia",
+      "low": 12,
+      "high": 24,
+      "tier": 0,
+      "weight": 16,
+      "form": 0,
+      "site": 1,
+      "lore": "Grew up under a ferry landing's worn timber steps.",
+      "factor": 16
+    },
+    {
+      "name": "Tinfoil barb",
+      "low": 14,
+      "high": 34,
+      "tier": 0,
+      "weight": 16,
+      "form": 0,
+      "site": 1,
+      "lore": "Ran silver with a shoal from the lantern quay.",
+      "factor": 17
+    },
+    {
+      "name": "Banded mystus",
+      "low": 9,
+      "high": 22,
+      "tier": 0,
+      "weight": 16,
+      "form": 2,
+      "site": 1,
+      "lore": "Born where a rope ferry used to cross the current.",
+      "factor": 10
+    },
+    {
+      "name": "Siamese mud carp",
+      "low": 18,
+      "high": 47,
+      "tier": 1,
+      "weight": 7,
+      "form": 0,
+      "site": 1,
+      "lore": "Grazed the silt beside the old brickworks.",
+      "factor": 15
+    },
+    {
+      "name": "Red-tailed tinfoil barb",
+      "low": 18,
+      "high": 33,
+      "tier": 1,
+      "weight": 7,
+      "form": 0,
+      "site": 1,
+      "lore": "Followed the rice barges around the temple bend.",
+      "factor": 16
+    },
+    {
+      "name": "Asian redtail catfish",
+      "low": 28,
+      "high": 84,
+      "tier": 1,
+      "weight": 7,
+      "form": 2,
+      "site": 1,
+      "lore": "Kept to the deep pilings of the copper-roofed wharf.",
+      "factor": 13
+    },
+    {
+      "name": "Soldier river barb",
+      "low": 24,
+      "high": 62,
+      "tier": 2,
+      "weight": 3,
+      "form": 0,
+      "site": 1,
+      "lore": "Came downriver through the boatbuilders' reach.",
+      "factor": 14
+    },
+    {
+      "name": "Bronze featherback",
+      "low": 22,
+      "high": 53,
+      "tier": 2,
+      "weight": 3,
+      "form": 1,
+      "site": 1,
+      "lore": "Grew up in the backwater behind a ferry island.",
+      "factor": 9
+    },
+    {
+      "name": "Clown featherback",
+      "low": 39,
+      "high": 91,
+      "tier": 3,
+      "weight": 2,
+      "form": 1,
+      "site": 1,
+      "lore": "Made its home in the shadow of a sunken skiff.",
+      "factor": 10
+    },
+    {
+      "name": "Giant barb",
+      "low": 65,
+      "high": 165,
+      "tier": 4,
+      "weight": 1,
+      "form": 0,
+      "site": 1,
+      "lore": "Returned each flood to the bell tower's reflection.",
+      "factor": 17
+    },
+    {
+      "name": "Hampala barb",
+      "low": 18,
+      "high": 63,
+      "tier": 0,
+      "weight": 16,
+      "form": 0,
+      "site": 2,
+      "lore": "Hatched in a stream that falls between two cliffs.",
+      "factor": 14
+    },
+    {
+      "name": "Striped barb",
+      "low": 7,
+      "high": 16,
+      "tier": 0,
+      "weight": 16,
+      "form": 0,
+      "site": 2,
+      "lore": "Grew up in the reed pools near a floating school.",
+      "factor": 15
+    },
+    {
+      "name": "Forest snakehead",
+      "low": 17,
+      "high": 36,
+      "tier": 0,
+      "weight": 16,
+      "form": 1,
+      "site": 2,
+      "lore": "Came from a forest creek beneath the limestone arch.",
+      "factor": 10
+    },
+    {
+      "name": "Bonylip barb",
+      "low": 14,
+      "high": 35,
+      "tier": 1,
+      "weight": 7,
+      "form": 0,
+      "site": 2,
+      "lore": "Grazed the green stones at the lake's hidden spring.",
+      "factor": 17
+    },
+    {
+      "name": "Spotted barb",
+      "low": 9,
+      "high": 19,
+      "tier": 1,
+      "weight": 7,
+      "form": 0,
+      "site": 2,
+      "lore": "Sheltered among the moorings of an empty raft house.",
+      "factor": 14
+    },
+    {
+      "name": "Red-tailed rasbora",
+      "low": 8,
+      "high": 17,
+      "tier": 1,
+      "weight": 7,
+      "form": 1,
+      "site": 2,
+      "lore": "Left the fern-lined inlet with the first warm rain.",
+      "factor": 9
+    },
+    {
+      "name": "Great snakehead",
+      "low": 39,
+      "high": 88,
+      "tier": 2,
+      "weight": 3,
+      "form": 1,
+      "site": 2,
+      "lore": "Hunted in a flooded grove below the white cliff.",
+      "factor": 10
+    },
+    {
+      "name": "Blue mahseer",
+      "low": 26,
+      "high": 72,
+      "tier": 2,
+      "weight": 3,
+      "form": 0,
+      "site": 2,
+      "lore": "Rose from a cold spring beneath the karst towers.",
+      "factor": 17
+    },
+    {
+      "name": "Giant snakehead",
+      "low": 40,
+      "high": 105,
+      "tier": 3,
+      "weight": 2,
+      "form": 1,
+      "site": 2,
+      "lore": "Grew up in the shadow of a drowned fig tree.",
+      "factor": 8
+    },
+    {
+      "name": "Thai mahseer",
+      "low": 42,
+      "high": 95,
+      "tier": 4,
+      "weight": 1,
+      "form": 0,
+      "site": 2,
+      "lore": "Followed a ribbon of clear water out of the hills.",
+      "factor": 15
+    },
+    {
+      "name": "Siamese glassfish",
+      "low": 5,
+      "high": 11,
+      "tier": 0,
+      "weight": 16,
+      "form": 0,
+      "site": 3,
+      "lore": "Grew up in the shallows beside the silk dyers' bank.",
+      "factor": 16
+    },
+    {
+      "name": "Asian bumblebee catfish",
+      "low": 7,
+      "high": 15,
+      "tier": 0,
+      "weight": 16,
+      "form": 2,
+      "site": 3,
+      "lore": "Hid beneath a turned-over ferry basket.",
+      "factor": 13
+    },
+    {
+      "name": "Yellow mystus",
+      "low": 10,
+      "high": 24,
+      "tier": 0,
+      "weight": 16,
+      "form": 2,
+      "site": 3,
+      "lore": "Came from the ochre pools behind the night market.",
+      "factor": 10
+    },
+    {
+      "name": "Black sharkminnow",
+      "low": 21,
+      "high": 73,
+      "tier": 1,
+      "weight": 7,
+      "form": 0,
+      "site": 3,
+      "lore": "Patrolled a stony channel under the eastern span.",
+      "factor": 15
+    },
+    {
+      "name": "Smallscale mud carp",
+      "low": 15,
+      "high": 34,
+      "tier": 1,
+      "weight": 7,
+      "form": 0,
+      "site": 3,
+      "lore": "Followed the silt past a row of floating gardens.",
+      "factor": 16
+    },
+    {
+      "name": "Siamese algae eater",
+      "low": 8,
+      "high": 16,
+      "tier": 1,
+      "weight": 7,
+      "form": 1,
+      "site": 3,
+      "lore": "Grazed the smooth posts at the old boat crossing.",
+      "factor": 11
+    },
+    {
+      "name": "Striped river catfish",
+      "low": 36,
+      "high": 95,
+      "tier": 2,
+      "weight": 3,
+      "form": 2,
+      "site": 3,
+      "lore": "Rode the floodwater past the lantern boats.",
+      "factor": 10
+    },
+    {
+      "name": "Wallago catfish",
+      "low": 57,
+      "high": 145,
+      "tier": 2,
+      "weight": 3,
+      "form": 2,
+      "site": 3,
+      "lore": "Kept to a deep bend below the moonlit bridge.",
+      "factor": 11
+    },
+    {
+      "name": "Jullien mud carp",
+      "low": 45,
+      "high": 110,
+      "tier": 3,
+      "weight": 2,
+      "form": 0,
+      "site": 3,
+      "lore": "Came down from a gravel bar called the Silver Step.",
+      "factor": 16
+    },
+    {
+      "name": "Mekong giant catfish",
+      "low": 90,
+      "high": 225,
+      "tier": 4,
+      "weight": 1,
+      "form": 2,
+      "site": 3,
+      "lore": "Born in a deep pool the boatmen call the Blue Well.",
+      "factor": 13
+    },
+    {
+      "name": "Giant river prawn",
+      "low": 12,
+      "high": 32,
+      "tier": 2,
+      "weight": 3,
+      "form": 3,
+      "site": 1,
+      "lore": "Sheltered under the ferry piles until its claws turned blue.",
+      "factor": 6
+    },
+    {
+      "name": "Giant freshwater stingray",
+      "low": 65,
+      "high": 240,
+      "tier": 4,
+      "weight": 1,
+      "form": 4,
+      "site": 3,
+      "lore": "Left a round print on the Moonbank's silver sand.",
+      "factor": 8
+    },
+    {
+      "name": "Indian mackerel",
+      "low": 14,
+      "high": 31,
+      "tier": 0,
+      "weight": 16,
+      "form": 1,
+      "site": 4,
+      "lore": "Followed the floating ice down from a blue fishing boat.",
+      "factor": 10
+    },
+    {
+      "name": "Yellowstripe scad",
+      "low": 12,
+      "high": 22,
+      "tier": 0,
+      "weight": 16,
+      "form": 1,
+      "site": 4,
+      "lore": "Learned to turn with the school alongside a line of buoys.",
+      "factor": 12
+    },
+    {
+      "name": "Indian anchovy",
+      "low": 6,
+      "high": 15,
+      "tier": 0,
+      "weight": 16,
+      "form": 1,
+      "site": 4,
+      "lore": "Grew up where the green lamp meets the edge of the dark.",
+      "factor": 8
+    },
+    {
+      "name": "Goldlined seabream",
+      "low": 16,
+      "high": 42,
+      "tier": 1,
+      "weight": 7,
+      "form": 1,
+      "site": 4,
+      "lore": "Once sheltered beneath a buoy daubed with yellow paint.",
+      "factor": 18
+    },
+    {
+      "name": "Bigeye scad",
+      "low": 17,
+      "high": 36,
+      "tier": 1,
+      "weight": 7,
+      "form": 1,
+      "site": 4,
+      "lore": "Fed after dark near a boat the crew calls Little Moon.",
+      "factor": 14
+    },
+    {
+      "name": "Talang queenfish",
+      "low": 32,
+      "high": 99,
+      "tier": 1,
+      "weight": 7,
+      "form": 1,
+      "site": 4,
+      "lore": "Ran beside a skiff for the length of a morning song.",
+      "factor": 9
+    },
+    {
+      "name": "Cobia",
+      "low": 44,
+      "high": 155,
+      "tier": 2,
+      "weight": 3,
+      "form": 1,
+      "site": 4,
+      "lore": "Travelled in the long shade of a lost marker float.",
+      "factor": 9
+    },
+    {
+      "name": "Great barracuda",
+      "low": 46,
+      "high": 158,
+      "tier": 2,
+      "weight": 3,
+      "form": 1,
+      "site": 4,
+      "lore": "Watched the anchovy shoals from the edge of blue water.",
+      "factor": 6
+    },
+    {
+      "name": "Giant trevally",
+      "low": 55,
+      "high": 148,
+      "tier": 3,
+      "weight": 2,
+      "form": 1,
+      "site": 4,
+      "lore": "Turned the water white beside a half-submerged anchor.",
+      "factor": 17
+    },
+    {
+      "name": "Indo-Pacific sailfish",
+      "low": 110,
+      "high": 245,
+      "tier": 4,
+      "weight": 1,
+      "form": 1,
+      "site": 4,
+      "lore": "Rose like a torn blue sail beyond the last fishing light.",
+      "factor": 6
+    }
+  ],
+  "ranks": [
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Epic",
+    "Legendary"
+  ]
+}

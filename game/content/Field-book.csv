@@ -1,0 +1,53 @@
+﻿Stable ID,Game habitat,Species,Rarity,Min cm,Max cm,Mass coefficient,Dawn weight,Day weight,Dusk weight,Night weight,Fictional origin
+0,Mae Ngat Reservoir,Climbing perch,Common,9,23,14,48,32,32,32,Hatched in the lotus roots beside the potter's steps.
+1,Mae Ngat Reservoir,Three-spot gourami,Common,8,16,15,32,48,32,32,Raised in the reed beds behind the blue pavilion.
+2,Mae Ngat Reservoir,Silver barb,Common,15,35,16,32,32,48,32,Followed the first monsoon into the orchard pond.
+3,Mae Ngat Reservoir,Walking catfish,Uncommon,19,41,13,14,14,14,21,Slipped in through a flooded rice-field gate.
+4,Mae Ngat Reservoir,Snakeskin gourami,Uncommon,13,25,14,21,14,14,14,Grew up beneath the lotus seller's floating basket.
+5,Mae Ngat Reservoir,Nile tilapia,Uncommon,18,43,15,14,21,14,14,Came from the little pond behind the clay kiln.
+6,Mae Ngat Reservoir,Striped snakehead,Rare,25,66,10,6,6,9,6,Kept watch in the water lilies of the north inlet.
+7,Mae Ngat Reservoir,Broadhead catfish,Rare,20,38,13,6,6,6,9,Hid among the roots of the old tamarind tree.
+8,Mae Ngat Reservoir,Marbled goby,Epic,21,50,8,6,4,4,4,Born in the gravel shallows below the millstone.
+9,Mae Ngat Reservoir,Giant gourami,Legendary,37,68,15,2,3,2,2,Once sheltered in the shade of a floating shrine.
+10,Chao Phraya,Redtail botia,Common,12,24,16,32,32,48,32,Grew up under a ferry landing's worn timber steps.
+11,Chao Phraya,Tinfoil barb,Common,14,34,17,32,32,32,48,Ran silver with a shoal from the lantern quay.
+12,Chao Phraya,Banded mystus,Common,9,22,10,48,32,32,32,Born where a rope ferry used to cross the current.
+13,Chao Phraya,Siamese mud carp,Uncommon,18,47,15,14,21,14,14,Grazed the silt beside the old brickworks.
+14,Chao Phraya,Red-tailed tinfoil barb,Uncommon,18,33,16,14,14,21,14,Followed the rice barges around the temple bend.
+15,Chao Phraya,Asian redtail catfish,Uncommon,28,84,13,14,14,14,21,Kept to the deep pilings of the copper-roofed wharf.
+16,Chao Phraya,Soldier river barb,Rare,24,62,14,9,6,6,6,Came downriver through the boatbuilders' reach.
+17,Chao Phraya,Bronze featherback,Rare,22,53,9,6,9,6,6,Grew up in the backwater behind a ferry island.
+18,Chao Phraya,Clown featherback,Epic,39,91,10,4,4,6,4,Made its home in the shadow of a sunken skiff.
+19,Chao Phraya,Giant barb,Legendary,65,165,17,2,2,2,3,Returned each flood to the bell tower's reflection.
+20,Cheow Lan Lake,Hampala barb,Common,18,63,14,48,32,32,32,Hatched in a stream that falls between two cliffs.
+21,Cheow Lan Lake,Striped barb,Common,7,16,15,32,48,32,32,Grew up in the reed pools near a floating school.
+22,Cheow Lan Lake,Forest snakehead,Common,17,36,10,32,32,48,32,Came from a forest creek beneath the limestone arch.
+23,Cheow Lan Lake,Bonylip barb,Uncommon,14,35,17,14,14,14,21,Grazed the green stones at the lake's hidden spring.
+24,Cheow Lan Lake,Spotted barb,Uncommon,9,19,14,21,14,14,14,Sheltered among the moorings of an empty raft house.
+25,Cheow Lan Lake,Red-tailed rasbora,Uncommon,8,17,9,14,21,14,14,Left the fern-lined inlet with the first warm rain.
+26,Cheow Lan Lake,Great snakehead,Rare,39,88,10,6,6,9,6,Hunted in a flooded grove below the white cliff.
+27,Cheow Lan Lake,Blue mahseer,Rare,26,72,17,6,6,6,9,Rose from a cold spring beneath the karst towers.
+28,Cheow Lan Lake,Giant snakehead,Epic,40,105,8,6,4,4,4,Grew up in the shadow of a drowned fig tree.
+29,Cheow Lan Lake,Thai mahseer,Legendary,42,95,15,2,3,2,2,Followed a ribbon of clear water out of the hills.
+30,Nong Khai Mekong,Siamese glassfish,Common,5,11,16,32,32,48,32,Grew up in the shallows beside the silk dyers' bank.
+31,Nong Khai Mekong,Asian bumblebee catfish,Common,7,15,13,32,32,32,48,Hid beneath a turned-over ferry basket.
+32,Nong Khai Mekong,Yellow mystus,Common,10,24,10,48,32,32,32,Came from the ochre pools behind the night market.
+33,Nong Khai Mekong,Black sharkminnow,Uncommon,21,73,15,14,21,14,14,Patrolled a stony channel under the eastern span.
+34,Nong Khai Mekong,Smallscale mud carp,Uncommon,15,34,16,14,14,21,14,Followed the silt past a row of floating gardens.
+35,Nong Khai Mekong,Siamese algae eater,Uncommon,8,16,11,14,14,14,21,Grazed the smooth posts at the old boat crossing.
+36,Nong Khai Mekong,Striped river catfish,Rare,36,95,10,9,6,6,6,Rode the floodwater past the lantern boats.
+37,Nong Khai Mekong,Wallago catfish,Rare,57,145,11,6,9,6,6,Kept to a deep bend below the moonlit bridge.
+38,Nong Khai Mekong,Jullien mud carp,Epic,45,110,16,4,4,6,4,Came down from a gravel bar called the Silver Step.
+39,Nong Khai Mekong,Mekong giant catfish,Legendary,90,225,13,2,2,2,3,Born in a deep pool the boatmen call the Blue Well.
+40,Chao Phraya,Giant river prawn,Rare,12,32,6,0,0,8,3,Sheltered under the ferry piles until its claws turned blue.
+41,Nong Khai Mekong,Giant freshwater stingray,Legendary,65,240,8,1,0,0,3,Left a round print on the Moonbank's silver sand.
+42,Coastal waters,Indian mackerel,Common,14,31,10,32,32,48,32,Followed the floating ice down from a blue fishing boat.
+43,Coastal waters,Yellowstripe scad,Common,12,22,12,32,32,32,48,Learned to turn with the school alongside a line of buoys.
+44,Coastal waters,Indian anchovy,Common,6,15,8,48,32,32,32,Grew up where the green lamp meets the edge of the dark.
+45,Coastal waters,Goldlined seabream,Uncommon,16,42,18,14,21,14,14,Once sheltered beneath a buoy daubed with yellow paint.
+46,Coastal waters,Bigeye scad,Uncommon,17,36,14,14,14,21,14,Fed after dark near a boat the crew calls Little Moon.
+47,Coastal waters,Talang queenfish,Uncommon,32,99,9,14,14,14,21,Ran beside a skiff for the length of a morning song.
+48,Coastal waters,Cobia,Rare,44,155,9,9,6,6,6,Travelled in the long shade of a lost marker float.
+49,Coastal waters,Great barracuda,Rare,46,158,6,6,9,6,6,Watched the anchovy shoals from the edge of blue water.
+50,Coastal waters,Giant trevally,Epic,55,148,17,4,4,6,4,Turned the water white beside a half-submerged anchor.
+51,Coastal waters,Indo-Pacific sailfish,Legendary,110,245,6,2,2,2,3,Rose like a torn blue sail beyond the last fishing light.

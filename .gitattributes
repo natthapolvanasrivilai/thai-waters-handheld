@@ -1,0 +1,12 @@
+* text=auto
+*.bin binary
+*.stl binary
+*.step.gz binary
+*.xlsx binary
+*.zip binary
+*.png binary
+*.pdf binary
+*.step binary
+*.stp binary
+*.brd binary
+*.wasm binary

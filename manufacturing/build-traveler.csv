@@ -1,0 +1,8 @@
+Serial or lot,HW revision,Station,Action,Acceptance evidence,Result,Operator,Date
+,E,Incoming,"Record controller silkscreen revision, pack lot and connector polarity",Compare physical parts with signed BOM and pinout,,,
+,E,Print,"Gauge enclosure, bezel, pocket and pivot","Free reel movement, no cell or display compression",,,
+,E,Harness,Mate JST plugs; document keyed polarity and continuity,Independent polarity verification before connecting battery,,,
+,E,Assembly,"Install rotor, sensor, cell, speaker and optional motor per Rev E fit sequence",No trapped wire; stable angle reading through a full revolution,,,
+,E,Flash,Record firmware digest and provision public verification key / feed,USB boot and signed update check,,,
+,E,Functional,"Exercise cast, lift, direction, touch, audio, rumble, Wi-Fi and RTC",Record live readings and clock holdover result,,,
+,E,Final,"Check serial, market label, release version and packout",Released artwork and matching serial/lot,,,

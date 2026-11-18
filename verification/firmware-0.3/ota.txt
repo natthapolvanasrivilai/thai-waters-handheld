@@ -1,0 +1,1 @@
+PASS exact Rev E binary packaged with disposable P-256 key, verified header and image digest, rejected changed model and corrupted payload. Physical OTA remains a bench test.

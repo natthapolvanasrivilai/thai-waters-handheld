@@ -1,0 +1,1 @@
+PASS two browser sessions and one handheld-protocol UDP client shared a location, reached 8 catches, deduplicated reordered reports and isolated a second room.

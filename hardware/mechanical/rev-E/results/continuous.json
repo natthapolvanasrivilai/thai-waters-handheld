@@ -1,0 +1,44 @@
+[
+  {
+    "moving": "Rotor tiers",
+    "verified_original_outside_mm3": 0.0,
+    "obstacles": 575,
+    "envelope_hits": []
+  },
+  {
+    "moving": "Folding stem",
+    "verified_original_outside_mm3": 0.0,
+    "obstacles": 575,
+    "envelope_hits": []
+  },
+  {
+    "moving": "Grip",
+    "verified_original_outside_mm3": 0.0,
+    "obstacles": 575,
+    "envelope_hits": []
+  },
+  {
+    "moving": "Hinge screw",
+    "verified_original_outside_mm3": 0.0,
+    "obstacles": 575,
+    "envelope_hits": []
+  },
+  {
+    "moving": "Grip retainer",
+    "verified_original_outside_mm3": 0.0,
+    "obstacles": 575,
+    "envelope_hits": []
+  },
+  {
+    "moving": "Collar",
+    "verified_original_outside_mm3": 0.0,
+    "obstacles": 575,
+    "envelope_hits": []
+  },
+  {
+    "moving": "Magnet",
+    "verified_original_outside_mm3": 0.0,
+    "obstacles": 575,
+    "envelope_hits": []
+  }
+]

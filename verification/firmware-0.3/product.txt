@@ -1,0 +1,3 @@
+bounds { x: 49, y: 161.796875, width: 982, height: 530.796875 }
+PASS LCD click casts and a full mouse revolution on the 3D grip retrieved 1.00 turns.
+errors []

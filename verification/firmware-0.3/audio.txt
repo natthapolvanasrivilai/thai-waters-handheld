@@ -1,0 +1,1 @@
+PASS independent music/cue mute, visual-only, separated bite tones, drift and adaptive arrangements, stereo, loop boundary and PCM headroom
