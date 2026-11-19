@@ -6,7 +6,7 @@
 
 [Hardware revisions and CAD](docs/wiki/Hardware-and-3D.md) · [One-unit BOM and price research](docs/wiki/BOM-and-business.md) · [Current release and hardware milestone](docs/wiki/Software-and-tests.md#current-release)
 
-**[Browse the product wiki](docs/wiki/Home.md)** · **[Download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
+**[Browse the product wiki](docs/wiki/Home.md)** · **[Download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
 
 Open the downloaded handbook in a browser, or open `docs/index.html` from a local checkout. It embeds the playable game, exploded CAD, circuit traces, software and test records, assembly routing, searchable BOM and interactive cost model. The wiki provides permanent links into the versioned engineering sources. The historical Rev F [engineering release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/rev-f-engineering-0.7) includes the evidence bundle for offline use.
 
@@ -18,7 +18,7 @@ Personal product project of GitHub user natthapolvanasrivilai. The handheld uses
 |---|---|
 | Hardware configuration | [Numeric assembly and part revision register](hardware/revisions/README.md) · [Hardware qualification and first-article status](quality/hardware-gate.md) |
 | Product definition | [Requirements and status](product/requirements.md) |
-| Industrial design and fit | [R0009 assembled and exploded CAD](docs/models/TW-A-0001-R0009-exploded.html) · [Verification evidence](hardware/mechanical/TW-A-0001-R0009/QA/README.md) |
+| Industrial design and fit | [R0011 assembly inspection and STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-hardware-review-1) · [Mechanical verification](hardware/mechanical/TW-A-0001-R0011/README.md) |
 | Current mechanical candidate | [R0011 receiver toolpaths](hardware/mechanical/TW-A-0001-R0011/README.md) · [Lower service cover and fitted STEP](hardware/mechanical/TW-A-0001-R0010/README.md) |
 | Parts and procurement | [Full prototype BOM](sourcing/production-intent/R0009-prototype-budget.csv) · [Exact sources](sourcing/production-intent/R0009-source-evidence.csv) · [Cable routes and connections](hardware/electronics/harness-r0003/README.md) |
 | Firmware and game content | [Arduino sketch](firmware/WillowCreek) and [browser game](game/Thai-Waters-play.html) |

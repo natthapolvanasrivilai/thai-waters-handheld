@@ -42,6 +42,6 @@ for element in ("compressedGame", "compressedModel"):
     if element == "compressedGame":
         assert payload == asset("game/Thai-Waters-play.html")
     if element == "compressedModel":
-        assert payload == asset("docs/models/TW-A-0001-R0009-exploded.html")
+        assert payload == asset("docs/models/TW-A-0001-R0011-exploded.html")
     print(element, len(payload), hashlib.sha256(payload).hexdigest())
 print(f"PASS {len(pages)} README/wiki pages, {links} local links across tracked Markdown, two embedded apps and all software evidence paths.")

@@ -1,0 +1,384 @@
+{
+  "remove": [
+    "drvParts",
+    "drvBoard",
+    "wm0",
+    "wm1",
+    "wm0-Cu",
+    "wm1-Cu",
+    "tee-VCC-Cu",
+    "tee-VCC-seal",
+    "w1VCC",
+    "tee-SCL-Cu",
+    "tee-SCL-seal",
+    "w1SCL",
+    "tee-SDA-Cu",
+    "tee-SDA-seal",
+    "w1SDA",
+    "tee-GND-Cu",
+    "tee-GND-seal",
+    "w1GND",
+    "whVCC",
+    "whVCC-Cu",
+    "whGND",
+    "whGND-Cu",
+    "whSDA",
+    "whSDA-Cu",
+    "whSCL",
+    "whSCL-Cu",
+    "whTrig",
+    "whTrig-Cu"
+  ],
+  "add": [
+    {
+      "name": "drvParts",
+      "brep": "placed/drvParts.brep",
+      "label": "A3 populated components",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#393d39",
+      "note": "Boardoza manufacturer geometry after removal of the supplied straight strip.",
+      "sha256": "5b852dd5895dd6d788e13e3cec35f6056581dcb07475d9e0403c466f604ec474"
+    },
+    {
+      "name": "drvBoard",
+      "brep": "placed/drvBoard.brep",
+      "label": "A3 Boardoza PCB",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#257a42",
+      "note": "Original R1.0 PCB, turned 90 degrees counterclockwise on the support pads.",
+      "sha256": "9348ed76fdab2ba3e0fa270252d2aa6873595630d5f1ab3eee83ef950fab4ec4"
+    },
+    {
+      "name": "A3-J1-header",
+      "brep": "placed/A3-J1-header.brep",
+      "label": "A3 J1 top-lock angled header",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#ddd6ba",
+      "note": "W\u00fcrth 61900519521 manufacturer STEP. Pin 1 is nearest -X. Socket withdraws toward +Y.",
+      "sha256": "2eecd837193152e1e89ae774942279e032e6ac3f7f265c97aaf5c95761d623ad"
+    },
+    {
+      "name": "A3-J1-spacer",
+      "brep": "placed/A3-J1-spacer.brep",
+      "label": "J1 1 mm FR-4 spacer",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#9a9c69",
+      "note": "Unclad drilled FR-4 separates the plug and onboard components. Five 1.20 mm holes.",
+      "sha256": "b5520b58d566cc62cd7ace75cf736e380fb2379a1a6896054091906f1c5f2cf6"
+    },
+    {
+      "name": "A3-J1-plug",
+      "brep": "placed/A3-J1-plug.brep",
+      "label": "J1 five-way female housing",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#f3eace",
+      "note": "61900511621 drawing-based fit study. Cavity 2 is vacant and encloses its pin.",
+      "sha256": "baed3e437f9c1003b76beef4b4c679cc61e1f2701edb9a0c999fda0cf6f32500"
+    },
+    {
+      "name": "A3-J1-C1",
+      "brep": "placed/A3-J1-C1.brep",
+      "label": "J1 position 1 VCC socket",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b2a49e",
+      "note": "Stamped terminal and closed crimp study on a factory lead. Spring geometry is approximate.",
+      "sha256": "f523d888656cb52a15687eb0e9367595cef3b8802974cf932fb6893630776622"
+    },
+    {
+      "name": "whVCC-Cu",
+      "brep": "placed/whVCC-Cu.brep",
+      "label": "VCC core inside crimp",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "26 AWG copper conductor in the conductor barrel.",
+      "sha256": "2e2025177ec1a2b0333c4834b000fd659a2591dcb83816bae0259bea3e886bae"
+    },
+    {
+      "name": "whVCC",
+      "brep": "placed/whVCC.brep",
+      "label": "W4 VCC factory lead",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#373b3f",
+      "note": "W\u00fcrth 619100126015 black 26 AWG pigtail. Identify by numbered cavity and continuity.",
+      "sha256": "01627da4e1607e86d9d77ae2c55b4e81aba405adf687e58fef6d2c988e4140e1"
+    },
+    {
+      "name": "A3-J1-C3",
+      "brep": "placed/A3-J1-C3.brep",
+      "label": "J1 position 3 SCL socket",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b2a49e",
+      "note": "Stamped terminal and closed crimp study on a factory lead. Spring geometry is approximate.",
+      "sha256": "596256aefebe2c79706e7155d2d70c7fcd1d30031c95bec615a45756184417fd"
+    },
+    {
+      "name": "whSCL-Cu",
+      "brep": "placed/whSCL-Cu.brep",
+      "label": "SCL core inside crimp",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "26 AWG copper conductor in the conductor barrel.",
+      "sha256": "fff524c89b7ab1ecd2e9c07c67d5d7af3debe11b4f1488e5c3f8b7a3d93f1ddf"
+    },
+    {
+      "name": "whSCL",
+      "brep": "placed/whSCL.brep",
+      "label": "W4 SCL factory lead",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#373b3f",
+      "note": "W\u00fcrth 619100126015 black 26 AWG pigtail. Identify by numbered cavity and continuity.",
+      "sha256": "dc6278ea7ce120ad7482f1b9df66cce7c54ec831e191446a5bbf007de06239e5"
+    },
+    {
+      "name": "A3-J1-C4",
+      "brep": "placed/A3-J1-C4.brep",
+      "label": "J1 position 4 SDA socket",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b2a49e",
+      "note": "Stamped terminal and closed crimp study on a factory lead. Spring geometry is approximate.",
+      "sha256": "aa05e865cc983b161c61cbd359baae9779f38d2475c9a6e8214a6a7e7730db4a"
+    },
+    {
+      "name": "whSDA-Cu",
+      "brep": "placed/whSDA-Cu.brep",
+      "label": "SDA core inside crimp",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "26 AWG copper conductor in the conductor barrel.",
+      "sha256": "543461d3cc38c0274ee6b51cc2bf4730d4b1fe0a71561f6408b925f52a924ade"
+    },
+    {
+      "name": "whSDA",
+      "brep": "placed/whSDA.brep",
+      "label": "W4 SDA factory lead",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#373b3f",
+      "note": "W\u00fcrth 619100126015 black 26 AWG pigtail. Identify by numbered cavity and continuity.",
+      "sha256": "50145732936c9360ed23c3cebcce1ca9c4eb9920f009d1d1bd56d70679d8a756"
+    },
+    {
+      "name": "A3-J1-C5",
+      "brep": "placed/A3-J1-C5.brep",
+      "label": "J1 position 5 GND socket",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b2a49e",
+      "note": "Stamped terminal and closed crimp study on a factory lead. Spring geometry is approximate.",
+      "sha256": "00e8623f73a55b2b4c7644ebc1b8d5f7e9fb51b5ae1330a9014bb0b197d8273d"
+    },
+    {
+      "name": "whGND-Cu",
+      "brep": "placed/whGND-Cu.brep",
+      "label": "GND core inside crimp",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "26 AWG copper conductor in the conductor barrel.",
+      "sha256": "796297a0b2292c7c52cb0ed8661098a8e081e7a26dba4e190ecad68a4b761a28"
+    },
+    {
+      "name": "whGND",
+      "brep": "placed/whGND.brep",
+      "label": "W4 GND factory lead",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#373b3f",
+      "note": "W\u00fcrth 619100126015 black 26 AWG pigtail. Identify by numbered cavity and continuity.",
+      "sha256": "46815005c341cc3748ba391cbef018744b7fc6779e8bb296ae85621ce330e572"
+    },
+    {
+      "name": "A3-mode-strap",
+      "brep": "placed/A3-mode-strap.brep",
+      "label": "Underside insulated trigger strap",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#42494d",
+      "note": "30 AWG insulated link J1-2 to J1-5. Test with plug removed.",
+      "sha256": "4902645eaeb4d4484e9bedbf912d7e9251595ca78873e7f8b2ae911427f5c8ed"
+    },
+    {
+      "name": "A3-mode-strap-Cu",
+      "brep": "placed/A3-mode-strap-Cu.brep",
+      "label": "Trigger strap solder ends",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "Bond each exposed end only to its own header tail underneath A3.",
+      "sha256": "0e19dd0feacbf15797febc8e5dc0bed31bb70406faa97ce9b17ec485c78348bf"
+    },
+    {
+      "name": "wm0",
+      "brep": "placed/wm0.brep",
+      "label": "Motor factory lead 0",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#a34747",
+      "note": "Continuous 0.55 mm SparkFun factory motor lead to its original TP on the rotated A3.",
+      "sha256": "c60b9d62349d3dfe1fa4f1f073584d0a281da499678644371739d3e32e01a6bc"
+    },
+    {
+      "name": "wm0-Cu",
+      "brep": "placed/wm0-Cu.brep",
+      "label": "Motor pad solder end",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "Original output-pad termination carried into the new A3 position.",
+      "sha256": "b32202d5f1b645f82564e27f9d068cc07463826b8982ed58c04d2329abd5ad3f"
+    },
+    {
+      "name": "wm1",
+      "brep": "placed/wm1.brep",
+      "label": "Motor factory lead 1",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#3d4244",
+      "note": "Continuous 0.55 mm SparkFun factory motor lead to its original TP on the rotated A3.",
+      "sha256": "b6e30d449d67d422759d5e03ede2489b3be243a7f3ba70beb91a03d16142a5f2"
+    },
+    {
+      "name": "wm1-Cu",
+      "brep": "placed/wm1-Cu.brep",
+      "label": "Motor pad solder end",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "Original output-pad termination carried into the new A3 position.",
+      "sha256": "b22a6c3309efe79af8b67e4a3770b41e01b3194f7870dca06952ad5f676936e4"
+    },
+    {
+      "name": "w1VCC",
+      "brep": "placed/w1VCC.brep",
+      "label": "W1 VCC trunk",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#834735",
+      "note": "Original 30 AWG route, with stripped window at the relocated haptic tee.",
+      "sha256": "297b4c8b25956607b555286f244743f2b70f5732b298d1a10a8759fed1a54531"
+    },
+    {
+      "name": "tee-VCC-Cu",
+      "brep": "placed/tee-VCC-Cu.brep",
+      "label": "tee-VCC-Cu",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "Individually insulated W1 solder tap to the trimmed 26 AWG W4 lead.",
+      "sha256": "fcf8701ef562241bd1593ece6fe11631f84159f23687af9664c852da937963c1"
+    },
+    {
+      "name": "tee-VCC-seal",
+      "brep": "placed/tee-VCC-seal.brep",
+      "label": "tee-VCC-seal",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#515450",
+      "note": "Individually insulated W1 solder tap to the trimmed 26 AWG W4 lead.",
+      "sha256": "039d0205ff0f11b69211dc4fc4c5a2c2f1e4372c926f30aac4a7a549208a0f5b"
+    },
+    {
+      "name": "w1SCL",
+      "brep": "placed/w1SCL.brep",
+      "label": "W1 SCL trunk",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#54565a",
+      "note": "Original 30 AWG route, with stripped window at the relocated haptic tee.",
+      "sha256": "d00b4a60acba11ab267744d1bfece59ac8c5676bf070be450c1bafecc8f73fba"
+    },
+    {
+      "name": "tee-SCL-Cu",
+      "brep": "placed/tee-SCL-Cu.brep",
+      "label": "tee-SCL-Cu",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "Individually insulated W1 solder tap to the trimmed 26 AWG W4 lead.",
+      "sha256": "3601fd142a3256cc7f4aaf47ca1d752639270af859a59589b54c64a6932ddacd"
+    },
+    {
+      "name": "tee-SCL-seal",
+      "brep": "placed/tee-SCL-seal.brep",
+      "label": "tee-SCL-seal",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#515450",
+      "note": "Individually insulated W1 solder tap to the trimmed 26 AWG W4 lead.",
+      "sha256": "d0c6c08e071fbb7015fbdd33dd36fecdfe3a5b7e1f7a7a9a628862d7bc193d81"
+    },
+    {
+      "name": "w1SDA",
+      "brep": "placed/w1SDA.brep",
+      "label": "W1 SDA trunk",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#54565a",
+      "note": "Original 30 AWG route, with stripped window at the relocated haptic tee.",
+      "sha256": "dbd368f5a56cc7a4bbdfc93575d275f43dd359228eec380ba1a79347ae3e5526"
+    },
+    {
+      "name": "tee-SDA-Cu",
+      "brep": "placed/tee-SDA-Cu.brep",
+      "label": "tee-SDA-Cu",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "Individually insulated W1 solder tap to the trimmed 26 AWG W4 lead.",
+      "sha256": "363f027755e6a6504d7827aa885f3ee2fde4f31ed3e312c2e6a197ec36b789e6"
+    },
+    {
+      "name": "tee-SDA-seal",
+      "brep": "placed/tee-SDA-seal.brep",
+      "label": "tee-SDA-seal",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#515450",
+      "note": "Individually insulated W1 solder tap to the trimmed 26 AWG W4 lead.",
+      "sha256": "13ae07edcd55e740c963ddbf77145667d56cfc1bcc9171acb6d363122b04641c"
+    },
+    {
+      "name": "w1GND",
+      "brep": "placed/w1GND.brep",
+      "label": "W1 GND trunk",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#54565a",
+      "note": "Original 30 AWG route, with stripped window at the relocated haptic tee.",
+      "sha256": "095ceba53e6e3be92f395045ed43e4818534b38fe2a6c48ff4069fe03e6ae9a7"
+    },
+    {
+      "name": "tee-GND-Cu",
+      "brep": "placed/tee-GND-Cu.brep",
+      "label": "tee-GND-Cu",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#b26c43",
+      "note": "Individually insulated W1 solder tap to the trimmed 26 AWG W4 lead.",
+      "sha256": "95c093ee90ac648b6c1123084000b74e02f8510d26465e1745af9a194f6be1f0"
+    },
+    {
+      "name": "tee-GND-seal",
+      "brep": "placed/tee-GND-seal.brep",
+      "label": "tee-GND-seal",
+      "group": "Haptics",
+      "ref": "A3 J1",
+      "color": "#515450",
+      "note": "Individually insulated W1 solder tap to the trimmed 26 AWG W4 lead.",
+      "sha256": "66c3bf3d4ad0802738a5d4a70b37307df73148f69867fa6b03312d4822652cef"
+    }
+  ]
+}

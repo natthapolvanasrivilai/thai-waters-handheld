@@ -57,3 +57,5 @@ TW-P-0026-R0001,"R0003 power, audio and bus specification",hardware/electronics/
 TW-P-0007-R0005,Reel rotor with clearance for catalog screw head,hardware/mechanical/TW-A-0001-R0009/Print/rotor.stl,,9a4adf6cfb23f5846e4c2221b5a362c46cb7e96ae885004b8fd882d0d9cd1cb3
 TW-P-0027-R0001,Lower service key cover,hardware/mechanical/TW-A-0001-R0010/Print/service-cover.stl,,c27e103a25f009add42ce397efa5d36b027f01933469f4bd5742828d7264aa92
 TW-P-0001-R0010,"Housing, receiver-down print orientation",hardware/mechanical/TW-A-0001-R0011/Print/housing-battery-bay.stl,,ccbdd035b46d46a761a75ca0661b0c19c966b78cc7e3c5e46169c9874fb2e922
+TW-P-0026-R0002,R0004 controller electrical ECO specification,hardware/electronics/integration-r0004/README.md,,7406335e0bcb348ca31cfa4a83b2f917bc627c4c414e5ba00f9e41c3b3e85516
+TW-P-0028-R0001,Reworked A3 haptic interconnect placement manifest,hardware/electronics/harness-r0004/installed.json,,0dd0d7a2ea11f4e177605342ff220da0c6683a15d55e4f15733463f295b243ce

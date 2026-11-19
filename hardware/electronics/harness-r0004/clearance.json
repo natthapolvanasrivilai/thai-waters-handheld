@@ -1,0 +1,56 @@
+{
+  "method": "CadQuery STEP geometry tessellated at 0.025 mm / 0.14 rad. FCL surface distance in mm; designed interfaces enumerated in audit.py.",
+  "checked_changed_parts": 35,
+  "all_assembly_nodes": 142,
+  "boundary_pairs": 4340,
+  "unintended_surface_contacts": [],
+  "pigtail_to_pigtail": {
+    "parts": [
+      "whGND",
+      "whSDA"
+    ],
+    "gap_mm": 1.035,
+    "brep_distance_mm": 1.0329
+  },
+  "pigtail_to_motor_and_motor_leads": {
+    "parts": [
+      "whVCC",
+      "motor"
+    ],
+    "gap_mm": 1.6456,
+    "brep_distance_mm": 1.6445
+  },
+  "strap_to_adhesive_or_shell": {
+    "parts": [
+      "A3-mode-strap",
+      "adhH"
+    ],
+    "gap_mm": 0.64,
+    "brep_distance_mm": 0.64
+  },
+  "a3_to_shell": {
+    "parts": [
+      "drvBoard",
+      "Housing"
+    ],
+    "gap_mm": 0.85,
+    "brep_distance_mm": 0.85
+  },
+  "rigid_plug_travel": {
+    "direction": "+Y",
+    "stroke_mm": 8.25,
+    "sample_interval_mm": 0.25,
+    "parked_w1_minimum_sampled_clearance_mm": 0.1705,
+    "nearest_fixed_item": "wm0",
+    "worst_sample_stroke_mm": 1.25,
+    "continuous_motion_mesh_lower_bound_mm": 0.0455,
+    "first_stroke_intersecting_the_dressed_W1_mm": 6.25,
+    "parked_items": "A1/display and its J8 connection, AS5600 assembly, W1 trunks and tees, four mobile W4 branches. Release and support harness before extraction.",
+    "residual_work": "Physical disconnect/reconnect stroke, grip access and wire movement require first-article testing."
+  },
+  "manufacturer_CAD": "61900519521 5-way header",
+  "drawing_derived": "61900511621 housing and 61900113722 formed contact. Cavity clearance, latch engagement and contact force remain unverified.",
+  "physical_tests": "Not performed",
+  "step_file": "TW-A-0001-R0011-dressed.step",
+  "step_sha256": "0e4101f4cf52a88a5723fe3a6f14ca8afdfa05dec9c00357e04b10ed6992af44"
+}

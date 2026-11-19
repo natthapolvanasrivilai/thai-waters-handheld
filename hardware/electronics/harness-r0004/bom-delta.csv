@@ -1,0 +1,8 @@
+item,action,manufacturer_or_process,order_number,installed_qty,unit,stock_and_effectivity
+A3 J1 straight header,remove,Boardoza supplied with B0601V10000076,,1,ea,Desolder from optional haptic module only
+A3 J1 right-angle top-lock header,add,Wurth Elektronik,61900519521,1,ea,2.54 mm five way THT
+A3 J1 crimp housing,add,Wurth Elektronik,61900511621,1,ea,Five cavities with cavity 2 vacant
+W4 factory-crimped lead,replace,Wurth Elektronik,619100126015,4,ea,150 mm black 26 AWG each with one 61900113722 tin contact; cut at free end
+J1 stand-off shim,make,1.00 mm unclad FR-4 cut and drill,A3-J1-spacer,1,ea,6.15 by 13.10 mm and five 1.20 mm bores
+A3 mode strap,reroute,Existing 30 AWG silicone wire,,1,ea,Retain 0.80 mm OD stock; connect underside J1-2 and J1-5
+W1 tee protection,redress,Existing individually insulated solder tap process,,4,ea,Longitudinal encoder approach with separate insulated tap on each net

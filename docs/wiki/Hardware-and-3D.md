@@ -1,8 +1,10 @@
 # Inspect the assembly and battery pocket
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 
 ## Current print and inspection checkpoints
+
+The R0011 engineering model includes the receiver-down housing, lower service cover and revised haptic harness. Inspect purchased and drawing-derived geometry through the part register. Source fit, retention, tolerances and the unplaced controller power changes have open hardware gates. [Interactive private handbook and dressed STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-hardware-review-1) · [Terminal selection, routes and clearances](../../hardware/electronics/harness-r0004/README.md) · [STEP round-trip checks](../../hardware/mechanical/TW-A-0001-R0011/export-verification.json)
 
 The R0011 print puts the two dovetail lips and their closed stop on the bed. Evaluate it with inert gauges. The R0010 dressed STEP includes the lower service cover. Bench and powered checks remain open. [R0011 print files](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-receiver-toolpaths-2) · [Receiver toolpaths](../../hardware/mechanical/TW-A-0001-R0011/QA/receiver-toolpaths.png) · [R0010 inspection STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0010-cover-checkpoint) · [Hardware tracker](../../quality/hardware-gate.md)
 

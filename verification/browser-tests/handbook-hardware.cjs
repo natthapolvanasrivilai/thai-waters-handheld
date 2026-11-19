@@ -76,6 +76,25 @@ async function verifyTable(page) {
   assert.equal(await table.count(), expected.length);
 }
 
+async function verifyElectrical(page) {
+  const record = require(path.join(root, 'hardware/electronics/integration-r0004/verification.json'));
+  await page.locator('[data-tab=circuits]').click();
+  await page.getByRole('heading', {name: 'R0004 circuit verification'}).waitFor();
+  const wave = page.locator('details').filter({has:page.getByText('Inspect the simulated USB recovery waveform', {exact:true})});
+  await wave.locator('summary').click();
+  assert.equal(await wave.locator('svg:visible polyline').count(), 2);
+  await wave.locator('summary').click();
+  const rows = page.locator('#gateRows tr:visible');
+  assert.equal(await rows.count(), Object.values(record.candidate_metrics).reduce((a,b) => a+b, 0));
+  await page.locator('#gateStatus').selectOption('OUTSIDE');
+  assert.equal(await rows.count(), record.candidate_metrics.OUTSIDE);
+  await page.locator('#gateStatus').selectOption('All');
+  await page.locator('#gateSearch').fill('no_cell');
+  assert.ok(await rows.count() > 0);
+  assert.ok((await rows.allTextContents()).every(value => value.includes('no_cell')));
+  await page.locator('#gateSearch').fill('');
+}
+
 (async () => {
   const launch = {headless: true};
   if (process.env.BROWSER_PATH) launch.executablePath = process.env.BROWSER_PATH;
@@ -87,10 +106,12 @@ async function verifyTable(page) {
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(pathToFileURL(handbook).href);
     await verifyTable(page);
+    await verifyElectrical(page);
     await page.setViewportSize({width: 390, height: 844});
     await verifyTable(page);
+    await verifyElectrical(page);
     assert.deepEqual(errors, []);
-    console.log(`PASS ${expected.length} distinct BOM references, source labels, destinations, group filters, part search and visible links at desktop and phone widths.`);
+    console.log(`PASS ${expected.length} distinct BOM references, source labels, destinations, group filters, part search and visible links at desktop and phone widths, circuit dispositions, search and both recovery waveforms.`);
   } finally {
     await browser.close();
   }
