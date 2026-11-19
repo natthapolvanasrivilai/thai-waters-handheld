@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Rumble.h"
+#include "ReelDetents.h"
 #include "Connected.h"
 #include <Preferences.h>
 #include <esp_system.h>
@@ -17,6 +18,7 @@ uint32_t steadySince=0,lastTick=0,lastDraw=0,lastTouch=0,lastDown=0,lastBattery=
 bool everDrawn=false;
 Page returnTo=Page::Play;
 RumblePlan haptics;
+ReelDetents detents;
 uint32_t audition=0,lastDirection=0;
 bool auditioning=false, wasHapticPlay=false;
 void saveBook(){view.saveFailed=store.putBytes("atlas-3",&view.game.progress,sizeof(Progress))!=sizeof(Progress);}
@@ -46,6 +48,7 @@ void restore(){
   view.page=view.calibrated?Page::Play:Page::Rest;
   view.sound.music=store.getUChar("music",0);view.sound.volume=store.getUChar("volume",2);
   view.sound.cue=store.getUChar("cue",0);view.sound.cueVolume=store.getUChar("cuevol",2);
+  view.sound.reelVolume=store.getUChar("reel-vol",1)%4;
   view.sound.reverse=store.getBool("reverse",false);
   if(!view.sound.valid())view.sound=SoundSettings{};view.sound.site=view.game.site%4;
 }
@@ -54,6 +57,14 @@ void playPage(){
   rod=Gesture{};wheel.previous=-1;
 }
 void change(int x,int y,bool& practiceTap){
+  if(view.page==Page::TouchCheck){
+    if(x>=52&&x<=152&&y>=283){view.page=Page::Bench;return;}
+    view.lastTouchX=x;view.lastTouchY=y;
+    if(view.touchStep<9&&std::abs(x-touchColumn[view.touchStep%3])<=12&&
+       std::abs(y-touchRow[view.touchStep/3])<=12)++view.touchStep;
+    Serial.printf("touch x=%d y=%d accepted=%d/9\n",x,y,int(view.touchStep));
+    return;
+  }
   if((view.page==Page::Play||view.page==Page::Rest||view.page==Page::Raise) && y<40 && x>=365){
     returnTo=view.page;view.page=Page::Hub;rod=Gesture{};stopRumble();return;
   }
@@ -62,34 +73,51 @@ void change(int x,int y,bool& practiceTap){
     while(slot<stockSize(pool)&&stockId(pool,slot)!=view.game.fish)++slot;
     returnTo=Page::Play;view.bookPage=pool*2+(slot>=6);view.page=Page::Book;return;
   }
+  if(menuui::overlay(view.page)){
+    if(!menuui::inside(x,y)){
+      if(view.page==Page::Network)stopPairing();
+      auditioning=false;stopRumble();view.page=returnTo;
+      if(view.page==Page::Play)playPage();
+      return;
+    }
+    x-=menuui::x;y-=menuui::y;
+    if(y<menuui::header){
+      if(x>=menuui::w-80){
+        if(view.page==Page::Network)stopPairing();
+        auditioning=false;stopRumble();
+        view.page=view.page==Page::Hub?returnTo:Page::Hub;
+        if(view.page==Page::Play)playPage();
+      }
+      return;
+    }
+  }
   if(view.page==Page::Hub){
-    if(y<40 && x>=365){view.page=returnTo;if(view.page==Page::Play)playPage();return;}
-    if(y>=288){view.page=Page::Network;return;}
-    if(y<42)return;
-    switch((y-42)/41){
+    switch((y-menuui::header)/menuui::hubRow){
     case 0:view.pendingSite=view.destination;view.spotPage=view.destination/4;view.pendingTime=view.timeMode;view.page=Page::Waters;break;
     case 1:view.page=Page::Book;view.bookPage=view.game.site*2;break;
     case 2:view.page=Page::Journey;view.notice="First find earns 1 point, then every 3 new species.";view.refundConfirm=false;break;
     case 3:if(!view.driver)view.driver=initRumble();view.page=Page::Bench;view.casts=view.lifts=0;view.turns=0;view.direction=0;view.benchEvent="Hold in playing position";rod=Gesture{};wheel.previous=-1;break;
     case 4:view.page=Page::Options;break;
     case 5:togglePractice();playPage();break;
+    case 6:view.page=Page::Network;break;
     }return;
   }
-  if(view.page==Page::Network||view.page==Page::Bench||view.page==Page::Book||view.page==Page::Journey||view.page==Page::Waters||view.page==Page::Options){
-    if(y<40 && x>=365){if(view.page==Page::Network)stopPairing();view.page=Page::Hub;auditioning=false;stopRumble();return;}
-  }
+  if(view.page==Page::Bench && y<40 && x>=365){view.page=Page::Hub;auditioning=false;stopRumble();return;}
   if(view.page==Page::Network){
-    if(y>=157 && y<201)startPairing();
-    else if(y>=202&&y<246)checkUpdate();
-    else if(y>=247&&y<283)toggleRadio();
-    else if(y>=283)toggleEvent();
+    if(y>=138 && y<169)startPairing();
+    else if(y>=169&&y<200)checkUpdate();
+    else if(y>=200&&y<231)toggleRadio();
+    else if(y>=231&&y<262)toggleEvent();
     return;
   }
   if(view.page==Page::Waters){
-    if(y>=42&&y<210)view.pendingSite=std::min(destinationCount-1,view.spotPage*4+(y-42)/42);
-    else if(y>=215&&y<263)view.pendingTime=std::min(4,x/96);
-    else if(y>=270){
-      if(x<100||x>=380){int pages=(destinationCount+3)/4;view.spotPage=(view.spotPage+(x<100?pages-1:1))%pages;return;}
+    if(y<menuui::header+4*menuui::waterRow){
+      int id=view.spotPage*4+(y-menuui::header)/menuui::waterRow;
+      if(id<destinationCount)view.pendingSite=id;
+    }
+    else if(y>=menuui::periodY&&y<menuui::periodY+29)view.pendingTime=5*x/menuui::w;
+    else if(y>=menuui::travelY&&y<menuui::travelY+32){
+      if(x<menuui::w/4||x>=3*menuui::w/4){int pages=(destinationCount+3)/4;view.spotPage=(view.spotPage+(x<menuui::w/4?pages-1:1))%pages;return;}
       if(view.pendingSite!=view.destination||view.pendingTime!=view.timeMode)view.game.enter(Phase::Ready);
       view.destination=view.pendingSite;view.game.site=destinations[view.destination].pool;view.sound.site=view.game.site%4;view.sound.arrangement=view.destination;view.timeMode=view.pendingTime;
       view.game.destination=view.destination;
@@ -98,27 +126,29 @@ void change(int x,int y,bool& practiceTap){
     }return;
   }
   if(view.page==Page::Book){
-    if(y>=272){if(x<147)view.bookPage=(view.bookPage+9)%10;else if(x>=330)view.bookPage=(view.bookPage+1)%10;}return;
+    if(y>=menuui::bookNav && y<menuui::bookNav+33){if(x<menuui::w/4)view.bookPage=(view.bookPage+9)%10;else if(x>=3*menuui::w/4)view.bookPage=(view.bookPage+1)%10;}return;
   }
   if(view.page==Page::Journey){
-    if(y>=55&&y<90){
+    if(y>=menuui::rigY&&y<menuui::rigY+23){
       if(view.game.running()){view.notice="Finish this cast to change technique.";return;}
       view.game.setRig((int(view.game.rig)+1)%3);store.putUChar("rig",int(view.game.rig));
       view.notice="Technique fitted.";return;
     }
-    if(y>=93&&y<237){int i=(y-93)/48;view.refundConfirm=false;
+    if(y>=menuui::upgradeY&&y<menuui::upgradeY+3*menuui::upgradeRow){int i=(y-menuui::upgradeY)/menuui::upgradeRow;view.refundConfirm=false;
       if(view.game.progress.upgrade(i)){saveBook();view.notice="Upgrade fitted.";}
       else view.notice=view.game.progress.rank[i]>=3?"Maximum rank.":view.game.progress.rank[i]>=view.game.progress.chapter()?"Advance the story to open this rank.":"Discover more species to earn points.";
-    } else if(y>=249&&y<291&&x<230){view.rodFinish=(view.rodFinish+1)%3;store.putUChar("finish",view.rodFinish);view.refundConfirm=false;}
-    else if(y>=249&&y<291){if(view.refundConfirm){view.game.progress.retrain();saveBook();view.notice="Points returned. Choose a new setup.";}view.refundConfirm=!view.refundConfirm;}return;
+    } else if(y>=menuui::finishY&&y<menuui::finishY+37&&x<menuui::w/2){view.rodFinish=(view.rodFinish+1)%3;store.putUChar("finish",view.rodFinish);view.refundConfirm=false;}
+    else if(y>=menuui::finishY&&y<menuui::finishY+37){if(view.refundConfirm){view.game.progress.retrain();saveBook();view.notice="Points returned. Choose a new setup.";}view.refundConfirm=!view.refundConfirm;}return;
   }
   if(view.page==Page::Bench){
+    if(y>=300&&x>=270){view.page=Page::TouchCheck;view.touchStep=0;view.lastTouchX=view.lastTouchY=-1;stopRumble();return;}
     if(y>=166&&y<197){view.sound.reverse=!view.sound.reverse;store.putBool("reverse",view.sound.reverse);view.turns=0;view.direction=0;wheel.previous=-1;}
     else if(y>=197&&y<233){if(x<233)setCueLevel();else{auditioning=true;audition=millis();SoundSettings sample=view.sound;sample.cue=0;setSound(sample,false,true);}}
     else if(y>=233&&y<274){if(x<157){view.rumble=(view.rumble+1)%4;store.putUChar("rumble",view.rumble);stopRumble();}
-      else {Pulse test=x<266?Pulse::Tease:x<368?Pulse::Bite:Pulse::Pull;view.driver=driveRumble(test,view.rumble,.8f);view.benchEvent=!view.driver?"Driver absent":!view.rumble?"Rumble off":test==Pulse::Tease?"Tease audition":test==Pulse::Bite?"Bite audition":"Pull audition";}}
+      else {Pulse test=x<266?Pulse::Tease:x<368?Pulse::Bite:Pulse::Pull;detents.feedback(0,test,millis());view.driver=driveRumble(test,view.rumble,.8f);view.benchEvent=!view.driver?"Driver absent":!view.rumble?"Rumble off":test==Pulse::Tease?"Tease audition":test==Pulse::Bite?"Bite audition":"Pull audition";}}
     else if(y>=274&&y<300){
       Pulse sample=x<160?Pulse::PickSample:x<320?Pulse::Bottom:Pulse::Dash;
+      detents.feedback(0,sample,millis());
       view.driver=driveRumble(sample,view.rumble,.4f);
       view.benchEvent=!view.driver?"Driver absent":!view.rumble?"Rumble off":
         sample==Pulse::PickSample?"Prawn picking bait":sample==Pulse::Bottom?"Bottom hold":"Fast run";
@@ -126,9 +156,9 @@ void change(int x,int y,bool& practiceTap){
     return;
   }
   if(view.page==Page::Options){
-    if(y<42 || y>=301)return;
+    if(y>=menuui::header+8*menuui::optionRow)return;
     bool preview=false;
-    switch((y-42)/37){
+    switch((y-menuui::header)/menuui::optionRow){
     case 0:view.sound.music=(view.sound.music+1)%4;store.putUChar("music",view.sound.music);break;
     case 1:view.sound.volume=(view.sound.volume+1)%4;store.putUChar("volume",view.sound.volume);break;
     case 2:view.sound.cue=(view.sound.cue+1)%3;store.putUChar("cue",view.sound.cue);preview=true;break;
@@ -136,6 +166,7 @@ void change(int x,int y,bool& practiceTap){
     case 4:view.sound.reverse=!view.sound.reverse;store.putBool("reverse",view.sound.reverse);wheel.previous=-1;break;
     case 5:view.practice=!view.practice;view.game.enter(Phase::Ready);playPage();return;
     case 6:view.practice=false;view.page=Page::Rest;view.badPose=false;rod=Gesture{};return;
+    case 7:view.sound.reelVolume=(view.sound.reelVolume+1)%4;store.putUChar("reel-vol",view.sound.reelVolume);break;
     }
     setSound(view.sound,false,preview);return;
   }
@@ -174,7 +205,7 @@ void sampleRod(uint32_t now,uint32_t dt){
 void setup(){
   Serial.begin(115200);restore();view.game.seed=esp_random();beginBoard();view.battery=readBattery();beginConnected();view.driver=initRumble();beginScene();
   view.audio=startSound();setSound(view.sound,false,false);
-  Serial.printf("Thai Waters 0.5 | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d\n",screenOK,imuOK,view.audio,powerOK);
+  Serial.printf("Thai Waters 0.6 | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d\n",screenOK,imuOK,view.audio,powerOK);
   lastTick=millis();paint(view);confirmUpdateHealth(screenOK && imuOK && powerOK && view.audio);
 }
 void loop(){
@@ -213,10 +244,16 @@ void loop(){
   if(wasHapticPlay&&!active)stopRumble();
   wasHapticPlay=active;
   Pulse pulse=haptics.tick(view.game,now,active);
+  // Only measured rotation produces clicks, including in practice mode.
+  bool reelActive=(active || view.page==Page::Bench) && view.field==Field::Good;
+  int click=0;
+  if(reelActive)click=detents.feedback(detents.measure(turns),pulse,now);
+  else detents=ReelDetents{};
   if(pulse!=Pulse::None)view.driver=driveRumble(pulse,view.rumble,view.game.heat);
+  else if(click)view.driver=driveRumble(Pulse::Detent,view.rumble,0);
   if(auditioning && now-audition>=420)auditioning=false;
   SoundSettings mix=view.sound;if(auditioning)mix.cue=0;
-  setSound(mix,active && view.game.phase==Phase::Fight,view.game.phase!=before&&view.game.phase==Phase::Bite);
+  setSound(mix,active && view.game.phase==Phase::Fight,view.game.phase!=before&&view.game.phase==Phase::Bite,click);
   if(!everDrawn||now-lastDraw>=55){lastDraw=now;everDrawn=true;paint(view);}
 }
 

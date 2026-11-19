@@ -12,6 +12,16 @@ Each JST-SH socket on the encoder overlaps a Rev D pad by **15.30955 mm³**. Sol
 
 ## Nominal CAD results
 
+### Touch glass and bezel
+
+The 31137 board already carries a capacitive touch panel with an AXS15231B controller. In landscape, the manufacturer's lens drawing gives a 92.44 × 61.00 mm cover with R6 corners and a 73.44 ±0.15 × 48.96 ±0.15 mm viewing area. The active UI uses 480 × 320 pixels. The viewing window provides the nominal optical reference for this check. The supplier drawing does not dimension the electrical edge response of the touch sensor. [Waveshare board and dimensional resources](https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents)
+
+The printed bezel opening is 76.80 × 52.20 mm, R1.60, centered on that reference. Straight-edge margins are 1.68 mm left/right and 1.62 mm top/bottom. Extruding the entire rectangular viewing area upward through the installed bezel gave 0.00 mm³ overlap, including all four corners. The glass top is at Z 28.50 mm. The bezel underside above the glass is at Z 28.75 mm, giving 0.25 mm nominal clearance. The rim top is at Z 30.00 mm, 1.50 mm above the glass. It overhangs the inactive cover perimeter by 7.82 mm left/right and 4.40 mm top/bottom.
+
+On the assembled print, display a full-screen border and verify all four sides. Trace each edge and corner with a bare fingertip, tap the smallest menu controls, then repeat with the enclosure closed and the reel in hand. Check for missed touches, phantom touches and rim pressure as the screws are tightened. Printed warp, lens registration, tightening load and finger-pad contact can change the result. [Waveshare factory touch test](https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Instructions-For-Use)
+
+### Assembly and service
+
 | Test | Coverage | Result |
 |---|---|---|
 | Installed assembly | 19,986 cross-component pairs across both purchased assemblies, printed parts, reel hardware and reserved cell/speaker volumes | Zero interferences above 0.002 mm³ |

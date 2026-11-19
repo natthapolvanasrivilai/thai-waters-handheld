@@ -22,8 +22,11 @@ const assert=require('node:assert/strict');
     }
     await openMix();
     const sample=type=>page.locator('[data-pulse="'+type+'"]').tap();
-    await sample(4);assert.deepEqual(await page.evaluate(()=>pulses),[],'Off suppresses physical previews');
-    await page.selectOption('#rumbleLevel',{label:'Medium'});
+    await page.selectOption('#rumbleLevel','Off');await sample(4);assert.deepEqual(await page.evaluate(()=>pulses),[],'Off suppresses physical previews');
+    await page.locator('#testPhoneMotor').tap();
+    assert.equal(await page.locator('#rumbleLevel').inputValue(),'Medium');
+    assert.deepEqual(await page.evaluate(()=>pulses.at(-1)),[46,45,46]);
+    await page.evaluate(()=>pulses.length=0);
     for(const id of [4,5,6])await sample(id);
     const heard=await page.evaluate(()=>pulses);
     assert.deepEqual(heard,[[20,340,20,340,20],[195],[32,34,27,31,22]]);

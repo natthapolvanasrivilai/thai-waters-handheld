@@ -1,0 +1,134 @@
+{
+  "units": "mm, mm3",
+  "single_watertight_STLs": [
+    "rod-grip.stl",
+    "grip-screw-keeper.stl",
+    "receiver-nut-keeper.stl"
+  ],
+  "fit": {
+    "grip to receiver": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "grip to bezel": {
+      "volume_mm3": 0.0,
+      "gap_mm": 27.3065
+    },
+    "grip to PWR key": {
+      "volume_mm3": 0.0,
+      "gap_mm": 47.2553
+    },
+    "grip to active LCD keep-out": {
+      "volume_mm3": 0.0,
+      "gap_mm": 27.99
+    },
+    "grip to USB cable": {
+      "volume_mm3": 0.0,
+      "gap_mm": 49.1929
+    },
+    "grip to lower service tools": {
+      "volume_mm3": 0.0,
+      "gap_mm": 19.0021
+    },
+    "grip to switch finger approach": {
+      "volume_mm3": 0.0,
+      "gap_mm": 44.2919
+    },
+    "grip to fold and rotary reel motion envelope": {
+      "volume_mm3": 0.0,
+      "gap_mm": 6.5
+    },
+    "screw to case": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.3
+    },
+    "screw to steel nut thread minimum cylinder": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "screw to grip": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "screw to grip keeper": {
+      "volume_mm3": 0.0,
+      "gap_mm": 5.37
+    },
+    "screw to nut keeper": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.372
+    },
+    "nut to molded pocket": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "inner keeper to molded pocket": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.03
+    },
+    "handle keeper to molded pocket": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "new housing material to cell": {
+      "volume_mm3": 0.0,
+      "gap_mm": 3.2767
+    },
+    "new housing material to speaker": {
+      "volume_mm3": 0.0,
+      "gap_mm": 30.4188
+    },
+    "new housing material to haptic driver allowance": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.7
+    },
+    "new housing material to motor allowance": {
+      "volume_mm3": 0.0,
+      "gap_mm": 3.9373
+    },
+    "mating shift x=-0.18,y=-0.10": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "mating shift x=0.18,y=-0.10": {
+      "volume_mm3": 0.0,
+      "gap_mm": 0.0
+    }
+  },
+  "motion": {
+    "unlock_stroke_mm": 5.3,
+    "unlock_samples": 21,
+    "slide_stroke_mm": 43,
+    "slide_samples": 44,
+    "max_intersection_tolerance_mm3": 0.002
+  },
+  "positive_retention_mm3": {
+    "locked_screw_after_1mm_backslide": 2.498,
+    "undercut_rails_after_1_2mm_rear_lift": 101.073,
+    "blind_stop_after_0_5mm_overshoot": 39.855,
+    "keeper_after_extra_0_75mm_retraction": 8.844
+  },
+  "geometry": {
+    "key_engagement": 35,
+    "head_width": 24.98,
+    "neck_width": 19.04,
+    "nominal_neck_side_gap": 0.38,
+    "nominal_flank_horizontal_gap": 0.378,
+    "nominal_flank_normal_gap": 0.295,
+    "running_full_lateral_play_nominal": 0.756,
+    "rear_floor_under_channel": 1.7,
+    "rail_roof_gap": 0.29,
+    "detached_shoe_height": 3.2,
+    "nominal_nut_thread_engagement": 2.4,
+    "nominal_locked_tip_past_nut": 0.35,
+    "screw_tip_withdrawn_z": -0.4,
+    "screw_tip_locked_z": 4.9
+  },
+  "volume_mm3": {
+    "grip": 51832.95,
+    "Grip lock screw": 132.22,
+    "Grip screw keeper": 84.51,
+    "Receiver nut": 45.91,
+    "Receiver nut keeper": 34.27
+  }
+}

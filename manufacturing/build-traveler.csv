@@ -6,3 +6,8 @@ Serial or lot,HW revision,Station,Action,Acceptance evidence,Result,Operator,Dat
 ,E,Flash,Record firmware digest and provision public verification key / feed,USB boot and signed update check,,,
 ,E,Functional,"Exercise cast, lift, direction, touch, audio, rumble, Wi-Fi and RTC",Record live readings and clock holdover result,,,
 ,E,Final,"Check serial, market label, release version and packout",Released artwork and matching serial/lot,,,
+,F,Incoming,"Log A1 SKU 31137 and PCB revision. Confirm the original capacitive glass and touch response before fitting the bezel.",Supplier marking and nine accepted points in the firmware touch grid,,,
+,F,Power wiring,"Verify K3 nets unpowered. Fit SW1 on PCB1 and strain-relieve W3. Cycle the key with the retainer secured.",Open at rest and momentary closure; inspect solder joints and insulation,,,
+,F,Mechanical,"Install Rev F cap and retainer. Attach and release G1. Cycle the folding crank and inspect glass and all controls in both configurations.",Record free play, locked screw retention and proof-test results per the Rev F grip procedure,,,
+,F,Functional,"On battery operate the top-left key. Repeat touch grid with case closed and USB connected. Exercise reel click and all three fish effects with the motor fitted.",Signed unit record with 9/9 touch points and recorded power and rumble results,,,
+,F,Release,"Record firmware hash and component lot. Release after applicable Rev E checks and Rev F test results are reviewed.",Engineering sign-off and as-built record,,,

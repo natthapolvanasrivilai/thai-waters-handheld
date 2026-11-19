@@ -5,19 +5,23 @@ async function makeDevice(host, data, io){
  const renderer=new T.WebGLRenderer({antialias:true,alpha:true,powerPreference:'low-power'});
  renderer.setPixelRatio(Math.min(devicePixelRatio,1.65));renderer.setClearColor(0x000000,0);
  renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
- const surface=renderer.domElement;surface.setAttribute('aria-label','Rev E handheld. Drag the right-side reel to wind. Tap the screen to cast or lift.');
+ const surface=renderer.domElement;surface.setAttribute('aria-label','Rev F handheld. Drag the right-side reel to wind. Tap the screen to cast or lift.');
  surface.tabIndex=0;host.prepend(surface);
  const world=new T.Scene(),cam=new T.OrthographicCamera(-80,80,48,-48,.1,900);
- const eye=new T.Vector3(125,-54,230);cam.up.set(0,1,0);const center=new T.Vector3(7,0,12);cam.position.copy(center).add(eye);cam.lookAt(center);
+ const eye=new T.Vector3(125,46,230);cam.up.set(0,1,0);const center=new T.Vector3(7,0,12);cam.position.copy(center).add(eye);cam.lookAt(center);
  const env=new RoomEnvironment(),generator=new T.PMREMGenerator(renderer),envMap=generator.fromScene(env,.04);world.environment=envMap.texture;env.dispose();generator.dispose();
  const sky=new T.HemisphereLight(0xfff7df,0x68756b,1.0);world.add(sky);
  const key=new T.DirectionalLight(0xffefcb,2.2);key.position.set(-75,130,170);world.add(key);
  const bounce=new T.DirectionalLight(0xcde5e2,1.4);bounce.position.set(116,-44,68);world.add(bounce);
  const obj=new T.Group();world.add(obj);
  const parts=[],turning=new Set(['Rotor','Folding stem','Grip','Grip retainer','Hinge screw','Magnet']),folding=new Set(['Folding stem','Grip','Grip retainer']);
+ const gripParts=new Set(['Rod grip','Grip lock screw','Grip screw keeper']);
+ let gripTarget=0,gripTravel=0;
  const materials={
+  'Grip lock screw':[0xa8aaa6,.31,.85],'Grip screw keeper':[0x385749,.73,.02],
   'Revised housing':[0x819787,.62,0],Bezel:[0x253834,.51,.04],Rotor:[0x30594f,.47,.12],
   'Folding stem':[0xa86a39,.47,.14],Grip:[0xcb8b51,.57,.02],Collar:[0x465f57,.44,.2],
+  'Top power cap':[0xd09555,.54,.04],'Rod grip':[0x385749,.73,.02],
   'Hinge screw':[0x9ea3a1,.22,.92],'Grip retainer':[0xb9b4a1,.26,.85],Magnet:[0x979da1,.26,.9],
   'PWR switch':[0x45534f,.55,.12],'RESET switch':[0x45534f,.55,.12],'BOOT switch':[0x45534f,.55,.12],
   'Display assembly':[0x17221f,.27,.06],'USB-C socket':[0xa8afb1,.22,.86]};
@@ -41,7 +45,7 @@ async function makeDevice(host, data, io){
  for(const r of data){
   const [v,i]=await Promise.all([inflate(r.p,Int16Array),inflate(r.t,Uint32Array)]);
   const geom=new T.BufferGeometry();geom.setAttribute('position',new T.BufferAttribute(Float32Array.from(v,x=>x*.01),3));geom.setIndex(new T.BufferAttribute(i,1));geom.computeVertexNormals();
-  const mesh=new T.Mesh(geom,coating(r.n,materials[r.n]));mesh.name=r.n;mesh.matrixAutoUpdate=false;parts.push(mesh);obj.add(mesh);
+  const mesh=new T.Mesh(geom,coating(r.n,materials[r.n]));mesh.name=r.n;mesh.visible=!gripParts.has(r.n);mesh.matrixAutoUpdate=false;parts.push(mesh);obj.add(mesh);
  }
  const lcd=document.createElement('canvas');lcd.width=480;lcd.height=320;const ctx=lcd.getContext('2d');
  const tex=new T.CanvasTexture(lcd);tex.colorSpace=T.SRGBColorSpace;tex.magFilter=T.NearestFilter;tex.minFilter=T.LinearFilter;tex.generateMipmaps=false;
@@ -62,15 +66,21 @@ async function makeDevice(host, data, io){
  function rotation(e){if(!pointerRay(e).ray.intersectPlane(projectPlane,point))return null;// Looking inward from +X, a clockwise turn is a negative rotation about X.
   return -Math.atan2(point.z-pivot.z,point.y-pivot.y);}
  function zone(e){
-  const r=pointerRay(e);const hit=r.intersectObjects([...parts,glass],false)[0];
-  if(hit?.object.name==='PWR switch')return {kind:'power'};
+  const r=pointerRay(e);const hit=r.intersectObjects([...parts,glass],false).find(h=>h.object.visible);
+  if(hit?.object.name==='Top power cap')return {kind:'power'};
   if(hit?.object===glass)return {kind:'lcd',x:hit.uv.x,y:1-hit.uv.y};
   if(hit&&turning.has(hit.object.name))return {kind:'reel'};
+  if(e.pointerType==='touch'&&deployed){
+   // A fingertip need only hit the crank area, even on a narrow phone display.
+   const b=surface.getBoundingClientRect(),p=pivot.clone().project(cam);
+   const x=b.left+(p.x+1)*b.width/2,y=b.top+(1-p.y)*b.height/2;
+   if(Math.hypot(e.clientX-x,e.clientY-y)<=Math.max(23,b.width*.055))return {kind:'reel'};
+  }
   if(!hit&&r.ray.intersectPlane(projectPlane,point)&&Math.hypot(point.y-pivot.y,point.z-pivot.z)<16.8)return {kind:'reel'};
   return {kind:'case'};
  }
  surface.onpointerdown=e=>{
-  if(e.button!==0)return;const target=zone(e);
+  if(e.button!==0||drag)return;const target=zone(e);
   if(target.kind==='power'){io.power();return;}
   if(target.kind==='lcd'){io.screen(target.x,target.y);return;}
   if(target.kind!=='reel'||!deployed)return;
@@ -85,21 +95,47 @@ async function makeDevice(host, data, io){
  surface.onpointerup=surface.onpointercancel=surface.onlostpointercapture=end;
  function fit(){
   const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;
-  const aspect=w/h,half=Math.max(41,67/aspect);cam.left=-half*aspect;cam.right=half*aspect;cam.top=half;cam.bottom=-half;cam.updateProjectionMatrix();renderer.setSize(w,h,false);
+  const attached=gripTarget===1||gripTravel>0;
+  const aspect=w/h,half=attached?Math.max(88,70/aspect):Math.max(41,67/aspect);
+  center.set(7,attached?-41:0,attached?3:12);cam.position.copy(center).add(eye);cam.lookAt(center);
+  cam.left=-half*aspect;cam.right=half*aspect;cam.top=half;cam.bottom=-half;cam.updateProjectionMatrix();renderer.setSize(w,h,false);
   cam.updateMatrixWorld();
-  const opening=new T.Vector3(-25,-34.5,20.3).project(cam);
+  // The camera is orthographic, so three projected LCD corners determine
+  // the exact affine transform for a 480 x 320 interactive surface.
+  const project=(x,y)=>{
+    const v=new T.Vector3(x,y,28.53).project(cam);
+    return {x:(1+v.x)*w/2,y:(1-v.y)*h/2};
+  };
+  const tl=project(-36.72,24.48),tr=project(36.72,24.48),bl=project(-36.72,-24.48);
+  io.lcdTransform((tr.x-tl.x)/480,(tr.y-tl.y)/480,(bl.x-tl.x)/320,(bl.y-tl.y)/320,tl.x,tl.y);
+  const opening=new T.Vector3(-36,34.32,12.5).project(cam);
   const pin=host.querySelector('#powerPin');pin.hidden=false;
-  pin.style.left=((opening.x+1)*50)+'%';pin.style.top='calc('+((1-opening.y)*50)+'% + 8px)';
+  pin.style.left=((opening.x+1)*50)+'%';pin.style.top='max(2px,calc('+((1-opening.y)*50)+'% - 25px))';
  }
  new ResizeObserver(fit).observe(host);pose();fit();
  const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;});observer.observe(host);
  function render(now){requestAnimationFrame(render);if(!visible||host.hidden||document.hidden||now-lastFrame<40)return;lastFrame=now;
+  if(gripTarget!==gripTravel){
+   const dt=Math.min(80,now-(render.lastGripTime||now));
+   gripTravel=gripTarget?Math.min(1,gripTravel+dt/750):Math.max(0,gripTravel-dt/750);
+   const slide=Math.min(1,gripTravel/.65),lock=Math.max(0,(gripTravel-.65)/.35);
+   for(const part of parts){
+    if(!gripParts.has(part.name))continue;
+    part.visible=gripTravel>0||gripTarget===1;
+    part.matrix.makeTranslation(0,-40*(1-slide),part.name==='Grip lock screw'?-5.3*(1-lock):0);
+    part.matrixWorldNeedsUpdate=true;
+   }
+   if(!gripTravel)fit();
+  }
+  render.lastGripTime=now;
   const current=io.wheel();spin-=current-previousInput;previousInput=current;
   opening+=((deployed?Math.PI/2:0)-opening)*.25;pose();
   io.paint(ctx);tex.needsUpdate=true;renderer.render(world,cam);
  }
  requestAnimationFrame(render);
- return {fold(){end();deployed=!deployed;return deployed;},resize:fit};
+ return {fold(){end();deployed=!deployed;return deployed;},resize:fit,
+  toggleGrip(){end();gripTarget=1-gripTarget;render.lastGripTime=performance.now();fit();return Boolean(gripTarget);}
+ };
 }
 window.makeThaiHandheld=makeDevice;
 

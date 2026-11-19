@@ -1,3 +1,6 @@
 Change,Affected revision,Issue,Disposition,Retest,State
 E-001,D to E,Encoder connector intersects Rev D supports,Fit four lands and two registration pins,Physical assembly and reel sensor gap,Nominal CAD verified; fit print pending
 E-002,Rev E production,Haptic motor and pack lead routing,"Review adhesive, harness and thermal stack","Vibration, RF, strain and full-sweep checks",Open
+F-001,Rev F,Top-left physical power key,"Captive cap and normally open SW1 on carrier wired across original K3",Battery cold start and shutdown; key travel and harness clearance,Physical test pending
+F-002,Rev F,Capacitive touchscreen required,"Retain A1 SKU 31137 and qualify exposed OEM glass in the bezel",Nine-point closed-case touch test on battery and USB,Physical test pending
+F-003,Rev F,Rigid removable rod grip,"Load-bearing slide rails against an end stop with captive metal-threaded screw retention",Measure grip-tip play and displacement; axial retention and repeated casting and attachment wear,Physical test pending

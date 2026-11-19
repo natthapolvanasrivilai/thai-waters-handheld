@@ -1,0 +1,33 @@
+{
+  "sampled_increment_deg": 0.5,
+  "detents_per_revolution": 12,
+  "pitch_deg": 30.0,
+  "cam_radius_range_mm": [
+    12.15,
+    12.75
+  ],
+  "axis_to_grip_center_mm": 7.8,
+  "nominal_radial_bearing_play_mm": 0.3,
+  "required_radial_follower_deflection_at_centered_axle_mm": [
+    0.38,
+    0.98
+  ],
+  "watertight_print_extents_xyz_mm": {
+    "wheel": [
+      24.837,
+      24.837,
+      12.0
+    ],
+    "light": [
+      26.5,
+      22.649,
+      7.6
+    ],
+    "firm": [
+      26.5,
+      23.249,
+      7.6
+    ]
+  },
+  "wheel_to_noncompliant_frame_overlap_mm3_limit": 0.001
+}

@@ -1,11 +1,129 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thai Waters • Play</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#eeefe5;color:#243f37;font:16px/1.4 system-ui,sans-serif}main{max-width:940px;padding:28px 24px;margin:auto}header,.bar,.tools{display:flex;align-items:center;justify-content:space-between;gap:16px}h1{font:normal clamp(2.4rem,6vw,4.6rem)/1 Georgia,serif;letter-spacing:-.05em;margin:0}header{margin-bottom:20px}.count,output,small{font-family:ui-monospace,Consolas,monospace}.stage{position:relative;overflow:hidden;background:#829e8b;border-radius:14px 14px 0 0}canvas{width:100%;height:auto;display:block;image-rendering:pixelated}.bar{background:#203e36;color:#f0efd9;padding:13px 19px;border-radius:0 0 14px 14px;min-height:77px}strong{font-size:1.15rem}small{display:block}button,select{font:inherit;color:inherit;border:1px solid #879c8d;border-radius:7px;background:#f4f5ed;padding:7px 11px;cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #df985f}.action{border:0;background:#e2a363;color:#253d33;font-weight:650;white-space:nowrap}.tools{margin:12px 0;flex-wrap:wrap;font-size:14px}.dial{--angle:0deg;position:relative;display:block;width:74px;height:74px;border:5px solid #547569;border-radius:50%;background:#deeadb;touch-action:none;transform:rotate(var(--angle))}.dial:after{content:'';position:absolute;width:19px;height:19px;top:2px;left:22px;background:#bc7246;border:2px solid #533d2f;border-radius:50%}.knob{display:flex;align-items:center;gap:14px}.opts{display:flex;flex-wrap:wrap;gap:12px}label{display:grid;gap:4px;font-size:12px}details{border-top:1px solid #afbeb0;padding:12px 0}summary{cursor:pointer;margin-bottom:10px}.note{font-size:13px;color:#50695c}progress{width:100%;height:6px;accent-color:#de9860}#left{flex:1}button:disabled{opacity:.55}@media(max-width:580px){main{padding:16px 12px}.bar{gap:5px}.action{font-size:14px}.tools{gap:8px}}
-nav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}nav button[aria-current=true]{background:#214937;color:#f4ecd7}.records{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:7px}.record,.build{border:1px solid #bbc4b5;border-radius:6px;padding:8px 10px}.record b,.record span{display:block}.found{border-left:4px solid #987337}.muted{color:#51685b}.builds{display:flex;flex-wrap:wrap;gap:7px}.build{flex:1;min-width:180px}.build button{margin-top:6px}.build b{display:block}h2{font:normal 26px Georgia,serif;margin:16px 0 6px}.stage canvas{max-height:55vh;object-fit:contain;background:#2d453b}.titleline{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}#travel{font-size:14px}#summary{font-size:14px}.under{font-size:14px;color:#4d6356;margin:2px 0 12px}dialog{margin:auto;width:min(700px,95vw);max-height:89dvh;overflow:auto;color:#203c35;background:#f4f2e7;border:1px solid #9faf9d;border-radius:16px;padding:20px}dialog::backdrop{background:#132b26b8}dialog h2{margin:0}.menubar{display:flex;align-items:center;gap:12px;margin-bottom:17px}.menubar h2{flex:1}.routes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.routes button{text-align:left;padding:14px}.routes button b,.routes button small{display:block}.routes button small{color:#50685c;margin-top:4px}.bindings{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}select#places{width:100%;margin:9px 0}#searchSpot{font:inherit;padding:8px}.bar small{margin-top:4px}#metrics{color:#ffcf92;font-weight:650;font-size:.94rem}#origin{color:#dbe6d6;font-size:.92rem}#liveCrew{color:#675733}.stage canvas{max-height:unset;object-fit:fill}.stage{max-width:100%}main{max-width:800px}header{gap:12px}h1{flex:1}button[hidden],[hidden]{display:none!important}#openMenu{background:#24483c;color:white}.bar{align-items:flex-start}.menuhelp{margin:8px 0}.readout{font-family:ui-monospace,monospace;font-size:14px}select,input{max-width:100%}@media(max-width:450px){.count{font-size:12px}.routes{grid-template-columns:1fr}.menubar{gap:6px}dialog{padding:13px}.bar{padding:11px}.titleline h2{font-size:20px}}#product{position:relative;aspect-ratio:1.85;width:100%;overflow:hidden;border-radius:14px 14px 0 0;background:radial-gradient(ellipse at 44% 32%,#f2eee0 7%,#dddaca 65%,#c9c7b8)}#product canvas{width:100%;height:100%;position:absolute;inset:0;image-rendering:auto;touch-action:none}.viewtools{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:12px 0}.viewtools small{flex:1 1 230px;color:#50675c}.viewtools button{font-size:13px}.tools .dial{width:62px;height:62px}.tools .dial:after{left:17px}main{max-width:1030px}header{margin-bottom:10px}.titleline{margin-bottom:7px}@media(max-width:580px){#product{aspect-ratio:1.5}.viewtools small{flex-basis:100%}.stage canvas{max-height:none}}.bar{background:transparent;color:#243f37;border-radius:0;min-height:0;padding:5px 1px;gap:10px;align-items:center}.bar strong{font-size:.94rem}.bar small{display:none}.bar .action{padding:4px 10px;font-size:.86rem}.bar #tension{max-width:95px;vertical-align:middle;margin-left:8px}.bar #metrics{color:#70522d}.bar #origin{color:#456052;font-size:.85rem}#product,.stage{border-radius:14px}.record:focus{outline:2px solid #aa733c;outline-offset:2px}.catch-link{font-size:.84rem;padding:4px 8px;white-space:nowrap}#powerPin{position:absolute;z-index:2;transform:translate(-50%,-1px);border:1px solid #54665a;background:#f5f0dd;color:#223b32;border-radius:8px;padding:2px 7px;font:700 11px/16px monospace;white-space:nowrap}#powerPin:before{content:"";position:absolute;left:50%;top:-8px;height:7px;border-left:2px solid #243c32}#tension{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}#flatStage{position:relative}.rumble-box{border:1px solid #afbeb0;border-radius:9px;margin:18px 0 0;padding:10px 14px}.rumble-box .bindings{align-items:end}.rumble-box legend{font-weight:600}#rumbleLamp{display:inline-block;align-self:center;width:14px;height:14px;border-radius:50%;background:#cb772e;opacity:.18}</style><main><header><h1>Thai Waters</h1><span class="count">Landed <output id="count">0</output></span><button id="openMenu" aria-haspopup="dialog">Menu</button></header>
-<div class="titleline"><h2 id="spot"></h2><button id="rigAccess" aria-label="Choose fishing technique in Rod workshop">Float drift ▾</button><small id="song"></small></div><div hidden id="product" aria-label="Interactive Rev E handheld"><button id="powerPin" title="Board PWR switch, left end of the lower service opening" aria-label="Turn simulator power off at the lower-edge PWR switch" hidden>⏻ PWR</button></div><div class="stage" id="flatStage"><canvas id="scene" width="480" height="320" aria-label="Pixel art of Thai Waters with an animated fishing float"></canvas></div>
-<div class="bar"><div id="left"><strong id="message" aria-live="polite">Opening the atlas…</strong><div id="metrics"></div><div id="origin"></div><small id="sub"></small><progress hidden id="tension" max="1" value="0" aria-label="Line tension"></progress></div><button class="catch-link" hidden id="catchBook">Collection</button><button class="action" id="act" disabled>Cast</button></div>
-<small id="liveCrew" aria-live="polite"></small><div class="viewtools"><small id="viewHint">Loading the Rev E device…</small><button id="viewMode" disabled>Device view</button><button hidden id="foldButton">Fold reel</button><button id="simPower">Power off</button></div><div class="tools"><span>Tap to cast or lift. Drag the knob to reel. Keyboard: Space / R.</span><div class="knob"><span>Drag to wind</span><button id="dial" class="dial" aria-label="Reel knob. Drag in a circle or press R."></button></div></div>
-<dialog id="menu" aria-labelledby="menuTitle"><div class="menubar"><button id="back">Back</button><h2 tabindex="-1" id="menuTitle">Menu</h2><button id="resume">Resume</button></div><section hidden data-section="home"><div class="routes"><button data-to="spots"><b>Fishing spots</b><small>117 Thai waters · time of day</small></button><button data-to="book"><b>Fish collection</b><small>Rarity, records and field notes</small></button><button data-to="rod"><b>Rod workshop</b><small>Finishes and tackle upgrades</small></button><button data-to="sound"><b>Music & bite cues</b><small>Mix and alert settings</small></button><button data-to="sensors"><b>Motion bench</b><small>Calibrate and test your phone</small></button><button data-to="crew"><b>Shared event</b><small>Fish together on local Wi-Fi</small></button></div></section><section hidden data-section="spots"><div class="bindings"><label>Find a location<input id="searchSpot" type="search"></label><label>Water<select id="waterType"><option value="all">All waters</option><option value="fresh">Inland</option><option value="salt">Sea</option></select></label></div><label>Fishing location<select size="5" id="places"></select></label><p id="travelStory"></p><div class="bindings"><label>Pond time<select id="period"><option>Dawn</option><option>Day</option><option>Dusk</option><option>Night</option><option>Live · Bangkok</option></select></label><button class="action" id="fishHere">Fish here</button></div><small>Changing waters or time starts a fresh cast.</small></section><section hidden data-section="book"><small id="discovered"></small><div id="records"></div></section><section hidden data-section="rod"><small id="balance"></small><label>Fishing technique<select id="technique"><option>Float drift</option><option>Stop-and-go spoon</option><option>Vertical jig</option></select></label><p id="techniqueNote" class="under"></p><label>Rod finish<select id="finish"><option>River reed</option><option>Copper</option><option>Kingfisher</option></select></label><h2 id="chapter"></h2><p id="letter" class="under"></p><p id="goal"></p><div class="builds" id="builds"></div><button id="refund">Refund tackle points</button><p class="note">First discovery earns a point. Earn another every three new species. Ranks cost 1, 2 and 3 points.</p></section><section hidden data-section="sound"><div class="opts"><label>Music<select id="music"><option>Adaptive</option><option>Drift</option><option>Melody</option><option>Off</option></select></label><label>Music volume<select id="volume"><option>Off</option><option>Low</option><option selected>Medium</option><option>High</option></select></label><label>Bite cue<select id="cue"><option>Light + tone</option><option>Light</option><option>Tone</option></select></label><label>Cue volume<select id="fx"><option>Off</option><option>Low</option><option selected>Medium</option><option>High</option></select></label></div><fieldset class="rumble-box"><legend>Rod rumble</legend><div class="bindings"><label>Level<select id="rumbleLevel"><option>Off</option><option>Low</option><option>Medium</option><option>High</option></select></label><button data-pulse="4" data-description="Prawn picking bait · three light taps before the bite">Prawn pick</button><button data-pulse="5" data-description="Bottom hold · sustained pressure">Bottom hold</button><button data-pulse="6" data-description="Fast run · three rapid pulses">Fast run</button><span id="rumbleLamp" aria-hidden="true"></span></div><small id="rumbleStatus" role="status"></small></fieldset></section><section hidden data-section="sensors"><label>Simulator battery <select id="simBattery"><option value="72">72% · battery</option><option value="12">12% · low battery</option><option value="42+">42% · charging</option><option value="USB">USB only</option><option value="--">Gauge unavailable</option></select></label><div class="bindings"><button id="enableMotion">Enable phone motion</button><button id="restPose">Capture rest</button><button id="liftPose">Capture lift</button></div><p id="motionStatus">Hold the phone as you would the handheld.</p><p class="readout" id="sensorRead">Waiting for motion samples</p><label>Manual rod tilt<input id="tilt" type="range" min="-25" max="80" value="0"></label><p>Phone accelerometer and gyroscope readings use this browser’s axes and timing. Drag the on-screen knob to test winding. The physical bench reads the QMI8658 and the AS5600 magnetic encoder.</p></section><section hidden data-section="crew"><p>Land eight catches together in three minutes. Join the same fishing spot on the same LAN host. Every catch stays in your personal collection.</p><button id="joinCrew">Join event</button><p id="crewStatus">Solo fishing</p></section></dialog><p id="summarySave" role="status"></p><p class="note">For motion play on a phone, open Menu → Motion bench and capture both poses.</p></main><script type="application/json" id="deviceParts">@@CAD@@</script><script>@@THREE@@</script><script>
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Thai Waters • Play</title>
+<style>*{box-sizing:border-box}
+@font-face{font-family:'Atkinson Hyperlegible Next';font-style:normal;font-weight:200 800;font-display:swap;src:url(data:font/ttf;base64,@@FONT@@) format('truetype')}
+:root{color-scheme:light;--game-font:'Atkinson Hyperlegible Next',sans-serif}
+body{margin:0;background:#eeefe5;color:#243f37;font:16px/1.4 var(--game-font)}
+main{max-width:1030px;margin:auto;padding:24px}
+.page-heading{margin:0 0 12px}
+h1{font:normal clamp(2.4rem,6vw,4.6rem)/1 var(--game-font);letter-spacing:-.05em;margin:0}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #e49f5e;outline-offset:1px}
+button:disabled{opacity:.5;cursor:default}
+[hidden]{display:none!important}
+#product,.stage{position:relative;overflow:hidden;width:100%;border-radius:14px}
+#product{aspect-ratio:1.85;background:radial-gradient(ellipse at 44% 32%,#f2eee0 7%,#dddaca 65%,#c9c7b8)}
+#product>canvas{width:100%;height:100%;position:absolute;inset:0;touch-action:none}
+#flatStage{aspect-ratio:3/2;background:#233c35}
+#scene{display:block;width:100%;height:100%;image-rendering:pixelated}
+.viewtools,.knob{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.viewtools{margin:12px 0}
+.viewtools small{flex:1 1 180px;color:#4e685a}
+.viewtools button,#powerPin{font:600 13px/1.3 var(--game-font);background:#f5f4e9;border:1px solid #91a493;border-radius:7px;padding:7px 11px}
+#powerPin{position:absolute;z-index:2;transform:translate(-50%,-1px);padding:2px 7px;font:700 11px/16px var(--game-font)}
+#powerPin:before{content:"";position:absolute;left:50%;bottom:-8px;height:7px;border-left:2px solid #243c32}
+.knob{justify-content:flex-end;font-size:13px}
+main:has(#product:not([hidden])) #flatReel{display:none}
+main:has(#menu[open]) #flatReel{visibility:hidden}
+.dial{--angle:0deg;position:relative;width:62px;height:62px;border:5px solid #547569;border-radius:50%;background:#deeadb;touch-action:none;transform:rotate(var(--angle))}
+.dial:after{content:"";position:absolute;width:17px;height:17px;top:1px;left:17px;background:#bc7246;border:2px solid #533d2f;border-radius:50%}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#lcdUI{position:absolute;z-index:2;left:0;top:0;width:480px;height:320px;transform-origin:top left;overflow:hidden;pointer-events:none;color:#233f35;font:15px/1.26 var(--game-font);isolation:isolate}
+#lcdUI button,#lcdUI input,#lcdUI select{font:inherit}
+#lcdUI button{font-weight:650}
+.lcd-hud{position:absolute;inset:0 0 auto;display:grid;grid-template-columns:minmax(105px,1.5fr) minmax(48px,1fr) auto 29px 53px;align-items:center;gap:4px;height:30px;padding:0 3px 0 8px;background:#1c362f;color:#f5f1de;font:700 13px/1.1 var(--game-font)}
+#spot,#song{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#song{font-size:10px;color:#cfdeca}
+#lcdPower{font:700 10px/1.1 var(--game-font);white-space:nowrap;color:#e2ebcb}
+.lcd-hud button,.lcd-actions button,#catchBook{pointer-events:auto;background:#203e35;color:#f1e4bd;border:1px solid #799480;border-radius:4px;padding:2px 5px;height:26px}
+#fullscreen{font-family:var(--game-font);font-size:18px;line-height:1}
+#openMenu{color:#ffce96;letter-spacing:.02em}
+.lcd-actions{position:absolute;right:5px;bottom:4px}
+.lcd-actions #act{height:26px;background:#e8aa6e;color:#243d30;border-color:#4b644f;padding:2px 8px;font-size:13px}
+#catchBook{position:absolute;top:43px;right:6px;padding:3px 8px;font-size:13px}
+#liveCrew:not(:empty){position:absolute;left:7px;top:35px;background:#223e35;color:#f3eed9;padding:3px 6px;border-radius:3px;font:11px/1.2 var(--game-font)}
+#lcdUI:has(#menu[open]) :is(.lcd-hud,.lcd-actions,#catchBook,#liveCrew){visibility:hidden}
+#menu{position:absolute;inset:0;width:480px;height:320px;max-width:none;max-height:none;padding:0;margin:0;border:0;background:#edeedc;color:#263d32;pointer-events:auto;overflow:hidden}
+#menu[open]{display:grid;grid-template-rows:42px minmax(0,1fr)}
+.menubar{position:relative;z-index:1;display:flex;align-items:center;gap:8px;padding:4px 8px;background:#203e34;color:#f8efd4;border-bottom:2px solid #d4ad70}
+.menubar h2{flex:1;margin:0;font:700 20px/1.15 var(--game-font)}
+#menu button,#menu select,#menu input[type=search]{border:1px solid #91a28c;border-radius:4px;background:#f9f8ec;padding:5px 8px;min-height:32px}
+#menu input{max-width:100%}
+#menu .menubar button{background:#2c4d3f;color:#eee9ce;border-color:#667d68;font-size:13px;min-height:30px}
+#menu .menubar #resume{color:#ffd79e}
+#menu section{grid-row:2;overflow:auto;min-height:0;padding:10px 12px;scrollbar-width:thin;scrollbar-color:#879982 #dce2d1;overscroll-behavior:contain}
+#menu h2:not(#menuTitle){font:700 17px/1.16 var(--game-font);margin:10px 0 6px}
+#menu p{margin:6px 0}
+#menu small,.under,.note{font-size:13px;color:#516352}
+.routes{display:grid;grid-template:repeat(3,minmax(0,1fr))/repeat(2,minmax(0,1fr));gap:7px;height:100%}
+#menu .routes button{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;gap:3px;padding:5px 21px 5px 11px;background:#f6f6e8;line-height:1.12}
+.routes button:after{content:'›';position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:18px;color:#6c816b}
+.routes b{font-size:16px}
+.routes small{font-weight:400}
+#menu .routes button:focus-visible,#menu .routes button:hover{background:#dce7d1;border-color:#557760}
+.bindings,.opts,.builds{display:flex;flex-wrap:wrap;align-items:end;gap:7px}
+.bindings{margin:4px 0 7px}
+#menu label,.lcd-choice{display:grid;gap:2px;font-size:13px;font-weight:650;min-width:0}
+#menu input[type=search],#menu select,.lcd-choice button{width:100%}
+#searchSpot{max-width:210px}
+#travelStory,#techniqueNote{color:#425746}
+.book-totals{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0 7px;border-bottom:1px solid #b5c2aa;font:700 13px/1.25 var(--game-font)}
+.records,.builds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+.record,.build{padding:6px 7px;background:#f5f5e7;border:1px solid #bdc8b0;border-radius:3px}
+.record b,.record span,.record small,.build b,.build small{display:block}
+.record span,.build small{font-size:12px}
+.record small{margin-top:2px}
+.record.found{border-left:3px solid #9a7037}
+.record.muted{color:#4b5b4d}
+.record:focus{outline:2px solid #9e642e;outline-offset:-2px}
+.build button{margin-top:5px}
+#menu .action{background:#e6ac71;color:#253d32;border-color:#a27a52}
+#menu [data-section=rod]>.lcd-choice{grid-template-columns:120px 1fr;align-items:center;margin-top:6px}
+#menu .opts{display:grid;grid-template-columns:1fr 1fr}
+.rumble-box{border:1px solid #a5b39b;border-radius:4px;margin:10px 0 0;padding:5px 8px 7px}
+.rumble-box legend{padding:0 4px;font-weight:700}
+#rumbleLamp{display:inline-block;align-self:center;width:11px;height:11px;border-radius:50%;background:#bb702a;opacity:.18}
+#sensorRead{font:13px/1.3 var(--game-font);color:#344d3d}
+#summarySave{position:absolute;bottom:2px;left:4px;background:#f6e0ac;color:#463719;font-size:11px}
+#summarySave:empty{display:none}
+.lcd-select-wrap{position:relative;display:block;min-width:0}
+#menu .lcd-select-wrap>select{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none}
+#menu .lcd-select-wrap>button{display:flex;align-items:center;justify-content:space-between;text-align:left;gap:6px;font-size:14px}
+.lcd-select-wrap>button:after{content:'▾';color:#536958}
+#lcdPicker{position:absolute;z-index:3;inset:0;display:grid;grid-template-rows:42px minmax(0,1fr);background:#edeedc}
+#lcdPicker .choice-list{overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:4px 8px 8px}
+#lcdPicker .choice-list button{display:block;width:100%;text-align:left;margin-top:3px}
+#lcdPicker .choice-list button[aria-selected=true]{background:#d6e4c9;border-color:#748d6f}
+#lcdPicker .choice-list button[aria-selected=true]:after{content:'✓';float:right}
+@media(max-width:580px){main{padding:12px}.page-heading{margin-bottom:8px}#product{aspect-ratio:1.5}.viewtools small{flex-basis:100%}}
+</style>
+<main>
+ <header class="page-heading"><h1>Thai Waters</h1></header>
+ <div hidden id="product" aria-label="Interactive Rev F handheld"><button id="powerPin" title="Power key on the top-left edge" aria-label="Turn simulator power off at the top-left PWR key" hidden>⏻ PWR</button></div>
+ <div class="stage" id="flatStage">
+  <canvas id="scene" width="480" height="320" aria-label="Thai Waters fishing screen"></canvas>
+  <div id="lcdUI">
+   <div class="lcd-hud">
+    <strong id="spot"></strong><span id="song"></span><small id="lcdPower" aria-label="Simulator battery"></small>
+    <button id="fullscreen" aria-label="Toggle full screen" title="Full screen">⛶</button><button id="openMenu" aria-haspopup="dialog" aria-controls="menu">Menu</button>
+   </div>
+   <div id="left" class="sr-only"><strong id="message" aria-live="polite">Opening the atlas…</strong><div id="metrics"></div><div id="origin"></div><small id="sub"></small><progress hidden id="tension" max="1" value="0" aria-label="Line tension"></progress></div>
+   <small id="liveCrew" aria-live="polite"></small>
+   <button id="startSound" type="button" hidden>♪ Enable sound</button><div class="lcd-actions"><button class="action" id="act" disabled>Cast</button></div>
+   <button id="catchBook" hidden>Journal</button>
+   <dialog id="menu" aria-labelledby="menuTitle"><div class="menubar"><button id="back">Back</button><h2 tabindex="-1" id="menuTitle">Menu</h2><button id="resume">Resume</button></div><section hidden data-section="home"><div class="routes"><button data-to="spots"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.4 7-13a7 7 0 0 0-14 0c0 5.6 7 13 7 13z M14.5 8a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z"/></svg><b>Fishing spots</b></button><button data-to="book"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5q4-2 9 1q5-3 9-1v14q-4-2-9 1q-5-3-9-1z M12 6v14"/></svg><b>Fish collection</b></button><button data-to="rod"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20L18 4q4-3 3 3v4q0 4-3 4q-3 0-3-3 M4 16l4 3"/></svg><b>Rod workshop</b></button><button data-to="sound"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h4l5-5v14l-5-5H4z M16 8q4 4 0 8 M19 5q7 7 0 14"/></svg><b>Music & bite cues</b></button><button data-to="sensors"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13h4l3-8l5 15l3-9h5"/></svg><b>Motion bench</b></button><button data-to="crew"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8z M2 20q0-6 7-6q7 0 7 6 M16 5q6 0 5 5q-1 3-4 3 M18 15q4 0 4 5"/></svg><b>Shared event</b></button></div></section><section hidden data-section="spots"><div class="bindings"><label>Find a location<input id="searchSpot" type="search"></label><label>Water<select id="waterType"><option value="all">All waters</option><option value="fresh">Inland</option><option value="salt">Sea</option></select></label></div><label>Fishing location<select id="places"></select></label><p id="travelStory"></p><div class="bindings"><label>Pond time<select id="period"><option>Dawn</option><option>Day</option><option>Dusk</option><option>Night</option><option>Live · Bangkok</option></select></label><button class="action" id="fishHere">Fish here</button></div><small>Changing waters or time starts a fresh cast.</small></section><section hidden data-section="book"><div class="book-totals"><strong id="discovered"></strong><span>Landed <output id="count">0</output></span></div><div id="records"></div></section><section hidden data-section="rod"><div class="book-totals"><strong id="balance"></strong><span id="rigAccess"></span></div><label>Fishing technique<select id="technique"><option>Float drift</option><option>Stop-and-go spoon</option><option>Vertical jig</option></select></label><p id="techniqueNote" class="under"></p><label>Rod finish<select id="finish"><option>River reed</option><option>Copper</option><option>Kingfisher</option></select></label><h2 id="chapter"></h2><p id="letter" class="under"></p><p id="goal"></p><div class="builds" id="builds"></div><button id="refund">Refund tackle points</button><p class="note">First discovery earns a point. Earn another every three new species. Ranks cost 1, 2 and 3 points.</p></section><section hidden data-section="sound"><div class="audio-check"><button type="button" id="testSound">♪ Test sound</button><span id="soundStatus" role="status">Tap for two notes.</span></div><label id="iosSwitchRow" hidden><input type="checkbox" switch id="iosSwitch"> Sound with bite cues</label><div class="opts"><label>Music<select id="music"><option>Adaptive</option><option>Drift</option><option>Melody</option><option>Off</option></select></label><label>Music volume<select id="volume"><option>Off</option><option>Low</option><option selected>Medium</option><option>High</option></select></label><label>Bite cue<select id="cue"><option>Light + tone</option><option>Light</option><option>Tone</option></select></label><label>Cue volume<select id="fx"><option>Off</option><option>Low</option><option selected>Medium</option><option>High</option></select></label><label>Reel click<select id="reelClick"><option>Off</option><option selected>Low</option><option>Medium</option><option>High</option></select></label></div><fieldset class="rumble-box"><legend>Rod rumble</legend><div class="bindings"><button type="button" id="testPhoneMotor">Enable and test phone vibration</button><label>Level<select id="rumbleLevel"><option>Off</option><option>Low</option><option>Medium</option><option>High</option></select></label><button data-pulse="4" data-description="Prawn picking bait · three light taps before the bite">Prawn pick</button><button data-pulse="5" data-description="Bottom hold · sustained pressure">Bottom hold</button><button data-pulse="6" data-description="Fast run · three rapid pulses">Fast run</button><button data-pulse="9" data-description="Reel tooth · one short click">Reel click</button><span id="rumbleLamp" aria-hidden="true"></span></div><small id="rumbleStatus" role="status"></small></fieldset></section><section hidden data-section="sensors"><label>Simulator battery <select id="simBattery"><option value="72">72% · battery</option><option value="12">12% · low battery</option><option value="42+">42% · charging</option><option value="USB">USB only</option><option value="--">Gauge unavailable</option></select></label><div class="bindings"><button id="enableMotion">Enable motion</button><button id="restPose">Recenter</button><button id="liftPose">Set custom lift</button></div><p id="motionStatus">Hold comfortably to center. Lift, then lower to cast. Turn the reel with a finger or hold its center to wind.</p><p class="readout" id="sensorRead">Waiting for motion samples</p><label><span><input type="checkbox" id="wristReel"> Wrist reel</span></label><p id="wristRead" class="readout">Touch reel active. Wrist reel is optional.</p><p>With the rod low, twist sideways about 25° and return to wind half a turn.</p><label>Manual rod tilt<input id="tilt" type="range" min="-25" max="80" value="0"></label><p>Phone accelerometer and gyroscope readings use this browser’s axes and timing. Drag the on-screen knob to test winding. The physical bench reads the QMI8658 and the AS5600 magnetic encoder.</p></section><section hidden data-section="crew"><p>Land eight catches together in three minutes. Join the same fishing spot on the same LAN host. Every catch stays in your personal collection.</p><button id="joinCrew">Join event</button><p id="crewStatus">Solo fishing</p></section><p id="summarySave" role="status"></p></dialog>
+  </div>
+ </div>
+ <div class="viewtools">
+  <small id="viewHint">Loading the Rev F device…</small><button id="viewMode" disabled>Device view</button><button hidden id="foldButton">Fold reel</button><button hidden id="gripButton" aria-pressed="false">Attach rod grip</button><button id="simPower">Power off</button>
+ </div>
+ <div class="knob" id="flatReel"><span>Drag to wind</span><button id="dial" class="dial" aria-label="Reel knob. Drag in a circle or press R."></button></div>
+</main>
+<script type="application/json" id="deviceParts">@@CAD@@</script><script>@@THREE@@</script><script>
 const $=k=>document.getElementById(k),canvas=$('scene'),ctx=canvas.getContext('2d'); 
 const sceneryModule=WebAssembly.instantiate(Uint8Array.from(atob('@@SCENES@@'),c=>c.charCodeAt(0)));
 const landscapeCanvas=document.createElement('canvas'),pixelCanvas=document.createElement('canvas');
@@ -46,21 +164,25 @@ function showRig(){
  const i=g.technique(),select=$('technique'),active=g.state()>0&&g.state()<5;
  select.selectedIndex=i;select.disabled=active;
  $('techniqueNote').textContent=rigNotes[i]+(active?' Finish this cast to change rigs.':'');
- $('rigAccess').textContent=select.options[i].text+' ▾';
+ $('rigAccess').textContent=select.options[i].text;
 }
 $('technique').onchange=()=>{g.setTechnique($('technique').selectedIndex);save();showRig()};
-$('rigAccess').onclick=()=>{if(!g)return;$('openMenu').click();section('rod')};
 function refresh(){
  showRig();
  $('spot').textContent=atlas.locations[placeId].name;$('finish').selectedIndex=finish;
- $('records').innerHTML='';let total=0;
+ $('records').innerHTML='';let total=0,landedTotal=0;
  atlas.sites.forEach((site,j)=>{
  let sub=document.createElement('h2'),cells=document.createElement('div');cells.className='records';let found=0;
- atlas.fish.filter(f=>f.site===j).forEach((f,k)=>{const id=atlas.fish.indexOf(f),n=g.caught(id);if(n)found++;const item=document.createElement('div');item.id='species-'+id;item.tabIndex=-1;item.className='record '+(n?'found':'muted');item.innerHTML='<b>'+f.name+'</b><span>'+atlas.ranks[f.tier]+' · '+(n?n+' caught · best '+g.best(id)+' cm':'Undiscovered')+'</span>';const tip=document.createElement('small');tip.textContent=n?f.lore:id===40?'Ferry piles at dusk. Lift quickly.':id===41?'Deep river at night. Ease off during long runs.':'Best light · '+times[id%4];item.append(tip);cells.append(item)});
+ atlas.fish.filter(f=>f.site===j).forEach((f,k)=>{const id=atlas.fish.indexOf(f),n=g.caught(id);landedTotal+=n;if(n)found++;const item=document.createElement('div');item.id='species-'+id;item.tabIndex=-1;item.className='record '+(n?'found':'muted');item.innerHTML='<b>'+f.name+'</b><span>'+atlas.ranks[f.tier]+' · '+(n?n+' caught · best '+g.best(id)+' cm':'Undiscovered')+'</span>';const icon=document.createElement('canvas');icon.width=48;icon.height=25;icon.setAttribute('aria-hidden','true');icon.className='fish-thumb';
+ const thumb=icon.getContext('2d');thumb.drawImage(fishSheet,(id%10)*48,Math.floor(id/10)*25,48,25,0,0,48,25);
+ if(!n){thumb.globalCompositeOperation='source-in';thumb.fillStyle='#88a695';thumb.fillRect(0,0,48,25);}
+ item.prepend(icon);
+ const tip=document.createElement('small');tip.textContent=n?f.lore:id===40?'Ferry piles at dusk. Lift quickly.':id===41?'Deep river at night. Ease off during long runs.':'Best light · '+times[id%4];item.append(tip);cells.append(item)});
  sub.textContent=site[0]+' · '+found+'/'+atlas.fish.filter(f=>f.site===j).length;total+=found;$('records').append(sub,cells)});
  $('discovered').textContent=total+'/'+atlas.fish.length+' species';$('chapter').textContent=names[g.chapter()];$('letter').textContent=story[g.chapter()];$('goal').textContent=goals[g.chapter()];$('balance').textContent=g.pts()+' tackle point'+(g.pts()===1?'':'s');$('builds').innerHTML='';
  pathNames.forEach((name,i)=>{let r=g.rank(i),box=document.createElement('div');box.className='build';box.innerHTML='<b>'+name+' · '+r+'/3</b><small>'+benefits[i]+'</small>';
  let b=document.createElement('button');b.textContent=r===3?'Maximum rank':r>=g.chapter()?'Advance the story':'Fit for '+(r+1)+' point'+(r?'s':'');b.disabled=r===3||r>=g.chapter()||g.pts()<r+1;b.onclick=()=>{if(g.purchase(i)){save();refresh()}};box.append(b);$('builds').append(box)});
+ $('count').textContent=landedTotal;
  $('refund').disabled=!pathNames.some((_,i)=>g.rank(i));$('refund').textContent=confirmRefund?'Confirm refund':'Refund tackle points';
 }
 $('refund').onclick=()=>{if(confirmRefund){g.refund();save()}confirmRefund=!confirmRefund;refresh()};
@@ -68,7 +190,7 @@ const fishSheet=new Image();fishSheet.src="@@FISH@@";
 const bytes=Uint8Array.from(atob('@@WASM@@'),c=>c.charCodeAt(0));
 let powered=true;
 let g=null,audio=null,nextSound=0,prev=0,held=false,dragging=false,lastAngle=0,dialAngle=0,turns=0,action=false,lastLabel='',elapsed=0;
-const menu=$('menu'),pageNames={home:'Menu',spots:'Fishing spots',book:'Fish collection',rod:'Rod workshop',sound:'Music & bite cues',sensors:'Motion bench',crew:'Shared event'};
+const menu=$('menu'),pageNames={home:'Tackle box',spots:'Fishing spots',book:'Fish collection',rod:'Rod workshop',sound:'Music & bite cues',sensors:'Motion bench',crew:'Shared event'};
 const times=['Dawn','Day','Dusk','Night','Live'],finishes=['River reed','Copper','Kingfisher'];
 let placeId=0,timeMode=4,finish=0,menuPage='home',pendingSpot=0,pendingTime=4,filteredG=null,basePose=false,calibratedMobile=false,rodAngle=0,stableSince=0,lastMotion=0,motionStarted=false,gestureCast=false,gestureLift=false;
 let crewOn=false,crew=null,crewScore=0,crewBusy=false,crewEpoch=0;
@@ -90,44 +212,155 @@ function listSpots(){
 }
 function section(name){
  if(menuPage==='sound' && name!=='sound')resetHaptics();
- if(name==='rod')showRig();menuPage=name;$('menuTitle').textContent=pageNames[name];menu.querySelectorAll('[data-section]').forEach(s=>s.hidden=s.dataset.section!==name);
+ if(name==='rod')showRig();menuPage=name;menu.dataset.page=name;$('menuTitle').textContent=pageNames[name];menu.querySelectorAll('[data-section]').forEach(s=>s.hidden=s.dataset.section!==name);
  $('back').hidden=name==='home';if(name==='spots'){pendingSpot=placeId;pendingTime=timeMode;$('searchSpot').value='';$('waterType').value='all';$('period').selectedIndex=pendingTime;listSpots();}
- menu.scrollTop=0; if(menu.open)$('menuTitle').focus();
+ const pane=menu.querySelector('[data-section="'+name+'"]');if(pane)pane.scrollTop=0;
+ if(menu.open)$('menuTitle').focus({preventScroll:true});
 }
-$('openMenu').onclick=()=>{if(!g)return;release();g.resetGesture();gestureCast=gestureLift=false;menu.showModal();section('home');};
+$('openMenu').onclick=()=>{if(!g||!powered||menu.open)return;release();g.resetGesture();gestureCast=gestureLift=false;menu.show();section('home');};
 menu.querySelectorAll('[data-to]').forEach(b=>b.onclick=()=>section(b.dataset.to));
 $('back').onclick=()=>section('home');$('resume').onclick=()=>menu.close();
-menu.oncancel=e=>{if(menuPage!=='home'){e.preventDefault();section('home');}};
-menu.onclose=()=>{release();gestureCast=gestureLift=false;g.resetGesture();prev=performance.now();$('act').focus();};
+document.addEventListener('keydown',e=>{
+ if(e.key!=='Escape'||!menu.open||e.defaultPrevented)return;
+ e.preventDefault();if(menuPage==='home')menu.close();else section('home');
+});
+menu.onclose=()=>{release();gestureCast=gestureLift=false;g.resetGesture();prev=performance.now();if(powered)$('openMenu').focus({preventScroll:true});};
 $('searchSpot').oninput=$('waterType').onchange=listSpots;$('places').onchange=()=>{pendingSpot=+$('places').value;listSpots();};
 $('fishHere').onclick=()=>{unlock();chooseSpot(pendingSpot,$('period').selectedIndex);menu.close();};
 $('finish').onchange=()=>{finish=$('finish').selectedIndex;save();};
 $('tilt').oninput=()=>{rodAngle=+$('tilt').value;};
 function cue(m){$('motionStatus').textContent=m;}
+let neutral=null,centering=false,sourceName='',readoutTime=0;
+const dotPose=(a,b)=>a.reduce((sum,v,i)=>sum+v*b[i],0);
+const wristSwitch=$('wristReel');
+let wristAxis=null,wristArmed=false,wristAngle=0,wristTurns=0,wristSamples=0,wristPointer=null;
+try{wristSwitch.checked=localStorage.getItem('thai-waters-wrist-reel')==='on';}catch{}
+function learnLift(target){
+ if(!g.liftPose(...target))return false;
+ // The cross product is perpendicular to the pitch plane learned from an
+ // actual lift. It measures side roll in either portrait or landscape grip.
+ const [a,b,c]=neutral,[x,y,z]=target,axis=[b*z-c*y,c*x-a*z,a*y-b*x];
+ const size=Math.hypot(...axis);
+ wristAxis=axis.map(k=>k/size);wristArmed=false;
+ return true;
+}
+function wristFeedback(){
+ const instruction=!wristSwitch.checked?'Touch reel active':!motionStarted?'Enable motion first':!wristAxis?'Center, then lift once to learn your grip':'Twist out 25°, then return near center';
+ $('wristRead').textContent=instruction+' · '+Math.round(wristAngle)+'° · '+wristTurns.toFixed(1)+' turns · '+wristSamples+' samples';
+}
+wristSwitch.onchange=()=>{
+ wristArmed=false;
+ try{localStorage.setItem('thai-waters-wrist-reel',wristSwitch.checked?'on':'off');}catch{}
+ if(wristSwitch.checked&&!motionStarted)$('enableMotion').click();
+ wristFeedback();
+};
+function wristStroke(){
+ wristAngle=wristAxis?Math.atan2(dotPose(filteredG,wristAxis),dotPose(filteredG,neutral))*180/Math.PI:0;
+ if(wristSwitch.checked)wristSamples++;
+ const canReel=g.state()===4 || (g.state()===2&&g.technique()===1);
+ if(!wristSwitch.checked||!wristAxis||!canReel||menu.open||!hapticFocus||wristPointer!==null||Math.abs(rodAngle)>14){
+  wristArmed=false;return;
+ }
+ const roll=Math.abs(wristAngle);
+ if(roll<=8)wristArmed=true;
+ if(!wristArmed||roll<25)return;
+ wristArmed=false;
+ // One outgoing stroke acts as a clutch. The return stroke resets it without
+ // paying line out. Use the same accepted encoder path as the pointer reel.
+ startPointerWheel(0);const delta=samplePointerWheel(Math.PI);
+ turns+=delta;dialAngle+=delta*360;wristTurns+=delta;
+}
+window.addEventListener('pointerdown',e=>{
+ if(e.target.closest?.('#dial,#product>canvas')){wristPointer=e.pointerId;wristArmed=false;}
+},true);
+for(const type of ['pointerup','pointercancel','lostpointercapture'])window.addEventListener(type,e=>{
+ if(e.pointerId===wristPointer)wristPointer=null;
+},true);
+function requestCenter(){
+ centering=true;neutral=wristAxis=null;wristArmed=false;basePose=calibratedMobile=false;filteredG=null;
+ rodAngle=0;gestureCast=gestureLift=false;g?.resetGesture();
+ cue('Hold comfortably for a moment to center.');
+}
+function centerRod(){
+ neutral=filteredG.slice();g.restPose(...neutral);basePose=true;
+ wristAxis=null;wristArmed=false;calibratedMobile=centering=false;rodAngle=0;gestureCast=gestureLift=false;
+ cue('Centered. Resume and raise the rod about 20°, then lower to cast.');
+}
+function acceptPose(v,source,rate){
+ if(!powered||!g||document.hidden)return;
+ const mag=Math.hypot(...v),now=performance.now();
+ if(mag<.75||mag>1.28){stableSince=now;return;}
+ if(source!==sourceName){
+  if(sourceName&&now-lastMotion<1200)return;
+  if(sourceName)requestCenter();
+  sourceName=source;
+ }
+ const dt=Math.max(1,Math.min(100,now-lastMotion));lastMotion=now;
+ const norm=v.map(k=>k/mag);
+ if(!filteredG){filteredG=norm;stableSince=now;}
+ if(dotPose(norm,filteredG)<.994)stableSince=now;
+ const t=dt/(45+dt);filteredG=filteredG.map((k,i)=>k+t*(norm[i]-k));
+ const len=Math.hypot(...filteredG);filteredG=filteredG.map(k=>k/len);
+ if(centering&&steady())centerRod();
+ if(basePose&&!calibratedMobile){
+  // Learn the first lift plane in device coordinates, including either landscape grip.
+  const c=Math.max(-1,Math.min(1,dotPose(neutral,filteredG)));
+  rodAngle=Math.acos(c)*180/Math.PI;
+  if(rodAngle>=9 && rodAngle<80){
+   const sin=Math.sqrt(1-c*c),span=28*Math.PI/180;
+   const target=neutral.map((k,i)=>k*Math.cos(span)+(filteredG[i]-c*k)*Math.sin(span)/sin);
+   calibratedMobile=learnLift(target);
+   if(calibratedMobile)g.gesture(0,Math.trunc(now));
+  }
+ }
+ if(calibratedMobile){
+  rodAngle=g.angle(...filteredG);
+  wristStroke();
+  if(!menu.open){const edge=g.gesture(rodAngle,Math.trunc(now));gestureCast||=edge===1;gestureLift||=edge===2;}
+ }
+ if(now-readoutTime>120){
+  readoutTime=now;
+  wristFeedback();
+  const gyro=rate&&[rate.beta,rate.gamma,rate.alpha].every(Number.isFinite)?' · Gyro '+[rate.beta,rate.gamma,rate.alpha].map(x=>Math.round(x)).join('/')+' °/s':'';
+  $('sensorRead').textContent=source+' · Rod '+rodAngle.toFixed(0)+'° · Gravity '+norm.map(k=>k.toFixed(1)).join('/')+gyro;
+ }
+}
 function onMotion(e){
- if(!powered)return;
- const a=e.accelerationIncludingGravity;if(!a||![a.x,a.y,a.z].every(Number.isFinite))return;
- const v=[a.x/9.80665,a.y/9.80665,a.z/9.80665],mag=Math.hypot(...v),now=performance.now(),dt=Math.max(1,Math.min(100,now-lastMotion));lastMotion=now;
- if(mag*mag<.67||mag*mag>1.43){stableSince=now;return;}
- const norm=v.map(k=>k/mag);if(!filteredG){filteredG=norm;stableSince=now;}
- if(norm.reduce((n,k,i)=>n+k*filteredG[i],0)<.9975)stableSince=now;
- const t=dt/(55+dt);filteredG=filteredG.map((k,i)=>k+t*(norm[i]-k));const len=Math.hypot(...filteredG);filteredG=filteredG.map(k=>k/len);
- const rate=e.rotationRate;const rawRate=rate&&[rate.beta,rate.gamma,rate.alpha].every(Number.isFinite)?[rate.beta,rate.gamma,rate.alpha].map(x=>x.toFixed(0)).join(' / ')+' °/s':'unavailable';
- if(calibratedMobile){rodAngle=g.angle(...filteredG);if(!menu.open){const edge=g.gesture(rodAngle,Math.trunc(now));gestureCast||=edge===1;gestureLift||=edge===2;}}
- $('sensorRead').textContent='Gravity '+v.map(n=>n.toFixed(2)).join(' / ')+' g · Rotation '+rawRate+' · Rod '+rodAngle.toFixed(1)+'°';
+ const a=e.accelerationIncludingGravity;
+ if(a&&[a.x,a.y,a.z].every(Number.isFinite))acceptPose([a.x/9.80665,a.y/9.80665,a.z/9.80665],'Accelerometer',e.rotationRate);
+}
+function onOrientation(e){
+ if(!Number.isFinite(e.beta)||!Number.isFinite(e.gamma))return;
+ const b=e.beta*Math.PI/180,c=e.gamma*Math.PI/180;
+ acceptPose([-Math.cos(b)*Math.sin(c),Math.sin(b),Math.cos(b)*Math.cos(c)],'Orientation',null);
 }
 $('enableMotion').onclick=async()=>{
  try {
-  if(!window.isSecureContext)throw Error('Open the trusted HTTPS phone link for motion access.');
-  if(typeof DeviceMotionEvent==='undefined')throw Error('No motion API here. Use the tilt slider or the handheld bench.');
-  if(typeof DeviceMotionEvent.requestPermission==='function'&&await DeviceMotionEvent.requestPermission()!=='granted')throw Error('Motion permission was declined.');
-  if(!motionStarted){window.addEventListener('devicemotion',onMotion);motionStarted=true;}cue('Hold the phone still in your playing position, then capture rest.');
-  setTimeout(()=>{if(!lastMotion&&motionStarted)cue('No sensor samples received. Check browser motion permissions.');},3000);
+  if(!window.isSecureContext)throw Error('Open the HTTPS playtest in your phone browser for motion.');
+  const policy=document.permissionsPolicy||document.featurePolicy;
+  if(policy?.allowsFeature&&!policy.allowsFeature('accelerometer'))throw Error('This view blocks motion. Open the playtest link directly in your phone browser.');
+  const apis=[['devicemotion',window.DeviceMotionEvent,onMotion],['deviceorientation',window.DeviceOrientationEvent,onOrientation]].filter(row=>row[1]);
+  if(!apis.length)throw Error('No motion sensors exposed. Use tap to cast and the touch reel.');
+  const results=await Promise.allSettled(apis.map(([,api])=>typeof api.requestPermission==='function'?api.requestPermission():'granted'));
+  const usable=apis.filter((_,i)=>results[i].status==='fulfilled'&&results[i].value==='granted');
+  if(!usable.length)throw Error('Motion permission was declined. Allow motion for this site or use touch controls.');
+  const start=performance.now();
+  for(const [name,,listener] of usable)window.addEventListener(name,listener);
+  motionStarted=true;requestCenter();
+  setTimeout(()=>{if(lastMotion<start)cue('No sensor readings. Open this HTTPS link directly in Safari or Chrome and allow motion. Touch controls are ready.');},2500);
  }catch(e){cue(e.message);}
 };
-function steady(){return filteredG&&performance.now()-lastMotion<500&&performance.now()-stableSince>=420;}
-$('restPose').onclick=()=>{if(!steady())return cue('Hold still until fresh, stable gravity samples arrive.');g.restPose(...filteredG);basePose=true;calibratedMobile=false;cue('Raise the far edge 30–50°, hold still, then capture lift.');};
-$('liftPose').onclick=()=>{if(!basePose||!steady())return cue('Capture rest, then hold the raised phone still.');calibratedMobile=!!g.liftPose(...filteredG);cue(calibratedMobile?'Calibrated. Resume, lower the phone, then lift and sweep to cast.':'Use a larger lift between 20° and 85°.');};
+function steady(){return filteredG&&performance.now()-lastMotion<450&&performance.now()-stableSince>=280;}
+$('restPose').onclick=()=>{if(steady())centerRod();else if(motionStarted)requestCenter();else $('enableMotion').click();};
+$('liftPose').onclick=()=>{
+ if(!basePose||!steady())return cue('Center first, then hold the raised phone steady.');
+ const span=Math.acos(Math.max(-1,Math.min(1,dotPose(neutral,filteredG))))*180/Math.PI;
+ if(span<21||span>84)return cue('For a custom lift, raise 21–84°. Automatic calibration is still available.');
+ calibratedMobile=learnLift(filteredG);cue('Custom lift saved for this session. Lower the phone before casting.');
+};
+function recenterOnRotation(){if(motionStarted)requestCenter();}
+if(screen.orientation?.addEventListener)screen.orientation.addEventListener('change',recenterOnRotation);
+else window.addEventListener('orientationchange',recenterOnRotation);
 if (location.hostname.endsWith('.chatgpt.site')) {
  const help = document.querySelector('[data-section="crew"] p');
  help.textContent='Join the same fishing spot on two browsers signed into this private playtest. Work together to land eight catches before the three-minute round ends. Each catch goes in its angler’s collection.';
@@ -145,9 +378,10 @@ setInterval(pulseCrew,1000);
 
 
 const rumbleLevel=$('rumbleLevel'), rumbleStatus=$('rumbleStatus'), rumbleLamp=$('rumbleLamp');
-const phoneMotifs=[null,[24],[46,45,46],[68],[20],[195],[32,34,27,31,22]];
+const phoneMotifs=[null,[24],[46,45,46],[68],[20],[195],[32,34,27,31,22],null,null,[13]];
 let vibrating=false, lampAnimation=null, hapticFocus=true;
-try{const saved=+localStorage.getItem('thai-waters-rumble');if(Number.isInteger(saved)&&saved>=0&&saved<=3)rumbleLevel.selectedIndex=saved;}catch{}
+rumbleLevel.selectedIndex=navigator.maxTouchPoints&&typeof navigator.vibrate==='function'?2:0;
+try{const stored=localStorage.getItem('thai-waters-rumble'),saved=Number(stored);if(stored!==null&&Number.isInteger(saved)&&saved>=0&&saved<=3)rumbleLevel.selectedIndex=saved;}catch{}
 function stopPhonePulse(){
  if(vibrating){try{navigator.vibrate(0);}catch{} vibrating=false;}
  lampAnimation?.cancel();lampAnimation=null;
@@ -157,7 +391,18 @@ function resetHaptics(){
  g?.rumbleEvent(performance.now()>>>0,0);
 }
 function explainRumble(){
- rumbleStatus.textContent=typeof navigator.vibrate!=='function'?'This browser supports visual pulse previews only.':rumbleLevel.selectedIndex?'Try a pattern to check this phone.':'Select a rumble level to feel a sample.';
+ const supported=typeof navigator.vibrate==='function';
+ const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ const switchPreview=ios&&!supported&&'switch' in document.createElement('input');
+ $('iosSwitchRow').hidden=!switchPreview;
+ $('testPhoneMotor').hidden=!supported;
+ rumbleLevel.closest('.lcd-choice,label').hidden=!supported;
+ if(ios&&!supported){
+  rumbleStatus.textContent=switchPreview?'Tap the sound switch for an iPhone tick (iOS 18+). Fish rhythms use sound and light in Safari.':'Safari plays fish rhythms with sound and light. Timed vibration is unavailable.';
+  return;
+ }
+ $('testPhoneMotor').textContent=!supported?'Check vibration support':rumbleLevel.selectedIndex?'Test phone vibration':'Enable and test phone vibration';
+ rumbleStatus.textContent=!supported?'Phone vibration is unavailable in this browser. The lamp previews each rhythm.':rumbleLevel.selectedIndex?'Tap Test phone vibration. You should feel two pulses.':'Enable vibration to feel reel teeth, bites and pulls.';
 }
 function phonePulse(event,preview=false){
  if(event===7){stopPhonePulse();return;}
@@ -183,19 +428,32 @@ rumbleLevel.onchange=()=>{
  resetHaptics();try{localStorage.setItem('thai-waters-rumble',String(rumbleLevel.selectedIndex));}catch{}
  explainRumble();
 };
+$('testPhoneMotor').onclick=()=>{
+ if(typeof navigator.vibrate!=='function'){explainRumble();return;}
+ if(!rumbleLevel.selectedIndex){
+  rumbleLevel.selectedIndex=2;
+  rumbleLevel.dispatchEvent(new Event('change',{bubbles:true}));
+ }
+ const accepted=phonePulse(2,true);
+ rumbleStatus.textContent=accepted?'Two pulses requested. If you felt neither, check vibration and Do Not Disturb on your phone.':'Vibration request declined. Open this game directly in a phone browser with vibration support.';
+};
 for(const button of menu.querySelectorAll('[data-pulse]'))button.onclick=()=>{
- const played=phonePulse(+button.dataset.pulse,true);
- rumbleStatus.textContent=button.dataset.description+(played?'':' · visual preview');
+ const id=+button.dataset.pulse, played=phonePulse(id,true);
+ previewRhythm(id);
+ rumbleStatus.textContent=button.dataset.description+(played?'':' · sound and visual preview');
 };
 window.addEventListener('blur',()=>{hapticFocus=false;resetHaptics();});
 window.addEventListener('focus',()=>{hapticFocus=true;});
 window.addEventListener('pagehide',resetHaptics);
 explainRumble();
 
-const keys=['music','volume','cue','fx'];
-function settings(){const a=keys.map(k=>$(k).selectedIndex);g?.config(...a);try{localStorage.setItem('willow-v1-audio',JSON.stringify(a))}catch{}}
+const keys=['music','volume','cue','fx','reelClick'];
+function settings(){const a=keys.map(k=>$(k).selectedIndex);g?.config(...a);g?.reelVolume(a[4]);try{localStorage.setItem('willow-v1-audio',JSON.stringify(a))}catch{}}
 try{let a=JSON.parse(localStorage.getItem('willow-v1-audio'));if(Array.isArray(a))keys.forEach((k,i)=>{if(Number.isInteger(a[i])&&a[i]>=0&&a[i]<$(k).length)$(k).selectedIndex=a[i]})}catch{}
-keys.forEach(k=>$(k).onchange=settings);
+function syncBiteSwitch(){$('iosSwitch').checked=$('cue').selectedIndex!==1;}
+keys.forEach(k=>$(k).onchange=()=>{settings();syncBiteSwitch();});
+$('iosSwitch').onchange=()=>{$('cue').selectedIndex=$('iosSwitch').checked?0:1;$('cue').dispatchEvent(new Event('change',{bubbles:true}));};
+syncBiteSwitch();
 function pump(){
  if(!powered||!g||!audio||audio.state!=='running'||document.hidden)return;
  nextSound=Math.max(nextSound,audio.currentTime);
@@ -205,17 +463,94 @@ function pump(){
   const s=audio.createBufferSource();s.buffer=buf;s.connect(audio.destination);s.start(nextSound);nextSound+=256/16000;
  }
 }
-function unlock(){if(!powered)return;try{if(!audio){audio=new AudioContext();setInterval(pump,20)}if(audio.state==='suspended')audio.resume().catch(()=>{})}catch{}}
+let audioTimer, resumeAudio;
+function audioState(){
+ const running=audio?.state==='running';
+ $('startSound').hidden=running;
+ $('soundStatus').textContent=running?'Audio active · check media volume and output.':'Tap to start or reconnect audio.';
+}
+function unlock(){
+ if(!powered||document.hidden)return;
+ try{
+  if(navigator.audioSession)navigator.audioSession.type='playback';
+ }catch{}
+ try{
+  if(!audio||audio.state==='closed'){
+   const AudioEngine=window.AudioContext||window.webkitAudioContext;
+   audio=new AudioEngine();
+   audio.onstatechange=audioState;
+   clearInterval(audioTimer);audioTimer=setInterval(pump,20);
+  }
+  if(audio.state!=='running'&&!resumeAudio){
+   resumeAudio=Promise.resolve(audio.resume()).then(()=>{nextSound=audio.currentTime;pump();},()=>{}).finally(()=>{resumeAudio=null;audioState();});
+  }
+  audioState();
+ }catch{$('soundStatus').textContent='Audio unavailable. Reopen this link directly in Safari.';}
+}
+function pluck(freq,when,duration,volume){
+ const osc=audio.createOscillator(),gain=audio.createGain();
+ osc.type='triangle';osc.frequency.value=freq;
+ gain.gain.setValueAtTime(.0001,when);
+ gain.gain.exponentialRampToValueAtTime(volume,when+.009);
+ gain.gain.exponentialRampToValueAtTime(.0001,when+duration);
+ osc.connect(gain);gain.connect(audio.destination);osc.start(when);osc.stop(when+duration+.01);
+ osc.onended=()=>{osc.disconnect();gain.disconnect();};
+}
+// Use the phone's media-player path for the speaker check, independent of the game mixer.
+const speakerCheck=document.createElement('audio');
+speakerCheck.preload='auto';speakerCheck.setAttribute('playsinline','');
+speakerCheck.src='@@SOUND_CHECK@@';
+function soundTest(){
+ unlock();speakerCheck.currentTime=0;
+ speakerCheck.play().then(()=>{
+  $('soundStatus').textContent=audio?.state==='running'?'Two notes playing · game audio active.':'Speaker test playing. Tap again to start game audio.';
+ }).catch(()=>{
+  if(audio){const t=audio.currentTime+.04;pluck(440,t,.15,.19);pluck(660,t+.19,.24,.18);}
+  $('soundStatus').textContent=audio?.state==='running'?'Testing through the game mixer.':'Playback blocked. Tap Test sound again.';
+ });
+}
+function previewRhythm(id,audition=true){
+ if(audition)unlock();if(!audio||!$('fx').selectedIndex||$('cue').selectedIndex===1)return;
+ const motif=audition&&id===4?[20,340,20,340,20]:phoneMotifs[id];
+ let when=audio.currentTime+.035;
+ for(let i=0;i<motif.length;i++){
+  if(i%2===0)pluck(id===5?180:id===4?720:id===9?900:400,when,Math.max(.05,motif[i]/1000),[0,.07,.14,.22][$('fx').selectedIndex]);
+  when+=motif[i]/1000;
+ }
+}
+$('startSound').onclick=$('testSound').onclick=soundTest;
+document.addEventListener('click',e=>{if(e.isTrusted&&e.target.closest('main')&&audio?.state!=='running')unlock();},true);
+window.addEventListener('pageshow',()=>{if(audio)audioState();});
+audioState();
 function tap(){if(!powered)return;unlock();if(!g)return;if(g.state()===4||(g.state()===2&&g.technique()===1))turns+=.25;else action=true}
 $('act').onclick=tap;
 window.addEventListener('keydown',e=>{if(menu.open||!powered)return;if((['SELECT','SUMMARY','BUTTON'].includes(e.target.tagName)&&e.target!==$('act')))return;if(e.code==='Space'){e.preventDefault();if(!e.repeat)tap()}if(e.code==='KeyR'){e.preventDefault();unlock();held=true}});
 window.addEventListener('keyup',e=>{if(e.code==='KeyR')held=false});
-function release(){resetHaptics();dragging=false;held=false;turns=0;action=false}
+function release(){wristArmed=false;wristPointer=null;resetHaptics();dragging=false;held=false;turns=0;action=false}
 window.addEventListener('blur',release);document.addEventListener('visibilitychange',()=>{prev=performance.now();release()});
-const dial=$('dial');const as5600=a=>(Math.round(a*4096/(2*Math.PI))+4096)%4096;function polar(e){let b=dial.getBoundingClientRect();return Math.atan2(e.clientY-b.top-b.height/2,e.clientX-b.left-b.width/2)}
-dial.onpointerdown=e=>{if(!powered)return;unlock();dial.setPointerCapture(e.pointerId);dragging=true;lastAngle=polar(e);startPointerWheel(lastAngle);};
-dial.onpointermove=e=>{if(!dragging)return;let a=polar(e),d=Math.atan2(Math.sin(a-lastAngle),Math.cos(a-lastAngle));lastAngle=a;turns+=samplePointerWheel(a);dialAngle+=d*180/Math.PI};
-dial.onpointerup=dial.onpointercancel=()=>dragging=false;
+const dial=$('dial');const as5600=a=>(Math.round(a*4096/(2*Math.PI))+4096)%4096;
+let dialPointer=null,centerHold=false,dialCenter={x:0,y:0,r:0};
+function dialPoint(e){return [e.clientX-dialCenter.x,e.clientY-dialCenter.y];}
+dial.onpointerdown=e=>{
+ if(!powered||menu.open||dialPointer!==null||e.button!==0)return;
+ const box=dial.getBoundingClientRect();
+ dialCenter={x:box.left+box.width/2,y:box.top+box.height/2,r:Math.min(box.width,box.height)/2};
+ const [x,y]=dialPoint(e);centerHold=Math.hypot(x,y)<dialCenter.r*.40;
+ unlock();dial.setPointerCapture(e.pointerId);dialPointer=e.pointerId;dragging=true;
+ if(centerHold){held=true;return;}
+ lastAngle=Math.atan2(y,x);startPointerWheel(lastAngle);
+};
+dial.onpointermove=e=>{
+ if(!dragging||centerHold||e.pointerId!==dialPointer)return;
+ const [x,y]=dialPoint(e);if(Math.hypot(x,y)<dialCenter.r*.22)return;
+ const a=Math.atan2(y,x),delta=Math.atan2(Math.sin(a-lastAngle),Math.cos(a-lastAngle));
+ lastAngle=a;turns+=samplePointerWheel(a);dialAngle+=delta*180/Math.PI;
+};
+dial.onpointerup=dial.onpointercancel=dial.onlostpointercapture=e=>{
+ if(e.pointerId!==dialPointer)return;
+ if(centerHold)held=false;
+ dragging=centerHold=false;dialPointer=null;
+};
 const reasons=['','Hook set too early','The bite passed','The line snapped','The fish slipped away','The fish lost interest'];
 function openCatchRecord(){
  if(!g||g.state()!==5)return;
@@ -238,31 +573,20 @@ function splash(x,y,age,surge){
  }
 }
 function caption(text,x,y,align='left',color='#fff4d8',size=12){
- ctx.save();ctx.textAlign=align;ctx.font='bold '+size+'px monospace';ctx.lineJoin='round';ctx.lineWidth=3;
+ ctx.save();ctx.textAlign=align;ctx.font='600 '+size+'px "Atkinson Hyperlegible Next", sans-serif';ctx.lineJoin='round';ctx.lineWidth=3;
  ctx.strokeStyle='#183830';ctx.strokeText(text,x,y);ctx.fillStyle=color;ctx.fillText(text,x,y);ctx.restore();
 }
 function landedCatch(age){
  const id=g.species(),f=atlas.fish[id],endX=447,endY=59;
  const t=Math.max(0,Math.min(1,(age-1600)/800)),ease=t*t*(3-2*t);
- ctx.fillStyle='#203e36';ctx.fillRect(endX-28,endY-13,57,32);
- ctx.strokeStyle=age>=2400&&age<3000?'#ffca7c':'#dce8c9';ctx.lineWidth=1.5;
- ctx.strokeRect(endX-10,endY-8,10,11);ctx.strokeRect(endX,endY-8,10,11);
- caption('Journal',endX,endY+14,'center','#e6eed2',10);
  if(t<1){
   const k=3.7-3.4*ease,x=240+(endX-240)*ease,y=136+(endY-136)*ease-46*4*t*(1-t);
   ctx.drawImage(fishSheet,(id%10)*48,Math.floor(id/10)*25,48,25,Math.round(x-24*k),Math.round(y-12.5*k),Math.round(48*k),Math.round(25*k));
  }
  caption(f.name,240,203,'center','#fff7df',17);
  caption(atlas.ranks[f.tier].toUpperCase(),240,220,'center','#ffd291');
- if(t>=1)caption('Recorded in collection',240,241,'center','#e9f2e0',11);
-}
-function batteryBadge(c,x,y){
- const value=$('simBattery').value,percent=parseInt(value,10),charging=value.endsWith('+');
- const text='SIM '+(Number.isFinite(percent)?(charging?'+':'')+percent+'%':value);
- c.save();c.fillStyle='#1b332c';c.fillRect(x,y,91,19);c.fillStyle=percent<=15?'#ff996d':'#f1eccf';
- c.fillRect(x+4,y+5,16,9);c.fillRect(x+20,y+7,2,5);c.fillStyle='#1b332c';c.fillRect(x+5,y+6,14,7);
- if(Number.isFinite(percent)){c.fillStyle=percent<=15?'#ff996d':'#b8d39b';c.fillRect(x+7,y+7,Math.round(10*percent/100),5);}
- c.fillStyle='#f1eccf';c.font='bold 11px monospace';c.textAlign='left';c.fillText(text,x+25,y+13);c.restore();
+ caption(g.lengthCm()+' cm  ·  '+(g.grams()<1000?g.grams()+' g':(g.grams()/1000).toFixed(2)+' kg'),240,239,'center','#fff4d8',12);
+ if(t>=1)caption(f.lore,240,259,'center','#e9f2e0',10);
 }
 function tensionLight(c,tension){
  const n=Math.max(0,Math.min(8,Math.ceil(tension*8)));
@@ -317,19 +641,24 @@ function draw(){
  if(p===5)title=atlas.fish[g.species()].name;
  const landed=p===5,f=atlas.fish[g.species()],grams=g.grams();$('metrics').textContent=landed?atlas.ranks[f.tier]+'   ·   Length '+g.lengthCm()+' cm   ·   Weight '+(grams<1000?grams+' g':(grams/1000).toFixed(2)+' kg'):'';$('origin').textContent=landed?'Origin · '+f.lore:'';
  $('catchBook').hidden=!landed;
- if(!landed){
+ if(!landed&&!menu.open){
   const hint=p===4?fightHint+'  '+g.remaining().toFixed(1)+' turns':title;
   caption(hint,9,309,'left',p===3&&$('cue').selectedIndex!==2?'#ffd291':'#fff4d8',11);
   if(p===4)tensionLight(ctx,g.tension());
  }
- batteryBadge(ctx,385,2);
+ const battery=$('simBattery').value;
+ $('lcdPower').textContent='SIM '+(/^\d/.test(battery)?(battery.endsWith('+')?'⚡':'')+parseInt(battery)+'%':battery);
  if(title!==lastLabel){$('message').textContent=title;lastLabel=title}
  $('sub').textContent=[rigNotes[g.technique()],'Let it settle.',g.technique()===0?'A twitch is a nibble. Strike on a full dive.':(g.strokes()+1)+' / '+g.strokesNeeded()+' · '+rigNotes[g.technique()], $('cue').selectedIndex===2?'Listen for the bite.':'Set the hook before the float resurfaces.',g.remaining().toFixed(1)+' turns left · line tension',g.award()?'Discovery reward · +1 tackle point':g.fresh()?'New field book entry!':g.recordBest()?'New personal best!':'Field book updated.','Try another cast.'][p];
- $('count').textContent=g.catches();$('act').textContent=(p===4||(p===2&&g.technique()===1)?'Reel ¼ turn':p===2&&g.technique()===2?'Jig':p>=2&&p<=3?'Lift':'Cast');$('tension').hidden=p!==4;$('tension').value=g.tension();dial.style.setProperty('--angle',dialAngle+'deg');
+ $('act').textContent=(p===4||(p===2&&g.technique()===1)?'Reel ¼ turn':p===2&&g.technique()===2?'Jig':p>=2&&p<=3?'Lift':'Cast');$('tension').hidden=p!==4;$('tension').value=g.tension();dial.style.setProperty('--angle',dialAngle+'deg');
 }
-let currentSlot=0;function frame(now){let dt=Math.min(80,Math.max(0,Math.round(now-prev)));prev=now;if(powered&&!document.hidden&&!menu.open){if([0,5,6].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();}elapsed+=dt;let step=held?dt*.001:0;dialAngle+=step*360;let old=g.state();if([0,5,6].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(hapticFocus&&rumbleLevel.selectedIndex)phonePulse(g.rumbleEvent(now>>>0,1));gestureCast=gestureLift=false;if(old!==5&&g.state()===5){if(crewOn&&crew)crewScore++;save();refresh()}action=false;turns=0;draw()}requestAnimationFrame(frame)}
+let currentSlot=0;function frame(now){let dt=Math.min(80,Math.max(0,Math.round(now-prev)));prev=now;if(powered&&!document.hidden&&!menu.open){if([0,5,6].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();}elapsed+=dt;let step=held?dt*.001:0;dialAngle+=step*360;let old=g.state();if([0,5,6].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);
+ if(typeof navigator.vibrate!=='function'&&audio?.state==='running'&&[4,5,6].includes(pulse))previewRhythm(pulse,false);}gestureCast=gestureLift=false;if(old!==5&&g.state()===5){if(crewOn&&crew)crewScore++;save();refresh()}action=false;turns=0;draw()}else if(powered&&!document.hidden&&menu.open){elapsed+=dt;draw()}requestAnimationFrame(frame)}
 Promise.all([WebAssembly.instantiate(bytes,{env:{memset:(p,v,n)=>{new Uint8Array(g.memory.buffer,p,n).fill(v);return p},acosf:Math.acos,atan2f:Math.atan2,sinf:Math.sin,lroundf:x=>Math.sign(x)*Math.round(Math.abs(x))}}),sceneryModule,fishSheet.decode()]).then(([mod,visual])=>{sceneryEngine=visual.instance.exports;g=mod.instance.exports;g.initialize(Date.now()>>>0);restore();currentSlot=slot();g.place(placeId,currentSlot);refresh();settings();$('act').disabled=false;prev=performance.now();requestAnimationFrame(frame)}).catch(e=>{$('message').textContent='Could not start Thai Waters: '+e.message});
 @@DEVICE_UI@@
+@@LCD_PICKER@@
+@@MOBILE_DISPLAY@@
+explainRumble();
 
 
 </script></html>

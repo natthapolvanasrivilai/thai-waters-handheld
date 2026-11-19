@@ -62,7 +62,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   await pg.locator('#resume').click();assert.equal(await pg.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   // Use normal touch controls for a complete active presentation of each lure.
   for(const [name,rig] of [['Stop-and-go spoon',1],['Vertical jig',2]]){
-   await pg.locator('#rigAccess').click();await pg.selectOption('#technique',{label:name});await pg.locator('#resume').click();
+   await menu('rod');await pg.selectOption('#technique',{label:name});await pg.locator('#resume').click();
    await pg.locator('#act').click();await pg.waitForFunction(()=>g.state()===2);
    const needed=await pg.evaluate(()=>g.strokesNeeded());
    for(let i=0;i<needed;i++){

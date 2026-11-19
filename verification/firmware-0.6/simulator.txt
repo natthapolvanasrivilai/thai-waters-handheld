@@ -1,0 +1,15 @@
+
+> thai-waters-simulator-tests@0.3.0 test
+> node detents.cjs && node scenery.cjs && node gameplay.cjs && node device.cjs && node rumble.cjs && node mobile-input.cjs && node lcd.cjs && node mobile-audio.cjs
+
+PASS real WASM detents: CW/CCW, wrapped samples, pause, magnet dropout, click PCM, independent mute and silent synthetic winding.
+468 unique scenes. Each time period has 117 distinct paint layouts after stripping color and downsampling to 24 x 16.
+PASS location, catch, collection, mobile motion and distinct loaded-rod visuals for prawn, ray and runner.
+bounds { x: 49, y: 100.796875, width: 982, height: 530.796875 }
+PASS LCD tap casts. Right-side crank reads 1.00 turn clockwise and -1.00 counterclockwise.
+PASS top-left power key, paused simulator and battery status modes.
+errors []
+PASS phone haptic patterns, enabled level persistence, silent Off, menu cancellation, visual fallback and live hooked ray.
+PASS motion denial recovery, orientation fallback, automatic neutral and rotation recentering, gesture casts, pitch/roll isolation, wrist clutch half turns without return/paused/rotation credit, flat center hold and two real touch crank revolutions.
+PASS all six routes inside the projected LCD, in-screen setting selection and phone landscape/portrait transitions.
+PASS Chromium mobile profile: journal font, speaker WAV, Safari haptic controls; running graph, PCM, music buffers and interruption recovery.

@@ -5,3 +5,5 @@ The populated display model and board examples derive from Waveshare ESP32-S3-To
 
 Waveshare board source: https://github.com/waveshareteam/ESP32-S3-Touch-LCD-3.5B
 Adafruit angle sensor: https://www.adafruit.com/product/6357
+
+Atkinson Hyperlegible Next supplies the web and LCD lettering. Its bundled source font and license are in game/assets/fonts. The firmware stores small raster subsets generated from that same file.

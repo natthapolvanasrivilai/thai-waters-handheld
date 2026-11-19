@@ -1,6 +1,6 @@
 #pragma once
 #include "Creek.h"
-enum class Pulse {None,Tease,Bite,Pull,Pick,Bottom,Dash,Stop,PickSample};
+enum class Pulse {None,Tease,Bite,Pull,Pick,Bottom,Dash,Stop,PickSample,Detent};
 struct RumblePlan {
  uint32_t lastPull=0;
  Pulse previous=Pulse::None;

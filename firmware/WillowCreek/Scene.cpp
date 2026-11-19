@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "LcdGlyphs.h"
 #include "RodFeedback.h"
 #include "Connected.h"
 #include "Landscape.h"
@@ -27,8 +28,42 @@ void landscape(int place,int time){
     fb[dest]=fb[dest+1]=fb[dest+320]=fb[dest+321]=color;
   }
 }
-void label(int x,int y,const char* s,int col=white,int size=2){
-  screen.setTextSize(size);screen.setTextColor(col);screen.setCursor(x,y);screen.print(s);
+const lcdtype::Face& fontFace(int size){
+  return size>=3?lcdtype::title:size==2?lcdtype::body:lcdtype::caption;
+}
+const lcdtype::Glyph& glyph(const lcdtype::Face& face,unsigned char c){
+  return face.glyphs[(c>=32 && c<=126?c:'?')-32];
+}
+int textWidth(const char* text,int size){
+  const auto& face=fontFace(size);int width=0;
+  for(;*text;++text)width+=glyph(face,*text).advance;
+  return width;
+}
+uint16_t blendText(uint16_t bg,uint16_t fg,unsigned alpha){
+  if(alpha==3)return fg;
+  const unsigned back=3-alpha;
+  unsigned r=((bg>>11)*back+(fg>>11)*alpha+1)/3;
+  unsigned g=(((bg>>5)&63)*back+((fg>>5)&63)*alpha+1)/3;
+  unsigned b=((bg&31)*back+(fg&31)*alpha+1)/3;
+  return uint16_t((r<<11)|(g<<5)|b);
+}
+void label(int x,int y,const char* text,int color=white,int size=2,int right=480){
+  const auto& face=fontFace(size);auto fb=screen.getFramebuffer();
+  for(;*text;++text){
+    const auto& g=glyph(face,*text);
+    if(x+g.advance>right)break;
+    for(int j=0;j<g.h;++j){
+      int py=y+g.top+j;if(py<0||py>=320)continue;
+      for(int i=0;i<g.w;++i){
+        const int px=x+g.left+i;
+        if(px<0||px>=right||px>=480)continue;
+        const int n=j*g.w+i;
+        const unsigned coverage=(face.pixels[g.offset+n/4]>>(6-2*(n%4)))&3;
+        if(coverage){auto& dst=fb[px*320+319-py];dst=blendText(dst,color,coverage);}
+      }
+    }
+    x+=g.advance;
+  }
 }
 void fish(int x,int y,float k,int kind){
   for(int row=0;row<25;row++){
@@ -65,18 +100,40 @@ void top(const View& v){
   char t[50];snprintf(t,sizeof(t),"%s  %s",creek::times[v.game.timeSlot],pondClock());
   label(229,12,strstr(t,"needs sync")?"Clock needs sync":t,green,1);batteryIcon(332,11,v.battery);label(404,9,"MENU",gold);
 }
+void menuText(int x,int y,const char* text,int color=white,int size=2,int width=0){
+  int available=width?width:menuui::w-x-8;
+  if(size==2 && textWidth(text,size)>available)size=1;
+  label(menuui::x+x,menuui::y+y,text,color,size,menuui::x+x+available);
+}
+void menuHeader(const char* title,const char* action="BACK"){
+  auto fb=screen.getFramebuffer();
+  // RGB565 channel-aligned arithmetic. Retain one quarter of the actual scene.
+  for(int x=0;x<menuui::w;x++)for(int y=0;y<menuui::h;y++){
+    int dx=std::min(x,menuui::w-1-x),dy=std::min(y,menuui::h-1-y);
+    if(dx<6&&dy<6&&(6-dx)*(6-dx)+(6-dy)*(6-dy)>36)continue;
+    auto& pixel=fb[(menuui::x+x)*320+319-(menuui::y+y)];
+    pixel=((pixel&0xe79c)>>2)+((ink&0xf7de)>>1)+((ink&0xe79c)>>2);
+  }
+  screen.drawRoundRect(menuui::x,menuui::y,menuui::w,menuui::h,7,0x6bf0);
+  menuText(12,10,title,paper);
+  menuText(menuui::w-58,12,action,gold,1);
+  screen.drawFastHLine(menuui::x+8,menuui::y+menuui::header-1,menuui::w-16,0x526d);
+}
+void menuRow(int y,int height,const char* name,const char* value){
+  menuText(12,y+(height-14)/2,name,white,2,204);
+  menuText(220,y+(height-14)/2,value,gold,2,164);
+  screen.drawFastHLine(menuui::x+10,menuui::y+y+height-1,menuui::w-20,0x426a);
+}
 void options(const View& v){
   const char* music[]={"Adaptive","Drift","Melody","Off"};
   const char* volume[]={"Off","Low","Medium","High"};
   const char* cues[]={"Light + tone","Light","Tone"};
-  const char* rows[]={"Music","Music volume","Bite cue","Cue volume","Reel direction","Controls","Rod calibration"};
+  const char* rows[]={"Music","Music volume","Bite cue","Cue volume","Reel direction","Controls","Rod calibration","Reel click"};
   const char* vals[]={music[v.sound.music],volume[v.sound.volume],cues[v.sound.cue],volume[v.sound.cueVolume],
-    v.sound.reverse?"Reversed":"Forward",v.practice?"Touch practice":"Motion + knob","Set two poses"};
-  screen.fillScreen(ink);label(14,12,"SOUND + CONTROLS",paper);label(397,12,"DONE",gold);
-  for(int i=0;i<7;i++){
-    int y=42+37*i;screen.drawFastHLine(14,y,450,0x428c);label(15,y+10,rows[i],white);label(258,y+10,vals[i],green);
-  }
-  label(14,305,v.audio?"Tap a row to change it.":"Audio unavailable - check codec.",gold,1);
+    v.sound.reverse?"Reversed":"Forward",v.practice?"Touch practice":"Motion + knob","Set two poses",volume[v.sound.reelVolume]};
+  menuHeader("SOUND + CONTROLS");
+  for(int i=0;i<8;i++)menuRow(menuui::header+i*menuui::optionRow,menuui::optionRow,rows[i],vals[i]);
+  if(!v.audio)menuText(12,259,"Audio unavailable - check codec.",gold,1);
 }
 void calibration(const View& v){
   bool rest=v.page==Page::Rest;
@@ -118,7 +175,7 @@ void play(const View& v){
       for(int x=2;x<478;x++)memcpy(fb+x*320+316-y,background+(x+shift)*320+316-y,8);
     }
   }
-  top(v);
+  if(v.page==Page::Play)top(v);
   int bobX=312+int(7*std::sin(v.time*.0015f));
   int bobY=184+int(2*std::sin(v.time*.005f));
   if(g.phase==Phase::Flight){float t=creek::limit(g.age/650.f,0,1);bobX=100+int(212*t);bobY=106+int(78*t-216*t*(1-t));}
@@ -139,7 +196,7 @@ void play(const View& v){
     int x=(n*83+int(v.time/(80+n*4)))%472,y=169+(n*19)%78;
     if(std::sin(v.time*.0015f+n)>.15)screen.drawFastHLine(x,y,3+n%7,screen.getFramebuffer()[x*320+319-(y-2)]);
   }
-  if(eventActive())label(14,40,eventStatus(),white,1);
+  if(v.page==Page::Play && eventActive())label(14,40,eventStatus(),white,1);
   constexpr int rodColors[]={0x7390,0xb344,0x34f6};
   for(int section=1;section<=5;section++){
     float t=section*.2f,flex=load*t*t*t;
@@ -158,6 +215,7 @@ void play(const View& v){
     else {bool jig=g.rig==creek::Technique::Jig;screen.fillRect(bobX-2,bobY-3,jig?4:10,jig?9:4,white);screen.fillRect(bobX-2,bobY-3,4,3,gold);}
     screen.drawFastHLine(bobX-11,bobY+4,23,paper);}
   }
+  if(v.page!=Page::Play)return;
   const char* head="Raise the rod";const char* sub="Then sweep forward to your playing position.";
   char desc[64];int col=white;
   switch(g.phase){
@@ -193,9 +251,9 @@ void play(const View& v){
     snprintf(desc,sizeof(desc),"%s  /  %d cm  /  %s",creek::ranks[f.tier],g.length,mass);
     int w=std::max(strlen(f.name)*12,strlen(desc)*6)+16;
     screen.fillRoundRect((480-w)/2,192,w,37,4,ink);
-    label((480-strlen(f.name)*12)/2,197,f.name,white);
-    label((480-strlen(desc)*6)/2,216,desc,gold,1);
-    screen.fillRoundRect(7,287,strlen(f.lore)*6+12,16,3,ink);label(13,291,f.lore,paper,1);
+    label((480-textWidth(f.name,2))/2,197,f.name,white);
+    label((480-textWidth(desc,1))/2,216,desc,gold,1);
+    screen.fillRoundRect(7,287,textWidth(f.lore,1)+12,16,3,ink);label(13,291,f.lore,paper,1);
     if(t>=1)label(14,306,g.pointsAwarded?"Collection +1 tackle point":"Catch recorded",white,1);
     return;}
   case Phase::Lost:
@@ -208,7 +266,7 @@ void play(const View& v){
   char hint[96];snprintf(hint,sizeof(hint),"%s",head);
   if(g.phase==Phase::Fight)snprintf(hint,sizeof(hint),"%s  %.1f turns",head,g.line);
   if(!v.practice&&(!v.motion||v.field!=Field::Good))snprintf(hint,sizeof(hint),"%s",head);
-  int width=12+strlen(hint)*6;
+  int width=12+textWidth(hint,1);
   screen.fillRoundRect(7,296,width,17,3,ink);label(13,301,hint,col,1);
   if(g.phase==Phase::Fight)tensionLight(g.heat);
 }
@@ -223,59 +281,69 @@ using namespace creek;
 void bar(const char* title){
  screen.fillScreen(ink);label(12,11,title,paper);label(400,11,"BACK",gold);screen.drawFastHLine(10,36,460,green);
 }
-void row(int y,const char* title,const char* value){
- label(14,y,title,white);label(278,y,value,gold);screen.drawFastHLine(12,y+22,452,0x428c);
-}
 void hub(const View& v){
- bar("THAI WATERS");
- const char* a[]={"Fishing spots","Fish collection","Rod workshop","Bench test","Sound + controls","Touch practice"};
- const char* b[]={sites[v.game.site].water,"Collection",chapters[v.game.progress.chapter()],"Live readings","Settings",v.practice?"On":"Off"};
- for(int i=0;i<6;i++)row(53+i*41,a[i],b[i]);
- label(14,295,"Wi-Fi + clock",white);label(278,295,"Updates",gold);
+ menuHeader("THAI WATERS","RESUME");
+ const char* names[]={"Fishing spots","Fish collection","Rod workshop","Bench test","Sound + controls","Touch practice","Wi-Fi + clock"};
+ const char* values[]={sites[v.game.site].water,"Collection",chapters[v.game.progress.chapter()],"Live readings","Settings",v.practice?"On":"Off","Updates"};
+ for(int i=0;i<7;i++)menuRow(menuui::header+i*menuui::hubRow,menuui::hubRow,names[i],values[i]);
 }
 void waters(const View& v){
- bar("FISHING SPOTS");
+ menuHeader("FISHING SPOTS");
  for(int i=0;i<4;i++){
-   int id=v.spotPage*4+i;if(id>=destinationCount)break;int y=49+42*i;
-   const auto& spot=destinations[id];label(16,y,spot.name,id==v.pendingSite?gold:white,strlen(spot.name)>33?1:2);
-   char first[76]{};size_t split=std::min<size_t>(74,strlen(spot.story));
+   int id=v.spotPage*4+i;if(id>=destinationCount)break;
+   int y=menuui::header+menuui::waterRow*i;
+   const auto& spot=destinations[id];
+   if(id==v.pendingSite)screen.fillRect(menuui::x+4,menuui::y+y+3,3,menuui::waterRow-5,gold);
+   menuText(12,y+2,spot.name,id==v.pendingSite?gold:white);
+   constexpr int columns=(menuui::w-24)/6;
+   char first[columns+1]{};size_t split=std::min<size_t>(columns,strlen(spot.story));
    if(spot.story[split])while(split&&spot.story[split]!=' ')--split;
-   memcpy(first,spot.story,split);label(16,y+16,first,green,1);
-   if(spot.story[split])label(16,y+26,spot.story+split+1,green,1);
+   memcpy(first,spot.story,split);menuText(12,y+17,first,paper,1);
+   if(spot.story[split])menuText(12,y+25,spot.story+split+1,paper,1);
  }
- for(int i=0;i<5;i++)label(i*96+9,230,i==4?"Live":times[i],i==v.pendingTime?gold:white);
- label(15,285,"< PREV",gold);screen.fillRoundRect(110,272,254,39,5,0x336b);label(176,285,"FISH HERE",white);label(390,285,"NEXT >",gold);
+ for(int i=0;i<5;i++){
+   int left=i*menuui::w/5;
+   if(i==v.pendingTime)screen.drawRect(menuui::x+left+4,menuui::y+menuui::periodY,menuui::w/5-8,29,gold);
+   menuText(left+10,menuui::periodY+10,i==4?"Live":times[i],i==v.pendingTime?gold:white,1);
+ }
+ menuText(12,menuui::travelY+12,"< PREV",gold,1);
+ screen.fillRoundRect(menuui::x+menuui::w/4,menuui::y+menuui::travelY,menuui::w/2,32,5,0x336b);
+ menuText(140,menuui::travelY+8,"FISH HERE");menuText(340,menuui::travelY+12,"NEXT >",gold,1);
 }
 void book(const View& v){
  const auto& journal=v.game.progress.book;int site=v.bookPage/2,start=(v.bookPage%2)*6;char buf[85];
- bar("FISH COLLECTION");snprintf(buf,sizeof(buf),"%s   %d/%d",sites[site].name,journal.discovered(),fishCount);label(14,48,buf,gold);
+ menuHeader("FISH COLLECTION");snprintf(buf,sizeof(buf),"%s   %d/%d",sites[site].name,journal.discovered(),fishCount);menuText(12,38,buf,gold,1);
  for(int k=start;k<std::min(start+6,stockSize(site));k++){
-   int id=stockId(site,k);const auto& e=journal.entries[id];int y=75+33*(k-start);
-   label(14,y,catalog[id].name,e.count?white:green);
+   int id=stockId(site,k);const auto& e=journal.entries[id];int y=56+29*(k-start);
+   menuText(12,y,catalog[id].name,e.count?white:green);
    if(e.count)snprintf(buf,sizeof(buf),"%s | %lu caught | best %u cm",ranks[catalog[id].tier],(unsigned long)e.count,(unsigned)e.best);
-   else snprintf(buf,sizeof(buf),"%s | %s",ranks[catalog[id].tier],id==prawn?"Dusk ferry piles - lift quickly":id==ray?"Night sandbars - ease off on long runs":times[id%4]);label(14,y+17,buf,paper,1);
+   else snprintf(buf,sizeof(buf),"%s | %s",ranks[catalog[id].tier],id==prawn?"Dusk ferry piles - lift quickly":id==ray?"Night sandbars - ease off on long runs":times[id%4]);
+   menuText(12,y+16,buf,paper,1);
  }
- label(16,288,"< PREV",gold);snprintf(buf,sizeof(buf),"%d / 10",v.bookPage+1);label(205,288,buf);label(372,288,"NEXT >",gold);
+ menuText(12,menuui::bookNav+12,"< PREV",gold,1);snprintf(buf,sizeof(buf),"%d / 10",v.bookPage+1);menuText(170,menuui::bookNav+10,buf);menuText(340,menuui::bookNav+12,"NEXT >",gold,1);
 }
 void network(){
- bar("WI-FI + CLOCK");label(14,48,networkStatus(),white,1);label(14,68,updateStatus(),green,1);
- label(14,90,setupName(),gold);label(14,115,setupCode(),paper,1);label(14,132,pondClock(),white);
- row(167,"Phone setup","Start");row(212,"Online update","Check");row(257,"Wi-Fi radio",radioEnabled()?"On":"Off");
- label(14,289,"Shared event",white);label(176,292,eventStatus(),green,1);
+ menuHeader("WI-FI + CLOCK");menuText(12,38,networkStatus(),white,1);menuText(12,53,updateStatus(),green,1);
+ menuText(12,72,setupName(),gold);menuText(12,94,setupCode(),paper,1);menuText(12,111,pondClock());
+ menuRow(138,31,"Phone setup","Start");menuRow(169,31,"Online update","Check");
+ menuRow(200,31,"Wi-Fi radio",radioEnabled()?"On":"Off");menuRow(231,31,"Shared event",eventActive()?"Joined":"Join");
+ menuText(12,263,eventStatus(),green,1);
 }
 void journey(const View& v){
- const auto& p=v.game.progress;char buf[72];bar("ROD WORKSHOP");
- snprintf(buf,sizeof(buf),"%s  |  %d points",chapters[p.chapter()],p.points());label(14,49,buf,gold);
- screen.fillRoundRect(12,62,290,22,3,0x22c9);
- snprintf(buf,sizeof(buf),"Technique:  %s  >",techniques[int(v.game.rig)]);label(18,69,buf,white,1);
- label(14,89,story[p.chapter()],white,1);
+ const auto& p=v.game.progress;char buf[80];menuHeader("ROD WORKSHOP");
+ snprintf(buf,sizeof(buf),"%s  |  %d points",chapters[p.chapter()],p.points());menuText(12,37,buf,gold,1);
+ snprintf(buf,sizeof(buf),"Technique   %s  >",techniques[int(v.game.rig)]);
+ menuText(12,menuui::rigY+4,buf,white);
+ menuText(12,80,story[p.chapter()],green,1);
  const char* units[]={"+150 ms per rank","+12% retrieval per rank","-10% tension gain per rank"};
  for(int i=0;i<3;i++){
-   int y=104+48*i;label(16,y,paths[i]);snprintf(buf,sizeof(buf),"Rank %d/3",p.rank[i]);label(293,y,buf,green);
-   snprintf(buf,sizeof(buf),"%s   /   next cost %d",units[i],p.rank[i]+1);label(16,y+20,p.rank[i]==3?"Maximum rank":buf,paper,1);
+   int y=menuui::upgradeY+i*menuui::upgradeRow;
+   menuText(12,y+3,paths[i]);snprintf(buf,sizeof(buf),"Rank %d/3",p.rank[i]);menuText(272,y+3,buf,green);
+   snprintf(buf,sizeof(buf),"%s / next cost %d",units[i],p.rank[i]+1);menuText(12,y+20,p.rank[i]==3?"Maximum rank":buf,paper,1);
  }
- label(14,252,"ROD FINISH",green,1);label(14,267,finishes[v.rodFinish],white);label(252,264,v.refundConfirm?"Confirm refund":"Refund points",gold);
- label(14,298,v.notice,green,1);
+ menuText(12,menuui::finishY,"ROD FINISH",green,1);menuText(12,menuui::finishY+15,finishes[v.rodFinish],white);
+ menuText(210,menuui::finishY+15,v.refundConfirm?"Confirm refund":"Refund points",gold);
+ menuText(12,251,v.notice,green,1);
 }
 void bench(const View& v){
  bar("BENCH TEST");batteryIcon(321,15,v.battery);char b[90];
@@ -290,14 +358,28 @@ void bench(const View& v){
  snprintf(b,sizeof(b),"Rumble %d/3",v.rumble);label(12,246,b,gold);label(177,246,"Tease",white);label(286,246,"Bite",white);label(387,246,"Pull",white);
  label(12,279,"Prawn pick",green);label(170,279,"Bottom hold",green);label(333,279,"Fast run",green);
  label(12,304,v.driver?"DRV2605L detected":"No DRV2605L detected",green,1);
- label(183,304,v.audio?"Tap a level to cycle":"Inspect codec / speaker",paper,1);
+ label(290,304,"TEST TOUCH GRID >",gold,1);
+}
+void touchCheck(const View& v){
+ screen.fillScreen(ink);
+ label(119,63,"Touch panel test",white,2);
+ char status[64];snprintf(status,sizeof(status),"%u/9   Last contact %d, %d",unsigned(v.touchStep),v.lastTouchX,v.lastTouchY);
+ label(130,94,status,paper,1);
+ label(110,117,v.touchStep==9?"PASS - all nine targets reached":"Tap the gold cross, then lift.",gold,1);
+ for(int i=0;i<9;i++){
+   const int x=touchColumn[i%3],y=touchRow[i/3],col=i<v.touchStep?green:i==v.touchStep?gold:0x52aa;
+   screen.drawRect(x-12,y-12,25,25,col);screen.drawLine(x-6,y,x+6,y,col);screen.drawLine(x,y-6,x,y+6,col);
+ }
+ screen.drawRect(52,284,101,31,paper);label(68,294,"BACK",paper,1);
 }
 }
 void paint(const View& v){
  if(!screenOK)return;
+ if(menuui::overlay(v.page))play(v);
  switch(v.page){
  case Page::Play:play(v);break;case Page::Hub:hub(v);break;case Page::Waters:waters(v);break;
  case Page::Book:book(v);break;case Page::Journey:journey(v);break;case Page::Bench:bench(v);break;
+ case Page::TouchCheck:touchCheck(v);break;
  case Page::Network:network();break;case Page::Options:options(v);break;default:calibration(v);break;
  }
  if(v.saveFailed){screen.fillRect(0,302,480,18,ink);label(12,305,"Journal save failed - keep power on and check storage.",red,1);}

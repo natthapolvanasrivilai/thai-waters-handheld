@@ -71,7 +71,7 @@ void sampleUSB(){
 }
 void usb(String line){
  if(line=="api1 sample"){sampleUSB();return;}
- if(line=="api1 caps"){Serial.println("{\"api\":1,\"minor\":0,\"board\":\"riffle-e-31137\",\"fw\":5,\"inputs\":[\"accel_raw\",\"gyro_raw\",\"reel_counts\"],\"stream_hz\":10}");return;}
+ if(line=="api1 caps"){Serial.println("{\"api\":1,\"minor\":0,\"board\":\"riffle-e-31137\",\"fw\":6,\"inputs\":[\"accel_raw\",\"gyro_raw\",\"reel_counts\"],\"stream_hz\":10}");return;}
  bool ok=false;
  if(line=="api1 gyro on"||line=="api1 gyro off")ok=hardware::gyroPower(line.endsWith(" on"));
  else if(line=="api1 stream on"||line=="api1 stream off"){streaming=line.endsWith(" on");ok=true;}

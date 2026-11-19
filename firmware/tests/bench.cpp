@@ -2,6 +2,7 @@
 #include "../WillowCreek/RodFeedback.h"
 #include "../WillowCreek/Synth.h"
 #include "../WillowCreek/Rumble.h"
+#include "../WillowCreek/ReelDetents.h"
 #include "../WillowCreek/Destinations.h"
 using namespace creek;
 static Game g;
@@ -10,9 +11,11 @@ static SoundSettings s;
 static int16_t stereo[512];
 static bool cuePending=false;
 static RumblePlan tactile;
+static ReelDetents detents;
+static int crossedTeeth=0,clickPending=0;
 #define EXPORT __attribute__((visibility("default")))
 extern "C" {
-EXPORT void initialize(unsigned seed){g=Game{};g.seed=seed;synth.begin();}
+EXPORT void initialize(unsigned seed){g=Game{};g.seed=seed;synth.begin();detents=ReelDetents{};crossedTeeth=clickPending=0;}
 EXPORT void advance(unsigned dt,int cast,int lift,float turns){
  auto before=g.phase;g.tick(dt,cast,lift,turns);
  if(before!=g.phase && g.phase==Phase::Bite && s.cue!=1)cuePending=true;
@@ -42,7 +45,8 @@ EXPORT int strokes(){return g.strokes;}
 EXPORT int strokesNeeded(){return g.strokesNeeded;}
 EXPORT float lureTravel(){return g.lureTurns;}
 EXPORT void config(int mode,int volume,int cue,int fx){s.music=mode;s.volume=volume;s.cue=cue;s.cueVolume=fx;}
-EXPORT int16_t* samples(){synth.render(stereo,256,s,g.phase==Phase::Fight,cuePending);cuePending=false;return stereo;}
+EXPORT void reelVolume(int level){if(level>=0&&level<=3)s.reelVolume=level;}
+EXPORT int16_t* samples(){synth.render(stereo,256,s,g.phase==Phase::Fight,cuePending,clickPending);cuePending=false;clickPending=0;return stereo;}
 
 EXPORT int caught(int i){return g.progress.book.entries[i].count;}
 EXPORT int best(int i){return g.progress.book.entries[i].best;}
@@ -65,9 +69,24 @@ EXPORT float angle(float x,float y,float z){return calibrated?pose.tilt(unit({x,
 EXPORT int gesture(float deg,unsigned now){if(!calibrated)return 0;motion.sample(deg,pose.span(),now);g.rodHeldHigh=motion.high;return motion.cast?1:motion.rise?2:0;}
 EXPORT void resetGesture(){motion=Gesture{};g.rodHeldHigh=false;}
 EXPORT void travel(int i){if(i>=0 && i<siteCount){g.site=i;s.site=i;g.enter(Phase::Ready);cuePending=false;}}
-static Wheel phoneDial; EXPORT float dialSample(int raw,unsigned now){return phoneDial.read(raw,raw>=0 && raw<=4095,now,false);} EXPORT void dialReset(){phoneDial=Wheel{};}
+static Wheel phoneDial;
+EXPORT void resetDetents(){detents=ReelDetents{};crossedTeeth=clickPending=0;}
+EXPORT float dialSample(int raw,unsigned now){
+ bool good=raw>=0 && raw<=4095;
+ float turns=phoneDial.read(raw,good,now,false);
+ if(good)crossedTeeth+=detents.measure(turns);else resetDetents();
+ return turns;
+}
+EXPORT void dialReset(){phoneDial=Wheel{};}
 EXPORT int teasing(){return g.teasing();}
-EXPORT int rumbleEvent(unsigned now,int active){return int(tactile.tick(g,now,active));}
+EXPORT int rumbleEvent(unsigned now,int active){
+ Pulse fish=tactile.tick(g,now,active);
+ if(!active){resetDetents();return int(Pulse::None);}
+ int click=detents.feedback(crossedTeeth,fish,now);crossedTeeth=0;
+ if(fish!=Pulse::None)clickPending=0;
+ if(click){clickPending=click;return int(Pulse::Detent);}
+ return int(fish);
+}
 EXPORT int award(){return g.pointsAwarded;}
 EXPORT int fresh(){return g.newEntry;}
 EXPORT int recordBest(){return g.personalBest;}

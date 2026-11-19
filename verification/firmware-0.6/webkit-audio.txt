@@ -1,0 +1,1 @@
+PASS WebKit mobile profile: journal font, speaker WAV, Safari haptic controls; host engine has no Web Audio backend; physical output untested.

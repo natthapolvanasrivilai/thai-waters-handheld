@@ -18,6 +18,11 @@ void stopRumble(){if(online)online=put(0x0c,0);}
 bool driveRumble(Pulse p,uint8_t level,float tension){
  if(p==Pulse::Stop){stopRumble();return online;}
  if(!online || !level || level>3 || p==Pulse::None)return online;
+ if(p==Pulse::Detent){
+   constexpr uint8_t tooth[]={9,8,7}; // Single soft bump, separate from the animal motifs.
+   online=put(0x0c,0)&&put(4,tooth[level-1])&&put(5,0)&&put(0x0c,1);
+   return online;
+ }
  // DRV2605L ROM, library 1. All motifs are finite and use the internal trigger.
  static constexpr uint8_t effects[][3]={
    {63,62,61}, {29,28,27}, {51,50,49},
