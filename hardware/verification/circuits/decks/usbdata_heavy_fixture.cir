@@ -1,0 +1,17 @@
+Thai Waters Rev F | usbdata_heavy_fixture
+* 45 ohm lines, 5 ns delay; assumed 23 ohm transceiver plus R18/R19=22 ohm; 100 pF load/leg.
+* Model: One complementary driven bit edge, ideal lossless cable and aggregate load. Excludes stubs, ESD nonlinearity, layout, jitter, USB attach and eye mask.
+Vp p 0 DC 0 PULSE(0 3.3 20n 7n 7n 82n 200n)
+Vn n 0 DC 3.3 PULSE(3.3 0 20n 7n 7n 82n 200n)
+Rp p ps 45
+Rn n ns 45
+Tp ps 0 dp 0 Z0=45 TD=5n
+Tn ns 0 dm 0 Z0=45 TD=5n
+Cp dp 0 100p
+Cn dm 0 100p
+Rdp dp 0 15k
+Rdm dm 0 15k
+Ediff diff 0 dp dm 1
+.TRAN .25n 100n 0 .25n
+.PRINT TRAN V(dp) V(diff)
+.END

@@ -1,0 +1,10 @@
+Thai Waters Rev F | thermal_sealed_stress
+* 0.55 W heat source, 85 K/W path and 40 C ambient.
+* Model: Electrothermal analogy 1 V = 1 C, 1 A = 1 W. Aggregate heat and thermal resistance are assumed; result is a hot-node sensitivity only.
+Vamb amb 0 40
+Rth hot amb 85
+Cth hot 0 8
+Iheat 0 hot PULSE(0 0.55 1 1 1 18000 36000)
+.TRAN 12 7200 0 10
+.PRINT TRAN V(hot)
+.END

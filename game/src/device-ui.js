@@ -58,9 +58,9 @@ function paintLCD(c){
 function loadDevice(){
 vm.disabled=true;
 makeThaiHandheld(product,JSON.parse($('deviceParts').textContent),{
- wheel:()=>dialAngle*Math.PI/180,paint:paintLCD,
+ wheel:()=>shownWheel*Math.PI/180,paint:paintLCD,
  lcdTransform:(...m)=>{if(lcdUI.parentElement===product)lcdMatrix(...m);},
- screen:(x,y)=>{if(!powered)return;if(g?.state()===5&&x>=.8625&&y>=.125&&y<=.254)openCatchRecord();else if(x>.82&&y<.125)$('openMenu').click();else if(!menu.open)tap();},
+ screen:(x,y)=>{if(!powered)return;if(g?.state()===5&&x>=.8625&&y>=.125&&y<=.254)openCatchRecord();else if(x>.82&&y<.125)$('openMenu').click();else if(!menu.open)scenePress(x,y);},
  beginWheel:a=>{if(!powered)return;unlock();if(!g)return;startPointerWheel(a);},
  power:()=>setPower(!powered),
  wind:(a,d)=>{if(!powered||!g||menu.open)return;dialAngle+=d*180/Math.PI;turns+=samplePointerWheel(a);}

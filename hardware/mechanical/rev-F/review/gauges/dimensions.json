@@ -1,0 +1,20 @@
+[
+  {
+    "file": "PKCELL-max-body-with-wire-sockets.stl",
+    "dimensions_mm": [
+      35.3,
+      62.3,
+      5.3
+    ],
+    "single_watertight_solid": true
+  },
+  {
+    "file": "Adafruit-258-CAD-with-PCM-and-stubs.stl",
+    "dimensions_mm": [
+      37.0,
+      63.0,
+      6.0
+    ],
+    "single_watertight_solid": true
+  }
+]

@@ -1,0 +1,25 @@
+Driver,Lot of 1,Lot of 100,Lot of 1000,Basis
+Assembly labor USD/h,12,12,12,Engineering budget for burdened Thai pilot labor; replace with CM quote.
+Printer occupancy USD/h,0.75,0.75,0.75,"Wear, maintenance and depreciation budget; excludes electricity and operator."
+Average printer input kW,0.12,0.12,0.12,Planning average; meter at the selected factory.
+Electricity USD/kWh,0.14,0.14,0.14,Tariff planning assumption.
+First-pass recoverable yield,0.9,0.94,0.97,Model conservatively charges a full replacement build for each reject; replace with pilot data.
+Inbound logistics USD/start,8.0,3.0,2.0,Battery-capable freight and customs handling budget. US channel sourcing reference; get Thai landed quotes.
+Core plate hours,3.2068055555555555,3.2068055555555555,3.2068055555555555,"Sliced nine objects, one device per plate."
+Handle plate hours,1.8454722222222222,1.8454722222222222,1.8454722222222222,"Sliced two objects, one handle per plate."
+FX THB per USD,35,35,35,Scenario FX for converting costs and NRE; no spot-rate representation.
+Thai VAT on consumer price,0.07,0.07,0.07,Model input. Confirm seller registration and applicable tax at invoice.
+US payment % gross,0.035,0.035,0.035,DTC fee assumption; actual gateway contract by seller country.
+US payment flat USD,0.3,0.3,0.3,DTC gateway planning assumption.
+US fulfill USD/order,4.5,4.5,4.5,Fulfillment and handling; parcel postage charged separately at cost.
+US acquisition USD/order,12,12,12,Allowable marketing experiment assumption; use realized blended CAC.
+TH payment % gross,0.035,0.035,0.035,Local gateway assumption; apply to VAT-inclusive checkout.
+TH payment flat THB,10,10,10,Gateway fixed cost assumption.
+TH fulfill THB/order,65,65,65,Local fulfillment; customer pays parcel postage at cost.
+TH acquisition THB/order,220,220,220,Test budget per paid order; replace after pilot.
+Returns reserve % net revenue,0.035,0.035,0.035,Returns and warranty cash reserve.
+Support and online reserve USD,1.5,1.5,1.5,"12 months per unit; monitor active sessions, service cost and support contacts."
+Wholesale realization % of US MSRP,0.5,0.5,0.5,Retailer invoice assumption before warranty. No DTC acquisition or gateway fee.
+Wholesale fulfillment USD/unit,2.25,2.25,2.25,Carton allocation and retailer admin; freight terms require quote.
+US export and import reserve USD/good unit,7.5,4.5,4.0,Country-specific freight/brokerage/duty reserve before US fulfillment. Verify HTS and actual incoterms.
+Printer calendar utilization,0.7,0.7,0.7,Share of 24 h × 30 days available for modeled jobs.

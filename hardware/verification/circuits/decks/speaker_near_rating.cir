@@ -1,0 +1,11 @@
+Thai Waters Rev F | speaker_near_rating
+* Differential 3.30 V peak sine at 1 kHz into 6.0 ohms.
+* Model: Voltage envelope applied differentially to J9. A resistive load bounds the nominal sine heating; excludes PA gain, clipping, PWM, resonance and acoustic SPL.
+Vcm cm 0 2.1
+Vone plus cm SIN(0 1.65 1000)
+Vtwo cm minus SIN(0 1.65 1000)
+Rcoil plus minus 6
+Ediff diff 0 plus minus 1
+.TRAN 5u 4m 0 5u
+.PRINT TRAN V(diff)
+.END

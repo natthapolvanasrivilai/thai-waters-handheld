@@ -1,0 +1,11 @@
+Thai Waters Rev F | ts_board_45C
+* TS source set to 50 uA; R29 represented by 4924 ohm.
+* Model: AXP TS divider with 3.3 V source compliance, conceptual linearized saturation. R29 sits on the board; cell temperature is unobservable through the two-wire J7.
+Iexcite 0 ts 50u
+R29 ts 0 4924
+Vdd v 0 3.3
+Dclamp ts v ideal
+.MODEL ideal D(IS=1e-8 N=0.05)
+.TRAN 1u 10u
+.PRINT TRAN V(ts)
+.END

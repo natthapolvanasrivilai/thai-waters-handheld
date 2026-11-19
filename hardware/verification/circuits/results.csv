@@ -1,0 +1,56 @@
+case,family,metric,value,unit,limit_min,limit_max,status,deck,sources
+i2c_encoder_only,Shared I2C,30-70% rise,847.2985,ns,0,300,OUTSIDE,decks/i2c_encoder_only.cir,A1 | A2 | A3 | UM10204 | FW
+i2c_encoder_only,Shared I2C,Static sink demand at 0.4 V,0.29,mA,0,3,WITHIN,decks/i2c_encoder_only.cir,A1 | A2 | A3 | UM10204 | FW
+i2c_encoder_motor,Shared I2C,30-70% rise,423.6446,ns,0,300,OUTSIDE,decks/i2c_encoder_motor.cir,A1 | A2 | A3 | UM10204 | FW
+i2c_encoder_motor,Shared I2C,Static sink demand at 0.4 V,0.58,mA,0,3,WITHIN,decks/i2c_encoder_motor.cir,A1 | A2 | A3 | UM10204 | FW
+i2c_additional_4k7,Shared I2C,30-70% rise,205.2637,ns,0,300,WITHIN,decks/i2c_additional_4k7.cir,A1 | A2 | A3 | UM10204 | FW
+i2c_additional_4k7,Shared I2C,Static sink demand at 0.4 V,1.197021,mA,0,3,WITHIN,decks/i2c_additional_4k7.cir,A1 | A2 | A3 | UM10204 | FW
+i2c_loaded_200pf,Shared I2C,30-70% rise,410.5442,ns,0,300,OUTSIDE,decks/i2c_loaded_200pf.cir,A1 | A2 | A3 | UM10204 | FW
+i2c_loaded_200pf,Shared I2C,Static sink demand at 0.4 V,1.197021,mA,0,3,WITHIN,decks/i2c_loaded_200pf.cir,A1 | A2 | A3 | UM10204 | FW
+i2c_excess_pullups,Shared I2C,30-70% rise,69.45313,ns,0,300,WITHIN,decks/i2c_excess_pullups.cir,A1 | A2 | A3 | UM10204 | FW
+i2c_excess_pullups,Shared I2C,Static sink demand at 0.4 V,3.536585,mA,0,3,OUTSIDE,decks/i2c_excess_pullups.cir,A1 | A2 | A3 | UM10204 | FW
+usb_play_charge,USB power,Minimum PMIC input,4.875,V,3.9,5.5,WITHIN,decks/usb_play_charge.cir,A1 | AXP | USB2 | FW
+usb_play_charge,USB power,Source demand,500.0,mA,0,500,WITHIN,decks/usb_play_charge.cir,A1 | AXP | USB2 | FW
+usb_low_host_lossy,USB power,Minimum PMIC input,4.3275,V,3.9,5.5,WITHIN,decks/usb_low_host_lossy.cir,A1 | AXP | USB2 | FW
+usb_low_host_lossy,USB power,Source demand,650.0,mA,0,500,OUTSIDE,decks/usb_low_host_lossy.cir,A1 | AXP | USB2 | FW
+usb_unconfigured_host,USB power,Minimum PMIC input,4.9175,V,3.9,5.5,WITHIN,decks/usb_unconfigured_host.cir,A1 | AXP | USB2 | FW
+usb_unconfigured_host,USB power,Source demand,330.0,mA,0,100,OUTSIDE,decks/usb_unconfigured_host.cir,A1 | AXP | USB2 | FW
+cc_default,Type-C orientation,CC voltage,0.4173486,V,0.2,0.66,WITHIN,decks/cc_default.cir,A1 | TYPEC
+cc_1p5a,Type-C orientation,CC voltage,0.9409594,V,0.66,1.23,WITHIN,decks/cc_1p5a.cir,A1 | TYPEC
+cc_3a,Type-C orientation,CC voltage,1.688742,V,1.23,2.04,WITHIN,decks/cc_3a.cir,A1 | TYPEC
+cc_cc_open,Type-C orientation,CC voltage,4.999972,V,0.2,0.66,OUTSIDE,decks/cc_cc_open.cir,A1 | TYPEC
+bat_fresh,Protected pack path,Minimum J7 voltage,4.052486,V,3.3,4.23,WITHIN,decks/bat_fresh.cir,A1 | B1 | BOARD
+bat_mid,Protected pack path,Minimum J7 voltage,3.537212,V,3.3,4.23,WITHIN,decks/bat_mid.cir,A1 | B1 | BOARD
+bat_low_aged,Protected pack path,Minimum J7 voltage,3.003474,V,3.3,4.23,OUTSIDE,decks/bat_low_aged.cir,A1 | B1 | BOARD
+rail_typ_assumed,3.3 V regulation,Minimum 3V3 at step,3.219253,V,3,3.6,WITHIN,decks/rail_typ_assumed.cir,A1 | ESP | BOARD
+rail_derated_slow,3.3 V regulation,Minimum 3V3 at step,2.835573,V,3,3.6,OUTSIDE,decks/rail_derated_slow.cir,A1 | ESP | BOARD
+reset_nominal,Reset and touch,Release to 75% of VDD,1.386293,ms,0.05,10,WITHIN,decks/reset_nominal.cir,A1 | ESP | FW
+reset_slow,Reset and touch,Release to 75% of VDD,1.746729,ms,0.05,10,WITHIN,decks/reset_slow.cir,A1 | ESP | FW
+reset_fast,Reset and touch,Release to 75% of VDD,1.053585,ms,0.05,10,WITHIN,decks/reset_fast.cir,A1 | ESP | FW
+key_pressed,Top power key,PMIC PWRON steady,0.03333954,V,0,0.33,WITHIN,decks/key_pressed.cir,A1 | SW1 | FW
+key_released,Top power key,PMIC PWRON steady,3.299989,V,2.97,3.31,WITHIN,decks/key_released.cir,A1 | SW1 | FW
+key_high_contact,Top power key,PMIC PWRON steady,0.7813386,V,0,0.33,OUTSIDE,decks/key_high_contact.cir,A1 | SW1 | FW
+charge_cc_low,Charge control,Cell terminal,3.33,V,0,4.2,WITHIN,decks/charge_cc_low.cir,A1 | AXP | B1 | FW
+charge_cc_low,Charge control,Pack charge current,300.0,mA,0,500,WITHIN,decks/charge_cc_low.cir,A1 | AXP | B1 | FW
+charge_cv_knee,Charge control,Cell terminal,4.1925,V,0,4.2,WITHIN,decks/charge_cv_knee.cir,A1 | AXP | B1 | FW
+charge_cv_knee,Charge control,Pack charge current,75.0,mA,0,500,WITHIN,decks/charge_cv_knee.cir,A1 | AXP | B1 | FW
+charge_taper,Charge control,Cell terminal,4.1995,V,0,4.2,WITHIN,decks/charge_taper.cir,A1 | AXP | B1 | FW
+charge_taper,Charge control,Pack charge current,5.0,mA,0,500,WITHIN,decks/charge_taper.cir,A1 | AXP | B1 | FW
+thermal_vented_assumption,Charger and enclosure heat,Modeled hot node after soak,37.1,C,,,CHARACTERIZE,decks/thermal_vented_assumption.cir,A1 | AXP | B1 | BOARD
+thermal_sealed_stress,Charger and enclosure heat,Modeled hot node after soak,86.74882,C,,,CHARACTERIZE,decks/thermal_sealed_stress.cir,A1 | AXP | B1 | BOARD
+ts_board_25C,Battery-temperature input,TS input,0.5001,V,,,CHARACTERIZE,decks/ts_board_25C.cir,A1 | AXP | B1
+ts_board_45C,Battery-temperature input,TS input,0.2462493,V,,,CHARACTERIZE,decks/ts_board_45C.cir,A1 | AXP | B1
+ts_open,Battery-temperature input,TS input,3.311014,V,,,CHARACTERIZE,decks/ts_open.cir,A1 | AXP | B1
+ts_short,Battery-temperature input,TS input,5.001e-05,V,,,CHARACTERIZE,decks/ts_short.cir,A1 | AXP | B1
+speaker_cue,BTL audio output,Speaker average real power,0.1633064,W,0,1,WITHIN,decks/speaker_cue.cir,A1 | SP1 | FW
+speaker_near_rating,BTL audio output,Speaker average real power,0.9073506,W,0,1,WITHIN,decks/speaker_near_rating.cir,A1 | SP1 | FW
+speaker_overdrive,BTL audio output,Speaker average real power,1.408102,W,0,1,OUTSIDE,decks/speaker_overdrive.cir,A1 | SP1 | FW
+erm_running_equivalent,Haptic H-bridge load,Peak drive current,60.0,mA,,,CHARACTERIZE,decks/erm_running_equivalent.cir,A3 | M1 | DRV | FW
+erm_low_R_start,Haptic H-bridge load,Peak drive current,136.364,mA,,,CHARACTERIZE,decks/erm_low_R_start.cir,A3 | M1 | DRV | FW
+erm_locked_stress,Haptic H-bridge load,Peak drive current,200.0,mA,,,CHARACTERIZE,decks/erm_locked_stress.cir,A3 | M1 | DRV | FW
+light_nominal,LCD backlight,Full-duty backlight current,50.8721,mA,,,CHARACTERIZE,decks/light_nominal.cir,A1 | BOARD
+light_low_vf_high_rail,LCD backlight,Full-duty backlight current,91.7431,mA,,,CHARACTERIZE,decks/light_low_vf_high_rail.cir,A1 | BOARD
+usbdata_nominal,USB full-speed edges,Data+ last high,3.29013,V,2,3.6,WITHIN,decks/usbdata_nominal.cir,A1 | USB2 | ESP
+usbdata_nominal,USB full-speed edges,Data+ 10-90% rise,5.653565,ns,4,20,WITHIN,decks/usbdata_nominal.cir,A1 | USB2 | ESP
+usbdata_heavy_fixture,USB full-speed edges,Data+ last high,3.290129,V,2,3.6,WITHIN,decks/usbdata_heavy_fixture.cir,A1 | USB2 | ESP
+usbdata_heavy_fixture,USB full-speed edges,Data+ 10-90% rise,11.63758,ns,4,20,WITHIN,decks/usbdata_heavy_fixture.cir,A1 | USB2 | ESP

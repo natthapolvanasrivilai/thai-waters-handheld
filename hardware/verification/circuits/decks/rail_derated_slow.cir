@@ -1,0 +1,12 @@
+Thai Waters Rev F | rail_derated_slow
+* 12 uF effective, ESR 0.080 ohm, 12 us latency, 8 us response.
+* Model: Incremental charge-deficit bound prior to loop recovery around 3.30 V. Wi-Fi current step is assumed.
+Vref v 0 3.3
+Rslow v rail 200
+Resr rail cap 0.08
+Ceff cap 0 12u
+Iload rail 0 PWL(0 0 50u 0 50.1u 0.35 250u 0.35)
+Iloop 0 rail PWL(0 0 62u 0 70u 0.35 250u 0.35)
+.TRAN .2u 200u 0 .2u
+.PRINT TRAN V(rail)
+.END

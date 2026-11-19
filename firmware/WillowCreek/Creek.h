@@ -1,5 +1,6 @@
 #pragma once
 #include "Waters.h"
+#include "CastWater.h"
 #include <cmath>
 #include <cstdint>
 #include <algorithm>
@@ -49,7 +50,7 @@ struct Wheel {
     return (reversed?-change:change)/4096.f;
   }
 };
-enum class Phase : uint8_t { Ready, Flight, Waiting, Bite, Fight, Landed, Lost };
+enum class Phase : uint8_t { Ready, Flight, Waiting, Bite, Fight, Landed, Lost, Snag, HaulingJunk, JunkLanded };
 enum class Reason : uint8_t { None, Early, Late, Snapped, Escaped, Unworked };
 enum class Technique : uint8_t { Float, Spoon, Jig };
 enum class FightBeat : uint8_t { Recover, Run, Slack };
@@ -70,8 +71,57 @@ struct Game {
   bool falling=false,rodHeldHigh=false;
   uint32_t liftedCycle=UINT32_MAX,steadyLiftMs=0;
   float line=0, target=0, heat=0, idle=0;
+  float aimX=.50f,aimY=.67f;
+  int contact=ClearWater,junkId=-1;
+  uint32_t waterTicket=0,easedMs=0;
+  float givenLine=0;
   uint32_t randomInt(uint32_t n){seed=1664525u*seed+1013904223u;return (seed>>8)%n;}
-  bool running() const {return phase!=Phase::Ready && phase!=Phase::Landed && phase!=Phase::Lost;}
+  bool running() const {return phase!=Phase::Ready && phase!=Phase::Landed && phase!=Phase::Lost && phase!=Phase::JunkLanded;}
+  void setAim(float x,float y){
+    if(running() || !std::isfinite(x) || !std::isfinite(y))return;
+    aimX=limit(x,.08f,.92f);aimY=limit(y,.555f,.875f);
+  }
+  CastZone castZone(int kind) const {return waterZone(destination,site,timeSlot,kind);}
+  int featureAt(float x,float y) const {
+    for(int kind=Branch;kind<=Debris;++kind)
+      if(castZone(kind).distanceSquared(x,y)<=1.f)return kind;
+    return ClearWater;
+  }
+  float releaseProgress() const {
+    if(phase==Phase::Snag)return contact==Branch?limit(easedMs/500.f,0,1):limit(givenLine/.30f,0,1);
+    if(phase==Phase::HaulingJunk)return limit(1.f-line/target,0,1);
+    return phase==Phase::JunkLanded?1:0;
+  }
+  void abandonCast(){
+    if(phase==Phase::Snag || phase==Phase::HaulingJunk)enter(Phase::Ready);
+  }
+  void splashdown(){
+    int feature=featureAt(aimX,aimY);
+    if(feature==Branch || feature==Rock){
+      contact=feature;heat=feature==Branch?.37f:.51f;enter(Phase::Snag);return;
+    }
+    // Chance is independent of the fish-selection generator. Never roll in
+    // the safe center lane. A visible debris core has the highest pickup rate.
+    bool inCore=feature==Debris && castZone(Debris).distanceSquared(aimX,aimY)<.30f;
+    const unsigned odds=feature==Debris?(inCore?72:38):(std::abs(aimX-.5f)>.095f?4:0);
+    if(waterTicket%100<odds){
+      contact=Debris;junkId=int((waterTicket>>10)%4);
+      target=1.f+.27f*junkId;line=target;heat=.23f;enter(Phase::HaulingJunk);
+    }else enter(Phase::Waiting);
+  }
+  void workSnag(uint32_t ms,bool rise,float turns){
+    const float dt=ms*.001f,forward=std::max(0.f,turns);
+    heat=limit(heat+forward*.96f-dt*.10f,0,1);
+    if(heat>=.999f){lose(Reason::Snapped);return;}
+    if(contact==Branch){
+      if(forward<=.035f*dt)easedMs=std::min<uint32_t>(500,easedMs+ms);else easedMs=0;
+      if(easedMs<500 || !rise)return;
+    }else{
+      if(!rodHeldHigh && !rise)givenLine=limit(givenLine-turns,0,.30f);
+      if(givenLine<.2999f)return;
+    }
+    contact=ClearWater;heat=.12f;enter(Phase::Waiting);
+  }
   FightStyle fightStyle() const {
     if(fish==prawn)return FightStyle::Picker;
     if(fish==ray)return FightStyle::Anchor;
@@ -114,6 +164,8 @@ struct Game {
   bool surge() const {return phase==Phase::Fight && beat()==FightBeat::Run;}
   bool holdingBottom() const {return fightStyle()==FightStyle::Anchor && surge();}
   float rodLoad() const {
+    if(phase==Phase::Snag)return (contact==Branch?.50f:.69f)+.22f*heat;
+    if(phase==Phase::HaulingJunk)return .23f+.075f*std::sin(age*.007f);
     const FightStyle style=fightStyle();
     if(phase==Phase::Waiting)return teasing()?(style==FightStyle::Picker?.23f:.16f):0;
     if(phase==Phase::Bite)return style==FightStyle::Picker?.33f:style==FightStyle::Anchor?.68f:.54f;
@@ -182,6 +234,9 @@ struct Game {
   }
   void enter(Phase p){
     phase=p;age=0;
+    if(p==Phase::Ready || p==Phase::Flight){
+      contact=ClearWater;junkId=-1;easedMs=0;givenLine=0;
+    }
     if(p==Phase::Fight){liftedCycle=UINT32_MAX;steadyLiftMs=0;}
   }
   void lose(Reason why){reason=why;enter(Phase::Lost);}
@@ -189,8 +244,10 @@ struct Game {
     age+=ms;
     const float dt=ms*.001f;
     switch(phase){
-    case Phase::Ready: case Phase::Landed: case Phase::Lost:
+    case Phase::Ready: case Phase::Landed: case Phase::Lost: case Phase::JunkLanded:
       if(cast){
+        newEntry=false;personalBest=false;pointsAwarded=0;
+        waterTicket=waterHash(seed^uint32_t(destination+1)*0x9e3779b9u^uint32_t(timeSlot));
         int total=0;
         for(int i=0;i<stockSize(site);i++)total+=drawWeight(stockId(site,i));
         int ticket=randomInt(total);
@@ -213,7 +270,12 @@ struct Game {
         reason=Reason::None;enter(Phase::Flight);
       }
       break;
-    case Phase::Flight: if(age>=650)enter(Phase::Waiting);break;
+    case Phase::Flight: if(age>=650)splashdown();break;
+    case Phase::Snag: workSnag(ms,rise,turns);break;
+    case Phase::HaulingJunk:
+      line=limit(line-turns,0,target);
+      if(line<=.001f)enter(Phase::JunkLanded);
+      break;
     case Phase::Waiting:
       present(rise,turns);
       break;

@@ -1,4 +1,11 @@
 # Thai Waters handheld
+
+**[Browse the product wiki](docs/wiki/Home.md)** · **[Download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-f-engineering-0.7/Riffle-Rev-F-engineering-review.html)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
+
+Open the downloaded handbook in a browser, or open `docs/index.html` from a local checkout. It embeds the playable game, exploded CAD, circuit traces, software and test records, assembly routing, searchable BOM and interactive cost model. The wiki provides permanent links into the versioned engineering sources. The [engineering release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/rev-f-engineering-0.7) includes the evidence bundle for offline use.
+
+**Battery fit blocks powered enclosure closure.** The supplier’s maximum drawing envelope intersects the housing by 30.124 mm³. Use the [inert gauges and fit report](hardware/mechanical/rev-F/review/README.md) before assembling a protected cell.
+
 Personal product project of GitHub user natthapolvanasrivilai. Rev F is the fit-print candidate for the top-left power key and screw-locked rod grip. It uses the Waveshare capacitive touchscreen controller module. Production disposition is HOLD for physical verification, supplier documentation and market classification.
 
 | Stage | Working record |

@@ -1,0 +1,9 @@
+Thai Waters Rev F | reset_nominal
+* R14/C19 ESP_EN and R11/C8 LCD_RST nominal 10 kohm/100 nF; 10000 ohm, 100 nF.
+* Model: Passive high transition after switch or expander release. Firmware LCD reset hold and bus boot are bench items.
+Vdd src 0 DC 0 PULSE(0 3.3 1u 1n 1n 10m 20m)
+Rpull src reset 10000
+Creset reset 0 100n
+.TRAN 5u 4m 0 5u
+.PRINT TRAN V(reset)
+.END

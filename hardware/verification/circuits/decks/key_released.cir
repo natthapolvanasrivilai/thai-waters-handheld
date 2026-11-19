@@ -1,0 +1,13 @@
+Thai Waters Rev F | key_released
+* K3-2 and SW1 to K3-1/GND; switch loop 10000000000.0 ohm.
+* Model: Rev 2 R38=510 ohm, R37=1k, R65=100k. PMIC internal pull represented by an assumed 50k to 3.3 V; CMOS bounds are design targets.
+Vdd v 0 3.3
+Rinternal v pwron 50k
+R38 pwron raw 510
+R65 v g 100k
+R37 g raw 1k
+Rkey raw 0 10000000000.0
+Cloom raw 0 100p
+.TRAN 1u 10u
+.PRINT TRAN V(pwron) V(raw)
+.END

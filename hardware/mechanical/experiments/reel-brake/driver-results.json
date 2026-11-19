@@ -1,0 +1,39 @@
+{
+  "engine": "ngspice",
+  "engine_sha256": "54068911555d46067ff2bdfcd0cf4b1afd3c1330be0586f93911df0a6af88e7c",
+  "cases": [
+    {
+      "case": "nominal",
+      "supply_V": 5,
+      "coil_R_ohm": 4.5,
+      "assumed_L_mH": 10.0,
+      "peak_A": 1.0702,
+      "peak_drain_V": 5.8636,
+      "winding_J_per_event": 0.529,
+      "current_to_10_percent_ms": 3.333,
+      "average_winding_W_at_one_event_per_2p4s": 0.2204
+    },
+    {
+      "case": "peak_cold",
+      "supply_V": 5.25,
+      "coil_R_ohm": 4.275,
+      "assumed_L_mH": 3.0,
+      "peak_A": 1.1805,
+      "peak_drain_V": 6.1229,
+      "winding_J_per_event": 0.6211,
+      "current_to_10_percent_ms": 1.083,
+      "average_winding_W_at_one_event_per_2p4s": 0.2588
+    },
+    {
+      "case": "slow_release",
+      "supply_V": 4.75,
+      "coil_R_ohm": 4.725,
+      "assumed_L_mH": 30.0,
+      "peak_A": 0.97,
+      "peak_drain_V": 5.6047,
+      "winding_J_per_event": 0.4367,
+      "current_to_10_percent_ms": 9.383,
+      "average_winding_W_at_one_event_per_2p4s": 0.182
+    }
+  ]
+}

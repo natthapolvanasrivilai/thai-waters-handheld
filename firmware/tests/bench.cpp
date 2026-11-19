@@ -15,12 +15,24 @@ static ReelDetents detents;
 static int crossedTeeth=0,clickPending=0;
 #define EXPORT __attribute__((visibility("default")))
 extern "C" {
-EXPORT void initialize(unsigned seed){g=Game{};g.seed=seed;synth.begin();detents=ReelDetents{};crossedTeeth=clickPending=0;}
+EXPORT void initialize(unsigned seed){g=Game{};g.seed=seed;synth.begin();detents=ReelDetents{};tactile=RumblePlan{};cuePending=false;crossedTeeth=clickPending=0;}
 EXPORT void advance(unsigned dt,int cast,int lift,float turns){
  auto before=g.phase;g.tick(dt,cast,lift,turns);
  if(before!=g.phase && g.phase==Phase::Bite && s.cue!=1)cuePending=true;
 }
 EXPORT int state(){return int(g.phase);}
+EXPORT void setAim(float x,float y){g.setAim(x,y);}
+EXPORT float aimX(){return g.aimX;}
+EXPORT float aimY(){return g.aimY;}
+EXPORT float zoneX(int kind){return g.castZone(kind).x;}
+EXPORT float zoneY(int kind){return g.castZone(kind).y;}
+EXPORT float zoneRX(int kind){return g.castZone(kind).rx;}
+EXPORT float zoneRY(int kind){return g.castZone(kind).ry;}
+EXPORT int featureAt(float x,float y){return g.featureAt(x,y);}
+EXPORT int contact(){return g.contact;}
+EXPORT int junkId(){return g.junkId;}
+EXPORT float releaseProgress(){return g.releaseProgress();}
+EXPORT void abandonCast(){g.abandonCast();}
 EXPORT int reason(){return int(g.reason);}
 EXPORT unsigned age(){return g.age;}
 EXPORT int catches(){return g.catches;}
@@ -61,7 +73,7 @@ EXPORT void restoreEntry(int i,int n,int cm){
 }
 EXPORT int grams(){return weightGrams(g.fish,g.length);}
 EXPORT void visit(int i,int t){if(i>=0&&i<siteCount&&t>=0&&t<4){if(g.site!=i||g.timeSlot!=t){g.enter(Phase::Ready);cuePending=false;}g.site=s.site=i;g.timeSlot=t;}}
-EXPORT void place(int id,int t){if(id<0||id>=destinationCount)return;g.destination=id;visit(destinations[id].pool,t);s.site=destinations[id].pool%4;s.arrangement=id;}
+EXPORT void place(int id,int t){if(id<0||id>=destinationCount||t<0||t>3)return;if(id!=g.destination){g.enter(Phase::Ready);cuePending=false;}g.destination=id;visit(destinations[id].pool,t);s.site=destinations[id].pool%4;s.arrangement=id;}
 static Calibration pose;static Gesture motion;static Vec rest;static bool calibrated=false;
 EXPORT void restPose(float x,float y,float z){rest=unit({x,y,z});calibrated=false;motion=Gesture{};}
 EXPORT int liftPose(float x,float y,float z){pose={rest,unit({x,y,z})};calibrated=pose.valid();return calibrated;}

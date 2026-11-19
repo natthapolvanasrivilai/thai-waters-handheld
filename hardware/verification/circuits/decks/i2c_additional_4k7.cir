@@ -1,0 +1,12 @@
+Thai Waters Rev F | i2c_additional_4k7
+* Effective pull-up 2423 ohm and 100 pF at J8.
+* Model: Lumped released edge; board population, MOS level shifters and actual capacitance must be measured.
+Vrelease drv 0 DC 0 PULSE(0 3.3 1u 1n 1n 30u 60u)
+Rpull drv bus 2422.680412
+Cbus bus 0 100p
+Vdd rail 0 3.3
+Rparallel rail sink 2422.680412
+Vclamp sink 0 0.4
+.TRAN 5n 8u 0 5n
+.PRINT TRAN V(bus) I(Vclamp)
+.END

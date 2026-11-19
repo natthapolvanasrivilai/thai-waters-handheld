@@ -1,0 +1,2 @@
+# Preserve the SHA-256 of each executed standalone Cadence-targeted deck.
+decks/*.cir -text

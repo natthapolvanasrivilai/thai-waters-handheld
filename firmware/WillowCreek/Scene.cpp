@@ -1,32 +1,47 @@
 #include "Scene.h"
 #include "LcdGlyphs.h"
+#include "WaterArt.h"
 #include "RodFeedback.h"
 #include "Connected.h"
-#include "Landscape.h"
+#include "AmbientLcd.h"
 #include "FishArt.h"
 #include <cstdio>
 #include <cstring>
+#include <sys/time.h>
 using creek::Phase;
 namespace {
 constexpr int ink=0x19e7,paper=0xe70f,white=0xff9b,gold=0xf50c,green=0x94f2,red=0xf386;
 uint16_t* background=nullptr;
+uint16_t lcd[scenery::colorCount]{};
+scenery::Layout scenicLayout{};
 int cachedSite=-1,cachedTime=-1;
 static_assert(sizeof(scenery::recipes)/sizeof(scenery::recipes[0])==creek::destinationCount,"Missing scenic recipe");
 void landscape(int place,int time){
   auto fb=screen.getFramebuffer();
   auto indexed=reinterpret_cast<uint8_t*>(fb);
   scenery::Color colors[scenery::colorCount]{};
-  uint16_t lcd[scenery::colorCount];
-  scenery::render({indexed},colors,place,time);
-  for(int i=0;i<scenery::colorCount;i++){
-    auto c=colors[i];lcd[i]=uint16_t(((c>>8)&0xf800)|((c>>5)&0x07e0)|((c>>3)&31));
-  }
+  scenery::render({indexed},colors,place,time,&scenicLayout);
+  scenery::lcdPalette(colors,lcd);
   // Expand backwards so the 2x RGB565 output only overwrites indices already read.
   for(int x=scenery::width-1;x>=0;x--)for(int y=scenery::height-1;y>=0;y--){
     uint16_t color=lcd[indexed[x*scenery::height+y]];
     int dest=2*x*320+2*y;
     fb[dest]=fb[dest+1]=fb[dest+320]=fb[dest+321]=color;
   }
+}
+void landscapeMotion(const View& v){
+  uint32_t ms=v.time;
+  unsigned utcDayPlusOne=0;
+  if(v.timeMode==4){
+    timeval utc{};
+    if(gettimeofday(&utc,nullptr)==0&&utc.tv_sec>=1735689600){
+      ms=uint32_t(utc.tv_sec)*1000u+uint32_t(utc.tv_usec)/1000u;
+      utcDayPlusOne=uint32_t(utc.tv_sec%86400)*1000u+uint32_t(utc.tv_usec)/1000u+1;
+    }
+  }
+  auto frame=screen.getFramebuffer();
+  scenery::LcdSpans spans{frame,background?background:frame,lcd};
+  scenery::paintAmbient(spans,scenicLayout,ms,utcDayPlusOne);
 }
 const lcdtype::Face& fontFace(int size){
   return size>=3?lcdtype::title:size==2?lcdtype::body:lcdtype::caption;
@@ -63,6 +78,21 @@ void label(int x,int y,const char* text,int color=white,int size=2,int right=480
       }
     }
     x+=g.advance;
+  }
+}
+void drawWaterProp(int kind,int x,int y,int scale=1){
+  if(kind<0 || kind>=7)return;
+  for(int row=0;row<9;++row){
+    const char* text=waterart::marks[kind][row];
+    for(int pos=0;text[pos];){
+      const char ch=text[pos];int end=pos+1;
+      while(text[end]==ch)++end;
+      if(ch!='.'){
+        const int color=ch>='a'?10+ch-'a':ch-'0';
+        screen.fillRect(x+(pos-10)*scale,y+(row-4)*scale,(end-pos)*scale,scale,waterart::colors[color]);
+      }
+      pos=end;
+    }
   }
 }
 void fish(int x,int y,float k,int kind){
@@ -162,27 +192,28 @@ void collectionMark(uint32_t age){
   label(x-21,y+6,"Journal",edge,1);
 }
 void play(const View& v){
-  if(cachedSite!=v.destination||cachedTime!=v.game.timeSlot||!background){
-    landscape(v.destination,v.game.timeSlot);cachedSite=v.destination;cachedTime=v.game.timeSlot;
+  const int light=v.timeMode==4?pondPeriod():v.game.timeSlot;
+  if(cachedSite!=v.destination||cachedTime!=light||!background){
+    landscape(v.destination,light);cachedSite=v.destination;cachedTime=light;
     if(background)memcpy(background,screen.getFramebuffer(),480*320*2);
   }else memcpy(screen.getFramebuffer(),background,480*320*2);
   const auto& g=v.game;
-  if(background){
-    auto fb=screen.getFramebuffer();
-    for(int y=172;y<260;y+=4){
-      int shift=int(std::round(1.6f*std::sin(y*.11f+v.time*.0018f)));
-      if(!shift)continue;
-      for(int x=2;x<478;x++)memcpy(fb+x*320+316-y,background+(x+shift)*320+316-y,8);
-    }
-  }
+  landscapeMotion(v);
   if(v.page==Page::Play)top(v);
-  int bobX=312+int(7*std::sin(v.time*.0015f));
-  int bobY=184+int(2*std::sin(v.time*.005f));
-  if(g.phase==Phase::Flight){float t=creek::limit(g.age/650.f,0,1);bobX=100+int(212*t);bobY=106+int(78*t-216*t*(1-t));}
+  const int ax=int(g.aimX*480),ay=int(g.aimY*320);
+  for(int kind=1;kind<=3;++kind){
+    const auto z=g.castZone(kind);drawWaterProp(kind-1,int(z.x*480),int(z.y*320),kind==1?2:1);
+  }
+  if(g.phase==Phase::Ready || g.phase==Phase::Flight){
+    screen.drawEllipse(ax,ay,8,3,0xde92);
+  }
+  int bobX=ax+int(4*std::sin(v.time*.0015f));
+  int bobY=ay+int(2*std::sin(v.time*.005f));
+  if(g.phase==Phase::Flight){float t=creek::limit(g.age/650.f,0,1);bobX=100+int((ax-100)*t);bobY=106+int((ay-106)*t-178*t*(1-t));}
   if(g.phase==Phase::Fight){
-    bobX=130+int(178*creek::limit(g.line/g.target,0,1)+g.pullOffset());
+    bobX=112+int((ax-112)*creek::limit(g.line/g.target,0,1)+g.pullOffset());
     float drift=g.holdingBottom()?0.f:g.fightStyle()==creek::FightStyle::Picker?2.f:8.f;
-    bobY=195+int(drift*std::sin(g.age*.006f));
+    bobY=240+int((ay-240)*creek::limit(g.line/g.target,0,1)+drift*std::sin(g.age*.006f));
   }
   if(g.phase==Phase::Waiting && g.rig==creek::Technique::Spoon)bobX-=int(30*(g.strokes+g.lureTurns));
   if(g.phase==Phase::Waiting && g.rig==creek::Technique::Jig && g.falling)bobY-=int(28*(1-creek::limit((g.age-g.fallStart)/780.f,0,1)));
@@ -209,9 +240,14 @@ void play(const View& v){
     int hangX=tipX+int(3*std::sin(v.time*.003f));
     screen.drawLine(tipX,tip,hangX,tip+24,0x73ee);screen.fillRect(hangX-2,tip+24,4,6,gold);
   }
+  if(g.phase==Phase::Snag){bobX=ax;bobY=ay;}
+  if(g.phase==Phase::HaulingJunk){
+    float t=g.target>0?creek::limit(g.line/g.target,0,1):1;
+    bobX=112+int((ax-112)*t);bobY=249+int((ay-249)*t);drawWaterProp(2,bobX,bobY-1);
+  }
   if(g.running()){
     screen.drawLine(tipX,tip,bobX,bobY,0x73ee);
-    if(g.phase!=Phase::Fight){if(g.rig==creek::Technique::Float){screen.fillRect(bobX-3,bobY-6,7,5,gold);screen.fillRect(bobX-3,bobY-1,7,3,white);}
+    if(g.phase!=Phase::Fight&&g.phase!=Phase::Snag&&g.phase!=Phase::HaulingJunk){if(g.rig==creek::Technique::Float){screen.fillRect(bobX-3,bobY-6,7,5,gold);screen.fillRect(bobX-3,bobY-1,7,3,white);}
     else {bool jig=g.rig==creek::Technique::Jig;screen.fillRect(bobX-2,bobY-3,jig?4:10,jig?9:4,white);screen.fillRect(bobX-2,bobY-3,4,3,gold);}
     screen.drawFastHLine(bobX-11,bobY+4,23,paper);}
   }
@@ -256,6 +292,16 @@ void play(const View& v){
     screen.fillRoundRect(7,287,textWidth(f.lore,1)+12,16,3,ink);label(13,291,f.lore,paper,1);
     if(t>=1)label(14,306,g.pointsAwarded?"Collection +1 tackle point":"Catch recorded",white,1);
     return;}
+  case Phase::Snag:
+    head=g.contact==1?"Branch snag: stop, then lift":"Rock snag: lower rod and pay out";
+    if(v.practice)head=g.contact==1?"Branch snag: wait, then tap to lift":"Rock snag: tap twice to pay out";
+    col=gold;tensionLight(.7f);break;
+  case Phase::HaulingJunk:head="Debris on the line: reel it ashore";break;
+  case Phase::JunkLanded:{
+    const char* names[]={"Waterlogged sandal","Tangled line","Dented cup","Torn float"};
+    const int id=std::max(0,std::min(3,int(g.junkId)));
+    drawWaterProp(3+id,239,135,3);snprintf(desc,sizeof(desc),"Recovered: %s",names[id]);
+    head=desc;break;}
   case Phase::Lost:
     head=g.reason==creek::Reason::Early?"Hook set too early":g.reason==creek::Reason::Late?"The bite passed":g.reason==creek::Reason::Snapped?"The line snapped":g.reason==creek::Reason::Unworked?"The fish lost interest":"The fish slipped away";
     sub=v.practice?"Tap to cast again.":"Raise and cast again.";break;

@@ -1,0 +1,1 @@
+PASS playable embedded cast, software filters, station selection, browser history, separate brake simulations, mobile layout, circuit traces, runtime, BOM and cost controls, validation filters, real 3D canvas, zero page exceptions, PDF export.

@@ -131,11 +131,14 @@ landscapeCanvas.width=480;landscapeCanvas.height=320;pixelCanvas.width=240;pixel
 const landscapeContext=landscapeCanvas.getContext('2d'),pixelsContext=pixelCanvas.getContext('2d');
 const pixelFrame=pixelsContext.createImageData(240,160);
 let sceneryEngine,lastLandscape=-1;
+let sceneInks=[],scenicSpans;
 function viewOfPlace(place,period){
  const key=place*4+period;
  if(key===lastLandscape)return landscapeCanvas;
  const address=sceneryEngine.paintPlace(place,period),mem=sceneryEngine.memory.buffer;
  const pixels=new Uint8Array(mem,address,240*160),palette=new Uint32Array(mem,sceneryEngine.placePalette(),64);
+ sceneInks=Array.from(palette,color=>'#'+color.toString(16).padStart(6,'0'));
+ scenicSpans=new Uint8Array(mem,sceneryEngine.ambientSpans(),256*4);
  for(let x=0;x<240;x++)for(let y=0;y<160;y++){
    const color=palette[pixels[x*160+159-y]],i=(y*240+x)*4;
    pixelFrame.data[i]=color>>>16;pixelFrame.data[i+1]=(color>>>8)&255;
@@ -144,6 +147,13 @@ function viewOfPlace(place,period){
  pixelsContext.putImageData(pixelFrame,0,0);
  landscapeContext.imageSmoothingEnabled=false;landscapeContext.drawImage(pixelCanvas,0,0,480,320);
  lastLandscape=key;return landscapeCanvas;
+}
+function paintAmbientScene(context,milliseconds,live){
+ const n=sceneryEngine.sampleAmbient(milliseconds>>>0,live?milliseconds%86400000+1:0);
+ for(let i=0;i<n*4;i+=4){
+   context.fillStyle=sceneInks[scenicSpans[i+3]];
+   context.fillRect(scenicSpans[i]*2,scenicSpans[i+1]*2,scenicSpans[i+2]*2,2);
+ }
 }
 
 const atlas=@@CATALOG@@;let locationId=0,confirmRefund=false;
@@ -257,7 +267,7 @@ wristSwitch.onchange=()=>{
 function wristStroke(){
  wristAngle=wristAxis?Math.atan2(dotPose(filteredG,wristAxis),dotPose(filteredG,neutral))*180/Math.PI:0;
  if(wristSwitch.checked)wristSamples++;
- const canReel=g.state()===4 || (g.state()===2&&g.technique()===1);
+ const canReel=[4,8].includes(g.state()) || (g.state()===2&&g.technique()===1);
  if(!wristSwitch.checked||!wristAxis||!canReel||menu.open||!hapticFocus||wristPointer!==null||Math.abs(rodAngle)>14){
   wristArmed=false;return;
  }
@@ -522,7 +532,43 @@ $('startSound').onclick=$('testSound').onclick=soundTest;
 document.addEventListener('click',e=>{if(e.isTrusted&&e.target.closest('main')&&audio?.state!=='running')unlock();},true);
 window.addEventListener('pageshow',()=>{if(audio)audioState();});
 audioState();
-function tap(){if(!powered)return;unlock();if(!g)return;if(g.state()===4||(g.state()===2&&g.technique()===1))turns+=.25;else action=true}
+const salvageNames=['Waterlogged sandal','Tangled line','Dented cup','Torn float'];
+const waterArt=@@WATER_ART@@;
+function waterProp(index,x,y,scale=1){
+ const rows=waterArt.marks[index];if(!rows)return;
+ const left=Math.round(x-10*scale),top=Math.round(y-4*scale);
+ rows.forEach((row,j)=>{for(let i=0;i<row.length;){
+  const pixel=row[i];let end=i+1;while(end<row.length&&row[end]===pixel)end++;
+  if(waterArt.colors[pixel]){ctx.fillStyle=waterArt.colors[pixel];ctx.fillRect(left+i*scale,top+j*scale,(end-i)*scale,scale);}
+  i=end;
+ }});
+}
+function waterProps(){
+ for(let kind=1;kind<=3;kind++)waterProp(kind-1,g.zoneX(kind)*480,g.zoneY(kind)*320,kind===1?2:1);
+}
+let aimUntil=0,shownWheel=0,wheelReading=0,lastSnag=-1000,previousPhase=-1;
+function updateWheel(p){
+ if(p===7&&previousPhase!==7)lastSnag=performance.now();
+ const movement=dialAngle-wheelReading;
+ if(p!==7||performance.now()-lastSnag>320||movement<0)shownWheel+=movement;
+ wheelReading=dialAngle;previousPhase=p;dial.style.setProperty('--angle',shownWheel+'deg');
+}
+function aimAt(x,y){
+ if(!g||menu.open||!powered||![0,5,6,9].includes(g.state())||y<.44||y>.94)return false;
+ g.setAim(x,y);aimUntil=performance.now()+1350;return true;
+}
+function scenePress(x,y){
+ if(!powered||menu.open)return;
+ if(g?.state()===5&&x>=414/480&&y>=40/320&&y<=81/320){openCatchRecord();return;}
+ aimAt(x,y);tap();
+}
+function tap(){
+ if(!powered)return;unlock();if(!g)return;
+ const state=g.state();
+ if(state===7&&g.contact()===2){turns-=.19;return;}
+ if(state===8||state===4||(state===2&&g.technique()===1))turns+=.25;
+ else action=true;
+}
 $('act').onclick=tap;
 window.addEventListener('keydown',e=>{if(menu.open||!powered)return;if((['SELECT','SUMMARY','BUTTON'].includes(e.target.tagName)&&e.target!==$('act')))return;if(e.code==='Space'){e.preventDefault();if(!e.repeat)tap()}if(e.code==='KeyR'){e.preventDefault();unlock();held=true}});
 window.addEventListener('keyup',e=>{if(e.code==='KeyR')held=false});
@@ -560,7 +606,7 @@ function openCatchRecord(){
 $('catchBook').onclick=openCatchRecord;
 canvas.onclick=e=>{
  const bounds=canvas.getBoundingClientRect(),x=(e.clientX-bounds.left)*480/bounds.width,y=(e.clientY-bounds.top)*320/bounds.height;
- if(g?.state()===5&&x>=414&&y>=40&&y<=81)openCatchRecord();else tap();
+ scenePress(x/480,y/320);
 };
 function splash(x,y,age,surge){
  const period=surge?390:690;
@@ -606,25 +652,34 @@ function fightLabel(){
 }
 function draw(){
  const p=g.state(),age=g.age(),time=currentSlot;
- const img=viewOfPlace(placeId,time);ctx.imageSmoothingEnabled=false;ctx.drawImage(img,0,0,480,320);
- for(let y=171;y<320;y+=3){const dx=Math.round(1.7*Math.sin(y*.11+elapsed*.0018));ctx.drawImage(img,2,y,476,3,2+dx,y,476,3);}
+ const img=viewOfPlace(placeId,timeMode===4?slot():time);ctx.imageSmoothingEnabled=false;ctx.drawImage(img,0,0,480,320);
+ paintAmbientScene(ctx,timeMode===4?Date.now():elapsed,timeMode===4);
  const [hh,mm]=pondTime();$('song').textContent='♫ '+atlas.sites[locationId][1]+' · '+times[time]+' · '+String(hh).padStart(2,'0')+':'+String(mm).padStart(2,'0')+' ICT';
  const rot=(48+.56*Math.max(-25,Math.min(80,rodAngle))+1.2*Math.sin(elapsed*.0024))*Math.PI/180;
+ waterProps();
+ const ax=g.aimX()*480,ay=g.aimY()*320;
+ if(!menu.open&&(p===1||performance.now()<aimUntil)){
+  ctx.strokeStyle='#f5e9a8';ctx.lineWidth=1;ctx.beginPath();
+  ctx.ellipse(ax,ay,9,3,0,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#f5e9a8';ctx.fillRect(ax-1,ay-1,2,2);
+ }
  const load=g.rodLoad(),restX=8+188*Math.cos(rot),restY=277-188*Math.sin(rot);
  const tipX=restX+11*load+.20*g.pullOffset(),tipY=restY+41*load;
- let bx=312+7*Math.sin(elapsed*.0015),by=184+2*Math.sin(elapsed*.005);
- if(p===1){let t=Math.min(1,age/650);bx=100+212*t;by=106+78*t-216*t*(1-t)}
+ let bx=ax+4*Math.sin(elapsed*.0015),by=ay+1.5*Math.sin(elapsed*.005);
+ if(p===1){let t=Math.min(1,age/650);bx=tipX+(ax-tipX)*t;by=tipY+(ay-tipY)*t-178*t*(1-t)}
  if(p===2&&g.technique()===1)bx-=30*(g.strokes()+g.lureTravel());
  if(p===2&&g.technique()===2&&g.sinking())by-=28*(1-Math.min(1,g.fallAge()/780));
  if(g.teasing())by+=4;if(p===3)by+=12;
  const picking=g.fightStyle()===1,planted=!!g.holdingBottom();
  if(p===4){
-  bx=130+178*Math.min(g.fraction(),1)+g.pullOffset();
-  by=195+(planted?0:picking?2:8)*Math.sin(age*.006);
+  bx=112+(ax-112)*Math.min(g.fraction(),1)+g.pullOffset();
+  by=240+(ay-240)*Math.min(g.fraction(),1)+(planted?0:picking?2:8)*Math.sin(age*.006);
  }
  ctx.lineWidth=3;ctx.strokeStyle='#233f38';ctx.beginPath();ctx.moveTo(5,284);ctx.quadraticCurveTo(restX*.52,restY*.5+128,tipX,tipY);ctx.stroke();ctx.lineWidth=1;ctx.strokeStyle=['#99aa7c','#dd995d','#53b8be'][finish];ctx.stroke();
  if(p===0){const hx=tipX+3*Math.sin(elapsed*.003);ctx.beginPath();ctx.moveTo(tipX,tipY);ctx.lineTo(hx,tipY+24);ctx.stroke();ctx.fillStyle='#de9852';ctx.fillRect(hx-2,tipY+24,4,6)}
- if(p>=1&&p<=4){ctx.lineWidth=1;ctx.strokeStyle='#617a69';ctx.beginPath();ctx.moveTo(tipX,tipY);ctx.lineTo(bx,by);ctx.stroke();if(p!==4){if(g.technique()===0){ctx.fillStyle='#d78843';ctx.fillRect(bx-4,by-7,8,6);ctx.fillStyle='#f1eeca';ctx.fillRect(bx-4,by-1,8,3);}else{const jig=g.technique()===2;ctx.fillStyle='#f1eeca';ctx.fillRect(bx-2,by-3,jig?4:10,jig?9:4);ctx.fillStyle='#e8a95f';ctx.fillRect(bx-2,by-3,4,3);}ctx.fillRect(bx-12,by+4,24,1)}}
+ if(p===7){bx=ax;by=ay;}
+ if(p===8){const travel=Math.max(0,Math.min(1,g.fraction()));bx=112+(ax-112)*travel;by=249+(ay-249)*travel;waterProp(2,bx,by-1);}
+ if(p===9)waterProp(3+g.junkId(),236,136,3);
+ if((p>=1&&p<=4)||p===7||p===8){ctx.lineWidth=1;ctx.strokeStyle='#617a69';ctx.beginPath();ctx.moveTo(tipX,tipY);ctx.lineTo(bx,by);ctx.stroke();if(p!==4&&p!==7&&p!==8){if(g.technique()===0){ctx.fillStyle='#d78843';ctx.fillRect(bx-4,by-7,8,6);ctx.fillStyle='#f1eeca';ctx.fillRect(bx-4,by-1,8,3);}else{const jig=g.technique()===2;ctx.fillStyle='#f1eeca';ctx.fillRect(bx-2,by-3,jig?4:10,jig?9:4);ctx.fillStyle='#e8a95f';ctx.fillRect(bx-2,by-3,4,3);}ctx.fillRect(bx-12,by+4,24,1)}}
  if(p===3&&$('cue').selectedIndex!==2){ctx.strokeStyle='#ffd383';ctx.lineWidth=2;ctx.strokeRect(bx-18,by-16,36,32)}
  if(p===4){
   if(planted||picking){
@@ -636,23 +691,29 @@ function draw(){
  if(p===5)landedCatch(age);
  const waitHint=g.technique()===0?(g.teasing()?'Nibble · hold steady':'Watch the float'):g.technique()===1?(g.sinking()?'Pause · let it flutter':'Wind a short burst'):(g.sinking()?(g.rodUp()?'Lower the rod':'Let the jig fall'):'Lift the jig, then lower');
  const fightHint=p===4?fightLabel():'';
- let title=['Raise and cast','Casting',waitHint,'Bite! Lift now',fightHint,'Landed!',reasons[g.reason()]][p];
+ let title=['Tap the water to aim and cast','Casting',waitHint,'Bite! Lift now',fightHint,'Landed!',reasons[g.reason()]][p];
  if(p===3&&$('cue').selectedIndex===2)title='Listen to the line';
  if(p===5)title=atlas.fish[g.species()].name;
+ if(p===7)title=g.contact()===1?'Branch snag · stop winding, then lift':'Rock snag · lower the rod and pay out';
+ if(p===8)title='Debris on the line · reel it ashore';
+ if(p===9)title='Recovered · '+(salvageNames[g.junkId()]||'Drifting debris');
  const landed=p===5,f=atlas.fish[g.species()],grams=g.grams();$('metrics').textContent=landed?atlas.ranks[f.tier]+'   ·   Length '+g.lengthCm()+' cm   ·   Weight '+(grams<1000?grams+' g':(grams/1000).toFixed(2)+' kg'):'';$('origin').textContent=landed?'Origin · '+f.lore:'';
  $('catchBook').hidden=!landed;
  if(!landed&&!menu.open){
   const hint=p===4?fightHint+'  '+g.remaining().toFixed(1)+' turns':title;
   caption(hint,9,309,'left',p===3&&$('cue').selectedIndex!==2?'#ffd291':'#fff4d8',11);
-  if(p===4)tensionLight(ctx,g.tension());
+  if(p===4||p===7)tensionLight(ctx,p===7?Math.max(.6,g.tension()):g.tension());
  }
  const battery=$('simBattery').value;
  $('lcdPower').textContent='SIM '+(/^\d/.test(battery)?(battery.endsWith('+')?'⚡':'')+parseInt(battery)+'%':battery);
  if(title!==lastLabel){$('message').textContent=title;lastLabel=title}
  $('sub').textContent=[rigNotes[g.technique()],'Let it settle.',g.technique()===0?'A twitch is a nibble. Strike on a full dive.':(g.strokes()+1)+' / '+g.strokesNeeded()+' · '+rigNotes[g.technique()], $('cue').selectedIndex===2?'Listen for the bite.':'Set the hook before the float resurfaces.',g.remaining().toFixed(1)+' turns left · line tension',g.award()?'Discovery reward · +1 tackle point':g.fresh()?'New field book entry!':g.recordBest()?'New personal best!':'Field book updated.','Try another cast.'][p];
- $('act').textContent=(p===4||(p===2&&g.technique()===1)?'Reel ¼ turn':p===2&&g.technique()===2?'Jig':p>=2&&p<=3?'Lift':'Cast');$('tension').hidden=p!==4;$('tension').value=g.tension();dial.style.setProperty('--angle',dialAngle+'deg');
+ $('act').textContent=(p===4||(p===2&&g.technique()===1)?'Reel ¼ turn':p===2&&g.technique()===2?'Jig':p>=2&&p<=3?'Lift':'Cast');$('tension').hidden=p!==4;$('tension').value=g.tension();if(p===7)$('act').textContent=g.contact()===1?'Lift free':'Pay out';
+ if(p===8)$('act').textContent='Reel ¼ turn';
+ if(p>=7)$('sub').textContent=title;
+ updateWheel(p);
 }
-let currentSlot=0;function frame(now){let dt=Math.min(80,Math.max(0,Math.round(now-prev)));prev=now;if(powered&&!document.hidden&&!menu.open){if([0,5,6].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();}elapsed+=dt;let step=held?dt*.001:0;dialAngle+=step*360;let old=g.state();if([0,5,6].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);
+let currentSlot=0;function frame(now){let dt=Math.min(80,Math.max(0,Math.round(now-prev)));prev=now;if(powered&&!document.hidden&&!menu.open){if([0,5,6,9].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();g.place(placeId,currentSlot);}elapsed+=dt;let step=held?dt*.001:0;dialAngle+=step*360;let old=g.state();if([0,5,6,9].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);
  if(typeof navigator.vibrate!=='function'&&audio?.state==='running'&&[4,5,6].includes(pulse))previewRhythm(pulse,false);}gestureCast=gestureLift=false;if(old!==5&&g.state()===5){if(crewOn&&crew)crewScore++;save();refresh()}action=false;turns=0;draw()}else if(powered&&!document.hidden&&menu.open){elapsed+=dt;draw()}requestAnimationFrame(frame)}
 Promise.all([WebAssembly.instantiate(bytes,{env:{memset:(p,v,n)=>{new Uint8Array(g.memory.buffer,p,n).fill(v);return p},acosf:Math.acos,atan2f:Math.atan2,sinf:Math.sin,lroundf:x=>Math.sign(x)*Math.round(Math.abs(x))}}),sceneryModule,fishSheet.decode()]).then(([mod,visual])=>{sceneryEngine=visual.instance.exports;g=mod.instance.exports;g.initialize(Date.now()>>>0);restore();currentSlot=slot();g.place(placeId,currentSlot);refresh();settings();$('act').disabled=false;prev=performance.now();requestAnimationFrame(frame)}).catch(e=>{$('message').textContent='Could not start Thai Waters: '+e.message});
 @@DEVICE_UI@@

@@ -1,0 +1,1316 @@
+[
+  {
+    "id": "i2c_encoder_only",
+    "family": "Shared I2C",
+    "description": "Effective pull-up 10000 ohm and 100 pF at J8.",
+    "sources": [
+      "A1",
+      "A2",
+      "A3",
+      "UM10204",
+      "FW"
+    ],
+    "model": "Lumped released edge; board population, MOS level shifters and actual capacitance must be measured.",
+    "deck": "decks/i2c_encoder_only.cir",
+    "outputs": [
+      "V(bus)",
+      "I(Vclamp)"
+    ],
+    "metrics": [
+      {
+        "label": "30-70% rise",
+        "column": "V(bus)",
+        "calculation": "rise",
+        "unit": "ns",
+        "limits": [
+          0,
+          300
+        ],
+        "low": 0.99,
+        "high": 2.31,
+        "scale": 1000000000.0
+      },
+      {
+        "label": "Static sink demand at 0.4 V",
+        "column": "I(Vclamp)",
+        "calculation": "last",
+        "unit": "mA",
+        "limits": [
+          0,
+          3
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "i2c_encoder_motor",
+    "family": "Shared I2C",
+    "description": "Effective pull-up 5000 ohm and 100 pF at J8.",
+    "sources": [
+      "A1",
+      "A2",
+      "A3",
+      "UM10204",
+      "FW"
+    ],
+    "model": "Lumped released edge; board population, MOS level shifters and actual capacitance must be measured.",
+    "deck": "decks/i2c_encoder_motor.cir",
+    "outputs": [
+      "V(bus)",
+      "I(Vclamp)"
+    ],
+    "metrics": [
+      {
+        "label": "30-70% rise",
+        "column": "V(bus)",
+        "calculation": "rise",
+        "unit": "ns",
+        "limits": [
+          0,
+          300
+        ],
+        "low": 0.99,
+        "high": 2.31,
+        "scale": 1000000000.0
+      },
+      {
+        "label": "Static sink demand at 0.4 V",
+        "column": "I(Vclamp)",
+        "calculation": "last",
+        "unit": "mA",
+        "limits": [
+          0,
+          3
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "i2c_additional_4k7",
+    "family": "Shared I2C",
+    "description": "Effective pull-up 2423 ohm and 100 pF at J8.",
+    "sources": [
+      "A1",
+      "A2",
+      "A3",
+      "UM10204",
+      "FW"
+    ],
+    "model": "Lumped released edge; board population, MOS level shifters and actual capacitance must be measured.",
+    "deck": "decks/i2c_additional_4k7.cir",
+    "outputs": [
+      "V(bus)",
+      "I(Vclamp)"
+    ],
+    "metrics": [
+      {
+        "label": "30-70% rise",
+        "column": "V(bus)",
+        "calculation": "rise",
+        "unit": "ns",
+        "limits": [
+          0,
+          300
+        ],
+        "low": 0.99,
+        "high": 2.31,
+        "scale": 1000000000.0
+      },
+      {
+        "label": "Static sink demand at 0.4 V",
+        "column": "I(Vclamp)",
+        "calculation": "last",
+        "unit": "mA",
+        "limits": [
+          0,
+          3
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "i2c_loaded_200pf",
+    "family": "Shared I2C",
+    "description": "Effective pull-up 2423 ohm and 200 pF at J8.",
+    "sources": [
+      "A1",
+      "A2",
+      "A3",
+      "UM10204",
+      "FW"
+    ],
+    "model": "Lumped released edge; board population, MOS level shifters and actual capacitance must be measured.",
+    "deck": "decks/i2c_loaded_200pf.cir",
+    "outputs": [
+      "V(bus)",
+      "I(Vclamp)"
+    ],
+    "metrics": [
+      {
+        "label": "30-70% rise",
+        "column": "V(bus)",
+        "calculation": "rise",
+        "unit": "ns",
+        "limits": [
+          0,
+          300
+        ],
+        "low": 0.99,
+        "high": 2.31,
+        "scale": 1000000000.0
+      },
+      {
+        "label": "Static sink demand at 0.4 V",
+        "column": "I(Vclamp)",
+        "calculation": "last",
+        "unit": "mA",
+        "limits": [
+          0,
+          3
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "i2c_excess_pullups",
+    "family": "Shared I2C",
+    "description": "Effective pull-up 820 ohm and 100 pF at J8.",
+    "sources": [
+      "A1",
+      "A2",
+      "A3",
+      "UM10204",
+      "FW"
+    ],
+    "model": "Lumped released edge; board population, MOS level shifters and actual capacitance must be measured.",
+    "deck": "decks/i2c_excess_pullups.cir",
+    "outputs": [
+      "V(bus)",
+      "I(Vclamp)"
+    ],
+    "metrics": [
+      {
+        "label": "30-70% rise",
+        "column": "V(bus)",
+        "calculation": "rise",
+        "unit": "ns",
+        "limits": [
+          0,
+          300
+        ],
+        "low": 0.99,
+        "high": 2.31,
+        "scale": 1000000000.0
+      },
+      {
+        "label": "Static sink demand at 0.4 V",
+        "column": "I(Vclamp)",
+        "calculation": "last",
+        "unit": "mA",
+        "limits": [
+          0,
+          3
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "usb_play_charge",
+    "family": "USB power",
+    "description": "5.00 V host, 0.25 ohm loop; 330 to 500 mA.",
+    "sources": [
+      "A1",
+      "AXP",
+      "USB2",
+      "FW"
+    ],
+    "model": "Cable, connector, bead resistance and VBUS input capacitance; ideal imposed USB load.",
+    "deck": "decks/usb_play_charge.cir",
+    "outputs": [
+      "V(vbus)",
+      "I(Vhost)"
+    ],
+    "metrics": [
+      {
+        "label": "Minimum PMIC input",
+        "column": "V(vbus)",
+        "calculation": "min",
+        "unit": "V",
+        "limits": [
+          3.9,
+          5.5
+        ]
+      },
+      {
+        "label": "Source demand",
+        "column": "I(Vhost)",
+        "calculation": "absmax",
+        "unit": "mA",
+        "limits": [
+          0,
+          500
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "usb_low_host_lossy",
+    "family": "USB power",
+    "description": "4.75 V host, 0.65 ohm loop; 330 to 650 mA.",
+    "sources": [
+      "A1",
+      "AXP",
+      "USB2",
+      "FW"
+    ],
+    "model": "Cable, connector, bead resistance and VBUS input capacitance; ideal imposed USB load.",
+    "deck": "decks/usb_low_host_lossy.cir",
+    "outputs": [
+      "V(vbus)",
+      "I(Vhost)"
+    ],
+    "metrics": [
+      {
+        "label": "Minimum PMIC input",
+        "column": "V(vbus)",
+        "calculation": "min",
+        "unit": "V",
+        "limits": [
+          3.9,
+          5.5
+        ]
+      },
+      {
+        "label": "Source demand",
+        "column": "I(Vhost)",
+        "calculation": "absmax",
+        "unit": "mA",
+        "limits": [
+          0,
+          500
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "usb_unconfigured_host",
+    "family": "USB power",
+    "description": "5.00 V host, 0.25 ohm loop; 100 to 330 mA.",
+    "sources": [
+      "A1",
+      "AXP",
+      "USB2",
+      "FW"
+    ],
+    "model": "Cable, connector, bead resistance and VBUS input capacitance; ideal imposed USB load.",
+    "deck": "decks/usb_unconfigured_host.cir",
+    "outputs": [
+      "V(vbus)",
+      "I(Vhost)"
+    ],
+    "metrics": [
+      {
+        "label": "Minimum PMIC input",
+        "column": "V(vbus)",
+        "calculation": "min",
+        "unit": "V",
+        "limits": [
+          3.9,
+          5.5
+        ]
+      },
+      {
+        "label": "Source demand",
+        "column": "I(Vhost)",
+        "calculation": "absmax",
+        "unit": "mA",
+        "limits": [
+          0,
+          100
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "cc_default",
+    "family": "Type-C orientation",
+    "description": "5 V resistor-source fixture, Rp 56000 ohm, Rd 5100 ohm.",
+    "sources": [
+      "A1",
+      "TYPEC"
+    ],
+    "model": "One active CC pin. Repeat both plug orientations. Open resistance is a deliberate assembly fault.",
+    "deck": "decks/cc_default.cir",
+    "outputs": [
+      "V(cc)"
+    ],
+    "metrics": [
+      {
+        "label": "CC voltage",
+        "column": "V(cc)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          0.2,
+          0.66
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cc_1p5a",
+    "family": "Type-C orientation",
+    "description": "5 V resistor-source fixture, Rp 22000 ohm, Rd 5100 ohm.",
+    "sources": [
+      "A1",
+      "TYPEC"
+    ],
+    "model": "One active CC pin. Repeat both plug orientations. Open resistance is a deliberate assembly fault.",
+    "deck": "decks/cc_1p5a.cir",
+    "outputs": [
+      "V(cc)"
+    ],
+    "metrics": [
+      {
+        "label": "CC voltage",
+        "column": "V(cc)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          0.66,
+          1.23
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cc_3a",
+    "family": "Type-C orientation",
+    "description": "5 V resistor-source fixture, Rp 10000 ohm, Rd 5100 ohm.",
+    "sources": [
+      "A1",
+      "TYPEC"
+    ],
+    "model": "One active CC pin. Repeat both plug orientations. Open resistance is a deliberate assembly fault.",
+    "deck": "decks/cc_3a.cir",
+    "outputs": [
+      "V(cc)"
+    ],
+    "metrics": [
+      {
+        "label": "CC voltage",
+        "column": "V(cc)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          1.23,
+          2.04
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cc_cc_open",
+    "family": "Type-C orientation",
+    "description": "5 V resistor-source fixture, Rp 56000 ohm, Rd 10000000000 ohm.",
+    "sources": [
+      "A1",
+      "TYPEC"
+    ],
+    "model": "One active CC pin. Repeat both plug orientations. Open resistance is a deliberate assembly fault.",
+    "deck": "decks/cc_cc_open.cir",
+    "outputs": [
+      "V(cc)"
+    ],
+    "metrics": [
+      {
+        "label": "CC voltage",
+        "column": "V(cc)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          0.2,
+          0.66
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bat_fresh",
+    "family": "Protected pack path",
+    "description": "OCV 4.15 V, combined cell/protector/loom 0.15 ohm, 650 mA peak.",
+    "sources": [
+      "A1",
+      "B1",
+      "BOARD"
+    ],
+    "model": "Cell plus protection + splices reduced to series resistance. J7 voltage is upstream of the PMIC.",
+    "deck": "decks/bat_fresh.cir",
+    "outputs": [
+      "V(j7)"
+    ],
+    "metrics": [
+      {
+        "label": "Minimum J7 voltage",
+        "column": "V(j7)",
+        "calculation": "min",
+        "unit": "V",
+        "limits": [
+          3.3,
+          4.23
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bat_mid",
+    "family": "Protected pack path",
+    "description": "OCV 3.70 V, combined cell/protector/loom 0.25 ohm, 650 mA peak.",
+    "sources": [
+      "A1",
+      "B1",
+      "BOARD"
+    ],
+    "model": "Cell plus protection + splices reduced to series resistance. J7 voltage is upstream of the PMIC.",
+    "deck": "decks/bat_mid.cir",
+    "outputs": [
+      "V(j7)"
+    ],
+    "metrics": [
+      {
+        "label": "Minimum J7 voltage",
+        "column": "V(j7)",
+        "calculation": "min",
+        "unit": "V",
+        "limits": [
+          3.3,
+          4.23
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bat_low_aged",
+    "family": "Protected pack path",
+    "description": "OCV 3.40 V, combined cell/protector/loom 0.55 ohm, 720 mA peak.",
+    "sources": [
+      "A1",
+      "B1",
+      "BOARD"
+    ],
+    "model": "Cell plus protection + splices reduced to series resistance. J7 voltage is upstream of the PMIC.",
+    "deck": "decks/bat_low_aged.cir",
+    "outputs": [
+      "V(j7)"
+    ],
+    "metrics": [
+      {
+        "label": "Minimum J7 voltage",
+        "column": "V(j7)",
+        "calculation": "min",
+        "unit": "V",
+        "limits": [
+          3.3,
+          4.23
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rail_typ_assumed",
+    "family": "3.3 V regulation",
+    "description": "28 uF effective, ESR 0.035 ohm, 5 us latency, 5 us response.",
+    "sources": [
+      "A1",
+      "ESP",
+      "BOARD"
+    ],
+    "model": "Incremental charge-deficit bound prior to loop recovery around 3.30 V. Wi-Fi current step is assumed.",
+    "deck": "decks/rail_typ_assumed.cir",
+    "outputs": [
+      "V(rail)"
+    ],
+    "metrics": [
+      {
+        "label": "Minimum 3V3 at step",
+        "column": "V(rail)",
+        "calculation": "min",
+        "unit": "V",
+        "limits": [
+          3,
+          3.6
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rail_derated_slow",
+    "family": "3.3 V regulation",
+    "description": "12 uF effective, ESR 0.080 ohm, 12 us latency, 8 us response.",
+    "sources": [
+      "A1",
+      "ESP",
+      "BOARD"
+    ],
+    "model": "Incremental charge-deficit bound prior to loop recovery around 3.30 V. Wi-Fi current step is assumed.",
+    "deck": "decks/rail_derated_slow.cir",
+    "outputs": [
+      "V(rail)"
+    ],
+    "metrics": [
+      {
+        "label": "Minimum 3V3 at step",
+        "column": "V(rail)",
+        "calculation": "min",
+        "unit": "V",
+        "limits": [
+          3,
+          3.6
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reset_nominal",
+    "family": "Reset and touch",
+    "description": "R14/C19 ESP_EN and R11/C8 LCD_RST nominal 10 kohm/100 nF; 10000 ohm, 100 nF.",
+    "sources": [
+      "A1",
+      "ESP",
+      "FW"
+    ],
+    "model": "Passive high transition after switch or expander release. Firmware LCD reset hold and bus boot are bench items.",
+    "deck": "decks/reset_nominal.cir",
+    "outputs": [
+      "V(reset)"
+    ],
+    "metrics": [
+      {
+        "label": "Release to 75% of VDD",
+        "column": "V(reset)",
+        "calculation": "cross",
+        "unit": "ms",
+        "limits": [
+          0.05,
+          10
+        ],
+        "level": 2.475,
+        "origin": 1e-06,
+        "scale": 1000.0
+      }
+    ]
+  },
+  {
+    "id": "reset_slow",
+    "family": "Reset and touch",
+    "description": "R14/C19 ESP_EN and R11/C8 LCD_RST nominal 10 kohm/100 nF; 10500 ohm, 120 nF.",
+    "sources": [
+      "A1",
+      "ESP",
+      "FW"
+    ],
+    "model": "Passive high transition after switch or expander release. Firmware LCD reset hold and bus boot are bench items.",
+    "deck": "decks/reset_slow.cir",
+    "outputs": [
+      "V(reset)"
+    ],
+    "metrics": [
+      {
+        "label": "Release to 75% of VDD",
+        "column": "V(reset)",
+        "calculation": "cross",
+        "unit": "ms",
+        "limits": [
+          0.05,
+          10
+        ],
+        "level": 2.475,
+        "origin": 1e-06,
+        "scale": 1000.0
+      }
+    ]
+  },
+  {
+    "id": "reset_fast",
+    "family": "Reset and touch",
+    "description": "R14/C19 ESP_EN and R11/C8 LCD_RST nominal 10 kohm/100 nF; 9500 ohm, 80 nF.",
+    "sources": [
+      "A1",
+      "ESP",
+      "FW"
+    ],
+    "model": "Passive high transition after switch or expander release. Firmware LCD reset hold and bus boot are bench items.",
+    "deck": "decks/reset_fast.cir",
+    "outputs": [
+      "V(reset)"
+    ],
+    "metrics": [
+      {
+        "label": "Release to 75% of VDD",
+        "column": "V(reset)",
+        "calculation": "cross",
+        "unit": "ms",
+        "limits": [
+          0.05,
+          10
+        ],
+        "level": 2.475,
+        "origin": 1e-06,
+        "scale": 1000.0
+      }
+    ]
+  },
+  {
+    "id": "key_pressed",
+    "family": "Top power key",
+    "description": "K3-2 and SW1 to K3-1/GND; switch loop 0.2 ohm.",
+    "sources": [
+      "A1",
+      "SW1",
+      "FW"
+    ],
+    "model": "Rev 2 R38=510 ohm, R37=1k, R65=100k. PMIC internal pull represented by an assumed 50k to 3.3 V; CMOS bounds are design targets.",
+    "deck": "decks/key_pressed.cir",
+    "outputs": [
+      "V(pwron)",
+      "V(raw)"
+    ],
+    "metrics": [
+      {
+        "label": "PMIC PWRON steady",
+        "column": "V(pwron)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          0,
+          0.33
+        ]
+      }
+    ]
+  },
+  {
+    "id": "key_released",
+    "family": "Top power key",
+    "description": "K3-2 and SW1 to K3-1/GND; switch loop 10000000000.0 ohm.",
+    "sources": [
+      "A1",
+      "SW1",
+      "FW"
+    ],
+    "model": "Rev 2 R38=510 ohm, R37=1k, R65=100k. PMIC internal pull represented by an assumed 50k to 3.3 V; CMOS bounds are design targets.",
+    "deck": "decks/key_released.cir",
+    "outputs": [
+      "V(pwron)",
+      "V(raw)"
+    ],
+    "metrics": [
+      {
+        "label": "PMIC PWRON steady",
+        "column": "V(pwron)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          2.97,
+          3.31
+        ]
+      }
+    ]
+  },
+  {
+    "id": "key_high_contact",
+    "family": "Top power key",
+    "description": "K3-2 and SW1 to K3-1/GND; switch loop 10000.0 ohm.",
+    "sources": [
+      "A1",
+      "SW1",
+      "FW"
+    ],
+    "model": "Rev 2 R38=510 ohm, R37=1k, R65=100k. PMIC internal pull represented by an assumed 50k to 3.3 V; CMOS bounds are design targets.",
+    "deck": "decks/key_high_contact.cir",
+    "outputs": [
+      "V(pwron)",
+      "V(raw)"
+    ],
+    "metrics": [
+      {
+        "label": "PMIC PWRON steady",
+        "column": "V(pwron)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          0,
+          0.33
+        ]
+      }
+    ]
+  },
+  {
+    "id": "charge_cc_low",
+    "family": "Charge control",
+    "description": "3.300 V equivalent cell OCV and 100 mOhm cell resistance.",
+    "sources": [
+      "A1",
+      "AXP",
+      "B1",
+      "FW"
+    ],
+    "model": "Ideal 300 mA / 4.2 V charge law with 0.10 ohm CV slope. Demonstrates programmed boundaries; excludes device accuracy, precharge, termination and autonomous POR.",
+    "deck": "decks/charge_cc_low.cir",
+    "outputs": [
+      "V(bat)",
+      "I(Vsense)"
+    ],
+    "metrics": [
+      {
+        "label": "Cell terminal",
+        "column": "V(bat)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          0,
+          4.2
+        ]
+      },
+      {
+        "label": "Pack charge current",
+        "column": "I(Vsense)",
+        "calculation": "last",
+        "unit": "mA",
+        "limits": [
+          0,
+          500
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "charge_cv_knee",
+    "family": "Charge control",
+    "description": "4.185 V equivalent cell OCV and 100 mOhm cell resistance.",
+    "sources": [
+      "A1",
+      "AXP",
+      "B1",
+      "FW"
+    ],
+    "model": "Ideal 300 mA / 4.2 V charge law with 0.10 ohm CV slope. Demonstrates programmed boundaries; excludes device accuracy, precharge, termination and autonomous POR.",
+    "deck": "decks/charge_cv_knee.cir",
+    "outputs": [
+      "V(bat)",
+      "I(Vsense)"
+    ],
+    "metrics": [
+      {
+        "label": "Cell terminal",
+        "column": "V(bat)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          0,
+          4.2
+        ]
+      },
+      {
+        "label": "Pack charge current",
+        "column": "I(Vsense)",
+        "calculation": "last",
+        "unit": "mA",
+        "limits": [
+          0,
+          500
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "charge_taper",
+    "family": "Charge control",
+    "description": "4.199 V equivalent cell OCV and 100 mOhm cell resistance.",
+    "sources": [
+      "A1",
+      "AXP",
+      "B1",
+      "FW"
+    ],
+    "model": "Ideal 300 mA / 4.2 V charge law with 0.10 ohm CV slope. Demonstrates programmed boundaries; excludes device accuracy, precharge, termination and autonomous POR.",
+    "deck": "decks/charge_taper.cir",
+    "outputs": [
+      "V(bat)",
+      "I(Vsense)"
+    ],
+    "metrics": [
+      {
+        "label": "Cell terminal",
+        "column": "V(bat)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          0,
+          4.2
+        ]
+      },
+      {
+        "label": "Pack charge current",
+        "column": "I(Vsense)",
+        "calculation": "last",
+        "unit": "mA",
+        "limits": [
+          0,
+          500
+        ],
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "thermal_vented_assumption",
+    "family": "Charger and enclosure heat",
+    "description": "0.22 W heat source, 55 K/W path and 25 C ambient.",
+    "sources": [
+      "A1",
+      "AXP",
+      "B1",
+      "BOARD"
+    ],
+    "model": "Electrothermal analogy 1 V = 1 C, 1 A = 1 W. Aggregate heat and thermal resistance are assumed; result is a hot-node sensitivity only.",
+    "deck": "decks/thermal_vented_assumption.cir",
+    "outputs": [
+      "V(hot)"
+    ],
+    "metrics": [
+      {
+        "label": "Modeled hot node after soak",
+        "column": "V(hot)",
+        "calculation": "last",
+        "unit": "C",
+        "limits": null
+      }
+    ]
+  },
+  {
+    "id": "thermal_sealed_stress",
+    "family": "Charger and enclosure heat",
+    "description": "0.55 W heat source, 85 K/W path and 40 C ambient.",
+    "sources": [
+      "A1",
+      "AXP",
+      "B1",
+      "BOARD"
+    ],
+    "model": "Electrothermal analogy 1 V = 1 C, 1 A = 1 W. Aggregate heat and thermal resistance are assumed; result is a hot-node sensitivity only.",
+    "deck": "decks/thermal_sealed_stress.cir",
+    "outputs": [
+      "V(hot)"
+    ],
+    "metrics": [
+      {
+        "label": "Modeled hot node after soak",
+        "column": "V(hot)",
+        "calculation": "last",
+        "unit": "C",
+        "limits": null
+      }
+    ]
+  },
+  {
+    "id": "ts_board_25C",
+    "family": "Battery-temperature input",
+    "description": "TS source set to 50 uA; R29 represented by 10000 ohm.",
+    "sources": [
+      "A1",
+      "AXP",
+      "B1"
+    ],
+    "model": "AXP TS divider with 3.3 V source compliance, conceptual linearized saturation. R29 sits on the board; cell temperature is unobservable through the two-wire J7.",
+    "deck": "decks/ts_board_25C.cir",
+    "outputs": [
+      "V(ts)"
+    ],
+    "metrics": [
+      {
+        "label": "TS input",
+        "column": "V(ts)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": null
+      }
+    ]
+  },
+  {
+    "id": "ts_board_45C",
+    "family": "Battery-temperature input",
+    "description": "TS source set to 50 uA; R29 represented by 4924 ohm.",
+    "sources": [
+      "A1",
+      "AXP",
+      "B1"
+    ],
+    "model": "AXP TS divider with 3.3 V source compliance, conceptual linearized saturation. R29 sits on the board; cell temperature is unobservable through the two-wire J7.",
+    "deck": "decks/ts_board_45C.cir",
+    "outputs": [
+      "V(ts)"
+    ],
+    "metrics": [
+      {
+        "label": "TS input",
+        "column": "V(ts)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": null
+      }
+    ]
+  },
+  {
+    "id": "ts_open",
+    "family": "Battery-temperature input",
+    "description": "TS source set to 50 uA; R29 represented by 100000000 ohm.",
+    "sources": [
+      "A1",
+      "AXP",
+      "B1"
+    ],
+    "model": "AXP TS divider with 3.3 V source compliance, conceptual linearized saturation. R29 sits on the board; cell temperature is unobservable through the two-wire J7.",
+    "deck": "decks/ts_open.cir",
+    "outputs": [
+      "V(ts)"
+    ],
+    "metrics": [
+      {
+        "label": "TS input",
+        "column": "V(ts)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": null
+      }
+    ]
+  },
+  {
+    "id": "ts_short",
+    "family": "Battery-temperature input",
+    "description": "TS source set to 50 uA; R29 represented by 1 ohm.",
+    "sources": [
+      "A1",
+      "AXP",
+      "B1"
+    ],
+    "model": "AXP TS divider with 3.3 V source compliance, conceptual linearized saturation. R29 sits on the board; cell temperature is unobservable through the two-wire J7.",
+    "deck": "decks/ts_short.cir",
+    "outputs": [
+      "V(ts)"
+    ],
+    "metrics": [
+      {
+        "label": "TS input",
+        "column": "V(ts)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": null
+      }
+    ]
+  },
+  {
+    "id": "speaker_cue",
+    "family": "BTL audio output",
+    "description": "Differential 1.40 V peak sine at 1 kHz into 6.0 ohms.",
+    "sources": [
+      "A1",
+      "SP1",
+      "FW"
+    ],
+    "model": "Voltage envelope applied differentially to J9. A resistive load bounds the nominal sine heating; excludes PA gain, clipping, PWM, resonance and acoustic SPL.",
+    "deck": "decks/speaker_cue.cir",
+    "outputs": [
+      "V(diff)"
+    ],
+    "metrics": [
+      {
+        "label": "Speaker average real power",
+        "column": "V(diff)",
+        "calculation": "resistive_power",
+        "unit": "W",
+        "limits": [
+          0,
+          1
+        ],
+        "resistance": 6,
+        "start": 0.001
+      }
+    ]
+  },
+  {
+    "id": "speaker_near_rating",
+    "family": "BTL audio output",
+    "description": "Differential 3.30 V peak sine at 1 kHz into 6.0 ohms.",
+    "sources": [
+      "A1",
+      "SP1",
+      "FW"
+    ],
+    "model": "Voltage envelope applied differentially to J9. A resistive load bounds the nominal sine heating; excludes PA gain, clipping, PWM, resonance and acoustic SPL.",
+    "deck": "decks/speaker_near_rating.cir",
+    "outputs": [
+      "V(diff)"
+    ],
+    "metrics": [
+      {
+        "label": "Speaker average real power",
+        "column": "V(diff)",
+        "calculation": "resistive_power",
+        "unit": "W",
+        "limits": [
+          0,
+          1
+        ],
+        "resistance": 6,
+        "start": 0.001
+      }
+    ]
+  },
+  {
+    "id": "speaker_overdrive",
+    "family": "BTL audio output",
+    "description": "Differential 3.90 V peak sine at 1 kHz into 5.4 ohms.",
+    "sources": [
+      "A1",
+      "SP1",
+      "FW"
+    ],
+    "model": "Voltage envelope applied differentially to J9. A resistive load bounds the nominal sine heating; excludes PA gain, clipping, PWM, resonance and acoustic SPL.",
+    "deck": "decks/speaker_overdrive.cir",
+    "outputs": [
+      "V(diff)"
+    ],
+    "metrics": [
+      {
+        "label": "Speaker average real power",
+        "column": "V(diff)",
+        "calculation": "resistive_power",
+        "unit": "W",
+        "limits": [
+          0,
+          1
+        ],
+        "resistance": 5.4,
+        "start": 0.001
+      }
+    ]
+  },
+  {
+    "id": "erm_running_equivalent",
+    "family": "Haptic H-bridge load",
+    "description": "50.0 ohm, 0.6 mH, 3.0 V differential command.",
+    "sources": [
+      "A3",
+      "M1",
+      "DRV",
+      "FW"
+    ],
+    "model": "Electrical RL/envelope surrogate. 50 ohm is effective running load at 3 V/60 mA, not measured winding DCR; low R represents an uncertain starting/stall stress.",
+    "deck": "decks/erm_running_equivalent.cir",
+    "outputs": [
+      "I(Vdrive)"
+    ],
+    "metrics": [
+      {
+        "label": "Peak drive current",
+        "column": "I(Vdrive)",
+        "calculation": "absmax",
+        "unit": "mA",
+        "limits": null,
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "erm_low_R_start",
+    "family": "Haptic H-bridge load",
+    "description": "22.0 ohm, 0.3 mH, 3.0 V differential command.",
+    "sources": [
+      "A3",
+      "M1",
+      "DRV",
+      "FW"
+    ],
+    "model": "Electrical RL/envelope surrogate. 50 ohm is effective running load at 3 V/60 mA, not measured winding DCR; low R represents an uncertain starting/stall stress.",
+    "deck": "decks/erm_low_R_start.cir",
+    "outputs": [
+      "I(Vdrive)"
+    ],
+    "metrics": [
+      {
+        "label": "Peak drive current",
+        "column": "I(Vdrive)",
+        "calculation": "absmax",
+        "unit": "mA",
+        "limits": null,
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "erm_locked_stress",
+    "family": "Haptic H-bridge load",
+    "description": "15.0 ohm, 0.2 mH, 3.0 V differential command.",
+    "sources": [
+      "A3",
+      "M1",
+      "DRV",
+      "FW"
+    ],
+    "model": "Electrical RL/envelope surrogate. 50 ohm is effective running load at 3 V/60 mA, not measured winding DCR; low R represents an uncertain starting/stall stress.",
+    "deck": "decks/erm_locked_stress.cir",
+    "outputs": [
+      "I(Vdrive)"
+    ],
+    "metrics": [
+      {
+        "label": "Peak drive current",
+        "column": "I(Vdrive)",
+        "calculation": "absmax",
+        "unit": "mA",
+        "limits": null,
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "light_nominal",
+    "family": "LCD backlight",
+    "description": "3.30 V rail, 2.95 V LED drop with 6.80 ohm series R3.",
+    "sources": [
+      "A1",
+      "BOARD"
+    ],
+    "model": "Full-duty steady slice of R3 + aggregate panel LED drop and AO3400 on resistance. Actual Vf, current limit and thermal rating require the panel drawing.",
+    "deck": "decks/light_nominal.cir",
+    "outputs": [
+      "I(Vdd)"
+    ],
+    "metrics": [
+      {
+        "label": "Full-duty backlight current",
+        "column": "I(Vdd)",
+        "calculation": "absmax",
+        "unit": "mA",
+        "limits": null,
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "light_low_vf_high_rail",
+    "family": "LCD backlight",
+    "description": "3.40 V rail, 2.80 V LED drop with 6.46 ohm series R3.",
+    "sources": [
+      "A1",
+      "BOARD"
+    ],
+    "model": "Full-duty steady slice of R3 + aggregate panel LED drop and AO3400 on resistance. Actual Vf, current limit and thermal rating require the panel drawing.",
+    "deck": "decks/light_low_vf_high_rail.cir",
+    "outputs": [
+      "I(Vdd)"
+    ],
+    "metrics": [
+      {
+        "label": "Full-duty backlight current",
+        "column": "I(Vdd)",
+        "calculation": "absmax",
+        "unit": "mA",
+        "limits": null,
+        "scale": 1000
+      }
+    ]
+  },
+  {
+    "id": "usbdata_nominal",
+    "family": "USB full-speed edges",
+    "description": "45 ohm lines, 5 ns delay; assumed 23 ohm transceiver plus R18/R19=22 ohm; 10 pF load/leg.",
+    "sources": [
+      "A1",
+      "USB2",
+      "ESP"
+    ],
+    "model": "One complementary driven bit edge, ideal lossless cable and aggregate load. Excludes stubs, ESD nonlinearity, layout, jitter, USB attach and eye mask.",
+    "deck": "decks/usbdata_nominal.cir",
+    "outputs": [
+      "V(dp)",
+      "V(diff)"
+    ],
+    "metrics": [
+      {
+        "label": "Data+ last high",
+        "column": "V(dp)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          2,
+          3.6
+        ]
+      },
+      {
+        "label": "Data+ 10-90% rise",
+        "column": "V(dp)",
+        "calculation": "rise",
+        "unit": "ns",
+        "limits": [
+          4,
+          20
+        ],
+        "low": 0.33,
+        "high": 2.97,
+        "scale": 1000000000.0
+      }
+    ]
+  },
+  {
+    "id": "usbdata_heavy_fixture",
+    "family": "USB full-speed edges",
+    "description": "45 ohm lines, 5 ns delay; assumed 23 ohm transceiver plus R18/R19=22 ohm; 100 pF load/leg.",
+    "sources": [
+      "A1",
+      "USB2",
+      "ESP"
+    ],
+    "model": "One complementary driven bit edge, ideal lossless cable and aggregate load. Excludes stubs, ESD nonlinearity, layout, jitter, USB attach and eye mask.",
+    "deck": "decks/usbdata_heavy_fixture.cir",
+    "outputs": [
+      "V(dp)",
+      "V(diff)"
+    ],
+    "metrics": [
+      {
+        "label": "Data+ last high",
+        "column": "V(dp)",
+        "calculation": "last",
+        "unit": "V",
+        "limits": [
+          2,
+          3.6
+        ]
+      },
+      {
+        "label": "Data+ 10-90% rise",
+        "column": "V(dp)",
+        "calculation": "rise",
+        "unit": "ns",
+        "limits": [
+          4,
+          20
+        ],
+        "low": 0.33,
+        "high": 2.97,
+        "scale": 1000000000.0
+      }
+    ]
+  }
+]

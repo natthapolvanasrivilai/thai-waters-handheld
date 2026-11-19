@@ -1,0 +1,10 @@
+Thai Waters Rev F | bat_low_aged
+* OCV 3.40 V, combined cell/protector/loom 0.55 ohm, 720 mA peak.
+* Model: Cell plus protection + splices reduced to series resistance. J7 voltage is upstream of the PMIC.
+Vcell cell 0 3.4
+Rdc cell j7 0.55
+Cj7 j7 0 2.2u
+Iload j7 0 PULSE(.15 0.72 1m 2u 2u 2m 8m)
+.TRAN 10u 4m 0 5u
+.PRINT TRAN V(j7)
+.END

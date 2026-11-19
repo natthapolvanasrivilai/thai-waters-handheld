@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="690" viewBox="0 0 1080 690">
+<title>Tabletop axial slip brake, motion and control connections</title><desc>Schematic section along rocker and simplified electrical signal and power paths. Printed parts dimensions are in the STEP file.</desc>
+<defs><marker id="a" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 0 6" fill="none" stroke="#2c6658"/></marker></defs>
+<rect width="1080" height="690" fill="#f7f6f0"/>
+<g font-family="Arial,sans-serif" fill="#163d35">
+<text x="38" y="53" font-size="29" font-weight="bold">Spring-return slip brake · Bench B0</text>
+<text x="40" y="84" font-size="16">Motion section · actuator clamped above the coupon · dimensions in mm · schematic projection</text>
+<rect x="56" y="306" width="956" height="15" rx="6" fill="#95a59a"/>
+<rect x="99" y="254" width="264" height="24" rx="6" fill="#4d8d7a"/>
+<rect x="219" y="155" width="18" height="152" fill="#536d64"/>
+<path d="M227 166 H288 V131" fill="none" stroke="#d49a4d" stroke-width="14" stroke-linejoin="round"/>
+<text x="63" y="147" font-size="16">Elevated test crank</text><text x="63" y="168" font-size="15">7.8 throw</text>
+<rect x="312" y="230" width="32" height="11" fill="#bd945f"/>
+<path d="M323 225 H853" stroke="#477395" stroke-width="13" fill="none"/>
+<path d="M453 307 V222" stroke="#829988" stroke-width="22"/><circle cx="453" cy="225" r="10" fill="#f6f4ed" stroke="#36584c" stroke-width="4"/>
+<path d="M706 303 V199 H770" fill="none" stroke="#829988" stroke-width="12"/>
+<path d="M750 222 V199 M332 228 V249" stroke="#2c6658" stroke-width="2" marker-end="url(#a)"/>
+<path d="M806 224 V158" stroke="#2c6658" stroke-width="3" marker-end="url(#a)"/>
+<rect x="773" y="93" width="65" height="54" rx="8" fill="#526459"/><text x="850" y="117" font-size="16">5 V pull solenoid</text><text x="850" y="139" font-size="15">independent stand</text>
+<path d="M850 233 l-4 10 8 8 -8 8 8 8 -8 8 4 9 v21" stroke="#996744" stroke-width="3" fill="none"/>
+<text x="863" y="264" font-size="15">Return elastic</text><text x="525" y="182" font-size="16">Fixed shim-adjustable stop</text>
+<text x="45" y="349" font-size="16">Rotor Ø25.5</text><text x="232" y="349" font-size="16">Pad on flexible leaf</text><text x="424" y="348" font-size="16">Pivot</text><text x="599" y="348" font-size="16">Pad : cable lever arms 13 : 39</text>
+<path d="M40 375 H1040" stroke="#a7b7a7"/>
+<text x="40" y="411" font-size="22" font-weight="bold">Independent bench harness</text>
+<g stroke="#527e6b" stroke-width="2" fill="#e9ede2"><rect x="40" y="441" width="142" height="53" rx="8"/><rect x="218" y="441" width="182" height="53" rx="8"/><rect x="438" y="441" width="146" height="53" rx="8"/><rect x="626" y="441" width="177" height="53" rx="8"/><rect x="847" y="441" width="183" height="53" rx="8"/></g>
+<g font-size="16" text-anchor="middle"><text x="111" y="463">5 V lab supply</text><text x="111" y="483">1.3 A limit</text><text x="309" y="463">SW1 disconnect</text><text x="309" y="483">F1 1.5 A fuse</text><text x="510" y="472">+5 V branch</text><text x="713" y="463">5648 V+ / SW</text><text x="713" y="483">flyback on board</text><text x="938" y="463">2776 coil</text><text x="938" y="483">between V+ / SW</text></g>
+<g stroke="#2c6658" stroke-width="2" marker-end="url(#a)"><path d="M182 467 H212"/><path d="M400 467 H432"/><path d="M584 467 H620"/><path d="M803 467 H841"/></g>
+<g stroke="#527e6b" stroke-width="2" fill="#e9ede2"><rect x="40" y="546" width="172" height="53" rx="8"/><rect x="256" y="546" width="341" height="53" rx="8"/><rect x="664" y="546" width="120" height="53" rx="8"/></g>
+<g font-size="16" text-anchor="middle"><text x="126" y="569">Pulse generator</text><text x="126" y="589">0 / 3.3 V</text><text x="426" y="569">CD74HCT221 pulse + cooldown</text><text x="426" y="589">Q1 to SIG · /Q2 to /RESET1</text><text x="725" y="578">5648 SIG</text></g>
+<g stroke="#2c6658" stroke-width="2" marker-end="url(#a)"><path d="M212 572 H250"/><path d="M597 572 H658"/><path d="M725 545 V501"/><path d="M510 496 V539"/></g>
+<text x="40" y="649" font-size="16">Supply return, generator ground, one-shot pin 8 and driver GND share a star point. Pin-level wiring is in README.md.</text>
+</g></svg>

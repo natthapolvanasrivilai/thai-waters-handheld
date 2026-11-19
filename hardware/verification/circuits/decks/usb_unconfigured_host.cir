@@ -1,0 +1,10 @@
+Thai Waters Rev F | usb_unconfigured_host
+* 5.00 V host, 0.25 ohm loop; 100 to 330 mA.
+* Model: Cable, connector, bead resistance and VBUS input capacitance; ideal imposed USB load.
+Vhost src 0 5
+Rloop src vbus 0.25
+Cin vbus 0 10u
+Iload vbus 0 PULSE(0.1 0.33 1m 5u 5u 2m 9m)
+.TRAN 10u 4m 0 5u
+.PRINT TRAN V(vbus) I(Vhost)
+.END

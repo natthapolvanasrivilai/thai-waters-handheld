@@ -1,0 +1,10 @@
+Variant,Operation,Minutes at 1,Minutes at 100,Minutes at 1000,Verification focus
+Core,"Receiving, traceability and kitting",6,3,2,"Verify approved board revision, cell identification and lot."
+Core,Print preparation and finishing,13,8,6,"Deburr and gauge shell, clear supports; print occupancy is costed separately."
+Core,Build and test three harnesses,18,10,7,"Terminate leads, insulate, mark and meter pinout."
+Core,"Fit receiver, wheel, magnet and top key",14,8,6,Use approved glue volume and qualified torque. Cure elapsed time consumes rack capacity.
+Core,Install electronics and close unit,11,7,6,"Insulate battery, inspect fit, clamp and strain relief."
+Core,"Flash, calibrate and functional test",12,7,5.5,"Record image hash, touch nine points, sensor range, USB charge, clock, Wi-Fi and speaker."
+Core,Final inspection and retail pack,6,4,3.5,"Serial reconciliation, charge shipping state and packout."
+Rumble,"Haptic harness, install and current test",7,5,4,"Include branch continuity, motor profile audition and encoder check."
+Handle,Fit captive screw and verify operation,7,4,3,"Test screw travel, retention and smooth removal."

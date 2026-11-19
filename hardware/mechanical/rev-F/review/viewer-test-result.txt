@@ -1,0 +1,1 @@
+PASS offline WebGL, 79 pickable entries, click, HUD, filtering, isolation, options, alternate battery, section, explode, 7 assembly stages, camera, mobile width and no remote requests.

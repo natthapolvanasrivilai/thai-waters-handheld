@@ -91,13 +91,6 @@ inline int noise(unsigned seed,int x,int spacing){
   int a=hash(seed+unsigned(i))%256,b=hash(seed+unsigned(i+1))%256;
   return (a*(256-f)+b*f)>>8;
 }
-inline void boat(Image& im,int x,int y,int w,bool canopy){
-  im.line(x-w-2,y-3,x-w+2,y+1,Post);im.line(x+w-2,y+1,x+w+2,y-4,Post);
-  im.span(x-w,y,w*2,Timber);im.span(x-w+2,y+1,w*2-4,Post);
-  im.span(x-w+1,y-1,w*2-2,Roof);im.span(x-w-2,y+3,w*2,Wake);
-  if(canopy){im.rect(x-4,y-6,1,5,Post);im.rect(x+4,y-6,1,5,Post);im.span(x-6,y-6,13,Canvas);}
-  else{im.line(x-2,y-5,x+1,y-1,Post);im.dot(x-3,y-6,Gold);}
-}
 inline void hut(Image& im,int x,int y,int w){
   im.rect(x-w,y-7,2*w,7,Wall);im.rect(x-2,y-5,4,5,Window);
   for(int k=0;k<5;k++)im.span(x-w-2+k,y-7-k,2*w+4-2*k,k==4?Timber:Roof);
@@ -110,15 +103,9 @@ inline void twig(Image& im,int x,int y,int h,int tint){
 inline void motif(Image& im,Feature f,int x,int y,Random& r){
   int w=r.between(8,15);
   switch(f){
-    case Raft:case Kitchen:case Boathouse:case Market:
+    case Kitchen:case Boathouse:case Market:
       hut(im,x,y,w);im.span(x-w-4,y+3,w*2+9,Post);
       if(f==Market||f==Kitchen)hut(im,x+w+8,y-1,6);
-      else if(f==Raft)boat(im,x+w+9,y+5,5,false);
-      break;
-    case Ferry:case Boat:case Lamps:case Sail:
-      boat(im,x,y,w,f==Ferry||f==Lamps);
-      if(f==Sail){im.rect(x,y-18,1,17,Timber);for(int i=0;i<13;i++)im.span(x+1,y-17+i,1+i/2,Canvas);}
-      if(f==Lamps){im.line(x-w,y-3,x+w/2,y-10,Post);for(int i=0;i<3;i++)im.rect(x-w+3+i*4,y-4-i,2,2,Gold);}
       break;
     case Rail:case Bridge:{
       int left=x<width/2?0:x-16,right=x<width/2?x+16:width-1,deck=y-6;
@@ -145,18 +132,19 @@ inline void motif(Image& im,Feature f,int x,int y,Random& r){
       break;
     case Rocks:case Ford:
       for(int i=0;i<6;i++){int u=x+r.between(-w,w),v=y+r.between(-2,3);im.oval(u,v,r.between(2,5),2,Stone);im.span(u-2,v-1,4,StoneLight);}break;
-    case Basket:boat(im,x,y,w,false);im.oval(x+4,y-3,3,2,Timber);im.span(x+1,y-4,7,Gold);break;
-    case Paper:im.line(x-6,y-3,x-3,y,Canvas);im.span(x-3,y,7,Canvas);im.line(x+3,y,x+6,y-3,Canvas);im.line(x-1,y-1,x+1,y-4,Canvas);break;
+    case Raft:case Ferry:case Boat:case Lamps:case Sail:case Basket:case Paper:break;
     case Buoy:im.oval(x,y,3,2,Roof);im.rect(x-1,y-5,2,5,Canvas);im.dot(x,y-6,Gold);break;
   }
 }
-inline void render(Image im,Color *colors,int place,int time){
+struct Layout {unsigned seed; int place,period,horizon,sunX; Recipe recipe;};
+inline void render(Image im,Color *colors,int place,int time,Layout* layout=nullptr){
   constexpr int count=sizeof(recipes)/sizeof(recipes[0]);
   place=clamp(place,0,count-1);time=clamp(time,0,3);
   Recipe composition=recipes[place];Water water=composition.water;bool sea=place>=96;
   unsigned seed=hash(0xbba66aU+unsigned(place)*0x23963U);
   Random r{seed};palette(colors,water,time,place);
   int horizon=r.between(56,77),sunX=r.between(19,221);
+  if(layout)*layout={seed,place,time,horizon,sunX,composition};
   int sunY=time==1?r.between(10,23):time==3?r.between(9,32):r.between(horizon-32,horizon-14);
   // Interleave neighboring sky values at the pixel scale to soften band edges.
   for(int y=0;y<horizon;y++)for(int x=0;x<width;x++){
@@ -302,10 +290,5 @@ inline void render(Image im,Color *colors,int place,int time){
     int x=leftBank?r.between(-4,52):r.between(189,243),y=r.between(100,153);
     im.oval(x,y,2+y/65,1,Reed);if(i%7==0)im.span(x-1,y-2,3,Petal);
   }}
-  int flockX=r.between(22,201),flockY=r.between(12,30);
-  for(int i=0,n=r.between(2,5);i<n;i++){
-    int x=flockX+4*i,y=flockY+r.between(-2,2);
-    im.dot(x-1,y,Wood);im.dot(x,y+1,Wood);im.dot(x+1,y,Wood);
-  }
 }
 }

@@ -1,0 +1,6 @@
+{
+  "bootloader.bin": "b41be55ae9a52aeeb21645c51b86c14027f84c2c91bf67bee6aa0e1b15d18e8b",
+  "partitions.bin": "ace02503447d0f470692e65fa76002f2d77a92dc81cd3813d8aa66718d716da9",
+  "boot_app0.bin": "f94c5d786a7a8fab06ac5d10e33bf37711a6697636dc037559ea19cc410a17f0",
+  "ThaiWaters.bin": "e7531e385ae7bb868c9ce551486e7fd2c167d2f6d52570eec34aa26600787d8b"
+}

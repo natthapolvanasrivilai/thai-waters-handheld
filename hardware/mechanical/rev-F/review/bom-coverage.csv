@@ -1,0 +1,27 @@
+BOM ref,Quantity,Unit,Function,Viewer part IDs,Assembly geometry and remaining control
+A1,1,kit,Display/controller,A1-touch | A1-mounts | A1-carrier | A1-population | A1-J8 | A1-usb | A1-k3 | A1-reset | A1-boot | A1-J7 | A1-J9 | A1-backing,546 placed supplier solids; the board is a purchased subassembly. Vendor internal components and bond layers require board-level supplier control.
+SP1,1,each,Speaker,Speaker | j9plug | spk0 | spk1,"15 × 30 × 7 mm allowance, speaker pair and proposed plug. Actual speaker terminal/case shape and lead stock length unverified."
+B1,1,each,Battery,Cell | cellAlt | cellDrawing | packplug | pack0 | pack1,Catalog envelope is baseline. Select drawing maximum or alternate supplier STEP. Includes two proposed 100 mm wire paths and a PH body.
+A2,1,each,Reel angle sensor,A2-pcb | A2-population | A2-sockets | A2-chip,"25 placed supplier solids. Cable termination, magnet centering and field strength need a real build."
+MG1,1,each,Reel magnet,reel2,Magnet cylinder at the released axle datum. Magnetization direction is an incoming/test requirement.
+W1-P,1,each,Sensor plug at J8,J8plug | hdrPins,Right-angle body and four mating blade envelopes. Confirm keyed orientation using the actual unkeyed part and harness marking.
+W1,1,set,Sensor loom,w1VCC | w1GND | w1SDA | w1SCL | whVCC | whGND | whSDA | whSCL,Four reel leads plus four parallel driver branch leads when haptics are fitted. Routes are mechanical proposals.
+W2-A,1,each,Battery-side adapter lead,ph | batt0 | batt1,"Battery-side PH connector body and spliced wire pair. Contact barrel, lead slack and polarity must be verified."
+W2-B,1,each,Board-side adapter lead,j7plug | batt0 | batt1,Board-side battery connector body. Pin mates and insertion direction require inspection against received J7.
+H1,4,each,Board mounting screws,H1-1 | H1-2 | H1-3 | H1-4,Four independent installed screw shapes at the correct mounting axes. Smooth major diameters and heads.
+H2,1,each,Fold pivot screw,reel0,Released hinge screw body. Thread and drive are simplified.
+H3,2,each,Pivot shims,H3-1 | H3-2,Two independent 0.30 mm shim solids at the pivot seating faces.
+H4,1,each,Grip screw,reel1,Released smooth retainer. Its bearing-face volume was partitioned to show H5 independently.
+H5,1,each,Grip washer,H5,0.4 mm nominal washer at the knob bearing. Measure axial freedom and actual screw-head stack.
+P1,1,set,Printed mechanical set,Housing | Bezel | Rotor | Stem | Grip | Collar | Key cap | Retainer | Receiver nut keeper,"Base enclosure, bezel, cap, carrier keeper, rotor, arm, knob, collar and nut keeper on released geometry."
+SHOP1,1,lot,Assembly consumables,adhH | shrink0 | shrink1,"Nominal haptic adhesive pads and adapter shrink sleeves. Distributed solder, epoxy, tape, shims, strain relief and swelling provisions require process-controlled sizing."
+USB1,1,each,Programming / charging cable,usbGauge,External plug gauge for service approach. Cable outside the product and flexible overmold bend not modeled.
+A3,1,each,Haptic driver,drvBoard | drvParts,Current 25.4 × 17.78 mm STEMMA QT layout and measured footprint centers. Component shapes are approximate package bounds.
+M1,1,each,Vibration motor,motor | wm0 | wm1,"Coin ERM envelope and two motor leads. Check adhesive bond, mounted response, startup and encoder interference."
+SW1,1,each,Top-edge POWER switch,Switch case | Switch plunger | Trimmed terminals,"Envelope model of the case, actuator and four trimmed terminals."
+PCB1,1,each,POWER switch carrier,Key PCB,Released four-hole board sized to the switch tracks; pads and solder fillets are not 3D process-qualified.
+W3,1,set,POWER switch harness,w30 | w31,"Pair between diagonal pins on the switch carrier and original K3 region. Confirm switched pole, continuity, lead dress, insulation and strain relief on the assembly."
+G1,1,set,Detachable slide-in rod handle kit,Removable rod grip | Grip screw keeper,Accessory handle and captive-screw keeper. Measured static geometry; material creep and load/wear testing pending.
+H6,1,each,Power carrier retainer screw,Keeper screw,Power-carrier retainer screw in the released assembly.
+H7,1,each,Rod handle captive lock screw,Grip lock screw,Captive screw in installed pose with hex drive and smooth thread envelope.
+H8,1,each,Rod mount captive threaded nut,Receiver nut,M3 nut trapped in factory-installed rear receiver.

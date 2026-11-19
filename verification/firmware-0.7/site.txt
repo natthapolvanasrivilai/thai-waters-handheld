@@ -1,0 +1,2 @@
+PASS two phone sessions, separate spots, idempotent catches, expiry and round rollover.
+PASS served release bytes, phone touch layout, two separate browsers joined the same hosted event. Page SHA-256 141d1d58fc80274e27e0b6707b216cf019ad1ecd48f4cf9e5f82b6f8c1491eec

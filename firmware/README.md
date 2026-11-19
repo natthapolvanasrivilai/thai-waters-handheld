@@ -1,4 +1,4 @@
-# Thai Waters · Firmware 0.6
+# Thai Waters · Firmware 0.7
 
 For Waveshare ESP32-S3-Touch-LCD-3.5B (31137), QMI8658, ES8311 and a right-side AS5600 reel at 0x36. The optional DRV2605L at 0x5A adds haptics. The game runs without the haptic module. The bench guide in this folder includes wiring, optional BOM and candidate placement.
 
@@ -57,3 +57,5 @@ arduino-cli compile --fqbn "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi,FlashMod
 
 The archive contains the target image, hash manifest, partition segments, source, vendor libraries and verification records. The target build and host simulations passed. Physical RF, charging, on-device updates, clock holdover, audio, rumble, sensor alignment, simultaneous handheld play and production approval remain open.
 
+
+See the [interactive product documentation](../docs/wiki/Home.md) for aimed casting, snag recovery, moving scenery, build evidence and the Rev F mechanical hold.

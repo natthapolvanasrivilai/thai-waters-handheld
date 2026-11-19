@@ -1,2 +1,4 @@
 # Prototype and production releases
-Historical builds are in prototypes. Firmware 0.6 is an engineering candidate for PCB 31137 and the Rev E or Rev F enclosure. No production release has been approved. For each promoted build record the Git commit, PCB silkscreen revision, partition layout, binary SHA-256, hardware/API compatibility, tested accessory combinations, regulatory evidence and approver. The populated STEP is gzip-compressed losslessly in the mechanical package.
+Historical builds are in prototypes. Firmware 0.7 is an engineering candidate for PCB 31137 and the Rev E or Rev F enclosure. No production release has been approved. For each promoted build record the Git commit, PCB silkscreen revision, partition layout, binary SHA-256, hardware/API compatibility, tested accessory combinations, regulatory evidence and approver. The populated STEP is gzip-compressed losslessly in the mechanical package.
+
+See the [interactive product documentation](../docs/wiki/Home.md) for aimed casting, snag recovery, moving scenery, build evidence and the Rev F mechanical hold.

@@ -1,0 +1,396 @@
+{
+  "source": "OpenCascade B-Rep Boolean common volume",
+  "threshold_mm3": 0.002,
+  "pair_tests": 2109,
+  "candidate_solid_pairs": 223,
+  "intersections": [
+    {
+      "first": "Trimmed terminals",
+      "second": "w30",
+      "overlap_mm3": 0.042,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "Trimmed terminals",
+      "second": "w31",
+      "overlap_mm3": 0.0249,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "A1-J8",
+      "second": "hdrPins",
+      "overlap_mm3": 0.6119,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "A1-k3",
+      "second": "w30",
+      "overlap_mm3": 0.0049,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "A1-k3",
+      "second": "w31",
+      "overlap_mm3": 0.0112,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "A1-J9",
+      "second": "j9plug",
+      "overlap_mm3": 0.3937,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "Cell",
+      "second": "pack0",
+      "overlap_mm3": 1.3842,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "Cell",
+      "second": "pack1",
+      "overlap_mm3": 1.4319,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "Speaker",
+      "second": "spk0",
+      "overlap_mm3": 0.1956,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "Speaker",
+      "second": "spk1",
+      "overlap_mm3": 0.2186,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "motor",
+      "second": "wm0",
+      "overlap_mm3": 0.0439,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "motor",
+      "second": "wm1",
+      "overlap_mm3": 0.1393,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "J8plug",
+      "second": "w1VCC",
+      "overlap_mm3": 0.0398,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "J8plug",
+      "second": "w1GND",
+      "overlap_mm3": 0.0546,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "J8plug",
+      "second": "w1SDA",
+      "overlap_mm3": 0.112,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "J8plug",
+      "second": "w1SCL",
+      "overlap_mm3": 0.9195,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "J8plug",
+      "second": "hdrPins",
+      "overlap_mm3": 0.0819,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "ph",
+      "second": "batt0",
+      "overlap_mm3": 0.0261,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "ph",
+      "second": "batt1",
+      "overlap_mm3": 0.0261,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "packplug",
+      "second": "pack0",
+      "overlap_mm3": 0.0245,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "packplug",
+      "second": "pack1",
+      "overlap_mm3": 0.0965,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "j7plug",
+      "second": "batt0",
+      "overlap_mm3": 0.0275,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "j7plug",
+      "second": "batt1",
+      "overlap_mm3": 0.0403,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "j9plug",
+      "second": "spk0",
+      "overlap_mm3": 0.1991,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "j9plug",
+      "second": "spk1",
+      "overlap_mm3": 0.8749,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "w1VCC",
+      "second": "whVCC",
+      "overlap_mm3": 0.1672,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "w1GND",
+      "second": "whGND",
+      "overlap_mm3": 0.1672,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "w1SDA",
+      "second": "whSDA",
+      "overlap_mm3": 0.1672,
+      "status": "expected interface; gauge"
+    },
+    {
+      "first": "w1SCL",
+      "second": "whSCL",
+      "overlap_mm3": 0.1672,
+      "status": "expected interface; gauge"
+    }
+  ],
+  "cell_tests": [
+    {
+      "rotation_deg": 0,
+      "dx_mm": 0,
+      "dy_mm": 0,
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 118.397
+        }
+      ]
+    },
+    {
+      "rotation_deg": 180,
+      "dx_mm": 0,
+      "dy_mm": 0,
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 118.397
+        }
+      ]
+    },
+    {
+      "rotation_deg": 0,
+      "dx_mm": 1.5,
+      "dy_mm": 0,
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 110.157
+        }
+      ]
+    },
+    {
+      "rotation_deg": 180,
+      "dx_mm": 1.5,
+      "dy_mm": 0,
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 110.157
+        }
+      ]
+    },
+    {
+      "rotation_deg": 0,
+      "dx_mm": -1.5,
+      "dy_mm": 0,
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 121.958
+        },
+        {
+          "part": "Key PCB",
+          "mm3": 0.885
+        },
+        {
+          "part": "Speaker",
+          "mm3": 40.357
+        }
+      ]
+    },
+    {
+      "rotation_deg": 0,
+      "dx_mm": 1.5,
+      "dy_mm": -1.5,
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 109.371
+        }
+      ]
+    },
+    {
+      "rotation_deg": 90,
+      "dx_mm": 0,
+      "dy_mm": 0,
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 171.615
+        },
+        {
+          "part": "Speaker",
+          "mm3": 1569.696
+        },
+        {
+          "part": "drvBoard",
+          "mm3": 190.168
+        },
+        {
+          "part": "drvParts",
+          "mm3": 72.257
+        },
+        {
+          "part": "motor",
+          "mm3": 30.322
+        },
+        {
+          "part": "wm0",
+          "mm3": 8.112
+        },
+        {
+          "part": "wm1",
+          "mm3": 5.0
+        }
+      ]
+    },
+    {
+      "rotation_deg": -90,
+      "dx_mm": 0,
+      "dy_mm": 0,
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 171.615
+        },
+        {
+          "part": "Speaker",
+          "mm3": 1548.294
+        },
+        {
+          "part": "drvBoard",
+          "mm3": 190.168
+        },
+        {
+          "part": "drvParts",
+          "mm3": 72.257
+        },
+        {
+          "part": "motor",
+          "mm3": 30.322
+        },
+        {
+          "part": "wm0",
+          "mm3": 8.112
+        },
+        {
+          "part": "wm1",
+          "mm3": 4.409
+        }
+      ]
+    }
+  ],
+  "drawing_body_tests": [
+    {
+      "size": "minimum",
+      "dimensions_mm": [
+        34.7,
+        61.7,
+        4.7
+      ],
+      "intersections": []
+    },
+    {
+      "size": "nominal",
+      "dimensions_mm": [
+        35,
+        62,
+        5
+      ],
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 11.983
+        }
+      ]
+    },
+    {
+      "size": "maximum",
+      "dimensions_mm": [
+        35.3,
+        62.3,
+        5.3
+      ],
+      "intersections": [
+        {
+          "part": "Housing",
+          "mm3": 30.124
+        }
+      ]
+    }
+  ],
+  "cell_window_study": {
+    "bounds_mm": [
+      -29.0,
+      9.0,
+      -32.0,
+      32.0,
+      3.1,
+      10.4
+    ],
+    "affected_rigid_parts": [
+      {
+        "part": "Housing",
+        "mm3": 171.702
+      },
+      {
+        "part": "ph",
+        "mm3": 28.08
+      },
+      {
+        "part": "packplug",
+        "mm3": 19.8
+      },
+      {
+        "part": "shrink0",
+        "mm3": 0.829
+      }
+    ],
+    "status": "Study envelope; wall thickness, restraint, swelling allowance, handling, bending and revised harness remain to be validated."
+  }
+}

@@ -1,0 +1,8 @@
+31356 sampled animations across 468 scenes; peak 109 / 256 spans; raft crossings, schedules, anchored structures and wrap verified.
+raft-left 13568 ms
+raft-center 37120 ms
+raft-right 60672 ms
+ferry-night 61952 ms
+karst-dawn 12000 ms
+coast-dusk 12000 ms
+936 web/host-native LCD frames match at every logical pixel after palette conversion.

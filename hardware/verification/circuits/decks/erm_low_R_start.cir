@@ -1,0 +1,9 @@
+Thai Waters Rev F | erm_low_R_start
+* 22.0 ohm, 0.3 mH, 3.0 V differential command.
+* Model: Electrical RL/envelope surrogate. 50 ohm is effective running load at 3 V/60 mA, not measured winding DCR; low R represents an uncertain starting/stall stress.
+Vdrive drv 0 DC 0 PULSE(0 3 1m 5u 5u 6m 20m)
+Lmotor drv series 0.3m
+Rmotor series 0 22
+.TRAN 5u 9m 0 5u
+.PRINT TRAN I(Vdrive)
+.END

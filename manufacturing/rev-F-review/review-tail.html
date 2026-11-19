@@ -1,0 +1,71 @@
+<script>
+function moneyTH(n){return '฿'+new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(n);}
+const S=D.commercial.scenarios;
+const priceRows=()=>cellTable(['Lot','Variant','Material','TH landed','US landed','US DTC contribution','US wholesale contribution'],S.map(s=>[s.lot,s.sku,usd(s.materialsUsd),usd(s.landedUsd),usd(s.usLandedUsd),usd(s.usContributionUsd),usd(s.wholesaleContributionUsd)]));
+const costNotes='<p class="meta">'+D.commercial.notes.map(html).join(' ')+'</p>';
+const bomGrid=rs=>tbl(['Ref · variant','Buy / make specification','Qty / unit','USD each (1 / 100 / 1k)','Sourcing basis'],rs.map(r=>[html(r.Ref+' · '+r.Variant),html(r.Description)+'<br><small>'+html(r['MPN or process'])+'</small>',html(r['Qty per unit']+' '+r.UOM),[1,100,1000].map(q=>num(+r['USD at '+q])).join(' / '),source(r['Source URL or drawing'],r.Source)+'<br><small>'+html(r['Price basis'])+' · '+html(r['Order unit / MOQ'])+'</small>']));
+$('business').innerHTML='<h2>Unit economics and launch</h2><p>Choose a build quantity and configuration. The workbook exposes the labor, freight, yield, channel fees and one-time assumptions behind these amounts.</p><div class="toolbar"><label>Units in lot<select id="lot"><option>1</option><option selected>100</option><option>1000</option></select></label><label>Configuration<select id="sku"><option value="BASE">Base</option><option value="RUMBLE">Base + rumble</option><option value="ROD">Base + handle</option><option value="FULL" selected>Handle + rumble</option></select></label></div><div id="scenario"></div>'+costNotes+'<h3>Commercial plan</h3>'+textList(D.launch)+'<h3>Buy / make BOM</h3><div class="toolbar"><label>Find a part or supplier<input id="findPart" type="search" placeholder="M3, Adafruit, battery…"></label><label>Variant<select id="partVariant"><option>All</option><option>Core</option><option>Handle</option><option>Rumble</option></select></label><output id="partCount"></output></div><div id="bomGrid"></div>';
+function scenario(){const s=S.find(r=>r.lot===+$('lot').value&&r.sku===$('sku').value);
+ $('scenario').innerHTML=cards([[usd(s.materialsUsd),'Materials and packaging'],[usd(s.conversionUsd),'Manufacturing conversion'],[usd(s.landedUsd),'Thai landed cost'],[usd(s.usLandedUsd),'US landed cost']])+'<div class="columns"><div class="sheet"><h4>Thailand · direct sale</h4><strong class="gauge">'+moneyTH(s.thDtcPriceThb)+'</strong><p>'+moneyTH(s.thContributionThb)+' contribution per unit. '+(s.thBreakEvenUnits?num(s.thBreakEvenUnits)+' sales to recover modeled NRE.':'No positive contribution at this scale.')+'</p></div><div class="sheet"><h4>US · direct sale</h4><strong class="gauge">'+usd(s.usDtcPriceUsd)+'</strong><p>'+usd(s.usContributionUsd)+' contribution per unit. '+(s.breakEvenUnits?num(s.breakEvenUnits)+' sales to recover modeled NRE.':'No positive contribution at this scale.')+'</p></div></div><p>US wholesale contribution at the modeled terms: <b>'+usd(s.wholesaleContributionUsd)+'</b>. Manufacturing requires '+num(s.assemblyMinutes)+' minutes of touch labor and '+num(s.printHours)+' print hours per unit for this scenario.</p>';}
+function showBOM(){const q=$('findPart').value.toLowerCase(),v=$('partVariant').value,rs=D.bom.filter(r=>(v==='All'||r.Variant===v)&&Object.values(r).join(' ').toLowerCase().includes(q));$('bomGrid').innerHTML=bomGrid(rs);$('partCount').textContent=rs.length+' lines';}
+$('sku').onchange=$('lot').onchange=scenario;scenario();$('partVariant').onchange=$('findPart').oninput=showBOM;showBOM();
+function drawTrace(){
+ const c=D.circuits.cases[+$('casePick').value],traces=D.traces[c.id]||[];
+ const box=document.getElementById('caseDetail'); if(!traces.length)return;
+ box.insertAdjacentHTML('beforeend','<div class="toolbar"><label>Solver trace<select id="traceSel"></select></label></div><svg id="wave" viewBox="0 0 750 180" role="img" aria-label="Transient waveform from SPICE solver"></svg><p class="meta" id="traceLabel"></p>');
+ const sel=$('traceSel');traces.forEach((t,i)=>sel.add(new Option(t.name,i)));
+ function plot(){
+ const t=traces[+sel.value],p=t.points,x0=p[0][0],x1=p[p.length-1][0],ys=p.map(v=>v[1]);
+ let low=Math.min(...ys),hi=Math.max(...ys);if(hi===low){hi+=.01;low-=.01}
+ const xf=x=>62+(x-x0)/(x1-x0||1)*670,yf=y=>144-((y-low)/(hi-low))*120;
+ const points=p.map(v=>xf(v[0]).toFixed(1)+','+yf(v[1]).toFixed(1)).join(' ');
+ $('wave').innerHTML='<path d="M62 22 V145 H734" stroke="#869d8b" fill="none"/><polyline points="'+points+'"/><text x="4" y="27">'+html(num(hi))+'</text><text x="4" y="145">'+html(num(low))+'</text><text x="62" y="168">'+html(num(x0))+' s</text><text text-anchor="end" x="732" y="168">'+html(num(x1))+' s</text>';
+ $('traceLabel').textContent=t.name+' · '+t.unit+' · extrema retained for display; the complete .PRINT output is in raw-ngspice.zip.';
+ }
+ sel.onchange=plot;plot();
+}
+$('casePick').onchange=()=>{renderCase();drawTrace();};drawTrace();
+const correlation=()=>cellTable(['Item','Measurement','Engineering decision'],D.correlation);
+$('circuits').insertAdjacentHTML('beforeend','<h3>How to close the open corners</h3>'+correlation());
+const exceptionSummary='<p>Intentional opens and high-resistance contacts are diagnostic fault injections. Rail, battery, pull-up and speaker corners use assumed parameters that require correlation. An excursion in these cases identifies a design or measurement decision.</p>';
+const systemEvidence='<h3>Software evidence</h3>'+textList(D.firmware)+'<h3>Transfer to physical equipment</h3>'+textList(D.hardwareBridge);
+
+function plottedCase(id,caption,threshold){
+ const series=D.traces[id]?.[0];if(!series)return '';
+ const pts=series.points,lo=pts[0][0],hi=pts[pts.length-1][0],values=pts.map(p=>p[1]);
+ if(threshold!==null)values.push(threshold);
+ const ymin=Math.min(...values),ymax=Math.max(...values),y=v=>98-(v-ymin)/(ymax-ymin||1)*74;
+ const path=pts.map(([t,v])=>(42+(t-lo)/(hi-lo||1)*588).toFixed(1)+','+y(v).toFixed(1)).join(' ');
+ const line=threshold===null?'':'<line x1="42" x2="630" y1="'+y(threshold)+'" y2="'+y(threshold)+'" stroke="#ba602b" stroke-dasharray="4 3"/>';
+ return '<div class="sheet" style="margin:5px 0"><b>'+html(caption)+'</b><svg viewBox="0 0 648 119" style="width:100%;max-height:39mm"><path d="M42 21V98H630" stroke="#a3b3a1" fill="none"/>'+line+'<polyline points="'+path+'" fill="none" stroke="#23694c" stroke-width="1.7"/><g font-size="9" fill="#375343"><text x="2" y="25">'+html(num(ymax))+'</text><text x="2" y="99">'+html(num(ymin))+'</text><text x="42" y="114">'+html(series.unit+' · 0 s')+'</text><text x="630" text-anchor="end" y="114">'+html(num(hi))+' s</text></g></svg><small>'+html(id+' · '+series.name+(threshold===null?'':' · dashed bound '+threshold+' '+series.unit))+'</small></div>';
+}
+
+function buildReport(){
+ const article=(title,body)=>'<article><h2>'+title+'</h2>'+body+'</article>';
+ const details=D.validation.map(r=>'<div class="sheet" style="margin:5px 0"><strong>'+html(r.ID+' · '+r.System+' · '+r.Gate)+'</strong><br>'+html(r['Test method'])+'<br><b>Acceptance.</b> '+html(r['Acceptance and record'])+'<br><small>Owner: '+html(r.Owner)+'. Current evidence: '+html(r['Evidence now'])+'.</small></div>').join('');
+ const full=S.find(s=>s.sku==='FULL'&&s.lot===100);
+ const summary='<p class="lede">Design verification, assembly, sourcing and launch economics for the Thailand fishing handheld.</p>'+intro+'<img alt="Riffle Pocket handheld render" src="'+D.hero+'">'+cards([[D.circuits.cases.length,'Circuit cases'],[exceptions.length,'Out-of-bound modeled metrics'],[D.bom.length,'Buy/make BOM lines']])+'<h3>Release decision</h3>'+textList(D.decisions);
+ const cs=D.circuits.cases.map(c=>'<div class="sheet" style="margin:5px 0"><strong>'+html(c.id+' · '+c.family)+'</strong><br>'+html(c.description)+' '+html(c.model)+'<br><small>'+html(c.sources.join(', ')+' · '+c.deck)+'</small></div>').join('');
+ const cost='<p>For a lot of 100 full units, the modeled Thai landed cost is '+usd(full.landedUsd)+' and US landed cost is '+usd(full.usLandedUsd)+'. Suggested direct prices are '+moneyTH(full.thDtcPriceThb)+' and '+usd(full.usDtcPriceUsd)+'.</p>'+priceRows()+costNotes+'<h3>Launch and channel tests</h3>'+textList(D.launch)+'<h3>One-time budget</h3>'+cellTable(Object.keys(D.nre[0]),D.nre.map(Object.values));
+ $('printReport').innerHTML='<article><p>Riffle Pocket · Rev F · Firmware 0.7 · 19 November 2026</p><h1>Production engineering review</h1>'+summary+'</article>'+
+ article('Hardware and software architecture',topology+architecture()+systemEvidence)+
+ article('Exploded assembly', '<img alt="Registered populated model with exploded assembly" src="'+D.explodedImage+'"><h3>Seated assembly and assembly motion</h3>'+textList(D.fitNotes))+
+ article('Assembly, clearances and change decisions','<img alt="CAD interface drawing" src="'+D.sectionImage+'">'+clearanceTable()+(D.collisions.some(i=>i.status==='resolve')?cellTable(['Part pair','Overlap (mm³)','Disposition'],D.collisions.filter(i=>i.status==='resolve').map(i=>[i.first+' / '+i.second,num(i.overlap_mm3),i.status])):'<p>The nominal catalog-cell assembly has zero unexpected overlaps above the stated threshold. The alternate pack study on the preceding page remains a release blocker.</p>'))+
+ article('Circuit simulation and conditional failures','<p>'+html(D.engineNote)+'</p>'+exceptionSummary+circuitTable(exceptions)+'<h3>Limits of the electrical models</h3>'+textList(D.electricalScope))+
+ article('Model-to-bench correlation',correlation()+'<h3>Native EDA use</h3><p>The engineering analysis is reproducible with ngspice and the supplied deck set. Altium Designer 18 is optional for a future carrier schematic and PCB layout. No native Altium project or native PSpice run forms part of this evidence.</p>')+
+ article('Transient waveforms',plottedCase('rail_derated_slow','3.3 V rail under the derated transient load',3.0)+plottedCase('bat_low_aged','Low-charge pack at the board connector',3.3)+plottedCase('i2c_encoder_motor','Rising edge at the I²C harness with two modeled pull-ups',null)+'<p>Axes show solver time and voltage. Waveform samples are reduced by extrema for display. The full datasets and measurement windows accompany the deck archive.</p>')+
+ article('Circuit results · all measured quantities',circuitTable(checks))+
+ article('Model assumptions and source mapping',cs)+
+ article('Factory process and supply controls','<p>'+html(D.productionIntro)+'</p>'+stages()+controlsTable())+
+ article('Verification procedures and acceptance',details)+
+ article('Market access and release evidence',markets()+'<h3>Design transfer</h3>'+textList(D.transfer))+
+ article('Cost, selling price and launch plan',cost)+
+ article('Purchase and fabrication schedule',bomGrid(D.bom))+
+ article('References and reproducibility','<p>The accompanying ZIP contains the editable BOM, detailed commercial assumptions, native source and binary release, mechanical pack, registered 3D sources, SPICE decks and raw CSV/solver outputs, and a per-unit factory test record.</p>'+cellTable(['Item','Identity or path'],D.manifest)+'<h3>Component and platform sources</h3>'+tbl(['Source','Origin'],D.sources.map(([t,u])=>[html(t),source(u,u)])));
+}
+buildReport();$('print').onclick=()=>window.print();
+Object.entries(allTabs).forEach(([id,name])=>{const b=document.createElement('button');b.textContent=name;b.dataset.tab=id;b.onclick=()=>{location.hash=id};$('tabs').append(b);});
+function navigate(){const key=location.hash.slice(1),id=Object.hasOwn(allTabs,key)?key:'overview';for(const k in allTabs)$(k).hidden=k!==id;
+ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',String(b.dataset.tab===id)));if(id==='assembly')loadViewer();}
+window.addEventListener('hashchange',navigate);navigate();
+</script>

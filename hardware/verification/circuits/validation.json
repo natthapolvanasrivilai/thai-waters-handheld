@@ -1,0 +1,54 @@
+{
+  "decks": 42,
+  "families": 14,
+  "metric_counts": {
+    "WITHIN": 33,
+    "OUTSIDE": 11,
+    "CHARACTERIZE": 11
+  },
+  "stored_raw_logs": 42,
+  "raw_crc": "verified",
+  "verified_closed_form": [
+    {
+      "case": "i2c_encoder_only",
+      "metric": "30-70% rise",
+      "unit": "ns",
+      "solver": 847.2985,
+      "closed_form": 847.2978603872036,
+      "relative_error": 7.548854142866644e-07
+    },
+    {
+      "case": "usb_play_charge",
+      "metric": "Minimum PMIC input",
+      "unit": "V",
+      "solver": 4.875,
+      "closed_form": 4.875,
+      "relative_error": 0.0
+    },
+    {
+      "case": "cc_default",
+      "metric": "CC voltage",
+      "unit": "V",
+      "solver": 0.4173486,
+      "closed_form": 0.41734860883797054,
+      "relative_error": 2.1176470545088388e-08
+    },
+    {
+      "case": "speaker_cue",
+      "metric": "Speaker average real power",
+      "unit": "W",
+      "solver": 0.1633064,
+      "closed_form": 0.1633333333333333,
+      "relative_error": 0.00016489795918354387
+    },
+    {
+      "case": "erm_running_equivalent",
+      "metric": "Peak drive current",
+      "unit": "mA",
+      "solver": 60.0,
+      "closed_form": 60.0,
+      "relative_error": 0.0
+    }
+  ],
+  "raw_sha256": "ff5399262f30e14bc3e670da47b00a15ed64b816d1002767b20f3d26d4fa0429"
+}

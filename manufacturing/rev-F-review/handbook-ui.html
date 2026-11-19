@@ -1,0 +1,37 @@
+<script>
+const repo='https://github.com/natthapolvanasrivilai/thai-waters-handheld';
+const storeLink=(path,title)=>source(repo+'/blob/main/'+path,title);
+const navCards=[
+ ['demo','Play the handheld','Try a cast and reel, or open the owner-private phone test.','Game-and-demo.md'],
+ ['assembly','Inspect the assembly','Explode, isolate and identify physical parts and cable routes.','Hardware-and-3D.md'],
+ ['circuits','Review circuit evidence','Inspect measured model outputs, traces, bounds and bench actions.','Electrical-verification.md'],
+ ['software','Explore the firmware','Browse interfaces, gameplay systems, regression evidence and open board tests.','Software-and-tests.md'],
+ ['validation','Qualify the product','Filter protocols by manufacturing gate. Inspect compliance evidence.','Validation-and-compliance.md'],
+ ['factory','Build a unit','Follow ten manufacturing stations and record unit-level acceptance.','Factory-and-service.md'],
+ ['business','Buy, cost and launch','Find a part, change lot and configuration, and compare channel economics.','BOM-and-business.md']
+];
+const toc='<h3>Table of contents</h3><div class="columns toc">'+navCards.map(([id,title,desc,file])=>'<div class="sheet"><h4><a href="#'+id+'">'+html(title)+'</a></h4><p>'+html(desc)+'</p>'+source(D.wikiBase+file,'Wiki chapter')+'</div>').join('')+'</div>';
+$('overview').querySelector('.tiles').insertAdjacentHTML('beforebegin',toc);
+$('software').innerHTML='<h2>Software and test evidence</h2><p class="lede">Follow a feature from its C++ or browser implementation through the automated test and the measurement still needed on a board.</p><div class="toolbar"><label>Subsystem<select id="swArea"><option>All</option></select></label><label>Find feature<input id="swFind" type="search" placeholder="OTA, gyro, journal…"></label></div><div id="swRows"></div><h3>Interfaces and releases</h3><p>'+storeLink('firmware/Interfaces.md','Hardware API, Wi-Fi and update contract')+' · '+storeLink('releases/README.md','Release index')+' · '+source(D.wikiBase+'Software-and-tests.md','Software wiki')+'</p>';
+[...new Set(D.softwareCases.map(x=>x.Area))].forEach(k=>$('swArea').add(new Option(k,k)));
+function filterSoftware(){const q=$('swFind').value.toLowerCase(),rs=D.softwareCases.filter(x=>($('swArea').value==='All'||$('swArea').value===x.Area)&&Object.values(x).join(' ').toLowerCase().includes(q));$('swRows').innerHTML=rs.map(r=>'<details><summary>'+html(r.Area+' · '+r.Feature)+'</summary><div><p>'+html(r['Architecture and normal use'])+'</p><h4>Recorded evidence</h4><p>'+html(r['Automated evidence'])+'</p><h4>Physical acceptance</h4><p>'+html(r['Remaining on-device acceptance'])+'</p>'+storeLink(r.Source,'Open source in the private repository')+'</div></details>').join('')||'<p>No matching features.</p>';}
+$('swArea').onchange=$('swFind').oninput=filterSoftware;filterSoftware();
+$('demo').innerHTML='<h2>Playable prototype</h2><p>The embedded game runs locally. Use the private hosted playtest for phone sensors and shared events. A game in an embedded preview may need a direct browser tab for motion, media or fullscreen.</p><div class="toolbar"><button id="loadDemo" class="cmd primary">Start playable demo</button>'+source('https://thai-waters-pocket-angler.shoung0690.chatgpt.site','Open the phone playtest')+' · '+source(D.wikiBase+'Game-and-demo.md','Controls and game wiki')+'</div><iframe hidden id="gameFrame" class="viewbox" title="Playable Thai Waters handheld" allow="autoplay; fullscreen; accelerometer; gyroscope"></iframe>';
+$('loadDemo').onclick=async()=>{
+ const frame=$('gameFrame');if(!frame.hidden){frame.removeAttribute('srcdoc');frame.hidden=true;$('loadDemo').textContent='Start playable demo';return;}
+ const bytes=Uint8Array.from(atob($('compressedGame').textContent.trim()),c=>c.charCodeAt(0));
+ frame.srcdoc=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+ frame.hidden=false;$('loadDemo').textContent='Close demo';
+};
+window.addEventListener('hashchange',()=>{if(location.hash!=='#demo'&&!$('gameFrame').hidden){$('gameFrame').removeAttribute('srcdoc');$('gameFrame').hidden=true;$('loadDemo').textContent='Start playable demo';}});
+const stationPane=document.createElement('div');
+stationPane.innerHTML='<h3>Workstation instructions</h3><label>Station <select id="stationPick"></select></label><div id="stationSpec" aria-live="polite"></div>';
+$('factory').querySelector('.gridtable').before(stationPane);
+D.routing.forEach((row,i)=>$('stationPick').add(new Option(row.Station+' · '+row.Process,i)));
+function showStation(){const r=D.routing[+$('stationPick').value];$('stationSpec').innerHTML='<div class="sheet"><p><strong>Equipment</strong> '+html(r.Equipment)+'</p><p>'+html(r['Control and inspection'])+'</p><p><strong>Record</strong> '+html(r['Record or release'])+'</p></div>';}
+$('stationPick').onchange=showStation;showStation();
+$('circuits').insertAdjacentHTML('beforeend','<h3>Optional snag brake bench fixture</h3><p>A spring-return friction brake could briefly resist forward winding during a snag. The fixture uses a separate 5 V supply. Select a simulated 105 ms pulse to inspect current demand. Slip torque, temperature, encoder interference and release require physical tests.</p><label>Driver corner <select id="brakeCorner"></select></label><div id="brakeMetrics"></div><p>'+storeLink('hardware/mechanical/experiments/reel-brake/README.md','Fixture drawings, BOM and proof procedure')+'</p>');
+D.brake.forEach((r,i)=>$('brakeCorner').add(new Option(r.case.replaceAll('_',' '),i)));
+function brakeValues(){const r=D.brake[+$('brakeCorner').value];$('brakeMetrics').innerHTML=cards([[r.peak_A+' A','Peak coil current'],[r.winding_J_per_event+' J','Energy per pulse'],[r.current_to_10_percent_ms+' ms','Electrical decay to 10%']]);}
+$('brakeCorner').onchange=brakeValues;brakeValues();
+</script>

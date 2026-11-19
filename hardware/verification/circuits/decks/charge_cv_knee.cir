@@ -1,0 +1,11 @@
+Thai Waters Rev F | charge_cv_knee
+* 4.185 V equivalent cell OCV and 100 mOhm cell resistance.
+* Model: Ideal 300 mA / 4.2 V charge law with 0.10 ohm CV slope. Demonstrates programmed boundaries; excludes device accuracy, precharge, termination and autonomous POR.
+Vcell ocv 0 4.185
+Rcell bat ocv 0.1
+Vsense source bat 0
+* x=(4.2-Vbat)/0.1, positive-voltage error over these cases only.
+Gcc 0 source VALUE={0.5*(0.3+(4.2-V(bat))/0.1-ABS(0.3-(4.2-V(bat))/0.1))}
+.TRAN 1u 10u
+.PRINT TRAN V(bat) I(Vsense)
+.END

@@ -1,0 +1,9 @@
+Thai Waters Rev F | cc_1p5a
+* 5 V resistor-source fixture, Rp 22000 ohm, Rd 5100 ohm.
+* Model: One active CC pin. Repeat both plug orientations. Open resistance is a deliberate assembly fault.
+Vr src 0 5
+Rhost src cc 22000
+Rdevice cc 0 5100
+.TRAN 1u 5u
+.PRINT TRAN V(cc)
+.END

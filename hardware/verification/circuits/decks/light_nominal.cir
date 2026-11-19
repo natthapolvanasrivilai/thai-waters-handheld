@@ -1,0 +1,10 @@
+Thai Waters Rev F | light_nominal
+* 3.30 V rail, 2.95 V LED drop with 6.80 ohm series R3.
+* Model: Full-duty steady slice of R3 + aggregate panel LED drop and AO3400 on resistance. Actual Vf, current limit and thermal rating require the panel drawing.
+Vdd v 0 3.3
+R3 v led 6.8
+Vled led sw 2.95
+Ron sw 0 .08
+.TRAN 1u 10u
+.PRINT TRAN I(Vdd)
+.END

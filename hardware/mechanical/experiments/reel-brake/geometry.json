@@ -1,0 +1,15 @@
+{
+  "rotor_radius_mm": 12.75,
+  "crank_throw_mm": 7.8,
+  "pad_center_radius_mm": 11,
+  "free_pad_gap_mm": 0.25,
+  "hard_stop_rise_mm": 2.1,
+  "pad_lever_arm_mm": 13,
+  "stop_arm_mm": 34.5,
+  "cable_arm_mm": 39,
+  "max_pad_travel_mm_at_stop_center": 0.7913043478260869,
+  "max_nominal_pad_compression_mm_at_stop_center": 0.5413043478260869,
+  "nominal_motion_reduction": 3,
+  "valid_solid_meshes": 4,
+  "static_overlap_mm3": 0
+}

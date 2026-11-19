@@ -1,0 +1,14 @@
+# Build, record and service a unit
+
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-f-engineering-0.7/Riffle-Rev-F-engineering-review.html)
+
+Select **Assembly process** for the ten factory stations and the downloadable unit record. In the 3D viewer, step through the mechanical order to inspect access before routing a harness.
+
+1. Identify the incoming module, pack, printed shell, fasteners and option set. Measure the inert pack gauge and check the two connector bodies before fitting electronics.
+2. Inspect the bezel, power key, reel and sensor air gap. Dress the wires in their intended routes. Verify polarity, isolation and reel travel with the unit open.
+3. Program against the release digest. Record the touch grid, motion, signed turn count, sound, rumble and current on the serialized traveler.
+4. Release a closed sample only after its open items clear. Record failures, rework, final checks and the approved lot configuration.
+
+[Station instructions](../../manufacturing/rev-F-review/factory-routing.csv) · [Per-unit record](../../manufacturing/rev-F-review/as-built-record.csv) · [Build traveler](../../manufacturing/build-traveler.csv) · [Service and returns](../../service/README.md) · [Revision history](../../quality/changes.csv)
+
+[← Test evidence and market readiness](Validation-and-compliance.md) · [Source parts, cost a batch and plan the launch →](BOM-and-business.md)

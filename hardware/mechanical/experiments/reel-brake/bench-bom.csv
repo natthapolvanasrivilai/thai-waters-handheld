@@ -1,0 +1,30 @@
+ref,item,qty,unit_usd,cost_type,source
+SOL1,Adafruit 2776 captive spring-return mini push-pull solenoid 5 V,1,4.95,vendor list,https://www.adafruit.com/product/2776
+Q1,Adafruit 5648 MOSFET driver board with integral clamp,1,3.95,vendor list,https://www.adafruit.com/product/5648
+U1,TI CD74HCT221E PDIP-16 dual non-retriggerable one-shot,1,1.50,allowance,https://www.digikey.com/en/products/detail/texas-instruments/CD74HCT221E/38418
+R1,150k 1 percent timing resistor,1,0.08,allowance,local electronics shop
+R2,330k 1 percent timing resistor,1,0.08,allowance,local electronics shop
+R3,10k 1 percent B1 pulldown,1,0.08,allowance,local electronics shop
+R4,100k 1 percent driver SIG pulldown,1,0.08,allowance,local electronics shop
+C1,1uF 5 percent film timing capacitor rated at least 10 V,1,0.80,allowance,local electronics shop
+C2,10uF 10 percent low-leakage film timing capacitor rated at least 10 V,1,2.50,allowance,local electronics shop
+C3,100nF ceramic bypass >=10 V,1,0.10,allowance,local electronics shop
+C4,470uF aluminum electrolytic >=10 V,1,0.45,allowance,local electronics shop
+F1,1.5 A fast fuse and inline holder,1,1.50,allowance,local electronics shop
+SW1,SPST manual branch disconnect rated >=2 A DC at 5 V,1,1.20,allowance,local electronics shop
+BRD1,Perfboard for timing network,1,1.50,allowance,local electronics shop
+W1,22 AWG stranded insulated power wire + signal wire and terminals kit,1,1.50,allowance,local electronics shop
+P1-P4,Four FDM parts using PETG including support ~30 g allocation,1,0.90,allowance,local filament supplier
+PAD1,F1 wool felt offcut trim to measured bonded thickness 0.75 mm,1,0.40,allocated stock,https://www.mcmaster.com/products/f1-felt/
+GL1,Thin flexible pad adhesive film allocation,1,0.25,allocated stock,local craft shop
+AX1,M3x35 partially threaded axle screw smooth shank + stop nut and thin washers,1,0.55,allowance,local fastener shop
+AX2,M3x20 pivot screw + stop nut + washers,1,0.45,allowance,local fastener shop
+FIX1,M4 base mounting screws nuts and washers,4,0.18,allowance,local fastener shop
+LIN1,Thin nonmetallic braided cord for pull,1,0.15,allocated stock,local craft shop
+EL1,Thin elastic return loop mount weakly taut,1,0.15,allocated stock,local craft shop
+SH1,Assorted 0.05 to 0.30 mm rigid shim strips,1,0.35,allocated stock,local shim supplier
+CL1,Adjustable post and two clamps for coil + nonmagnetic fixture base,1,0.00,existing bench equipment,lab inventory
+INS,Current-limited 5V supply force gauge oscilloscope DMM and angle reference,1,0.00,existing bench equipment,lab inventory
+C5,2.2nF ceramic series edge-coupling capacitor >=10 V,1,0.10,allowance,local electronics shop
+R5,1k B1 input current limiting resistor,1,0.08,allowance,local electronics shop
+D1-D2,BAT85 small signal Schottky input clamps ground and +5 V,2,0.15,allowance,local electronics shop

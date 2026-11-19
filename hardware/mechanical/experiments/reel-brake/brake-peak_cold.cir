@@ -1,0 +1,18 @@
+B0 tabletop snag-brake coil - peak_cold
+* Engineering substitutions: 0.1 ohm supply/harness, assumed L, ideal 5V 105ms one-shot.
+* NMOS DC slope approximates driver; diode surrogate. Timing chip and plunger mechanics are outside deck.
+Vs supply 0 5.25
+Rh supply feed 0.1
+Vcoil feed high 0
+Rw high w 4.275
+L1 w drain 0.003
+M1 drain gate 0 0 md W=1u L=1u
+.MODEL md NMOS(LEVEL=1 VTO=1.5 KP=4)
+D1 drain feed df
+.MODEL df D(IS=1e-9 N=1.5 RS=.05)
+Roff drain 0 100meg
+Vg gate 0 DC 0 PULSE(0 5 5m 1u 1u 105m 3)
+Rpd gate 0 100k
+.TRAN 50u 160m 0 50u
+.PRINT TRAN I(Vcoil) V(drain)
+.END

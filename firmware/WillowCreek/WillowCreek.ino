@@ -181,6 +181,11 @@ void change(int x,int y,bool& practiceTap){
     }
     return;
   }
+  if(view.page==Page::Play && !view.game.running() && y>=141 && y<=299){
+    view.game.setAim(x/480.f,y/320.f);
+    if(view.practice)practiceTap=true;
+    return;
+  }
   if(view.practice && y>=245)practiceTap=true;
 }
 void sampleRod(uint32_t now,uint32_t dt){
@@ -205,7 +210,7 @@ void sampleRod(uint32_t now,uint32_t dt){
 void setup(){
   Serial.begin(115200);restore();view.game.seed=esp_random();beginBoard();view.battery=readBattery();beginConnected();view.driver=initRumble();beginScene();
   view.audio=startSound();setSound(view.sound,false,false);
-  Serial.printf("Thai Waters 0.6 | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d\n",screenOK,imuOK,view.audio,powerOK);
+  Serial.printf("Thai Waters 0.7 | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d\n",screenOK,imuOK,view.audio,powerOK);
   lastTick=millis();paint(view);confirmUpdateHealth(screenOK && imuOK && powerOK && view.audio);
 }
 void loop(){
@@ -234,7 +239,7 @@ void loop(){
   Phase before=view.game.phase;
   if(view.page==Page::Play && (view.practice||(view.motion&&view.field==Field::Good))){
     view.game.rodHeldHigh=!view.practice && rod.high;
-    view.game.tick(dt,view.practice?tap:rod.cast,view.practice?tap:rod.rise,view.practice?(tap?.25f:0):turns);
+    view.game.tick(dt,view.practice?tap:rod.cast,view.practice?tap:rod.rise,view.practice?(tap?(view.game.phase==Phase::Snag&&view.game.contact==2?-.19f:.25f):0):turns);
   } else if(view.page==Page::Play)rod=Gesture{};
   if(view.game.phase!=before){
     Serial.printf("phase=%u catch=%d line=%.2f\n",unsigned(view.game.phase),view.game.catches,view.game.line);
