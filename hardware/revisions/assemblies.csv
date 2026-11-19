@@ -1,0 +1,10 @@
+id,legacy_alias,name,description,evidence,changes
+TW-A-0001-R0001,Rev A,Enclosure print set,Lengthwise mockup with five printed parts,hardware/mechanical/history/Riffle-prototype-A.zip,
+TW-A-0001-R0002,Rev B,Enclosure print set,Landscape enclosure with edge reel,hardware/mechanical/history/Riffle-Wide-B.zip,
+TW-A-0001-R0003,Rev C,Enclosure print set,Pocket case with rear folding reel,hardware/mechanical/history/Riffle-Pocket-C-prototype.zip,
+TW-A-0001-R0004,Rev D,Enclosure print set,Right-side folding reel,hardware/mechanical/history/Riffle-Pocket-D-mechanical.zip,
+TW-A-0001-R0005,Rev E,Enclosure print set,Revised encoder supports for the populated board,hardware/mechanical/rev-E/Readme.md,E-001|E-002
+TW-A-0001-R0006,Rev F,Enclosure print set,Top-edge power key and screw-locked rod grip,hardware/mechanical/rev-F/README.md,F-001|F-002|F-003
+TW-A-0001-R0007,Rev G,Enclosure print set,"Battery pocket, west key retainer and removable wire bridge",hardware/mechanical/rev-G/README.md,G-001
+TW-A-0002-R0001,Rev D wiring,Electrical integration package,Base harness wiring drawing,hardware/electronics/Riffle-D-wiring.pdf,
+TW-A-0002-R0002,Rev F wiring,Electrical integration package,Base harness and top-edge power key,hardware/electronics/rev-f-power-key.md,F-001

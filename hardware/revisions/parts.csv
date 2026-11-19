@@ -1,0 +1,36 @@
+id,name,source,member,sha256
+TW-P-0001-R0001,Housing,hardware/mechanical/history/Riffle-prototype-A.zip,print/base.stl,84b6f567f1ae4e1a732849747aa194637f4aacd22b822a2cf6f8fb29f176994c
+TW-P-0002-R0001,Reel bushing,hardware/mechanical/history/Riffle-prototype-A.zip,print/bushing.stl,ed1382b88743548de96b20fc6df981f3927210d1a42d6b2e7e00bd3120cc5dbe
+TW-P-0003-R0001,Reel crank,hardware/mechanical/history/Riffle-prototype-A.zip,print/crank.stl,6e25b8d447eb1f8b098fc11835dfd6e23b8c14dcbda0686f0a13a849878a9da5
+TW-P-0004-R0001,Reel knob,hardware/mechanical/history/Riffle-prototype-A.zip,print/knob.stl,fab92642cc3438ac2908b2a9269ee8823df60b56ea54963b76728c495dfe95c7
+TW-P-0005-R0001,Front cover,hardware/mechanical/history/Riffle-prototype-A.zip,print/lid.stl,1e8892afb29ef847fa4776dced54bcdf9794f308baec691fdee8d461642c190b
+TW-P-0006-R0001,Display bezel,hardware/mechanical/history/Riffle-Wide-B.zip,print/bezel.stl,a0efbc7a29122bb1f8913698e62fa42042ff8f6b7bde17cb4a0ef9269024af8f
+TW-P-0001-R0002,Housing,hardware/mechanical/history/Riffle-Wide-B.zip,print/housing.stl,808017dbff242a9f6687a562ab5a3ed5ca1c88a4d282629c2ae68ce8164ce1a3
+TW-P-0004-R0002,Reel knob,hardware/mechanical/history/Riffle-Wide-B.zip,print/knob.stl,b11d1e7059bc9d5d5823cce7d5590a9bd86146e1e436aa3b204ac08e09b1bdc2
+TW-P-0007-R0001,Reel rotor,hardware/mechanical/history/Riffle-Wide-B.zip,print/reel.stl,49ee281d924fa0031c7a38663325fcef7e8f629f8a3e96d9551c2a49e434ceb9
+TW-P-0008-R0001,Reel sleeve,hardware/mechanical/history/Riffle-Wide-B.zip,print/sleeve.stl,2fb4fc4aa5d6ff21b674fab3c1b1fb1af97a31835ac33a88c047b603ec3ececc
+TW-P-0006-R0002,Display bezel,hardware/mechanical/history/Riffle-Pocket-C-prototype.zip,print/bezel.stl,df8bbab88360fbaefe5cc431bb2c064dcb1f28cb2bdd9593623cd55757cf112b
+TW-P-0009-R0001,Reel collar,hardware/mechanical/history/Riffle-Pocket-C-prototype.zip,print/collar.stl,66c2cb8c587f3f87f715d03241a872b8431005de42bceb8329b8870b27541797
+TW-P-0010-R0001,Folding reel stem,hardware/mechanical/history/Riffle-Pocket-C-prototype.zip,print/folding-stem.stl,c2e2722681617fda1fdf0b9073aff6083ae91f928e2ddb6d55aac135379d4820
+TW-P-0004-R0003,Reel knob,hardware/mechanical/history/Riffle-Pocket-C-prototype.zip,print/grip.stl,6b9eb4719207db5ec64c2725141e1e2a04ff113b5ea94356ad986b9e99e7b259
+TW-P-0001-R0003,Housing,hardware/mechanical/history/Riffle-Pocket-C-prototype.zip,print/housing.stl,0cca966d62cca91d99e6141a7133b0602434903fd8f62133da924ee8e4369e7a
+TW-P-0007-R0002,Reel rotor,hardware/mechanical/history/Riffle-Pocket-C-prototype.zip,print/rotor.stl,29dec21c490bf284153221028756bb10829574d0d5dd6e58bc46040e8e1b4929
+TW-P-0006-R0003,Display bezel,hardware/mechanical/history/Riffle-Pocket-D-mechanical.zip,print/bezel.stl,802629e156a09a12a1fc4892608d733d3e0f85c5864d166a578058426ff51838
+TW-P-0009-R0002,Reel collar,hardware/mechanical/history/Riffle-Pocket-D-mechanical.zip,print/collar.stl,3dbb98fecf743e1d1f27d24d2d992ecc29bda0234ec12ed6d257671bb0be9b99
+TW-P-0010-R0002,Folding reel stem,hardware/mechanical/history/Riffle-Pocket-D-mechanical.zip,print/folding-stem.stl,8af7b3da22baaabd8acac9b5cef25adfd291ffbd2b20ab94bd410ecaaed6850e
+TW-P-0004-R0004,Reel knob,hardware/mechanical/history/Riffle-Pocket-D-mechanical.zip,print/grip.stl,1502845dc048d840e919cb744caf31c82b6e156c0a3e6baa315e8b2ef4785c12
+TW-P-0001-R0004,Housing,hardware/mechanical/history/Riffle-Pocket-D-mechanical.zip,print/housing.stl,3f03046e0f6eff5cf67f9548fad190116dbac8f1136c254338b0da9d6897c1b2
+TW-P-0007-R0003,Reel rotor,hardware/mechanical/history/Riffle-Pocket-D-mechanical.zip,print/rotor.stl,9e604a5ebc6debbc936582419cec03a6105fca7a0aecbfe6846fe56e9b1e6910
+TW-P-0001-R0005,Housing,hardware/mechanical/rev-E/Print/Riffle-E-housing.stl,,ba3f1c15e2db96119a2eb335baa553d7f107ef1c054ed36106ded22bfea24440
+TW-P-0011-R0001,Rod grip screw keeper,hardware/mechanical/rev-F/Print/grip-screw-keeper.stl,,541a8acd765efb731c3d8c28f4c234218d2b5c80b1515e045c276ae49589c77c
+TW-P-0001-R0006,Housing,hardware/mechanical/rev-F/Print/housing-top-power.stl,,24812f4d5a6ef59321e53e4ca97d0e1d1ca20e37da3c394ad63b51204ab0cf62
+TW-P-0012-R0001,Power-key board retainer,hardware/mechanical/rev-F/Print/key-board-retainer.stl,,95966679c060edaeb4ad45955300d51f143a3854bfe1dda827caedbd2ec76530
+TW-P-0013-R0001,Power key cap,hardware/mechanical/rev-F/Print/power-cap.stl,,dcc29ce84bd9f180649f3d184a522029b1c26253067dc4813fc26031fb664670
+TW-P-0014-R0001,Grip receiver nut keeper,hardware/mechanical/rev-F/Print/receiver-nut-keeper.stl,,d363d84a611d3dee2d13527015bd45bf6e46baad45390055b20f5fc25770aaaa
+TW-P-0015-R0001,Detachable rod grip,hardware/mechanical/rev-F/Print/rod-grip.stl,,48f0b6b49ea4ce2221d1363a7ce071692a57339151b23caa83ac2e19144083f9
+TW-P-0016-R0001,Battery wire bridge,hardware/mechanical/rev-G/Print/battery-wire-bridge.stl,,e179d8599900d1e8efecd2be5283dda11dbe0720dc43edf3a42fb987142d7af8
+TW-P-0001-R0007,Housing,hardware/mechanical/rev-G/Print/housing-battery-bay.stl,,0b6f06c18a5166db6f2c87a3490c3220a98f195e59b5250ab16c09c898b8fb41
+TW-P-0012-R0002,Power-key board retainer,hardware/mechanical/rev-G/Print/key-board-retainer-west.stl,,5131704b423bb59306b9686599e30438f9a615979d47d5fe5cd0432e1150c95d
+TW-P-0017-R0001,Base harness,hardware/electronics/Riffle-D-wiring.pdf,,c5f656da907d3b08a7bf48c985cb1d58acf92264740c46aaf38e530c1dfcd2e0
+TW-P-0018-R0001,Power key switch carrier PCB1,hardware/electronics/Rev-F-power-key-carrier-Gerber.zip,,afc17aaf5c86548b37adc1c49de2de0182d0648f596ad09b4f93ec3f05acf8e8
+TW-P-0019-R0001,Top-edge switch and W3 harness specification,hardware/electronics/rev-f-power-key.md,,58428f6e4f362654d93f54fa540f9a5d81d547a28262645cac760e4e72208112

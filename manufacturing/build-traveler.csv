@@ -1,13 +1,16 @@
-Serial or lot,HW revision,Station,Action,Acceptance evidence,Result,Operator,Date
-,E,Incoming,"Record controller silkscreen revision, pack lot and connector polarity",Compare physical parts with signed BOM and pinout,,,
-,E,Print,"Gauge enclosure, bezel, pocket and pivot","Free reel movement, no cell or display compression",,,
-,E,Harness,Mate JST plugs; document keyed polarity and continuity,Independent polarity verification before connecting battery,,,
-,E,Assembly,"Install rotor, sensor, cell, speaker and optional motor per Rev E fit sequence",No trapped wire; stable angle reading through a full revolution,,,
-,E,Flash,Record firmware digest and provision public verification key / feed,USB boot and signed update check,,,
-,E,Functional,"Exercise cast, lift, direction, touch, audio, rumble, Wi-Fi and RTC",Record live readings and clock holdover result,,,
-,E,Final,"Check serial, market label, release version and packout",Released artwork and matching serial/lot,,,
-,F,Incoming,"Log A1 SKU 31137 and PCB revision. Confirm the original capacitive glass and touch response before fitting the bezel.",Supplier marking and nine accepted points in the firmware touch grid,,,
-,F,Power wiring,"Verify K3 nets unpowered. Fit SW1 on PCB1 and strain-relieve W3. Cycle the key with the retainer secured.",Open at rest and momentary closure; inspect solder joints and insulation,,,
-,F,Mechanical,"Install Rev F cap and retainer. Attach and release G1. Cycle the folding crank and inspect glass and all controls in both configurations.",Record free play, locked screw retention and proof-test results per the Rev F grip procedure,,,
-,F,Functional,"On battery operate the top-left key. Repeat touch grid with case closed and USB connected. Exercise reel click and all three fish effects with the motor fitted.",Signed unit record with 9/9 touch points and recorded power and rumble results,,,
-,F,Release,"Record firmware hash and component lot. Release after applicable Rev E checks and Rev F test results are reviewed.",Engineering sign-off and as-built record,,,
+Serial or lot,HW revision,Station,Action,Acceptance evidence,Result,Operator,Date,Enclosure assembly ID,Electrical integration ID
+,E,Incoming,"Record controller silkscreen revision, pack lot and connector polarity",Compare physical parts with signed BOM and pinout,,,,TW-A-0001-R0005,
+,E,Print,"Gauge enclosure, bezel, pocket and pivot","Free reel movement, no cell or display compression",,,,TW-A-0001-R0005,
+,E,Harness,Mate JST plugs; document keyed polarity and continuity,Independent polarity verification before connecting battery,,,,TW-A-0001-R0005,
+,E,Assembly,"Install rotor, sensor, cell, speaker and optional motor per Rev E fit sequence",No trapped wire; stable angle reading through a full revolution,,,,TW-A-0001-R0005,
+,E,Flash,Record firmware digest and provision public verification key / feed,USB boot and signed update check,,,,TW-A-0001-R0005,
+,E,Functional,"Exercise cast, lift, direction, touch, audio, rumble, Wi-Fi and RTC",Record live readings and clock holdover result,,,,TW-A-0001-R0005,
+,E,Final,"Check serial, market label, release version and packout",Released artwork and matching serial/lot,,,,TW-A-0001-R0005,
+,F,Incoming,Log A1 SKU 31137 and PCB revision. Confirm the original capacitive glass and touch response before fitting the bezel.,Supplier marking and nine accepted points in the firmware touch grid,,,,TW-A-0001-R0006,TW-A-0002-R0002
+,F,Power wiring,Verify K3 nets unpowered. Fit SW1 on PCB1 and strain-relieve W3. Cycle the key with the retainer secured.,Open at rest and momentary closure; inspect solder joints and insulation,,,,TW-A-0001-R0006,TW-A-0002-R0002
+,F,Mechanical,Install Rev F cap and retainer. Attach and release G1. Cycle the folding crank and inspect glass and all controls in both configurations.,Record free play, locked screw retention and proof-test results per the Rev F grip procedure,,,,TW-A-0001-R0006,TW-A-0002-R0002
+,F,Functional,On battery operate the top-left key. Repeat touch grid with case closed and USB connected. Exercise reel click and all three fish effects with the motor fitted.,Signed unit record with 9/9 touch points and recorded power and rumble results,,,,TW-A-0001-R0006,TW-A-0002-R0002
+,F,Release,Record firmware hash and component lot. Release after applicable Rev E checks and Rev F test results are reviewed.,Engineering sign-off and as-built record,,,,TW-A-0001-R0006,TW-A-0002-R0002
+,G,Print identification,Record the enclosure and electrical packages selected. Match the three changed prints and nine carry-forward parts to the revision register.,"Verified print digests, slicer profile, material lot and printed gauge dimensions",,,,TW-A-0001-R0007,TW-A-0002-R0002
+,G,Inert fit,Install the west key retainer. Seat and remove both inert gauges with dummy leads. Fit the bridge and close the case per the Rev G procedure.,"Record gauge IDs, witness marks, bridge clearance, key travel and lead dressing",,,,TW-A-0001-R0007,TW-A-0002-R0002
+,G,Disposition,"Record actual hardware and firmware independently by serial. Attach results and all open fit, electrical and supplier gates before any decision on powered closure.","Signed sample disposition with revision IDs, evidence, deviations and retest",,,,TW-A-0001-R0007,TW-A-0002-R0002

@@ -1,5 +1,7 @@
 # Rev G battery fit print
 
+**Enclosure print set TW-A-0001-R0007** pairs with electrical integration package **TW-A-0002-R0002**. The [hardware revision register](../../revisions/README.md) maps each STL to its part number, revision and source hash.
+
 **Print the housing, west-side key-board retainer and lift-out wire bridge together.** These are the three changed prints. Reuse the other nine parts from a Rev F set. For a first build, the kit contains all twelve device STLs plus two separate inert battery gauges. The top-left cap, switch PCB, folding reel and grip interface retain their positions.
 
 [Private print kit](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-g-fit-print/Riffle-Rev-G-fit-print.zip) · [Offline 3D viewer](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-g-fit-print/Riffle-Rev-G-exploded.html) · [Dressed assembly STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-g-fit-print/Riffle-Rev-G-dressed.step.gz)
