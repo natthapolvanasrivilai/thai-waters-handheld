@@ -1,0 +1,12 @@
+---
+name: thai-waters-handheld-ui
+description: Design and test the Thai Waters touchscreen, fishing HUD, paged overlays, catch journal and mobile simulator.
+---
+
+Design against the 480 × 320 landscape framebuffer. Thai is the default language. Check Thai vowel and tone marks as well as English at game resolution. Use the established reading face for small labels and the existing location-specific display faces for signage.
+
+Keep fishing visible behind menus. The collection is the full-screen exception. Fit each settings group on one screen with finger-sized targets. Use discrete pages for long lists and history. Retain selection and page on return. Verify the first, middle and last pages by touch, including long labels on a narrow phone. Use the touch dimensions in [immersive.css](../../../game/src/immersive.css).
+
+Tap water to aim and cast. Place tackle icons in the transparent HUD and line tension at the moving end of the line. During a fight, show line movement and splashes. Reveal the fish on landing, place fish at left and data at right, and let the player tap to continue before filing. Preserve anonymous silhouettes until discovery.
+
+Exercise changes in the flat LCD and projected device view. Start from the existing [browser checks](../../../verification/browser-tests/package.json) and the [game handbook](../../../docs/wiki/Game-and-demo.md).
