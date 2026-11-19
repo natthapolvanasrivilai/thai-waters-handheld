@@ -2,7 +2,7 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "test": "node detents.cjs && node scenery.cjs && node gameplay.cjs && node device.cjs && node rumble.cjs && node mobile-input.cjs && node lcd.cjs && node mobile-audio.cjs && node cast-water.cjs && node ambient.cjs && node aim-input.cjs"
+    "test": "node detents.cjs && node scenery.cjs && node gameplay.cjs && node device.cjs && node rumble.cjs && node mobile-input.cjs && node lcd.cjs && node mobile-audio.cjs && node cast-water.cjs && node ambient.cjs && node aim-input.cjs && node hosted-startup.cjs"
   },
   "devDependencies": {
     "playwright-core": "1.62.1",

@@ -29,6 +29,9 @@ data['manifest'].extend([['Rev G maximum-pack study','hardware/mechanical/rev-G/
 page=page[:match.start(1)]+json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')+page[match.end(1):]
 model=script('compressedModel'); embedded=base64.b64encode(gzip.compress((out/'Riffle-Rev-G-exploded.html').read_bytes(),mtime=0)).decode()
 page=page[:model.start(1)]+embedded+page[model.end(1):]
+game=script('compressedGame')
+playable=base64.b64encode(gzip.compress((repo/'game/Thai-Waters-play.html').read_bytes(),mtime=0)).decode()
+page=page[:game.start(1)]+playable+page[game.end(1):]
 page=page.replace('Personal engineering project · Rev F','Rev G fit print · Rev F electronics').replace('Populated Rev F assembly','Rev G battery fit and assembly').replace('Rev F exploded mechanical assembly viewer','Rev G exploded mechanical assembly viewer').replace("src='Riffle-Rev-F-exploded.html'","src='Riffle-Rev-G-exploded.html'").replace('Riffle Pocket · Rev F · Firmware 0.7','Riffle Pocket · Rev G fit / Rev F electronics · Firmware 0.7')
 links='<p><a href="'+prefix+'/releases/download/rev-g-fit-print/Riffle-Rev-G-fit-print.zip">Download Rev G print kit and both inert gauges</a> · <a href="'+prefix+'/blob/main/hardware/mechanical/rev-G/README.md">Fit instructions and collision results</a></p>'
 page=page.replace('<h2>Rev G battery fit and assembly</h2>','<h2>Rev G battery fit and assembly</h2>'+links).replace('<h2>Engineering release decision</h2>','<h2>Engineering release decision</h2>'+links)

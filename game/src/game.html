@@ -374,7 +374,6 @@ else window.addEventListener('orientationchange',recenterOnRotation);
 if (location.hostname.endsWith('.chatgpt.site')) {
  const help = document.querySelector('[data-section="crew"] p');
  help.textContent='Join the same fishing spot on two browsers signed into this private playtest. Work together to land eight catches before the three-minute round ends. Each catch goes in its angler’s collection.';
- document.querySelector('[data-to="crew"] small').textContent='Join anglers at this spot';
 }
 function crewLabel(s){$('crewStatus').textContent=s;$('liveCrew').textContent=crewOn?s:'';}
 $('joinCrew').onclick=()=>{if(location.protocol==='file:'){crewLabel('Open the game from the LAN host invitation to join other devices.');return;}crewOn=!crewOn;roomReset();$('joinCrew').textContent=crewOn?'Leave event':'Join event';crewLabel(crewOn?'Finding anglers at this spot…':'Solo fishing');if(crewOn)pulseCrew();};
