@@ -1,0 +1,4 @@
+ref,manufacturer,mpn,qty,unit_usd,ext_usd,source_url,disposition
+W4-PCB,Würth Elektronik,61900519521,1,1.15,1.15,https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/61900519521/2508475,5-way horizontal top-lock header on the existing Boardoza footprint
+W4-PLUG,Würth Elektronik,61900511621,1,0.18,0.18,https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/61900511621/2508639,One 5-way housing with four populated positions
+W4-LEAD,Würth Elektronik,619100126015,4,2.50,10.00,https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/619100126015/4322462,"150 mm black 26 AWG leads with one factory crimp each; trim and identify by cavity. Confirm actual availability, seating and jacket size before buying."

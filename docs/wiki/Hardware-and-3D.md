@@ -2,9 +2,15 @@
 
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
 
-The default viewer shows **TW-A-0001-R0009 / TW-A-0002-R0003**, the latest engineering design. Use the [new assembly and CAD evidence](../../hardware/mechanical/TW-A-0001-R0009/README.md) and [connector-by-connector routing guide](../../hardware/electronics/harness-r0003/README.md). R0008 remains the released inert fit print.
+## Current print and inspection checkpoints
 
-[Download the current dressed STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/TW-A-0001-R0009-dressed.step.gz) · [Candidate print and gauge pack](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/TW-A-0001-R0009-fit-print.zip) · [STEP round-trip evidence](../../hardware/mechanical/TW-A-0001-R0009/export-verification.json)
+The R0011 print puts the two dovetail lips and their closed stop on the bed. Evaluate it with inert gauges. The R0010 dressed STEP includes the lower service cover. Bench and powered checks remain open. [R0011 print files](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-receiver-fit-print) · [Receiver toolpaths](../../hardware/mechanical/TW-A-0001-R0011/QA/receiver-toolpaths.png) · [R0010 inspection STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0010-cover-checkpoint) · [Hardware tracker](../../quality/hardware-gate.md)
+
+## Historical R0009 harness review
+
+The archived engineering viewer shows **TW-A-0001-R0009 / TW-A-0002-R0003**. Use the [new assembly and CAD evidence](../../hardware/mechanical/TW-A-0001-R0009/README.md) and [connector-by-connector routing guide](../../hardware/electronics/harness-r0003/README.md). R0008 records an earlier inert fit print.
+
+[Download the R0009 dressed STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/TW-A-0001-R0009-dressed.step.gz) · [Candidate print and gauge pack](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/TW-A-0001-R0009-fit-print.zip) · [STEP round-trip evidence](../../hardware/mechanical/TW-A-0001-R0009/export-verification.json)
 
 Choose **3D assembly** in the handbook. Drag to orbit. Select a wire, screw or board to see its part record, isolate a group, move the explode slider and step through the seven installation stages. Use the section plane at the battery fences and the reel sensor. The detachable grip uses a 35 mm slide with captive M3 retention. The top-left power cap operates a separate switch carrier.
 

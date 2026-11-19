@@ -9,7 +9,7 @@
 
 ## Reproduce the print check
 
-From this revision directory in a repository checkout, use Python with NumPy, trimesh, SciPy, Pillow and matplotlib and a Bambu Studio installation with the A1 profiles. Supply a fresh scratch folder. The report records both exact STL and G-code hashes.
+From this revision directory in a repository checkout, use Python with NumPy, trimesh, SciPy, Shapely, Pillow and matplotlib and a Bambu Studio installation with the A1 profiles. Supply a fresh scratch folder. The report records both exact STL and G-code hashes.
 
 ```text
 python build.py

@@ -2,6 +2,12 @@
 
 [Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
 
+## Pricing scope
+
+The last covered-housing estimate was $112.06 in allocated materials and $146.65 assembled for R0010. R0011 changes the housing toolpath and material use. The R0004 electrical changes require a revised parts allocation and assembly cost once the fitted circuit is established. Use the historical figures for budgeting only. [R0010 cost model](../../sourcing/production-intent/R0010-budget.json) · [Hardware gate](../../quality/hardware-gate.md)
+
+The proposed haptic connector uses one Würth header ($1.15), one housing ($0.18), and four factory-crimped leads ($2.50 each), totaling **$11.33** before freight and tax. This is a replacement subassembly. The whole-unit delta also depends on removed wiring, assembly labor and electronics still under review. Distributor availability needs confirmation at checkout. [Exact part numbers, quantities and US prices](../../sourcing/production-intent/R0004-haptic-terminal-candidate.csv)
+
 ## One fully equipped R0009 unit
 
 The full prototype includes the 3.5-inch capacitive display and controller, a protected 1,200 mAh pack, the reel, detachable rod, speaker, motor and driver, three status lights, a data cable, packaging and a 32 GB card for the full artwork library. The optional rechargeable RTC backup cell still needs a qualified part and clearance check.

@@ -1,7 +1,7 @@
 {
   "R0009": {
     "stl_sha256": "e60dbe9d59b14e4a9a5c86b6946a88ad02a21d0a198f2d079d98d58d910cdf86",
-    "plate_gcode_sha256": "513a9a7c1ef5fa2d8c153ff92dd5e49dc6135957e248d173e450c5763e6f50d0",
+    "plate_gcode_sha256": "2150442dd605e27ee9d46161e3c18a00d8c754fb4da60ad4a959bf7fe2bb45ce",
     "sha256": "e60dbe9d59b14e4a9a5c86b6946a88ad02a21d0a198f2d079d98d58d910cdf86",
     "minimum_offbed_downward_deg": 33.393,
     "zero_area_triangles": 0,
@@ -47,7 +47,9 @@
           ]
         }
       ],
-      "total_area_mm2": 232.57
+      "raster_area_mm2": 232.57,
+      "bead_union_area_mm2": 265.78,
+      "bead_union_regions": 1
     },
     "elevated_starts": [
       {
@@ -158,11 +160,29 @@
           135.62
         ]
       }
-    ]
+    ],
+    "old_receiver_location": {
+      "feature": "West outer lip of integral rod-grip dovetail",
+      "centerline_ends_assembly_mm": [
+        [
+          -0.74,
+          -30.21,
+          -2.99
+        ],
+        [
+          -0.74,
+          6.59,
+          -2.99
+        ]
+      ],
+      "model_z_mm": 31.4,
+      "support_test_z_mm": 31.0,
+      "projected_overlap_with_support_percent": 32.7
+    }
   },
   "R0011": {
     "stl_sha256": "ccbdd035b46d46a761a75ca0661b0c19c966b78cc7e3c5e46169c9874fb2e922",
-    "plate_gcode_sha256": "380911915af4a32feae8bc9e55caaf84b0b3bb3704dca3ceac57f2d08e573119",
+    "plate_gcode_sha256": "2fcc7e49d9087f2a9c84c9cdd85f0112944e426fd737c5ab39f5c1b39a5732de",
     "sha256": "ccbdd035b46d46a761a75ca0661b0c19c966b78cc7e3c5e46169c9874fb2e922",
     "minimum_offbed_downward_deg": 0.0,
     "zero_area_triangles": 0,
@@ -182,9 +202,9 @@
     "shallow_sloped_mm2": 685.57,
     "offbed_flat_mm2": 6454.347,
     "slicer": "BambuStudio 02.08.02.61",
-    "estimated_time": "2h 24m 42s",
-    "total_g": 53.6,
-    "support_g": 11.9208,
+    "estimated_time": "2h 24m 47s",
+    "total_g": 53.62,
+    "support_g": 11.944,
     "brim_g": 0.0,
     "bridge_extrusion_mm": 1291.262,
     "material": "Generic PETG @BBL A1",
@@ -208,7 +228,9 @@
           ]
         }
       ],
-      "total_area_mm2": 668.03
+      "raster_area_mm2": 668.03,
+      "bead_union_area_mm2": 793.59,
+      "bead_union_regions": 1
     },
     "elevated_starts": [
       {
@@ -223,6 +245,11 @@
           125.43
         ]
       }
-    ]
+    ],
+    "installed_mesh_comparison": {
+      "oriented_triangles": 85950,
+      "matching_vertices": 42935,
+      "maximum_assembly_vertex_delta_mm": 2.35e-06
+    }
   }
 }

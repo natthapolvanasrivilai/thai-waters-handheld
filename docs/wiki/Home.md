@@ -6,9 +6,9 @@
 
 This handbook follows a unit from a cast on the simulator through component selection, enclosure fit, programming, factory acceptance and sale. Start with the activity below, or [download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html). Open the downloaded HTML in a browser. The playable game, 3D meshes, circuit traces and costing data are embedded. A local copy is also available at [docs/index.html](../index.html) in your checkout.
 
-**Current design review.** [R0009 dressed assembly and R0003 harness](Hardware-and-3D.md) · [One-unit BOM and selling price](BOM-and-business.md)
+[Mechanical design and fit history](Hardware-and-3D.md) · [Known one-unit costs and selling-price research](BOM-and-business.md)
 
-**Build disposition · TW-A-0001-R0008 is the next inert fit print.** The print set preserves both maximum battery envelopes. Follow the [R0008 orientation, support and gauge procedure](../../hardware/mechanical/TW-A-0001-R0008/PRINT-GUIDE.md) before powered closure. The rail transient, shared I²C bus, speaker drive and charger behavior have outstanding measurements. Check [electrical verification](Electrical-verification.md) and [mechanical fit](Hardware-and-3D.md) before closing a powered case.
+**Next inert fit print · TW-A-0001-R0011.** The rod receiver prints directly on the bed. The lower service opening closes with a removable cover. Read the [print setup](../../hardware/mechanical/TW-A-0001-R0011/PRINT-GUIDE.md), [hardware gate](../../quality/hardware-gate.md) and [electrical verification](Electrical-verification.md) before moving to a populated assembly.
 
 [Current software release, playtest and hardware milestone](Software-and-tests.md#current-release)
 
