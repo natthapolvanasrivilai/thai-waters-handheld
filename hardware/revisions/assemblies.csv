@@ -12,3 +12,4 @@ TW-A-0001-R0008,,Matched FDM enclosure print set,Twelve build-oriented PETG devi
 TW-A-0001-R0009,,Source-model inspection enclosure,"Fitted speaker, close-fitting USB-C access, separated light guides and matched prints.",hardware/mechanical/TW-A-0001-R0009/assembly-parts.json,R0009-001
 TW-A-0002-R0003,,USB status and haptic integration,Independent USB indication and autonomous power and charging status.,hardware/electronics/usb-status-r0003/README.md,R0003-001
 TW-A-0001-R0010,,Dressed enclosure with removable lower service cover,"Matched R0009 print set plus P17 opaque TPU cover for PWR, RESET and BOOT.",hardware/mechanical/TW-A-0001-R0010/README.md,R0010-001
+TW-A-0001-R0011,,"Dressed enclosure, receiver-down housing",First-layer-connected rod-grip receiver with lower service cover.,hardware/mechanical/TW-A-0001-R0011/README.md,R0011-001
