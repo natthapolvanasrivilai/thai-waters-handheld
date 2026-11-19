@@ -1,0 +1,184 @@
+[
+  {
+    "part": "housing-battery-bay",
+    "feature": "Power cap guide",
+    "section_mm": [
+      -36,
+      34.05,
+      12.5
+    ],
+    "axis": [
+      0,
+      1,
+      0
+    ],
+    "radius_mm": 3.0,
+    "roof_angle_deg": 45.0,
+    "nominal_round_working_arc_deg": 270.0,
+    "ray_boundary_distances_mm_from_build_up_deg": {
+      "-22.5": 3.24718,
+      "0.0": 4.24264,
+      "22.5": 3.24718,
+      "45.0": 3.0,
+      "90.0": 3.0,
+      "180.0": 3.0,
+      "270.0": 3.0
+    }
+  },
+  {
+    "part": "housing-battery-bay",
+    "feature": "Cap flange counterbore",
+    "section_mm": [
+      -36,
+      33.2,
+      12.5
+    ],
+    "axis": [
+      0,
+      1,
+      0
+    ],
+    "radius_mm": 4.15,
+    "roof_angle_deg": 45.0,
+    "nominal_round_working_arc_deg": 270.0,
+    "ray_boundary_distances_mm_from_build_up_deg": {
+      "-22.5": 4.49193,
+      "0.0": 5.86899,
+      "22.5": 4.49193,
+      "45.0": 4.15,
+      "90.0": 4.15,
+      "180.0": 4.15,
+      "270.0": 4.15
+    }
+  },
+  {
+    "part": "rod-grip",
+    "feature": "M3 through-bore",
+    "section_mm": [
+      17,
+      -24.5,
+      -2
+    ],
+    "axis": [
+      0,
+      0,
+      1
+    ],
+    "radius_mm": 1.78,
+    "roof_angle_deg": 45.0,
+    "nominal_round_working_arc_deg": 270.0,
+    "ray_boundary_distances_mm_from_build_up_deg": {
+      "-22.5": 1.92666,
+      "0.0": 2.5173,
+      "22.5": 1.92666,
+      "45.0": 1.78,
+      "90.0": 1.78,
+      "180.0": 1.78,
+      "270.0": 1.78
+    }
+  },
+  {
+    "part": "rod-grip",
+    "feature": "Captive head chamber",
+    "section_mm": [
+      17,
+      -24.5,
+      -8
+    ],
+    "axis": [
+      0,
+      0,
+      1
+    ],
+    "radius_mm": 3.12,
+    "roof_angle_deg": 45.0,
+    "nominal_round_working_arc_deg": 270.0,
+    "ray_boundary_distances_mm_from_build_up_deg": {
+      "-22.5": 3.37706,
+      "0.0": 4.41235,
+      "22.5": 3.37706,
+      "45.0": 3.12,
+      "90.0": 3.12,
+      "180.0": 3.12,
+      "270.0": 3.12
+    }
+  },
+  {
+    "part": "rod-grip",
+    "feature": "Keeper counterbore",
+    "section_mm": [
+      17,
+      -24.5,
+      -14.1
+    ],
+    "axis": [
+      0,
+      0,
+      1
+    ],
+    "radius_mm": 4.63,
+    "roof_angle_deg": 45.0,
+    "nominal_round_working_arc_deg": 270.0,
+    "ray_boundary_distances_mm_from_build_up_deg": {
+      "-22.5": 5.01148,
+      "0.0": 6.54781,
+      "22.5": 5.01148,
+      "45.0": 4.63,
+      "90.0": 4.63,
+      "180.0": 4.63,
+      "270.0": 4.63
+    }
+  },
+  {
+    "part": "PKCELL-max-body-with-wire-sockets",
+    "feature": "Left inert lead socket",
+    "section_mm": [
+      -1.45,
+      28.5,
+      2.65
+    ],
+    "axis": [
+      0,
+      1,
+      0
+    ],
+    "radius_mm": 0.8,
+    "roof_angle_deg": 45.0,
+    "nominal_round_working_arc_deg": 270.0,
+    "ray_boundary_distances_mm_from_build_up_deg": {
+      "-22.5": 0.86591,
+      "0.0": 1.13137,
+      "22.5": 0.86591,
+      "45.0": 0.8,
+      "90.0": 0.8,
+      "180.0": 0.8,
+      "270.0": 0.8
+    }
+  },
+  {
+    "part": "PKCELL-max-body-with-wire-sockets",
+    "feature": "Right inert lead socket",
+    "section_mm": [
+      1.45,
+      28.5,
+      2.65
+    ],
+    "axis": [
+      0,
+      1,
+      0
+    ],
+    "radius_mm": 0.8,
+    "roof_angle_deg": 45.0,
+    "nominal_round_working_arc_deg": 270.0,
+    "ray_boundary_distances_mm_from_build_up_deg": {
+      "-22.5": 0.86591,
+      "0.0": 1.13137,
+      "22.5": 0.86591,
+      "45.0": 0.8,
+      "90.0": 0.8,
+      "180.0": 0.8,
+      "270.0": 0.8
+    }
+  }
+]

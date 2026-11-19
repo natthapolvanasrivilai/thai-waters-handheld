@@ -59,6 +59,11 @@ inline void palette(Color *p,Water family,int time,int place){
   p[Window]=mix(l.shade,0x374651,120);p[Gold]=time==3?0xffc574:0xf6c779;
   p[Canvas]=mix(l.horizon,0xe9dcaf,75);p[Petal]=mix(l.clouds,0xffadab,150);
   p[Wake]=mix(p[18],l.horizon,105);p[Star]=mix(l.horizon,0xffeed3,130);
+  // Adjacent-value pigments for arrival textures use the same local light.
+  p[57]=mix(p[Sand],p[Timber],97);p[58]=mix(p[Reed],p[Leaf],94);
+  p[59]=mix(p[Stone],p[StoneLight],63);p[60]=mix(p[Timber],p[Post],73);
+  p[61]=mix(p[Wood],p[Timber],85);p[62]=mix(p[Post],p[Stone],64);
+  p[63]=mix(p[Crown],p[Leaf],134);
 }
 // Column-major, bottom-to-top storage also permits in-place LCD expansion.
 struct Image {

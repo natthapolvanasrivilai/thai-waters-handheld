@@ -1,53 +1,53 @@
-﻿Stable ID,Game habitat,Species,Rarity,Min cm,Max cm,Mass coefficient,Dawn weight,Day weight,Dusk weight,Night weight,Fictional origin
-0,Mae Ngat Reservoir,Climbing perch,Common,9,23,14,48,32,32,32,Hatched in the lotus roots beside the potter's steps.
-1,Mae Ngat Reservoir,Three-spot gourami,Common,8,16,15,32,48,32,32,Raised in the reed beds behind the blue pavilion.
-2,Mae Ngat Reservoir,Silver barb,Common,15,35,16,32,32,48,32,Followed the first monsoon into the orchard pond.
-3,Mae Ngat Reservoir,Walking catfish,Uncommon,19,41,13,14,14,14,21,Slipped in through a flooded rice-field gate.
-4,Mae Ngat Reservoir,Snakeskin gourami,Uncommon,13,25,14,21,14,14,14,Grew up beneath the lotus seller's floating basket.
-5,Mae Ngat Reservoir,Nile tilapia,Uncommon,18,43,15,14,21,14,14,Came from the little pond behind the clay kiln.
-6,Mae Ngat Reservoir,Striped snakehead,Rare,25,66,10,6,6,9,6,Kept watch in the water lilies of the north inlet.
-7,Mae Ngat Reservoir,Broadhead catfish,Rare,20,38,13,6,6,6,9,Hid among the roots of the old tamarind tree.
-8,Mae Ngat Reservoir,Marbled goby,Epic,21,50,8,6,4,4,4,Born in the gravel shallows below the millstone.
-9,Mae Ngat Reservoir,Giant gourami,Legendary,37,68,15,2,3,2,2,Once sheltered in the shade of a floating shrine.
-10,Chao Phraya,Redtail botia,Common,12,24,16,32,32,48,32,Grew up under a ferry landing's worn timber steps.
-11,Chao Phraya,Tinfoil barb,Common,14,34,17,32,32,32,48,Ran silver with a shoal from the lantern quay.
-12,Chao Phraya,Banded mystus,Common,9,22,10,48,32,32,32,Born where a rope ferry used to cross the current.
-13,Chao Phraya,Siamese mud carp,Uncommon,18,47,15,14,21,14,14,Grazed the silt beside the old brickworks.
-14,Chao Phraya,Red-tailed tinfoil barb,Uncommon,18,33,16,14,14,21,14,Followed the rice barges around the temple bend.
-15,Chao Phraya,Asian redtail catfish,Uncommon,28,84,13,14,14,14,21,Kept to the deep pilings of the copper-roofed wharf.
-16,Chao Phraya,Soldier river barb,Rare,24,62,14,9,6,6,6,Came downriver through the boatbuilders' reach.
-17,Chao Phraya,Bronze featherback,Rare,22,53,9,6,9,6,6,Grew up in the backwater behind a ferry island.
-18,Chao Phraya,Clown featherback,Epic,39,91,10,4,4,6,4,Made its home in the shadow of a sunken skiff.
-19,Chao Phraya,Giant barb,Legendary,65,165,17,2,2,2,3,Returned each flood to the bell tower's reflection.
-20,Cheow Lan Lake,Hampala barb,Common,18,63,14,48,32,32,32,Hatched in a stream that falls between two cliffs.
-21,Cheow Lan Lake,Striped barb,Common,7,16,15,32,48,32,32,Grew up in the reed pools near a floating school.
-22,Cheow Lan Lake,Forest snakehead,Common,17,36,10,32,32,48,32,Came from a forest creek beneath the limestone arch.
-23,Cheow Lan Lake,Bonylip barb,Uncommon,14,35,17,14,14,14,21,Grazed the green stones at the lake's hidden spring.
-24,Cheow Lan Lake,Spotted barb,Uncommon,9,19,14,21,14,14,14,Sheltered among the moorings of an empty raft house.
-25,Cheow Lan Lake,Red-tailed rasbora,Uncommon,8,17,9,14,21,14,14,Left the fern-lined inlet with the first warm rain.
-26,Cheow Lan Lake,Great snakehead,Rare,39,88,10,6,6,9,6,Hunted in a flooded grove below the white cliff.
-27,Cheow Lan Lake,Blue mahseer,Rare,26,72,17,6,6,6,9,Rose from a cold spring beneath the karst towers.
-28,Cheow Lan Lake,Giant snakehead,Epic,40,105,8,6,4,4,4,Grew up in the shadow of a drowned fig tree.
-29,Cheow Lan Lake,Thai mahseer,Legendary,42,95,15,2,3,2,2,Followed a ribbon of clear water out of the hills.
-30,Nong Khai Mekong,Siamese glassfish,Common,5,11,16,32,32,48,32,Grew up in the shallows beside the silk dyers' bank.
-31,Nong Khai Mekong,Asian bumblebee catfish,Common,7,15,13,32,32,32,48,Hid beneath a turned-over ferry basket.
-32,Nong Khai Mekong,Yellow mystus,Common,10,24,10,48,32,32,32,Came from the ochre pools behind the night market.
-33,Nong Khai Mekong,Black sharkminnow,Uncommon,21,73,15,14,21,14,14,Patrolled a stony channel under the eastern span.
-34,Nong Khai Mekong,Smallscale mud carp,Uncommon,15,34,16,14,14,21,14,Followed the silt past a row of floating gardens.
-35,Nong Khai Mekong,Siamese algae eater,Uncommon,8,16,11,14,14,14,21,Grazed the smooth posts at the old boat crossing.
-36,Nong Khai Mekong,Striped river catfish,Rare,36,95,10,9,6,6,6,Rode the floodwater past the lantern boats.
-37,Nong Khai Mekong,Wallago catfish,Rare,57,145,11,6,9,6,6,Kept to a deep bend below the moonlit bridge.
-38,Nong Khai Mekong,Jullien mud carp,Epic,45,110,16,4,4,6,4,Came down from a gravel bar called the Silver Step.
-39,Nong Khai Mekong,Mekong giant catfish,Legendary,90,225,13,2,2,2,3,Born in a deep pool the boatmen call the Blue Well.
-40,Chao Phraya,Giant river prawn,Rare,12,32,6,0,0,8,3,Sheltered under the ferry piles until its claws turned blue.
-41,Nong Khai Mekong,Giant freshwater stingray,Legendary,65,240,8,1,0,0,3,Left a round print on the Moonbank's silver sand.
-42,Coastal waters,Indian mackerel,Common,14,31,10,32,32,48,32,Followed the floating ice down from a blue fishing boat.
-43,Coastal waters,Yellowstripe scad,Common,12,22,12,32,32,32,48,Learned to turn with the school alongside a line of buoys.
-44,Coastal waters,Indian anchovy,Common,6,15,8,48,32,32,32,Grew up where the green lamp meets the edge of the dark.
-45,Coastal waters,Goldlined seabream,Uncommon,16,42,18,14,21,14,14,Once sheltered beneath a buoy daubed with yellow paint.
-46,Coastal waters,Bigeye scad,Uncommon,17,36,14,14,14,21,14,Fed after dark near a boat the crew calls Little Moon.
-47,Coastal waters,Talang queenfish,Uncommon,32,99,9,14,14,14,21,Ran beside a skiff for the length of a morning song.
-48,Coastal waters,Cobia,Rare,44,155,9,9,6,6,6,Travelled in the long shade of a lost marker float.
-49,Coastal waters,Great barracuda,Rare,46,158,6,6,9,6,6,Watched the anchovy shoals from the edge of blue water.
-50,Coastal waters,Giant trevally,Epic,55,148,17,4,4,6,4,Turned the water white beside a half-submerged anchor.
-51,Coastal waters,Indo-Pacific sailfish,Legendary,110,245,6,2,2,2,3,Rose like a torn blue sail beyond the last fishing light.
+Stable ID,Game habitat,Species,Rarity,Min cm,Max cm,Size measure,Mass a,Mass b,Mass basis,Dawn weight,Day weight,Dusk weight,Night weight,Fictional origin,Mass source,Shape axes
+0,Mae Ngat Reservoir,Climbing perch,Common,9,23,Total length,0.020036472,2.8247,Perch (male fit),48,32,32,32,Hatched in the lotus roots beside the potter's steps.,https://jomardpublishing.com/UploadFiles/Files/journals/ABES/V3N2/Ahmadi.pdf,
+1,Mae Ngat Reservoir,Three-spot gourami,Common,8,16,Total length,0.0217831787,2.861,Lempake,32,48,32,32,Raised in the reed beds behind the blue pavilion.,https://media.neliti.com/media/publications/357439-the-growth-pattern-and-condition-factors-faacadfc.pdf,
+2,Mae Ngat Reservoir,Silver barb,Common,15,35,Total length,0.01675254283,3,Authored shape / broad barb,32,32,48,32,Followed the first monsoon into the orchard pond.,Thai Waters game design,0.790 0.300 0.135
+3,Mae Ngat Reservoir,Walking catfish,Uncommon,19,41,Total length,0.00512035415,3.1202,Thai Clarias,14,14,14,21,Slipped in through a flooded rice-field gate.,https://www.fao.org/4/AB938E/AB938E00.htm,
+4,Mae Ngat Reservoir,Snakeskin gourami,Uncommon,13,25,Total length,0.01646718149,3,Authored shape / shallow-disc gourami,21,14,14,14,Grew up beneath the lotus seller's floating basket.,Thai Waters game design,0.740 0.340 0.125
+5,Mae Ngat Reservoir,Nile tilapia,Uncommon,18,43,Total length,0.0186921296,3,Thai tilapia (12 cm anchor),14,21,14,14,Came from the little pond behind the clay kiln.,https://aurora.auburn.edu/bitstream/handle/11200/1064/0165FISH.pdf,
+6,Mae Ngat Reservoir,Striped snakehead,Rare,25,66,Total length,0.00911847268,3,Authored shape / river torpedo,6,6,9,6,Kept watch in the water lilies of the north inlet.,Thai Waters game design,0.860 0.150 0.135
+7,Mae Ngat Reservoir,Broadhead catfish,Rare,20,38,Total length,0.0126574768,3,Authored shape / thick-headed bottom fish,6,6,6,9,Hid among the roots of the old tamarind tree.,Thai Waters game design,0.790 0.170 0.180
+8,Mae Ngat Reservoir,Marbled goby,Epic,21,50,Total length,0.0126574768,3,Authored shape / thick-headed bottom fish,6,4,4,4,Born in the gravel shallows below the millstone.,Thai Waters game design,0.790 0.170 0.180
+9,Mae Ngat Reservoir,Giant gourami,Legendary,37,68,Total length,0.02268229896,3,Authored shape / deep giant gourami,2,3,2,2,Once sheltered in the shade of a floating shrine.,Thai Waters game design,0.760 0.380 0.150
+10,Chao Phraya,Redtail botia,Common,12,24,Total length,0.00831763771,3.18,Dai,32,32,48,32,Grew up under a ferry landing's worn timber steps.,https://doi.org/10.5061/dryad.dr7sqvb5h,
+11,Chao Phraya,Tinfoil barb,Common,14,34,Total length,0.01675254283,3,Authored shape / broad barb,32,32,32,48,Ran silver with a shoal from the lantern quay.,Thai Waters game design,0.790 0.300 0.135
+12,Chao Phraya,Banded mystus,Common,9,22,Total length,0.00854513202,3,Authored shape / small whiskered fish,48,32,32,32,Born where a rope ferry used to cross the current.,Thai Waters game design,0.800 0.170 0.120
+13,Chao Phraya,Siamese mud carp,Uncommon,18,47,Total length,0.00831763771,3.09,Dai,14,21,14,14,Grazed the silt beside the old brickworks.,https://doi.org/10.5061/dryad.dr7sqvb5h,
+14,Chao Phraya,Red-tailed tinfoil barb,Uncommon,18,33,Total length,0.01675254283,3,Authored shape / broad barb,14,14,21,14,Followed the rice barges around the temple bend.,Thai Waters game design,0.790 0.300 0.135
+15,Chao Phraya,Asian redtail catfish,Uncommon,28,84,Total length,0.01305227028,3,Authored shape / large river catfish,14,14,14,21,Kept to the deep pilings of the copper-roofed wharf.,Thai Waters game design,0.820 0.190 0.160
+16,Chao Phraya,Soldier river barb,Rare,24,62,Total length,0.00758577575,3.06,Dai,9,6,6,6,Came downriver through the boatbuilders' reach.,https://doi.org/10.5061/dryad.dr7sqvb5h,
+17,Chao Phraya,Bronze featherback,Rare,22,53,Total length,0.00671452598,3,Authored shape / blade,6,9,6,6,Grew up in the backwater behind a ferry island.,Thai Waters game design,0.870 0.220 0.067
+18,Chao Phraya,Clown featherback,Epic,39,91,Total length,0.00671452598,3,Authored shape / blade,4,4,6,4,Made its home in the shadow of a sunken skiff.,Thai Waters game design,0.870 0.220 0.067
+19,Chao Phraya,Giant barb,Legendary,65,165,Total length,0.0203575204,3,Authored shape / heavy carp,2,2,2,3,Returned each flood to the bell tower's reflection.,Thai Waters game design,0.810 0.300 0.160
+20,Cheow Lan Lake,Hampala barb,Common,18,63,Total length,0.01268103875,3,Authored shape / stream barb,48,32,32,32,Hatched in a stream that falls between two cliffs.,Thai Waters game design,0.810 0.230 0.130
+21,Cheow Lan Lake,Striped barb,Common,7,16,Total length,0.01268103875,3,Authored shape / stream barb,32,48,32,32,Grew up in the reed pools near a floating school.,Thai Waters game design,0.810 0.230 0.130
+22,Cheow Lan Lake,Forest snakehead,Common,17,36,Total length,0.00911847268,3,Authored shape / river torpedo,32,32,48,32,Came from a forest creek beneath the limestone arch.,Thai Waters game design,0.860 0.150 0.135
+23,Cheow Lan Lake,Bonylip barb,Uncommon,14,35,Total length,0.01268103875,3,Authored shape / stream barb,14,14,14,21,Grazed the green stones at the lake's hidden spring.,Thai Waters game design,0.810 0.230 0.130
+24,Cheow Lan Lake,Spotted barb,Uncommon,9,19,Total length,0.01268103875,3,Authored shape / stream barb,21,14,14,14,Sheltered among the moorings of an empty raft house.,Thai Waters game design,0.810 0.230 0.130
+25,Cheow Lan Lake,Red-tailed rasbora,Uncommon,8,17,Total length,0.00766391528,3,Authored shape / slim minnow,14,21,14,14,Left the fern-lined inlet with the first warm rain.,Thai Waters game design,0.820 0.170 0.105
+26,Cheow Lan Lake,Great snakehead,Rare,39,88,Total length,0.00911847268,3,Authored shape / river torpedo,6,6,9,6,Hunted in a flooded grove below the white cliff.,Thai Waters game design,0.860 0.150 0.135
+27,Cheow Lan Lake,Blue mahseer,Rare,26,72,Total length,0.01268103875,3,Authored shape / stream barb,6,6,6,9,Rose from a cold spring beneath the karst towers.,Thai Waters game design,0.810 0.230 0.130
+28,Cheow Lan Lake,Giant snakehead,Epic,40,105,Total length,0.00911847268,3,Authored shape / river torpedo,6,4,4,4,Grew up in the shadow of a drowned fig tree.,Thai Waters game design,0.860 0.150 0.135
+29,Cheow Lan Lake,Thai mahseer,Legendary,42,95,Total length,0.01268103875,3,Authored shape / stream barb,2,3,2,2,Followed a ribbon of clear water out of the hills.,Thai Waters game design,0.810 0.230 0.130
+30,Nong Khai Mekong,Siamese glassfish,Common,5,11,Total length,0.01343596346,3,Authored shape / glass perch,32,32,48,32,Grew up in the shallows beside the silk dyers' bank.,Thai Waters game design,0.720 0.330 0.108
+31,Nong Khai Mekong,Asian bumblebee catfish,Common,7,15,Total length,0.0126574768,3,Authored shape / thick-headed bottom fish,32,32,32,48,Hid beneath a turned-over ferry basket.,Thai Waters game design,0.790 0.170 0.180
+32,Nong Khai Mekong,Yellow mystus,Common,10,24,Total length,0.00949429509,3,Thai aquaculture mean anchor (H. filamentus),48,32,32,32,Came from the ochre pools behind the night market.,https://www4.fisheries.go.th/local/file_document/20220902135721_1_file.pdf,
+33,Nong Khai Mekong,Black sharkminnow,Uncommon,21,73,Total length,0.0107151931,3.01,Dai,14,21,14,14,Patrolled a stony channel under the eastern span.,https://doi.org/10.5061/dryad.dr7sqvb5h,
+34,Nong Khai Mekong,Smallscale mud carp,Uncommon,15,34,Total length,0.01268103875,3,Authored shape / stream barb,14,14,21,14,Followed the silt past a row of floating gardens.,Thai Waters game design,0.810 0.230 0.130
+35,Nong Khai Mekong,Siamese algae eater,Uncommon,8,16,Total length,0.00766391528,3,Authored shape / slim minnow,14,14,14,21,Grazed the smooth posts at the old boat crossing.,Thai Waters game design,0.820 0.170 0.105
+36,Nong Khai Mekong,Striped river catfish,Rare,36,95,Total length,0.01305227028,3,Authored shape / large river catfish,9,6,6,6,Rode the floodwater past the lantern boats.,Thai Waters game design,0.820 0.190 0.160
+37,Nong Khai Mekong,Wallago catfish,Rare,57,145,Total length,0.00888285323,3,Authored shape / long river catfish,6,9,6,6,Kept to a deep bend below the moonlit bridge.,Thai Waters game design,0.870 0.150 0.130
+38,Nong Khai Mekong,Jullien mud carp,Epic,45,110,Total length,0.0203575204,3,Authored shape / heavy carp,4,4,6,4,Came down from a gravel bar called the Silver Step.,Thai Waters game design,0.810 0.300 0.160
+39,Nong Khai Mekong,Mekong giant catfish,Legendary,90,225,Total length,0.01981716646,3,Authored shape / giant river catfish,2,2,2,3,Born in a deep pool the boatmen call the Blue Well.,Thai Waters game design,0.830 0.240 0.190
+40,Chao Phraya,Giant river prawn,Rare,12,32,Body length,0.00349140315,3.41,Rockefeller,0,0,8,3,Sheltered under the ferry piles until its claws turned blue.,https://seafwa.org/sites/default/files/journal-articles/PERRY-215-222.pdf,
+41,Nong Khai Mekong,Giant freshwater stingray,Legendary,65,200,Disc width,0.116,2.76,Whipray,1,0,0,3,Left a round print on the Moonbank's silver sand.,https://doi.org/10.26107/RBZ-2022-0030,
+42,Coastal waters,Indian mackerel,Common,14,31,Total length,0.01302818473,3,Authored shape / open-water spindle,32,32,48,32,Followed the floating ice down from a blue fishing boat.,Thai Waters game design,0.780 0.220 0.145
+43,Coastal waters,Yellowstripe scad,Common,12,22,Total length,0.013,2.9629,Andaman scad,32,32,32,48,Learned to turn with the school alongside a line of buoys.,https://www4.fisheries.go.th/local/file_document/20170120175615_file.pdf,
+44,Coastal waters,Indian anchovy,Common,6,15,Total length,0.00510705156,3,Authored shape / little anchovy,48,32,32,32,Grew up where the green lamp meets the edge of the dark.,Thai Waters game design,0.850 0.135 0.085
+45,Coastal waters,Goldlined seabream,Uncommon,16,42,Total length,0.01976061779,3,Authored shape / deep bream,14,21,14,14,Once sheltered beneath a buoy daubed with yellow paint.,Thai Waters game design,0.740 0.340 0.150
+46,Coastal waters,Bigeye scad,Uncommon,17,36,Total length,0.01302818473,3,Authored shape / open-water spindle,14,14,21,14,Fed after dark near a boat the crew calls Little Moon.,Thai Waters game design,0.780 0.220 0.145
+47,Coastal waters,Talang queenfish,Uncommon,32,99,Total length,0.00961013193,3,Authored shape / long coastal runner,14,14,14,21,Ran beside a skiff for the length of a morning song.,Thai Waters game design,0.840 0.190 0.115
+48,Coastal waters,Cobia,Rare,44,155,Total length,0.01001382658,3,Authored shape / coastal torpedo,9,6,6,6,Travelled in the long shade of a lost marker float.,Thai Waters game design,0.850 0.150 0.150
+49,Coastal waters,Great barracuda,Rare,46,158,Total length,0.00688846549,3,Authored shape / long narrow predator,6,9,6,6,Watched the anchovy shoals from the edge of blue water.,Thai Waters game design,0.880 0.130 0.115
+50,Coastal waters,Giant trevally,Epic,55,148,Total length,0.02062219958,3,Authored shape / deep trevally,4,4,6,4,Turned the water white beside a half-submerged anchor.,Thai Waters game design,0.770 0.310 0.165
+51,Coastal waters,Indo-Pacific sailfish,Legendary,110,245,Eye to fork,0.06901,2.52429,IOTC,2,2,2,3,Rose like a torn blue sail beyond the last fishing light.,https://repository.library.noaa.gov/view/noaa/4789,

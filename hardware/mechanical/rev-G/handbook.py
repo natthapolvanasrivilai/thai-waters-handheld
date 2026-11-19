@@ -1,15 +1,20 @@
 """Publish the mechanical revision over the frozen electrical and commercial review."""
-import argparse,base64,gzip,hashlib,json,re,shutil
+import argparse,base64,gzip,hashlib,json,re,runpy,shutil
 from pathlib import Path
 here=Path(__file__).resolve().parent
 repo=here.parents[2]
-parser=argparse.ArgumentParser();parser.add_argument('--exports',required=True,type=Path);out=parser.parse_args().exports
+parser=argparse.ArgumentParser()
+parser.add_argument('--exports',required=True,type=Path)
+parser.add_argument('--preview',type=Path,help='Write a single preview to this path')
+args=parser.parse_args()
+out=args.exports
 baseline=(out/'Riffle-Rev-F-engineering-review.html').read_bytes()
 assert hashlib.sha256(baseline).hexdigest()=='678b3ab78a0e77039d7164cfde3818e05ddec886b7cba482d830f27fa7734a0f'
 page=baseline.decode('utf-8'); prefix='https://github.com/natthapolvanasrivilai/thai-waters-handheld'
 def script(name):
     return re.search(fr'<script id="{name}"[^>]*>(.*?)</script>',page,re.S)
 match=script('reviewData'); data=json.loads(match[1])
+data['blankRecord']=(repo/'manufacturing/rev-F-review/as-built-record.csv').read_text(encoding='utf-8-sig')
 stats=json.loads((here/'collisions.json').read_text())['drawing']
 qa=json.loads((here/'qualification.json').read_text())
 gaps=qa['seated_distance_mm']
@@ -32,8 +37,12 @@ page=page[:model.start(1)]+embedded+page[model.end(1):]
 game=script('compressedGame')
 playable=base64.b64encode(gzip.compress((repo/'game/Thai-Waters-play.html').read_bytes(),mtime=0)).decode()
 page=page[:game.start(1)]+playable+page[game.end(1):]
-page=page.replace('Personal engineering project · Rev F','Rev G fit print · Rev F electronics').replace('Populated Rev F assembly','Rev G battery fit and assembly').replace('Rev F exploded mechanical assembly viewer','Rev G exploded mechanical assembly viewer').replace("src='Riffle-Rev-F-exploded.html'","src='Riffle-Rev-G-exploded.html'").replace('Riffle Pocket · Rev F · Firmware 0.7','Riffle Pocket · Rev G fit / Rev F electronics · Firmware 0.7')
+page=page.replace('Personal engineering project · Rev F','Rev G fit print · Rev F electronics').replace('Populated Rev F assembly','Rev G battery fit and assembly').replace('Rev F exploded mechanical assembly viewer','Rev G exploded mechanical assembly viewer').replace("src='Riffle-Rev-F-exploded.html'","src='Riffle-Rev-G-exploded.html'").replace('Riffle Pocket · Rev F · Firmware 0.7','Riffle Pocket · Rev G fit / Rev F electronics · Firmware 0.8')
 links='<p><a href="'+prefix+'/releases/download/rev-g-fit-print/Riffle-Rev-G-fit-print.zip">Download Rev G print kit and both inert gauges</a> · <a href="'+prefix+'/blob/main/hardware/mechanical/rev-G/README.md">Fit instructions and collision results</a></p>'
 page=page.replace('<h2>Rev G battery fit and assembly</h2>','<h2>Rev G battery fit and assembly</h2>'+links).replace('<h2>Engineering release decision</h2>','<h2>Engineering release decision</h2>'+links)
-file=out/'Riffle-Rev-G-handbook.html';file.write_text(page,encoding='utf-8');shutil.copyfile(file,repo/'docs/index.html')
+page=runpy.run_path(str(repo/'hardware/revisions/render_handbook.py'))['add_register'](page,prefix)
+file=args.preview or out/'Riffle-Rev-G-handbook.html'
+file.write_text(page,encoding='utf-8')
+if args.preview is None:
+    shutil.copyfile(file,repo/'docs/index.html')
 

@@ -7,28 +7,28 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
    const draw=CanvasRenderingContext2D.prototype.drawImage;
    window.specimenFrames=[];
    CanvasRenderingContext2D.prototype.drawImage=function(img,...args){
-    if(this.canvas.id==='scene'&&img instanceof HTMLImageElement&&img.naturalWidth===480&&img.naturalHeight===150){
+    if(this.canvas.id==='scene'&&img instanceof HTMLImageElement&&img.naturalWidth===960&&img.naturalHeight===400){
      if(window.specimenFrames.length<1000)window.specimenFrames.push({phase:g.state(),age:g.age(),x:args[4],y:args[5],w:args[6]});
     }
     return draw.call(this,img,...args);
    };
   });
-  await pg.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
+  await pg.goto(pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href);
   await pg.waitForFunction(()=>!document.querySelector('#act').disabled,null,{timeout:12000});
   await pg.waitForFunction(()=>document.documentElement.dataset.device);if(await pg.locator('#product').isVisible())await pg.locator('#viewMode').click();
   const menu=async n=>{await pg.locator('#openMenu').click();await pg.locator('[data-to='+n+']').click();};
   await menu('spots');assert.equal(await pg.locator('#places option').count(),117);
   await pg.selectOption('#waterType','salt');assert.equal(await pg.locator('#places option').count(),21);
-  await pg.selectOption('#places',{label:'Phuket coastal waters'});await pg.selectOption('#period',{label:'Dusk'});await pg.locator('#fishHere').click();
-  assert.equal(await pg.locator('#spot').innerText(),'Phuket coastal waters');
-  await pg.waitForFunction(()=>lastLandscape===113*4+2);
+  await pg.selectOption('#places',{label:'Phuket coastal waters'});await pg.selectOption('#period',{label:'Dusk'});await pg.locator('#fishHere').click();await pg.waitForFunction(()=>arrivalSince===null);
+  await pg.waitForFunction(()=>document.querySelector('#spot').textContent==='Phuket coastal waters');
+  await pg.waitForFunction(()=>Math.floor(lastLandscape/4)===113*4+2);
   const firstShore=await pg.evaluate(()=>landscapeCanvas.toDataURL());
-  await menu('spots');await pg.selectOption('#places',{label:'Krabi coastal waters'});await pg.locator('#fishHere').click();
-  await pg.waitForFunction(()=>lastLandscape===114*4+2);
+  await menu('spots');await pg.selectOption('#places',{label:'Krabi coastal waters'});await pg.locator('#fishHere').click();await pg.waitForFunction(()=>arrivalSince===null);
+  await pg.waitForFunction(()=>Math.floor(lastLandscape/4)===114*4+2);
   assert.notEqual(await pg.evaluate(()=>landscapeCanvas.toDataURL()),firstShore,'two places in the same coastal pool show different scenery');
-  await menu('spots');await pg.selectOption('#places',{label:'Chao Phraya River'});await pg.selectOption('#period',{label:'Dusk'});await pg.locator('#fishHere').click();
+  await menu('spots');await pg.selectOption('#places',{label:'Chao Phraya River'});await pg.selectOption('#period',{label:'Dusk'});await pg.locator('#fishHere').click();await pg.waitForFunction(()=>arrivalSince===null);
   // Choose a repeatable encounter through the same PRNG and normal cast entry point.
-  await pg.evaluate(()=>{for(let seed=1;seed<10000;seed++){g.initialize(seed);g.place(placeId,currentSlot);g.advance(16,1,0,0);if(g.species()===40){g.initialize(seed);g.place(placeId,currentSlot);break;}}});
+  await pg.evaluate(()=>{for(let seed=1;seed<10000;seed++){g.initialize(seed);g.place(placeId,currentSlot);g.setBait(g.recommendedBait(40));g.advance(16,1,0,0);if(g.species()===40){g.initialize(seed);g.place(placeId,currentSlot);g.setBait(g.recommendedBait(40));break;}}});
   await pg.locator('#act').click();await pg.waitForFunction(()=>g.state()===2);
   await pg.locator('#openMenu').click();let age=await pg.evaluate(()=>g.age());await pg.waitForTimeout(500);assert.equal(await pg.evaluate(()=>g.age()),age);await pg.locator('#resume').click();
   await pg.waitForFunction(()=>g.state()===3);await pg.locator('#act').click();await pg.waitForFunction(()=>g.state()===4);
@@ -40,18 +40,22 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
    await pg.waitForTimeout(80);
   }
   await pg.keyboard.up('r');assert.equal(await pg.evaluate(()=>g.state()),5,'Reading runs and gathering slack should land the fish');
-  assert.match(await pg.locator('#metrics').innerText(),/Rare.*Length.*Weight/);assert.match(await pg.locator('#origin').innerText(),/claws/);
+  assert.match(await pg.locator('#metrics').innerText(),/Rare.*Body length \d+ cm.*Estimated weight \d+ g/i);assert.match(await pg.locator('#origin').innerText(),/claws/);
   await pg.waitForFunction(()=>g.age()>=2600);
-  const frames=await pg.evaluate(()=>window.specimenFrames);
-  assert(frames.length>0&&frames.every(f=>f.phase===5&&f.age<2400),'Only the reveal and transfer may draw the animal');
-  const first=frames[0],last=frames.at(-1);
-  assert(last.x>first.x+140 && last.y<first.y-22 && last.w<first.w/3,'Sprite must travel toward and shrink into Journal');
-  await pg.locator('#catchBook').click();assert.equal(await pg.evaluate(()=>document.activeElement.id),'species-40');await pg.locator('#resume').click();
+  assert.equal(await pg.evaluate(()=>g.caught(40)),0);
+  const widths=await pg.evaluate(()=>window.specimenFrames.map(f=>f.w));
+  assert(widths.length>1 && widths.every(w=>w===widths[0]),'Specimen stays full size until filed');
+  const heldWeight=await pg.evaluate(()=>g.grams());
+  await pg.reload();await pg.waitForFunction(()=>g?.state()===5 && !$('catchBook').hidden);
+  assert.equal(await pg.evaluate(()=>g.caught(40)),0);
+  assert.equal(await pg.evaluate(()=>g.grams()),heldWeight,'Pending catch retains its individual weight after reload');
+  await pg.locator('#catchBook').click();await pg.waitForFunction(()=>document.activeElement.id==='species-40');
+  await pg.locator('#resume').click();
   assert.equal(await pg.evaluate(()=>g.caught(40)),1,'Transfer must not count the catch twice');
   await menu('rod');await pg.selectOption('#finish','Copper');await pg.selectOption('#technique',{label:'Vertical jig'});await pg.locator('#builds button').nth(1).click();assert.equal(await pg.evaluate(()=>g.rank(1)),1);await pg.locator('#resume').click();
   await pg.reload();await pg.waitForFunction(()=>!document.querySelector('#act').disabled);assert.equal(await pg.evaluate(()=>g.caught(40)),1);assert.equal(await pg.evaluate(()=>finish),1);
   assert.equal(await pg.evaluate(()=>g.technique()),2,'Remember the selected presentation');
-  await menu('book');assert.equal(await pg.locator('.record').count(),52);await pg.locator('#resume').click();
+  await menu('book');assert.equal(await pg.locator('.record').count(),12);await pg.locator('#bookFilter').selectOption({label:'Mythic'});assert.equal(await pg.locator('.record').count(),5);await pg.locator('#resume').click();
   await pg.setViewportSize({width:390,height:844});await menu('sensors');
   // Gravity in m/s², rest / raised vectors and stable dwell.
   for(const [xyz,button] of [[[0,0,9.80665],'restPose'],[[0,6.30,7.51],'liftPose']]){
@@ -71,7 +75,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
    }
    await pg.waitForFunction(()=>g.state()===3);await pg.locator('#act').click();await pg.waitForFunction(()=>g.state()===4);
    // Travel through the normal menu to abandon this cast before selecting the next rig.
-   await menu('spots');await pg.selectOption('#places',{index:rig+3});await pg.locator('#fishHere').click();await pg.waitForFunction(()=>g.state()===0);
+   await menu('spots');await pg.selectOption('#places',{index:rig+3});await pg.locator('#fishHere').click();await pg.waitForFunction(()=>arrivalSince===null);await pg.waitForFunction(()=>g.state()===0);
   }
   const fights=await pg.evaluate(()=>{
    const curve=ctx.quadraticCurveTo,shots=[];
@@ -81,7 +85,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
     for(const [species,pool,time] of [[40,1,2],[41,3,3],[47,4,1]]){
      let found=false;
      for(let seed=1;seed<12000&&!found;seed++){
-      g.initialize(seed);g.visit(pool,time);g.advance(16,1,0,0);found=g.species()===species;
+      g.initialize(seed);g.visit(pool,time);g.setBait(g.recommendedBait(species));g.advance(16,1,0,0);found=g.species()===species;
      }
      if(!found)throw Error('Fixture species unavailable');
      g.advance(651,0,0,0);g.advance(6500,0,0,0);g.advance(20,0,1,0);
@@ -93,6 +97,30 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   assert(fights.every(s=>s.phase===4));
   assert.match(fights[0].hint,/wind gently/);assert.match(fights[1].hint,/Holding bottom/);assert.match(fights[2].hint,/Fast run/);
   assert(fights[1].tip[1]>fights[0].tip[1]+20,'The planted ray should visibly bend the rod more than the picking prawn.');
+  const card=await pg.evaluate(async()=>{
+   await document.fonts.ready;
+   const drawText=ctx.fillText,drawSprite=ctx.drawImage,problems=[],positions=[];
+   let leftmost=480,rightmost=0,lowest=0;
+   try{
+    ctx.fillText=function(text,x,y){
+     const right=x+ctx.measureText(text).width;
+     leftmost=Math.min(leftmost,x);rightmost=Math.max(rightmost,right);lowest=Math.max(lowest,y);
+     if(x<200 || right>468 || y>286 || y<72)problems.push([text,x,y,right]);
+    };
+    ctx.drawImage=function(img,...args){if(img===fishSheet)positions.push([args[4],args[5],args[6],args[7]]);};
+    for(let id=0;id<atlas.fish.length;id++){
+     g.restoreCatch(id,atlas.fish[id].high);
+     for(placeId=0;placeId<atlas.locations.length;placeId++)landedCatch(0);
+    }
+   }finally{ctx.fillText=drawText;ctx.drawImage=drawSprite;placeId=0;}
+   g.restoreEntry(41,3,240);g.restoreCatch(41,240);draw();
+   return {problems:problems.slice(0,5),positions:[...new Set(positions.map(JSON.stringify))],
+    leftmost,rightmost,lowest,legacy:[g.best(41),g.grams(),$('metrics').textContent]};
+  });
+  assert.deepEqual(card.problems,[],'All 52 species and 117 waters fit the right column above the action button');
+  assert.deepEqual(card.positions,['[11,112,178,93]'],'All fish retain their full size in the left column');
+  assert.equal(card.legacy[0],240);assert.equal(card.legacy[1],0);assert.match(card.legacy[2],/Recorded size.*Unweighed/);
+  console.log('PASS 6,084 catch card layouts; right edge '+card.rightmost.toFixed(1)+' px, last baseline '+card.lowest+' px.');
   assert.equal(errors.length,0,errors.join(';'));console.log('PASS location, catch, collection, mobile motion and distinct loaded-rod visuals for prawn, ray and runner.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

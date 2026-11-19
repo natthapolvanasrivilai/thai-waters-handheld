@@ -1,4 +1,6 @@
 """Rebuild the handheld game's standalone browser engine with Zig 0.13.x."""
+from catch_weights import write_catch_weights
+
 import argparse
 import os
 import subprocess
@@ -10,6 +12,7 @@ parser.add_argument("--zig", default="zig", help="Zig executable or path")
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
 assets = root / "game" / "assets"
+write_catch_weights()
 with tempfile.TemporaryDirectory(dir=assets) as temp:
     build = Path(temp)
     obj, wasm = build / "bench.o", build / "atlas.wasm"

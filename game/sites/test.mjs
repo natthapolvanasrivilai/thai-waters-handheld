@@ -30,3 +30,5 @@ assert.notEqual(next.round,a.round);
 assert.equal(next.total,0);
 assert.equal((await pulse(117,0,0)).status,400);
 console.log('PASS two phone sessions, separate spots, idempotent catches, expiry and round rollover.');
+
+await import('./cup-test.mjs');

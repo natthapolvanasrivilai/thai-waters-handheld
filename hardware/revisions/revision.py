@@ -122,6 +122,9 @@ def validate(tables, against):
     manifest = json.loads((ROOT / "hardware/mechanical/rev-G/print-manifest.json").read_text())
     g = {Path(r["source"]).stem: parts[r["part"]]["sha256"] for r in tables["members"] if r["assembly"] == "TW-A-0001-R0007"}
     require(g == {k: v["sha256"] for k, v in manifest.items()}, "Rev G print manifest differs")
+    fdm = json.loads((ROOT / "hardware/mechanical/TW-A-0001-R0008/part-orientations.json").read_text())
+    current = {Path(row["source"]).stem: parts[row["part"]]["sha256"] for row in tables["members"] if row["assembly"] == "TW-A-0001-R0008"}
+    require(current == {k: v["sha256"] for k, v in fdm.items() if v["viewer_id"]}, "R0008 print manifest differs")
     if against:
         check_baseline(tables, against)
     print(f"Verified {len(assemblies)} assembly baselines, {len(parts)} part revisions and {len(slots)} memberships.")

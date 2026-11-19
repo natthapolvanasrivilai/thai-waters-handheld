@@ -11,9 +11,42 @@ class CreekSynth {
   int playing=-1,arrangement=-1; unsigned cursor=0,clock=0,cueAge=10000;
   uint32_t cuePhase=0;
   unsigned toothAge=144,toothNoise=1,toothPhase=0,toothStep=0;
+  creek::LandingCue landing{};
+  unsigned landingNote=0,noteAge=0,noteLength=0;
+  uint32_t landingPhase=0,landingStep=0;
+
+  void nextLandingNote(){
+    // The opening identifies rarity. The cadence identifies the journal reward.
+    static constexpr uint8_t opening[][6]={{0,2},{1,3},{2,3,5},{3,2,4,5},{0,2,3,5,7},{7,4,6,3,5,8}};
+    static constexpr uint8_t openingLength[]={2,2,3,4,5,6};
+    static constexpr uint8_t cadence[][3]={{0},{3,5},{4,6,5},{5,6,8}};
+    static constexpr uint8_t cadenceLength[]={0,2,3,3};
+    static constexpr uint16_t hz[]={523,587,659,784,880,1047,1175,1319,1568};
+    const unsigned tier=landing.tier,reward=unsigned(landing.reward);
+    const unsigned prefix=openingLength[tier],total=prefix+cadenceLength[reward];
+    if(landingNote>=total){landing={};return;}
+    const unsigned pitch=landingNote<prefix?opening[tier][landingNote]:cadence[reward][landingNote-prefix];
+    ++landingNote;
+    noteLength=landingNote==total?3520:landingNote==prefix?2200:landing.tier==5?1320:1520;
+    noteAge=0;landingPhase=0;landingStep=uint32_t((uint64_t(hz[pitch])<<32)/16000);
+  }
+  int landingSample(unsigned level){
+    // A quick attack and a decaying second harmonic give a plucked bell sound.
+    const int gate=int(noteLength)-160;
+    const int decay=std::max(0,gate-int(noteAge));
+    const int envelope=std::min(64,int(noteAge))*decay/64;
+    const int fundamental=sineTable[landingPhase>>24];
+    const int overtone=sineTable[(landingPhase>>23)&255]*decay/gate;
+    const int sample=(fundamental/4+overtone/12)*envelope/gate;
+    landingPhase+=landingStep;
+    if(++noteAge==noteLength)nextLandingNote();
+    return sample*int(level)/2;
+  }
 public:
-  void begin(){for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);}
-  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0){
+  void begin(){landing={};for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);}
+  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={}){
+    if(s.cue==1 || !s.cueVolume)landing={};
+    else if(reveal.active()){landing=reveal;landingNote=0;nextLandingNote();}
     if(reelClick && !trigger && s.reelVolume){
       toothAge=0;toothPhase=0;
       toothStep=reelClick>0?584115552u:507342336u;
@@ -37,7 +70,8 @@ public:
         if(s.music!=3 && (v!=1 || s.music!=1) && (v!=3 || (s.music==0 && chase)))music+=value*env/96;
         o.age++;o.phase+=o.step;
       }
-      int pcm=music*s.volume/(cueAge<6200?12:4);
+      int pcm=music*s.volume/(cueAge<6200||landing.active()?12:4);
+      if(landing.active())pcm+=landingSample(s.cueVolume);
       if(toothAge<144){
         // A dry pawl impact excites a short metallic ring at 16 kHz.
         toothNoise=1664525u*toothNoise+1013904223u;

@@ -22,3 +22,5 @@ The server certificate must match TW_HOST and be trusted by the testing phone. O
 
 [Device motion permission and secure contexts](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/requestPermission_static)
 
+
+The daily specimen cup needs Node 22.13+ with SQLite. Set TW_CUP_DB to choose its database path. The host shares one daily board across paired browsers and TWCR-capable handhelds.

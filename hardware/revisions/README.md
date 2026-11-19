@@ -1,6 +1,6 @@
 # Hardware revision register
 
-The next inert fit print uses enclosure **TW-A-0001-R0007** (Rev G) and electrical integration package **TW-A-0002-R0002** (Rev F wiring). Record both IDs on the traveler. Record the firmware version and binary SHA-256 separately. An assembly ID identifies a design configuration. Each physical unit still needs its own serial, option set, incoming part lots and test results.
+The next inert fit print uses enclosure **TW-A-0001-R0008** (FDM print set) and electrical integration package **TW-A-0002-R0002** (Rev F wiring). Record both IDs on the traveler. Record the firmware version and binary SHA-256 separately. An assembly ID identifies a design configuration. Each physical unit still needs its own serial, option set, incoming part lots and test results.
 
 ## Find a baseline
 
@@ -13,6 +13,9 @@ The next inert fit print uses enclosure **TW-A-0001-R0007** (Rev G) and electric
 | Rev E | TW-A-0001-R0005 | [Populated controller and encoder fit](../mechanical/rev-E/Readme.md) |
 | Rev F | TW-A-0001-R0006 | [Top-edge power key and slide-lock rod grip](../mechanical/rev-F/README.md) |
 | Rev G | TW-A-0001-R0007 | [Revised battery pocket, retainer and removable bridge](../mechanical/rev-G/README.md) |
+| Numeric baseline | TW-A-0001-R0008 | [Oriented FDM set, two inert gauges and fit checks](../mechanical/TW-A-0001-R0008/PRINT-GUIDE.md) |
+
+All twelve R0008 device print definitions have new STL hashes and revision IDs. Seven installed solids changed shape. Five retain their installed geometry and carry a new controlled print export. The two shop gauges are covered by the print manifest and sit outside the unit assembly membership.
 
 The two electrical packages cover controlled integration drawings. **TW-A-0002-R0001** identifies the [base wiring drawing](../electronics/Riffle-D-wiring.pdf). **TW-A-0002-R0002** includes that drawing, the [top-edge key carrier fabrication files](../electronics/Rev-F-power-key-carrier-Gerber.zip) and the [switch and W3 wiring specification](../electronics/rev-f-power-key.md). The OEM controller's silkscreen revision, purchased part numbers and supplier lots are separate identifiers.
 

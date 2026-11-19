@@ -34,3 +34,15 @@ TW-P-0012-R0002,Power-key board retainer,hardware/mechanical/rev-G/Print/key-boa
 TW-P-0017-R0001,Base harness,hardware/electronics/Riffle-D-wiring.pdf,,c5f656da907d3b08a7bf48c985cb1d58acf92264740c46aaf38e530c1dfcd2e0
 TW-P-0018-R0001,Power key switch carrier PCB1,hardware/electronics/Rev-F-power-key-carrier-Gerber.zip,,afc17aaf5c86548b37adc1c49de2de0182d0648f596ad09b4f93ec3f05acf8e8
 TW-P-0019-R0001,Top-edge switch and W3 harness specification,hardware/electronics/rev-f-power-key.md,,58428f6e4f362654d93f54fa540f9a5d81d547a28262645cac760e4e72208112
+TW-P-0016-R0002,Battery wire bridge,hardware/mechanical/TW-A-0001-R0008/Print/battery-wire-bridge.stl,,12490e06f93aa0ae1c6a8333f53de835fde79d280d805d7fcd41003ee345a457
+TW-P-0006-R0004,Display bezel,hardware/mechanical/TW-A-0001-R0008/Print/bezel.stl,,884689068a860869042a2fe26173f46fd6f6a5592a4c1a6676ee6f363183a54c
+TW-P-0009-R0003,Reel collar,hardware/mechanical/TW-A-0001-R0008/Print/collar.stl,,23672beb52fe5706187a3ae489d18b48e0c3477f0ecdb736167fd9cb39bd1d2a
+TW-P-0010-R0003,Folding reel stem,hardware/mechanical/TW-A-0001-R0008/Print/folding-stem.stl,,1c52d3561b72c1748f61059dccf2f517fffeebddbdd256903ca64134d0f8b244
+TW-P-0011-R0002,Rod grip screw keeper,hardware/mechanical/TW-A-0001-R0008/Print/grip-screw-keeper.stl,,42adc94b176ae1d6763725a28c78ef1ab10862975d5d382705c291059f5143ba
+TW-P-0004-R0005,Reel knob,hardware/mechanical/TW-A-0001-R0008/Print/grip.stl,,320f70864b76ce81897db9a13b81f2b3b551614ae86548235694e2fc219a0922
+TW-P-0001-R0008,Housing,hardware/mechanical/TW-A-0001-R0008/Print/housing-battery-bay.stl,,18ad793402f568d83d085413a5899c1a9813fa8e73404583484a261d2c4b9367
+TW-P-0012-R0003,Power-key board retainer,hardware/mechanical/TW-A-0001-R0008/Print/key-board-retainer-west.stl,,79bf8874347422a7368fd6c18b4a39abf89defa52fee0205a9b513349599c916
+TW-P-0013-R0002,Power key cap,hardware/mechanical/TW-A-0001-R0008/Print/power-cap.stl,,5f568806c412dea751cfd2756eb365d68b1d273782ad58715ec50655ebff0f13
+TW-P-0014-R0002,Grip receiver nut keeper,hardware/mechanical/TW-A-0001-R0008/Print/receiver-nut-keeper.stl,,cc8201225b69649f153c787ac7b3d54465c6b58ebbf9059e78344854342ebdb4
+TW-P-0015-R0002,Detachable rod grip,hardware/mechanical/TW-A-0001-R0008/Print/rod-grip.stl,,bd01b66469fc246ee8f7bc4490af0b6b5c32600f4e5809a07521538c3c04e4cf
+TW-P-0007-R0004,Reel rotor,hardware/mechanical/TW-A-0001-R0008/Print/rotor.stl,,c116c93f0110c8a5295c7416679896a44b33b99eb8dd4db1c28168c735f4fcf0

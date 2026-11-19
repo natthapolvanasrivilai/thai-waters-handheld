@@ -26,7 +26,8 @@ function fitFlat(){
 new ResizeObserver(fitFlat).observe(canvas);
 function setPower(on){
  if(!g)return;
- if(!on&&menu.open)menu.close();
+ if(!on&&menu.open)closeMenu();
+ if(!on&&arrivalSince!==null)stopArrival();
  powered=on;lcdUI.hidden=!on;release();gestureCast=gestureLift=false;g.resetGesture();prev=performance.now();
  for(const id of ['act','dial','openMenu','catchBook'])$(id).disabled=!on;
  $('simPower').textContent=on?'Power off':'Power on';
@@ -60,10 +61,10 @@ vm.disabled=true;
 makeThaiHandheld(product,JSON.parse($('deviceParts').textContent),{
  wheel:()=>shownWheel*Math.PI/180,paint:paintLCD,
  lcdTransform:(...m)=>{if(lcdUI.parentElement===product)lcdMatrix(...m);},
- screen:(x,y)=>{if(!powered)return;if(g?.state()===5&&x>=.8625&&y>=.125&&y<=.254)openCatchRecord();else if(x>.82&&y<.125)$('openMenu').click();else if(!menu.open)scenePress(x,y);},
- beginWheel:a=>{if(!powered)return;unlock();if(!g)return;startPointerWheel(a);},
+ screen:(x,y)=>{if(!powered)return;if(arrivalSince!==null){stopArrival();return;}if(g?.state()===5&&x>=.8625&&y>=.125&&y<=.254)openCatchRecord();else if(x>.82&&y<.125)$('openMenu').click();else if(!menu.open)scenePress(x,y);},
+ beginWheel:a=>{if(!powered||arrivalSince!==null)return;unlock();if(!g)return;startPointerWheel(a);},
  power:()=>setPower(!powered),
- wind:(a,d)=>{if(!powered||!g||menu.open)return;dialAngle+=d*180/Math.PI;turns+=samplePointerWheel(a);}
+ wind:(a,d)=>{if(!powered||!g||menu.open||arrivalSince!==null)return;dialAngle+=d*180/Math.PI;turns+=samplePointerWheel(a);}
 }).then(v=>{physicalView=v;vm.disabled=false;showDevice(true);document.documentElement.dataset.device='ready';}).catch(()=>{showDevice(false);vm.hidden=true;$('viewHint').textContent='Screen mode · 3D rendering is unavailable in this browser.';document.documentElement.dataset.device='fallback';});
 }
 if(matchMedia('(pointer: coarse) and (max-width: 1000px)').matches){

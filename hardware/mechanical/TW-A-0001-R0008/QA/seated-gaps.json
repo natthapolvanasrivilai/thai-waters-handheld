@@ -1,0 +1,138 @@
+{
+  "A1-touch / Bezel": {
+    "R0007_mm": 0.25,
+    "R0008_mm": 0.25
+  },
+  "A2-sockets / Housing": {
+    "R0007_mm": 1.5,
+    "R0008_mm": 1.5
+  },
+  "A2-chip / reel2": {
+    "R0007_mm": 1.2,
+    "R0008_mm": 1.2
+  },
+  "Speaker / Housing": {
+    "R0007_mm": 0.4,
+    "R0008_mm": 0.4
+  },
+  "A2-pcb / Rotor": {
+    "R0007_mm": 2.55,
+    "R0008_mm": 2.55
+  },
+  "Grip / Stem": {
+    "R0007_mm": 0.24,
+    "R0008_mm": 0.24
+  },
+  "Rotor / Housing": {
+    "R0007_mm": 0.3,
+    "R0008_mm": 0.3
+  },
+  "Rotor / Bezel": {
+    "R0007_mm": 0.4301,
+    "R0008_mm": 0.4301
+  },
+  "Grip lock screw / Removable rod grip": {
+    "R0007_mm": 0.0,
+    "R0008_mm": 0.0
+  },
+  "Receiver nut / Housing": {
+    "R0007_mm": 0.0,
+    "R0008_mm": 0.0
+  },
+  "pack0 / bridge": {
+    "R0007_mm": 0.1,
+    "R0008_mm": 0.1
+  },
+  "pack0 / Housing": {
+    "R0007_mm": 1.9588,
+    "R0008_mm": 1.9588
+  },
+  "pack1 / bridge": {
+    "R0007_mm": 0.12,
+    "R0008_mm": 0.12
+  },
+  "pack1 / Housing": {
+    "R0007_mm": 0.5676,
+    "R0008_mm": 0.5676
+  },
+  "drawingTail0 / bridge": {
+    "R0007_mm": 0.1,
+    "R0008_mm": 0.1
+  },
+  "drawingTail0 / Housing": {
+    "R0007_mm": 2.0505,
+    "R0008_mm": 2.0505
+  },
+  "drawingTail1 / bridge": {
+    "R0007_mm": 0.12,
+    "R0008_mm": 0.12
+  },
+  "drawingTail1 / Housing": {
+    "R0007_mm": 0.658,
+    "R0008_mm": 0.658
+  },
+  "altTail0 / bridge": {
+    "R0007_mm": 0.1,
+    "R0008_mm": 0.1
+  },
+  "altTail0 / Housing": {
+    "R0007_mm": 0.5,
+    "R0008_mm": 0.5
+  },
+  "altTail1 / bridge": {
+    "R0007_mm": 0.12,
+    "R0008_mm": 0.12
+  },
+  "altTail1 / Housing": {
+    "R0007_mm": 0.5,
+    "R0008_mm": 0.5
+  },
+  "batt0 / bridge": {
+    "R0007_mm": 1.7653,
+    "R0008_mm": 1.7653
+  },
+  "batt0 / Housing": {
+    "R0007_mm": 0.5228,
+    "R0008_mm": 0.5228
+  },
+  "batt1 / bridge": {
+    "R0007_mm": 3.3212,
+    "R0008_mm": 3.3212
+  },
+  "batt1 / Housing": {
+    "R0007_mm": 1.0482,
+    "R0008_mm": 1.0482
+  },
+  "shrink0 / bridge": {
+    "R0007_mm": 24.3868,
+    "R0008_mm": 24.3868
+  },
+  "shrink0 / Housing": {
+    "R0007_mm": 8.7444,
+    "R0008_mm": 8.7444
+  },
+  "shrink1 / bridge": {
+    "R0007_mm": 26.0653,
+    "R0008_mm": 26.0653
+  },
+  "shrink1 / Housing": {
+    "R0007_mm": 9.4732,
+    "R0008_mm": 9.4732
+  },
+  "ph / bridge": {
+    "R0007_mm": 31.7221,
+    "R0008_mm": 31.7221
+  },
+  "ph / Housing": {
+    "R0007_mm": 0.25,
+    "R0008_mm": 0.25
+  },
+  "packplug / bridge": {
+    "R0007_mm": 30.8016,
+    "R0008_mm": 30.8016
+  },
+  "packplug / Housing": {
+    "R0007_mm": 2.4627,
+    "R0008_mm": 2.4627
+  }
+}

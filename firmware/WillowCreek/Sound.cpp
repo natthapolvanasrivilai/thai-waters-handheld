@@ -14,6 +14,7 @@ SoundSettings current;
 bool fight=false;
 uint32_t signalNumber=0;
 int pendingClick=0;
+creek::LandingCue pendingLanding;
 CreekSynth synth;
 void stream(void*) {
   int16_t buffer[256];
@@ -22,8 +23,9 @@ void stream(void*) {
     portENTER_CRITICAL(&lock);
     SoundSettings s=current;bool chase=fight;uint32_t signal=signalNumber;
     int click=pendingClick;pendingClick=0;
+    auto landing=pendingLanding;pendingLanding={};
     portEXIT_CRITICAL(&lock);
-    synth.render(buffer,128,s,chase,signal!=seen,click);
+    synth.render(buffer,128,s,chase,signal!=seen,click,landing);
     seen=signal;
     output.write(reinterpret_cast<uint8_t*>(buffer),sizeof(buffer));
   }
@@ -39,9 +41,11 @@ bool startSound(){
      es8311_voice_volume_set(c,65,nullptr)!=ESP_OK || es8311_voice_mute(c,false)!=ESP_OK)return false;
   return xTaskCreatePinnedToCore(stream,"creek-audio",4096,nullptr,2,nullptr,0)==pdPASS;
 }
-void setSound(const SoundSettings& s,bool chase,bool bite,int reelClick){
+void setSound(const SoundSettings& s,bool chase,bool bite,int reelClick,creek::LandingCue landing){
   portENTER_CRITICAL(&lock);
   current=s;fight=chase;if(bite && s.cue!=1)signalNumber++;
+  if(s.cue==1 || !s.cueVolume)pendingLanding={};
+  else if(landing.active())pendingLanding=landing;
   if(bite || !s.reelVolume)pendingClick=0;else if(reelClick)pendingClick=reelClick;
   portEXIT_CRITICAL(&lock);
 }

@@ -1,0 +1,50 @@
+{
+  "housing-battery-bay": {
+    "added_mm3": 257.54438,
+    "removed_mm3": 16.82467
+  },
+  "bezel": {
+    "added_mm3": 84.61099,
+    "removed_mm3": 71.56591
+  },
+  "rotor": {
+    "added_mm3": 1.53054,
+    "removed_mm3": 17.66387
+  },
+  "folding-stem": {
+    "added_mm3": 0.0,
+    "removed_mm3": 0.49794
+  },
+  "grip": {
+    "added_mm3": 0.0,
+    "removed_mm3": 7.27559
+  },
+  "collar": {
+    "added_mm3": 0.0,
+    "removed_mm3": 0.0
+  },
+  "power-cap": {
+    "added_mm3": 0.0,
+    "removed_mm3": 0.0
+  },
+  "rod-grip": {
+    "added_mm3": 8.76723,
+    "removed_mm3": 78.38183
+  },
+  "grip-screw-keeper": {
+    "added_mm3": 0.0,
+    "removed_mm3": 0.0
+  },
+  "receiver-nut-keeper": {
+    "added_mm3": 0.0,
+    "removed_mm3": 0.0
+  },
+  "key-board-retainer-west": {
+    "added_mm3": 0.0,
+    "removed_mm3": 0.16452
+  },
+  "battery-wire-bridge": {
+    "added_mm3": 0.0,
+    "removed_mm3": 0.0
+  }
+}

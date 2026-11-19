@@ -1,0 +1,21 @@
+{
+  "installed_parts": 79,
+  "print_volume_difference_mm3": {
+    "Housing": 1.7e-05,
+    "Bezel": 2.9e-05,
+    "Rotor": 2e-05,
+    "Stem": 2.3e-05,
+    "Grip": 1.9e-05,
+    "Collar": 1.4e-05,
+    "Key cap": 3.2e-05,
+    "Removable rod grip": 1.9e-05,
+    "Grip screw keeper": 4.9e-05,
+    "Receiver nut keeper": 2.7e-05,
+    "Retainer": 2.7e-05,
+    "bridge": 2.9e-05
+  },
+  "drawing_max_to_bridge_mm": 0.65,
+  "step_sha256": "ca39f90c5ad3d6c238cb759df7f919487a2caa29f81c6bbcfdbf4addf32fcdf3",
+  "offline_webgl_entries": 86,
+  "offline_browser_verified": true
+}

@@ -26,6 +26,7 @@ int main(){
   for(int place=0;place<destinationCount;place++)for(int slot=0;slot<4;slot++)for(int rig=0;rig<3;rig++){
     Game g;g.seed=unsigned(1+place*163+slot*7+rig);g.destination=place;
     g.site=destinations[place].pool;g.timeSlot=slot;g.setRig(rig);
+    assert(g.setBait(preferredChoice(stockId(g.site,0))));
     castInto(g);drawStrike(g);
     Game steady=g;
     for(int t=0;t<6000 && g.phase==Phase::Fight;t++)

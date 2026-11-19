@@ -35,8 +35,7 @@
       "weight": 16,
       "form": 0,
       "site": 0,
-      "lore": "Hatched in the lotus roots beside the potter's steps.",
-      "factor": 14
+      "lore": "Hatched in the lotus roots beside the potter's steps."
     },
     {
       "name": "Three-spot gourami",
@@ -46,8 +45,7 @@
       "weight": 16,
       "form": 0,
       "site": 0,
-      "lore": "Raised in the reed beds behind the blue pavilion.",
-      "factor": 15
+      "lore": "Raised in the reed beds behind the blue pavilion."
     },
     {
       "name": "Silver barb",
@@ -57,8 +55,7 @@
       "weight": 16,
       "form": 0,
       "site": 0,
-      "lore": "Followed the first monsoon into the orchard pond.",
-      "factor": 16
+      "lore": "Followed the first monsoon into the orchard pond."
     },
     {
       "name": "Walking catfish",
@@ -68,8 +65,7 @@
       "weight": 7,
       "form": 2,
       "site": 0,
-      "lore": "Slipped in through a flooded rice-field gate.",
-      "factor": 13
+      "lore": "Slipped in through a flooded rice-field gate."
     },
     {
       "name": "Snakeskin gourami",
@@ -79,8 +75,7 @@
       "weight": 7,
       "form": 0,
       "site": 0,
-      "lore": "Grew up beneath the lotus seller's floating basket.",
-      "factor": 14
+      "lore": "Grew up beneath the lotus seller's floating basket."
     },
     {
       "name": "Nile tilapia",
@@ -90,8 +85,7 @@
       "weight": 7,
       "form": 0,
       "site": 0,
-      "lore": "Came from the little pond behind the clay kiln.",
-      "factor": 15
+      "lore": "Came from the little pond behind the clay kiln."
     },
     {
       "name": "Striped snakehead",
@@ -101,8 +95,7 @@
       "weight": 3,
       "form": 1,
       "site": 0,
-      "lore": "Kept watch in the water lilies of the north inlet.",
-      "factor": 10
+      "lore": "Kept watch in the water lilies of the north inlet."
     },
     {
       "name": "Broadhead catfish",
@@ -112,8 +105,7 @@
       "weight": 3,
       "form": 2,
       "site": 0,
-      "lore": "Hid among the roots of the old tamarind tree.",
-      "factor": 13
+      "lore": "Hid among the roots of the old tamarind tree."
     },
     {
       "name": "Marbled goby",
@@ -123,8 +115,7 @@
       "weight": 2,
       "form": 1,
       "site": 0,
-      "lore": "Born in the gravel shallows below the millstone.",
-      "factor": 8
+      "lore": "Born in the gravel shallows below the millstone."
     },
     {
       "name": "Giant gourami",
@@ -134,8 +125,7 @@
       "weight": 1,
       "form": 0,
       "site": 0,
-      "lore": "Once sheltered in the shade of a floating shrine.",
-      "factor": 15
+      "lore": "Once sheltered in the shade of a floating shrine."
     },
     {
       "name": "Redtail botia",
@@ -145,8 +135,7 @@
       "weight": 16,
       "form": 0,
       "site": 1,
-      "lore": "Grew up under a ferry landing's worn timber steps.",
-      "factor": 16
+      "lore": "Grew up under a ferry landing's worn timber steps."
     },
     {
       "name": "Tinfoil barb",
@@ -156,8 +145,7 @@
       "weight": 16,
       "form": 0,
       "site": 1,
-      "lore": "Ran silver with a shoal from the lantern quay.",
-      "factor": 17
+      "lore": "Ran silver with a shoal from the lantern quay."
     },
     {
       "name": "Banded mystus",
@@ -167,8 +155,7 @@
       "weight": 16,
       "form": 2,
       "site": 1,
-      "lore": "Born where a rope ferry used to cross the current.",
-      "factor": 10
+      "lore": "Born where a rope ferry used to cross the current."
     },
     {
       "name": "Siamese mud carp",
@@ -178,8 +165,7 @@
       "weight": 7,
       "form": 0,
       "site": 1,
-      "lore": "Grazed the silt beside the old brickworks.",
-      "factor": 15
+      "lore": "Grazed the silt beside the old brickworks."
     },
     {
       "name": "Red-tailed tinfoil barb",
@@ -189,8 +175,7 @@
       "weight": 7,
       "form": 0,
       "site": 1,
-      "lore": "Followed the rice barges around the temple bend.",
-      "factor": 16
+      "lore": "Followed the rice barges around the temple bend."
     },
     {
       "name": "Asian redtail catfish",
@@ -200,8 +185,7 @@
       "weight": 7,
       "form": 2,
       "site": 1,
-      "lore": "Kept to the deep pilings of the copper-roofed wharf.",
-      "factor": 13
+      "lore": "Kept to the deep pilings of the copper-roofed wharf."
     },
     {
       "name": "Soldier river barb",
@@ -211,8 +195,7 @@
       "weight": 3,
       "form": 0,
       "site": 1,
-      "lore": "Came downriver through the boatbuilders' reach.",
-      "factor": 14
+      "lore": "Came downriver through the boatbuilders' reach."
     },
     {
       "name": "Bronze featherback",
@@ -222,8 +205,7 @@
       "weight": 3,
       "form": 1,
       "site": 1,
-      "lore": "Grew up in the backwater behind a ferry island.",
-      "factor": 9
+      "lore": "Grew up in the backwater behind a ferry island."
     },
     {
       "name": "Clown featherback",
@@ -233,8 +215,7 @@
       "weight": 2,
       "form": 1,
       "site": 1,
-      "lore": "Made its home in the shadow of a sunken skiff.",
-      "factor": 10
+      "lore": "Made its home in the shadow of a sunken skiff."
     },
     {
       "name": "Giant barb",
@@ -244,8 +225,7 @@
       "weight": 1,
       "form": 0,
       "site": 1,
-      "lore": "Returned each flood to the bell tower's reflection.",
-      "factor": 17
+      "lore": "Returned each flood to the bell tower's reflection."
     },
     {
       "name": "Hampala barb",
@@ -255,8 +235,7 @@
       "weight": 16,
       "form": 0,
       "site": 2,
-      "lore": "Hatched in a stream that falls between two cliffs.",
-      "factor": 14
+      "lore": "Hatched in a stream that falls between two cliffs."
     },
     {
       "name": "Striped barb",
@@ -266,8 +245,7 @@
       "weight": 16,
       "form": 0,
       "site": 2,
-      "lore": "Grew up in the reed pools near a floating school.",
-      "factor": 15
+      "lore": "Grew up in the reed pools near a floating school."
     },
     {
       "name": "Forest snakehead",
@@ -277,8 +255,7 @@
       "weight": 16,
       "form": 1,
       "site": 2,
-      "lore": "Came from a forest creek beneath the limestone arch.",
-      "factor": 10
+      "lore": "Came from a forest creek beneath the limestone arch."
     },
     {
       "name": "Bonylip barb",
@@ -288,8 +265,7 @@
       "weight": 7,
       "form": 0,
       "site": 2,
-      "lore": "Grazed the green stones at the lake's hidden spring.",
-      "factor": 17
+      "lore": "Grazed the green stones at the lake's hidden spring."
     },
     {
       "name": "Spotted barb",
@@ -299,8 +275,7 @@
       "weight": 7,
       "form": 0,
       "site": 2,
-      "lore": "Sheltered among the moorings of an empty raft house.",
-      "factor": 14
+      "lore": "Sheltered among the moorings of an empty raft house."
     },
     {
       "name": "Red-tailed rasbora",
@@ -310,8 +285,7 @@
       "weight": 7,
       "form": 1,
       "site": 2,
-      "lore": "Left the fern-lined inlet with the first warm rain.",
-      "factor": 9
+      "lore": "Left the fern-lined inlet with the first warm rain."
     },
     {
       "name": "Great snakehead",
@@ -321,8 +295,7 @@
       "weight": 3,
       "form": 1,
       "site": 2,
-      "lore": "Hunted in a flooded grove below the white cliff.",
-      "factor": 10
+      "lore": "Hunted in a flooded grove below the white cliff."
     },
     {
       "name": "Blue mahseer",
@@ -332,8 +305,7 @@
       "weight": 3,
       "form": 0,
       "site": 2,
-      "lore": "Rose from a cold spring beneath the karst towers.",
-      "factor": 17
+      "lore": "Rose from a cold spring beneath the karst towers."
     },
     {
       "name": "Giant snakehead",
@@ -343,8 +315,7 @@
       "weight": 2,
       "form": 1,
       "site": 2,
-      "lore": "Grew up in the shadow of a drowned fig tree.",
-      "factor": 8
+      "lore": "Grew up in the shadow of a drowned fig tree."
     },
     {
       "name": "Thai mahseer",
@@ -354,8 +325,7 @@
       "weight": 1,
       "form": 0,
       "site": 2,
-      "lore": "Followed a ribbon of clear water out of the hills.",
-      "factor": 15
+      "lore": "Followed a ribbon of clear water out of the hills."
     },
     {
       "name": "Siamese glassfish",
@@ -365,8 +335,7 @@
       "weight": 16,
       "form": 0,
       "site": 3,
-      "lore": "Grew up in the shallows beside the silk dyers' bank.",
-      "factor": 16
+      "lore": "Grew up in the shallows beside the silk dyers' bank."
     },
     {
       "name": "Asian bumblebee catfish",
@@ -376,8 +345,7 @@
       "weight": 16,
       "form": 2,
       "site": 3,
-      "lore": "Hid beneath a turned-over ferry basket.",
-      "factor": 13
+      "lore": "Hid beneath a turned-over ferry basket."
     },
     {
       "name": "Yellow mystus",
@@ -387,8 +355,7 @@
       "weight": 16,
       "form": 2,
       "site": 3,
-      "lore": "Came from the ochre pools behind the night market.",
-      "factor": 10
+      "lore": "Came from the ochre pools behind the night market."
     },
     {
       "name": "Black sharkminnow",
@@ -398,8 +365,7 @@
       "weight": 7,
       "form": 0,
       "site": 3,
-      "lore": "Patrolled a stony channel under the eastern span.",
-      "factor": 15
+      "lore": "Patrolled a stony channel under the eastern span."
     },
     {
       "name": "Smallscale mud carp",
@@ -409,8 +375,7 @@
       "weight": 7,
       "form": 0,
       "site": 3,
-      "lore": "Followed the silt past a row of floating gardens.",
-      "factor": 16
+      "lore": "Followed the silt past a row of floating gardens."
     },
     {
       "name": "Siamese algae eater",
@@ -420,8 +385,7 @@
       "weight": 7,
       "form": 1,
       "site": 3,
-      "lore": "Grazed the smooth posts at the old boat crossing.",
-      "factor": 11
+      "lore": "Grazed the smooth posts at the old boat crossing."
     },
     {
       "name": "Striped river catfish",
@@ -431,8 +395,7 @@
       "weight": 3,
       "form": 2,
       "site": 3,
-      "lore": "Rode the floodwater past the lantern boats.",
-      "factor": 10
+      "lore": "Rode the floodwater past the lantern boats."
     },
     {
       "name": "Wallago catfish",
@@ -442,8 +405,7 @@
       "weight": 3,
       "form": 2,
       "site": 3,
-      "lore": "Kept to a deep bend below the moonlit bridge.",
-      "factor": 11
+      "lore": "Kept to a deep bend below the moonlit bridge."
     },
     {
       "name": "Jullien mud carp",
@@ -453,8 +415,7 @@
       "weight": 2,
       "form": 0,
       "site": 3,
-      "lore": "Came down from a gravel bar called the Silver Step.",
-      "factor": 16
+      "lore": "Came down from a gravel bar called the Silver Step."
     },
     {
       "name": "Mekong giant catfish",
@@ -464,8 +425,7 @@
       "weight": 1,
       "form": 2,
       "site": 3,
-      "lore": "Born in a deep pool the boatmen call the Blue Well.",
-      "factor": 13
+      "lore": "Born in a deep pool the boatmen call the Blue Well."
     },
     {
       "name": "Giant river prawn",
@@ -475,19 +435,17 @@
       "weight": 3,
       "form": 3,
       "site": 1,
-      "lore": "Sheltered under the ferry piles until its claws turned blue.",
-      "factor": 6
+      "lore": "Sheltered under the ferry piles until its claws turned blue."
     },
     {
       "name": "Giant freshwater stingray",
       "low": 65,
-      "high": 240,
+      "high": 200,
       "tier": 4,
       "weight": 1,
       "form": 4,
       "site": 3,
-      "lore": "Left a round print on the Moonbank's silver sand.",
-      "factor": 8
+      "lore": "Left a round print on the Moonbank's silver sand."
     },
     {
       "name": "Indian mackerel",
@@ -497,8 +455,7 @@
       "weight": 16,
       "form": 1,
       "site": 4,
-      "lore": "Followed the floating ice down from a blue fishing boat.",
-      "factor": 10
+      "lore": "Followed the floating ice down from a blue fishing boat."
     },
     {
       "name": "Yellowstripe scad",
@@ -508,8 +465,7 @@
       "weight": 16,
       "form": 1,
       "site": 4,
-      "lore": "Learned to turn with the school alongside a line of buoys.",
-      "factor": 12
+      "lore": "Learned to turn with the school alongside a line of buoys."
     },
     {
       "name": "Indian anchovy",
@@ -519,8 +475,7 @@
       "weight": 16,
       "form": 1,
       "site": 4,
-      "lore": "Grew up where the green lamp meets the edge of the dark.",
-      "factor": 8
+      "lore": "Grew up where the green lamp meets the edge of the dark."
     },
     {
       "name": "Goldlined seabream",
@@ -530,8 +485,7 @@
       "weight": 7,
       "form": 1,
       "site": 4,
-      "lore": "Once sheltered beneath a buoy daubed with yellow paint.",
-      "factor": 18
+      "lore": "Once sheltered beneath a buoy daubed with yellow paint."
     },
     {
       "name": "Bigeye scad",
@@ -541,8 +495,7 @@
       "weight": 7,
       "form": 1,
       "site": 4,
-      "lore": "Fed after dark near a boat the crew calls Little Moon.",
-      "factor": 14
+      "lore": "Fed after dark near a boat the crew calls Little Moon."
     },
     {
       "name": "Talang queenfish",
@@ -552,8 +505,7 @@
       "weight": 7,
       "form": 1,
       "site": 4,
-      "lore": "Ran beside a skiff for the length of a morning song.",
-      "factor": 9
+      "lore": "Ran beside a skiff for the length of a morning song."
     },
     {
       "name": "Cobia",
@@ -563,8 +515,7 @@
       "weight": 3,
       "form": 1,
       "site": 4,
-      "lore": "Travelled in the long shade of a lost marker float.",
-      "factor": 9
+      "lore": "Travelled in the long shade of a lost marker float."
     },
     {
       "name": "Great barracuda",
@@ -574,8 +525,7 @@
       "weight": 3,
       "form": 1,
       "site": 4,
-      "lore": "Watched the anchovy shoals from the edge of blue water.",
-      "factor": 6
+      "lore": "Watched the anchovy shoals from the edge of blue water."
     },
     {
       "name": "Giant trevally",
@@ -585,8 +535,7 @@
       "weight": 2,
       "form": 1,
       "site": 4,
-      "lore": "Turned the water white beside a half-submerged anchor.",
-      "factor": 17
+      "lore": "Turned the water white beside a half-submerged anchor."
     },
     {
       "name": "Indo-Pacific sailfish",
@@ -596,8 +545,7 @@
       "weight": 1,
       "form": 1,
       "site": 4,
-      "lore": "Rose like a torn blue sail beyond the last fishing light.",
-      "factor": 6
+      "lore": "Rose like a torn blue sail beyond the last fishing light."
     }
   ],
   "ranks": [

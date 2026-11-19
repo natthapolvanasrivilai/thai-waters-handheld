@@ -9,3 +9,5 @@ private/
 **/private/
 *.pdb
 .DS_Store
+
+/game/lan/tournament.sqlite*

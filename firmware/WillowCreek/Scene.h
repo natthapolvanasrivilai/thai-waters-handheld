@@ -2,14 +2,14 @@
 #include "Board.h"
 #include "Destinations.h"
 #include "Sound.h"
-enum class Page { Play, Options, Rest, Raise, Hub, Waters, Book, Journey, Bench, Network, TouchCheck };
+enum class Page { Bait, Play, Arrival, Options, Rest, Raise, Hub, Waters, Book, Journey, Bench, Network, TouchCheck };
 // Player sheets share this 392 x 272 rectangle on the native landscape LCD.
 namespace menuui {
 constexpr int x=44,y=24,w=392,h=272,header=32,hubRow=33,optionRow=28;
-constexpr int waterRow=37,periodY=190,travelY=230,bookNav=230;
+constexpr int waterRow=37,periodY=190,travelY=230,bookNav=230,bookRows=4;
 constexpr int rigY=54,upgradeY=92,upgradeRow=36,finishY=205;
 inline bool overlay(Page p){
- return p==Page::Hub || p==Page::Waters || p==Page::Book || p==Page::Journey || p==Page::Options || p==Page::Network;
+ return p==Page::Bait || p==Page::Hub || p==Page::Waters || p==Page::Book || p==Page::Journey || p==Page::Options || p==Page::Network;
 }
 inline bool inside(int px,int py){return px>=x && px<x+w && py>=y && py<y+h;}
 }
@@ -23,8 +23,10 @@ struct View {
   int lastTouchX=-1,lastTouchY=-1;
   Field field=Field::Missing;
   bool practice=false, audio=false, motion=false, stable=false, badPose=false, raised=false, calibrated=false;
+  uint32_t arrivalStart=0;
   uint32_t time=0, casts=0, lifts=0;
-  float accelG=0, degrees=0, span=0, turns=0; int destination=0,spotPage=0,pendingSite=0,pendingTime=4,timeMode=4,rodFinish=0; int raw=-1, direction=0, bookPage=0;
+  float accelG=0, degrees=0, span=0, turns=0; int destination=0,spotPage=0,pendingSite=0,pendingTime=4,pendingWeather=0,timeMode=4,rodFinish=0; int raw=-1, direction=0, bookPage=0, bookWater=0;
+  creek::BookFilter bookFilter=creek::BookFilter::Nearby;
   bool driver=false,saveFailed=false, refundConfirm=false; uint8_t rumble=0;
   const char* benchEvent="Hold in playing position";const char* notice="";
 

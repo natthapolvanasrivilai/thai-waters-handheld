@@ -1,7 +1,6 @@
 #pragma once
+#include "ScenicRecipes.h"
 #include <cstdint>
-#include <cmath>
-#include <algorithm>
 
 namespace creek {
 enum WaterFeature { ClearWater=0, Branch=1, Rock=2, Debris=3 };
@@ -12,34 +11,41 @@ struct CastZone {
     return dx*dx+dy*dy;
   }
 };
-// The atlas uses normalized coordinates in the whole landscape LCD, Y down.
-// A protected middle lane gives a new player a predictable first cast.
 inline uint32_t waterHash(uint32_t value){
   value^=value>>16;value*=0x7feb352du;value^=value>>15;
   value*=0x846ca68bu;return value^(value>>16);
 }
-inline CastZone waterZone(int place,int pool,int period,int kind){
-  if(kind<Branch||kind>Debris)return {.50f,.67f,.075f,.11f};
-  const uint32_t shore=waterHash(uint32_t(place+1)*31u+uint32_t(pool));
-  const uint32_t feature=waterHash(shore+uint32_t(kind)*71u);
-  const bool mirror=(shore&1u)!=0;
-  // Persistent structure stays on the same bank all day. Changing waterlight
-  // and current alter the effective opening or the debris eddy a little.
-  const float sway=(period-1.5f)*.009f;
-  const float variation=float((feature>>8)%41)*.001f;
-  float x,y,rx,ry;
-  if(kind==Branch){
-    x=.16f+variation+(pool==4?.033f:0);
-    y=.605f+float((feature>>16)%60)*.001f+sway*.4f;
-    rx=pool==1||pool==3?.100f:.081f;ry=.043f;
-  }else if(kind==Rock){
-    x=.78f+variation;y=.70f+float((feature>>16)%70)*.001f+sway*.5f;
-    rx=pool==2||pool==4?.104f:.079f;ry=.049f;
-  }else{
-    x=.292f+variation+sway;
-    y=.795f+float((feature>>16)%32)*.001f+sway*.45f;
-    rx=pool==4?.091f:.079f;ry=.046f;
+// Per-visit occurrence rates use the terrain already drawn for this destination.
+// Exposed sea has no submerged trees. Estuaries can carry driftwood.
+inline int hazardOdds(int place,int pool,int kind){
+  using namespace scenery;
+  const Recipe habitat=recipes[place];
+  if(kind==creek::Branch){
+    if(pool==4)return habitat.water==Estuary?18:0;
+    if(habitat.water==Marsh || habitat.feature==Roots || habitat.feature==Snag)return 63;
+    return habitat.water==scenery::Stream || habitat.water==Bend?48:30;
   }
-  return {mirror?1-x:x,y,rx,ry};
+  if(kind==creek::Rock){
+    if(habitat.water==Marsh || habitat.water==Gulf)return 0;
+    if(habitat.water==Gorge || habitat.water==Karst || habitat.water==Headland ||
+       habitat.water==scenery::Stream || habitat.feature==Rocks)return 70;
+    return habitat.water==Island || habitat.water==Foothill?48:22;
+  }
+  if(kind==creek::Debris)return habitat.feature==Nets || habitat.feature==Pier ||
+    habitat.feature==Ferry || habitat.feature==Market?48:20;
+  return 0;
+}
+// Coordinates are normalized to the whole LCD. Disjoint depth bands keep
+// overlapping structures from masking each other, with room to fish midstream.
+inline CastZone waterZone(uint32_t layout,int kind){
+  if(kind<Branch||kind>Debris)return {.50f,.67f,.075f,.11f};
+  uint32_t shape=waterHash(layout+uint32_t(kind)*71u);
+  float x=.165f+float((shape>>8)%175)*.001f;
+  if(shape&1u)x=1-x;
+  float y=(kind==Branch?.594f:kind==Rock?.697f:.806f)+float((shape>>18)%22)*.001f;
+  return {x,y,.071f+float((shape>>24)%20)*.001f,.040f};
+}
+inline bool hasWaterFeature(uint32_t layout,int place,int pool,int kind){
+  return int(waterHash(layout^uint32_t(kind)*0x85ebca6bu)%100)<hazardOdds(place,pool,kind);
 }
 }

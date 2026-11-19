@@ -16,7 +16,9 @@ int main(){
  check(c.valid()&&std::abs(c.tilt(c.raised)-36.8699f)<.001 && !Calibration{}.valid(),"two-pose calibration and missing-pose rejection");
  Calibration flipped{{0,0,-1},{-.6f,0,-.8f}};
  check(flipped.valid()&&std::abs(flipped.tilt(flipped.raised)-c.span())<.001,"reversed board axis yields the same raised angle");
- Gesture r;r.sample(0,40,0);r.sample(36,40,200);check(r.rise,"fresh lift");r.sample(35,40,250);check(!r.rise,"held rod cannot issue another hook");
+ Gesture r;r.sample(36,40,0);check(r.high && !r.rise,"calibrated raised pose has no lift edge");
+ r.sample(0,40,90);check(!r.cast,"first return to rest after calibration cannot cast");
+ r.sample(36,40,200);check(r.rise,"fresh lift");r.sample(35,40,250);check(!r.rise,"held rod cannot issue another hook");
  r.sample(1,40,420);check(r.cast,"raised rod swept back to playing pose casts");
  r.sample(35,40,900);r.sample(12,40,1100);r.sample(1,40,2000);check(!r.cast,"slow return cannot cast");
  Wheel w;w.read(4080,true,100,false);
@@ -32,6 +34,7 @@ int main(){
    t+=16;raw=(raw+(g.surge()?0:65))%4096;g.tick(16,false,false,knob.read(raw,true,t,false));
  }
  check(g.phase==Phase::Landed && g.catches==1,"wrapped encoder trace lands one fish");
+ check(g.fileCatch(),"tap files the catch");g.tick(800,false,false,0);
  bite(g);g.tick(1451,false,true,0);check(g.phase==Phase::Lost && g.reason==Reason::Late,"expired window beats late lift");
  g.tick(16,true,false,0);g.tick(650,false,false,0);g.tick(30,false,true,0);
  check(g.reason==Reason::Early && g.phase==Phase::Lost,"early strike and recast");

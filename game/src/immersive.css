@@ -19,7 +19,7 @@ html.immersive[data-view="device"] .tools,html.immersive.lcd-menu-open .tools{di
 html.immersive #dial{width:clamp(52px,12dvh,76px);height:clamp(52px,12dvh,76px);margin:0}
 
 /* The right-hand drawer leaves the rod and the bank in view at every depth. */
-#menu{inset:35px 7px auto auto;width:232px;height:278px;color:#f0f0dd;background:linear-gradient(145deg,#193d35f5,#102b28ed);border:1px solid #93a793;border-radius:10px;box-shadow:0 3px 12px #081d2670}
+#menu{inset:35px 7px auto auto;width:232px;height:278px;color:#f0f0dd;background:#173830f0;border:1px solid #93a793;border-radius:10px;box-shadow:0 3px 12px #081d2670}
 #menu[open]{grid-template-rows:38px minmax(0,1fr)}
 #menu .menubar,#lcdPicker .menubar{gap:4px;padding:4px 7px;background:transparent;border-bottom:1px solid #67806e}
 #menu .menubar h2{font:600 17px/1 var(--game-font);color:#fff4da}
@@ -52,7 +52,7 @@ html.immersive #dial{width:clamp(52px,12dvh,76px);height:clamp(52px,12dvh,76px);
 #soundStatus{font-size:11px;line-height:1.2;color:#d9e4d6}
 #menu #iosSwitchRow{display:flex;align-items:center;gap:6px;margin:5px 0 10px}
 #iosSwitch{accent-color:#4e9c79}
-#lcdUI:has(#menu[open]) .lcd-hud{visibility:visible;background:linear-gradient(90deg,#142c28ee,#142c2875)}
+#lcdUI:has(#menu[open]) .lcd-hud{visibility:visible}
 #lcdUI:has(#menu[open]) .lcd-hud button,#lcdUI:has(#menu[open]) #startSound{visibility:hidden}
 #startSound{pointer-events:auto;position:absolute;left:7px;top:38px;border:1px solid #d4c49c;border-radius:20px;background:#173b32ed;color:#fff0cf;padding:5px 10px;font-size:13px}
 
@@ -61,3 +61,10 @@ html.immersive #dial{width:clamp(52px,12dvh,76px);height:clamp(52px,12dvh,76px);
 #menu .record.muted .fish-thumb{opacity:.67}
 #menu .record b{font-size:14px;color:#f6f2df}
 #menu .record span,#menu .record small{font-size:11px}
+
+
+/* The layout and controls receive input. Their pixels live on the LCD framebuffer. */
+#lcdUI{opacity:0}
+.lcd-hud button{background:transparent;border:0}
+#lcdPower{width:33px;height:16px;overflow:hidden}
+#fullscreen{font-size:0}

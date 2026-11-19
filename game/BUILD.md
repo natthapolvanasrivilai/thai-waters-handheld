@@ -8,7 +8,7 @@ Run python game/build.py from the repository root to regenerate the self-contain
 Game data lives under content and locations.json. Stable IDs preserve existing journals. Location IDs are also multiplayer room IDs. Update the native Destinations.h, Waters.h, art, browser catalog and fixtures together when changing schemas. Scenery is drawn from the same C++ source on the browser and handheld. When editing Landscape.h or ScenicRecipes.h, recompile the web scenery module from the repository root before running the HTML build.
 
 ```sh
-zig c++ -target wasm32-freestanding -std=c++17 -Oz -nostdlib -fno-exceptions -fno-rtti game/src/landscape.cpp -Wl,--no-entry -Wl,--export=paintPlace -Wl,--export=placePalette -Wl,--export=ambientSpans -Wl,--export=sampleAmbient -Wl,--export-memory -Wl,--strip-all -o game/assets/landscape.wasm
+zig c++ -target wasm32-freestanding -std=c++17 -Oz -nostdlib -fno-exceptions -fno-rtti game/src/landscape.cpp -Wl,--no-entry -Wl,--export=paintPlace -Wl,--export=placePalette -Wl,--export=ambientSpans -Wl,--export=sampleAmbient -Wl,--export=arrivalDuration -Wl,--export=arrivalLanding -Wl,--export=arrivalPixels -Wl,--export=arrivalShapes -Wl,--export=sampleArrival -Wl,--export-memory -Wl,--strip-all -o game/assets/landscape.wasm
 node verification/browser-tests/scenery.cjs
 node verification/browser-tests/ambient.cjs
 ```
@@ -34,17 +34,27 @@ The HUD, scene captions, settings, journal and simulator use the bundled Atkinso
 
 ## Cast contact and salvage fixtures
 
-The phone and ESP32 share CastWater.h and Creek.h. Game coordinates are fractions of the complete landscape LCD. Aim is clamped to X 0.08–0.92 and Y 0.555–0.875. The center lane is safe. Habitat changes cover size and shape. The stable destination seed chooses banks, and the period shifts the effective strike zones. Each cast resolves once at splashdown. A visible branch loads the rod until the player eases for half a second and lifts. A rock holds until the player lowers the rod and lets out 0.30 turns. Overwinding can snap the line. A successful release returns to the fishable float. Salvage takes 1.00–1.81 forward turns and awards zero fish, event catches or tackle points.
+The simulator and ESP32 use the same submerged layout from CastWater.h and Creek.h. Each visit rolls for submerged branches, rocks and debris using the destination's terrain and the season. A water can be entirely clear. Structures stay put across casts and changes of light, so a player can avoid a known snag. Returning after travel can yield a new layout. A cast through a debris patch can miss it. Marshes lack rocky outcrops, and exposed Gulf waters lack submerged trees. Each present feature gets a position on either side of the middle channel. Splashdown resolves the contact. To free a branch, stop winding for half a second and lift. To free a rock, lower the rod and pay out 0.30 turns. Salvage takes 1.00–1.81 forward turns and earns no catch or event credit.
 
-First casts at Mae Ngat Reservoir at dawn expose repeatable test cases. Aim at the debris center using zoneX(3) and zoneY(3). Seeds 9, 11, 19 and 2 return the sandal, tangled line, dented cup and torn float, respectively. Seed 1 passes through to fishable water. In clear water away from the center, seed 36 at (0.88, 0.85) retrieves accidental salvage. The designed encounter probabilities are 72% at the debris core, 38% at the edge, 4% in off-center clear water and zero in the protected center channel.
+At Mae Ngat Reservoir at dawn in the cool season (November to February), seed 1 yields an empty layout. Seed 2 has a branch and seed 5 has a rock. For engine tests, aim at the debris center using zoneX(3) and zoneY(3). Seeds 16, 42, 35 and 10 return the sandal, tangled line, dented cup and torn float respectively. A debris pickup has a 72% chance at its center and a 38% chance at its edge.
+
+Fishing spots offers Seasonal, Clear, Light rain, Heavy rain and Storm. Seasonal uses the Bangkok calendar day, destination and selected time period. The regional game weights reflect the southwest monsoon and the later rain season on the southern Gulf coast. Offline hardware without a synced clock starts with a simulated date. Both renderers use the same animated rain, distant lightning and water glints. Light rain shortens float waits. Heavy rain and storms lengthen them. Rain also lengthens lure pauses and increases tension when winding into a fish's run. The conditions stay fixed during the cast. [Thai Meteorological Department climate overview](https://www.tmd.go.th/en/climate/summarymonthly)
 
 Transient phases 7, 8 and 9 represent snag, salvage hauling and salvage landed. The stable journal format and phases 0–6 are preserved. The existing sensor and encoder tick carries lift and signed turns. After placing a snag, the first haptic update requests the existing bottom-hold pulse. Freeing the line issues one lighter tap. Salvage applies one pull on attachment and one light tap on retrieval.
 
 ~~~sh
 python game/build-engine.py --zig /path/to/zig
 node verification/browser-tests/cast-water.cjs
-zig c++ -std=c++17 -O2 firmware/tests/cast_water.cpp -o cast_water
+zig c++ -std=c++17 firmware/tests/cast_water.cpp -o cast_water
 ./cast_water
 ~~~
 
 Use Zig 0.13.x. The browser fixture instantiates the actual compiled game and checks its existing imports, location reset, calibrated pose, negative encoder crossings, scrap recovery, journal retention and seeded probabilities. Rebuild the packaged HTML with game/build.py after changing the engine.
+
+## Extended field guide
+
+Build the shared encounter records and family sprite indices with `python game/content/expand_atlas.py` before rebuilding the engine. The original 52 IDs stay stable. The next eight are specifically authored fictional species, including five Mythics. Each Mythic needs a specific destination, time window and compatible bait. Later records use accepted scientific names. The field guide exposes their modeled fishing water, size range and preferred bait. These are game parameters. A country-level record alone does not establish occurrence at a particular pier or certify diet, abundance or maximum size. Family illustrations keep the flash requirement bounded as the guide grows.
+
+The extended species sources are [GBIF](https://www.gbif.org/occurrence/search?country=TH), the [ASEAN Fish Species Collection](https://ipt.aseanbiodiversity.org/resource?r=aseanfishspecieslist), and the [Thai national checklist](https://chm-thai.onep.go.th/wp-content/uploads/2021/09/ONEP_V04.pdf). The ASEAN Centre for Biodiversity publishes its family checklist under CC BY 4.0. The GBIF occurrence queries use records marked CC0. The software stores species names and source references. Expanded catches use family-level gameplay weight estimates; the original 52 use the models documented in [Catch measurements](catch-measurements.md).
+
+The first-person approach uses perspective-projected ground geometry, roadside markers and water detail. Stable destination recipes choose walking, hiking, driving or longtail travel. Browser and handheld rasterize the same 240 × 160 indexed foreground. The path uses perspective-correct ground textures, trees and rushes use pixel sprites, and the boat carries timber grain. The handheld writes directly to the LCD with one 240-byte row of scratch space for rasterization. The 4.2-second sequence hands off to the normal rod view. Tap to skip. Browser reduced-motion mode shows a still for 550 ms.

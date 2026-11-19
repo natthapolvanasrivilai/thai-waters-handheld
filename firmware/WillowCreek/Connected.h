@@ -15,4 +15,5 @@ const char* updateStatus();
 void confirmUpdateHealth(bool healthy);
 
 
-void eventTick(int spot);void toggleEvent();void eventCatch();const char* eventStatus();bool eventActive();
+void eventTick(int spot);void toggleEvent();void eventCatch(int spot,int species,int cm,unsigned landedDay);unsigned eventDay();const char* cupGoal();
+const char* cupBait();const char* cupStanding();const char* eventStatus();bool eventActive();

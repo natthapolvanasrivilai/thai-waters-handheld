@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "ArrivalPixels.h"
 #include "LcdGlyphs.h"
 #include "WaterArt.h"
 #include "RodFeedback.h"
@@ -14,13 +15,14 @@ constexpr int ink=0x19e7,paper=0xe70f,white=0xff9b,gold=0xf50c,green=0x94f2,red=
 uint16_t* background=nullptr;
 uint16_t lcd[scenery::colorCount]{};
 scenery::Layout scenicLayout{};
-int cachedSite=-1,cachedTime=-1;
+int cachedSite=-1,cachedTime=-1,cachedWeather=-1;
 static_assert(sizeof(scenery::recipes)/sizeof(scenery::recipes[0])==creek::destinationCount,"Missing scenic recipe");
-void landscape(int place,int time){
+void landscape(int place,int time,creek::Weather weather){
   auto fb=screen.getFramebuffer();
   auto indexed=reinterpret_cast<uint8_t*>(fb);
   scenery::Color colors[scenery::colorCount]{};
   scenery::render({indexed},colors,place,time,&scenicLayout);
+  for(auto& color:colors)color=creek::weatherTint(color,weather);
   scenery::lcdPalette(colors,lcd);
   // Expand backwards so the 2x RGB565 output only overwrites indices already read.
   for(int x=scenery::width-1;x>=0;x--)for(int y=scenery::height-1;y>=0;y--){
@@ -96,10 +98,11 @@ void drawWaterProp(int kind,int x,int y,int scale=1){
   }
 }
 void fish(int x,int y,float k,int kind){
-  for(int row=0;row<25;row++){
+  kind=creek::artForSpecies[kind];k*=.5f;
+  for(int row=0;row<50;row++){
     int start=0,prev=0;
-    for(int col=0;col<=48;col++){
-      int packed=col==48?0:fishArt[kind][row*24+col/2];
+    for(int col=0;col<=96;col++){
+      int packed=col==96?0:fishArt[kind][row*48+col/2];
       int c=col&1?packed&15:packed>>4;
       if(c!=prev){if(prev)screen.fillRect(x+int(start*k),y+int(row*k),int(col*k)-int(start*k),int((row+1)*k)-int(row*k),fishInk[kind][prev]);start=col;prev=c;}
     }
@@ -110,13 +113,21 @@ const char* wheelFault(Field f){
   case Field::NoMagnet:return "Center magnet over reel sensor";default:return "Connect AS5600 reel to J8";}
 }
 void batteryIcon(int x,int y,const BatteryReading& b){
-  int color=b.percent>=0 && b.percent<=15 && !b.charging?red:paper;
-  screen.drawRect(x,y,17,9,color);screen.fillRect(x+17,y+2,2,5,color);
-  if(b.percent>=0)screen.fillRect(x+2,y+2,(13*b.percent+50)/100,5,color);
-  char text[12];
-  if(b.percent>=0)snprintf(text,sizeof(text),"%s%d%%",b.charging?"+":"",b.percent);
-  else snprintf(text,sizeof(text),"%s",b.valid&&!b.present&&b.usb?"USB":"--");
-  label(x+22,y+1,text,color,1);
+  const int color=b.percent>=0 && b.percent<=15 && !b.charging?red:white;
+  screen.fillRoundRect(x-1,y-1,26,14,4,ink);
+  screen.drawRoundRect(x,y,24,12,3,color);
+  screen.drawRoundRect(x+1,y+1,22,10,2,color);
+  screen.fillRect(x+25,y+4,2,4,color);
+  if(b.percent>=0){
+    const int filled=std::min(4,(b.percent+24)/25);
+    for(int i=0;i<4;i++)screen.fillRect(x+3+5*i,y+3,4,6,i<filled?color:0x5b4c);
+    if(b.charging){
+      screen.drawLine(x+14,y+1,x+9,y+6,ink);screen.drawFastHLine(x+9,y+6,6,ink);
+      screen.drawLine(x+14,y+6,x+10,y+11,ink);
+      screen.drawLine(x+14,y,x+9,y+5,gold);screen.drawFastHLine(x+9,y+5,6,gold);
+      screen.drawLine(x+14,y+5,x+10,y+10,gold);
+    }
+  }else label(x+4,y+1,b.valid&&!b.present&&b.usb?"USB":"?",color,1);
 }
 void tensionLight(float tension){
   const int n=std::min(8,std::max(0,int(std::ceil(tension*8))));
@@ -125,10 +136,17 @@ void tensionLight(float tension){
   for(int i=0;i<8;i++)screen.fillRect(467,201-i*13,7,9,i<n?color:0x428c);
   if(tension>=.8f){screen.fillRect(438,90,39,12,ink);label(445,92,"EASE",gold,1);}
 }
+void skyLabel(int x,int y,const char* text,int color,int size,int right=480){
+  label(x-1,y,text,ink,size,right);label(x+1,y,text,ink,size,right);
+  label(x,y-1,text,ink,size,right);label(x,y+1,text,ink,size,right);
+  label(x,y,text,color,size,right);
+}
 void top(const View& v){
-  screen.fillRect(0,0,480,33,ink);label(10,10,creek::destinations[v.destination].name,paper,strlen(creek::destinations[v.destination].name)>18?1:2);
+  const auto* name=creek::destinations[v.destination].name;
+  skyLabel(10,10,name,white,strlen(name)>18?1:2,225);
   char t[50];snprintf(t,sizeof(t),"%s  %s",creek::times[v.game.timeSlot],pondClock());
-  label(229,12,strstr(t,"needs sync")?"Clock needs sync":t,green,1);batteryIcon(332,11,v.battery);label(404,9,"MENU",gold);
+  skyLabel(229,12,strstr(t,"needs sync")?"Clock needs sync":t,white,1,361);
+  batteryIcon(365,10,v.battery);skyLabel(404,9,"MENU",gold,2);
 }
 void menuText(int x,int y,const char* text,int color=white,int size=2,int width=0){
   int available=width?width:menuui::w-x-8;
@@ -184,8 +202,29 @@ void waterStrike(int x,int y,uint32_t age,bool surge){
     screen.fillRect(x+(i?1:-1)*(3+int(t*17)),y-lift-3,3,2,0xffff);
   }
 }
-void collectionMark(uint32_t age){
-  const int x=447,y=59;bool arriving=age>=2400 && age<3000;
+// Wrap against actual glyph advances in the 264-pixel catch-details column.
+int catchLines(const char* text,int y,int color,int size,int step){
+  const auto& face=fontFace(size);
+  while(*text){
+    const char* end=text;
+    const char* space=nullptr;
+    int width=0;
+    while(*end && width+glyph(face,*end).advance<=264){
+      if(*end==' ')space=end;
+      width+=glyph(face,*end++).advance;
+    }
+    if(*end && space)end=space;
+    char line[96];
+    const auto count=std::min<size_t>(end-text,sizeof(line)-1);
+    memcpy(line,text,count);line[count]=0;
+    skyLabel(202,y,line,color,size);
+    y+=step;text=end;
+    while(*text==' ')++text;
+  }
+  return y;
+}
+void collectionMark(bool arriving){
+  const int x=447,y=59;
   screen.fillRoundRect(x-26,y-12,55,28,4,ink);
   int edge=arriving?gold:white;
   screen.drawRect(x-9,y-7,9,11,edge);screen.drawRect(x,y-7,9,11,edge);
@@ -193,18 +232,38 @@ void collectionMark(uint32_t age){
 }
 void play(const View& v){
   const int light=v.timeMode==4?pondPeriod():v.game.timeSlot;
-  if(cachedSite!=v.destination||cachedTime!=light||!background){
-    landscape(v.destination,light);cachedSite=v.destination;cachedTime=light;
+  if(cachedSite!=v.destination||cachedTime!=light||cachedWeather!=int(v.game.weather)||!background){
+    landscape(v.destination,light,v.game.weather);cachedSite=v.destination;cachedTime=light;cachedWeather=int(v.game.weather);
     if(background)memcpy(background,screen.getFramebuffer(),480*320*2);
   }else memcpy(screen.getFramebuffer(),background,480*320*2);
   const auto& g=v.game;
   landscapeMotion(v);
+  static creek::WeatherStroke sky[creek::maxWeatherStrokes];
+  int count=creek::weatherStrokes(sky,g.weather,v.time,g.destination,g.timeSlot);
+  for(int i=0;i<count;++i){
+    const auto& stroke=sky[i];uint32_t c=creek::weatherInk[stroke.ink];
+    uint16_t rgb=uint16_t(((c>>8)&0xf800)|((c>>5)&0x07e0)|((c>>3)&31));
+    screen.drawLine(stroke.x,stroke.y,stroke.endX,stroke.endY,rgb);
+  }
+  if(v.page==Page::Arrival){
+    const auto age=v.time-v.arrivalStart;
+    static arrival::Frame frame;
+    arrival::draw(frame,v.destination,g.site,age);
+    auto fb=screen.getFramebuffer();
+    arrival::raster(frame,[&](int x,int y,uint8_t ink){
+      int k=scenery::LcdSpans::offset(x,y);
+      fb[k]=fb[k+1]=fb[k+320]=fb[k+321]=lcd[ink];
+    });
+    if(age<arrival::raiseRod){
+      skyLabel(10,10,creek::destinations[v.destination].name,white,2);
+      skyLabel(10,31,arrival::description(arrival::landing(v.destination,g.site)),white,1);
+      skyLabel(386,301,"Tap to skip",white,1);
+    }
+    if(age<arrival::raiseRod)return;
+  }
   if(v.page==Page::Play)top(v);
   const int ax=int(g.aimX*480),ay=int(g.aimY*320);
-  for(int kind=1;kind<=3;++kind){
-    const auto z=g.castZone(kind);drawWaterProp(kind-1,int(z.x*480),int(z.y*320),kind==1?2:1);
-  }
-  if(g.phase==Phase::Ready || g.phase==Phase::Flight){
+  if(v.page!=Page::Arrival && (g.phase==Phase::Ready || g.phase==Phase::Flight)){
     screen.drawEllipse(ax,ay,8,3,0xde92);
   }
   int bobX=ax+int(4*std::sin(v.time*.0015f));
@@ -222,16 +281,19 @@ void play(const View& v){
   float angle=(48+tilt*.56f+1.2f*wave)*.01745329f;
   const float reach=162*std::cos(angle),rise=162*std::sin(angle),load=g.rodLoad();
   const float sideways=.20f*g.pullOffset();
-  int tipX=12,tip=248;
+  const int rodDrop=v.page==Page::Arrival?int(190*(1-arrival::ease(v.time-v.arrivalStart,arrival::raiseRod,arrival::duration-arrival::raiseRod))):0;
+  int tipX=12,tip=248+rodDrop;
   for(int n=0;n<14;n++){
     int x=(n*83+int(v.time/(80+n*4)))%472,y=169+(n*19)%78;
     if(std::sin(v.time*.0015f+n)>.15)screen.drawFastHLine(x,y,3+n%7,screen.getFramebuffer()[x*320+319-(y-2)]);
   }
-  if(v.page==Page::Play && eventActive())label(14,40,eventStatus(),white,1);
+  if(v.page==Page::Play && eventActive()){
+    label(14,40,eventStatus(),white,1);label(14,52,cupGoal(),paper,1);label(14,64,cupStanding(),gold,1);label(14,76,cupBait(),paper,1);
+  }
   constexpr int rodColors[]={0x7390,0xb344,0x34f6};
-  for(int section=1;section<=5;section++){
+  for(int section=1;g.phase!=Phase::Landed && section<=5;section++){
     float t=section*.2f,flex=load*t*t*t;
-    int x=12+int(reach*t+11*flex+sideways*t*t*t),y=248-int(rise*t-41*flex+4*t*(1-t));
+    int x=12+int(reach*t+11*flex+sideways*t*t*t),y=248+rodDrop-int(rise*t-41*flex+4*t*(1-t));
     screen.drawLine(tipX,tip,x,y,ink);
     if(section<5)screen.drawLine(tipX+1,tip,x+1,y,rodColors[v.rodFinish]);
     tipX=x;tip=y;
@@ -256,9 +318,12 @@ void play(const View& v){
   char desc[64];int col=white;
   switch(g.phase){
   case Phase::Ready:if(v.raised)head="Cast forward";if(v.practice){head="Tap to cast";sub="Touch practice uses the lower panel.";}break;
-  case Phase::Flight:head="Casting";sub="Let the float settle.";break;
+  case Phase::Flight:
+    snprintf(desc,sizeof(desc),"Casting: %s / %s",creek::baitNames[g.bait%6],creek::depthNames[g.bait/6]);
+    head=desc;break;
   case Phase::Waiting:
-    if(g.rig==creek::Technique::Float)head=g.teasing()?"Nibble - hold steady":"Watch the float";
+    if(g.emptyCast)head="Quiet water - check bait and depth";
+    else if(g.rig==creek::Technique::Float)head=g.teasing()?"Nibble - hold steady":"Watch the float";
     else if(g.rig==creek::Technique::Spoon)head=g.falling?"Pause - let the spoon flutter":v.practice?"Tap 3 times to wind":"Wind a short burst";
     else head=g.falling?(g.rodHeldHigh?"Lower the rod":"Let the jig fall"):v.practice?"Tap to work the jig":"Lift the jig, then lower";
     break;
@@ -275,22 +340,35 @@ void play(const View& v){
     break;
   case Phase::Landed:{
     const auto& f=creek::catalog[g.fish];
-    collectionMark(g.age);
-    float t=creek::limit((int(g.age)-1600)/800.f,0,1);
+    collectionMark(g.filed && g.age>500);
+    float t=creek::limit(g.filed?g.age/800.f:0.f,0,1);
     float ease=t*t*(3-2*t),k=3.7f-3.4f*ease;
     if(t<1){
-      int cx=240+int(207*ease),cy=136-int(77*ease+46*4*t*(1-t));
+      int cx=100+int(347*ease),cy=158-int(99*ease+46*4*t*(1-t));
       fish(cx-int(24*k),cy-int(12.5f*k),k,g.fish);
     }
-    int grams=creek::weightGrams(g.fish,g.length);char mass[22];
-    if(grams<1000)snprintf(mass,sizeof(mass),"%d g",grams);else snprintf(mass,sizeof(mass),"%.2f kg",grams/1000.);
-    snprintf(desc,sizeof(desc),"%s  /  %d cm  /  %s",creek::ranks[f.tier],g.length,mass);
-    int w=std::max(strlen(f.name)*12,strlen(desc)*6)+16;
-    screen.fillRoundRect((480-w)/2,192,w,37,4,ink);
-    label((480-textWidth(f.name,2))/2,197,f.name,white);
-    label((480-textWidth(desc,1))/2,216,desc,gold,1);
-    screen.fillRoundRect(7,287,textWidth(f.lore,1)+12,16,3,ink);label(13,291,f.lore,paper,1);
-    if(t>=1)label(14,306,g.pointsAwarded?"Collection +1 tackle point":"Catch recorded",white,1);
+    if(g.filed){skyLabel(12,300,"Adding to journal",white,1);return;}
+    const char* rewards[]={"Catch landed","Personal best","New species","New species +1 tackle point"};
+    const int colors[]={white,0xb717,0xbebf,0xe63f,0xfed1,0x87ff};
+    snprintf(desc,sizeof(desc),"%s  /  %s",creek::ranks[f.tier],rewards[int(g.landingReward())]);
+    skyLabel(202,71,desc,colors[f.tier],1);
+    int afterName=catchLines(f.name,91,white,3,24);
+    const int stats=afterName+15;
+    skyLabel(202,stats,"Est. weight",paper,1);
+    skyLabel(338,stats,creek::sizeLabel(g.fish,g.length),paper,1);
+    if(!g.landedGrams)snprintf(desc,sizeof(desc),"Unweighed");
+    else if(g.landedGrams<1000)snprintf(desc,sizeof(desc),"%d g",g.landedGrams);
+    else snprintf(desc,sizeof(desc),g.landedGrams<10000?"%.2f kg":"%.1f kg",g.landedGrams/1000.);
+    skyLabel(202,stats+16,desc,white,3);
+    snprintf(desc,sizeof(desc),"%d cm",g.length);
+    skyLabel(338,stats+16,desc,white,3);
+    snprintf(desc,sizeof(desc),"Origin / %s",creek::destinations[v.destination].name);
+    const int originEnd=catchLines(desc,stats+50,gold,2,18);
+    const bool fictional=g.fish>=creek::originalSpecies&&g.fish<creek::originalSpecies+8;
+    if(fictional){
+      char legend[130];snprintf(legend,sizeof(legend),"Fictional - %s",f.lore);catchLines(legend,originEnd+4,paper,2,17);
+    }else catchLines(f.lore[0]?f.lore:"Family illustration / game size estimate",originEnd+4,paper,2,17);
+    skyLabel(12,300,"Tap to add to journal",white,1);
     return;}
   case Phase::Snag:
     head=g.contact==1?"Branch snag: stop, then lift":"Rock snag: lower rod and pay out";
@@ -303,7 +381,7 @@ void play(const View& v){
     drawWaterProp(3+id,239,135,3);snprintf(desc,sizeof(desc),"Recovered: %s",names[id]);
     head=desc;break;}
   case Phase::Lost:
-    head=g.reason==creek::Reason::Early?"Hook set too early":g.reason==creek::Reason::Late?"The bite passed":g.reason==creek::Reason::Snapped?"The line snapped":g.reason==creek::Reason::Unworked?"The fish lost interest":"The fish slipped away";
+    head=g.reason==creek::Reason::NoBite?"No bites - Rod workshop: bait + depth":g.reason==creek::Reason::Early?"Hook set too early":g.reason==creek::Reason::Late?"The bite passed":g.reason==creek::Reason::Snapped?"The line snapped":g.reason==creek::Reason::Unworked?"The fish lost interest":"The fish slipped away";
     sub=v.practice?"Tap to cast again.":"Raise and cast again.";break;
   }
   if(!v.practice && (!v.motion || v.field!=Field::Good)){
@@ -335,6 +413,9 @@ void hub(const View& v){
 }
 void waters(const View& v){
  menuHeader("FISHING SPOTS");
+ char sky[48];snprintf(sky,sizeof(sky),"Weather: %s >",creek::weatherChoices[v.pendingWeather]);
+ screen.drawRoundRect(menuui::x+130,menuui::y+3,173,24,4,0x6bf0);
+ menuText(138,11,sky,gold,1);
  for(int i=0;i<4;i++){
    int id=v.spotPage*4+i;if(id>=destinationCount)break;
    int y=menuui::header+menuui::waterRow*i;
@@ -357,16 +438,38 @@ void waters(const View& v){
  menuText(140,menuui::travelY+8,"FISH HERE");menuText(340,menuui::travelY+12,"NEXT >",gold,1);
 }
 void book(const View& v){
- const auto& journal=v.game.progress.book;int site=v.bookPage/2,start=(v.bookPage%2)*6;char buf[85];
- menuHeader("FISH COLLECTION");snprintf(buf,sizeof(buf),"%s   %d/%d",sites[site].name,journal.discovered(),fishCount);menuText(12,38,buf,gold,1);
- for(int k=start;k<std::min(start+6,stockSize(site));k++){
-   int id=stockId(site,k);const auto& e=journal.entries[id];int y=56+29*(k-start);
+ const auto& journal=v.game.progress.book;const int site=v.bookWater;char buf[110];
+ menuHeader("FISH COLLECTION");
+ const int caught=journal.waterCount(site,v.destination,BookFilter::Caught),total=stockSize(site);
+ const int shown=journal.waterCount(site,v.destination,v.bookFilter);
+ snprintf(buf,sizeof(buf),"%s   %d / %d   > Change water",sites[site].name,caught,total);
+ menuText(12,38,buf,gold,1);
+ const int start=v.bookPage*menuui::bookRows;int match=0,rows=0;
+ for(int k=0;k<total && rows<menuui::bookRows;k++){
+   const int id=stockId(site,k);const auto& e=journal.entries[id];
+   if(!journal.visible(id,v.destination,v.bookFilter))continue;
+   if(match++<start)continue;
+   int y=56+43*rows++;
    menuText(12,y,catalog[id].name,e.count?white:green);
    if(e.count)snprintf(buf,sizeof(buf),"%s | %lu caught | best %u cm",ranks[catalog[id].tier],(unsigned long)e.count,(unsigned)e.best);
-   else snprintf(buf,sizeof(buf),"%s | %s",ranks[catalog[id].tier],id==prawn?"Dusk ferry piles - lift quickly":id==ray?"Night sandbars - ease off on long runs":times[id%4]);
+   else if(id>=originalSpecies){
+     const auto& species=catalog[id];
+     const char* place=species.spot==255?sites[site].name:destinations[species.spot].name;
+     char periods[32]="";
+     for(int t=0;t<4;++t)if(species.timeMask&(1<<t)){
+       const auto used=strlen(periods);snprintf(periods+used,sizeof(periods)-used,"%s%s",used?"/":"",times[t]);
+     }
+     snprintf(buf,sizeof(buf),"%s | %s | %s",ranks[species.tier],place,periods);
+   }else snprintf(buf,sizeof(buf),"%s | %s",ranks[catalog[id].tier],id==prawn?"Dusk ferry piles - lift quickly":id==ray?"Night sandbars - ease off on long runs":times[id%4]);
    menuText(12,y+16,buf,paper,1);
+   const int best=preferredChoice(id);
+   snprintf(buf,sizeof(buf),"Bait: %s / %s",baitNames[best%6],depthNames[best/6]);
+   menuText(12,y+27,buf,gold,1);
  }
- menuText(12,menuui::bookNav+12,"< PREV",gold,1);snprintf(buf,sizeof(buf),"%d / 10",v.bookPage+1);menuText(170,menuui::bookNav+10,buf);menuText(340,menuui::bookNav+12,"NEXT >",gold,1);
+ if(!rows)menuText(12,80,"No catches in this water yet.",paper);
+ menuText(12,menuui::bookNav+12,"< PREV",gold,1);
+ snprintf(buf,sizeof(buf),"%s   %d / %d",v.bookFilter==BookFilter::Nearby?"Here":v.bookFilter==BookFilter::Caught?"Caught":"All species",v.bookPage+1,std::max(1,(shown+menuui::bookRows-1)/menuui::bookRows));
+ menuText(130,menuui::bookNav+10,buf);menuText(340,menuui::bookNav+12,"NEXT >",gold,1);
 }
 void network(){
  menuHeader("WI-FI + CLOCK");menuText(12,38,networkStatus(),white,1);menuText(12,53,updateStatus(),green,1);
@@ -375,8 +478,15 @@ void network(){
  menuRow(200,31,"Wi-Fi radio",radioEnabled()?"On":"Off");menuRow(231,31,"Shared event",eventActive()?"Joined":"Join");
  menuText(12,263,eventStatus(),green,1);
 }
+void baitPanel(const View& v){
+ menuHeader("HOOK BAIT");const int c=v.game.bait;
+ for(int i=0;i<6;i++)menuRow(38+i*27,27,creek::baitNames[i],i==c%6?"Selected":"");
+ for(int i=0;i<3;i++)menuText(12+i*(menuui::w/3),220,creek::depthNames[i],c/6==i?gold:white,2);
+ const bool locked=v.game.running() || v.game.phase==Phase::Landed;
+ menuText(12,251,locked?"Finish or file this catch before changing bait":"Choose the hook bait, then tap a depth",green,1);
+}
 void journey(const View& v){
- const auto& p=v.game.progress;char buf[80];menuHeader("ROD WORKSHOP");
+ const auto& p=v.game.progress;char buf[80];menuHeader("ROD WORKSHOP");menuText(180,9,"BAIT + DEPTH",gold,1);
  snprintf(buf,sizeof(buf),"%s  |  %d points",chapters[p.chapter()],p.points());menuText(12,37,buf,gold,1);
  snprintf(buf,sizeof(buf),"Technique   %s  >",techniques[int(v.game.rig)]);
  menuText(12,menuui::rigY+4,buf,white);
@@ -393,6 +503,10 @@ void journey(const View& v){
 }
 void bench(const View& v){
  bar("BENCH TEST");batteryIcon(321,15,v.battery);char b[90];
+ if(v.battery.percent>=0){
+   snprintf(b,sizeof(b),"%s%d%%",v.battery.charging?"+":"",v.battery.percent);
+   label(352,15,b,paper,1);
+ }
  snprintf(b,sizeof(b),"Tilt %+.1f deg   lift %.1f / low %.1f",v.degrees,v.span*.70,v.span*.27);
  label(12,46,v.calibrated&&v.motion?b:v.motion?"Calibrate two poses for degrees":"IMU unavailable",paper);
  snprintf(b,sizeof(b),"Casts %lu   Lifts %lu",(unsigned long)v.casts,(unsigned long)v.lifts);label(12,76,b);
@@ -423,8 +537,8 @@ void paint(const View& v){
  if(!screenOK)return;
  if(menuui::overlay(v.page))play(v);
  switch(v.page){
- case Page::Play:play(v);break;case Page::Hub:hub(v);break;case Page::Waters:waters(v);break;
- case Page::Book:book(v);break;case Page::Journey:journey(v);break;case Page::Bench:bench(v);break;
+ case Page::Arrival:case Page::Play:play(v);break;case Page::Hub:hub(v);break;case Page::Waters:waters(v);break;
+ case Page::Book:book(v);break;case Page::Bait:baitPanel(v);break;case Page::Journey:journey(v);break;case Page::Bench:bench(v);break;
  case Page::TouchCheck:touchCheck(v);break;
  case Page::Network:network();break;case Page::Options:options(v);break;default:calibration(v);break;
  }

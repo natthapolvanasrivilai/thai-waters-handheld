@@ -7,3 +7,9 @@ export const eventPlayers = sqliteTable('event_players', {
   score: integer('score').notNull(),
   seen: integer('seen').notNull(),
 }, table => [primaryKey({columns: [table.round, table.spot, table.player]})]);
+
+export const cupEntries = sqliteTable('cup_entries', {
+  day: integer('day').notNull(),
+  angler: text('angler').notNull(),
+  best: integer('best').notNull(),
+}, table => [primaryKey({columns: [table.day, table.angler]})]);

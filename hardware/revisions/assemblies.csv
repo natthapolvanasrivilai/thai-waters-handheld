@@ -8,3 +8,4 @@ TW-A-0001-R0006,Rev F,Enclosure print set,Top-edge power key and screw-locked ro
 TW-A-0001-R0007,Rev G,Enclosure print set,"Battery pocket, west key retainer and removable wire bridge",hardware/mechanical/rev-G/README.md,G-001
 TW-A-0002-R0001,Rev D wiring,Electrical integration package,Base harness wiring drawing,hardware/electronics/Riffle-D-wiring.pdf,
 TW-A-0002-R0002,Rev F wiring,Electrical integration package,Base harness and top-edge power key,hardware/electronics/rev-f-power-key.md,F-001
+TW-A-0001-R0008,,Matched FDM enclosure print set,Twelve build-oriented PETG device parts with seven redesigned installed solids. Two inert gauges accompany the print package as shop tools.,hardware/mechanical/TW-A-0001-R0008/PRINT-GUIDE.md,R0008-001

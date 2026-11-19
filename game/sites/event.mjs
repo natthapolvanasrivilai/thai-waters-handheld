@@ -29,6 +29,19 @@ export async function eventResponse(request, db, spotCount, now = Date.now()) {
       .bind(now - 5000, current, spot),
   ]);
   const {players, total} = result[2].results[0];
-  const headers = cookie ? {} : {'set-cookie': cookieName + '=' + id + '; Secure; HttpOnly; SameSite=Lax; Path=/event; Max-Age=86400'};
+  const headers = cookie ? {} : {'set-cookie': cookieName + '=' + id + '; Secure; HttpOnly; SameSite=Lax; Path=/event; Max-Age=31536000'};
   return json({round: current, spot, seconds: Math.ceil(((current + 1) * roundMs - now) / 1000), players, total, goal: 8}, 200, headers);
+}
+
+async function cupResponse(request,db,spots,stock){
+  if(request.method!=='POST')return json({error:'POST required'},405);
+  if(request.headers.get('origin') && request.headers.get('origin')!==new URL(request.url).origin)return json({error:'Invalid origin'},403);
+  if(request.headers.get('content-type')?.split(';')[0]!=='application/json')return json({error:'JSON required'},415);
+  const body=await request.text();
+  if(body.length>512)return json({error:'Report too large'},413);
+  let report;try{report=JSON.parse(body)}catch{return json({error:'Invalid report'},400)}
+  const cookie=/(?:^|;\s*)tw_angler=([0-9a-f-]{36})(?:;|$)/.exec(request.headers.get('cookie')||'');
+  const id=cookie?.[1]||crypto.randomUUID();
+  const result=await tournament(db,id,report,spots,stock);
+  return json(result,result.error?400:200,cookie?{}:{'set-cookie':cookieName+'='+id+'; Secure; HttpOnly; SameSite=Lax; Path=/event; Max-Age=31536000'});
 }

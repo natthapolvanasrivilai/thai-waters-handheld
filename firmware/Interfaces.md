@@ -2,6 +2,12 @@
 
 The USB data port exposes the ESP32-S3 ROM programming path. Release 0.6 runs on controller 31137 with 16 MB flash, OPI PSRAM and the original two 3 MiB OTA slots. The archive contains editable Arduino source and its board dependencies. Reserve these boundaries for compatible incremental releases. A change to the bootloader, partition table, radio architecture, pinout or physical sensor range requires separate migration or a board variant.
 
+## Native journal storage
+
+The first 52 species and the three tackle ranks retain the 420-byte `willow-v1/atlas-3` NVS format. Units with the older 40-entry `atlas-2` save migrate on startup. The held catch also keeps its original NVS format.
+
+Additional species use permanent catalog IDs. Each group of 32 entries has two 272-byte snapshots on the existing `ffat` data partition. Each successful filing updates one group and verifies its checksum and contents before reporting success. Startup takes the newest valid generation and can recover the previous copy after an interrupted write. On a failed save, the catch stays on screen so the player can retry. A new device provisions the volume on its first extended filing after checking that the partition is erased. The two 3 MiB OTA slots keep their existing offsets. With 2,168 entries, the 2,116 additional records occupy at most 67 pairs of 272-byte files, or 36,448 bytes before filesystem allocation overhead. The in-memory journal uses 17,344 bytes.
+
 ## Native drivers and USB API v1
 
 Open USB serial at 115200. Send one ASCII line terminated by LF. Consumers read JSON lines and ignore ordinary boot/game diagnostics. Begin with `api1 caps`. Compatible additions may append fields. A changed field unit or meaning requires another major API version.

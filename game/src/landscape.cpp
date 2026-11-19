@@ -1,4 +1,5 @@
 #include "../../firmware/WillowCreek/Ambient.h"
+#include "../../firmware/WillowCreek/ArrivalPixels.h"
 
 namespace {
 uint8_t indexed[scenery::width*scenery::height];
@@ -22,7 +23,21 @@ struct WebSpans {
   bool foliage(int x,int y)const{int c=base(x,y);return c==scenery::Leaf||c==scenery::Reed||c==scenery::Tip;}
 };
 }
+namespace {arrival::Frame arrivalFrame;uint8_t arrivalLayer[scenery::width*scenery::height];}
 extern "C" {
+int arrivalDuration(){return arrival::duration;}
+int arrivalLanding(int place,int pool){return arrival::landing(place,pool);}
+int16_t* arrivalShapes(){return reinterpret_cast<int16_t*>(arrivalFrame.shapes);}
+int sampleArrival(int place,int pool,unsigned ms){
+  arrival::draw(arrivalFrame,place,pool,ms);
+  return arrivalFrame.count;
+}
+uint8_t* arrivalPixels(int place,int pool,unsigned ms){
+  arrival::draw(arrivalFrame,place,pool,ms);
+  for(auto& value:arrivalLayer)value=255;
+  arrival::raster(arrivalFrame,[](int x,int y,uint8_t ink){arrivalLayer[y*scenery::width+x]=ink;});
+  return arrivalLayer;
+}
 uint8_t* paintPlace(int place,int period){
   scenery::render({indexed},palette,place,period,&layout);
   return indexed;

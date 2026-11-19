@@ -37,7 +37,7 @@ def add_register(page, repo_url):
                       + "".join(items) + "</tbody></table></div></div></details>")
     section = ('<section id="revisions" hidden><h2>Hardware revisions</h2>'
                '<p>Open an assembly to find exact part revisions and source files. '
-               'The next inert fit print uses TW-A-0001-R0007 and the TW-A-0002-R0002 electrical package. '
+               'The next inert fit print uses TW-A-0001-R0008 and the TW-A-0002-R0002 electrical package. '
                'Record firmware version and digest separately.</p>'
                + "<p>" + link("hardware/revisions/README.md", "Allocation, verification and serial traceability")
                + "</p>" + "".join(panels) + "</section>")

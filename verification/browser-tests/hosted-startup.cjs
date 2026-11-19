@@ -20,7 +20,7 @@ const {chromium, webkit} = require('playwright-core');
     await page.waitForFunction(() => g.state() !== 0);
     await page.locator('#openMenu').tap();
     await page.locator('[data-to=crew]').tap();
-    assert.match(await page.locator('[data-section=crew] p').first().innerText(), /private playtest/);
+    assert.match(await page.locator('#crewHelp').first().innerText(), /private playtest/);
     assert.deepEqual(errors, []);
     console.log('PASS hosted-origin mobile startup, cast and shared-event menu.');
   } finally {

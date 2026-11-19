@@ -1,6 +1,6 @@
 # Build and release decisions
 
-Record the exact enclosure and electrical integration IDs at incoming inspection, at final test and after rework. The [hardware revision register](../hardware/revisions/README.md) links those configurations to the drawings, print files and change records. The next inert fit is **TW-A-0001-R0007** (Rev G) with **TW-A-0002-R0002** (Rev F wiring). Enter the actual firmware version and digest separately when a unit is flashed. Retain the prior IDs and effectivity when a fielded unit changes configuration.
+Record the exact enclosure and electrical integration IDs at incoming inspection, at final test and after rework. The [hardware revision register](../hardware/revisions/README.md) links those configurations to the drawings, print files and change records. The next inert fit is **TW-A-0001-R0008** ([FDM orientation and gauge procedure](../hardware/mechanical/TW-A-0001-R0008/PRINT-GUIDE.md)) with **TW-A-0002-R0002** (Rev F wiring). Enter the actual firmware version and digest separately when a unit is flashed. Retain the prior IDs and effectivity when a fielded unit changes configuration.
 
 | Stage | Required record for this handheld | Current status |
 |---|---|---|

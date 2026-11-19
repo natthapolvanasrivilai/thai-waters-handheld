@@ -14,7 +14,7 @@ const assert=require('node:assert/strict');
       window.pulses=[];
       Object.defineProperty(navigator,'vibrate',{configurable:true,value:pattern=>{pulses.push(pattern);return true;}});
     });
-    await page.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
+    await page.goto(pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href);
     await page.waitForFunction(()=>!document.querySelector('#act').disabled);
     async function openMix(){
       await page.locator('#openMenu').tap();
@@ -37,7 +37,7 @@ const assert=require('node:assert/strict');
     await page.evaluate(()=>{
       // Cast an actual ray at night and advance to its first bottom hold.
       for(let seed=1;seed<10000;seed++){
-        g.initialize(seed);g.visit(3,3);g.advance(16,1,0,0);
+        g.initialize(seed);g.visit(3,3);g.setBait(g.recommendedBait(41));g.advance(16,1,0,0);
         if(g.species()===41)break;
       }
       if(g.species()!==41)throw Error('fixture could not draw ray');

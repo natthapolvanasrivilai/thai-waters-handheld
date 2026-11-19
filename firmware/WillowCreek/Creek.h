@@ -1,6 +1,8 @@
 #pragma once
 #include "Waters.h"
-#include "CastWater.h"
+#include "Bait.h"
+#include "Weather.h"
+#include "LandingCue.h"
 #include <cmath>
 #include <cstdint>
 #include <algorithm>
@@ -26,14 +28,14 @@ struct Calibration {
   }
 };
 struct Gesture {
-  bool high=false, rise=false, cast=false, hadLow=false;
+  bool high=false, rise=false, cast=false, seenRest=false;
   uint32_t lastHigh=0;
   void sample(float angle,float span,uint32_t now) {
     rise=cast=false;
     if(angle>=.70f*span){
-      rise=!high && hadLow; high=true; lastHigh=now; hadLow=false;
+      rise=!high && seenRest; high=true; lastHigh=now;
     } else if(angle<.27f*span) {
-      cast=high && now-lastHigh<=900; high=false; hadLow=true;
+      cast=high && seenRest && now-lastHigh<=900; high=false; seenRest=true;
     }
   }
 };
@@ -51,13 +53,38 @@ struct Wheel {
   }
 };
 enum class Phase : uint8_t { Ready, Flight, Waiting, Bite, Fight, Landed, Lost, Snag, HaulingJunk, JunkLanded };
-enum class Reason : uint8_t { None, Early, Late, Snapped, Escaped, Unworked };
+enum class Reason : uint8_t { None, Early, Late, Snapped, Escaped, Unworked, NoBite };
 enum class Technique : uint8_t { Float, Spoon, Jig };
 enum class FightBeat : uint8_t { Recover, Run, Slack };
 enum class FightStyle : uint8_t { Standard, Picker, Anchor, Sprinter };
 constexpr const char* techniques[]={"Float drift","Stop-and-go spoon","Vertical jig"};
 struct Game {
   Progress progress;
+  bool filed=false;
+  int landedGrams=0;
+  LandingReward landingReward() const {
+    if(emptyCast)return LandingReward::Catch;
+    if(filed){
+      if(pointsAwarded)return LandingReward::TacklePoint;
+      if(newEntry)return LandingReward::Discovery;
+      return personalBest?LandingReward::PersonalBest:LandingReward::Catch;
+    }
+    const auto& entry=progress.book.entries[fish];
+    if(entry.count)return length>entry.best?LandingReward::PersonalBest:LandingReward::Catch;
+    const int found=progress.book.discovered();
+    return Progress::discoveryPoints(found+1)>Progress::discoveryPoints(found)?
+      LandingReward::TacklePoint:LandingReward::Discovery;
+  }
+  bool fileCatch(){
+    if(phase!=Phase::Landed || filed || emptyCast)return false;
+    const int prior=progress.points();
+    const auto& entry=progress.book.entries[fish];
+    newEntry=entry.count==0;personalBest=length>entry.best;
+    progress.book.record(fish,length);
+    pointsAwarded=progress.points()-prior;
+    filed=true;age=0;
+    return true;
+  }
   bool personalBest=false,newEntry=false;int pointsAwarded=0;
   Phase phase=Phase::Ready;
   Reason reason=Reason::None;
@@ -65,6 +92,13 @@ struct Game {
   int timeSlot=0, site=0, catches=0, fish=0, length=0;
   int destination=0;
   Technique rig=Technique::Float;
+  uint8_t bait=0;
+  bool emptyCast=false;
+  int baitWeight(int id) const {return baitWeightFor(id,bait,int(rig));}
+  bool setBait(int choice){
+    if(choice<0 || choice>=baitCount || running() || phase==Phase::Landed)return false;
+    bait=choice;return true;
+  }
   uint32_t fallStart=0, recoverMs=2450, runMs=1450, slackMs=1100;
   unsigned strokes=0, strokesNeeded=2;
   float lureTurns=0, slack=0;
@@ -74,6 +108,31 @@ struct Game {
   float aimX=.50f,aimY=.67f;
   int contact=ClearWater,junkId=-1;
   uint32_t waterTicket=0,easedMs=0;
+  uint32_t sessionSeed=0,visitNumber=0;
+  bool sessionStarted=false;
+  int visitDestination=-1;
+  unsigned waterSeason=0;
+  void beginSession(uint32_t initialSeed){
+    seed=sessionSeed=initialSeed;sessionStarted=true;visitNumber=0;visitDestination=-1;
+  }
+  void arriveAt(int place){
+    if(visitDestination>=0 && place!=visitDestination)++visitNumber;
+    visitDestination=destination=place;
+  }
+  Weather weather=Weather::Clear;
+  int weatherMode=0;
+  void updateWeather(int month,uint32_t day){
+    if(running() || month<1 || month>12)return;
+    waterSeason=month<=2 || month>=11?0:month<=5?1:2;
+    weather=weatherMode?Weather(weatherMode-1):seasonalWeather(destination,month,day,timeSlot);
+  }
+  uint32_t nextWaterTicket() const {
+    return waterHash(seed^uint32_t(destination+1)*0x9e3779b9u^uint32_t(timeSlot));
+  }
+  uint32_t waterLayout() const {
+    uint32_t origin=sessionStarted?sessionSeed:seed;
+    return waterHash(origin^uint32_t(destination+1)*0x9e3779b9u^visitNumber*0x85ebca6bu^waterSeason*977u);
+  }
   float givenLine=0;
   uint32_t randomInt(uint32_t n){seed=1664525u*seed+1013904223u;return (seed>>8)%n;}
   bool running() const {return phase!=Phase::Ready && phase!=Phase::Landed && phase!=Phase::Lost && phase!=Phase::JunkLanded;}
@@ -81,10 +140,10 @@ struct Game {
     if(running() || !std::isfinite(x) || !std::isfinite(y))return;
     aimX=limit(x,.08f,.92f);aimY=limit(y,.555f,.875f);
   }
-  CastZone castZone(int kind) const {return waterZone(destination,site,timeSlot,kind);}
+  CastZone castZone(int kind) const {return waterZone(waterLayout(),kind);}
   int featureAt(float x,float y) const {
     for(int kind=Branch;kind<=Debris;++kind)
-      if(castZone(kind).distanceSquared(x,y)<=1.f)return kind;
+      if(hasWaterFeature(waterLayout(),destination,site,kind) && castZone(kind).distanceSquared(x,y)<=1.f)return kind;
     return ClearWater;
   }
   float releaseProgress() const {
@@ -100,10 +159,9 @@ struct Game {
     if(feature==Branch || feature==Rock){
       contact=feature;heat=feature==Branch?.37f:.51f;enter(Phase::Snag);return;
     }
-    // Chance is independent of the fish-selection generator. Never roll in
-    // the safe center lane. A visible debris core has the highest pickup rate.
+    // Only debris present in the submerged layout can be recovered.
     bool inCore=feature==Debris && castZone(Debris).distanceSquared(aimX,aimY)<.30f;
-    const unsigned odds=feature==Debris?(inCore?72:38):(std::abs(aimX-.5f)>.095f?4:0);
+    const unsigned odds=feature==Debris?(inCore?72:38):0;
     if(waterTicket%100<odds){
       contact=Debris;junkId=int((waterTicket>>10)%4);
       target=1.f+.27f*junkId;line=target;heat=.23f;enter(Phase::HaulingJunk);
@@ -123,14 +181,14 @@ struct Game {
     contact=ClearWater;heat=.12f;enter(Phase::Waiting);
   }
   FightStyle fightStyle() const {
-    if(fish==prawn)return FightStyle::Picker;
-    if(fish==ray)return FightStyle::Anchor;
+    if(fish==prawn || (fish>=originalSpecies && catalog[fish].form==3))return FightStyle::Picker;
+    if(fish==ray || (fish>=originalSpecies && catalog[fish].form==4))return FightStyle::Anchor;
     // Stable catalog IDs: queenfish, cobia, barracuda, trevally and sailfish.
-    if(fish>=47 && fish<=51)return FightStyle::Sprinter;
+    if((fish>=47 && fish<=51) || (fish>=originalSpecies && catalog[fish].form==1 && catalog[fish].tier>=2))return FightStyle::Sprinter;
     return FightStyle::Standard;
   }
   bool teasing() const {
-    if(phase!=Phase::Waiting)return false;
+    if(phase!=Phase::Waiting || emptyCast)return false;
     if(fightStyle()==FightStyle::Picker){
       if(rig!=Technique::Float){
         const uint32_t fall=age-fallStart;
@@ -196,9 +254,46 @@ struct Game {
     }
   }
   int drawWeight(int id) const {
-    bool bottom=id==prawn||id==ray||catalog[id].form==2;
+    bool bottom=catalog[id].form>=2;
     bool chase=catalog[id].form==1;
-    return encounterWeight(id,timeSlot)*(rig==Technique::Jig && bottom?3:rig==Technique::Spoon && chase?3:1);
+    return baitWeight(id)*encounterWeight(id,timeSlot)*(rig==Technique::Jig && bottom?3:rig==Technique::Spoon && chase?3:1);
+  }
+  template<class Visit> void visitCandidates(bool expanded,Visit visit) const {
+    if(!expanded){
+      for(int i=0;i<originalStockSize(site);++i)visit(stockId(site,i));
+      return;
+    }
+    const int groups[]={destination,destinationCount+site};
+    for(int group:groups){
+      for(int i=bySpot.begin[group];i<bySpot.begin[group+1];++i){
+        const int id=bySpot.ids[i];if(waterOf(id)==site)visit(id);
+      }
+    }
+  }
+  int drawOrdinary(bool expanded){
+    int total=0;
+    visitCandidates(expanded,[&](int id){if(catalog[id].tier!=5)total+=drawWeight(id);});
+    if(!total)return -1;
+    int ticket=randomInt(total),selected=-1;
+    visitCandidates(expanded,[&](int id){
+      if(selected<0 && catalog[id].tier!=5){
+        ticket-=drawWeight(id);if(ticket<0)selected=id;
+      }
+    });
+    return selected;
+  }
+  int drawFish(){
+    // The five authored mythics each have a different location/time window.
+    // Their extra gate is independent of the normal site and rig selection.
+    const uint32_t roll=waterHash(seed^0x9d2c5680u);
+    if((roll & 0x3fff)==0){
+      int mythic=-1;
+      visitCandidates(true,[&](int id){if(catalog[id].tier==5 && drawWeight(id)>0)mythic=id;});
+      if(mythic>=0)return mythic;
+    }
+    const bool expanded=roll%3==0;
+    const int first=drawOrdinary(expanded);
+    return first>=0?first:drawOrdinary(!expanded);
   }
   void setRig(int id){
     if(id<0||id>2||rig==Technique(id))return;
@@ -226,7 +321,7 @@ struct Game {
     }else if(std::abs(turns)>.003f){
       falling=false;
     }
-    const uint32_t dwell=rig==Technique::Spoon?460u:780u;
+    const uint32_t dwell=(rig==Technique::Spoon?460u:780u)+int(weather)*40u;
     if(falling && age-fallStart>=dwell){
       falling=false;lureTurns=0;
       if(++strokes>=strokesNeeded)enter(Phase::Bite);
@@ -234,6 +329,13 @@ struct Game {
   }
   void enter(Phase p){
     phase=p;age=0;
+    if(p==Phase::Landed){
+      // The prior journal count survives a pending-catch reload on both platforms.
+      const uint32_t sequence=progress.book.entries[fish].count;
+      const uint32_t key=sequence ^ (uint32_t(fish+1)<<16) ^ uint32_t(length);
+      const int condition=90+waterHash(key)%21;
+      landedGrams=int(std::min<int64_t>(INT32_MAX,(int64_t(weightGrams(fish,length))*condition+50)/100));
+    }
     if(p==Phase::Ready || p==Phase::Flight){
       contact=ClearWater;junkId=-1;easedMs=0;givenLine=0;
     }
@@ -244,19 +346,28 @@ struct Game {
     age+=ms;
     const float dt=ms*.001f;
     switch(phase){
-    case Phase::Ready: case Phase::Landed: case Phase::Lost: case Phase::JunkLanded:
+    case Phase::Landed:
+      if(filed && age>=800)enter(Phase::Ready);
+      break;
+    case Phase::Ready: case Phase::Lost: case Phase::JunkLanded:
       if(cast){
-        newEntry=false;personalBest=false;pointsAwarded=0;
-        waterTicket=waterHash(seed^uint32_t(destination+1)*0x9e3779b9u^uint32_t(timeSlot));
-        int total=0;
-        for(int i=0;i<stockSize(site);i++)total+=drawWeight(stockId(site,i));
-        int ticket=randomInt(total);
-        for(int i=0;i<stockSize(site);i++){
-          fish=stockId(site,i);int w=drawWeight(fish);if(ticket<w)break;ticket-=w;
-        }
+        newEntry=false;personalBest=false;pointsAwarded=0;landedGrams=0;
+        if(!sessionStarted)beginSession(seed);
+        arriveAt(destination);
+        waterTicket=nextWaterTicket();
+        const int selected=drawFish();
+        emptyCast=selected<0;
+        if(!emptyCast)fish=selected;
         const auto& species=catalog[fish];
-        length=species.low+randomInt(species.high-species.low+1);
-        waitMs=2000+randomInt(3500);target=4.f+std::min(9.f,length*.065f);if(fish==ray)target+=3;line=target;heat=.16f;idle=0;
+        length=emptyCast?0:species.low+randomInt(species.high-species.low+1);
+        if(emptyCast)randomInt(1); // Advance the draw even in completely empty water.
+        waitMs=2000+randomInt(3500);
+        // In light rain fish feed sooner. Rough surface water slows presentation
+        // and increases drag when winding against a run.
+        if(weather==Weather::LightRain)waitMs=waitMs*80/100;
+        if(weather==Weather::HeavyRain)waitMs+=600;
+        if(weather==Weather::Storm)waitMs+=1300;
+        target=4.f+std::min(9.f,length*.065f);if(fish==ray)target+=3;line=target;heat=.16f;idle=0;
         strokes=0;strokesNeeded=2+(destination+timeSlot+randomInt(3))%3;
         lureTurns=slack=0;falling=false;
         recoverMs=1600+randomInt(1450);runMs=1050+species.tier*210+randomInt(550);
@@ -277,6 +388,10 @@ struct Game {
       if(line<=.001f)enter(Phase::JunkLanded);
       break;
     case Phase::Waiting:
+      if(emptyCast){
+        if(age>=waitMs)lose(Reason::NoBite);
+        break;
+      }
       present(rise,turns);
       break;
     case Phase::Bite:
@@ -300,6 +415,7 @@ struct Game {
           default:purchase=.20f;payout=.22f+catalog[fish].tier*.04f;load=.91f+catalog[fish].tier*.065f;break;
         }
       }
+      if(run)load*=1.f+.06f*int(weather);
       const float gained=turns*(1.f+.12f*progress.rank[1])*(turns>0?purchase:1.f);
       line=limit(line-gained+dt*payout,0,target+3);
       heat=limit(heat+forward*load*(1.f-.10f*progress.rank[2])+std::min(0.f,turns)*.66f-dt*(run?.18f:.36f),0,1);
@@ -307,9 +423,7 @@ struct Game {
       idle=limit(idle+dt-std::max(0.f,turns)*9.f,0,9);
       if(heat>=.999f)lose(Reason::Snapped);
       else if(idle>=8 || slack>=1.25f)lose(Reason::Escaped);
-      else if(line<=.001f){int points=progress.points();
-        const auto& old=progress.book.entries[fish];newEntry=old.count==0;personalBest=length>old.best;
-        progress.book.record(fish,length);pointsAwarded=progress.points()-points;
+      else if(line<=.001f){filed=false;
         ++catches;enter(Phase::Landed);}
       break;}
     }
