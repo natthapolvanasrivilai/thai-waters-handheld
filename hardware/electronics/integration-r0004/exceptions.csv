@@ -1,0 +1,18 @@
+revision,case,metric,observed,limit,unit,R0004_resolution
+R0002,i2c_encoder_only,rise,847.2985,300,ns,Central RP pair remains when motor breakout is absent
+R0002,i2c_encoder_motor,rise,423.6446,300,ns,Replace parallel breakout-dependent stuffing with controlled central pull-up pair
+R0002,i2c_loaded_200pf,rise,410.5442,300,ns,Fit 1.50k per native bus line and qualify 200pF harness
+R0002,i2c_excess_pullups,sink,3.536585,3,mA,Locate and remove surplus pulls; reject untraceable 820ohm assembly
+R0002,usb_low_host_lossy,port demand,650,500,mA,Physically limit authorized path; remaining demand requires battery supplement or actual load inhibition
+R0002,usb_unconfigured_host,port demand,330,100,mA,56ohm gated preconfiguration path; USB-only startup unresolved
+R0002,cc_cc_open,CC voltage,4.999972,0.66,V,Replace missing Rd or defective receptacle trace; 2-direction screen catches an open before use
+R0002,bat_low_aged,J7 minimum,3.003474,3.30,V,Inhibit heavy loads on low pack and buffer latch response; entire residual must be <=150mA
+R0002,rail_derated_slow,3V3 minimum,2.835573,3.00,V,Add local C_RAIL with effective >=30uF and <=40mohm path
+R0002,key_high_contact,PWRON when pressed,0.7813386,0.33,V,Source-referenced remote switch and local open-drain output; separately reject excessive real contact resistance
+R0002,speaker_overdrive,coil power,1.408102,1,W,Two physical 4.99ohm series resistors; also impose later 0.80W screen
+R0003,audio_gain_boundary,differential RMS,2.54582,2.52982,Vrms,Former bench-comparison label concealed this numerical exceedance; same hardware pad limits 8ohm RMS
+R0003,audio_gain_boundary,coil power,0.81015,0.80,W,Pad in both amplifier legs
+R0003,audio_low_impedance,coil power,0.85094,0.80,W,Pad in both amplifier legs
+R0003,bus_driver_encoder_200p,rise,305.5828,300,ns,Fit central RP; DNP two 2.2k on Boardoza native bus
+R0003,bus_unexpected_820ohm_100p,sink,3.53659,3,mA,Repair actual stuffing and confirm both lines; continued 820ohm is a rejected fault
+R0002+R0003,diagnostic_previous_play_with_lamp,port demand,500.7656,500,mA,Integrated historical counterexample covers uncounted blue current on a host already at its 500mA limit

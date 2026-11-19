@@ -2,6 +2,12 @@
 
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
 
+## Current R0004 engineering review
+
+R0004 ran 85 candidate and control cases with 170 numerical results. The report retains historical out-of-range cases, input-current faults and the load behavior when a cell is missing or host power is revoked. The proposed power circuitry and recovery path need a placed PCB, a populated sample and measured verification. [Circuit changes, limits and reproduction](../../hardware/electronics/integration-r0004/README.md) · [All measurement rows](../../hardware/electronics/integration-r0004/results.csv) · [Original exceptions](../../hardware/electronics/integration-r0004/exceptions.csv) · [First-article matrix](../../hardware/electronics/integration-r0004/first-article.csv) · [Private electrical issue](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/4)
+
+## Historical circuit baseline
+
 [R0003 indicators and electrical design](../../hardware/electronics/usb-status-r0003/README.md) · [Installed connections and unpowered checks](../../hardware/electronics/harness-r0003/README.md)
 
 Open **Circuits**, select a case and inspect its trace, limit and disposition. Start with the derated 3.3 V rail transient and the long I²C rise. Compare nominal and stressed conditions, then use the bench matrix to choose probe points on an actual sample.

@@ -1,0 +1,97 @@
+{
+  "engine": "ngspice-33",
+  "executable_sha256": "54068911555d46067ff2bdfcd0cf4b1afd3c1330be0586f93911df0a6af88e7c",
+  "historical": {
+    "legacy": {
+      "cases": 42,
+      "deck_sha256": {
+        "decks/bat_fresh.cir": "b35132cb4b392a237ca146f7fc96fbd1063153869aa55ad37fbf8bcf2a3edb4e",
+        "decks/bat_low_aged.cir": "ad87cae65d7d1b3c3f5c5105ee4a0eb6802368ff23d99c3672d822f49f35b307",
+        "decks/bat_mid.cir": "a0eeb7c7b55a32bca799d2e4ae96bace2add458e0eb4d8ac63e2cba60e21f7eb",
+        "decks/cc_1p5a.cir": "334bc693a09d60349d683849247b1b83bce75a13735bf3ff0f45baf4df052ef7",
+        "decks/cc_3a.cir": "0fd5a920df56f07b1d201ad2cb75caa31437295a76922d3d97890f60270939fc",
+        "decks/cc_cc_open.cir": "8a12d2f70303bfddaf04f920d69106acd9a76a1360aa78eecaf0095ba3822ba1",
+        "decks/cc_default.cir": "7fa0f4a183e65ef4beb90421a4b8f120d1dc8d39b57e3d03bda62d13efcd5926",
+        "decks/charge_cc_low.cir": "5e1ed821a91c3ff59a24f7c9177440409f6dde965446c03301164ca649f06ca5",
+        "decks/charge_cv_knee.cir": "588a29276a080c3c8fcf45291d6d3be4354443280f93a36f31a23b4ea40ceb03",
+        "decks/charge_taper.cir": "a2d3d8aff1b156e7b409d5d9447bed4eae0ee70748fb387d94143f1f2343b5cb",
+        "decks/erm_locked_stress.cir": "e081cd047a3137f78d781353e8e60d50e6dcea925c0f0c8badb6d66712d9c108",
+        "decks/erm_low_R_start.cir": "a191c72f0891e33d78c9b986a26afcd4e35bd51fb0a89e06be57ad0bffe99ad4",
+        "decks/erm_running_equivalent.cir": "c69dcc2b380d0b3189d6fa0e9098d1e6d4abbd11994088804e5c77d64cb2e6fb",
+        "decks/i2c_additional_4k7.cir": "3f8b0bad66647f2ab4071590d0a1536b6b841dff845fe2dc4f7f803b246b92de",
+        "decks/i2c_encoder_motor.cir": "79e551cb69030616307aca0739f853bc3703e19ab846ff4283cf6ef965ef70cf",
+        "decks/i2c_encoder_only.cir": "f73196c148a9bf21d1f4009a89cbcedd6d0e7d579d416780e310aa615e5b98c3",
+        "decks/i2c_excess_pullups.cir": "2a595221b8f6bf69596be3aba06858f04af9fd77634acb5beb02038c96159ea7",
+        "decks/i2c_loaded_200pf.cir": "e525089d521c33128d460fa59372bb0f6321994d28ce327e6139ba84b6f6b24f",
+        "decks/key_high_contact.cir": "46c853e829896ec701f143a8c87d5bfb9c9296a8cc3c420661e617b1e8c67446",
+        "decks/key_pressed.cir": "633fe9c5251addb59a8e23309139ea80fddba990c7998fed4c590d1ad9121d84",
+        "decks/key_released.cir": "c2d6aef7211db19e10850f7af488d09d48a54d4ddd36dea30562e5caaf0a898f",
+        "decks/light_low_vf_high_rail.cir": "54507c64c4ef9d94dbcfd362d317883c509421bc293209d757a6388c915016d7",
+        "decks/light_nominal.cir": "4d13b5f4bc9bd704e9e80ed51100a047ea451749045e9991c3ffcda82ab3ec5f",
+        "decks/rail_derated_slow.cir": "4b41ce0f1778cd76088016cafab2009d7d8a087b434a6e91145b5c9a76af7446",
+        "decks/rail_typ_assumed.cir": "54e6b830e1a1afb050232524c3be3fac49e2be8f01665ab38825898c8686957f",
+        "decks/reset_fast.cir": "a021d5699f4ae6e631427a0a889b7e0601dce3e7cd214dd8ad8b54348a2e7b8a",
+        "decks/reset_nominal.cir": "5676baaa35457de07a2734b2e00a6a828c91d1a41054aad9bc1e9e645d134fde",
+        "decks/reset_slow.cir": "7bc97256c45edfc1e3f13a7b8f81416b64d4ead97654e2cb890014d091028dcf",
+        "decks/speaker_cue.cir": "93a38ff4f7324513b3c5eda2e2cd886d809688f7fe6072c89ece375346e8b046",
+        "decks/speaker_near_rating.cir": "ccae36eefbd02c7a1ca2c11428c7f9450630c951036e99cd1841e7567782ba74",
+        "decks/speaker_overdrive.cir": "435d23e8b573bfbd161ab950b93d0b0a2c8d83456b83364ba14206d59cef7a3f",
+        "decks/thermal_sealed_stress.cir": "5009437824f5e3620ffe72c16c0d957e7975ed0c02573f641ad5bf62ec2b1553",
+        "decks/thermal_vented_assumption.cir": "cea2a55713517633ad1606b1674f2fe1f4d06dba92f88433650caa1c45b2216a",
+        "decks/ts_board_25C.cir": "37dbb2608b09608defea3f71d06dc08a8b9debbc2b4643907ff52bbaf4fa97f2",
+        "decks/ts_board_45C.cir": "f4c006da662ab56c1e0f03f3018ec16b78e8585145909bbde4d2a412b59fa0f6",
+        "decks/ts_open.cir": "d501790bde768351f19e47c017e78f49c7373a7f2c06a0f58f460dc256f8c634",
+        "decks/ts_short.cir": "43408335e256acccc15b5301ccb53c78aaca7fcb01664d9d36fe6113127c10e0",
+        "decks/usb_low_host_lossy.cir": "8f5522e60d9d74e3aa9da8d89ff4a5befdf00c4281f6a76f74afe2e157a7a739",
+        "decks/usb_play_charge.cir": "b83ed2aff4abcbd3e8c66f2adab7d71492e024152125a95821187071c1d63540",
+        "decks/usb_unconfigured_host.cir": "026472ab70b22f8bddafb917a9493c4b4b2cafae1035b5df80b4bba6d1911616",
+        "decks/usbdata_heavy_fixture.cir": "894ff1c19fb779d6ecbfcac868ec600cda9fa66235feeb1a0677ff4f11e0bd21",
+        "decks/usbdata_nominal.cir": "36fbc566ce0d29d345b19f80ab1b1d9ce9c918ec773b72c0ee20605f88cf80f2"
+      },
+      "scalar_rows": 55
+    },
+    "loads": {
+      "cases": 10,
+      "deck_sha256": {
+        "simulation/audio_gain_boundary.cir": "7fe427268b9beee58cf686d83e2f21d52a9f9c388f028ef408c4697e41d2e58e",
+        "simulation/audio_low_impedance.cir": "e48712fe01f7d2a1185dd21eb3e133b97bd22bb408ff6887f6a524ff1d647f65",
+        "simulation/audio_nominal.cir": "9d3b25464c879a86a7f31b9cf1c0de9aabbf20e6565d59a10aa697cbbbf01f65",
+        "simulation/bus_driver_encoder_100p.cir": "2ba56c2a439c98088d274c45158ea8c9dfedee2b42bc4aa39a79da9e841b99b2",
+        "simulation/bus_driver_encoder_200p.cir": "6c67cc7dd0de21b937ea8f8944560f017922506ef2e51a83110216f5abd82a0a",
+        "simulation/bus_optional_4k7_200p.cir": "81bffb8272ab409351bb88f946dd3521edac9b3cb4cf5393239b387c45cc07ad",
+        "simulation/bus_unexpected_820ohm_100p.cir": "cace398f8204e92a21d1f8999d7b92929cd9f32e3b0b54e41a95ca49f6acb9c0",
+        "simulation/motor_high_DCR_stall.cir": "7e65aba3e63cb8a3d6b0530e2178c261119f815612022157a1edc1d1b73ee33d",
+        "simulation/motor_low_DCR_stall.cir": "3db1c9204294266eb6159c5900a4cb0dc041c1306f68fd13917097f9148a83ab",
+        "simulation/motor_nominal_running_equivalent.cir": "d138efe46370f46763dbdc77aee960c9d99a2658530d6d223670d769667bf4fa"
+      },
+      "scalar_rows": 17
+    },
+    "indicator": {
+      "cases": 5,
+      "deck_sha256": {
+        "simulation/bright.cir": "c1477f0ebec9cd0f43a20296382e69a5b3aaa1cb378eee89702cf5ecf2cc6b2f",
+        "simulation/dim.cir": "152c23e376726cd9e629d1607e142053b2b8136f7bb3fdee0585631bbd2ea53f",
+        "simulation/nominal.cir": "752883fc81f13f2914ecbb6a19f15e6bba202b6055260bfb83c8f30c5463ce72",
+        "simulation/short_after_R.cir": "d8acc623d214b07fcaac61267b7d870147c895756f7d65ef4d5e0e87cf3f1bd9",
+        "simulation/unplugged.cir": "b0f38908d2baeda75f0caabc53f69c00169a0d9e2b99260c39e8151ae430f256"
+      },
+      "scalar_rows": 5
+    },
+    "brake": {
+      "cases": 3,
+      "deck_sha256": {
+        "brake-nominal.cir": "8c3f2ac26fe45dbd250fdaa338e9f77c7f899d3683e99121397f630a518b627e",
+        "brake-peak_cold.cir": "ddaa9ab1072c12967bfb1abaf6a39a27d7af01f51c4e347dfba17110bd0db251",
+        "brake-slow_release.cir": "68523a7c4312b0cdaad4d4b866738785b1d43864eb372695258af4fdb21152ca"
+      },
+      "scalar_rows": 3
+    }
+  },
+  "candidate_cases": 85,
+  "candidate_metrics": {
+    "WITHIN": 140,
+    "OUTSIDE": 5,
+    "RECORD": 25
+  },
+  "evidence_sha256": "c497d1071ac416df924ad48367692dc0de0653edcf1b28306edb9f7497d96b58"
+}

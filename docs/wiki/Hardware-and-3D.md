@@ -4,7 +4,7 @@
 
 ## Current print and inspection checkpoints
 
-The R0011 print puts the two dovetail lips and their closed stop on the bed. Evaluate it with inert gauges. The R0010 dressed STEP includes the lower service cover. Bench and powered checks remain open. [R0011 print files](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-receiver-fit-print) · [Receiver toolpaths](../../hardware/mechanical/TW-A-0001-R0011/QA/receiver-toolpaths.png) · [R0010 inspection STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0010-cover-checkpoint) · [Hardware tracker](../../quality/hardware-gate.md)
+The R0011 print puts the two dovetail lips and their closed stop on the bed. Evaluate it with inert gauges. The R0010 dressed STEP includes the lower service cover. Bench and powered checks remain open. [R0011 print files](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-receiver-toolpaths-2) · [Receiver toolpaths](../../hardware/mechanical/TW-A-0001-R0011/QA/receiver-toolpaths.png) · [R0010 inspection STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0010-cover-checkpoint) · [Hardware tracker](../../quality/hardware-gate.md)
 
 ## Historical R0009 harness review
 

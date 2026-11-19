@@ -8,6 +8,10 @@ The last covered-housing estimate was $112.06 in allocated materials and $146.65
 
 The proposed haptic connector uses one Würth header ($1.15), one housing ($0.18), and four factory-crimped leads ($2.50 each), totaling **$11.33** before freight and tax. This is a replacement subassembly. The whole-unit delta also depends on removed wiring, assembly labor and electronics still under review. Distributor availability needs confirmation at checkout. [Exact part numbers, quantities and US prices](../../sourcing/production-intent/R0004-haptic-terminal-candidate.csv)
 
+## Electrical procurement candidates
+
+[Exact part-number sourcing index](../../sourcing/production-intent/R0004-candidate-part-links.csv) · [Candidate quantities, installation and engineering sources](../../hardware/electronics/integration-r0004/bom-delta.csv). Selection and layout of the remaining controller logic are open. A production unit quote depends on the completed board.
+
 ## One fully equipped R0009 unit
 
 The full prototype includes the 3.5-inch capacitive display and controller, a protected 1,200 mAh pack, the reel, detachable rod, speaker, motor and driver, three status lights, a data cable, packaging and a 32 GB card for the full artwork library. The optional rechargeable RTC backup cell still needs a qualified part and clearance check.
