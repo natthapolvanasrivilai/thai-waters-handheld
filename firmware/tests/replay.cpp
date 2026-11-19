@@ -9,7 +9,7 @@ static void check(bool test,const char* name){
   std::printf("PASS %s\n",name);
 }
 static void bite(Game& g) {
- g.tick(16,true,false,0);g.tick(650,false,false,0);g.tick(g.waitMs,false,false,0);
+ g.tick(16,true,false,0);g.tick(creek::castDurationMs,false,false,0);g.tick(g.waitMs,false,false,0);
 }
 int main(){
  Calibration c{{0,0,1},{0,.6f,.8f}};
@@ -36,7 +36,7 @@ int main(){
  check(g.phase==Phase::Landed && g.catches==1,"wrapped encoder trace lands one fish");
  check(g.fileCatch(),"tap files the catch");g.tick(800,false,false,0);
  bite(g);g.tick(1451,false,true,0);check(g.phase==Phase::Lost && g.reason==Reason::Late,"expired window beats late lift");
- g.tick(16,true,false,0);g.tick(650,false,false,0);g.tick(30,false,true,0);
+ g.tick(16,true,false,0);g.tick(creek::castDurationMs,false,false,0);g.tick(30,false,true,0);
  check(g.reason==Reason::Early && g.phase==Phase::Lost,"early strike and recast");
  bite(g);g.tick(1,false,true,0);float line=g.line;g.tick(16,false,false,-.25f);
  check(g.line>line,"wrong-way winding pays line back");

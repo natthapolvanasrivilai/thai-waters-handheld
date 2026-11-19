@@ -1,3 +1,4 @@
+const {showControl}=require('./menu-controls.cjs');
 const {chromium,webkit,devices}=require('playwright-core');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 
@@ -60,15 +61,15 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
   await p.locator('#openMenu').tap();await p.locator('[data-to=sound]').tap();
   const resumeMode=await p.evaluate(()=>navigator.audioSession?.type);
   if(graph&&resumeMode)assert.equal(resumeMode,'playback');
-  await p.locator('#testSound').tap();
-  assert.match(await p.locator('#rumbleStatus').innerText(),/Safari/);
+  await showControl(p,'#testSound');await p.locator('#testSound').tap();
+  await showControl(p,'#rumbleStatus');assert.match(await p.locator('#rumbleStatus').innerText(),/Safari/);
   assert.equal(await p.locator('#testPhoneMotor').isVisible(),false);
   if(await p.evaluate(()=> 'switch' in document.createElement('input'))){
-   await p.locator('#iosSwitch').tap();assert.equal(await p.locator('#cue').inputValue(),'Light');
-   await p.locator('#iosSwitch').tap();assert.equal(await p.locator('#cue').inputValue(),'Light + tone');
+   await showControl(p,'#iosSwitch');await p.locator('#iosSwitch').tap();assert.equal(await p.locator('#cue').inputValue(),'Light');
+   await showControl(p,'#iosSwitch');await p.locator('#iosSwitch').tap();assert.equal(await p.locator('#cue').inputValue(),'Light + tone');
   }
   if(graph){
-   await p.evaluate(async()=>{await audio.suspend();});await p.locator('#testSound').tap();
+   await p.evaluate(async()=>{await audio.suspend();});await showControl(p,'#testSound');await p.locator('#testSound').tap();
    await p.waitForFunction(()=>audio.state==='running');
   }
   await p.evaluate(()=>document.fonts.ready);

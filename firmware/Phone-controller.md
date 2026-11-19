@@ -1,6 +1,8 @@
-# Thai Waters Rod Â· controller preview 0.9.1
+# Thai Waters Rod Â· controller preview 0.9.2
 
 The handheld sends motion and reel input to the game running in Safari as a Bluetooth Low Energy keyboard. This USB preview targets the Waveshare 31137 ESP32-S3-Touch-LCD-3.5B, the Rev F/R0003 sensor wiring, 16 MB flash and 8 MB OPI PSRAM. Real board and iPhone testing remains open. [Apple accessory pairing](https://support.apple.com/en-us/105108) Â· [Bluetooth HID over GATT](https://www.bluetooth.com/specifications/specs/hid-over-gatt-profile-1-0/) Â· [Espressif 3.3.10 BLE library](https://github.com/espressif/arduino-esp32/tree/3.3.10/libraries/BLE)
+
+This build uses 2,807,082 of 3,145,728 application bytes on the target board, leaving 338,646 bytes in the application slot. The painted additions occupy 726,765 packed pixel bytes, plus their palette and index tables. The application contains 456 individual portraits. Existing unillustrated catalog records remain available with their catch history.
 
 ## Pair and play
 

@@ -122,8 +122,8 @@ inline constexpr StockIndex<siteCount> byWater(0,waterOf);
 inline constexpr StockIndex<destinationCount+siteCount> bySpot(originalSpecies,[](int id){
  return catalog[id].spot==255?destinationCount+waterOf(id):int(catalog[id].spot);
 });
-inline int stockSize(int site){return byWater.begin[site+1]-byWater.begin[site];}
-inline int stockId(int site,int slot){return byWater.ids[byWater.begin[site]+slot];}
+inline int stockSize(int site){return site==siteCount?fishCount:byWater.begin[site+1]-byWater.begin[site];}
+inline int stockId(int site,int slot){return site==siteCount?slot:byWater.ids[byWater.begin[site]+slot];}
 inline int originalStockSize(int site){return site==1||site==3?11:10;}
 inline int encounterWeight(int id,int time){
  if(id==prawn){constexpr int w[]={0,0,8,3};return w[time];}
@@ -159,7 +159,7 @@ struct Journal {
  int discovered(int start=0,int end=fishCount) const {int n=0;for(int i=start;i<end;i++)n+=entries[i].count>0;return n;}
  bool visible(int id,int place,BookFilter which) const {
    if(which==BookFilter::Caught)return entries[id].count>0;
-   return which==BookFilter::All || catalog[id].spot==255 || catalog[id].spot==place;
+   return which==BookFilter::All || (waterOf(id)==destinations[place].pool && (catalog[id].spot==255 || catalog[id].spot==place));
  }
  int waterCount(int site,int place,BookFilter which) const {
    int found=0;

@@ -1,3 +1,4 @@
+const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {pathToFileURL}=require('node:url');
 const {webkit,chromium}=require('playwright-core');
@@ -36,7 +37,7 @@ const {webkit,chromium}=require('playwright-core');
  await shot('Thai-Waters-collection');await page.locator('#bookSearch').fill('prawn');await page.locator('#species-40').tap();
  const row=page.locator('.catch-log');assert.equal(await row.count(),1);assert.equal(await row.locator('svg').count(),8);assert.match(await row.innerText(),/18/);
  await shot('Thai-Waters-catch-history');await page.locator('#back').tap();assert(await page.locator('#species-40').isVisible());
- await page.locator('#back').tap();await page.locator('[data-to=sensors]').tap();await page.locator('#handheldEnable').check();await page.keyboard.press('v');await page.locator('#resume').tap();await page.keyboard.press('c');await page.waitForFunction(()=>g.state()===1||g.state()===2);
+ await page.locator('#back').tap();await page.locator('[data-to=sensors]').tap();await showControl(page,'#handheldEnable');await page.locator('#handheldEnable').check();await page.keyboard.press('v');await page.locator('#resume').tap();await page.keyboard.press('c');await page.waitForFunction(()=>g.state()===1||g.state()===2);
  assert.deepEqual(errors,[]);console.log('PASS three Thai location typefaces, 480×320 gallery, confirmed catch across reload, eight history fields, full-width HUD, reduced-motion prompt, and controller cast.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

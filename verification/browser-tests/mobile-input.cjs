@@ -1,3 +1,4 @@
+const {showControl}=require('./menu-controls.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const {pathToFileURL} = require('node:url');
@@ -40,8 +41,8 @@ const T = require('three');
   await orientation(0,0,25);await orientation(-30,0,18);await orientation(0,0,19);
   assert(await page.evaluate(()=>g.state()===1||g.state()===2),'After rotation the new axis must cast without opening settings.');
   await page.locator('#openMenu').tap();await page.locator('[data-to=sensors]').tap();
-  await page.locator('#wristReel').check();await page.locator('#resume').tap();
-  await page.evaluate(()=>{g.travel(0);g.setTechnique(1);g.advance(16,1,0,0);g.advance(651,0,0,0);});
+  await showControl(page,'#wristReel');await page.locator('#wristReel').check();await page.locator('#resume').tap();
+  await page.evaluate(()=>{g.travel(0);g.setTechnique(1);g.advance(16,1,0,0);g.advance(g.flightMs(),0,0,0);});
   await orientation(0,0,15);await orientation(-32,0,18);await orientation(0,0,16);
   assert.equal(await page.evaluate(()=>wristTurns),0,'A rod lift cannot wind line.');
   await orientation(0,34,18);await orientation(0,34,11);

@@ -16,7 +16,7 @@ const fixture = (seed, kind, coords) => {
   assert.equal(g.featureAt(x, y), kind);
   g.setAim(x, y); g.advance(16, 1, 0, 0);
   assert.equal(g.state(), 1);
-  g.advance(650, 0, 0, 0);
+  g.advance(g.flightMs(), 0, 0, 0);
 };
 for (const name of ['state','caught','advance','samples','rodLoad','rumbleEvent','setAim','aimX','aimY','zoneX','zoneY','zoneRX','zoneRY','featureAt','contact','junkId','releaseProgress','abandonCast']) {
   assert.equal(typeof g[name], 'function', name);
@@ -42,7 +42,7 @@ for(const [kind,seed] of [[1,2],[2,5]]){
   fixture(seed,kind);const x=g.zoneX(kind),y=g.zoneY(kind);
   for(let i=0;i<5;i++){
     g.abandonCast();g.place(0,i%4);assert.equal(g.zoneX(kind),x);assert.equal(g.zoneY(kind),y);
-    g.setAim(x,y);g.advance(16,1,0,0);g.advance(650,0,0,0);assert.equal(g.contact(),kind);
+    g.setAim(x,y);g.advance(16,1,0,0);g.advance(g.flightMs(),0,0,0);assert.equal(g.contact(),kind);
   }
   g.abandonCast();g.place(16,0);g.place(0,0);
   assert.notDeepEqual([g.zoneX(kind),g.zoneY(kind)],[x,y]);
@@ -58,7 +58,7 @@ for (const [seed, id] of [[16,0],[42,1],[35,2],[10,3]]) {
   assert.equal(g.state(), 9); assert.equal(g.releaseProgress(), 1); assert.equal(g.rumbleEvent(3100,1), 1);
   assert.deepEqual([g.caught(0),g.best(0),g.pts(),g.catches()], book);
   assert.equal(g.fresh(), 0);assert.equal(g.award(),0);
-  g.setAim(.50,.67);g.advance(15,1,0,0);g.advance(650,0,0,0);assert.equal(g.state(),2);
+  g.setAim(.50,.67);g.advance(15,1,0,0);g.advance(g.flightMs(),0,0,0);assert.equal(g.state(),2);
 }
 fixture(5, 3); assert.equal(g.state(), 2);  // Present debris can miss the hook.
 g.initialize(1);g.place(0,0);

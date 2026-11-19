@@ -19,7 +19,7 @@ def main():
         ("flash/boot_app0.bin", 0xE000, args.boot_app0),
         ("flash/ThaiWaters.bin", 0x10000, args.build / "WillowCreek.ino.bin"),
     ]
-    manifest = {"version": "0.9.1-controller-preview", "chip": "esp32s3",
+    manifest = {"version": "0.9.2-controller-preview", "chip": "esp32s3",
                 "board": "Waveshare 31137, R0003, 16 MB flash and OPI PSRAM",
                 "arduino_esp32": "3.3.10", "distribution": "private USB preview",
                 "images": [], "source_sha256": {}}
@@ -56,6 +56,8 @@ def main():
     for name in ("Interfaces.md", "README.md", "Phone-controller.md"):
         package["firmware/" + name] = (root / name).read_bytes()
     # Use the exact board libraries and font-license package shipped with baseline 0.9.
+    for name in ('field-evidence.md','thai-field-datasets.csv','thai-field-evidence.csv'):
+        package['credits/'+name]=(root.parent/'game/content'/name).read_bytes()
     with ZipFile(args.dependencies) as deps:
         for name in deps.namelist():
             if name.startswith(("libraries/", "licenses/", "font-source/")) and not name.endswith("/"):

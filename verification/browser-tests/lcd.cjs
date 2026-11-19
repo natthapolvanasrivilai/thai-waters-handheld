@@ -1,3 +1,4 @@
+const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict');
 const {chromium}=require('playwright-core');
 const {pathToFileURL}=require('node:url');
@@ -35,7 +36,7 @@ async function raster(page) {
   const main=await raster(p);
   assert.deepEqual(main.size,[480,320]);assert.equal(main.hitOpacity,'0');
   assert.equal(main.transparent,0,'sky visible between HUD labels');
-  assert(main.header>40&&main.action>200,'header and Cast painted into native texture');
+  assert(main.header>40&&main.action===0,'visible header and clear water for direct casting');
   const power=await p.evaluate(()=>{
    const plane=document.createElement('canvas');plane.width=480;plane.height=320;
    const ink=plane.getContext('2d');
@@ -56,7 +57,7 @@ async function raster(page) {
    assert(await p.evaluate(()=>{
     const shell=$('lcdUI').getBoundingClientRect(),dialog=$('menu').getBoundingClientRect();
     return $('menu').closest('#product')&&dialog.top>=shell.top&&dialog.right<=shell.right+1
-      &&dialog.bottom<=shell.bottom+1&&($('menu').dataset.page==='book'?dialog.width>=shell.width*.99:dialog.left>shell.left+shell.width*.43&&dialog.width<shell.width*.55);
+      &&dialog.bottom<=shell.bottom+1&&($('menu').dataset.page==='book'?dialog.width>=shell.width*.99:dialog.left>shell.left+shell.width*.12&&dialog.width<shell.width*.85);
    }),'Route left the modeled screen: '+route);
    const drawer=(await raster(p)).drawer;
    assert(drawer.visible>50000,'missing drawer pixels on '+route);rasterPages.add(drawer.hash);
@@ -66,7 +67,7 @@ async function raster(page) {
     await p.locator('#back').click();
    }
    if(route==='sound'){
-    await p.locator('#rumbleLevel + button').click();
+    await showControl(p,'#rumbleLevel + button');await p.locator('#rumbleLevel + button').click();
     assert.notEqual((await raster(p)).drawer.hash,drawer.hash,'choice picker must replace the menu pixels');
     await p.getByRole('option',{name:'High',exact:true}).click();
     assert.equal(await p.locator('#rumbleLevel').inputValue(),await p.locator('#rumbleLevel option').last().getAttribute('value')??'High');
@@ -87,7 +88,7 @@ async function raster(page) {
   });
   assert(dims.height>=380&&dims.overlap<1&&dims.scroll<2,JSON.stringify(dims));
   if(process.env.PHONE_OVERLAY_PNG)await phone.evaluate(()=>{chooseSpot(0,0);g.restoreEntry(0,1,21);refresh();});
-  assert((await raster(phone)).action>200,'phone Cast is rendered inside its framebuffer');
+  assert((await raster(phone)).action===0,'phone water is clear for direct casting');
   await phone.locator('#openMenu').tap();
   if(process.env.PHONE_MENU_PNG)await phone.locator('#flatStage').screenshot({path:process.env.PHONE_MENU_PNG});
   await phone.locator('[data-to="book"]').tap();
@@ -95,6 +96,6 @@ async function raster(page) {
   if(process.env.PHONE_OVERLAY_PNG)await phone.locator('#flatStage').screenshot({path:process.env.PHONE_OVERLAY_PNG});await phone.locator('#resume').tap();
   await phone.setViewportSize({width:390,height:844});
   await phone.waitForFunction(()=>!document.documentElement.classList.contains('immersive'));
-  console.log('PASS 480x320 framebuffer, transparent HUD, Cast, all six menu rasters, journal scrolling, picker controls, projected hits and phone rotation.');
+  console.log('PASS 480x320 framebuffer, transparent HUD, direct casting, all six menu rasters, journal pages, picker controls, projected hits and phone rotation.');
  }finally{await browser.close();}
 })().catch(err=>{console.error(err);process.exitCode=1;});

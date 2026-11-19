@@ -1,6 +1,7 @@
 #pragma once
 #include "Sound.h"
 #include "Score.h"
+#include "FishingPcm.h"
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
@@ -15,6 +16,23 @@ class CreekSynth {
   unsigned landingNote=0,noteAge=0,noteLength=0;
   uint32_t landingPhase=0,landingStep=0;
 
+  struct FoleyVoice{const int8_t* samples=nullptr;unsigned left=0;};
+  FoleyVoice foley[5]{};
+  void playFoley(uint8_t edges){
+    using namespace fishingpcm;
+    if(edges&16){for(auto &v:foley)v={};edges=16;}
+    const FoleyVoice clips[]={{Air,sizeof(Air)},{Spool,sizeof(Spool)},{Splash,sizeof(Splash)},{Pull,sizeof(Pull)},{Snap,sizeof(Snap)}};
+    for(unsigned i=0;i<5;i++)if(edges&(1u<<i))foley[i]=clips[i];
+  }
+  int foleySample(const SoundSettings& s){
+    int sum=0;
+    for(int i=0;i<5;i++){auto &v=foley[i];if(!v.left)continue;
+      const int gain=i==1?s.reelVolume:s.cueVolume;
+      if(!gain){v.left=0;continue;}
+      sum+=*v.samples++*gain*(i==3?13:i==4?33:24);--v.left;
+    }
+    return sum;
+  }
   void nextLandingNote(){
     // The opening identifies rarity. The cadence identifies the journal reward.
     static constexpr uint8_t opening[][6]={{0,2},{1,3},{2,3,5},{3,2,4,5},{0,2,3,5,7},{7,4,6,3,5,8}};
@@ -43,8 +61,10 @@ class CreekSynth {
     return sample*int(level)/2;
   }
 public:
-  void begin(){landing={};for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);}
-  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={}){
+  void clearFoley(){for(auto &v:foley)v={};}
+  void begin(){landing={};for(auto &v:foley)v={};for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);}
+  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0){
+    if(fishingSounds)playFoley(fishingSounds);
     if(s.cue==1 || !s.cueVolume)landing={};
     else if(reveal.active()){landing=reveal;landingNote=0;nextLandingNote();}
     if(reelClick && !trigger && s.reelVolume){
@@ -71,6 +91,7 @@ public:
         o.age++;o.phase+=o.step;
       }
       int pcm=music*s.volume/(cueAge<6200||landing.active()?12:4);
+      pcm+=foleySample(s);
       if(landing.active())pcm+=landingSample(s.cueVolume);
       if(toothAge<144){
         // A dry pawl impact excites a short metallic ring at 16 kHz.

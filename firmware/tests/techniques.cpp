@@ -6,7 +6,7 @@ using namespace creek;
 
 static void castInto(Game& game){
   game.tick(20,true,false,0);
-  game.tick(650,false,false,0);
+  game.tick(creek::castDurationMs,false,false,0);
   assert(game.phase==Phase::Waiting);
 }
 

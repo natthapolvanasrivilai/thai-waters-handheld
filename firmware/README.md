@@ -1,6 +1,6 @@
 # Thai Waters · Firmware 0.9
 
-The **0.9.1 USB controller preview** lets the physical rod and reel drive the phone game through a paired Bluetooth keyboard connection. [Pairing, USB installation and bench checks](Phone-controller.md)
+The **0.9.2 USB controller preview** lets the physical rod and reel drive the phone game through a paired Bluetooth keyboard connection. [Pairing, USB installation and bench checks](Phone-controller.md)
 
 For Waveshare ESP32-S3-Touch-LCD-3.5B (31137), QMI8658, ES8311 and a right-side AS5600 reel at 0x36. The optional DRV2605L at 0x5A adds haptics. The game runs without the haptic module. The bench guide in this folder includes wiring, optional BOM and candidate placement.
 
@@ -25,7 +25,7 @@ python -m esptool --chip esp32s3 --port COM7 write-flash --flash-mode dio --flas
 
 Hold BOOT, tap RESET, then release BOOT if the board needs download mode. Boot diagnostics are available at 115200 baud. On first boot with a new board, follow the two-pose calibration. A v0.1 installation with saved poses and sound preferences reuses them. Gameplay catches in v0.1 were session-only. A fresh installation starts a persistent field book.
 
-Open Menu from the game. Select Fishing spots and use the arrows to browse 117 destinations. Select a spot and time, then Fish here. Live follows the Bangkok clock. The rod follows calibrated tilt continuously. Raise and sweep to cast, lift on the bite and ease off during runs. The gripped right-side AS5600 drives the reel. The catch screen shows a white-edged sprite, rarity, length, game-derived weight and fictional origin. The Fish collection records 2,168 entries, including a river prawn and eight fictional species. Select bait and depth in the Rod workshop. A change of destination plays a short approach to the water before the fishing controls return. Visit the Rod workshop to fit upgrades, refund points or choose a finish. The 0.2 journal and ranks migrate on first successful save. Existing 0.1 poses and sound settings can be reused.
+Open Menu from the game. Select Fishing spots and use the arrows to browse 117 destinations. Select a spot and time, then Fish here. Live follows the Bangkok clock. The rod follows calibrated tilt continuously. Raise and sweep to cast, lift on the bite and ease off during runs. The gripped right-side AS5600 drives the reel. The catch screen shows a white-edged sprite, rarity, length, game-derived weight and fictional origin. The Fish collection records 2,545 entries, including a river prawn and eight fictional species. Select bait and depth in the Rod workshop. A change of destination plays a short approach to the water before the fishing controls return. Visit the Rod workshop to fit upgrades, refund points or choose a finish. The 0.2 journal and ranks migrate on first successful save. Existing 0.1 poses and sound settings can be reused.
 
 Menu → Wi-Fi + clock provides phone provisioning, live time, an owner-configured signed release feed, and LAN shared events. See Interfaces.md and Bench-guide.md. The desktop/mobile practice game and local event host are in the private project repository. The user-facing simulator uses the actual Rev E external CAD, a live LCD and a folding, mouse-driven right-side crank.
 

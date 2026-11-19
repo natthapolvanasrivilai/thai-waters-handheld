@@ -9,7 +9,37 @@
  menu.append(picker);
  const heading=picker.querySelector('h2'),list=picker.querySelector('.choice-list');
  const triggers=new Map();
- let current=null;
+ let current=null,offset=0;
+ const pageSize=6,nav=picker.querySelector('.menubar');
+ const prev=document.createElement('button'),next=document.createElement('button'),number=document.createElement('small');
+ for(const [b,icon,dir] of [[prev,'back',-1],[next,'next',1]]){
+  b.type='button';b.dataset.navicon=icon;b.onclick=()=>showOptions(offset+dir);nav.append(b);
+ }
+ nav.insertBefore(number,next);
+ function showOptions(page,focusIndex){
+  if(!current)return;
+  const select=current,count=Math.ceil(select.options.length/pageSize);
+  offset=Math.max(0,Math.min(page,count-1));prev.hidden=next.hidden=number.hidden=count<2;
+  prev.disabled=offset===0;next.disabled=offset===count-1;
+  prev.setAttribute('aria-label',L('Previous'));next.setAttribute('aria-label',L('Next'));
+  number.textContent=(offset+1)+'/'+count;
+  const options=document.createDocumentFragment();
+  for(let index=offset*pageSize;index<Math.min(select.options.length,(offset+1)*pageSize);index++){
+   const option=select.options[index];
+   const row=document.createElement('button');
+   row.type='button';row.textContent=option.text;row.dataset.index=String(index);
+   if(select.id==='hookBait'){
+    const icon=document.createElement('canvas');icon.width=48;icon.height=30;icon.setAttribute('aria-hidden','true');
+    const label=document.createElement('span');label.textContent=index===2?L('Rum rice bran'):option.text;
+    row.classList.add('bait-option');row.replaceChildren(icon,label);drawBait(icon,index);
+   }
+   row.setAttribute('role','option');row.setAttribute('aria-selected',String(option.selected));
+   row.disabled=option.disabled;row.tabIndex=option.selected?0:-1;options.append(row);
+  }
+  list.replaceChildren(options);
+  const target=list.querySelector('[data-index="'+focusIndex+'"]')||list.querySelector('[aria-selected=true]')||list.firstElementChild;
+  if(target){target.tabIndex=0;target.focus({preventScroll:true});}
+ }
 
  function sync(select){
   const button=triggers.get(select);
@@ -30,21 +60,7 @@
   if(trigger.disabled)return;
   current=select;picker.dataset.field=select.id;heading.textContent=trigger.dataset.label;
   trigger.setAttribute('aria-expanded','true');
-  const options=document.createDocumentFragment();
-  for(const [index,option] of [...select.options].entries()){
-   const row=document.createElement('button');
-   row.type='button';row.textContent=option.text;row.dataset.index=String(index);
-   if(select.id==='hookBait'){
-    const icon=document.createElement('canvas');icon.width=48;icon.height=30;icon.setAttribute('aria-hidden','true');
-    const label=document.createElement('span');label.textContent=index===2?L('Rum rice bran'):option.text;
-    row.classList.add('bait-option');row.replaceChildren(icon,label);drawBait(icon,index);
-   }
-   row.setAttribute('role','option');row.setAttribute('aria-selected',String(option.selected));
-   row.disabled=option.disabled;row.tabIndex=option.selected?0:-1;options.append(row);
-  }
-  list.replaceChildren(options);picker.hidden=false;
-  const selected=list.querySelector('[aria-selected=true]')||list.firstElementChild;
-  if(selected){selected.focus({preventScroll:true});list.scrollTop=Math.max(0,selected.offsetTop-list.offsetTop-6);}
+  picker.hidden=false;showOptions(Math.floor(select.selectedIndex/pageSize),select.selectedIndex);
  }
  list.onclick=e=>{
   const row=e.target.closest('[role=option]');
@@ -61,17 +77,14 @@
   if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();closePicker();return;}
   const rows=[...list.querySelectorAll('button:enabled')],at=rows.indexOf(document.activeElement);
   if(e.key==='Tab'){
-   const back=picker.querySelector('.menubar button'),choice=rows.find(x=>x.tabIndex===0)||rows[0];
-   e.preventDefault();(document.activeElement===back?choice:back)?.focus();return;
+   const targets=[...picker.querySelectorAll('button:not(:disabled):not([hidden])')].filter(b=>b.closest('.menubar')||b.tabIndex===0);
+   const at=targets.indexOf(document.activeElement);e.preventDefault();targets[(at+(e.shiftKey?-1:1)+targets.length)%targets.length]?.focus();return;
   }
-  if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key)||!rows.length)return;
+  if(!['ArrowDown','ArrowUp','Home','End','PageDown','PageUp'].includes(e.key)||!rows.length)return;
   e.preventDefault();e.stopImmediatePropagation();
-  const index=e.key==='Home'?0:e.key==='End'?rows.length-1:Math.max(0,Math.min(rows.length-1,at+(e.key==='ArrowDown'?1:-1)));
-  for(const row of rows)row.tabIndex=-1;
-  rows[index].tabIndex=0;rows[index].focus({preventScroll:true});
-  const row=rows[index],top=row.offsetTop-list.offsetTop;
-  if(top<list.scrollTop)list.scrollTop=top;
-  else if(top+row.offsetHeight>list.scrollTop+list.clientHeight)list.scrollTop=top+row.offsetHeight-list.clientHeight;
+  const index=Number(rows[at]?.dataset.index??offset*pageSize);
+  const dest=e.key==='Home'?0:e.key==='End'?current.options.length-1:index+({ArrowDown:1,ArrowUp:-1,PageDown:pageSize,PageUp:-pageSize}[e.key]);
+  const target=Math.max(0,Math.min(current.options.length-1,dest));showOptions(Math.floor(target/pageSize),target);
  },true);
  menu.addEventListener('close',()=>closePicker(false));
  for(const select of menu.querySelectorAll('label > select')){

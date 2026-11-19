@@ -14,7 +14,7 @@ static Game atZone(unsigned seed,int kind,int place=0,int period=0){
   assert(g.phase==Phase::Flight);
   g.setAim(.5f,.58f);
   assert(g.aimX==z.x && g.aimY==z.y);
-  g.tick(650,false,false,0);
+  g.tick(creek::castDurationMs,false,false,0);
   return g;
 }
 int main(){
@@ -48,11 +48,11 @@ int main(){
     for(int i=0;i<6;i++){
       repeated.abandonCast();
       repeated.timeSlot=i%4;
-      repeated.setAim(spot.x,spot.y);repeated.tick(16,true,false,0);repeated.tick(650,false,false,0);
+      repeated.setAim(spot.x,spot.y);repeated.tick(16,true,false,0);repeated.tick(creek::castDurationMs,false,false,0);
       assert(repeated.phase==Phase::Snag && repeated.contact==kind && repeated.waterLayout()==original);
     }
     repeated.abandonCast();repeated.setAim(.5f,.67f);
-    repeated.tick(16,true,false,0);repeated.tick(650,false,false,0);
+    repeated.tick(16,true,false,0);repeated.tick(creek::castDurationMs,false,false,0);
     assert(repeated.phase==Phase::Waiting);
     repeated.lose(Reason::Early);repeated.updateWeather(8,20211);
     assert(repeated.waterLayout()!=original);

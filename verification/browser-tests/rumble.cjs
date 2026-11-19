@@ -1,3 +1,4 @@
+const {showControl}=require('./menu-controls.cjs');
 const {chromium}=require('playwright-core');
 const {pathToFileURL}=require('node:url');
 const path=require('node:path');
@@ -22,9 +23,9 @@ const assert=require('node:assert/strict');
       await page.locator('[data-to=sound]').tap();
     }
     await openMix();
-    const sample=type=>page.locator('[data-pulse="'+type+'"]').tap();
-    await page.selectOption('#rumbleLevel','Off');await sample(4);assert.deepEqual(await page.evaluate(()=>pulses),[],'Off suppresses physical previews');
-    await page.locator('#testPhoneMotor').tap();
+    const sample=async type=>{const el=await showControl(page,'[data-pulse="'+type+'"]');await el.tap();};
+    await showControl(page,'#rumbleLevel');await page.selectOption('#rumbleLevel','Off');await sample(4);assert.deepEqual(await page.evaluate(()=>pulses),[],'Off suppresses physical previews');
+    await showControl(page,'#testPhoneMotor');await page.locator('#testPhoneMotor').tap();
     assert.equal(await page.locator('#rumbleLevel').inputValue(),'Medium');
     assert.deepEqual(await page.evaluate(()=>pulses.at(-1)),[46,45,46]);
     await page.evaluate(()=>pulses.length=0);
@@ -42,7 +43,7 @@ const assert=require('node:assert/strict');
         if(g.species()===41)break;
       }
       if(g.species()!==41)throw Error('fixture could not draw ray');
-      g.advance(700,0,0,0);g.advance(6000,0,0,0);g.advance(10,0,1,0);
+      g.advance(g.flightMs(),0,0,0);g.advance(6000,0,0,0);g.advance(10,0,1,0);
     });
     await page.waitForFunction(()=>pulses.some(p=>Array.isArray(p)&&p[0]===195));
     await openMix();assert.equal(await page.evaluate(()=>pulses.at(-1)),0);

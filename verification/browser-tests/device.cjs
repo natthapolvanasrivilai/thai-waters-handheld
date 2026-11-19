@@ -13,7 +13,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   const camera=new T.OrthographicCamera(-half*aspect,half*aspect,half,-half,.1,900);camera.up.set(0,1,0);camera.position.set(132,46,242);camera.lookAt(7,0,12);camera.updateMatrixWorld(true);
   function xy(v){const p=v.clone().project(camera);return [b.x+(p.x+1)*w/2,b.y+(1-p.y)*h/2];}
   await page.mouse.click(...xy(new T.Vector3(0,0,28.53)));await page.waitForFunction(()=>g.state()===1||g.state()===2);
-  await page.evaluate(()=>{if(g.state()===1)g.advance(650,0,0,0);g.advance(7500,0,0,0);g.advance(25,0,1,0);});assert.equal(await page.evaluate(()=>g.state()),4);
+  await page.evaluate(()=>{if(g.state()===1)g.advance(g.flightMs(),0,0,0);g.advance(7500,0,0,0);g.advance(25,0,1,0);});assert.equal(await page.evaluate(()=>g.state()),4);
   // A running fish takes line independently of the crank. Measure signed
   // encoder turns at the input boundary, before fight physics modifies line.
   await page.evaluate(()=>{

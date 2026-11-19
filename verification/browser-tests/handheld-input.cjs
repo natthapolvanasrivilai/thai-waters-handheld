@@ -1,3 +1,4 @@
+const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict');
 const path=require('node:path');
 const {pathToFileURL}=require('node:url');
@@ -15,7 +16,7 @@ async function verify(browser,mobile){
   assert.equal(await page.evaluate(()=>g.state()),0,'No game events before opt-in');
   await page.locator('#openMenu').click();await page.locator('[data-to=sensors]').click();
   const enable=page.locator('#handheldEnable'),status=page.locator('#handheldStatus');
-  await enable.check();assert.match(await status.textContent(),/Waiting/);
+  await showControl(page,'#handheldEnable');await enable.check();assert.match(await status.textContent(),/Waiting/);
   await press('o');assert.equal(await page.evaluate(()=>dialAngle),0,'No rewind or turns before heartbeat');
   await press('v');assert.match(await status.textContent(),/Receiving/);
   await press('c');await press('h');await press('9');await press('o');
@@ -40,9 +41,9 @@ async function verify(browser,mobile){
   await page.evaluate(()=>{g.initialize(5);g.place(0,0);g.setAim(g.zoneX(2),g.zoneY(2));});
   await press('v');await press('c');
   await page.waitForFunction(()=>g.state()===7&&g.contact()===2,null,{timeout:8000});
-  await press('9');await press('p');await page.waitForTimeout(90);
+  await press('v');await press('9');await press('p');await page.waitForTimeout(90);
   assert.equal(await page.evaluate(()=>g.state()),7,'Rock stays snagged when the rod is raised');
-  await press('1');await press('p');
+  await press('v');await press('1');await press('p');
   await page.waitForFunction(()=>g.state()===2,null,{timeout:2500});
   // Hook only on the explicit lift packet; a high angle alone never hooks a fish.
   await page.evaluate(()=>{g.initialize(36);g.place(0,0);g.setAim(.88,.85);});
@@ -59,7 +60,7 @@ async function verify(browser,mobile){
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),1);
   await page.locator('#openMenu').click();assert.equal(await page.evaluate(()=>g.rodUp()),0);
   await page.locator('[data-language=th]').click();await page.locator('[data-to=sensors]').click();
-  assert.match(await status.textContent(),/[ก-๙]/);await enable.uncheck();
+  assert.match(await status.textContent(),/[ก-๙]/);await showControl(page,'#handheldEnable');await enable.uncheck();
   assert.match(await status.textContent(),/ปิด/);await page.locator('#resume').click();
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),0);
   assert.deepEqual(errors,[]);console.log('PASS '+(mobile?'mobile':'desktop')+' HID input, exact signed detents, physical cast/hook, rock payout, pitch hysteresis, neutral, menu safety and Thai labels');

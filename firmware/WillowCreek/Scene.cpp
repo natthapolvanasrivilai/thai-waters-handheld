@@ -7,9 +7,12 @@
 #include "RodController.h"
 #include "AmbientLcd.h"
 #include "FishArt.h"
+#include "SpecimenArt.h"
+#include "TackleIcons.h"
 #include <cstdio>
 #include <cstring>
 #include <sys/time.h>
+static_assert(sizeof(specimen::index)/sizeof(specimen::index[0])==creek::fishCount,"Rebuild the species plate index with the catalog");
 using creek::Phase;
 namespace {
 constexpr int ink=0x19e7,paper=0xe70f,white=0xff9b,gold=0xf50c,green=0x94f2,red=0xf386;
@@ -99,13 +102,23 @@ void drawWaterProp(int kind,int x,int y,int scale=1){
   }
 }
 void fish(int x,int y,float k,int kind,bool silhouette=false){
-  kind=creek::artForSpecies[kind];k*=.5f;
+  if(!specimen::has(kind)){
+    // An unillustrated catalog entry carries an empty field-note icon.
+    const int cx=x+int(24*k),cy=y+int(12*k),r=int(5*k);
+    screen.drawRect(cx-r,cy-r,r*2,r*2,0x74af);
+    screen.drawLine(cx-r/2,cy+r/2,cx+r/2,cy-r/2,0x74af);
+    return;
+  }
+  const bool field=kind>=60;
+  const auto* frame=field?&specimen::frames[specimen::index[kind]]:nullptr;
+  const uint16_t* palette=field?frame->ink:fishInk[kind];
+  k*=.5f;
   for(int row=0;row<50;row++){
     int start=0,prev=0;
     for(int col=0;col<=96;col++){
-      int packed=col==96?0:fishArt[kind][row*48+col/2];
-      int c=col&1?packed&15:packed>>4;
-      if(c!=prev){if(prev)screen.fillRect(x+int(start*k),y+int(row*k),int(col*k)-int(start*k),int((row+1)*k)-int(row*k),silhouette?0x74af:fishInk[kind][prev]);start=col;prev=c;}
+      int packed=col==96||field?0:fishArt[kind][row*48+col/2];
+      int c=field&&col<96?specimen::pixel(*frame,col,row):(col&1?packed&15:packed>>4);
+      if(c!=prev){if(prev)screen.fillRect(x+int(start*k),y+int(row*k),int(col*k)-int(start*k),int((row+1)*k)-int(row*k),silhouette?0x74af:palette[prev]);start=col;prev=c;}
     }
   }
 }
@@ -130,12 +143,14 @@ void batteryIcon(int x,int y,const BatteryReading& b){
     }
   }else label(x+4,y+1,b.valid&&!b.present&&b.usb?"USB":"?",color,1);
 }
-void tensionLight(float tension){
-  const int n=std::min(8,std::max(0,int(std::ceil(tension*8))));
+void tensionLight(int bobX,int bobY,float tension){
+  const int x=std::max(2,std::min(442,bobX-18)),y=std::max(62,std::min(280,bobY-22));
+  const int filled=std::min(8,std::max(0,int(std::ceil(tension*8))));
   const int color=tension>=.8f?red:tension>=.55f?gold:green;
-  screen.fillRoundRect(464,104,13,110,4,ink);
-  for(int i=0;i<8;i++)screen.fillRect(467,201-i*13,7,9,i<n?color:0x428c);
-  if(tension>=.8f){screen.fillRect(438,90,39,12,ink);label(445,92,"EASE",gold,1);}
+  screen.fillRect(x,y,36,8,ink);
+  for(int i=0;i<8;i++)screen.fillRect(x+2+i*4,y+2,3,4,i<filled?color:0x428c);
+  screen.fillRect(std::max(x+1,std::min(x+32,bobX-1)),y+8,3,2,color);
+  if(tension>=.8f){screen.fillRect(x+3,y-11,30,10,ink);label(x+6,y-10,"EASE",gold,1);}
 }
 void skyLabel(int x,int y,const char* text,int color,int size,int right=480){
   label(x-1,y,text,ink,size,right);label(x+1,y,text,ink,size,right);
@@ -151,6 +166,14 @@ void top(const View& v){
     skyLabel(432-textWidth(clock,1),12,clock,white,1,434);batteryIcon(443,10,v.battery);
     return;
   }
+  const int rodColor=v.rodFinish==1?0xdd2b:v.rodFinish==2?0x6637:0xb692;
+  screen.drawLine(11,42,21,32,ink);screen.drawLine(11,41,21,31,rodColor);screen.drawLine(21,31,29,28,rodColor);
+  screen.drawLine(11,41,15,37,gold);screen.fillRect(14,39,3,3,ink);
+  if(v.game.rig==creek::Technique::Float){screen.drawFastVLine(42,27,17,white);screen.fillRect(39,31,7,4,red);screen.fillRect(39,35,7,3,white);}
+  else if(v.game.rig==creek::Technique::Spoon){screen.drawLine(44,27,38,35,gold);screen.drawLine(45,28,39,36,gold);screen.drawLine(39,36,37,41,white);}
+  else{screen.drawLine(41,27,41,34,white);screen.drawLine(39,32,45,39,green);screen.drawLine(45,39,48,36,white);}
+  for(int y=0;y<17;y++)for(int x=0;x<28;x++){const uint16_t color=tackleBait[v.game.bait%6][y*28+x];if(color)screen.drawPixel(52+x,26+y,color);}
+  screen.drawFastHLine(87,29,14,green);screen.drawFastVLine(94,30,13,ink);screen.fillRect(91,30+v.game.bait/6*5,6,3,white);
   skyLabel(229,12,strstr(t,"needs sync")?"Clock needs sync":t,white,1,361);
   batteryIcon(365,10,v.battery);skyLabel(404,9,"MENU",gold,2);
 }
@@ -274,7 +297,6 @@ void play(const View& v){
   }
   int bobX=ax+int(4*std::sin(v.time*.0015f));
   int bobY=ay+int(2*std::sin(v.time*.005f));
-  if(g.phase==Phase::Flight){float t=creek::limit(g.age/650.f,0,1);bobX=100+int((ax-100)*t);bobY=106+int((ay-106)*t-178*t*(1-t));}
   if(g.phase==Phase::Fight){
     bobX=112+int((ax-112)*creek::limit(g.line/g.target,0,1)+g.pullOffset());
     float drift=g.holdingBottom()?0.f:g.fightStyle()==creek::FightStyle::Picker?2.f:8.f;
@@ -284,7 +306,12 @@ void play(const View& v){
   if(g.phase==Phase::Waiting && g.rig==creek::Technique::Jig && g.falling)bobY-=int(28*(1-creek::limit((g.age-g.fallStart)/780.f,0,1)));
   if(g.phase==Phase::Bite)bobY+=12;else if(g.teasing())bobY+=4;
   float tilt=creek::limit(v.degrees,-25,80);float wave=std::sin(v.time*.0024f);
-  float angle=(48+tilt*.56f+1.2f*wave)*.01745329f;
+  float bend=0;
+  if(g.phase==Phase::Flight){
+    float a=float(g.age)-creek::castWindupMs;
+    bend=a<0?26.f*g.age/creek::castWindupMs:26*std::max(0.f,1-a/145)-13*std::sin(3.14159f*std::min(1.f,a/440));
+  }
+  float angle=(48+bend+tilt*.56f+1.2f*wave)*.01745329f;
   const float reach=162*std::cos(angle),rise=162*std::sin(angle),load=g.rodLoad();
   const float sideways=.20f*g.pullOffset();
   const int rodDrop=v.page==Page::Arrival?int(190*(1-arrival::ease(v.time-v.arrivalStart,arrival::raiseRod,arrival::duration-arrival::raiseRod))):0;
@@ -308,6 +335,10 @@ void play(const View& v){
     int hangX=tipX+int(3*std::sin(v.time*.003f));
     screen.drawLine(tipX,tip,hangX,tip+24,0x73ee);screen.fillRect(hangX-2,tip+24,4,6,gold);
   }
+  if(g.phase==Phase::Flight){
+    float t=creek::limit((float(g.age)-creek::castWindupMs)/(creek::castDurationMs-creek::castWindupMs),0,1);
+    bobX=tipX+int((ax-tipX)*t);bobY=tip+15+int((ay-tip-15)*t-178*t*(1-t));
+  }
   if(g.phase==Phase::Snag){bobX=ax;bobY=ay;}
   if(g.phase==Phase::HaulingJunk){
     float t=g.target>0?creek::limit(g.line/g.target,0,1):1;
@@ -318,6 +349,9 @@ void play(const View& v){
     if(g.phase!=Phase::Fight&&g.phase!=Phase::Snag&&g.phase!=Phase::HaulingJunk){if(g.rig==creek::Technique::Float){screen.fillRect(bobX-3,bobY-6,7,5,gold);screen.fillRect(bobX-3,bobY-1,7,3,white);}
     else {bool jig=g.rig==creek::Technique::Jig;screen.fillRect(bobX-2,bobY-3,jig?4:10,jig?9:4,white);screen.fillRect(bobX-2,bobY-3,4,3,gold);}
     screen.drawFastHLine(bobX-11,bobY+4,23,paper);}
+  }
+  if(g.sprayAge<240 && (g.phase==Phase::Waiting||g.phase==Phase::Fight||g.phase==Phase::Snag||g.phase==Phase::HaulingJunk)){
+    float t=g.sprayAge/240.f;for(int i=-2;i<=2;i++)screen.fillRect(bobX+int(i*(2+6*t)),bobY-3-int((11-abs(i)*2)*4*t*(1-t)),2,2,white);
   }
   if(v.page!=Page::Play)return;
   const char* head="Raise the rod";const char* sub="Then sweep forward to your playing position.";
@@ -382,7 +416,7 @@ void play(const View& v){
   case Phase::Snag:
     head=g.contact==1?"Branch snag: stop, then lift":"Rock snag: lower rod and pay out";
     if(v.practice)head=g.contact==1?"Branch snag: wait, then tap to lift":"Rock snag: tap twice to pay out";
-    col=gold;tensionLight(.7f);break;
+    col=gold;tensionLight(bobX,bobY,std::max(.6f,g.heat));break;
   case Phase::HaulingJunk:head="Debris on the line: reel it ashore";break;
   case Phase::JunkLanded:{
     const char* names[]={"Waterlogged sandal","Tangled line","Dented cup","Torn float"};
@@ -401,7 +435,7 @@ void play(const View& v){
   if(!v.practice&&(!v.motion||v.field!=Field::Good))snprintf(hint,sizeof(hint),"%s",head);
   int width=12+textWidth(hint,1);
   screen.fillRoundRect(7,296,width,17,3,ink);label(13,301,hint,col,1);
-  if(g.phase==Phase::Fight)tensionLight(g.heat);
+  if(g.phase==Phase::Fight)tensionLight(bobX,bobY,g.heat);
 }
 }
 void beginScene(){
@@ -449,7 +483,7 @@ void book(const View& v){
  menuHeader("COLLECTION");
  const int caught=journal.waterCount(site,v.destination,BookFilter::Caught),total=stockSize(site);
  const int shown=journal.waterCount(site,v.destination,v.bookFilter);
- snprintf(buf,sizeof(buf),"%s  %d/%d >",sites[site].name,caught,total);
+ snprintf(buf,sizeof(buf),"%s  %d/%d >",site==siteCount?"Thailand":sites[site].name,caught,total);
  menuText(148,20,buf,gold,1,151);
  int drawn=0;
  for(int tile=0;tile<4;tile++){

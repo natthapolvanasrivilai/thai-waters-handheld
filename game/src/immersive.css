@@ -163,3 +163,52 @@ html:lang(th) #menu section[data-section="crew"] h2{font:normal 16px/23px 'Syy F
 #menu #records{gap:var(--touch-gap)}
 #menu #records .record{height:72px}
 #menu #lcdPicker[data-field=hookBait] .choice-list{gap:var(--touch-gap);grid-template-rows:repeat(3,minmax(var(--touch),1fr))}
+
+.hud-water{position:relative;min-width:0;height:100%;display:flex;align-items:start;flex-direction:column;justify-content:center;padding-bottom:21px;box-sizing:border-box}
+.hud-water #spot{display:block;max-width:100%;line-height:22px}
+#lcdUI .lcd-hud #rigHud{position:absolute;left:0;top:0;display:flex;align-items:end;min-height:var(--touch);width:104px;border:0;background:transparent;padding:0 0 2px}
+#rigIcons{width:104px;height:21px;display:block;image-rendering:pixelated}
+#lcdUI[data-catch] .hud-water,#lcdUI:has(#menu[open]) .hud-water{padding-bottom:0}
+#lcdUI[data-catch] #rigHud,#lcdUI:has(#menu[open]) #rigHud{display:none}
+#lcdUI[data-casting-water] .lcd-actions{inset:44% 0 6%;pointer-events:none}
+#lcdUI[data-casting-water] .lcd-actions #act{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:auto}
+
+#lcdUI #startSound{left:115px;top:0;width:var(--touch);height:var(--touch);display:flex;align-items:flex-end;justify-content:flex-start;background:transparent;border:0;border-radius:0;padding:0 0 4px 3px;color:#ffdfaf}
+#liveCrew:not(:empty){top:calc(var(--touch) + 3px)}
+
+#fishCredits{order:1;display:grid;place-items:center;min-width:var(--touch);min-height:var(--touch);color:#d6cfaa;touch-action:manipulation}
+
+/* Pages occupy a fixed portion of the 480 × 320 glass. */
+#menu:not([data-page=book]){inset:2px 3px 2px auto;width:380px;height:316px;box-sizing:border-box}
+#menu section,#menu #lcdPicker .choice-list{overflow:hidden;overscroll-behavior:none}
+#menu section{padding:4px 8px;box-sizing:border-box}
+#menu .menubar h2{min-width:0;font-size:16px}
+#menu .menubar #sheetNumber{font-size:12px;color:#dfcca0;white-space:nowrap}
+#menu .menubar #languageRow{margin:0}
+#menu .menubar #languageRow span{display:none}
+#menu .routes{grid-template:repeat(3,var(--touch))/repeat(2,minmax(0,1fr));gap:4px;height:auto}
+#menu .routes button{padding:2px 8px}
+#menu .routes button:after{content:none}
+#menu .menu-sheet .sheet-row,#menu .menu-sheet .bindings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;align-items:end;margin:3px 0}
+#menu .menu-sheet .bindings:has(#enableMotion){grid-template-columns:repeat(3,minmax(0,1fr))}
+#menu .menu-sheet{font-size:14px;line-height:1.25}
+#menu .menu-sheet>p,#menu .menu-sheet>h2{margin:4px 0}
+#menu .menu-sheet .lcd-choice{min-width:0}
+#menu .builds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+#menu .builds .build{padding:5px}
+#menu #lcdPicker .choice-list,#menu #lcdPicker[data-field=hookBait] .choice-list{display:grid;grid-template:repeat(2,minmax(0,1fr))/repeat(3,minmax(0,1fr));gap:4px;padding:4px}
+#menu #lcdPicker .choice-list button{margin:0;overflow-wrap:anywhere;line-height:1.15}
+#menu #bookDetail .history-nav,#cupLeaders .history-nav{gap:8px}
+#menu .book-profile{margin:0}
+#menu #bookDetail h3{margin:1px 0;padding-top:2px}
+#menu .catch-log{padding:3px;margin:0}
+#menu .menu-sheet:has(#cupLeaders) h2{margin:0}
+#menu .menu-sheet:has(#cupLeaders) small{display:block}
+#menu .menu-sheet:has(#cupLeaders) .history-nav{justify-content:flex-end}
+#menu #lcdPicker .menubar small{white-space:nowrap}
+@media(pointer:coarse) and (max-width:440px){
+ #menu:not([data-page=book]){width:462px}
+ #menu .routes{gap:3px}
+ #menu .menubar,#menu #lcdPicker .menubar{gap:2px}
+ #menu section{padding:3px 6px}
+}

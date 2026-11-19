@@ -1,6 +1,6 @@
 # Thailand country evidence for the fish roster
 
-The accepted-name table contains **2,159 distinct GBIF species keys**. Of these, 1,497 have Thai GBIF occurrence evidence in the previous import. The national checklist contributes 1,448 accepted keys, including 786 shared with the occurrence import and 662 additional keys. Twenty of those 662 correspond to an existing hand-authored fish, leaving **642 additional playable entries**. The generator retains the previously assigned extended IDs and appends the new species. The complete game roster consequently has 2,168 entries, including eight fictional creatures and a real freshwater prawn.
+The accepted-name table contains **2,159 distinct GBIF species keys**. Of these, 1,497 have Thai GBIF occurrence evidence in the previous import. The national checklist contributes 1,448 accepted keys, including 786 shared with the occurrence import and 662 additional keys. Twenty of those 662 correspond to an existing hand-authored fish, leaving **642 additional playable entries**. The generator retains the previously assigned extended IDs and appends the new species. This import brought the game roster to 2,168 entries, including eight fictional creatures and a real freshwater prawn. A subsequent check of Thai museum specimens and research-grade observations adds 377 species and brings the playable total to **2,545**. [Field evidence and attribution](field-evidence.md)
 
 ## National source
 

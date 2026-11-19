@@ -11,5 +11,5 @@ struct SoundSettings {
   bool valid() const {return music<4 && volume<4 && cue<3 && cueVolume<4 && reelVolume<4;}
 };
 bool startSound();
-void setSound(const SoundSettings& settings, bool fighting, bool bite, int reelClick=0, creek::LandingCue landing={});
+void setSound(const SoundSettings& settings, bool fighting, bool bite, int reelClick=0, creek::LandingCue landing={},uint8_t fishingSounds=0);
 

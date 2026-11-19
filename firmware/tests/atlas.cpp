@@ -23,7 +23,7 @@ static void checkStock(){
        g.tick(16,true,false,0);
        assert(!g.landedGrams && g.landingReward()==LandingReward::Catch);
        assert(g.phase==Phase::Flight && g.emptyCast && g.length==0 && g.fish>=0);
-       g.tick(650,false,false,0);
+       g.tick(creek::castDurationMs,false,false,0);
        assert(g.phase==Phase::Waiting && !g.teasing());
        g.tick(g.waitMs,true,true,1.f);
        assert(g.phase==Phase::Lost && g.reason==Reason::NoBite && !g.fileCatch() && !g.progress.book.discovered());

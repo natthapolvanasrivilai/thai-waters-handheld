@@ -58,7 +58,12 @@ enum class Technique : uint8_t { Float, Spoon, Jig };
 enum class FightBeat : uint8_t { Recover, Run, Slack };
 enum class FightStyle : uint8_t { Standard, Picker, Anchor, Sprinter };
 constexpr const char* techniques[]={"Float drift","Stop-and-go spoon","Vertical jig"};
+constexpr uint32_t castWindupMs=180,castDurationMs=900;
+enum FishingSound : uint8_t { CastAir=1, SpoolRelease=2, WaterImpact=4, RetrieveSplash=8, BrokenLine=16 };
 struct Game {
+  uint8_t soundEdges=0;
+  uint32_t sprayAge=1000;
+  float woundSinceSplash=0;
   Progress progress;
   bool filed=false;
   int landedGrams=0;
@@ -342,7 +347,27 @@ struct Game {
     if(p==Phase::Fight){liftedCycle=UINT32_MAX;steadyLiftMs=0;}
   }
   void lose(Reason why){reason=why;enter(Phase::Lost);}
-  void tick(uint32_t ms,bool cast,bool rise,float turns) {
+  void tick(uint32_t ms,bool cast,bool rise,float turns){
+    const Phase before=phase;
+    const uint32_t previousAge=age;
+    const float previousLine=line;
+    const bool runningBefore=before==Phase::Fight && surge();
+    updatePhase(ms,cast,rise,turns);
+    soundEdges=0;
+    sprayAge=std::min<uint32_t>(1000,sprayAge+std::min<uint32_t>(ms,1000));
+    if(before!=Phase::Flight && phase==Phase::Flight){soundEdges|=CastAir;woundSinceSplash=0;sprayAge=1000;}
+    if(before==Phase::Flight && phase==Phase::Flight && previousAge<castWindupMs && age>=castWindupMs)soundEdges|=SpoolRelease;
+    if(before==Phase::Flight && phase!=Phase::Flight && !(phase==Phase::Snag && contact==1)){soundEdges|=WaterImpact;sprayAge=0;}
+    if(phase==Phase::Fight && before==Phase::Fight){
+      if(turns>0 && line<previousLine)woundSinceSplash+=previousLine-line;
+      const bool burst=!runningBefore && surge() && !holdingBottom();
+      if((burst || woundSinceSplash>=.28f) && sprayAge>=280){
+        soundEdges|=RetrieveSplash;sprayAge=0;woundSinceSplash=0;
+      }
+    }
+    if(phase==Phase::Lost && before!=phase && reason==Reason::Snapped)soundEdges=BrokenLine;
+  }
+  void updatePhase(uint32_t ms,bool cast,bool rise,float turns) {
     age+=ms;
     const float dt=ms*.001f;
     switch(phase){
@@ -381,7 +406,7 @@ struct Game {
         reason=Reason::None;enter(Phase::Flight);
       }
       break;
-    case Phase::Flight: if(age>=650)splashdown();break;
+    case Phase::Flight: if(age>=castDurationMs)splashdown();break;
     case Phase::Snag: workSnag(ms,rise,turns);break;
     case Phase::HaulingJunk:
       line=limit(line-turns,0,target);

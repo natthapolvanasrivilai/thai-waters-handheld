@@ -1,3 +1,4 @@
+const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict');
 const path=require('node:path');
 const {pathToFileURL}=require('node:url');
@@ -16,8 +17,8 @@ const {chromium}=require('playwright-core');
   const url=pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href;
   const ready=()=>p.waitForFunction(()=>document.querySelector('#act')?.disabled===false);
   const open=async section=>{await p.locator('#openMenu').click();await p.locator('[data-to='+section+']').click();};
-  const travel=async(index,time)=>{await open('spots');await p.selectOption('#places',{index});await p.selectOption('#period',{label:time});await p.locator('#fishHere').click();};
-  const equip=async (food,depth)=>{await open('rod');await p.selectOption('#hookBait',{label:food});await p.selectOption('#baitDepth',{label:depth});await p.locator('#resume').click();};
+  const travel=async(index,time)=>{await open('spots');await showControl(p,'#places');await p.selectOption('#places',{index});await showControl(p,'#period');await p.selectOption('#period',{label:time});await showControl(p,'#fishHere');await p.locator('#fishHere').click();};
+  const equip=async (food,depth)=>{await open('rod');await showControl(p,'#hookBait');await p.selectOption('#hookBait',{label:food});await showControl(p,'#baitDepth');await p.selectOption('#baitDepth',{label:depth});await p.locator('#resume').click();};
   await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await p.goto(url);await ready();
   await travel(0,'Dawn');await equip('Live baitfish','Surface');

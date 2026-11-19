@@ -186,7 +186,7 @@ const paintLcdInterface = (() => {
   pen.restore();
  }
  return function(context) {
-  const state=[language,menu.open,$('spot').textContent,$('pondClock').textContent,$('simBattery').value,
+  const state=[language,menu.open,$('rigHud').dataset.kit,ui.hasAttribute('data-casting-water'),$('act').hidden,$('spot').textContent,$('pondClock').textContent,$('simBattery').value,
    $('act').textContent,$('act').disabled,$('catchContinue').hidden,$('startSound').hidden,$('liveCrew').textContent].join('|');
   if(menuChanges.takeRecords().length || dirty || state!==previousState) {
    // Measure in native LCD coordinates even when the hit surface is projected
@@ -198,7 +198,7 @@ const paintLcdInterface = (() => {
     const clip={top:0,bottom:320};
     paintElement(ui.querySelector('.lcd-hud'),clip,true);
     if(menu.open)paintElement(menu,clip);
-    else for(const el of [ui.querySelector('.lcd-actions'),$('startSound'),$('liveCrew')])paintElement(el,clip);
+    else {if(!ui.hasAttribute('data-casting-water'))paintElement(ui.querySelector('.lcd-actions'),clip);for(const el of [$('startSound'),$('liveCrew')])paintElement(el,clip);}
     previousState=state;dirty=false;
    } finally {ui.style.transform=projection;}
   }

@@ -180,6 +180,7 @@ void change(int x,int y,bool& practiceTap){
     if(!view.game.filed)view.saveFailed=!finishLanding();
     return;
   }
+  if(view.page==Page::Play && x<111 && y<52){returnTo=view.page;view.page=Page::Journey;rod=Gesture{};stopRumble();return;}
   if((view.page==Page::Play||view.page==Page::Rest||view.page==Page::Raise) && y<52 && x>=395){
     returnTo=view.page;view.page=Page::Hub;rod=Gesture{};stopRumble();return;
   }
@@ -196,7 +197,7 @@ void change(int x,int y,bool& practiceTap){
       if(view.page==Page::Journey && x>=150&&x<304){view.page=Page::Bait;return;}
       if(view.page==Page::Bait && x>=menuui::w-80){view.page=Page::Journey;return;}
       if(view.page==Page::Waters && x>=130 && x<303){view.pendingWeather=(view.pendingWeather+1)%5;return;}
-      if(view.page==Page::Book && x>=148 && x<304){view.bookWater=(view.bookWater+1)%siteCount;view.bookPage=0;view.bookFilter=BookFilter::All;return;}
+      if(view.page==Page::Book && x>=148 && x<304){view.bookWater=(view.bookWater+1)%(siteCount+1);view.bookPage=0;view.bookFilter=BookFilter::All;return;}
       if(x>=menuui::w-80){
         if(view.page==Page::BookDetail || view.page==Page::CatchHistory){view.page=Page::Book;return;}
         if(view.page==Page::Network)stopPairing();
@@ -220,7 +221,7 @@ void change(int x,int y,bool& practiceTap){
   if(view.page==Page::Hub){
     switch(menuui::gridIndex(x,y,menuui::gridTop,menuui::gridRow,7)){
     case 0:view.pendingSite=view.destination;view.spotPage=view.destination/4;view.pendingTime=view.timeMode;view.pendingWeather=view.game.weatherMode;view.page=Page::Waters;break;
-    case 1:view.page=Page::Book;view.bookWater=view.game.site;view.bookPage=0;view.bookFilter=BookFilter::Nearby;break;
+    case 1:view.page=Page::Book;view.bookWater=siteCount;view.bookPage=0;view.bookFilter=BookFilter::All;break;
     case 2:view.page=Page::Journey;view.notice="First find earns 1 point, then every 3 new species.";view.refundConfirm=false;break;
     case 3:if(!view.driver)view.driver=initRumble();view.page=Page::Bench;view.casts=view.lifts=0;view.turns=0;view.direction=0;view.benchEvent="Hold in playing position";rod=Gesture{};wheel.previous=-1;break;
     case 4:view.page=Page::Options;break;
@@ -272,7 +273,7 @@ void change(int x,int y,bool& practiceTap){
       if(x>=menuui::w/2 && x<3*menuui::w/4){showHistory(0);return;}
       if(x>=menuui::w/4 && x<menuui::w/2){
         view.bookFilter=BookFilter((int(view.bookFilter)+1)%3);view.bookPage=0;
-        if(view.bookFilter==BookFilter::Nearby)view.bookWater=view.game.site;
+        view.bookWater=view.bookFilter==BookFilter::Nearby?view.game.site:siteCount;
       }else{
         const int entries=view.game.progress.book.waterCount(view.bookWater,view.destination,view.bookFilter);
         const int pages=std::max(1,(entries+menuui::bookRows-1)/menuui::bookRows);
@@ -392,7 +393,7 @@ void printCatchRecord(uint32_t index){
 void setup(){
   Serial.begin(115200);restore();view.game.beginSession(esp_random());view.game.arriveAt(view.destination);offlineWeatherDay=view.game.seed%365;updateLocalWeather();beginBoard();view.battery=readBattery();beginConnected();view.driver=initRumble();beginScene();
   view.audio=startSound();setSound(view.sound,false,false);
-  Serial.printf("Thai Waters 0.9.1 controller preview | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d | CHGLED Type A readback %d\n",screenOK,imuOK,view.audio,powerOK,chargeLampOK);
+  Serial.printf("Thai Waters 0.9.2 controller preview | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d | CHGLED Type A readback %d\n",screenOK,imuOK,view.audio,powerOK,chargeLampOK);
   lastTick=millis();paint(view);confirmUpdateHealth(screenOK && imuOK && powerOK && view.audio);
 }
 void loop(){
@@ -425,6 +426,7 @@ void loop(){
   tickRodController(now,controller&&rod.cast,controller&&rod.rise,controller?turns:0,validTilt?view.degrees/view.span:NAN,view.battery.percent);
   if(view.page==Page::Arrival && now-view.arrivalStart>=arrival::duration)playPage();
   Phase before=view.game.phase;
+  view.game.soundEdges=0;
   if(!wasArriving && view.page==Page::Play && (view.practice||(view.motion&&view.field==Field::Good))){
     view.game.rodHeldHigh=!view.practice && rod.high;
     view.game.tick(dt,view.practice?tap:rod.cast,view.practice?tap:rod.rise,view.practice?(tap?(view.game.phase==Phase::Snag&&view.game.contact==2?-.19f:.25f):0):turns);
@@ -451,7 +453,7 @@ void loop(){
   else if(click)view.driver=driveRumble(Pulse::Detent,view.rumble,0);
   if(auditioning && now-audition>=420)auditioning=false;
   SoundSettings mix=view.sound;if(controller)mix.music=3;if(auditioning)mix.cue=0;
-  setSound(mix,active && view.game.phase==Phase::Fight,view.game.phase!=before&&view.game.phase==Phase::Bite,click,landing);
+  setSound(mix,active && view.game.phase==Phase::Fight,view.game.phase!=before&&view.game.phase==Phase::Bite,click,landing,view.game.soundEdges);
   if(!everDrawn||now-lastDraw>=(controller?320u:55u)){lastDraw=now;everDrawn=true;paint(view);}
 }
 

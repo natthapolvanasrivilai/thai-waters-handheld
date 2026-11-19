@@ -1,6 +1,7 @@
 #include "../WillowCreek/Creek.h"
 #include "../WillowCreek/RodFeedback.h"
 #include "../WillowCreek/Synth.h"
+#include "../WillowCreek/SpecimenArt.h"
 #include "../WillowCreek/Rumble.h"
 #include "../WillowCreek/ReelDetents.h"
 #include "../WillowCreek/Destinations.h"
@@ -10,15 +11,26 @@ static CreekSynth synth;
 static SoundSettings s;
 static int16_t stereo[512];
 static bool cuePending=false;
+static uint8_t waterSounds=0;
 static LandingCue landingPending;
 static RumblePlan tactile;
 static ReelDetents detents;
 static int crossedTeeth=0,clickPending=0;
 #define EXPORT __attribute__((visibility("default")))
+static uint8_t portrait[50][96];
+static int portraitFrame=0;
 extern "C" {
-EXPORT void initialize(unsigned seed){g=Game{};g.beginSession(seed);synth.begin();detents=ReelDetents{};tactile=RumblePlan{};cuePending=false;landingPending={};crossedTeeth=clickPending=0;}
+EXPORT int hasPortrait(int id){return specimen::has(id);}
+EXPORT uint8_t* speciesPixels(int id){
+ if(id<60||!specimen::has(id))return nullptr;
+ portraitFrame=specimen::index[id];const auto& frame=specimen::frames[portraitFrame];
+ for(int y=0;y<50;y++)for(int x=0;x<96;x++)portrait[y][x]=specimen::pixel(frame,x,y);
+ return &portrait[0][0];
+}
+EXPORT const uint16_t* speciesInk(){return specimen::frames[portraitFrame].ink;}
+EXPORT void initialize(unsigned seed){waterSounds=0;g=Game{};g.beginSession(seed);synth.begin();detents=ReelDetents{};tactile=RumblePlan{};cuePending=false;landingPending={};crossedTeeth=clickPending=0;}
 EXPORT void advance(unsigned dt,int cast,int lift,float turns){
- auto before=g.phase;g.tick(dt,cast,lift,turns);
+ auto before=g.phase;g.tick(dt,cast,lift,turns);waterSounds|=g.soundEdges;
  if(before!=g.phase && g.phase==Phase::Bite && s.cue!=1)cuePending=true;
  if(before!=g.phase && g.phase==Phase::Landed && s.cue!=1 && s.cueVolume)
    landingPending={catalog[g.fish].tier,g.landingReward()};
@@ -26,7 +38,7 @@ EXPORT void advance(unsigned dt,int cast,int lift,float turns){
 }
 EXPORT int fileCatch(){
  // A suspended browser audio graph may never have consumed the reveal.
- landingPending={};
+ landingPending={};waterSounds=0;synth.clearFoley();
  return g.fileCatch();
 }
 EXPORT int filed(){return g.filed;}
@@ -43,6 +55,10 @@ EXPORT void restoreCatch(int fish,int length){
    g.emptyCast=false;g.fish=fish;g.length=length;g.filed=false;g.enter(Phase::Landed);
  }
 }
+EXPORT int sprayAge(){return g.sprayAge;}
+EXPORT int windupMs(){return castWindupMs;}
+EXPORT int flightMs(){return castDurationMs;}
+EXPORT void clearFishingSound(){waterSounds=0;synth.clearFoley();}
 EXPORT int state(){return int(g.phase);}
 EXPORT void setAim(float x,float y){g.setAim(x,y);}
 EXPORT float aimX(){return g.aimX;}
@@ -92,7 +108,7 @@ EXPORT float lureTravel(){return g.lureTurns;}
 EXPORT void config(int mode,int volume,int cue,int fx){s.music=mode;s.volume=volume;s.cue=cue;s.cueVolume=fx;}
 EXPORT void reelVolume(int level){if(level>=0&&level<=3)s.reelVolume=level;}
 EXPORT int16_t* samples(){
- synth.render(stereo,256,s,g.phase==Phase::Fight,cuePending,clickPending,landingPending);
+ synth.render(stereo,256,s,g.phase==Phase::Fight,cuePending,clickPending,landingPending,waterSounds);waterSounds=0;
  cuePending=false;clickPending=0;landingPending={};return stereo;
 }
 

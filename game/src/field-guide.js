@@ -1,10 +1,16 @@
 let bookOffset=0;
-const bookSize=8;
+let bookSize=8;
+function sizeBook(){
+ const next=parseInt(getComputedStyle($('lcdUI')).getPropertyValue('--touch'))>=60?4:8;
+ if(next!==bookSize){const first=bookOffset*bookSize;bookSize=next;bookOffset=Math.floor(first/next);}
+}
+window.addEventListener('resize',()=>{if(g)renderBook();});
 function bookMatches(){
  const mode=$('bookFilter').selectedIndex,q=$('bookSearch').value.trim().toLowerCase(),matches=[];
  for(let i=0;i<atlas.fish.length;i++){
   const f=atlas.fish[i];
   if(mode===1 && !(i<52?f.site===locationId:f.spot===placeId))continue;
+  if(mode===5&&f.site===4||mode===6&&f.site!==4)continue;
   if(mode===2&&!g.caught(i)||mode===3&&!f.fiction||mode===4&&f.tier!==5)continue;
   const identity=g.caught(i)?[f.name,originalAtlas.fish[i].name,f.family]:[];
   if(q && ![...identity,f.spot!=null?atlas.locations[f.spot]?.name:'',atlas.ranks[f.tier]].some(v=>v&&v.toLowerCase().includes(q)))continue;
@@ -38,9 +44,9 @@ function journalIcon(name,label){
  path.setAttribute('d',iconShapes[name]);svg.append(path);return svg;
 }
 function fishPortrait(id,width,height){
- const f=atlas.fish[id],art=f.art??id,icon=document.createElement('canvas');
+ const icon=document.createElement('canvas');
  icon.width=width;icon.height=height;icon.className='fish-thumb';icon.setAttribute('aria-hidden','true');
- const c=icon.getContext('2d');c.imageSmoothingEnabled=false;c.drawImage(fishSheet,art%10*96,Math.floor(art/10)*50,96,50,0,0,width,height);
+ const c=icon.getContext('2d');c.imageSmoothingEnabled=false;drawSpecimen(c,id,0,0,width,height);
  if(!g.caught(id)){c.globalCompositeOperation='source-in';c.fillStyle='#adc4b3';c.fillRect(0,0,width,height);}
  return icon;
 }
@@ -50,7 +56,9 @@ function iconInfo(parent,icon,label,value){
  el.append(journalIcon(icon,label));if(value)el.append(bookText('span',value));parent.append(el);
 }
 const periodIcons=['dawn','day','dusk','night'],weatherIcons=['clear','rain','heavy','storm'],weatherLabels=['Clear','Light rain','Heavy rain','Storm'];
+function collectionTotal(found){const count=found.toLocaleString(language)+' / '+atlas.fish.length.toLocaleString(language);return (language==='th'?'ทั่วไทย':'Thailand')+' · '+count;}
 function renderBook(){
+ sizeBook();
  const detail=$('bookDetail');detail.hidden=bookSpecies===null;journalPanel.classList.toggle('detail-open',!detail.hidden);
  if(bookSpecies!==null){renderBookDetail(bookSpecies);return;}
  const matches=bookMatches(),pages=Math.max(1,Math.ceil(matches.length/bookSize));
@@ -59,10 +67,10 @@ function renderBook(){
   const f=atlas.fish[id],n=g.caught(id),tile=document.createElement('button');tile.type='button';tile.id='species-'+id;tile.className='record '+(n?'found':'unseen');
   tile.style.borderColor=tierFrames[f.tier];tile.style.borderStyle='solid';tile.title=(n?f.name:L('Undiscovered'))+' · '+atlas.ranks[f.tier];tile.setAttribute('aria-label',tile.title);
   tile.append(fishPortrait(id,72,38));if(n){tile.append(bookText('b',f.name));const mark=bookText('span','✓');mark.className='caught-mark';tile.append(mark);}
-  tile.onclick=()=>{bookSpecies=id;historyPage=0;renderBook();journalPanel.scrollTop=0;$('bookDetail').focus({preventScroll:true});};fragment.append(tile);
+  tile.onclick=()=>{bookSpecies=id;historyPage=0;renderBook();$('bookDetail').focus({preventScroll:true});};fragment.append(tile);
  }
  $('records').replaceChildren(fragment);
- setUi($('bookPage'),matches.length?(bookOffset+1)+' / '+pages:'No matching species');
+ setUi($('bookPage'),matches.length?(bookOffset+1)+' / '+pages+' · '+matches.length.toLocaleString(language)+' '+L('species'):'No matching species');
  $('bookPrev').disabled=!bookOffset;$('bookNext').disabled=bookOffset+1>=pages;
 }
 function renderBookDetail(id){
@@ -72,13 +80,14 @@ function renderBookDetail(id){
  const tier=bookText('small',atlas.ranks[f.tier]+(f.fiction?' · '+L('Fictional'):''));tier.style.color=tierFrames[f.tier];
  title.append(tier,bookText('h2',n?f.name:L('Undiscovered')));
  if(n&&f.family)title.append(bookText('small',f.family));
+ if(n&&!g.hasPortrait(id))title.append(bookText('small',language==='th'?'อยู่ระหว่างวาดภาพประจำชนิด':'Species illustration pending'));
  const water=f.spot!=null?atlas.locations[f.spot].name:atlas.sites[f.site][0],habitat=document.createElement('div');habitat.className='book-facts';
  iconInfo(habitat,'pin',L('Origin'),water);iconInfo(habitat,'bait',L('Hook bait'),baitTip(id));
  const mask=f.mask??(id===40?12:id===41?9:15);periodIcons.forEach((icon,i)=>{if(mask&(1<<i))iconInfo(habitat,icon,L(times[i]));});
  title.append(habitat);info.append(picture,title);
  const heading=bookText('h3',(language==='th'?'ประวัติการจับ':'Catch history')+' · '+n);
  detail.replaceChildren(info);if(n&&f.lore)detail.append(bookText('p',f.lore));detail.append(heading);
- const rows=catchHistory.filter(c=>c.id===id).reverse(),per=8;
+ const rows=catchHistory.filter(c=>c.id===id).reverse(),per=1;
  for(const c of rows.slice(historyPage*per,(historyPage+1)*per)){
   const row=document.createElement('div');row.className='catch-log';
   if(Number.isFinite(c.at))iconInfo(row,'date',language==='th'?'เวลาประเทศไทย':'Bangkok time',new Intl.DateTimeFormat(language==='th'?'th-TH':'en-GB',{timeZone:'Asia/Bangkok',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false}).format(c.at));
@@ -92,12 +101,12 @@ function renderBookDetail(id){
  if(!n)detail.append(bookText('p',language==='th'?'ยังไม่เคยจับได้':'No catches yet.'));
  if(n>rows.length)detail.append(bookText('p',language==='th'?'บันทึกเดิม '+(n-rows.length)+' ครั้ง · ยาวที่สุด '+g.best(id)+' ซม.':'Earlier catches without trip details: '+(n-rows.length)+' · Best '+g.best(id)+' cm'));
  if(rows.length>per){const nav=document.createElement('div');nav.className='history-nav';for(const [dir,label] of [[-1,'Previous'],[1,'Next']]){
-  const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',L(label));b.append(journalIcon(dir<0?'back':'next'));b.disabled=historyPage+dir<0||(historyPage+dir)*per>=rows.length;b.onclick=()=>{historyPage+=dir;renderBookDetail(id);heading.scrollIntoView({block:'nearest'});};nav.append(b);
+  const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',L(label));b.append(journalIcon(dir<0?'back':'next'));b.disabled=historyPage+dir<0||(historyPage+dir)*per>=rows.length;b.onclick=()=>{historyPage+=dir;renderBookDetail(id);};nav.append(b);
  }detail.append(nav);}
 }
 function closeBookDetail(){const id=bookSpecies;bookSpecies=null;renderBook();$('species-'+id)?.focus({preventScroll:true});}
 function showBookEntry(id){$('bookSearch').value='';$('bookFilter').selectedIndex=0;bookOffset=Math.floor(id/bookSize);bookSpecies=id;historyPage=0;renderBook();}
 function resetBook(){bookOffset=0;bookSpecies=null;renderBook();}
 $('bookFilter').onchange=$('bookSearch').oninput=resetBook;
-$('bookPrev').onclick=()=>{bookOffset--;renderBook();journalPanel.scrollTop=0;};
-$('bookNext').onclick=()=>{bookOffset++;renderBook();journalPanel.scrollTop=0;};
+$('bookPrev').onclick=()=>{bookOffset--;renderBook();};
+$('bookNext').onclick=()=>{bookOffset++;renderBook();};

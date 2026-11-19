@@ -2,7 +2,7 @@
 #include "Waters.h"
 #include "FishProfiles.h"
 namespace creek {
-static_assert(sizeof(dietForSpecies)==fishCount && sizeof(artForSpecies)==fishCount,"Regenerate the species profiles with the encounter table");
+static_assert(sizeof(dietForSpecies)==fishCount,"Regenerate the species profiles with the encounter table");
 constexpr int baitCount=18;
 constexpr const char* baitNames[]={"River worm","Raw shrimp","Fermented rice / rum bran","Surface insect","Live baitfish","Squid strip"};
 constexpr const char* depthNames[]={"Surface","Midwater","Bottom"};

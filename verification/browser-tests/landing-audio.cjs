@@ -91,7 +91,7 @@ const {pathToFileURL}=require('node:url');
   const peakAfterResume=await page.evaluate(async()=>{
    await audio.suspend();
    g.initialize(1);g.visit(0,0);g.config(3,0,1,2);
-   g.advance(16,1,0,0);g.advance(650,0,0,0);g.advance(6000,0,0,0);g.advance(16,0,1,0);
+   g.advance(16,1,0,0);g.advance(g.flightMs(),0,0,0);g.advance(6000,0,0,0);g.advance(16,0,1,0);
    g.config(3,0,0,2);
    for(let i=0;i<2400&&g.state()===4;i++)g.advance(16,0,0,g.surging()?0:.02);
    if(g.state()!==5||!g.fileCatch())throw Error('Suspended catch fixture failed');

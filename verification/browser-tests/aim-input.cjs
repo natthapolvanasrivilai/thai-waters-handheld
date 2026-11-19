@@ -1,3 +1,4 @@
+const {showControl}=require('./menu-controls.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const {pathToFileURL} = require('node:url');
@@ -56,9 +57,9 @@ const {chromium} = require('playwright-core');
     assert.deepEqual(await ledger(),before);
     await page.locator('#openMenu').click();
     await page.locator('[data-to="spots"]').click();
-    await page.getByRole('button',{name:/Weather ·/}).click();
+    await showControl(page,'#weatherChoice');await page.getByRole('button',{name:/Weather ·/}).click();
     await page.getByRole('option',{name:'Storm',exact:true}).click();
-    await page.locator('#fishHere').click();
+    await showControl(page,'#fishHere');await page.locator('#fishHere').click();
     assert.equal(await page.evaluate(()=>g.weather()),3);
     await page.reload();
     await page.waitForFunction(()=>typeof g?.weather==='function' && !$('act').disabled);

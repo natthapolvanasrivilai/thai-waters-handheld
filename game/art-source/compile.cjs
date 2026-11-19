@@ -1,7 +1,7 @@
 // Compile the original transparent artwork into one LCD atlas and packed, per-sprite RGB565 palettes.
 const fs=require('node:fs'),path=require('node:path');
 const {PNG}=require(require.resolve('pngjs',{paths:[path.resolve(__dirname,'../lan')]}));
-const w=96,h=50,columns=10,count=76;
+const w=96,h=50,columns=10,count=60;
 const colors=['fffbe5','102c33','173e42','284848','385a55','536c62','758172','9aa38b','c0c4a8','e3dec2',
  '123b44','175158','256764','41827b','60a394','8ebaa5','bbd9bb','34475a','4e6271','788e93','a9b9b3','d8e1cd',
  '342e29','514335','71573d','937043','ba9159','dbb66c','ecd994','653d38','97503d','bb6848','dc8a55',
@@ -9,8 +9,8 @@ const colors=['fffbe5','102c33','173e42','284848','385a55','536c62','758172','9a
 ].map(hex=>[0,2,4].map(k=>parseInt(hex.slice(k,k+2),16)));
 const dist=(a,b)=>2*(a[0]-b[0])**2+3*(a[1]-b[1])**2+(a[2]-b[2])**2;
 const nearest=(c,ids)=>ids.reduce((a,b)=>dist(c,colors[a])<dist(c,colors[b])?a:b);
-function extract(p,cols,row,col){
- const x0=Math.floor(col*p.width/cols),x1=Math.floor((col+1)*p.width/cols),y0=Math.floor(row*p.height/2),y1=Math.floor((row+1)*p.height/2);
+function extract(p,cols,row,col,rows=2){
+ const x0=Math.floor(col*p.width/cols),x1=Math.floor((col+1)*p.width/cols),y0=Math.floor(row*p.height/rows),y1=Math.floor((row+1)*p.height/rows);
  const sw=x1-x0,sh=y1-y0,mask=new Uint8Array(sw*sh),queue=new Int32Array(sw*sh);
  for(let y=0;y<sh;y++)for(let x=0;x<sw;x++)mask[y*sw+x]=p.data[4*((y+y0)*p.width+x+x0)+3]>=128?1:0;
  let bounds=null,best=0;
@@ -44,8 +44,10 @@ function extract(p,cols,row,col){
  });
  return {indices,palette:[0,...pal.map(id=>{const [r,g,b]=colors[id];return ((r>>3)<<11)|((g>>2)<<5)|(b>>3);})]};
 }
+module.exports={extract};
+if(require.main===module){
 const sheet=new PNG({width:columns*w,height:Math.ceil(count/columns)*h}),inks=[],pixels=[];
-for(let plate=0,id=0;plate<10;plate++){
+for(let plate=0,id=0;id<count;plate++){
  const p=PNG.sync.read(fs.readFileSync(path.join(__dirname,'plate-'+plate+'.png'))),cols=plate===6?2:4;
  for(let n=0;n<cols*2;n++,id++){
   const {indices,palette}=extract(p,cols,Math.floor(n/cols),n%cols);
@@ -60,3 +62,4 @@ for(let plate=0,id=0;plate<10;plate++){
 fs.writeFileSync(path.join(__dirname,'../assets/fish.png'),PNG.sync.write(sheet));
 fs.writeFileSync(path.join(__dirname,'../../firmware/WillowCreek/FishArt.h'),'#pragma once\n#include <stdint.h>\nconstexpr uint16_t fishInk[][16]={'+inks.join(',\n')+'};\nconstexpr uint8_t fishArt[][2400]={'+pixels.join(',\n')+'};\n');
 console.log(count+' sprites, 96 x 50, 4-bit artwork, 16 RGB565 palette entries each');
+}

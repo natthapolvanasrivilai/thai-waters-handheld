@@ -8,7 +8,7 @@ function tournamentGoal(){
  const f=stock[(Math.floor(day/atlas.locations.length)+day*7)%stock.length];
  return {day,spot,species:atlas.fish.indexOf(f),name:f.name,location:atlas.locations[spot].name,minimum:Math.ceil(f.low+(f.high-f.low)*.45)};
 }
-let cupBoard=null;
+let cupBoard=null,rankPage=0;
 function cupText(id,value){if($(id).textContent!==value)setUi($(id),value);}
 function drawCup(){
  const goal=cupBoard?.goal||tournamentGoal(), joined=enteredCup===goal.day;
@@ -22,10 +22,20 @@ function drawCup(){
  cupText('cupScope',location.hostname.endsWith('.chatgpt.site')?'Private playtest standings':'Local host standings');
  cupText('cupMine',cupNotice||(cupBoard?.rank?cupBoard.angler+' · rank #'+cupBoard.rank+' · '+cupBoard.best+' cm':joined?(cupBoard?.angler||'Entered')+' · file a qualifying catch.':'Enter before landing your catch.'));
  const list=$('cupLeaders'),rows=cupBoard?.leaders||[];
- const key=JSON.stringify(rows);
+ const per=4,pages=Math.max(1,Math.ceil(rows.length/per));rankPage=Math.min(rankPage,pages-1);
+ const key=language+rankPage+JSON.stringify(rows);
  if(list.dataset.rows!==key){
   list.dataset.rows=key;list.replaceChildren();
-  for(const r of rows){const line=document.createElement('div');setUi(line,'#'+r.rank+'  '+(r.you?'You':r.angler)+'  ·  '+r.cm+' cm');list.append(line);}
+  for(const r of rows.slice(rankPage*per,(rankPage+1)*per)){const line=document.createElement('div');setUi(line,'#'+r.rank+'  '+(r.you?'You':r.angler)+'  ·  '+r.cm+' cm');list.append(line);}
+  if(pages>1){
+   const nav=document.createElement('div');nav.className='history-nav';
+   for(const dir of [-1,1]){
+    const b=document.createElement('button');b.type='button';b.disabled=rankPage+dir<0||rankPage+dir>=pages;
+    b.setAttribute('aria-label',L(dir<0?'Previous':'Next'));b.append(journalIcon(dir<0?'back':'next'));
+    b.onclick=()=>{rankPage+=dir;drawCup();};nav.append(b);
+   }
+   nav.insertBefore(document.createTextNode((rankPage+1)+' / '+pages),nav.lastChild);list.append(nav);
+  }
  }
  cupText('cupEmpty',!rows.length?(location.protocol==='file:'?'Open the hosted or LAN game to compete.':cupNotice?'Waiting for the event host.':cupBoard?'No qualifying catches yet.':'Connecting to the standings…'):'');
 }

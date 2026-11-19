@@ -1,0 +1,378 @@
+gbif_key,scientific_name,family,order,evidence_type,asean_match,nearby_cc0_count,occurrence_ids,dataset_keys,licenses,attribution
+5209156,Acanthurus bariene,Acanthuridae,Perciformes,HUMAN_OBSERVATION,yes,4,4022266156|5282605324,50c9509d-22c7-4a22-a47d-8c48425ef4a7|50c9509d-22c7-4a22-a47d-8c48425ef4a7,CC-BY-4.0|CC-BY-4.0,Donald Davesne|Ian Dugdale
+5209203,Acanthurus blochii,Acanthuridae,Perciformes,PRESERVED_SPECIMEN,yes,6,1211697313,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5209165,Acanthurus japonicus,Acanthuridae,Perciformes,PRESERVED_SPECIMEN,yes,4,43863767,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+5209204,Acanthurus mata,Acanthuridae,Perciformes,PRESERVED_SPECIMEN,yes,31,1100580505,dce8feb0-6c89-11de-8225-b8a03c50a862,CC-BY-4.0,Marine Fisheries Laboratory Phuket
+2376434,Acentrogobius janthinopterus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,27,1211695864,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2340901,Akysis recavus,Akysidae,Siluriformes,PRESERVED_SPECIMEN,yes,0,1889131740,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2390593,Alepes kleinii,Carangidae,Perciformes,PRESERVED_SPECIMEN,yes,20,43363551,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2387335,Ambassis macracanthus,Ambassidae,Perciformes,PRESERVED_SPECIMEN,yes,5,5054173214,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2387318,Ambassis vachellii,Ambassidae,Perciformes,PRESERVED_SPECIMEN,yes,15,1085818459,793c3890-6c8a-11de-8226-b8a03c50a862,CC-BY-4.0,Board of the Museum and Art Gallery of the Northern Territory
+2342865,Amblyceps protentum,Amblycipitidae,Siluriformes,PRESERVED_SPECIMEN,yes,0,1889145975,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2378282,Amblygobius decussatus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,12,6133696651,9de1e948-106f-402a-8105-41729e9fa502,CC-BY-4.0,MHNG
+2378279,Amblygobius nocturnus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1211696255,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2360475,Amblyrhynchichthys micracanthus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,3,1024549978,d499aef2-b1d9-4890-aeb3-5f0d1237b513,CC0-1.0,Ubon Rajathani University students
+2375802,Amoya gracilis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1085819243,793c3890-6c8a-11de-8226-b8a03c50a862,CC-BY-4.0,Board of the Museum and Art Gallery of the Northern Territory
+5212069,Amphiprion melanopus,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,43,5054276417,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+5214754,Antennarius pictus,Antennariidae,Lophiiformes,PRESERVED_SPECIMEN,yes,8,1211697285,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5211725,Apogon crassiceps,Apogonidae,Perciformes,PRESERVED_SPECIMEN,yes,5,1211698168,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5211792,Apogon semiornatus,Apogonidae,Perciformes,PRESERVED_SPECIMEN,yes,10,1211698112,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2396941,Apogonichthys perdix,Apogonidae,Perciformes,PRESERVED_SPECIMEN,yes,3,2576003921,85b8ed3c-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,CBM
+2396564,Apolemichthys trimaculatus,Pomacanthidae,Perciformes,PRESERVED_SPECIMEN,yes,22,1934516475,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2399426,Ariomma indicum,Ariommatidae,Perciformes,PRESERVED_SPECIMEN,,8,4464344217|5054181261,84dbaec2-f762-11e1-a439-00145eb45e9a|54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0|CC-BY-4.0,NHMD|OCF
+2403225,Ariosoma scheelei,Congridae,Anguilliformes,PRESERVED_SPECIMEN,yes,24,42891146,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2345235,Arius oetik,Ariidae,Siluriformes,PRESERVED_SPECIMEN,yes,6,43368555,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2408529,Arnoglossus macrolophus,Bothidae,Pleuronectiformes,PRESERVED_SPECIMEN,yes,4,1830737809,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2407361,Arothron caeruleopunctatus,Tetraodontidae,Tetraodontiformes,HUMAN_OBSERVATION,yes,10,3456641385|5282488964,50c9509d-22c7-4a22-a47d-8c48425ef4a7|50c9509d-22c7-4a22-a47d-8c48425ef4a7,CC-BY-4.0|CC-BY-4.0,luluchouette|Ian Dugdale
+2407356,Arothron reticularis,Tetraodontidae,Tetraodontiformes,PRESERVED_SPECIMEN,yes,30,1085818711,793c3890-6c8a-11de-8226-b8a03c50a862,CC-BY-4.0,Board of the Museum and Art Gallery of the Northern Territory
+2410152,Aseraggodes satapoomini,Soleidae,Pleuronectiformes,PRESERVED_SPECIMEN,yes,0,1211697582,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2378144,Asterropteryx ensifera,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,12,1211696254,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2347021,Astronesthes martensii,Stomiidae,Stomiiformes,PRESERVED_SPECIMEN,yes,7,1230367210,1aaec653-c71c-4695-9b6e-0e26214dd817,CC-BY-4.0,SAIAB
+2389465,Badis khwae,Badidae,Perciformes,PRESERVED_SPECIMEN,yes,0,52288,c2e3081a-ba91-40cf-b2df-9885a24b37dc,CC-BY-4.0,"Kottelat, M"
+2389474,Badis siamensis,Badidae,Perciformes,PRESERVED_SPECIMEN,yes,0,1262935927|4435436157,c2e3081a-ba91-40cf-b2df-9885a24b37dc|de55d6c3-248a-4f08-ba75-66dcff510f13,CC-BY-4.0|CC-BY-4.0,"Ng, PKL|ZMH"
+2363820,Balantiocheilos ambusticauda,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,,0,6133735234,9de1e948-106f-402a-8105-41729e9fa502,CC-BY-4.0,R. Geisler
+2407129,Balistoides conspicillum,Balistidae,Tetraodontiformes,HUMAN_OBSERVATION,yes,27,4091404026|4525187211,50c9509d-22c7-4a22-a47d-8c48425ef4a7|50c9509d-22c7-4a22-a47d-8c48425ef4a7,CC-BY-4.0|CC-BY-4.0,ig: underwater.logs|nbasargin
+2361289,Bangana devdevi,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,3,1024550188,d499aef2-b1d9-4890-aeb3-5f0d1237b513,CC0-1.0,"R.L. Mayden,  et al"
+9308968,Barbodes rhombeus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,,8,895498107|1024550165,2a79f202-3f3a-4d54-88fa-09aa8de1ac73|d499aef2-b1d9-4890-aeb3-5f0d1237b513,CC0-1.0|CC0-1.0,"North Carolina Museum of Natural Sciences|J.W. Armbruster, L. Yang, M. Tan,  students"
+2363308,Barilius huahinensis,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,1,473272785|1321332019,5d6c10bd-ea31-4363-8b79-58c96d859f5b|821cc27a-e3bb-4bc5-ac34-89ada245069d,CC0-1.0|CC0-1.0,"Roberts, Tyson R.|R. de Schauensee"
+2363334,Barilius infrafasciatus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,1322679487|3426429816,821cc27a-e3bb-4bc5-ac34-89ada245069d|5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0|CC0-1.0,"Charles|Herms, Edmond"
+2338627,Batasio affinis,Bagridae,Siluriformes,PRESERVED_SPECIMEN,yes,12,1889145650,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2377018,Bathygobius coalitus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,4,1889138834,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2394046,Betta apollon,Osphronemidae,Perciformes,PRESERVED_SPECIMEN,,0,472653939,829277c2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SNSD
+2394004,Betta bellica,Osphronemidae,Perciformes,PRESERVED_SPECIMEN,yes,8,4435463457,de55d6c3-248a-4f08-ba75-66dcff510f13,CC-BY-4.0,ZMH
+2393990,Betta ferox,Osphronemidae,Perciformes,PRESERVED_SPECIMEN,,0,472653919,829277c2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SNSD
+2394051,Betta imbellis,Osphronemidae,Perciformes,PRESERVED_SPECIMEN,yes,7,5186014105,6aca6910-1f48-434d-ba57-a4a639ede7d9,CC-BY-4.0,"Beyer, Peter"
+2394059,Betta pallida,Osphronemidae,Perciformes,PRESERVED_SPECIMEN,,0,472653926,829277c2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SNSD
+2395947,Blenniella caudolineata,Blenniidae,Perciformes,PRESERVED_SPECIMEN,yes,2,43937014,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2395927,Blenniella cyanostigma,Blenniidae,Perciformes,PRESERVED_SPECIMEN,yes,7,4464351097,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+6166887,Boraras naevus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,,0,1057159180,7e380070-f762-11e1-a439-00145eb45e9a,CC0-1.0,NHMUK
+2377132,Brachygobius kabiliensis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,16,6133739067,9de1e948-106f-402a-8105-41729e9fa502,CC-BY-4.0,Maurice Kottelat
+2377134,Brachygobius xanthozonus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,8,1830940399,2f8a1bdb-1ef9-418b-abc7-a5535746f316,CC-BY-4.0,SNSB-ZSM
+2375634,Bryaninops amplus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,4,1211696297,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2375624,Bryaninops loki,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,4,1211696267,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2375632,Bryaninops natans,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1211696873,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2375637,Bryaninops yongei,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,11,1211695733,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2386078,Butis humeralis,Eleotridae,Perciformes,PRESERVED_SPECIMEN,yes,4,1830740593,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2386892,Callionymus meridionalis,Callionymidae,Perciformes,PRESERVED_SPECIMEN,yes,3,5186011817,6aca6910-1f48-434d-ba57-a4a639ede7d9,CC-BY-4.0,"Bussarawit, Somchai"
+2379342,Callogobius maculipinnis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,16,1211695643,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2379382,Callogobius sclateri,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,8,1211696281,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2406982,Cantherhines pardalis,Monacanthidae,Tetraodontiformes,PRESERVED_SPECIMEN,yes,41,1085799051,793c3890-6c8a-11de-8226-b8a03c50a862,CC-BY-4.0,Board of the Museum and Art Gallery of the Northern Territory
+2336944,Caracanthus unipinna,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,18,1211697641,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+9787698,Carangoides armatus,Carangidae,Perciformes,PRESERVED_SPECIMEN,yes,17,1830750509,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+5210560,Carangoides ferdau,Carangidae,Perciformes,PRESERVED_SPECIMEN,yes,8,1830401116,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2388858,Cephalopholis aurantia,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,5,5054180873,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2388841,Cephalopholis leopardus,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,57,1211697144,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2388916,Cephalopholis miniata,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,47,1211697081,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2388857,Cephalopholis spiloparaea,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,8,1211697021,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2385577,Chaetodon auripes,Chaetodontidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1934503459,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2385458,Chaetodon kleinii,Chaetodontidae,Perciformes,HUMAN_OBSERVATION,yes,130,3457172743|5282592672,50c9509d-22c7-4a22-a47d-8c48425ef4a7|50c9509d-22c7-4a22-a47d-8c48425ef4a7,CC-BY-4.0|CC-BY-4.0,luluchouette|Ian Dugdale
+2387157,Champsodon vorax,Champsodontidae,Perciformes,PRESERVED_SPECIMEN,yes,7,1830402603,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2383315,Cheilinus oxycephalus,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,24,1211697596,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+8920223,Chela siamensis,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,,0,1056376314,7e380070-f762-11e1-a439-00145eb45e9a,CC0-1.0,Mouhot
+2332740,Choeroichthys sculptus,Syngnathidae,Syngnathiformes,PRESERVED_SPECIMEN,yes,6,1211697373,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5212258,Chromis dimidiata,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,4,1211697928,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5212279,Chromis flavipectoralis,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,6,1211697851,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5212240,Chromis margaritifer,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,20,6133696712,9de1e948-106f-402a-8105-41729e9fa502,CC-BY-4.0,H.R. Lubbock|N.V.C. Polunin
+5212219,Chromis viridis,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,59,1211698853,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5212140,Chromis weberi,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,24,1211698875,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2383873,Cirrhilabrus exquisitus,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,2,1211697570,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5206468,Cirrhinus caudimaculatus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,4,473270960,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2333138,Corythoichthys flavofasciatus,Syngnathidae,Syngnathiformes,PRESERVED_SPECIMEN,yes,7,1211697220,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2361915,Crossocheilus atrilimes,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,1024549899|1889096851,d499aef2-b1d9-4890-aeb3-5f0d1237b513|59825263-9f89-43a9-8f22-c22a6a53b8fc,CC0-1.0|CC-BY-4.0,"R.L. Mayden,  et al|The Regents of the University of Michigan"
+5209048,Cryptocentrus caeruleomaculatus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,7,43905575,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+5209069,Cryptocentrus cyanotaenia,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,0,43392346|43905591,8498cbf2-f762-11e1-a439-00145eb45e9a|84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,FRLM|NSMT
+5209040,Cryptocentrus strigilliceps,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1100673449,dce8feb0-6c89-11de-8225-b8a03c50a862,CC-BY-4.0,M.S. Mohlmann
+2379623,Ctenochaetus binotatus,Acanthuridae,Perciformes,PRESERVED_SPECIMEN,yes,17,1211697357,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2379156,Ctenogobiops crocineus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,,0,1211695672|5054276429,6ff42543-528d-4249-99bd-350bdd21b424|54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0|CC-BY-4.0,Royal Ontario Museum|OCF
+2379152,Ctenogobiops pomastictus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,1,1100673477|1211696276,dce8feb0-6c89-11de-8225-b8a03c50a862|6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0|CC-BY-4.0,M.S. Mohlmann|Royal Ontario Museum
+2381911,Cubiceps whiteleggii,Nomeidae,Perciformes,PRESERVED_SPECIMEN,yes,15,1230332629,1aaec653-c71c-4695-9b6e-0e26214dd817,CC-BY-4.0,SAIAB
+5207932,Cypselurus poecilopterus,Exocoetidae,Beloniformes,PRESERVED_SPECIMEN,yes,6,5054269997,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2362689,Danio roseus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,42,69452,c2e3081a-ba91-40cf-b2df-9885a24b37dc,CC-BY-4.0,"Kottelat, M"
+5210836,Datnioides pulcher,Datnioididae,Perciformes,PRESERVED_SPECIMEN,yes,0,6133711744,9de1e948-106f-402a-8105-41729e9fa502,CC-BY-4.0,R. Geisler
+2391049,Decapterus kurroides,Carangidae,Perciformes,PRESERVED_SPECIMEN,yes,17,1830402702,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2334545,Dendrochirus biocellatus,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,11,1830715601,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2368988,Dermogenys pusilla,Zenarchopteridae,Beloniformes,PRESERVED_SPECIMEN,yes,54,473034506,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Fehlmann, H. Adair; Rofen (Harry), Robert R.; et al"
+2368986,Dermogenys siamensis,Zenarchopteridae,Beloniformes,PRESERVED_SPECIMEN,yes,1,895498191|1889097558,2a79f202-3f3a-4d54-88fa-09aa8de1ac73|59825263-9f89-43a9-8f22-c22a6a53b8fc,CC0-1.0|CC-BY-4.0,North Carolina Museum of Natural Sciences|The Regents of the University of Michigan
+2398206,Dischistodus melanotus,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,47,4464413024,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2411618,Discotrema crinophilum,Gobiesocidae,Gobiesociformes,PRESERVED_SPECIMEN,yes,10,1211695906,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376755,Drombus kranjiensis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,4,5054248506,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+5213096,Echidna polyzona,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,16,1100580551,dce8feb0-6c89-11de-8225-b8a03c50a862,CC-BY-4.0,A. Nateewathana
+2396077,Ecsenius midas,Blenniidae,Perciformes,PRESERVED_SPECIMEN,yes,4,1211696471,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2386104,Eleotris melanosoma,Eleotridae,Perciformes,PRESERVED_SPECIMEN,yes,66,1211695900,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2358837,Ellopostoma mystax,Ellopostomatidae,Cypriniformes,PRESERVED_SPECIMEN,,0,473270483,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2404187,Enchelycore bayeri,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,8,1211697199,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2392985,Enneapterygius nanus,Tripterygiidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1211702772,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2392992,Enneapterygius philippinus,Tripterygiidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1211696799,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2360408,Epalzeorhynchos kalopterus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,39,1320104505,821cc27a-e3bb-4bc5-ac34-89ada245069d,CC0-1.0,H. Smith
+2360406,Epalzeorhynchos munense,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,1889124304|3774849768,59825263-9f89-43a9-8f22-c22a6a53b8fc|9c0c7f86-142f-43e0-9162-3d1284cef41e,CC-BY-4.0|CC-BY-4.0,The Regents of the University of Michigan|ZFMK
+2388167,Epinephelus chlorostigma,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1889124925,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2388544,Epinephelus epistictus,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,11,1830715110,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2388141,Epinephelus macrospilos,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,2,5054177920,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2388423,Epinephelus polyphekadion,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,6,1211697227,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2336973,Erisphex aniarus,Aploactinidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,4,1230400725,1aaec653-c71c-4695-9b6e-0e26214dd817,CC-BY-4.0,SAIAB
+2364604,Esomus metallicus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,129,71331,c2e3081a-ba91-40cf-b2df-9885a24b37dc,CC-BY-4.0,"Bohlen, J"
+2396318,Eubleekeria jonesi,Leiognathidae,Perciformes,PRESERVED_SPECIMEN,,3,1889135782|43437948,59825263-9f89-43a9-8f22-c22a6a53b8fc|8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,The Regents of the University of Michigan|FRLM
+2389321,Eupleurogrammus glossodon,Trichiuridae,Perciformes,PRESERVED_SPECIMEN,yes,11,4464340094,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2376185,Eviota albolineata,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,10,1211695653,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376207,Eviota herrei,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,5,1211696266,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376143,Eviota nigriventris,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,15,1211696815,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376201,Eviota pellucida,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,14,1211696205,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376195,Eviota prasites,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,13,1211696240,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376183,Eviota punctulata,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1211696233,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376139,Eviota sebreei,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,9,1211695623,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376206,Eviota sigillata,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,16,1211696907,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376148,Eviota spilota,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,6,1211695903,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376194,Eviota zebrina,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1211695656,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+8194739,Exostoma effrenum,Sisoridae,Siluriformes,PRESERVED_SPECIMEN,,0,1889147245,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+7375429,Exostoma peregrinator,Sisoridae,Siluriformes,PRESERVED_SPECIMEN,,0,1889147297,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2375839,Exyrias belissimus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,7,5054274915,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2385706,Forcipiger flavissimus,Chaetodontidae,Perciformes,PRESERVED_SPECIMEN,yes,26,43922324,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2377769,Fusigobius duospilus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,6,1211696370,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2377834,Fusigobius humeralis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,,6,1211695727,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2377774,Fusigobius maximus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,1,1211696359,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2377758,Fusigobius melacron,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,6,1211695741,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2377783,Fusigobius pallidus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,0,1211696341,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2366857,Garra fasciacauda,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,2,473262265,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2366748,Garra nasuta,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,2,1889124413,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+8086171,Garra waensis,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,,0,1087042245,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Lothongkham, A."
+5211394,Gazza achlamys,Leiognathidae,Perciformes,PRESERVED_SPECIMEN,yes,11,43048080,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+5211393,Gazza rhombea,Leiognathidae,Perciformes,PRESERVED_SPECIMEN,,2,1889133401|43409759,59825263-9f89-43a9-8f22-c22a6a53b8fc|8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,The Regents of the University of Michigan|FRLM
+2369433,Gerres chrysops,Gerreidae,Perciformes,PRESERVED_SPECIMEN,yes,0,43922156,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2369370,Gerres limbatus,Gerreidae,Perciformes,PRESERVED_SPECIMEN,yes,19,43050671,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,"Mortensen, Th."
+2369451,Gerres macracanthus,Gerreidae,Perciformes,PRESERVED_SPECIMEN,yes,4,207838571,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+2369447,Gerres silaceus,Gerreidae,Perciformes,PRESERVED_SPECIMEN,,0,1934515845,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2376314,Gladiogobius ensifer,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,6,1211698488,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376317,Gladiogobius rex,Gobiidae,Perciformes,PRESERVED_SPECIMEN,,0,43926803,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2345771,Glyptophidium macropus,Ophidiidae,Ophidiiformes,PRESERVED_SPECIMEN,yes,2,1230347556,1aaec653-c71c-4695-9b6e-0e26214dd817,CC-BY-4.0,SAIAB
+4285928,Gnatholepis cauerensis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,32,1211695722,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5208803,Gobiodon citrinus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,12,1211698083,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5208817,Gobiodon prolixus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,,0,1211698042,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2377297,Gobiopterus panayensis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,0,1211695922|43928735,6ff42543-528d-4249-99bd-350bdd21b424|84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,Royal Ontario Museum|NSMT
+5208588,Grammatorcynus bilineatus,Scombridae,Perciformes,HUMAN_OBSERVATION,yes,5,3773680663|6130816475,50c9509d-22c7-4a22-a47d-8c48425ef4a7|50c9509d-22c7-4a22-a47d-8c48425ef4a7,CC-BY-4.0|CC-BY-4.0,Wich’yanan (Jay) Limparungpatthanakij|Ben Costamagna
+2387906,Grammistops ocellatus,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1211697251,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2374814,Gymnocaesio gymnoptera,Caesionidae,Perciformes,PRESERVED_SPECIMEN,yes,7,1211697359,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2374996,Gymnocranius elongatus,Lethrinidae,Perciformes,PRESERVED_SPECIMEN,yes,6,1830400935,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2375000,Gymnocranius microdon,Lethrinidae,Perciformes,PRESERVED_SPECIMEN,yes,2,797231976,7c93d290-6c8b-11de-8226-b8a03c50a862,CC-BY-4.0,"Allen, G.R."
+2403955,Gymnothorax buroensis,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,24,1211696787,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2404121,Gymnothorax chilospilus,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,34,1211696642,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2404000,Gymnothorax margaritophorus,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,4,1211697316,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2403885,Gymnothorax melatremus,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,7,1211697298,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2403841,Gymnothorax monochrous,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,2,1211697325,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2404022,Gymnothorax pindae,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,5,1211697126,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2403973,Gymnothorax pseudothyrsoideus,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,3,43929444,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2403976,Gymnothorax zonipectis,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,23,1211697206,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2332827,Halicampus mataafae,Syngnathidae,Syngnathiformes,PRESERVED_SPECIMEN,yes,2,1211697185,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2384216,Halichoeres binotopsis,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,13,1889125315,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2350855,Halophryne diemensis,Batrachoididae,Batrachoidiformes,PRESERVED_SPECIMEN,yes,10,43933099,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2341527,Hara mesembrina,Erethistidae,Siluriformes,PRESERVED_SPECIMEN,,0,1889143719,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2392866,Helcogramma rosea,Tripterygiidae,Perciformes,PRESERVED_SPECIMEN,yes,0,1211704068,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2368955,Hemiramphus lutkei,Hemiramphidae,Beloniformes,PRESERVED_SPECIMEN,yes,11,43932794,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2368761,Hemirhamphodon pogonognathus,Zenarchopteridae,Beloniformes,PRESERVED_SPECIMEN,yes,53,473262667,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2361367,Henicorhynchus lineatus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,14,1889135268,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2361363,Henicorhynchus lobatus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,15,473262284,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2361365,Henicorhynchus ornatipinnis,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,473265113,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2385729,Heniochus diphreutes,Chaetodontidae,Perciformes,PRESERVED_SPECIMEN,yes,5,5054269474,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2375045,Heteropriacanthus cruentatus,Priacanthidae,Perciformes,PRESERVED_SPECIMEN,yes,10,1211697351,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5201038,Hippocampus histrix,Syngnathidae,Syngnathiformes,PRESERVED_SPECIMEN,yes,8,207850846,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+2375218,Histiopterus typus,Pentacerotidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1319551718,821cc27a-e3bb-4bc5-ac34-89ada245069d,CC0-1.0,L. Di Salvo
+2365526,Hypsibarbus lagleri,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,3,1889114600,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2365513,Hypsibarbus salweenensis,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,473169119,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Napangmuen, N."
+2365512,Hypsibarbus suvattii,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,1889097453,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2356565,Indostomus crocodilus,Indostomidae,Gasterosteiformes,PRESERVED_SPECIMEN,yes,0,83221,c2e3081a-ba91-40cf-b2df-9885a24b37dc,CC-BY-4.0,"Kottelat, M"
+2383348,Iniistius trivittatus,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,22,44016434,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2333644,Inimicus sinensis,Synanceiidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,6,1934494085,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2376260,Istigobius spence,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,1,43939416|5054274903,84a1a7e0-f762-11e1-a439-00145eb45e9a|54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0|CC-BY-4.0,NSMT|OCF
+2399458,Johnius macropterus,Sciaenidae,Perciformes,PRESERVED_SPECIMEN,yes,2,4464323811,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2399449,Johnius weberi,Sciaenidae,Perciformes,PRESERVED_SPECIMEN,yes,4,1889092900,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2337902,Kryptopterus hesperius,Siluridae,Siluriformes,PRESERVED_SPECIMEN,yes,0,43089594,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,"Johnsen, Palle"
+7916021,Kryptopterus vitreolus,Siluridae,Siluriformes,PRESERVED_SPECIMEN,,0,1889146972,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2366243,Labiobarbus fasciatus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,17,1934503836,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2407756,Lagocephalus gloveri,Tetraodontidae,Tetraodontiformes,PRESERVED_SPECIMEN,yes,3,100388740,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2407778,Lagocephalus inermis,Tetraodontidae,Tetraodontiformes,PRESERVED_SPECIMEN,yes,6,1934496306,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+5211416,Leiognathus oblongus,Leiognathidae,Perciformes,PRESERVED_SPECIMEN,,2,100389592|1830400943,84a1a7e0-f762-11e1-a439-00145eb45e9a|8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,NSMT|FRLM
+2409016,Lepidoblepharon ophthalmolepis,Citharidae,Pleuronectiformes,PRESERVED_SPECIMEN,yes,2,1830724239,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2368072,Lepidocephalichthys guntea,Cobitidae,Cypriniformes,PRESERVED_SPECIMEN,yes,3,3821250305,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2398762,Lepidozygus tapeinosoma,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,13,1211697982,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2365645,Leptobarbus hoevenii,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,27,1024549934,d499aef2-b1d9-4890-aeb3-5f0d1237b513,CC0-1.0,"R.L. Mayden,  et al"
+2383944,Leptojulis lambdastigma,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,12,1830716345,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2393824,Leptoscarus vaigiensis,Scaridae,Perciformes,PRESERVED_SPECIMEN,yes,23,6116018302,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+2374866,Lethrinus atkinsoni,Lethrinidae,Perciformes,PRESERVED_SPECIMEN,yes,2,797231983,7c93d290-6c8b-11de-8226-b8a03c50a862,CC-BY-4.0,"Allen, G.R."
+2374840,Lethrinus obsoletus,Lethrinidae,Perciformes,PRESERVED_SPECIMEN,yes,11,43135971,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2374876,Lethrinus variegatus,Lethrinidae,Perciformes,PRESERVED_SPECIMEN,yes,17,43125983,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2384951,Lutjanus bengalensis,Lutjanidae,Perciformes,PRESERVED_SPECIMEN,yes,5,5054270041,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2383669,Macropharyngodon ornatus,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,8,1211697724,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2407156,Melichthys indicus,Balistidae,Tetraodontiformes,PRESERVED_SPECIMEN,yes,5,1100580532,dce8feb0-6c89-11de-8225-b8a03c50a862,CC-BY-4.0,Marine Fisheries Laboratory Phuket
+2363249,Microdevario kubotai,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,90657,c2e3081a-ba91-40cf-b2df-9885a24b37dc,CC-BY-4.0,"Kottelat, M"
+5201007,Microphis leiaspis,Syngnathidae,Syngnathiformes,PRESERVED_SPECIMEN,yes,13,1211696479,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2333666,Minous pictus,Synanceiidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,2,1830715651,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2367919,Misgurnus anguillicaudatus,Cobitidae,Cypriniformes,PRESERVED_SPECIMEN,yes,7,43198978,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+5208715,Monotaxis grandoculis,Lethrinidae,Perciformes,HUMAN_OBSERVATION,yes,42,3455415993|4597251707,50c9509d-22c7-4a22-a47d-8c48425ef4a7|50c9509d-22c7-4a22-a47d-8c48425ef4a7,CC-BY-4.0|CC-BY-4.0,luluchouette|nbasargin
+2400913,Moolgarda pedaraki,Mugilidae,Mugiliformes,PRESERVED_SPECIMEN,,1,43450573|43949166,8498cbf2-f762-11e1-a439-00145eb45e9a|84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,FRLM|NSMT
+2376839,Mugilogobius fasciatus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,,0,1211695843,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2376911,Mugilogobius latifrons,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,4,42481921,848ae956-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,HUMZ
+5208995,Myersina adonis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,0,43949335,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+5209001,Myersina filifer,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1830714851,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2404489,Myrichthys colubrinus,Ophichthidae,Anguilliformes,PRESERVED_SPECIMEN,yes,23,207899819,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+2357002,Myripristis berndti,Holocentridae,Beryciformes,PRESERVED_SPECIMEN,yes,9,1211697536,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2357028,Myripristis violacea,Holocentridae,Beryciformes,PRESERVED_SPECIMEN,yes,60,1889124935,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2363151,Mystacoleucus chilopterus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,9,207901216,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+2363146,Mystacoleucus ectypus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,1024549764|1889110409,d499aef2-b1d9-4890-aeb3-5f0d1237b513|59825263-9f89-43a9-8f22-c22a6a53b8fc,CC0-1.0|CC-BY-4.0,"R.L. Mayden,  et al|The Regents of the University of Michigan"
+5201901,Mystus leucophasis,Bagridae,Siluriformes,PRESERVED_SPECIMEN,yes,13,5891230881,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+9760005,Naso brevirostris,Acanthuridae,Perciformes,PRESERVED_SPECIMEN,yes,25,43251298,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+5209104,Naso vlamingii,Acanthuridae,Perciformes,PRESERVED_SPECIMEN,yes,32,4464370432,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2397631,Neamia octospina,Apogonidae,Perciformes,PRESERVED_SPECIMEN,yes,4,1211699141,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2397474,Nectamia bandanensis,Apogonidae,Perciformes,PRESERVED_SPECIMEN,yes,33,1211699046,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2404991,Neenchelys buitendijki,Ophichthidae,Anguilliformes,PRESERVED_SPECIMEN,yes,3,1830400990,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2362821,Neolissochilus soroides,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,5,4054652304,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2398562,Neopomacentrus filamentosus,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,4,797145027,7c93d290-6c8b-11de-8226-b8a03c50a862,CC-BY-4.0,"Allen, G.R."
+2396234,Nuchequula gerreoides,Leiognathidae,Perciformes,PRESERVED_SPECIMEN,yes,14,1889120423,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2386360,Odonteleotris macrodon,Eleotridae,Perciformes,PRESERVED_SPECIMEN,yes,5,1211697917,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5208855,Oligolepis acutipennis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,8,5054073019,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2341872,Oloplotosus mariae,Plotosidae,Siluriformes,PRESERVED_SPECIMEN,yes,3,1889125847,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2396153,Omobranchus obliquus,Blenniidae,Perciformes,PRESERVED_SPECIMEN,yes,5,1211699269,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2346517,Onuxodon parvibrachium,Carapidae,Ophidiiformes,PRESERVED_SPECIMEN,yes,3,1211699226,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2365938,Onychostoma lini,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,473370298|1889110442,5d6c10bd-ea31-4363-8b79-58c96d859f5b|59825263-9f89-43a9-8f22-c22a6a53b8fc,CC0-1.0|CC-BY-4.0,"Roberts, Tyson R.|The Regents of the University of Michigan"
+5213160,Ophichthus lithinus,Ophichthidae,Anguilliformes,PRESERVED_SPECIMEN,,4,1211699165|5077701696,6ff42543-528d-4249-99bd-350bdd21b424|84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,Royal Ontario Museum|NSMT
+2376818,Oplopomus oplopomus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,14,1211698426,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2366574,Oreichthys parvus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,6120622114|1318154950,ec6ecdeb-d8b3-4f28-8057-dad68feb616b|821cc27a-e3bb-4bc5-ac34-89ada245069d,CC0-1.0|CC0-1.0,M. Hardman & M.H. Sabaj|H. Smith
+5961233,Oreoglanis sudarai,Sisoridae,Siluriformes,PRESERVED_SPECIMEN,,0,1889146000,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+5961236,Oreoglanis suraswadii,Sisoridae,Siluriformes,PRESERVED_SPECIMEN,,0,1889146007,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+5961234,Oreoglanis vicinus,Sisoridae,Siluriformes,PRESERVED_SPECIMEN,,0,1889146040,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+5961079,Oryzias songkhramensis,Adrianichthyidae,Beloniformes,PRESERVED_SPECIMEN,,0,1934487200,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2364333,Osteochilus schlegelii,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,11,1889135471,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2364337,Osteochilus waandersii,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,52,473262554,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, T. R.; Napangmuen, N."
+5204764,Ostichthys japonicus,Holocentridae,Beryciformes,PRESERVED_SPECIMEN,yes,2,1830714855,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+7193012,Ostorhinchus kiensis,Apogonidae,Perciformes,PRESERVED_SPECIMEN,,2,2576003711|43363567,85b8ed3c-f762-11e1-a439-00145eb45e9a|8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,CBM|FRLM
+2384363,Oxycheilinus bimaculatus,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,30,207785548,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+2377994,Oxyurichthys ophthalmonema,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,15,1085818332,793c3890-6c8a-11de-8226-b8a03c50a862,CC-BY-4.0,Board of the Museum and Art Gallery of the Northern Territory
+2377703,Palutrus meteori,Gobiidae,Perciformes,PRESERVED_SPECIMEN,,0,1211696366|1934496991,6ff42543-528d-4249-99bd-350bdd21b424|84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,Royal Ontario Museum|NSMT
+2377976,Pandaka lidwilli,Gobiidae,Perciformes,PRESERVED_SPECIMEN,,0,1211695884|43463414,6ff42543-528d-4249-99bd-350bdd21b424|8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,Royal Ontario Museum|FRLM
+5202442,Pangasius krempfi,Pangasiidae,Siluriformes,PRESERVED_SPECIMEN,yes,2,1889135533,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2367988,Pangio semicincta,Cobitidae,Cypriniformes,PRESERVED_SPECIMEN,yes,18,207946375,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+8742799,Paracanthocobitis maekhlongensis,Nemacheilidae,Cypriniformes,PRESERVED_SPECIMEN,,0,1889110663,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+9535329,Paracanthocobitis phuketensis,Nemacheilidae,Cypriniformes,PRESERVED_SPECIMEN,,0,1088030159|1211677472,afc30a94-6107-488a-b9c0-ba9c4fa68b7c|6ff42543-528d-4249-99bd-350bdd21b424,CC0-1.0|CC-BY-4.0,The Field Museum of Natural History|Royal Ontario Museum
+5208733,Paracirrhites forsteri,Cirrhitidae,Perciformes,PRESERVED_SPECIMEN,yes,55,1085799167,793c3890-6c8a-11de-8226-b8a03c50a862,CC-BY-4.0,Board of the Museum and Art Gallery of the Northern Territory
+5213424,Paramonacanthus japonicus,Monacanthidae,Tetraodontiformes,PRESERVED_SPECIMEN,yes,3,43460279,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+5210052,Parapercis alboguttata,Pinguipedidae,Perciformes,PRESERVED_SPECIMEN,yes,9,203878433,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+5209968,Parapercis diplospilus,Pinguipedidae,Perciformes,PRESERVED_SPECIMEN,,1,43961131|5054097316,84a1a7e0-f762-11e1-a439-00145eb45e9a|54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0|CC-BY-4.0,NSMT|OCF
+2374418,Parapriacanthus ransonneti,Pempheridae,Perciformes,PRESERVED_SPECIMEN,yes,12,1211702792,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2334490,Parascorpaena mossambica,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,7,1211716101,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2366487,Parasikukia maculata,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,1,43965235,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2394185,Parosphromenus paludicola,Osphronemidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1265782307,2f8a1bdb-1ef9-418b-abc7-a5535746f316,CC-BY-4.0,SNSB-ZSM
+2396678,Parupeneus pleurostigma,Mullidae,Perciformes,PRESERVED_SPECIMEN,yes,5,43965697,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2374385,Pempheris adusta,Pempheridae,Perciformes,PRESERVED_SPECIMEN,yes,12,5054212474,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2374389,Pempheris mangula,Pempheridae,Perciformes,PRESERVED_SPECIMEN,yes,3,1211702789,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2374393,Pempheris otaitensis,Pempheridae,Perciformes,PRESERVED_SPECIMEN,yes,0,1211702776|1889132773,6ff42543-528d-4249-99bd-350bdd21b424|59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0|CC-BY-4.0,Royal Ontario Museum|The Regents of the University of Michigan
+2374399,Pempheris schwenkii,Pempheridae,Perciformes,PRESERVED_SPECIMEN,yes,3,1085799071,793c3890-6c8a-11de-8226-b8a03c50a862,CC-BY-4.0,Board of the Museum and Art Gallery of the Northern Territory
+2406809,Pervagor janthinosoma,Monacanthidae,Tetraodontiformes,PRESERVED_SPECIMEN,yes,9,5054274938,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+7819600,Pethia ticto,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,,1,1211677526|1934506821,6ff42543-528d-4249-99bd-350bdd21b424|84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,Royal Ontario Museum|NSMT
+2395993,Plagiotremus tapeinosoma,Blenniidae,Perciformes,PRESERVED_SPECIMEN,yes,5,1211696632,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5210331,Plesiops auritus,Plesiopidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1211697326,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5210317,Plesiops corallicola,Plesiopidae,Perciformes,PRESERVED_SPECIMEN,yes,8,1211697467,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2375654,Pleurosicya labiata,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,9,1211695738,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2375649,Pleurosicya micheli,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,5,1211696322,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2375642,Pleurosicya mossambica,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,13,1211695763,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2375644,Pleurosicya plicata,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1211696380,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2393265,Polydactylus siamensis,Polynemidae,Perciformes,PRESERVED_SPECIMEN,yes,0,5054183425,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2398263,Pomacentrus grammorhynchus,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,12,43978065,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2398390,Pomacentrus lepidogenys,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,17,1211697712,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2398320,Pomacentrus nagasakiensis,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,0,1211697843|43977912,6ff42543-528d-4249-99bd-350bdd21b424|84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,Royal Ontario Museum|NSMT
+2398267,Pomacentrus vaiuli,Pomacentridae,Perciformes,PRESERVED_SPECIMEN,yes,9,43425806,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2382898,Pomadasys guoraca,Haemulidae,Perciformes,PRESERVED_SPECIMEN,yes,3,43419963,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2382902,Pomadasys kaakan,Haemulidae,Perciformes,PRESERVED_SPECIMEN,yes,35,1889125409,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2382840,Pomadasys unimaculatus,Haemulidae,Perciformes,PRESERVED_SPECIMEN,yes,2,203878553,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2366199,Poropuntius bantamensis,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,1,102560,c2e3081a-ba91-40cf-b2df-9885a24b37dc,CC-BY-4.0,"Gyldenstolpe, N"
+2366213,Poropuntius hathe,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,473270211,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2366183,Poropuntius heterolepidotus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,473265520,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2366191,Poropuntius laoensis,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,3,473370336,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2366224,Poropuntius melanogrammus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,473262521,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, T. R.; Napangmuen, N."
+2366137,Poropuntius normani,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,6,1024550591,d499aef2-b1d9-4890-aeb3-5f0d1237b513,CC0-1.0,"J.W. Armbruster, L. Yang, M. Tan,  students"
+2366188,Poropuntius scapanognathus,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,1,473265108,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2395501,Praealticus triangulus,Blenniidae,Perciformes,PRESERVED_SPECIMEN,,2,43441138|43976797,84dbaec2-f762-11e1-a439-00145eb45e9a|84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,NHMD|NSMT
+2375023,Priacanthus blochii,Priacanthidae,Perciformes,PRESERVED_SPECIMEN,yes,8,43978340,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2375008,Priacanthus macracanthus,Priacanthidae,Perciformes,PRESERVED_SPECIMEN,yes,40,1211697355,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5211538,Pseudamia gelatinosa,Apogonidae,Perciformes,PRESERVED_SPECIMEN,yes,3,6133696708,9de1e948-106f-402a-8105-41729e9fa502,CC-BY-4.0,H.R. Lubbock|N.V.C. Polunin
+5211532,Pseudamia hayashii,Apogonidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1211698013,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2387652,Pseudanthias squamipinnis,Serranidae,Perciformes,PRESERVED_SPECIMEN,yes,34,1211696029,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+6168215,Pseudeutropius indigens,Schilbeidae,Siluriformes,PRESERVED_SPECIMEN,,0,1889146806,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+5961555,Pseudobagarius subtilis,Akysidae,Siluriformes,PRESERVED_SPECIMEN,,0,1889115198,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2383692,Pseudocheilinus evanidus,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,8,1211697667,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2383693,Pseudocheilinus hexataenia,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,36,1211697671,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2375921,Pseudogobius poicilosoma,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,24,1085818973,793c3890-6c8a-11de-8226-b8a03c50a862,CC-BY-4.0,Board of the Museum and Art Gallery of the Northern Territory
+2408838,Pseudorhombus neglectus,Paralichthyidae,Pleuronectiformes,PRESERVED_SPECIMEN,yes,15,6160274309,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2383598,Pteragogus cryptus,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,7,1211697663,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2385827,Ptereleotris heteroptera,Microdesmidae,Perciformes,HUMAN_OBSERVATION,yes,9,3456756464|6133251568,50c9509d-22c7-4a22-a47d-8c48425ef4a7|50c9509d-22c7-4a22-a47d-8c48425ef4a7,CC-BY-4.0|CC-BY-4.0,luluchouette|Ben Costamagna
+2374768,Pterocaesio digramma,Caesionidae,Perciformes,PRESERVED_SPECIMEN,yes,20,1830715625,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2374744,Pterocaesio trilineata,Caesionidae,Perciformes,PRESERVED_SPECIMEN,yes,4,1830402595,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2334443,Pterois antennata,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,71,1211697192,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2334436,Pterois lunulata,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,2,5054170216,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2334440,Pterois radiata,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,6,1211697171,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2336624,Pterygotrigla hemisticta,Triglidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,2,1830715549,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2366495,Puntioplites falcifer,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,20,1024549576,d499aef2-b1d9-4890-aeb3-5f0d1237b513,CC0-1.0,"R.L. Mayden,  et al"
+2366490,Puntioplites waandersi,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,15,473370326,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2359538,Rasbora argyrotaenia,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,166,473033899,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,local fishermen
+2359632,Rasbora cephalotaenia,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,39,208019813,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+2359557,Rasbora dorsinotata,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,1122943123,2f8a1bdb-1ef9-418b-abc7-a5535746f316,CC-BY-4.0,SNSB-ZSM
+2359549,Rasbora einthovenii,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,89,473262649,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2359498,Rasbora lateristriata,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,106,208019842,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+2359583,Rasbora paucisqualis,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,16,1934503952,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2359497,Rasbora paviana,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,66,895498125,2a79f202-3f3a-4d54-88fa-09aa8de1ac73,CC0-1.0,North Carolina Museum of Natural Sciences
+2359570,Rasbora rasbora,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,25,6120521764,ec6ecdeb-d8b3-4f28-8057-dad68feb616b,CC0-1.0,M. Hardman & M.H. Sabaj
+2359502,Rasbora tornieri,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,12,1889130846,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2377427,Redigobius chrysosoma,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1211695931,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2377624,Rhinogobius giurinus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1061243036,829277c2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SNSD
+6167727,Schistura aurantiaca,Nemacheilidae,Cypriniformes,PRESERVED_SPECIMEN,,0,2871782315,821cc27a-e3bb-4bc5-ac34-89ada245069d,CC0-1.0,R. Plongsesthee
+8884712,Schistura crocotula,Nemacheilidae,Cypriniformes,PRESERVED_SPECIMEN,,0,1056303326,7e380070-f762-11e1-a439-00145eb45e9a,CC0-1.0,Rungthip Plongsesthee|P Tookampha
+5205011,Schistura jarutanini,Nemacheilidae,Cypriniformes,PRESERVED_SPECIMEN,yes,0,4435437344,de55d6c3-248a-4f08-ba75-66dcff510f13,CC-BY-4.0,ZMH
+8007742,Schistura tenebrosa,Nemacheilidae,Cypriniformes,PRESERVED_SPECIMEN,,0,4948395085,821cc27a-e3bb-4bc5-ac34-89ada245069d,CC0-1.0,"P. Kangrang, R. Beamish & T. Kongchaiya"
+2405046,Scolecenchelys macroptera,Ophichthidae,Anguilliformes,PRESERVED_SPECIMEN,yes,15,43949292,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2380086,Scolopsis xenochrous,Nemipteridae,Perciformes,PRESERVED_SPECIMEN,yes,7,797145189,7c93d290-6c8b-11de-8226-b8a03c50a862,CC-BY-4.0,"Allen, G.R."
+2334393,Scorpaenodes albaiensis,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,12,1211716062,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2334402,Scorpaenodes minor,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,8,1211697443,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2334387,Scorpaenodes parvipinnis,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,3,1211697478,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2334366,Scorpaenodes scaber,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,15,1211697471,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2334388,Scorpaenodes varipinnis,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,6,1211697155,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2334749,Scorpaenopsis cirrosa,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,6,43992550,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2334743,Scorpaenopsis diabolus,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,9,797145217,7c93d290-6c8b-11de-8226-b8a03c50a862,CC-BY-4.0,"Allen, G.R., et al."
+2334772,Scorpaenopsis macrochir,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,8,43560992,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+5201241,Sebastapistes fowleri,Scorpaenidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,6,1211716103,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2396210,Secutor hanedai,Leiognathidae,Perciformes,PRESERVED_SPECIMEN,yes,2,1830715120,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2396207,Secutor interruptus,Leiognathidae,Perciformes,PRESERVED_SPECIMEN,yes,1,43496872|5054186063,8498cbf2-f762-11e1-a439-00145eb45e9a|54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0|CC-BY-4.0,FRLM|OCF
+2396190,Secutor megalolepis,Leiognathidae,Perciformes,PRESERVED_SPECIMEN,yes,4,43499648,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2368146,Serpenticobitis cingulata,Serpenticobitidae,Cypriniformes,PRESERVED_SPECIMEN,yes,2,473263458,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2336903,Setarches longimanus,Setarchidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,9,1230332433,1aaec653-c71c-4695-9b6e-0e26214dd817,CC-BY-4.0,SAIAB
+2390180,Siganus argenteus,Siganidae,Perciformes,PRESERVED_SPECIMEN,yes,15,5060651539,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2391971,Sillago asiatica,Sillaginidae,Perciformes,PRESERVED_SPECIMEN,yes,10,1889125120,59825263-9f89-43a9-8f22-c22a6a53b8fc,CC-BY-4.0,The Regents of the University of Michigan
+2391955,Sillago ingenuua,Sillaginidae,Perciformes,PRESERVED_SPECIMEN,yes,2,43997204,84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NSMT
+2391956,Sillago intermedius,Sillaginidae,Perciformes,PRESERVED_SPECIMEN,yes,1,1889125136|43997013,59825263-9f89-43a9-8f22-c22a6a53b8fc|84a1a7e0-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,The Regents of the University of Michigan|NSMT
+2345862,Sirembo imberbis,Ophidiidae,Ophidiiformes,PRESERVED_SPECIMEN,yes,4,4464512657,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,"Nielsen, J."
+5200920,Solenostomus paradoxus,Solenostomidae,Syngnathiformes,PRESERVED_SPECIMEN,yes,8,43506179,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2394252,Sphyraena chrysotaenia,Sphyraenidae,Perciformes,PRESERVED_SPECIMEN,,0,1889093036|43598980,59825263-9f89-43a9-8f22-c22a6a53b8fc|84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0|CC-BY-4.0,The Regents of the University of Michigan|NHMD
+2394213,Sphyraena forsteri,Sphyraenidae,Perciformes,PRESERVED_SPECIMEN,yes,10,208055574,96582dc4-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,SMF
+2394230,Sphyraena pinguis,Sphyraenidae,Perciformes,PRESERVED_SPECIMEN,yes,5,1830403642,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2378646,Sueviota lachneri,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,5,1211695783,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2407198,Sufflamen bursa,Balistidae,Tetraodontiformes,HUMAN_OBSERVATION,yes,40,3455589123|4009744027,50c9509d-22c7-4a22-a47d-8c48425ef4a7|50c9509d-22c7-4a22-a47d-8c48425ef4a7,CC-BY-4.0|CC-BY-4.0,luluchouette|Donald Davesne
+2335648,Sunagocia otaitensis,Platycephalidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,7,1211697405,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5212670,Synodus dermatogenys,Synodontidae,Aulopiformes,PRESERVED_SPECIMEN,yes,15,1211697203,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5212638,Synodus hoshinonis,Synodontidae,Aulopiformes,PRESERVED_SPECIMEN,yes,8,1085831387,793c3890-6c8a-11de-8226-b8a03c50a862,CC-BY-4.0,Board of the Museum and Art Gallery of the Northern Territory
+5212684,Synodus jaculum,Synodontidae,Aulopiformes,PRESERVED_SPECIMEN,yes,7,1211697423,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5212679,Synodus rubromarmoratus,Synodontidae,Aulopiformes,PRESERVED_SPECIMEN,yes,2,1211697393,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5212666,Synodus similis,Synodontidae,Aulopiformes,PRESERVED_SPECIMEN,yes,2,43665111,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+5212677,Synodus tectus,Synodontidae,Aulopiformes,PRESERVED_SPECIMEN,yes,3,1830715036,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2413382,Tenualosa ilisha,Clupeidae,Clupeiformes,PRESERVED_SPECIMEN,yes,20,5054084157,54deeae4-a99e-4d22-962a-f711ea550eab,CC-BY-4.0,OCF
+2335604,Thysanophrys chiltonae,Platycephalidae,Scorpaeniformes,PRESERVED_SPECIMEN,yes,4,1211697440,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2364511,Tor tambra,Cyprinidae,Cypriniformes,PRESERVED_SPECIMEN,yes,48,4054650303,5d6c10bd-ea31-4363-8b79-58c96d859f5b,CC0-1.0,"Roberts, Tyson R."
+2382441,Toxotes blythii,Toxotidae,Perciformes,PRESERVED_SPECIMEN,yes,3,1211696460,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+5210646,Trachinotus botla,Carangidae,Perciformes,PRESERVED_SPECIMEN,yes,7,4464465348,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+5213403,Triacanthus nieuhofii,Triacanthidae,Tetraodontiformes,PRESERVED_SPECIMEN,yes,9,1830748919,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2378624,Trimma fucatum,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,0,1211695749,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2378587,Trimma naudei,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,7,1211695762,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2378549,Trimma sanguinellus,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,0,1211695780,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2375322,Trypauchenichthys sumatrensis,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,4,43687695,84dbaec2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,NHMD
+2393062,Ucla xenogrammus,Tripterygiidae,Perciformes,PRESERVED_SPECIMEN,yes,16,1211702729,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2394365,Uranoscopus cognatus,Uranoscopidae,Perciformes,PRESERVED_SPECIMEN,yes,7,1830716208,80f63c1e-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,KAUM
+2404175,Uropterygius micropterus,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,4,1830402253,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM
+2404150,Uropterygius xanthopterus,Muraenidae,Anguilliformes,PRESERVED_SPECIMEN,yes,8,1211697327,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2377379,Valenciennea strigata,Gobiidae,Perciformes,PRESERVED_SPECIMEN,yes,28,1211695761,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2383453,Wetmorella nigropinnata,Labridae,Perciformes,PRESERVED_SPECIMEN,yes,7,1211697727,6ff42543-528d-4249-99bd-350bdd21b424,CC-BY-4.0,Royal Ontario Museum
+2368784,Zenarchopterus buffonis,Zenarchopteridae,Beloniformes,PRESERVED_SPECIMEN,yes,82,43530185,8498cbf2-f762-11e1-a439-00145eb45e9a,CC-BY-4.0,FRLM

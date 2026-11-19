@@ -32,7 +32,7 @@ bool touchPoint(int& x,int& y){x=px;y=py;return touched;}
 void beginScene(){}void paint(const View&){}
 int landingPulses=0;LandingCue heardLanding;
 bool startSound(){return true;}
-void setSound(const SoundSettings& s,bool,bool cue,int,LandingCue landing){
+void setSound(const SoundSettings& s,bool,bool cue,int,LandingCue landing,uint8_t){
  lastMix=s;if(cue)++cuePulses;
  if(landing.active()){++landingPulses;heardLanding=landing;}
 }
@@ -138,7 +138,7 @@ int main(){
  view.page=Page::Play;view.practice=true;view.game.line=view.game.target;view.game.enter(Phase::Fight);
  tap(420,16);assert(view.page==Page::Hub);
  uint32_t pausedAge=view.game.age;step(20);assert(view.game.age==pausedAge);
- gridTap(1);assert(view.page==Page::Book);
+ gridTap(1);assert(view.page==Page::Book&&view.bookWater==siteCount&&view.bookFilter==BookFilter::All&&view.game.progress.book.waterCount(view.bookWater,view.destination,view.bookFilter)==fishCount);
  gridTap(0,menuui::gridTop,86);assert(view.page==Page::BookDetail&&view.bookSpecies>=0);
  tap(406,43);assert(view.page==Page::Book);
  tap(menuui::x+246,menuui::y+246);assert(view.page==Page::CatchHistory&&view.history.sequence==1&&view.history.species==20&&!view.historyError);

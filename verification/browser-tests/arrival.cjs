@@ -1,3 +1,4 @@
+const {showControl,chooseNamed}=require('./menu-controls.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const {pathToFileURL} = require('node:url');
@@ -17,9 +18,9 @@ const {chromium} = require('playwright-core');
    assert.equal(await page.locator('#arrivalSkip').isVisible(),false,'Boot must start directly at the saved water');
    async function travel(name,period){
     await page.locator('#openMenu').click();await page.locator('[data-to=spots]').click();
-    if(name){await page.getByRole('button',{name:/Fishing location ·/}).click();await page.getByRole('option',{name,exact:true}).click();}
-    if(period){await page.getByRole('button',{name:/Pond time ·/}).click();await page.getByRole('option',{name:period,exact:true}).click();}
-    await page.locator('#fishHere').click();
+    if(name){await showControl(page,'#places');await page.getByRole('button',{name:/Fishing location ·/}).click();await chooseNamed(page,name);}
+    if(period){await showControl(page,'#period');await page.getByRole('button',{name:/Pond time ·/}).click();await page.getByRole('option',{name:period,exact:true}).click();}
+    await showControl(page,'#fishHere');await page.locator('#fishHere').click();
    }
    const shapes=await page.evaluate(()=>{
     const art=(site,age)=>{

@@ -12,4 +12,4 @@ See the [interactive product documentation](../docs/wiki/Home.md) for aimed cast
 
 [Firmware 0.8 prototype](prototypes/Thai-Waters-firmware-0.8.zip) adds manual catch filing, daily specimen tournaments, seasonal weather and the updated LCD. Hardware configuration identifiers are tracked separately in the [hardware revision register](../hardware/revisions/README.md).
 
-[0.9.1 USB controller preview](prototypes/Thai-Waters-controller-0.9.1.zip) · [Compatible board and setup](../firmware/Phone-controller.md) · [Clock and collection recovery](../docs/wiki/Clock-and-saves.md). Internal engineering build for Waveshare 31137 with Rev F/R0003 sensor wiring. The package includes the firmware, source and verification records.
+[0.9.2 USB controller preview](prototypes/Thai-Waters-controller-0.9.2.zip) · [Compatible board and setup](../firmware/Phone-controller.md) · [Clock and collection recovery](../docs/wiki/Clock-and-saves.md). Internal engineering build for Waveshare 31137 with Rev F/R0003 sensor wiring. The package includes the firmware, source and verification records.

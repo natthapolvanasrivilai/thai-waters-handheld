@@ -19,3 +19,5 @@ The daily specimen cup names one water, a species and a minimum length. Enter be
 Use the Rod workshop to choose hook bait and fishing depth. In the Fish collection, search a name or use the Fictional, Mythic, Collected and This water filters. Each entry gives a preferred bait and depth. At the Chao Phraya, a bottom hook tipped with raw shrimp can tempt the giant river prawn at dusk or night. It cannot take a surface presentation. Changing destination plays a short arrival animation; a tap skips it and the next tap casts.
 
 The web game starts in Thai. Open **เมนู** and choose **English** or **ไทย** at the top of the tackle box. The choice stays on this browser. On landing a fish, read its card at your own pace. Tap anywhere on the screen to file it and resume fishing. Open the collection from the menu to revisit it. In the rod workshop, each bait has an illustrated preview and a matching thumbnail in the bait picker.
+
+Tap a spot on the water to aim and cast. The tackle icons under the location open the Rod workshop. During a fight, read line tension just above the moving splash.

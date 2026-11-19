@@ -33,7 +33,7 @@ int main(){
     }
     assert(prawnSeed);
     Game hooked=start(prawnSeed,1,2,13);
-    hooked.tick(16,true,false,0);hooked.tick(650,false,false,0);
+    hooked.tick(16,true,false,0);hooked.tick(creek::castDurationMs,false,false,0);
     assert(hooked.phase==Phase::Waiting && !hooked.setBait(1));
     hooked.tick(hooked.waitMs,false,false,0);assert(hooked.phase==Phase::Bite);
     hooked.tick(16,false,true,0);assert(hooked.phase==Phase::Fight);
@@ -45,7 +45,7 @@ int main(){
         if(!dry.emptyCast)continue;
         RumblePlan haptics;
         assert(dry.length==0 && !dry.fileCatch());
-        dry.tick(650,false,false,0);
+        dry.tick(creek::castDurationMs,false,false,0);
         for(unsigned t=0;t<8000 && dry.phase==Phase::Waiting;t+=50){
             assert(!dry.teasing() && haptics.tick(dry,t,true)==Pulse::None);
             dry.tick(50,false,false,0);
