@@ -1,0 +1,154 @@
+[
+  {
+    "socket_offset_mm": [
+      -0.15,
+      -0.15,
+      -0.15
+    ],
+    "planes": {
+      "-38.0": {
+        "checked": 27990,
+        "around_shield": 96,
+        "through_mouth": 0
+      },
+      "-36.0": {
+        "checked": 27990,
+        "around_shield": 83,
+        "through_mouth": 3
+      }
+    }
+  },
+  {
+    "socket_offset_mm": [
+      -0.15,
+      -0.15,
+      0.15
+    ],
+    "planes": {
+      "-38.0": {
+        "checked": 27990,
+        "around_shield": 96,
+        "through_mouth": 0
+      },
+      "-36.0": {
+        "checked": 27990,
+        "around_shield": 90,
+        "through_mouth": 1
+      }
+    }
+  },
+  {
+    "socket_offset_mm": [
+      -0.15,
+      0.15,
+      -0.15
+    ],
+    "planes": {
+      "-38.0": {
+        "checked": 27990,
+        "around_shield": 96,
+        "through_mouth": 0
+      },
+      "-36.0": {
+        "checked": 27990,
+        "around_shield": 83,
+        "through_mouth": 3
+      }
+    }
+  },
+  {
+    "socket_offset_mm": [
+      -0.15,
+      0.15,
+      0.15
+    ],
+    "planes": {
+      "-38.0": {
+        "checked": 27990,
+        "around_shield": 96,
+        "through_mouth": 0
+      },
+      "-36.0": {
+        "checked": 27990,
+        "around_shield": 90,
+        "through_mouth": 1
+      }
+    }
+  },
+  {
+    "socket_offset_mm": [
+      0.15,
+      -0.15,
+      -0.15
+    ],
+    "planes": {
+      "-38.0": {
+        "checked": 27990,
+        "around_shield": 96,
+        "through_mouth": 0
+      },
+      "-36.0": {
+        "checked": 27990,
+        "around_shield": 83,
+        "through_mouth": 1
+      }
+    }
+  },
+  {
+    "socket_offset_mm": [
+      0.15,
+      -0.15,
+      0.15
+    ],
+    "planes": {
+      "-38.0": {
+        "checked": 27990,
+        "around_shield": 96,
+        "through_mouth": 0
+      },
+      "-36.0": {
+        "checked": 27990,
+        "around_shield": 90,
+        "through_mouth": 0
+      }
+    }
+  },
+  {
+    "socket_offset_mm": [
+      0.15,
+      0.15,
+      -0.15
+    ],
+    "planes": {
+      "-38.0": {
+        "checked": 27990,
+        "around_shield": 96,
+        "through_mouth": 0
+      },
+      "-36.0": {
+        "checked": 27990,
+        "around_shield": 83,
+        "through_mouth": 1
+      }
+    }
+  },
+  {
+    "socket_offset_mm": [
+      0.15,
+      0.15,
+      0.15
+    ],
+    "planes": {
+      "-38.0": {
+        "checked": 27990,
+        "around_shield": 96,
+        "through_mouth": 0
+      },
+      "-36.0": {
+        "checked": 27990,
+        "around_shield": 90,
+        "through_mouth": 0
+      }
+    }
+  }
+]

@@ -1,10 +1,16 @@
 # Inspect the assembly and battery pocket
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/Thai-Waters-handbook.html)
+
+The default viewer shows **TW-A-0001-R0009 / TW-A-0002-R0003**, the latest engineering design. Use the [new assembly and CAD evidence](../../hardware/mechanical/TW-A-0001-R0009/README.md) and [connector-by-connector routing guide](../../hardware/electronics/harness-r0003/README.md). R0008 remains the released inert fit print.
+
+[Download the current dressed STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/TW-A-0001-R0009-dressed.step.gz) · [Candidate print and gauge pack](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/TW-A-0001-R0009-fit-print.zip) · [STEP round-trip evidence](../../hardware/mechanical/TW-A-0001-R0009/export-verification.json)
 
 Choose **3D assembly** in the handbook. Drag to orbit. Select a wire, screw or board to see its part record, isolate a group, move the explode slider and step through the seven installation stages. Use the section plane at the battery fences and the reel sensor. The detachable grip uses a 35 mm slide with captive M3 retention. The top-left power cap operates a separate switch carrier.
 
-The current **TW-A-0001-R0008** viewer has 86 selectable records. Select **Battery bay** to compare the catalog pack, maximum drawing and supplier CAD with their wires. The R0008 printed set keeps 0.65 mm between the maximum pack and wire bridge. Use both inert gauges before powered closure.
+## Released R0008 inert-fit baseline
+
+The **TW-A-0001-R0008** viewer has 86 selectable records. Select **Battery bay** to compare the catalog pack, maximum drawing and supplier CAD with their wires. The R0008 printed set keeps 0.65 mm between the maximum pack and wire bridge. Use both inert gauges before powered closure.
 
 Keep the supplied STL orientations. Five parts use outer brims. The A1 PETG slice generates 4.410 g of support for the housing and 0.414 g for the rotor. The other twelve prints, including both shop gauges, slice without support. The lowest elevated downward surface measures 32.37° above the plate.
 

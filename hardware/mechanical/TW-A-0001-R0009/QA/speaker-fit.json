@@ -1,0 +1,304 @@
+{
+  "nominal_seated_gaps_mm": {
+    "SP1": {
+      "USB-BOND": 14.98281,
+      "USB-D1": 2.95,
+      "USB-PCB1": 1.75,
+      "USB-PCB2": 14.55083,
+      "USB-R1": 15.70448,
+      "USB-W4A-Cu": 16.93267,
+      "USB-W4A": 17.41548,
+      "USB-W4B-Cu": 3.223,
+      "USB-W4B": 3.07423,
+      "USB-W4C-Cu": 3.223,
+      "USB-W4C": 3.0867,
+      "adhH": 47.07024,
+      "drvBoard": 41.56998,
+      "drvParts": 42.2,
+      "motor": 46.22886,
+      "whGND-Cu": 44.13019,
+      "whGND": 45.31262,
+      "whSCL-Cu": 43.88254,
+      "whSCL": 45.00887,
+      "whSDA-Cu": 43.93547,
+      "whSDA": 45.09055,
+      "whTrig-Cu": 42.34748,
+      "whTrig": 40.65739,
+      "whVCC-Cu": 43.75001,
+      "whVCC": 44.83928,
+      "wm0-Cu": 59.60978,
+      "wm0": 49.67496,
+      "wm1-Cu": 59.543,
+      "wm1": 48.57705,
+      "H1-1": 4.80285,
+      "H1-2": 8.16487,
+      "H1-3": 67.02229,
+      "H1-4": 67.02229,
+      "Keeper screw": 13.86438,
+      "Receiver nut": 47.8394,
+      "tieS1": 4.58849,
+      "tieS2": 39.99165,
+      "cellDrawing": 2.52,
+      "batt0": 4.84482,
+      "batt1": 4.82069,
+      "shrink0": 34.99605,
+      "shrink1": 33.61918,
+      "drawingTail0": 5.72037,
+      "drawingTail1": 11.4769,
+      "w30": 1.9032,
+      "w31": 3.50187,
+      "packplug": 46.9117,
+      "ph": 52.20483,
+      "A1-J9": 30.87903,
+      "A1-usb": 7.99981,
+      "j9plug": 32.74093,
+      "A1-boot": 27.48642,
+      "A1-carrier": 9.75,
+      "A1-J7": 13.99724,
+      "A1-k3": 14.54806,
+      "bridge": 2.92527,
+      "Housing": 0.3
+    },
+    "spk0": {
+      "USB-BOND": 37.93534,
+      "USB-D1": 16.9811,
+      "USB-PCB1": 15.31228,
+      "USB-PCB2": 37.70293,
+      "USB-R1": 38.4024,
+      "USB-W4A-Cu": 39.06212,
+      "USB-W4A": 39.03228,
+      "USB-W4B-Cu": 19.38216,
+      "USB-W4B": 19.28827,
+      "USB-W4C-Cu": 16.00519,
+      "USB-W4C": 15.92002,
+      "adhH": 24.63581,
+      "drvBoard": 18.60093,
+      "drvParts": 19.05166,
+      "motor": 39.52327,
+      "whGND-Cu": 20.44359,
+      "whGND": 21.1009,
+      "whSCL-Cu": 23.55742,
+      "whSCL": 24.07536,
+      "whSDA-Cu": 21.88499,
+      "whSDA": 22.47153,
+      "whTrig-Cu": 18.68063,
+      "whTrig": 17.80888,
+      "whVCC-Cu": 28.03843,
+      "whVCC": 28.52473,
+      "wm0-Cu": 35.82617,
+      "wm0": 35.81597,
+      "wm1-Cu": 38.511,
+      "wm1": 36.91194,
+      "H1-1": 2.03203,
+      "H1-2": 40.43011,
+      "H1-3": 35.83243,
+      "H1-4": 59.57188,
+      "Keeper screw": 45.12442,
+      "Receiver nut": 19.15973,
+      "tieS1": 35.69483,
+      "tieS2": 35.87319,
+      "cellDrawing": 2.48235,
+      "batt0": 4.8056,
+      "batt1": 3.3675,
+      "shrink0": 9.88252,
+      "shrink1": 7.62749,
+      "drawingTail0": 2.3264,
+      "drawingTail1": 3.78429,
+      "w30": 2.98762,
+      "w31": 3.5586,
+      "packplug": 16.02826,
+      "ph": 21.38874,
+      "A1-J9": 1.39843,
+      "A1-usb": 15.48055,
+      "j9plug": 0.0,
+      "A1-boot": 3.82681,
+      "A1-carrier": 4.45327,
+      "A1-J7": 41.56783,
+      "A1-k3": 5.92764,
+      "bridge": 31.96892,
+      "Housing": 0.54966
+    },
+    "spk1": {
+      "USB-BOND": 34.79486,
+      "USB-D1": 17.34307,
+      "USB-PCB1": 15.57376,
+      "USB-PCB2": 34.53667,
+      "USB-R1": 35.23627,
+      "USB-W4A-Cu": 36.01473,
+      "USB-W4A": 35.98275,
+      "USB-W4B-Cu": 19.57323,
+      "USB-W4B": 19.24462,
+      "USB-W4C-Cu": 16.23604,
+      "USB-W4C": 15.8623,
+      "adhH": 23.93025,
+      "drvBoard": 18.07278,
+      "drvParts": 17.99023,
+      "motor": 38.56679,
+      "whGND-Cu": 19.60713,
+      "whGND": 20.1965,
+      "whSCL-Cu": 22.68407,
+      "whSCL": 23.19811,
+      "whSDA-Cu": 21.05726,
+      "whSDA": 21.58395,
+      "whTrig-Cu": 17.76727,
+      "whTrig": 16.94525,
+      "whVCC-Cu": 27.14384,
+      "whVCC": 27.65114,
+      "wm0-Cu": 34.71264,
+      "wm0": 34.69376,
+      "wm1-Cu": 37.46287,
+      "wm1": 36.03871,
+      "H1-1": 2.21428,
+      "H1-2": 39.99642,
+      "H1-3": 34.37389,
+      "H1-4": 58.61336,
+      "Keeper screw": 45.36429,
+      "Receiver nut": 18.48463,
+      "tieS1": 34.71202,
+      "tieS2": 34.5663,
+      "cellDrawing": 4.39314,
+      "batt0": 2.14899,
+      "batt1": 0.71887,
+      "shrink0": 8.94586,
+      "shrink1": 6.68597,
+      "drawingTail0": 2.28847,
+      "drawingTail1": 3.11411,
+      "w30": 0.51816,
+      "w31": 1.62467,
+      "packplug": 14.75518,
+      "ph": 20.01284,
+      "A1-J9": 0.4778,
+      "A1-usb": 15.16329,
+      "j9plug": 0.0,
+      "A1-boot": 3.61377,
+      "A1-carrier": 3.54709,
+      "A1-J7": 38.28514,
+      "A1-k3": 7.06579,
+      "bridge": 30.37849,
+      "Housing": 0.8545
+    }
+  },
+  "intentional_legacy_plug_capture": {
+    "spk0": 0.19908,
+    "spk1": 0.87486
+  },
+  "route_lengths_mm": {
+    "spk0": 46.246,
+    "spk1": 43.173
+  },
+  "tolerance_corners_mm": [
+    {
+      "offset_mm": [
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      "gap_mm": 0.15
+    },
+    {
+      "offset_mm": [
+        -0.15,
+        -0.15,
+        0.15
+      ],
+      "gap_mm": 0.15
+    },
+    {
+      "offset_mm": [
+        -0.15,
+        0.15,
+        -0.15
+      ],
+      "gap_mm": 0.15
+    },
+    {
+      "offset_mm": [
+        -0.15,
+        0.15,
+        0.15
+      ],
+      "gap_mm": 0.15
+    },
+    {
+      "offset_mm": [
+        0.15,
+        -0.15,
+        -0.15
+      ],
+      "gap_mm": 0.15
+    },
+    {
+      "offset_mm": [
+        0.15,
+        -0.15,
+        0.15
+      ],
+      "gap_mm": 0.15
+    },
+    {
+      "offset_mm": [
+        0.15,
+        0.15,
+        -0.15
+      ],
+      "gap_mm": 0.15
+    },
+    {
+      "offset_mm": [
+        0.15,
+        0.15,
+        0.15
+      ],
+      "gap_mm": 0.15
+    }
+  ],
+  "wire_to_wire_gap_mm": 0.462912,
+  "continuous_empty_housing_install": [
+    {
+      "start_offset_mm": [
+        24,
+        0,
+        35
+      ],
+      "end_offset_mm": [
+        24,
+        0,
+        0.65
+      ],
+      "translation_mm": 34.35,
+      "midpoint_queries": 5,
+      "certified_minimum_gap_mm": 0.89625
+    },
+    {
+      "start_offset_mm": [
+        24,
+        0,
+        0.65
+      ],
+      "end_offset_mm": [
+        0,
+        0,
+        0.65
+      ],
+      "translation_mm": 24.0,
+      "midpoint_queries": 113,
+      "certified_minimum_gap_mm": 0.0625
+    },
+    {
+      "start_offset_mm": [
+        0,
+        0,
+        0.65
+      ],
+      "end_offset_mm": [
+        0,
+        0,
+        0
+      ],
+      "translation_mm": 0.65,
+      "midpoint_queries": 3,
+      "certified_minimum_gap_mm": 0.1375
+    }
+  ],
+  "assembly_order": "Fit SP1 and acoustic gasket before cell, bridge, controller and harness. Top entry 24 mm east; slide west with 0.65 mm lift, then lower to gasket."
+}

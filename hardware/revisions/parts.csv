@@ -46,3 +46,12 @@ TW-P-0013-R0002,Power key cap,hardware/mechanical/TW-A-0001-R0008/Print/power-ca
 TW-P-0014-R0002,Grip receiver nut keeper,hardware/mechanical/TW-A-0001-R0008/Print/receiver-nut-keeper.stl,,cc8201225b69649f153c787ac7b3d54465c6b58ebbf9059e78344854342ebdb4
 TW-P-0015-R0002,Detachable rod grip,hardware/mechanical/TW-A-0001-R0008/Print/rod-grip.stl,,bd01b66469fc246ee8f7bc4490af0b6b5c32600f4e5809a07521538c3c04e4cf
 TW-P-0007-R0004,Reel rotor,hardware/mechanical/TW-A-0001-R0008/Print/rotor.stl,,c116c93f0110c8a5295c7416679896a44b33b99eb8dd4db1c28168c735f4fcf0
+TW-P-0001-R0009,Housing battery bay,hardware/mechanical/TW-A-0001-R0009/Print/housing-battery-bay.stl,,e60dbe9d59b14e4a9a5c86b6946a88ad02a21d0a198f2d079d98d58d910cdf86
+TW-P-0020-R0001,Usb c shield mask,hardware/mechanical/TW-A-0001-R0009/Print/usb-c-shield-mask-two-colour.3mf,,a0214eade7952dbed488e54580ed427bdb868d7c39e4a74b9ca274959f2e9e88
+TW-P-0021-R0001,Status charge guide,hardware/mechanical/TW-A-0001-R0009/Print/status-charge-guide.stl,,91647ce61b6cb100b4d7c6777f86529c24d7ddb55ff6e72b9f6926f7ccac765e
+TW-P-0022-R0001,Status usb guide,hardware/mechanical/TW-A-0001-R0009/Print/status-usb-guide.stl,,a9cfda6d2fcd0031a487e3a490ef514ca4f501d2a45f067178bdfc6e8e97d1b3
+TW-P-0023-R0001,Status power guide,hardware/mechanical/TW-A-0001-R0009/Print/status-power-guide.stl,,c58766b2d7500945a5adf90e5d8950970dd391ec6edf4ce613cb7e991b07d60f
+TW-P-0024-R0001,Power input LED board,hardware/electronics/usb-status-r0003/USB-blue-fab.zip,,b5562e3f85d49d33069b497b76f5adf1e504286a36dc98b93947297c447f765f
+TW-P-0025-R0001,Power input resistor board,hardware/electronics/usb-status-r0003/USB-limit-fab.zip,,4333efecc999162adadfa4abb7a8b2d81b43dc7cfabb12d862e7ba10e2204cb2
+TW-P-0026-R0001,"R0003 power, audio and bus specification",hardware/electronics/usb-status-r0003/README.md,,37fbd383c1d077a7ae13aec14f7aecf740220c26b630951446f4e23a85c706d4
+TW-P-0007-R0005,Reel rotor with clearance for catalog screw head,hardware/mechanical/TW-A-0001-R0009/Print/rotor.stl,,9a4adf6cfb23f5846e4c2221b5a362c46cb7e96ae885004b8fd882d0d9cd1cb3

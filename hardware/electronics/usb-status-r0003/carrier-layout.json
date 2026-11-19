@@ -1,0 +1,56 @@
+{
+  "USB-blue": {
+    "width_mm": 4.8,
+    "height_mm": 3.2,
+    "thickness_mm": 0.6,
+    "pth_finished_mm": 0.4,
+    "front_pad_centers_mm": [
+      [
+        1.575,
+        1.6
+      ],
+      [
+        3.2249999999999996,
+        1.6
+      ]
+    ],
+    "pth_centers_mm": [
+      [
+        0.7,
+        1.6
+      ],
+      [
+        4.1,
+        1.6
+      ]
+    ],
+    "coordinate_frame": "Front view of emitter/component; origin lower left. Left LED pad K1/black, right A2/current-limited VBUS."
+  },
+  "USB-limit": {
+    "width_mm": 3.2,
+    "height_mm": 2,
+    "thickness_mm": 0.6,
+    "pth_finished_mm": 0.4,
+    "front_pad_centers_mm": [
+      [
+        0.8500000000000001,
+        1.0
+      ],
+      [
+        2.35,
+        1.0
+      ]
+    ],
+    "pth_centers_mm": [
+      [
+        0.5800000000000001,
+        1.47
+      ],
+      [
+        2.62,
+        1.47
+      ]
+    ],
+    "coordinate_frame": "Front view of emitter/component; origin lower left. Left LED pad K1/black, right A2/current-limited VBUS."
+  }
+}

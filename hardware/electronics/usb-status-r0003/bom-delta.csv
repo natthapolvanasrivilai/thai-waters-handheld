@@ -1,0 +1,9 @@
+reference,quantity,unit,manufacturer_or_process,part,unit_cost_usd,cost_basis,source
+A1 LED1 / LED2 / R30 / R31 / R32 / T2,1,set,Waveshare,Retain assembled 31137 on-board indicators,0,in A1 kit,https://www.robotshop.com/products/waveshare-esp32-s3-35-ips-touch-display-development-board-type-b-320480-camera-interface-wi-fi-bluetooth-5-no-case
+USB-D1,1,each,DigiKey / Kingbright,APG1608QBC/D,0.42,Single cut-tape piece.,https://www.digikey.com/en/products/detail/kingbright/APG1608QBC-D/1893695
+USB-R1,1,each,Newark / YAGEO,YAGEO RC0603FR-072K7L,0.10,Single cut-tape piece.,https://www.newark.com/yageo/rc0603fr-072k7l/res-2k7-0-1w-75v-thick-film-0603/dp/51AM7190
+USB-PCB1,1,each,Custom panelized two-layer FR4,USB-blue-fab.zip 4.8 x 3.2 x 0.60 mm,0.25,provisional per-unit panel allocation; MOQ/setup separate,USB-blue-fab.zip
+USB-PCB2,1,each,Custom panelized two-layer FR4,USB-limit-fab.zip 3.2 x 2.0 x 0.60 mm,0.25,provisional per-unit panel allocation; MOQ/setup separate,USB-limit-fab.zip
+USB-W4A/B,0.06,m,DigiKey / Jonard Tools,R30R-0100 30 AWG solid PVDF red,0.815617,$24.86 per 100 ft spool divided by 30.48 m.,https://www.digikey.com/en/products/detail/jonard-tools/R30R-0100/221680
+USB-W4C,0.06,m,DigiKey / Jonard Tools,R30BLK-0100 30 AWG solid PVDF black,0.815617,$24.86 per 100 ft spool divided by 30.48 m.,https://www.digikey.com/en/products/detail/jonard-tools/R30BLK-0100/221679
+USB-BOND,0.095,mL,Ellsworth Adhesives / Dow,"DOWSIL 3145 gray, Dow 3138313, 90 mL",0.843111,$75.88 per 90 mL. Shop allocation includes dispensing loss.,https://www.ellsworth.com/products/adhesives/silicone/dow-3145-silicone-adhesive-gray-90-ml-tube/

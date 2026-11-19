@@ -1,0 +1,8 @@
+USB indicator short_after_R / R0003 / engineering envelopes in volts and ohms
+Vusb vbus 0 0
+Rlimit vbus lamp 2673
+Rleak lamp 0 1T
+Rshort lamp 0 1m
+.DC Vusb 5.25000 5.25010 0.0001
+.PRINT DC V(vbus) V(lamp) I(Vusb)
+.END

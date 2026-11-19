@@ -1,0 +1,18 @@
+# R0003 dressed wiring
+
+Use the **Harness** view with the supplier cell selected. Remove the bridge to install the pack, dress its factory leads first, seat the PH adapter by its housing, then install the bridge. Route low-voltage and signal leads before seating the display assembly. Use the exploded view for assembly order and the assembled view for actual wire positions. [Interactive inspection](../../../docs/models/TW-A-0001-R0009-exploded.html)
+
+| Circuit | From and to | Assembly and acceptance |
+|---|---|---|
+| W1 reel | A1 J8 four selected signals to AS5600 solder pads. The fitted header, individual tails and insulated leads are modeled. | Identify 3V3, ground, GPIO8 SDA and GPIO7 SCL against the schematic and actual board revision. Check continuity and adjacent-pin isolation unpowered. |
+| W2 battery | Protected pack → factory PH plug → mating PH header → individually insulated adapter → J7 crimp housing. | The two 100 mm stock routes include the factory stubs on the supplier cell. Separate the pair along the shell wall and across the enclosure. Verify the physical J7 polarity against the board before connecting the pack. Match by measured polarity and pin position, never wire color alone. |
+| W3 power | Two normally open remote-key contacts to the documented K3 contacts. | Route clear of the status-light return and optical channels. Test open/closed continuity and the original switch function. [Board contact drawing](../rev-f-power-key.md) |
+| W4 haptics | Four staggered, individually insulated W1 taps to Boardoza J1. Local IN/TRIG link to ground. DRV outputs terminate at motor leads. | Make, inspect and insulate each tap before nesting the branches. Tug-test the joint and check for adjacent-net shorts. Fit motor and pad without tension on the fine leads. |
+| W5 audio | Each speaker terminal to its own J9 differential output. Looking at the installed connector, the modeled first speaker lead reaches J9-C2 and the second reaches J9-C1. | Keep both outputs isolated from ground. Confirm the pigtail cavity order, polarity marking and contact retention on the purchase lot. |
+| USB status | J8 VBUS to the limit-resistor carrier, then to the blue LED carrier and back to J8 ground. | Keep the return above the remote-key lead. Test optical isolation and supply-current limits before closure. [Status circuit and pin references](../usb-status-r0003/README.md) |
+
+The [installed harness audit](../../mechanical/TW-A-0001-R0009/QA/dressed-harness.json) checks the closed CAD assembly. The battery adapter has 0.345 mm minimum nominal shell clearance and 0.200 mm minimum insulated wire-to-wire clearance. The J7, J9 and J8 stripped ends meet the modeled terminals. Fitted contacts, insulating sleeves and soldered joints have identified mating surfaces. A supplier housing with blind cavities cannot establish contact spring force or crimp quality in software.
+
+The modeled paths determine routing lengths. Cut test stock long enough for stripping and termination, dress on the first article, then record finished lengths on the traveler. Secure the loom at the bridge and strain-relief points. With the unit unplugged, verify polarity and continuity, inspect both sides of the pouch and close the case without moving the wires. Inspect the reopened case for pinch marks, check connector service access and repeat continuity at full reel rotation and handle travel. These physical checks are outstanding.
+
+The two files prefixed `pre-routing-` retain the failed geometry study from before the leads were moved. The installed assembly acceptance uses the [dressed harness report](../../mechanical/TW-A-0001-R0009/QA/dressed-harness.json).

@@ -1,0 +1,18 @@
+case,metric,value,unit,screen,interpretation
+audio_nominal,Differential RMS,2.33367,Vrms,2.52982,bench comparison
+audio_nominal,Resistive load power,0.68075,W,0.8,within screen
+audio_gain_boundary,Differential RMS,2.54582,Vrms,2.52982,bench comparison
+audio_gain_boundary,Resistive load power,0.81015,W,0.8,above screen
+audio_low_impedance,Differential RMS,2.33367,Vrms,per measured impedance,bench comparison
+audio_low_impedance,Resistive load power,0.85094,W,0.8,above screen
+motor_low_DCR_stall,Motor peak in model,112.857,mA,inrush: measure,characterize
+motor_high_DCR_stall,Motor peak in model,38.1977,mA,inrush: measure,characterize
+motor_nominal_running_equivalent,Motor peak in model,59.9824,mA,60,screen
+bus_driver_encoder_100p,30–70 percent rise time,152.79072,ns,300,within screen
+bus_driver_encoder_100p,Calculated sink at 0.4 V,1.60818,mA,3,within screen
+bus_driver_encoder_200p,30–70 percent rise time,305.5828,ns,300,above screen
+bus_driver_encoder_200p,Calculated sink at 0.4 V,1.60818,mA,3,within screen
+bus_optional_4k7_200p,30–70 percent rise time,220.84804,ns,300,within screen
+bus_optional_4k7_200p,Calculated sink at 0.4 V,2.2252,mA,3,within screen
+bus_unexpected_820ohm_100p,30–70 percent rise time,69.47105,ns,300,within screen
+bus_unexpected_820ohm_100p,Calculated sink at 0.4 V,3.53659,mA,3,above screen

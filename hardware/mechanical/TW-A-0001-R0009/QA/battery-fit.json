@@ -1,0 +1,443 @@
+{
+  "wire_separation_mm": {
+    "catalog": {
+      "factory_pair_mm": 0.4814,
+      "adapter_pair_mm": 0.4241,
+      "adapter_to_factory_mm": 0.603,
+      "factory_to_shell_mm": 0.5676
+    },
+    "alt": {
+      "factory_pair_mm": 0.4869,
+      "adapter_pair_mm": 0.4241,
+      "adapter_to_factory_mm": 0.603,
+      "factory_to_shell_mm": 0.5
+    },
+    "drawing": {
+      "factory_pair_mm": 0.4819,
+      "adapter_pair_mm": 0.4241,
+      "adapter_to_factory_mm": 0.603,
+      "factory_to_shell_mm": 0.658
+    }
+  },
+  "key_stroke": [
+    {
+      "travel_mm": 0.0,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.05,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.1,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.15,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.2,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.25,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.3,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.35,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.4,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.45,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.5,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.55,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.6,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.65,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    },
+    {
+      "travel_mm": 0.7,
+      "housing_mm3": 0.0,
+      "keeper_mm3": 0.0
+    }
+  ],
+  "rigid_placement_corners": [
+    {
+      "pack": "cellDrawing",
+      "offset_mm": [
+        -0.25,
+        -0.25,
+        0
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellDrawing",
+      "offset_mm": [
+        -0.25,
+        -0.25,
+        0.3
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellDrawing",
+      "offset_mm": [
+        -0.25,
+        0.25,
+        0
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellDrawing",
+      "offset_mm": [
+        -0.25,
+        0.25,
+        0.3
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellDrawing",
+      "offset_mm": [
+        0.25,
+        -0.25,
+        0
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellDrawing",
+      "offset_mm": [
+        0.25,
+        -0.25,
+        0.3
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellDrawing",
+      "offset_mm": [
+        0.25,
+        0.25,
+        0
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellDrawing",
+      "offset_mm": [
+        0.25,
+        0.25,
+        0.3
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellAlt",
+      "offset_mm": [
+        -0.25,
+        -0.25,
+        0
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellAlt",
+      "offset_mm": [
+        -0.25,
+        -0.25,
+        0.3
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellAlt",
+      "offset_mm": [
+        -0.25,
+        0.25,
+        0
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellAlt",
+      "offset_mm": [
+        -0.25,
+        0.25,
+        0.3
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellAlt",
+      "offset_mm": [
+        0.25,
+        -0.25,
+        0
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellAlt",
+      "offset_mm": [
+        0.25,
+        -0.25,
+        0.3
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellAlt",
+      "offset_mm": [
+        0.25,
+        0.25,
+        0
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    },
+    {
+      "pack": "cellAlt",
+      "offset_mm": [
+        0.25,
+        0.25,
+        0.3
+      ],
+      "shell_mm3": 0.0,
+      "bridge_mm3": 0.0
+    }
+  ],
+  "insertion_sweep_overlap_mm3": {
+    "Cell": {
+      "Housing": 0.0,
+      "Retainer": 0.0,
+      "Keeper screw": 0.0,
+      "Key PCB": 0.0,
+      "Speaker": 0.0,
+      "drvBoard": 0.0,
+      "motor": 0.0,
+      "Receiver nut keeper": 0.0
+    },
+    "cellDrawing": {
+      "Housing": 0.0,
+      "Retainer": 0.0,
+      "Keeper screw": 0.0,
+      "Key PCB": 0.0,
+      "Speaker": 0.0,
+      "drvBoard": 0.0,
+      "motor": 0.0,
+      "Receiver nut keeper": 0.0
+    },
+    "cellAlt": {
+      "Housing": 0.0,
+      "Retainer": 0.0,
+      "Keeper screw": 0.0,
+      "Key PCB": 0.0,
+      "Speaker": 0.0,
+      "drvBoard": 0.0,
+      "motor": 0.0,
+      "Receiver nut keeper": 0.0
+    }
+  },
+  "seated_distance_mm": {
+    "Cell": {
+      "Housing": 0.5,
+      "bridge": 0.95,
+      "ph": 12.9001,
+      "packplug": 7.4002,
+      "batt0": 3.3594,
+      "batt1": 4.5497,
+      "shrink0": 5.03,
+      "shrink1": 5.21,
+      "Speaker": 3.17,
+      "drvBoard": 4.4
+    },
+    "cellDrawing": {
+      "Housing": 0.5,
+      "bridge": 0.65,
+      "ph": 12.25,
+      "packplug": 6.75,
+      "batt0": 3.0594,
+      "batt1": 4.2162,
+      "shrink0": 4.73,
+      "shrink1": 4.91,
+      "Speaker": 2.52,
+      "drvBoard": 3.75
+    },
+    "cellAlt": {
+      "Housing": 0.5,
+      "bridge": 0.95,
+      "ph": 11.4444,
+      "packplug": 5.9794,
+      "batt0": 3.3594,
+      "batt1": 4.5173,
+      "shrink0": 5.03,
+      "shrink1": 5.21,
+      "Speaker": 1.67,
+      "drvBoard": 2.9
+    }
+  },
+  "clearance_box_intersections_mm3": {
+    "Housing": 0.0,
+    "ph": 0.0,
+    "packplug": 0.0,
+    "shrink0": 0.0,
+    "shrink1": 0.0
+  },
+  "wall_section_mm": {
+    "lead tunnel end wall": 1.95,
+    "lead tunnel roof": 2.0,
+    "lead tunnel floor": 2.0,
+    "tray floor": 2.5,
+    "south wall at cell base": 1.9091
+  },
+  "additional_insertion_obstacles_mm3": {
+    "Cell": {
+      "drvParts": 0.0,
+      "whGND": 0.0,
+      "whSCL": 0.0,
+      "whSDA": 0.0,
+      "whVCC": 0.0,
+      "wm0": 0.0,
+      "wm1": 0.0,
+      "whGND-Cu": 0.0,
+      "whSCL-Cu": 0.0,
+      "whSDA-Cu": 0.0,
+      "whTrig-Cu": 0.0,
+      "whTrig": 0.0,
+      "whVCC-Cu": 0.0,
+      "wm0-Cu": 0.0,
+      "wm1-Cu": 0.0,
+      "USB-BOND": 4.68146,
+      "USB-D1": 0.0,
+      "USB-PCB1": 0.0,
+      "USB-PCB2": 3.6892,
+      "USB-R1": 0.57324,
+      "USB-W4A-Cu": 0.05928,
+      "USB-W4A": 0.61014,
+      "USB-W4B-Cu": 0.04307,
+      "USB-W4B": 1.34924,
+      "USB-W4C-Cu": 0.01267,
+      "USB-W4C": 3.33252,
+      "usb-c-shield-mask": 0.0,
+      "status-usb-guide": 0.0,
+      "status-charge-guide": 0.0,
+      "status-power-guide": 0.0
+    },
+    "cellDrawing": {
+      "drvParts": 0.0,
+      "whGND": 0.0,
+      "whSCL": 0.0,
+      "whSDA": 0.0,
+      "whVCC": 0.0,
+      "wm0": 0.0,
+      "wm1": 0.0,
+      "whGND-Cu": 0.0,
+      "whSCL-Cu": 0.0,
+      "whSDA-Cu": 0.0,
+      "whTrig-Cu": 0.0,
+      "whTrig": 0.0,
+      "whVCC-Cu": 0.0,
+      "wm0-Cu": 0.0,
+      "wm1-Cu": 0.0,
+      "USB-BOND": 4.68146,
+      "USB-D1": 0.0,
+      "USB-PCB1": 0.0,
+      "USB-PCB2": 3.6892,
+      "USB-R1": 0.57324,
+      "USB-W4A-Cu": 0.05928,
+      "USB-W4A": 0.61014,
+      "USB-W4B-Cu": 0.04307,
+      "USB-W4B": 1.50262,
+      "USB-W4C-Cu": 0.01267,
+      "USB-W4C": 3.49285,
+      "usb-c-shield-mask": 0.0,
+      "status-usb-guide": 0.0,
+      "status-charge-guide": 0.0,
+      "status-power-guide": 0.0
+    },
+    "cellAlt": {
+      "drvParts": 0.0,
+      "whGND": 0.0,
+      "whSCL": 0.0,
+      "whSDA": 0.0,
+      "whVCC": 0.0,
+      "wm0": 0.0,
+      "wm1": 0.0,
+      "whGND-Cu": 0.0,
+      "whSCL-Cu": 0.0,
+      "whSDA-Cu": 0.0,
+      "whTrig-Cu": 0.0,
+      "whTrig": 0.0,
+      "whVCC-Cu": 0.0,
+      "wm0-Cu": 0.0,
+      "wm1-Cu": 0.0,
+      "USB-BOND": 4.68146,
+      "USB-D1": 0.0,
+      "USB-PCB1": 0.0,
+      "USB-PCB2": 3.6892,
+      "USB-R1": 0.57324,
+      "USB-W4A-Cu": 0.05928,
+      "USB-W4A": 0.61014,
+      "USB-W4B-Cu": 0.04307,
+      "USB-W4B": 1.71319,
+      "USB-W4C-Cu": 0.01267,
+      "USB-W4C": 3.70791,
+      "usb-c-shield-mask": 0.0,
+      "status-usb-guide": 0.0,
+      "status-charge-guide": 0.0,
+      "status-power-guide": 0.0
+    }
+  }
+}

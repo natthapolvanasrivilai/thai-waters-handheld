@@ -1,0 +1,8 @@
+bus_driver_encoder_100p / R0003 / engineering behavioral envelope
+Vrelease source 0 PULSE(0 3.3 1u 100p 100p 14u 30u)
+R1 source line 2200
+R2 source line 10000
+Cbus line 0 100p
+.TRAN 1n 4u 0 2n
+.PRINT TRAN V(line)
+.END

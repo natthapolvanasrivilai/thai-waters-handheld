@@ -1,0 +1,189 @@
+[
+  {
+    "id": "speakerRim",
+    "name": "Nickel speaker rim",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#b4b6af",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "brep": "speakerRim.brep"
+  },
+  {
+    "id": "Speaker",
+    "name": "SP1 molded frame",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#252826",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "brep": "Speaker.brep"
+  },
+  {
+    "id": "speakerPoleRing",
+    "name": "Magnet surround",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#979994",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "brep": "speakerPoleRing.brep"
+  },
+  {
+    "id": "speakerMagnet",
+    "name": "Rear magnet",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#797c76",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "brep": "speakerMagnet.brep"
+  },
+  {
+    "id": "speakerDiaphragm",
+    "name": "Speaker diaphragm",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#383b38",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "brep": "speakerDiaphragm.brep"
+  },
+  {
+    "id": "speakerCloth",
+    "name": "Acoustic front cloth",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#272c29",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "brep": "speakerCloth.brep"
+  },
+  {
+    "id": "speakerTerminal0",
+    "name": "SP1 factory terminal lead A",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#a09d93",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "brep": "speakerTerminal0.brep"
+  },
+  {
+    "id": "speakerTerminal1",
+    "name": "SP1 factory terminal lead B",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#948d82",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "brep": "speakerTerminal1.brep"
+  },
+  {
+    "id": "speakerGasket",
+    "name": "Speaker perimeter seal",
+    "ref": "SP1-G",
+    "group": "Audio",
+    "kind": "Custom die-cut foam",
+    "color": "#363733",
+    "source": "speaker.py",
+    "delta": [
+      0,
+      -12,
+      -11
+    ],
+    "stage": 3,
+    "note": "0.50 mm compressed design stack, continuous ring. Confirm foam compliance and PSA compatibility.",
+    "brep": "speakerGasket.brep"
+  },
+  {
+    "id": "spk0",
+    "name": "J9 speaker lead 1",
+    "ref": "W5",
+    "group": "Wiring",
+    "kind": "Routed conductor solid",
+    "color": "#bb5950",
+    "source": "speaker.py",
+    "delta": [
+      0,
+      -13,
+      -10
+    ],
+    "stage": 3,
+    "note": "Custom direct J9 harness; preserve terminal interface and confirm first-article solderability.",
+    "brep": "spk0.brep"
+  },
+  {
+    "id": "spk1",
+    "name": "J9 speaker lead 2",
+    "ref": "W5",
+    "group": "Wiring",
+    "kind": "Routed conductor solid",
+    "color": "#555958",
+    "source": "speaker.py",
+    "delta": [
+      0,
+      -13,
+      -10
+    ],
+    "stage": 3,
+    "note": "Custom direct J9 harness; preserve terminal interface and confirm first-article solderability.",
+    "brep": "spk1.brep"
+  }
+]

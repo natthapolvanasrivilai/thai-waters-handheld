@@ -1,0 +1,16 @@
+{
+  "drvParts / whGND-Cu": 0.002027,
+  "drvParts / whSCL-Cu": 0.002027,
+  "drvParts / whSDA-Cu": 0.002027,
+  "drvParts / whTrig-Cu": 0.004054,
+  "drvParts / whVCC-Cu": 0.002027,
+  "motor / wm0": 0.003884,
+  "motor / wm1": 0.006273,
+  "whGND-Cu / whGND": 0.000609,
+  "whSCL-Cu / whSCL": 0.000576,
+  "whSDA-Cu / whSDA": 0.000601,
+  "whTrig-Cu / whTrig": 0.000855,
+  "whVCC-Cu / whVCC": 0.000852,
+  "wm0-Cu / wm0": 0.004532,
+  "wm1-Cu / wm1": 0.003624
+}

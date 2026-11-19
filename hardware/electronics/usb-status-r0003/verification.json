@@ -1,0 +1,27 @@
+{
+  "generated_gerber_object_counts": {
+    "USB-blue-fab.zip": {
+      "F_Cu.gbr": 6,
+      "B_Cu.gbr": 2,
+      "F_Mask.gbr": 4,
+      "B_Mask.gbr": 2,
+      "F_Paste.gbr": 2,
+      "Edge_Cuts.gbr": 4,
+      "PTH.drl": 2
+    },
+    "USB-limit-fab.zip": {
+      "F_Cu.gbr": 6,
+      "B_Cu.gbr": 2,
+      "F_Mask.gbr": 4,
+      "B_Mask.gbr": 2,
+      "F_Paste.gbr": 2,
+      "Edge_Cuts.gbr": 4,
+      "PTH.drl": 2
+    }
+  },
+  "added_electronics_usd_per_unit_allocation": 1.142,
+  "raw_spice_case_count": 15,
+  "physical_measurements": "pending",
+  "firmware_compile": "Arduino ESP32-S3 3.3.10, 16 MB qio, OPI PSRAM, app3M_fat9M_16MB; 1798750 B program, 76812 B data",
+  "host_driver_test": "PASS DRV2605L detection, mute, register 0x17=138, 18 finite ROM effect/strength combinations, timing, cancellation, NACK"
+}

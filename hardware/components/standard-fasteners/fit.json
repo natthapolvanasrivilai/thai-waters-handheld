@@ -1,0 +1,98 @@
+[
+  {
+    "part": "tieS1",
+    "neighbour": "battery-wire-bridge",
+    "common_mm3": 0.0,
+    "gap_mm": 0.0
+  },
+  {
+    "part": "tieS1",
+    "neighbour": "PKCELL-max-body-with-wire-sockets",
+    "common_mm3": 0.0,
+    "gap_mm": 13.3006
+  },
+  {
+    "part": "tieS2",
+    "neighbour": "battery-wire-bridge",
+    "common_mm3": 0.0,
+    "gap_mm": 0.0
+  },
+  {
+    "part": "tieS2",
+    "neighbour": "PKCELL-max-body-with-wire-sockets",
+    "common_mm3": 0.0,
+    "gap_mm": 1.45
+  },
+  {
+    "part": "Receiver nut",
+    "neighbour": "housing-battery-bay",
+    "common_mm3": 0.0,
+    "gap_mm": 0.0
+  },
+  {
+    "part": "Receiver nut",
+    "neighbour": "receiver-nut-keeper",
+    "common_mm3": 0.0,
+    "gap_mm": 0.57
+  },
+  {
+    "part": "Keeper screw",
+    "neighbour": "key-board-retainer-west",
+    "common_mm3": 0.0,
+    "gap_mm": 0.0
+  },
+  {
+    "part": "Keeper screw",
+    "neighbour": "PKCELL-max-body-with-wire-sockets",
+    "common_mm3": 0.0,
+    "gap_mm": 25.8283
+  },
+  {
+    "part": "H1-1",
+    "neighbour": "PKCELL-max-body-with-wire-sockets",
+    "common_mm3": 0.0,
+    "gap_mm": 17.1651
+  },
+  {
+    "part": "H1-1",
+    "neighbour": "battery-wire-bridge",
+    "common_mm3": 0.0,
+    "gap_mm": 37.7293
+  },
+  {
+    "part": "H1-2",
+    "neighbour": "PKCELL-max-body-with-wire-sockets",
+    "common_mm3": 0.0,
+    "gap_mm": 17.1651
+  },
+  {
+    "part": "H1-2",
+    "neighbour": "battery-wire-bridge",
+    "common_mm3": 0.0,
+    "gap_mm": 1.889
+  },
+  {
+    "part": "H1-3",
+    "neighbour": "PKCELL-max-body-with-wire-sockets",
+    "common_mm3": 0.0,
+    "gap_mm": 17.1651
+  },
+  {
+    "part": "H1-3",
+    "neighbour": "battery-wire-bridge",
+    "common_mm3": 0.0,
+    "gap_mm": 39.7144
+  },
+  {
+    "part": "H1-4",
+    "neighbour": "PKCELL-max-body-with-wire-sockets",
+    "common_mm3": 0.0,
+    "gap_mm": 17.1651
+  },
+  {
+    "part": "H1-4",
+    "neighbour": "battery-wire-bridge",
+    "common_mm3": 0.0,
+    "gap_mm": 22.6585
+  }
+]

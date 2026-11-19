@@ -9,3 +9,5 @@ TW-A-0001-R0007,Rev G,Enclosure print set,"Battery pocket, west key retainer and
 TW-A-0002-R0001,Rev D wiring,Electrical integration package,Base harness wiring drawing,hardware/electronics/Riffle-D-wiring.pdf,
 TW-A-0002-R0002,Rev F wiring,Electrical integration package,Base harness and top-edge power key,hardware/electronics/rev-f-power-key.md,F-001
 TW-A-0001-R0008,,Matched FDM enclosure print set,Twelve build-oriented PETG device parts with seven redesigned installed solids. Two inert gauges accompany the print package as shop tools.,hardware/mechanical/TW-A-0001-R0008/PRINT-GUIDE.md,R0008-001
+TW-A-0001-R0009,,Source-model inspection enclosure,"Fitted speaker, close-fitting USB-C access, separated light guides and matched prints.",hardware/mechanical/TW-A-0001-R0009/assembly-parts.json,R0009-001
+TW-A-0002-R0003,,USB status and haptic integration,Independent USB indication and autonomous power and charging status.,hardware/electronics/usb-status-r0003/README.md,R0003-001

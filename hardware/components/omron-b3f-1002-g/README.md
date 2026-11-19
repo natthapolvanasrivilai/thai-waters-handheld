@@ -1,0 +1,5 @@
+# SW1 · Omron B3F-1002-G
+
+The selected gold-contact switch belongs to the B3F-100x exterior family. Its 6 × 6 mm case, 4.3 mm top height, 3.5 mm actuator, four through-hole leads and 6.5 × 4.5 mm mounting pattern match the KiCad model and Omron drawing. The contact plating and actuation force are purchasing attributes. The model represents the exterior. [Manufacturer model listing](https://www.aratas.com/sg-en/products/switches/B3F) · [Omron drawing](https://components.omron.com/us-en/datasheet_pdf/A070-E1.pdf)
+
+KiCad’s original STEP is retained under its CC BY-SA 4.0 library terms with the design exception. Its SHA-256 is `af86e67d5eb9f32dd54dbebfbba107aa3ca7fce4201554c4f4f51ff06827f84f`. The supplied placement script centers the part on the key PCB, trims the solder tails to 0.80 mm below the board and partitions the derived surfaces for inspection. Run the script with CadQuery. [KiCad family source](https://gitlab.com/kicad/libraries/kicad-packages3D/-/blob/master/Button_Switch_THT.3dshapes/SW_TH_Tactile_Omron_B3F-100x.step) · [Untrimmed STEP](B3F-100x.step) · [Installation transform](place.py) · [License](LICENSE.txt)

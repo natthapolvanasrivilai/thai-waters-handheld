@@ -1,0 +1,28 @@
+{
+  "catalog_source": "https://lceda.cn/api/products/C131337/components?version=6.4.19.5",
+  "catalog": {
+    "pre": "CN?",
+    "name": "B2B-PH-K-S(LF)(SN)",
+    "package": "CONN-TH_B2B-PH-K-S",
+    "Contributor": "LCSC",
+    "Supplier": "LCSC",
+    "Manufacturer": "JST",
+    "Manufacturer Part": "B2B-PH-K-S(LF)(SN)",
+    "Supplier Part": "C131337",
+    "JLCPCB Part Class": "Extended Part"
+  },
+  "model_record": {
+    "c_width": "23.625937",
+    "c_height": "18.1102",
+    "c_rotation": "0,0,180",
+    "z": "-13.7795",
+    "c_origin": "4001.437,2994.6378",
+    "uuid": "ee6b32b5c03144688a5663b32f9648c4",
+    "c_etype": "outline3D",
+    "id": "g1_outline",
+    "title": "CONN-TH_PH2.00-LI-2P",
+    "layerid": "19",
+    "transform": "scale(1) translate(0, 0)"
+  },
+  "step_source": "https://modules.lceda.cn/qAxj6KHrDKw4blvCG8QJPs7Y/ee6b32b5c03144688a5663b32f9648c4"
+}

@@ -1,0 +1,140 @@
+{
+  "motion_against_shell_gain_and_real_reel_hardware": {
+    "key_0_to_0.70mm": {
+      "pair_poses": 30,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "grip_screw_retraction_0_to_5.30mm": {
+      "pair_poses": 84,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "slide_0_to_43mm_Removable rod grip": {
+      "pair_poses": 132,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "slide_0_to_43mm_Grip screw keeper": {
+      "pair_poses": 132,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "slide_0_to_43mm_Grip lock screw": {
+      "pair_poses": 132,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "crank_fold_0_to_90deg": {
+      "pair_poses": 532,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_Stem": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_Grip": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_reel1": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_H5": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_Rotor": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_Collar": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_reel0": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_reel2": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_H3-1": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_0_H3-2": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_Stem": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_Grip": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_reel1": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_H5": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_Rotor": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_Collar": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_reel0": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_reel2": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_H3-1": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    },
+    "rotate_0_to_350deg_at_fold_90_H3-2": {
+      "pair_poses": 252,
+      "peak_new_material_intersection_mm3": 0.0,
+      "worst": null
+    }
+  },
+  "installed_stops_mm3": {
+    "locked_backslide_1mm": 1.60789,
+    "rear_lift_1.2mm": 101.07307,
+    "blind_stop_overshoot_0.5mm": 39.85519,
+    "screw_keeper_over_retract_0.75mm": 8.61371
+  }
+}

@@ -2,6 +2,8 @@
 
 The next inert fit print uses enclosure **TW-A-0001-R0008** (FDM print set) and electrical integration package **TW-A-0002-R0002** (Rev F wiring). Record both IDs on the traveler. Record the firmware version and binary SHA-256 separately. An assembly ID identifies a design configuration. Each physical unit still needs its own serial, option set, incoming part lots and test results.
 
+[R0009 engineering review, paired with R0003 electrical integration](../mechanical/TW-A-0001-R0009/README.md) includes the dressed cable verification. The register identifies the engineering configuration separately from first-article approval.
+
 ## Find a baseline
 
 | Historical label | Enclosure print set | Design evidence |
@@ -17,9 +19,9 @@ The next inert fit print uses enclosure **TW-A-0001-R0008** (FDM print set) and 
 
 All twelve R0008 device print definitions have new STL hashes and revision IDs. Seven installed solids changed shape. Five retain their installed geometry and carry a new controlled print export. The two shop gauges are covered by the print manifest and sit outside the unit assembly membership.
 
-The two electrical packages cover controlled integration drawings. **TW-A-0002-R0001** identifies the [base wiring drawing](../electronics/Riffle-D-wiring.pdf). **TW-A-0002-R0002** includes that drawing, the [top-edge key carrier fabrication files](../electronics/Rev-F-power-key-carrier-Gerber.zip) and the [switch and W3 wiring specification](../electronics/rev-f-power-key.md). The OEM controller's silkscreen revision, purchased part numbers and supplier lots are separate identifiers.
+The three electrical packages cover controlled integration drawings. [R0003](../electronics/harness-r0003/README.md) documents the current dressed connectors and indicator changes. **TW-A-0002-R0001** identifies the [base wiring drawing](../electronics/Riffle-D-wiring.pdf). **TW-A-0002-R0002** includes that drawing, the [top-edge key carrier fabrication files](../electronics/Rev-F-power-key-carrier-Gerber.zip) and the [switch and W3 wiring specification](../electronics/rev-f-power-key.md). The OEM controller's silkscreen revision, purchased part numbers and supplier lots are separate identifiers.
 
-The enclosure register covers the supplied prints, including the detachable grip when supplied. Gauges, fasteners, tapes, bought electronics and optional motor fitment are recorded through the [fit BOM](../mechanical/rev-G/fit-bom.csv), [production-intent BOM](../../sourcing/production-intent/rev-f-buy-make-bom.csv) and [as-built record](../../manufacturing/rev-F-review/as-built-record.csv). Historical entries identify the files that survive in this repository. Design maturity, fit results and physical acceptance come from the linked evidence.
+The enclosure register covers the supplied prints, including the detachable grip when supplied. Gauges, fasteners, tapes, bought electronics and optional motor fitment are recorded through the [R0009 prototype BOM](../../sourcing/production-intent/R0009-prototype-budget.csv) for current design review. Historical records include the [fit BOM](../mechanical/rev-G/fit-bom.csv), [production-intent BOM](../../sourcing/production-intent/rev-f-buy-make-bom.csv) and [as-built record](../../manufacturing/rev-F-review/as-built-record.csv). Historical entries identify the files that survive in this repository. Design maturity, fit results and physical acceptance come from the linked evidence.
 
 ## Identify an item
 

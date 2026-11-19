@@ -1,0 +1,28 @@
+{
+  "catalog_source": "https://lceda.cn/api/products/C173752/components?version=6.4.19.5",
+  "catalog": {
+    "pre": "U?",
+    "name": "S2B-PH-K-S(LF)(SN)",
+    "package": "CONN-TH_S2B-PH-K-S-LF-SN",
+    "Contributor": "LCSC",
+    "Supplier": "LCSC",
+    "Supplier Part": "C173752",
+    "Manufacturer": "JST",
+    "Manufacturer Part": "S2B-PH-K-S(LF)(SN)",
+    "JLCPCB Part Class": "Extended Part"
+  },
+  "model_record": {
+    "c_width": "23.622",
+    "c_height": "30.3149",
+    "c_rotation": "0,0,180",
+    "z": "-13.7795",
+    "c_origin": "4000,2990.4528",
+    "uuid": "79d113e028014698af46865c2d6c6799",
+    "c_etype": "outline3D",
+    "id": "g1_outline",
+    "title": "CONN-TH_HR-PH2.0-WI-2P",
+    "layerid": "19",
+    "transform": "scale(1) translate(0, 0)"
+  },
+  "step_source": "https://modules.lceda.cn/qAxj6KHrDKw4blvCG8QJPs7Y/79d113e028014698af46865c2d6c6799"
+}

@@ -1,0 +1,28 @@
+{
+  "catalog_source": "https://lceda.cn/api/products/C2883842/components?version=6.4.19.5",
+  "catalog": {
+    "pre": "U?",
+    "name": "X6511WR-04H-C30D60R1",
+    "package": "HDR-TH_4P-P2.54-H-M-W7.7-P",
+    "Contributor": "LCSC",
+    "Supplier": "LCSC",
+    "Supplier Part": "C2883842",
+    "Manufacturer": "XKB Connection(\u4e2d\u56fd\u661f\u5764)",
+    "Manufacturer Part": "X6511WR-04H-C60D30R1",
+    "JLCPCB Part Class": "Extended Part"
+  },
+  "model_record": {
+    "c_width": "39.44874",
+    "c_height": "34.40938",
+    "c_rotation": "0,0,0",
+    "z": "-11.811",
+    "c_origin": "3971.5,2998.189",
+    "uuid": "9be05647313e4bf689e34c32efa000b7",
+    "c_etype": "outline3D",
+    "id": "g1_outline",
+    "title": "HDR-TH_4P-P2.54-H-M-W7.7-P",
+    "layerid": "19",
+    "transform": "scale(1) translate(0, 0)"
+  },
+  "step_source": "https://modules.lceda.cn/qAxj6KHrDKw4blvCG8QJPs7Y/9be05647313e4bf689e34c32efa000b7"
+}

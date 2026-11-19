@@ -1,0 +1,23 @@
+{
+  "installed_step_components": 134,
+  "viewer_inspection_entries": 142,
+  "engineering_allowances_only": [
+    "Cell",
+    "cellDrawing",
+    "pack0",
+    "pack1",
+    "hdrPins",
+    "usbGauge",
+    "drawingTail0",
+    "drawingTail1"
+  ],
+  "step_sha256": "b00a510732936987fbd56f1ba235df6cd6b67a716ea4e9717c0161fd88835b67",
+  "packed_step_sha256": "80f51c3435db01b7f6f6ce632a885cbe6d318d1c6e4b9b2fbabb325fc089866d",
+  "max_roundtrip_absolute_volume_delta_mm3": 0.000283,
+  "max_bounds_delta_mm": 9.999999999976694e-05,
+  "3mf_co_printed_region_volumes_mm3": {
+    "usbSurround": 27.85718,
+    "usbEscutcheonLip": 8.40361
+  },
+  "single_mask_stl_volume_mm3": 36.26066
+}

@@ -1,0 +1,137 @@
+{
+  "model_units": "mm",
+  "items": {
+    "j7plug": {
+      "bbox_mm": [
+        -27.378,
+        -23.128,
+        19.75,
+        23.7,
+        17.6,
+        20.8
+      ],
+      "volume_mm3": 29.82891
+    },
+    "J7-C1": {
+      "bbox_mm": [
+        -26.328,
+        -25.428,
+        20.0,
+        23.3,
+        18.33,
+        20.03
+      ],
+      "volume_mm3": 1.60597
+    },
+    "J7-C2": {
+      "bbox_mm": [
+        -25.078,
+        -24.178,
+        20.0,
+        23.3,
+        18.33,
+        20.03
+      ],
+      "volume_mm3": 1.60597
+    },
+    "j9plug": {
+      "bbox_mm": [
+        -2.815,
+        1.435,
+        -22.2,
+        -18.25,
+        17.6,
+        20.8
+      ],
+      "volume_mm3": 29.82891
+    },
+    "J9-C1": {
+      "bbox_mm": [
+        -0.515,
+        0.385,
+        -21.8,
+        -18.5,
+        18.33,
+        20.03
+      ],
+      "volume_mm3": 1.60597
+    },
+    "J9-C2": {
+      "bbox_mm": [
+        -1.765,
+        -0.865,
+        -21.8,
+        -18.5,
+        18.33,
+        20.03
+      ],
+      "volume_mm3": 1.60597
+    },
+    "ph": {
+      "bbox_mm": [
+        20.2,
+        29.7,
+        -26.0,
+        -19.999,
+        8.4,
+        13.0
+      ],
+      "volume_mm3": 79.60578
+    },
+    "packplug": {
+      "bbox_mm": [
+        17.475,
+        24.325,
+        -25.9,
+        -20.1,
+        8.4,
+        12.9
+      ],
+      "volume_mm3": 102.87815
+    }
+  },
+  "reference_checks": {
+    "J7": {
+      "OEM_header_to_housing_native_overlap_mm3": 0.895167,
+      "registered_reference_bodies": "Molex 53261-0271 with 51021-0200",
+      "mated_section_reference_mm": 5.2,
+      "mating_contact_length_reference_mm": 0.9
+    },
+    "J9": {
+      "OEM_header_to_housing_native_overlap_mm3": 0.895167,
+      "registered_reference_bodies": "Molex 53261-0271 with 51021-0200",
+      "mated_section_reference_mm": 5.2,
+      "mating_contact_length_reference_mm": 0.9
+    },
+    "PH": {
+      "mated_solid_intersection_mm3": 1.466174,
+      "source": "catalog-associated STEP and housing manufacturer-derived published exterior mesh; blind modeled cavities"
+    }
+  },
+  "wire_exit_faces_mm": {
+    "J7": [
+      [
+        -25.878,
+        19.75,
+        19.05
+      ],
+      [
+        -24.628,
+        19.75,
+        19.05
+      ]
+    ],
+    "J9": [
+      [
+        -1.315,
+        -18.25,
+        19.05
+      ],
+      [
+        -0.065,
+        -18.25,
+        19.05
+      ]
+    ]
+  }
+}

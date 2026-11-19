@@ -1,0 +1,8 @@
+motor_low_DCR_stall / R0003 / engineering behavioral envelope
+Vdrive drive 0 PULSE(0 2.97942 1m 2u 2u 18m 40m)
+Rwinding drive coil 26.4
+Lwinding coil em 0.001
+Vbemf em 0 PULSE(0 0 1m 2u 2u 18m 40m)
+.TRAN 10u 17m
+.PRINT TRAN I(Vdrive)
+.END

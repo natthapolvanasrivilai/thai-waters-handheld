@@ -1,0 +1,360 @@
+{
+  "unexpected_intersections": [],
+  "installed_parts": 134,
+  "routed_parts": [
+    "PH-INS1",
+    "PH-INS2",
+    "PH-TAIL1",
+    "PH-TAIL2",
+    "USB-W4A",
+    "USB-W4A-Cu",
+    "USB-W4B",
+    "USB-W4B-Cu",
+    "USB-W4C",
+    "USB-W4C-Cu",
+    "altTail0",
+    "altTail1",
+    "batt0",
+    "batt1",
+    "shrink0",
+    "shrink1",
+    "spk0",
+    "spk1",
+    "tee-GND-Cu",
+    "tee-GND-seal",
+    "tee-SCL-Cu",
+    "tee-SCL-seal",
+    "tee-SDA-Cu",
+    "tee-SDA-seal",
+    "tee-VCC-Cu",
+    "tee-VCC-seal",
+    "termination-W1-GND",
+    "termination-W1-SCL",
+    "termination-W1-SDA",
+    "termination-W1-VCC",
+    "termination-W2-1",
+    "termination-W2-2",
+    "termination-W5-1",
+    "termination-W5-2",
+    "w1GND",
+    "w1SCL",
+    "w1SDA",
+    "w1VCC",
+    "w30",
+    "w31",
+    "whGND",
+    "whGND-Cu",
+    "whSCL",
+    "whSCL-Cu",
+    "whSDA",
+    "whSDA-Cu",
+    "whTrig",
+    "whTrig-Cu",
+    "whVCC",
+    "whVCC-Cu",
+    "wm0",
+    "wm0-Cu",
+    "wm1",
+    "wm1-Cu"
+  ],
+  "nominal_gaps_mm": {
+    "batt0:Housing": 0.34466,
+    "batt0:bridge": 6.8691,
+    "batt0:cellAlt": 3.37356,
+    "batt0:spk0": 2.30579,
+    "batt0:spk1": 1.98251,
+    "batt1:Housing": 2.13008,
+    "batt1:bridge": 7.35459,
+    "batt1:cellAlt": 4.51973,
+    "batt1:spk0": 1.40068,
+    "batt1:spk1": 0.53389,
+    "batt0:batt1": 0.2
+  },
+  "terminations": {
+    "W2-1": {
+      "wire": "batt0",
+      "target": "J7-C1",
+      "insulation_to_copper_mm": 0.0,
+      "copper_to_terminal_mm": 0.0
+    },
+    "W2-2": {
+      "wire": "batt1",
+      "target": "J7-C2",
+      "insulation_to_copper_mm": 0.0,
+      "copper_to_terminal_mm": 0.0
+    },
+    "W5-1": {
+      "wire": "spk0",
+      "target": "J9-C2",
+      "insulation_to_copper_mm": 0.0,
+      "copper_to_terminal_mm": 0.0
+    },
+    "W5-2": {
+      "wire": "spk1",
+      "target": "J9-C1",
+      "insulation_to_copper_mm": 0.0,
+      "copper_to_terminal_mm": 0.0
+    },
+    "W1-VCC": {
+      "wire": "w1VCC",
+      "target": "J8plug",
+      "insulation_to_copper_mm": 0.0,
+      "copper_to_terminal_mm": 0.0
+    },
+    "W1-GND": {
+      "wire": "w1GND",
+      "target": "J8plug",
+      "insulation_to_copper_mm": 0.0,
+      "copper_to_terminal_mm": 0.0
+    },
+    "W1-SDA": {
+      "wire": "w1SDA",
+      "target": "J8plug",
+      "insulation_to_copper_mm": 0.0,
+      "copper_to_terminal_mm": 0.0
+    },
+    "W1-SCL": {
+      "wire": "w1SCL",
+      "target": "J8plug",
+      "insulation_to_copper_mm": 0.0,
+      "copper_to_terminal_mm": 0.0
+    }
+  },
+  "intersections": [
+    {
+      "a": "Trimmed terminals",
+      "b": "w30",
+      "volume_mm3": 0.011233
+    },
+    {
+      "a": "Trimmed terminals",
+      "b": "w31",
+      "volume_mm3": 0.005731
+    },
+    {
+      "a": "A1-k3",
+      "b": "w30",
+      "volume_mm3": 0.004938
+    },
+    {
+      "a": "A1-k3",
+      "b": "w31",
+      "volume_mm3": 0.011154
+    },
+    {
+      "a": "drvParts",
+      "b": "whGND-Cu",
+      "volume_mm3": 0.002027
+    },
+    {
+      "a": "drvParts",
+      "b": "whSCL-Cu",
+      "volume_mm3": 0.002027
+    },
+    {
+      "a": "drvParts",
+      "b": "whSDA-Cu",
+      "volume_mm3": 0.002027
+    },
+    {
+      "a": "drvParts",
+      "b": "whTrig-Cu",
+      "volume_mm3": 0.004054
+    },
+    {
+      "a": "drvParts",
+      "b": "whVCC-Cu",
+      "volume_mm3": 0.002027
+    },
+    {
+      "a": "motor",
+      "b": "wm0",
+      "volume_mm3": 0.003884
+    },
+    {
+      "a": "motor",
+      "b": "wm1",
+      "volume_mm3": 0.006273
+    },
+    {
+      "a": "J8plug",
+      "b": "termination-W1-GND",
+      "volume_mm3": 0.029452
+    },
+    {
+      "a": "J8plug",
+      "b": "termination-W1-SCL",
+      "volume_mm3": 0.016393
+    },
+    {
+      "a": "J8plug",
+      "b": "termination-W1-SDA",
+      "volume_mm3": 0.029452
+    },
+    {
+      "a": "J8plug",
+      "b": "termination-W1-VCC",
+      "volume_mm3": 0.029452
+    },
+    {
+      "a": "ph",
+      "b": "batt0",
+      "volume_mm3": 0.008157
+    },
+    {
+      "a": "ph",
+      "b": "batt1",
+      "volume_mm3": 0.008154
+    },
+    {
+      "a": "ph",
+      "b": "PH-TAIL1",
+      "volume_mm3": 0.003202
+    },
+    {
+      "a": "ph",
+      "b": "PH-TAIL2",
+      "volume_mm3": 0.003202
+    },
+    {
+      "a": "j7plug",
+      "b": "termination-W2-1",
+      "volume_mm3": 0.12868
+    },
+    {
+      "a": "j7plug",
+      "b": "termination-W2-2",
+      "volume_mm3": 0.12868
+    },
+    {
+      "a": "j9plug",
+      "b": "termination-W5-1",
+      "volume_mm3": 0.12868
+    },
+    {
+      "a": "j9plug",
+      "b": "termination-W5-2",
+      "volume_mm3": 0.12868
+    },
+    {
+      "a": "w1SCL",
+      "b": "termination-W1-SCL",
+      "volume_mm3": 0.001216
+    },
+    {
+      "a": "whVCC",
+      "b": "whVCC-Cu",
+      "volume_mm3": 0.000852
+    },
+    {
+      "a": "whVCC",
+      "b": "tee-VCC-Cu",
+      "volume_mm3": 0.000342
+    },
+    {
+      "a": "whVCC",
+      "b": "tee-VCC-seal",
+      "volume_mm3": 0.010328
+    },
+    {
+      "a": "whGND",
+      "b": "whGND-Cu",
+      "volume_mm3": 0.000609
+    },
+    {
+      "a": "whGND",
+      "b": "tee-GND-Cu",
+      "volume_mm3": 0.000232
+    },
+    {
+      "a": "whGND",
+      "b": "tee-GND-seal",
+      "volume_mm3": 0.00701
+    },
+    {
+      "a": "whSDA",
+      "b": "whSDA-Cu",
+      "volume_mm3": 0.000601
+    },
+    {
+      "a": "whSDA",
+      "b": "tee-SDA-Cu",
+      "volume_mm3": 0.000129
+    },
+    {
+      "a": "whSDA",
+      "b": "tee-SDA-seal",
+      "volume_mm3": 0.003894
+    },
+    {
+      "a": "whSCL",
+      "b": "whSCL-Cu",
+      "volume_mm3": 0.000576
+    },
+    {
+      "a": "whSCL",
+      "b": "tee-SCL-seal",
+      "volume_mm3": 0.001105
+    },
+    {
+      "a": "wm0",
+      "b": "wm0-Cu",
+      "volume_mm3": 0.004532
+    },
+    {
+      "a": "wm1",
+      "b": "wm1-Cu",
+      "volume_mm3": 0.003624
+    },
+    {
+      "a": "batt0",
+      "b": "PH-INS1",
+      "volume_mm3": 0.024041
+    },
+    {
+      "a": "batt1",
+      "b": "PH-INS2",
+      "volume_mm3": 0.042634
+    },
+    {
+      "a": "whTrig-Cu",
+      "b": "whTrig",
+      "volume_mm3": 0.000855
+    },
+    {
+      "a": "USB-W4A-Cu",
+      "b": "USB-W4A",
+      "volume_mm3": 0.002404
+    },
+    {
+      "a": "USB-W4B-Cu",
+      "b": "USB-W4B",
+      "volume_mm3": 0.000147
+    },
+    {
+      "a": "USB-W4C-Cu",
+      "b": "USB-W4C",
+      "volume_mm3": 0.0008
+    },
+    {
+      "a": "J7-C1",
+      "b": "termination-W2-1",
+      "volume_mm3": 0.05587
+    },
+    {
+      "a": "J7-C2",
+      "b": "termination-W2-2",
+      "volume_mm3": 0.05587
+    },
+    {
+      "a": "J9-C1",
+      "b": "termination-W5-2",
+      "volume_mm3": 0.05587
+    },
+    {
+      "a": "J9-C2",
+      "b": "termination-W5-1",
+      "volume_mm3": 0.05587
+    }
+  ]
+}

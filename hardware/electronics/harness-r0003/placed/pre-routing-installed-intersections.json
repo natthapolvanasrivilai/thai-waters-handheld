@@ -1,0 +1,140 @@
+{
+  "altTail0": {},
+  "altTail1": {},
+  "batt0": {
+    "batt1": 0.073585,
+    "PH-INS1": 0.024041,
+    "ph": 0.008157,
+    "housing-battery-bay": 1.254944
+  },
+  "batt1": {
+    "batt0": 0.073585,
+    "PH-INS2": 0.024041,
+    "ph": 0.008157,
+    "housing-battery-bay": 0.664445
+  },
+  "catalogTail0": {},
+  "catalogTail1": {},
+  "drawingTail0": {},
+  "drawingTail1": {},
+  "J7-C1": {
+    "j7plug": 1.576348,
+    "A1-J7": 0.260187
+  },
+  "J7-C2": {
+    "j7plug": 1.576348,
+    "A1-J7": 0.260187
+  },
+  "j7plug": {
+    "J7-C1": 1.576348,
+    "J7-C2": 1.576348,
+    "A1-J7": 1.316898
+  },
+  "J9-C1": {
+    "j9plug": 1.576348,
+    "A1-J9": 0.260187
+  },
+  "J9-C2": {
+    "j9plug": 1.576348,
+    "A1-J9": 0.260187
+  },
+  "j9plug": {
+    "J9-C1": 1.576348,
+    "J9-C2": 1.576348,
+    "A1-J9": 1.316897
+  },
+  "packplug": {
+    "ph": 1.466174
+  },
+  "PH-INS1": {
+    "batt0": 0.024041
+  },
+  "PH-INS2": {
+    "batt1": 0.024041
+  },
+  "PH-TAIL1": {
+    "ph": 0.003202
+  },
+  "PH-TAIL2": {
+    "ph": 0.003202
+  },
+  "ph": {
+    "batt0": 0.008157,
+    "batt1": 0.008157,
+    "packplug": 1.466174,
+    "PH-TAIL1": 0.003202,
+    "PH-TAIL2": 0.003202
+  },
+  "W1-P": {
+    "A1-J8": 0.013903
+  },
+  "w1GND": {},
+  "w1SCL": {},
+  "w1SDA": {},
+  "w1VCC": {},
+  "PH_release_stroke": {
+    "0": {
+      "housing-battery-bay": 0,
+      "battery-wire-bridge": 0,
+      "Adafruit-258-CAD-with-PCM-and-stubs": 0,
+      "PKCELL-max-body-with-wire-sockets": 0,
+      "ph": 1.466174,
+      "batt0": 0,
+      "batt1": 0
+    },
+    "1": {
+      "housing-battery-bay": 0,
+      "battery-wire-bridge": 0,
+      "Adafruit-258-CAD-with-PCM-and-stubs": 0,
+      "PKCELL-max-body-with-wire-sockets": 0,
+      "ph": 0.750467,
+      "batt0": 0,
+      "batt1": 0
+    },
+    "2": {
+      "housing-battery-bay": 0,
+      "battery-wire-bridge": 0,
+      "Adafruit-258-CAD-with-PCM-and-stubs": 0,
+      "PKCELL-max-body-with-wire-sockets": 0,
+      "ph": 0.06505,
+      "batt0": 0,
+      "batt1": 0
+    },
+    "3": {
+      "housing-battery-bay": 0,
+      "battery-wire-bridge": 0,
+      "Adafruit-258-CAD-with-PCM-and-stubs": 0,
+      "PKCELL-max-body-with-wire-sockets": 0,
+      "ph": 0,
+      "batt0": 0,
+      "batt1": 0
+    },
+    "4": {
+      "housing-battery-bay": 0,
+      "battery-wire-bridge": 0,
+      "Adafruit-258-CAD-with-PCM-and-stubs": 0,
+      "PKCELL-max-body-with-wire-sockets": 0,
+      "ph": 0,
+      "batt0": 0,
+      "batt1": 0
+    },
+    "5": {
+      "housing-battery-bay": 0,
+      "battery-wire-bridge": 0,
+      "Adafruit-258-CAD-with-PCM-and-stubs": 0,
+      "PKCELL-max-body-with-wire-sockets": 0,
+      "ph": 0,
+      "batt0": 0,
+      "batt1": 0
+    },
+    "6": {
+      "housing-battery-bay": 0,
+      "battery-wire-bridge": 0,
+      "Adafruit-258-CAD-with-PCM-and-stubs": 0,
+      "PKCELL-max-body-with-wire-sockets": 0,
+      "ph": 0,
+      "batt0": 0,
+      "batt1": 0
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "source": "usb-c-shield-mask-two-colour.3mf",
+  "objects": [
+    [
+      2,
+      "usbSurround",
+      4048,
+      "0"
+    ],
+    [
+      3,
+      "usbEscutcheonLip",
+      2048,
+      "1"
+    ],
+    [
+      4,
+      "USB-C rear diaphragm",
+      0,
+      null
+    ]
+  ],
+  "components": [
+    {
+      "objectid": "2"
+    },
+    {
+      "objectid": "3"
+    }
+  ],
+  "bed_items": [
+    {
+      "objectid": "4"
+    }
+  ],
+  "material_properties": [
+    {
+      "name": "Case-colour opaque TPU 95A",
+      "displaycolor": "#82988EFF"
+    },
+    {
+      "name": "Charcoal opaque TPU 95A",
+      "displaycolor": "#292C2AFF"
+    }
+  ],
+  "bambu_exit": 0,
+  "slicer": [
+    {
+      "feature_type_times": {
+        "Custom": 34.50489044189453,
+        "Gap infill": 1.928175449371338,
+        "Inner wall": 5.671347618103027,
+        "Internal solid infill": 2.1689000129699707,
+        "Outer wall": 11.938430786132812,
+        "Top surface": 4.405766487121582,
+        "Travel": 24.196718215942383,
+        "Undefined": 8.78147029876709
+      },
+      "filament_change_times": 0,
+      "filaments": [
+        {
+          "filament_id": "GFU99",
+          "id": 1,
+          "main_used_g": 0.14664633572101593,
+          "total_used_g": 0.14664633572101593
+        }
+      ],
+      "generate_support_material_time": 4,
+      "id": 1,
+      "infill_time": 10,
+      "layer_filament_change": 0,
+      "main_predication": 50.339942932128906,
+      "make_perimeters_time": 16,
+      "obj_cached_cnt": 0,
+      "objects": [
+        {
+          "bbox": {
+            "depth": 8.010358810424805,
+            "height": 0.5099999904632568,
+            "width": 13.880202293395996,
+            "x": 121.05989074707031,
+            "y": 123.99481964111328,
+            "z": 0.0
+          },
+          "id": 5,
+          "name": "USB-C rear diaphragm",
+          "triangle_count": 6096
+        }
+      ],
+      "sliced_time": 111,
+      "sliced_time_with_cache": 75,
+      "total_predication": 69.39901733398438,
+      "triangle_count": 6096,
+      "warning_message": ""
+    }
+  ]
+}

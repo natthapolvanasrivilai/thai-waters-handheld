@@ -1,16 +1,28 @@
-# Source parts, cost a batch and plan the launch
+# Prototype BOM and selling price
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)
+[Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/Thai-Waters-handbook.html)
 
-Choose **BOM & business**. Filter by part, supplier or variant. Switch the lot between 1, 100 and 1,000 units and compare the base, rumble, handle and full configurations. A supplier listing, price allowance and actual accepted quote have different levels of certainty.
+## One fully equipped R0009 unit
 
-The [Rev G fit-print BOM delta](../../hardware/mechanical/rev-G/fit-bom.csv) adds the wire bridge, two M2 × 4 screws and tape allowances. The commercial model uses the Rev F configuration.
+The full prototype includes the 3.5-inch capacitive display and controller, a protected 1,200 mAh pack, the reel, detachable rod, speaker, motor and driver, three status lights, a data cable, packaging and a 32 GB card for the full artwork library. The optional rechargeable RTC backup cell still needs a qualified part and clearance check.
 
-For 100 full units the model estimates US$74.92 materials and packaging, US$98.93 Thai landed and US$103.43 US landed per unit. Proposed direct prices are ฿5,490 in Thailand and US$169 before US sales tax. Modeled contribution is ฿949.15 or US$35.44 per unit. At a 50%-of-list wholesale price the modeled US contribution is **−US$25.64**. Confirm supplier quotes, freight, yield, warranty and channel fees before placing orders.
+| Group | Allocated USD for one |
+|---|---:|
+| Controller, battery, AS5600 and reel magnet | 48.86 |
+| Speaker, haptics and mounting materials | 11.16 |
+| Wiring, power key, status indicators and consumables | 11.34 |
+| Fasteners and handle hardware | 6.72 |
+| 16 printed pieces, 80.27 g of material | 2.01 |
+| Pack and Tensility USB data cable | 11.95 |
+| 32 GB microSD | 19.99 |
+| **Materials** | **112.03** |
+| Assembly, printer occupancy and electricity | 34.55 |
+| **Assembled before freight, tax and qualification** | **146.58** |
 
-- [Detailed BOM with suppliers, quantities, unit pricing and purchase basis](../../sourcing/production-intent/rev-f-buy-make-bom.csv)
-- [Formula workbook](../../sourcing/production-intent/Riffle-Rev-F-production-costs.xlsx) and [cost assumptions](../../sourcing/production-intent/README.md)
-- [Bought-module boundary](../../sourcing/production-intent/module-boundary.md) and [assembly operation times](../../sourcing/production-intent/operation-times.csv)
-- [Launch plan, positioning, pricing experiments and channels](../../commercial/launch.md)
+Assembly budgets 2.5 hours at $12/hour. The single-material slices total 5.93 printer-hours. At the project's planning rate of ฿35/USD the assembled full prototype is approximately **฿5,130**. A stocked workshop should allow **$152–227** of procurement cash including estimated freight and small-order/setup costs, before tax and labor. A first purchase from an empty workshop depends heavily on supplier packs. Four stock categories alone exceed $560 at the chosen pack sizes. The model excludes shop gauges, multicolor purge, certification and scrap; actual local quotes and a physical build remain open. [74-line BOM with quantity, unit price, extension and supplier](../../sourcing/production-intent/R0009-prototype-budget.csv) · [Source evidence by reference](../../sourcing/production-intent/R0009-source-evidence.csv) · [Cost assumptions and checkout exclusions](../../sourcing/production-intent/R0009-budget.json)
 
-[← Build, record and service a unit](Factory-and-service.md) · [Thai Waters product wiki →](Home.md)
+## Selling price
+
+Test the full set at **฿5,490 direct in Thailand** including the model's VAT allowance, or **US$169 direct in the US** before sales tax. These are proposed price points. No paid demand or R0009 production margin has been established. Test willingness to buy after a hands-on reel and rumble demonstration. Track price-shown registrations and interest by fishing clubs versus handheld collectors. [Launch plan and pricing research](../../commercial/launch.md)
+
+The original 100-unit Rev F study projected ฿949.15 or $35.44 contribution per direct sale. A sensitivity check at the same prices and channel assumptions shows a $10 cost increase consumes ฿350 or $10 of that contribution. Reprice the speaker, exact cable, card, harness, print time, yield and freight at the intended lot size before committing to a retail or wholesale price. [Historical Rev F workbook](../../sourcing/production-intent/Riffle-Rev-F-production-costs.xlsx)

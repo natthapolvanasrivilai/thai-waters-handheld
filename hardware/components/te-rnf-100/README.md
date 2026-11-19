@@ -1,0 +1,5 @@
+# TE Raychem RNF-100-1/16-0-SP
+
+W2 uses two 6.0 mm installed cuts of black single-wall irradiated polyolefin. TE specifies a minimum expanded ID of 1.6 mm, a maximum fully recovered ID of 0.8 mm and 0.43 mm nominal recovered wall. The workshop BREP uses the product cross section recovered onto 0.90 mm conductor insulation. The model conserves the nominal polymer area to estimate the installed OD. Inspect actual solder-bulge coverage, insulation overlap, completed length and dielectric integrity on each assembly. [TE engineering dimensions](https://www.te.com/content/dam/te-com/documents/energy/global/productdocuments/Miscellaneous%20Locations/energy-epp0500-SoluzioniPerLindustia-italian.pdf) · [TE product listing](https://www.te.com/en/product-5052894048.html)
+
+Station the two finished sleeves on the registered straight wire sections. The positive sleeve runs from X 4 to 10 mm and the return sleeve from X −4 to 2 mm. Their 2 mm axial stagger keeps them separate. Perform heating and inspection on the disconnected loose harness before fitting it to the device.

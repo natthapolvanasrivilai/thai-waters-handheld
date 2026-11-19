@@ -1,0 +1,1251 @@
+{
+  "revision": "TW-A-0001-R0009",
+  "socket_mouth_x_mm": -40.0,
+  "socket_axis_yz_mm": [
+    0.0,
+    19.33
+  ],
+  "real_mating_insert_range_mm": [
+    6.0,
+    6.4
+  ],
+  "old_gauge_nose_x_mm": -40.0,
+  "old_gauge_axis_yz_mm": [
+    0.0,
+    19.7
+  ],
+  "old_gauge_engagement_mm": 0.0,
+  "print_allowance_each_side_mm": 0.1,
+  "assembly_shift_each_axis_mm": [
+    0.15,
+    0.15,
+    0.15
+  ],
+  "printed": [
+    "housing-battery-bay",
+    "bezel",
+    "usb-c-shield-mask"
+  ],
+  "geometric_exterior_only": true,
+  "nominal_rounded_overmold": [
+    {
+      "offset_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "furthest_x_mm": -40.15,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.63,
+        "bezel": 5.22,
+        "usb-c-shield-mask": 0.37
+      }
+    }
+  ],
+  "max_rounded_overmold": [
+    {
+      "offset_mm": [
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      "furthest_x_mm": -40.3,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.38,
+        "bezel": 5.27,
+        "usb-c-shield-mask": 0.52
+      }
+    },
+    {
+      "offset_mm": [
+        -0.15,
+        -0.15,
+        0.15
+      ],
+      "furthest_x_mm": -40.3,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.38,
+        "bezel": 4.97,
+        "usb-c-shield-mask": 0.52
+      }
+    },
+    {
+      "offset_mm": [
+        -0.15,
+        0.15,
+        -0.15
+      ],
+      "furthest_x_mm": -40.3,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.38,
+        "bezel": 5.27,
+        "usb-c-shield-mask": 0.52
+      }
+    },
+    {
+      "offset_mm": [
+        -0.15,
+        0.15,
+        0.15
+      ],
+      "furthest_x_mm": -40.3,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.38,
+        "bezel": 4.97,
+        "usb-c-shield-mask": 0.52
+      }
+    },
+    {
+      "offset_mm": [
+        0.15,
+        -0.15,
+        -0.15
+      ],
+      "furthest_x_mm": -40.0,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.38,
+        "bezel": 5.27,
+        "usb-c-shield-mask": 0.22
+      }
+    },
+    {
+      "offset_mm": [
+        0.15,
+        -0.15,
+        0.15
+      ],
+      "furthest_x_mm": -40.0,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.38,
+        "bezel": 4.97,
+        "usb-c-shield-mask": 0.22
+      }
+    },
+    {
+      "offset_mm": [
+        0.15,
+        0.15,
+        -0.15
+      ],
+      "furthest_x_mm": -40.0,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.38,
+        "bezel": 5.27,
+        "usb-c-shield-mask": 0.22
+      }
+    },
+    {
+      "offset_mm": [
+        0.15,
+        0.15,
+        0.15
+      ],
+      "furthest_x_mm": -40.0,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.38,
+        "bezel": 4.97,
+        "usb-c-shield-mask": 0.22
+      }
+    }
+  ],
+  "max_metal_shell": [
+    {
+      "offset_mm": [
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      "furthest_x_mm": -33.75,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.435,
+        "bezel": 7.305,
+        "usb-c-shield-mask": 0.06073
+      }
+    },
+    {
+      "offset_mm": [
+        -0.15,
+        -0.15,
+        0.15
+      ],
+      "furthest_x_mm": -33.75,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.45,
+        "bezel": 7.005,
+        "usb-c-shield-mask": 0.06073
+      }
+    },
+    {
+      "offset_mm": [
+        -0.15,
+        0.15,
+        -0.15
+      ],
+      "furthest_x_mm": -33.75,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.435,
+        "bezel": 7.305,
+        "usb-c-shield-mask": 0.06073
+      }
+    },
+    {
+      "offset_mm": [
+        -0.15,
+        0.15,
+        0.15
+      ],
+      "furthest_x_mm": -33.75,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.45,
+        "bezel": 7.005,
+        "usb-c-shield-mask": 0.06073
+      }
+    },
+    {
+      "offset_mm": [
+        0.15,
+        -0.15,
+        -0.15
+      ],
+      "furthest_x_mm": -33.45,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.435,
+        "bezel": 7.305,
+        "usb-c-shield-mask": 0.06073
+      }
+    },
+    {
+      "offset_mm": [
+        0.15,
+        -0.15,
+        0.15
+      ],
+      "furthest_x_mm": -33.45,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.45,
+        "bezel": 7.005,
+        "usb-c-shield-mask": 0.06073
+      }
+    },
+    {
+      "offset_mm": [
+        0.15,
+        0.15,
+        -0.15
+      ],
+      "furthest_x_mm": -33.45,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.435,
+        "bezel": 7.305,
+        "usb-c-shield-mask": 0.06073
+      }
+    },
+    {
+      "offset_mm": [
+        0.15,
+        0.15,
+        0.15
+      ],
+      "furthest_x_mm": -33.45,
+      "intersection_mm3": {
+        "housing-battery-bay": 0,
+        "bezel": 0,
+        "usb-c-shield-mask": 0
+      },
+      "minimum_clearance_mm": {
+        "housing-battery-bay": 0.45,
+        "bezel": 7.005,
+        "usb-c-shield-mask": 0.06073
+      }
+    }
+  ],
+  "ray_grid_pitch_mm": 0.2,
+  "exterior_visibility": {
+    "-39.9": [
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 446,
+        "through_mouth": 0,
+        "clear": 446,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            16.23
+          ],
+          [
+            -6.8,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 665,
+        "through_mouth": 1,
+        "clear": 666,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            16.23
+          ],
+          [
+            -6.8,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 1116,
+        "through_mouth": 0,
+        "clear": 1116,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            16.23
+          ],
+          [
+            -6.8,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 665,
+        "through_mouth": 1,
+        "clear": 666,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            17.83
+          ],
+          [
+            -6.8,
+            18.03
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 446,
+        "through_mouth": 0,
+        "clear": 446,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            21.03
+          ],
+          [
+            -6.8,
+            21.23
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 619,
+        "through_mouth": 0,
+        "clear": 619,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            16.23
+          ],
+          [
+            -6.8,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 860,
+        "through_mouth": 0,
+        "clear": 860,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            16.23
+          ],
+          [
+            -6.8,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 1498,
+        "through_mouth": 0,
+        "clear": 1498,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            16.23
+          ],
+          [
+            -6.8,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 860,
+        "through_mouth": 0,
+        "clear": 860,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            17.83
+          ],
+          [
+            -6.8,
+            18.03
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 619,
+        "through_mouth": 0,
+        "clear": 619,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            21.03
+          ],
+          [
+            -6.8,
+            21.23
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 743,
+        "through_mouth": 0,
+        "clear": 743,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            16.23
+          ],
+          [
+            -6.8,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 1153,
+        "through_mouth": 0,
+        "clear": 1153,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            16.23
+          ],
+          [
+            -6.8,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 1918,
+        "through_mouth": 0,
+        "clear": 1918,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            16.23
+          ],
+          [
+            -6.8,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 1153,
+        "through_mouth": 0,
+        "clear": 1153,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            18.23
+          ],
+          [
+            -6.8,
+            18.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 743,
+        "through_mouth": 0,
+        "clear": 743,
+        "sample_visible_yz_mm": [
+          [
+            -6.8,
+            21.43
+          ],
+          [
+            -6.8,
+            21.63
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 619,
+        "through_mouth": 0,
+        "clear": 619,
+        "sample_visible_yz_mm": [
+          [
+            -4.6,
+            15.63
+          ],
+          [
+            -4.6,
+            15.83
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 860,
+        "through_mouth": 0,
+        "clear": 860,
+        "sample_visible_yz_mm": [
+          [
+            -4.6,
+            15.63
+          ],
+          [
+            -4.6,
+            15.83
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 1498,
+        "through_mouth": 0,
+        "clear": 1498,
+        "sample_visible_yz_mm": [
+          [
+            -4.6,
+            16.43
+          ],
+          [
+            -4.6,
+            16.63
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 860,
+        "through_mouth": 0,
+        "clear": 860,
+        "sample_visible_yz_mm": [
+          [
+            -4.6,
+            19.03
+          ],
+          [
+            -4.6,
+            19.23
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 619,
+        "through_mouth": 0,
+        "clear": 619,
+        "sample_visible_yz_mm": [
+          [
+            -4.6,
+            22.23
+          ],
+          [
+            -4.6,
+            22.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 446,
+        "through_mouth": 0,
+        "clear": 446,
+        "sample_visible_yz_mm": [
+          [
+            -1.4,
+            15.63
+          ],
+          [
+            -1.4,
+            15.83
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 665,
+        "through_mouth": 1,
+        "clear": 666,
+        "sample_visible_yz_mm": [
+          [
+            -1.4,
+            15.63
+          ],
+          [
+            -1.4,
+            15.83
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 1116,
+        "through_mouth": 0,
+        "clear": 1116,
+        "sample_visible_yz_mm": [
+          [
+            -1.4,
+            16.23
+          ],
+          [
+            -1.4,
+            16.43
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 665,
+        "through_mouth": 1,
+        "clear": 666,
+        "sample_visible_yz_mm": [
+          [
+            -1.4,
+            21.03
+          ],
+          [
+            -1.4,
+            21.23
+          ]
+        ]
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 446,
+        "through_mouth": 0,
+        "clear": 446,
+        "sample_visible_yz_mm": [
+          [
+            -1.4,
+            22.03
+          ],
+          [
+            -1.4,
+            22.23
+          ]
+        ]
+      }
+    ],
+    "-38.0": [
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      }
+    ],
+    "-36.0": [
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 14,
+        "clear": 14,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -30.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 25,
+        "clear": 25,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -15.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 30,
+        "clear": 30,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": -0.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 25,
+        "clear": 25,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 15.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": -30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": -15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": -0.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": 15.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 14,
+        "clear": 14,
+        "sample_visible_yz_mm": []
+      },
+      {
+        "yaw_deg": 30.0,
+        "pitch_deg": 30.0,
+        "checked": 3104,
+        "around_shield": 0,
+        "through_mouth": 0,
+        "clear": 0,
+        "sample_visible_yz_mm": []
+      }
+    ]
+  }
+}

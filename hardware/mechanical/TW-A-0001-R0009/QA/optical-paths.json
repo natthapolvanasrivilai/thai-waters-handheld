@@ -1,0 +1,110 @@
+{
+  "charge": {
+    "front_center_mm": [
+      -49.97,
+      -6.05,
+      13.1
+    ],
+    "source_target_mm": [
+      -38.75,
+      -10.021,
+      20.75
+    ],
+    "core_to_source_mm": 0.3799,
+    "core_to_housing_mm": 0.0956,
+    "core_housing_intersection_mm3": 0.0,
+    "core_to_other_cores_mm": {
+      "usb": 4.85,
+      "power": 10.9
+    },
+    "sight_to_emitters": {
+      "charge": {
+        "lines": 225,
+        "open_lines": 225,
+        "center_open": true
+      },
+      "usb": {
+        "lines": 225,
+        "open_lines": 0,
+        "center_open": false
+      },
+      "power": {
+        "lines": 225,
+        "open_lines": 0,
+        "center_open": false
+      }
+    }
+  },
+  "usb": {
+    "front_center_mm": [
+      -49.97,
+      0,
+      13.1
+    ],
+    "source_target_mm": [
+      -42.352,
+      0,
+      13.1
+    ],
+    "core_to_source_mm": 0.298,
+    "core_to_housing_mm": 0.12,
+    "core_housing_intersection_mm3": 0.0,
+    "core_to_other_cores_mm": {
+      "charge": 4.85,
+      "power": 4.85
+    },
+    "sight_to_emitters": {
+      "charge": {
+        "lines": 225,
+        "open_lines": 0,
+        "center_open": false
+      },
+      "usb": {
+        "lines": 225,
+        "open_lines": 225,
+        "center_open": true
+      },
+      "power": {
+        "lines": 225,
+        "open_lines": 0,
+        "center_open": false
+      }
+    }
+  },
+  "power": {
+    "front_center_mm": [
+      -49.97,
+      6.05,
+      13.1
+    ],
+    "source_target_mm": [
+      -38.75,
+      9.979,
+      20.75
+    ],
+    "core_to_source_mm": 0.3798,
+    "core_to_housing_mm": 0.0958,
+    "core_housing_intersection_mm3": 0.0,
+    "core_to_other_cores_mm": {
+      "charge": 10.9,
+      "usb": 4.85
+    },
+    "sight_to_emitters": {
+      "charge": {
+        "lines": 225,
+        "open_lines": 0,
+        "center_open": false
+      },
+      "usb": {
+        "lines": 225,
+        "open_lines": 0,
+        "center_open": false
+      },
+      "power": {
+        "lines": 225,
+        "open_lines": 225,
+        "center_open": true
+      }
+    }
+  }
+}

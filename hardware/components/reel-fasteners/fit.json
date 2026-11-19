@@ -1,0 +1,218 @@
+{
+  "reel0": {
+    "bezel": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 6.6
+    },
+    "collar": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 5.4438
+    },
+    "folding-stem": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.07
+    },
+    "grip": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 4.8666
+    },
+    "housing-battery-bay": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 2.0724
+    },
+    "rotor": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "reel1": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 10.2221
+    },
+    "H3-1": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.1
+    },
+    "H3-2": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.1
+    },
+    "H5": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 14.237
+    }
+  },
+  "reel1": {
+    "bezel": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 11.0
+    },
+    "collar": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 5.3388
+    },
+    "folding-stem": {
+      "overlap_mm3": 2.03335,
+      "gap_mm": 0.0
+    },
+    "grip": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.6649
+    },
+    "housing-battery-bay": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 2.95
+    },
+    "rotor": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 1.95
+    },
+    "reel0": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 10.2221
+    },
+    "H3-1": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 9.0283
+    },
+    "H3-2": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 9.0283
+    },
+    "H5": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.0
+    }
+  },
+  "H3-1": {
+    "bezel": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 15.3
+    },
+    "collar": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 4.6219
+    },
+    "folding-stem": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "grip": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 3.95
+    },
+    "housing-battery-bay": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 2.45
+    },
+    "rotor": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "reel0": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.1
+    },
+    "reel1": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 9.0283
+    },
+    "H3-2": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 4.6
+    },
+    "H5": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 13.55
+    }
+  },
+  "H3-2": {
+    "bezel": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 10.4
+    },
+    "collar": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 4.6219
+    },
+    "folding-stem": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "grip": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 3.95
+    },
+    "housing-battery-bay": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 2.45
+    },
+    "rotor": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "reel0": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.1
+    },
+    "reel1": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 9.0283
+    },
+    "H3-1": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 4.6
+    },
+    "H5": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 13.55
+    }
+  },
+  "H5": {
+    "bezel": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 10.5
+    },
+    "collar": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 4.7461
+    },
+    "folding-stem": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "grip": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.3
+    },
+    "housing-battery-bay": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 2.45
+    },
+    "rotor": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 1.45
+    },
+    "reel0": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 14.237
+    },
+    "reel1": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 0.0
+    },
+    "H3-1": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 13.55
+    },
+    "H3-2": {
+      "overlap_mm3": 0.0,
+      "gap_mm": 13.55
+    }
+  },
+  "H2 below upper ear": {
+    "overlap_mm3": 0.6473
+  },
+  "H2 bearing and head": {
+    "overlap_mm3": 0.0
+  }
+}

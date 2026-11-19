@@ -1,0 +1,8 @@
+USB indicator dim / R0003 / engineering envelopes in volts and ohms
+Vusb vbus 0 0
+Rlimit vbus lamp 2727
+Rleak lamp 0 1T
+Gled lamp 0 VALUE = {MAX(0,V(lamp)-4.0)/10}
+.DC Vusb 4.40000 4.40010 0.0001
+.PRINT DC V(vbus) V(lamp) I(Vusb)
+.END

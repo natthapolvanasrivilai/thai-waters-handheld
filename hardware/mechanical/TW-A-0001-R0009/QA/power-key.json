@@ -1,0 +1,200 @@
+{
+  "rest_cap_to_plunger_mm": 0.05,
+  "legacy_1p10mm_drill_interference_mm3": 0.00759,
+  "finished_bore_nominal_mm": 1.0,
+  "terminals_to_pcb_interference_mm3": 0.046461,
+  "case_to_pcb_interference_mm3": 0,
+  "pins": [
+    {
+      "center_xz_mm": [
+        -39.5898,
+        10.25
+      ],
+      "below_pcb_mm": 0.8,
+      "board_overlap_mm3": 0.011615
+    },
+    {
+      "center_xz_mm": [
+        -39.5898,
+        14.75
+      ],
+      "below_pcb_mm": 0.8,
+      "board_overlap_mm3": 0.011615
+    },
+    {
+      "center_xz_mm": [
+        -32.4102,
+        14.75
+      ],
+      "below_pcb_mm": 0.8,
+      "board_overlap_mm3": 0.011615
+    },
+    {
+      "center_xz_mm": [
+        -32.4102,
+        10.25
+      ],
+      "below_pcb_mm": 0.8,
+      "board_overlap_mm3": 0.011615
+    }
+  ],
+  "finished_hole_series": [
+    {
+      "finished_bore_mm": 0.95,
+      "undeformed_leg_overlap_mm3": 0.087069,
+      "individual_mm3": [
+        0.021767,
+        0.021767,
+        0.021767,
+        0.021767
+      ]
+    },
+    {
+      "finished_bore_mm": 0.975,
+      "undeformed_leg_overlap_mm3": 0.064817,
+      "individual_mm3": [
+        0.016204,
+        0.016204,
+        0.016204,
+        0.016204
+      ]
+    },
+    {
+      "finished_bore_mm": 1.0,
+      "undeformed_leg_overlap_mm3": 0.046461,
+      "individual_mm3": [
+        0.011615,
+        0.011615,
+        0.011615,
+        0.011615
+      ]
+    },
+    {
+      "finished_bore_mm": 1.025,
+      "undeformed_leg_overlap_mm3": 0.032114,
+      "individual_mm3": [
+        0.008028,
+        0.008028,
+        0.008028,
+        0.008028
+      ]
+    },
+    {
+      "finished_bore_mm": 1.05,
+      "undeformed_leg_overlap_mm3": 0.021213,
+      "individual_mm3": [
+        0.005303,
+        0.005303,
+        0.005303,
+        0.005303
+      ]
+    }
+  ],
+  "stroke": [
+    {
+      "cap_translation_mm": 0.0,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 0
+    },
+    {
+      "cap_translation_mm": 0.05,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 0
+    },
+    {
+      "cap_translation_mm": 0.1,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 0.422971
+    },
+    {
+      "cap_translation_mm": 0.15,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 0.879634
+    },
+    {
+      "cap_translation_mm": 0.2,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 1.352347
+    },
+    {
+      "cap_translation_mm": 0.25,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 1.832248
+    },
+    {
+      "cap_translation_mm": 0.3,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 2.313305
+    },
+    {
+      "cap_translation_mm": 0.35,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 2.794361
+    },
+    {
+      "cap_translation_mm": 0.4,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 3.275417
+    },
+    {
+      "cap_translation_mm": 0.45,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 3.756474
+    },
+    {
+      "cap_translation_mm": 0.5,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 4.389392
+    },
+    {
+      "cap_translation_mm": 0.55,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 5.064081
+    },
+    {
+      "cap_translation_mm": 0.6,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 5.760001
+    },
+    {
+      "cap_translation_mm": 0.65,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 6.465671
+    },
+    {
+      "cap_translation_mm": 0.7,
+      "case_mm3": 0,
+      "housing_mm3": 0,
+      "keeper_mm3": 0,
+      "stationary_source_plunger_contact_mm3": 7.172922
+    }
+  ]
+}

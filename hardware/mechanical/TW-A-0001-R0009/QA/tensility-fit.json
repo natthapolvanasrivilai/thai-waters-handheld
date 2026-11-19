@@ -1,0 +1,279 @@
+{
+  "source": "Tensility 10-03675, MPN 50-00477 C plug, overmold 24-00113",
+  "supplier_assembly_solids": 26,
+  "supplier_shortened_cable_span_mm": 150.0,
+  "actual_purchased_cable_length_mm": 1000.0,
+  "print_allowance_each_side_mm": 0.1,
+  "positions": [
+    {
+      "orientation_deg": 0,
+      "socket_offset_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.38,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 0,
+      "socket_offset_mm": [
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 0,
+      "socket_offset_mm": [
+        -0.15,
+        -0.15,
+        0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 0,
+      "socket_offset_mm": [
+        -0.15,
+        0.15,
+        -0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 0,
+      "socket_offset_mm": [
+        -0.15,
+        0.15,
+        0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 0,
+      "socket_offset_mm": [
+        0.15,
+        -0.15,
+        -0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.35094,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 0,
+      "socket_offset_mm": [
+        0.15,
+        -0.15,
+        0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.35094,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 0,
+      "socket_offset_mm": [
+        0.15,
+        0.15,
+        -0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.35094,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 0,
+      "socket_offset_mm": [
+        0.15,
+        0.15,
+        0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.35094,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 180,
+      "socket_offset_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.38,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 180,
+      "socket_offset_mm": [
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 180,
+      "socket_offset_mm": [
+        -0.15,
+        -0.15,
+        0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 180,
+      "socket_offset_mm": [
+        -0.15,
+        0.15,
+        -0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 180,
+      "socket_offset_mm": [
+        -0.15,
+        0.15,
+        0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.355,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 180,
+      "socket_offset_mm": [
+        0.15,
+        -0.15,
+        -0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.35094,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 180,
+      "socket_offset_mm": [
+        0.15,
+        -0.15,
+        0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.35094,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 180,
+      "socket_offset_mm": [
+        0.15,
+        0.15,
+        -0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.35094,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    },
+    {
+      "orientation_deg": 180,
+      "socket_offset_mm": [
+        0.15,
+        0.15,
+        0.15
+      ],
+      "nominal_engagement_mm": 6.4,
+      "housing_clearance_mm": 0.23,
+      "tracked_mask_clearance_mm": 0.35094,
+      "overlap_mm3": {
+        "housing": 0.0,
+        "mask": 0.0
+      }
+    }
+  ]
+}

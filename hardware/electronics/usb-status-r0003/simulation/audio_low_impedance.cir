@@ -1,0 +1,7 @@
+audio_low_impedance / R0003 / engineering behavioral envelope
+VPA plus 0 SIN(1.95 1.65 1000)
+VPB minus 0 SIN(1.95 -1.65 1000)
+Rspeaker plus minus 6.4
+.TRAN 3u 12m 2m 3u
+.PRINT TRAN V(plus,minus)
+.END

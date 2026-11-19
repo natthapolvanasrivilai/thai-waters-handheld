@@ -1,6 +1,6 @@
 # Firmware, simulator and software verification
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/Thai-Waters-handbook.html)
 
 Open **Software** in the handbook. Filter by feature to see its implementation, automated coverage and remaining on-device acceptance. Select **Test plan** to follow a validation item to its stage and acceptance criteria.
 
@@ -22,4 +22,4 @@ The private [phone playtest](https://thai-waters-pocket-angler.shoung0690.chatgp
 
 The [0.9.3 USB engineering preview](../../releases/prototypes/Thai-Waters-controller-0.9.3.zip) targets Waveshare 31137. The simulator and firmware share the habitat rules and the twelve recovered-object portraits. See the [rendered-image regression](../../verification/browser-tests/recovered-items.cjs), [engine coverage](../../firmware/tests/cast_water.cpp), and [fish artwork status](../../game/art-source/coverage.csv). Actual board, phone pairing and physical feel remain bench milestones.
 
-The released inert print is [TW-A-0001-R0008 with TW-A-0002-R0002 electrical integration](../../hardware/revisions/README.md). R0009 enclosure and R0003 electrical work are local engineering candidates pending register reconciliation, fit and cable checks. Use the [published print and gauges](../../hardware/mechanical/TW-A-0001-R0008/PRINT-GUIDE.md) for the first article. Physical fit and production qualification remain open.
+The released inert print is [TW-A-0001-R0008 with TW-A-0002-R0002 electrical integration](../../hardware/revisions/README.md). The [R0009 engineering viewer and R0003 wiring](../../hardware/mechanical/TW-A-0001-R0009/README.md) are registered for design review. The dressed harness has been checked in CAD; physical checks remain open. Use the [published print and gauges](../../hardware/mechanical/TW-A-0001-R0008/PRINT-GUIDE.md) for the first article. Physical fit and production qualification remain open.
