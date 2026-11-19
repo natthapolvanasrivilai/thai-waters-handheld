@@ -17,7 +17,7 @@ LAYOUT = {
 
 def verified_images(root):
     manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
-    if manifest["chip"] != "esp32s3" or manifest["version"] != "0.9.2-controller-preview":
+    if manifest["chip"] != "esp32s3" or manifest["version"] != "0.9.3-controller-preview":
         raise ValueError("unexpected image target or version")
     images = manifest["images"]
     if len(images) != len(LAYOUT) or {i["path"]: i["offset"] for i in images} != LAYOUT:

@@ -168,8 +168,8 @@ struct Game {
     bool inCore=feature==Debris && castZone(Debris).distanceSquared(aimX,aimY)<.30f;
     const unsigned odds=feature==Debris?(inCore?72:38):0;
     if(waterTicket%100<odds){
-      contact=Debris;junkId=int((waterTicket>>10)%4);
-      target=1.f+.27f*junkId;line=target;heat=.23f;enter(Phase::HaulingJunk);
+      contact=Debris;junkId=recoveredItem(destination,site,waterTicket);
+      target=salvage::items[junkId].turns;line=target;heat=.23f;enter(Phase::HaulingJunk);
     }else enter(Phase::Waiting);
   }
   void workSnag(uint32_t ms,bool rise,float turns){

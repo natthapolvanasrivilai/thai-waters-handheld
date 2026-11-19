@@ -1,5 +1,6 @@
 #pragma once
 #include "ScenicRecipes.h"
+#include "SalvageCatalog.h"
 #include <cstdint>
 
 namespace creek {
@@ -34,6 +35,31 @@ inline int hazardOdds(int place,int pool,int kind){
   if(kind==creek::Debris)return habitat.feature==Nets || habitat.feature==Pier ||
     habitat.feature==Ferry || habitat.feature==Market?48:20;
   return 0;
+}
+// These are gameplay habitat associations, drawn from the location artwork.
+inline uint16_t recoveryHabitats(int place,int pool){
+  using namespace scenery;
+  const auto r=recipes[place];
+  const bool inland=pool!=4;
+  const bool landing=r.feature==Pier||r.feature==Ferry||r.feature==Raft||r.feature==Boathouse||
+                     r.feature==Market||r.feature==Boat||r.feature==Nets||r.feature==Kitchen;
+  uint16_t tags=salvage::any;
+  if(inland)tags|=salvage::bank;
+  if(landing)tags|=salvage::landing;
+  if(inland&&landing)tags|=salvage::landingInland;
+  if(inland&&(r.water==Marsh||r.water==Lake||r.feature==Lotus))tags|=salvage::still;
+  if(inland&&(r.water==Bend||r.water==Wide||r.water==scenery::Stream||r.water==Gorge))tags|=salvage::flow;
+  if(inland&&(r.water==Gorge||r.water==scenery::Stream||r.water==Foothill||r.water==Karst||r.feature==Rocks))tags|=salvage::stony;
+  if(!inland||landing)tags|=salvage::maritime;
+  if(!inland&&(r.water==Headland||r.water==Island||r.water==Karst))tags|=salvage::rockyCoast;
+  if(!inland&&r.water==Estuary)tags|=salvage::estuary;
+  return tags;
+}
+inline int recoveredItem(int place,int pool,uint32_t ticket){
+  const auto tags=recoveryHabitats(place,pool);
+  int eligible[salvage::count],n=0;
+  for(int i=0;i<salvage::count;i++)if(salvage::items[i].habitats&tags)eligible[n++]=i;
+  return eligible[(ticket>>10)%n];
 }
 // Coordinates are normalized to the whole LCD. Disjoint depth bands keep
 // overlapping structures from masking each other, with room to fish midstream.

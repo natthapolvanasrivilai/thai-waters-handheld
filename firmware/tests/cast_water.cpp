@@ -79,10 +79,11 @@ int main(){
   broken.tick(500,false,false,1.f);assert(broken.phase==Phase::Lost && broken.reason==Reason::Snapped);
   auto cancel=atZone(2,Branch);cancel.abandonCast();
   assert(cancel.phase==Phase::Ready && cancel.contact==0 && cancel.junkId==-1);
-  bool found[4]={};int misses=0;
-  for(unsigned s=1;s<=150;s++){
-    auto g=atZone(s,Debris);if(g.phase==Phase::Waiting){misses++;continue;}
-    assert(g.phase==Phase::HaulingJunk && g.junkId>=0 && g.junkId<4);
+  bool found[salvage::count]={};int misses=0;
+  for(int place=0;place<destinationCount;place++)for(unsigned s=1;s<=150;s++){
+    auto g=atZone(s,Debris,place);if(g.phase==Phase::Waiting){misses++;continue;}
+    assert(g.phase==Phase::HaulingJunk && g.junkId>=0 && g.junkId<salvage::count);
+    assert(salvage::items[g.junkId].habitats & recoveryHabitats(place,g.site));
     found[g.junkId]=true;RumblePlan haptic;assert(haptic.tick(g,0,true)==Pulse::Pull);
     g.tick(500,false,false,-.3f);assert(g.releaseProgress()==0);
     g.tick(500,false,false,.5f);assert(g.releaseProgress()>0 && g.releaseProgress()<1);
@@ -92,7 +93,7 @@ int main(){
     assert(!g.running() && g.releaseProgress()==1);
     g.setAim(.5f,.67f);g.tick(16,true,false,0);assert(g.phase==Phase::Flight && g.junkId==-1);
   }
-  assert(misses>0 && found[0] && found[1] && found[2] && found[3]);
+  assert(misses>0);for(bool recovered:found)assert(recovered);
   assert(rainChance(113,7,1)>rainChance(113,1,1));
   assert(rainChance(108,11,2)>rainChance(0,11,2));
   assert(rainChance(0,8,2)>rainChance(0,8,0));
@@ -114,5 +115,5 @@ int main(){
   assert(weatherGame[1].waitMs<weatherGame[0].waitMs);
   assert(weatherGame[2].waitMs>weatherGame[0].waitMs && weatherGame[3].waitMs>weatherGame[2].waitMs);
   puts("PASS regional monsoons, dusk rain weights, four animated conditions, cast lock and bite timing.");
-  printf("PASS %d water/period combinations, all 4 salvage items, release/overwind/abandon, protected center, one-shot rumble and no fish credit.\n",4*destinationCount);
+  printf("PASS %d water/period combinations, all 12 habitat-matched salvage items, release/overwind/abandon, protected center, one-shot rumble and no fish credit.\n",4*destinationCount);
 }

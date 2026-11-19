@@ -1,6 +1,6 @@
 # Play and evaluate a cast
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.8/Thai-Waters-0.8-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)
 
 [Open the private phone playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) or choose **Playable demo → Start playable demo** in the handbook. Tap once to enable audio. On a phone, open the playtest directly in the browser for motion permission. The [phone test guide](../../game/sites/Phone-playtest.md) covers calibration and fallback controls.
 
@@ -38,3 +38,9 @@ The mobile WebKit hit-test traverses all six menu routes, both navigation icons,
 The rod loads for 180 milliseconds, then the spool pays out before the bait reaches water at 900 milliseconds. Reel click volume controls payout. Effects volume controls the swish, water impact, retrieve splashes and line snap. The tension gauge follows the line where it meets the water.
 
 Use the header arrows for settings, destinations and rankings. The journal displays one catch record per page. Back returns to the same thumbnail page. The national catalog includes 2,536 real fish, the giant freshwater prawn and eight fictional specimens. All 377 species in the field-record expansion have individual painted portraits. The release contains 456 illustrated entries in total. The field-note icon identifies an entry whose illustration is pending. The [additional field records](../../game/content/field-evidence.md) give the sources for the 377 latest additions.
+
+## Finds on the line
+
+A loose object stays hidden until reeled ashore. The landing shows its own portrait, name, category and location. Tap the water to cast again. A fixed branch or submerged boulder can still snag the hook. A detached branch or line-wrapped pebble can come ashore. Lotus pods occur in still-water layouts, mangrove driftwood in estuaries and barnacled stones on rocky coasts. These are game encounter rules. Recovery adds no fish, tackle points or tournament credit. [All twelve finds](../../game/content/salvage.json) · [LCD artwork](../../game/assets/salvage.png)
+
+The [fish artwork register](../../game/art-source/coverage.csv) tracks every catalog entry, including missing illustrations and identification review. [Compare a source plate with its LCD sprites](../../game/art-source/README.md#portrait-coverage-and-review)

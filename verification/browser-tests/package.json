@@ -2,7 +2,7 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "test": "node detents.cjs && node scenery.cjs && node arrival.cjs && node gameplay.cjs && node device.cjs && node rumble.cjs && node bait.cjs && node mobile-input.cjs && node lcd.cjs && node mobile-audio.cjs && node landing-audio.cjs && node cast-water.cjs && node ambient.cjs && node aim-input.cjs && node hosted-startup.cjs && node tournament.cjs && node thai-catch.cjs && node gallery-history.cjs && node handheld-input.cjs && node finger-targets.cjs && node tackle-hud.cjs && node menu-pages.cjs && node specimen-art.cjs"
+    "test": "node detents.cjs && node scenery.cjs && node arrival.cjs && node gameplay.cjs && node device.cjs && node rumble.cjs && node bait.cjs && node mobile-input.cjs && node lcd.cjs && node mobile-audio.cjs && node landing-audio.cjs && node cast-water.cjs && node ambient.cjs && node aim-input.cjs && node hosted-startup.cjs && node tournament.cjs && node thai-catch.cjs && node gallery-history.cjs && node handheld-input.cjs && node finger-targets.cjs && node tackle-hud.cjs && node menu-pages.cjs && node specimen-art.cjs && node recovered-items.cjs"
   },
   "devDependencies": {
     "playwright-core": "1.62.1",

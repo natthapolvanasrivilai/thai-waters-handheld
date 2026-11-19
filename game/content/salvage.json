@@ -1,0 +1,124 @@
+[
+  {
+    "key": "sandal",
+    "name": "Waterlogged sandal",
+    "th": "รองเท้าแตะชุ่มน้ำ",
+    "group": "Litter",
+    "sites": [
+      "bank",
+      "landing"
+    ],
+    "turns": 1.1
+  },
+  {
+    "key": "line",
+    "name": "Tangled line",
+    "th": "สายเอ็นพันกัน",
+    "group": "Lost tackle",
+    "sites": [
+      "any"
+    ],
+    "turns": 1
+  },
+  {
+    "key": "cup",
+    "name": "Dented cup",
+    "th": "ถ้วยบุบ",
+    "group": "Litter",
+    "sites": [
+      "landing"
+    ],
+    "turns": 1.3
+  },
+  {
+    "key": "float",
+    "name": "Cracked float",
+    "th": "ทุ่นตกปลาแตกร้าว",
+    "group": "Lost tackle",
+    "sites": [
+      "any"
+    ],
+    "turns": 0.95
+  },
+  {
+    "key": "twig",
+    "name": "Forked branch",
+    "th": "กิ่งไม้แห้ง",
+    "group": "Natural debris",
+    "sites": [
+      "bank"
+    ],
+    "turns": 1.5
+  },
+  {
+    "key": "pebble",
+    "name": "Line-wrapped pebble",
+    "th": "ก้อนหินพันสายเอ็น",
+    "group": "Natural debris",
+    "sites": [
+      "stony"
+    ],
+    "turns": 1.9
+  },
+  {
+    "key": "bamboo",
+    "name": "Split bamboo",
+    "th": "กระบอกไม้ไผ่แตก",
+    "group": "Natural debris",
+    "sites": [
+      "flow",
+      "landingInland"
+    ],
+    "turns": 1.4
+  },
+  {
+    "key": "lotus",
+    "name": "Dry lotus pod",
+    "th": "ฝักบัวแห้ง",
+    "group": "Natural debris",
+    "sites": [
+      "still"
+    ],
+    "turns": 0.85
+  },
+  {
+    "key": "bottle",
+    "name": "Crushed bottle",
+    "th": "ขวดพลาสติกบุบ",
+    "group": "Litter",
+    "sites": [
+      "landing"
+    ],
+    "turns": 1.05
+  },
+  {
+    "key": "rope",
+    "name": "Frayed mooring rope",
+    "th": "เชือกผูกเรือเก่า",
+    "group": "Lost gear",
+    "sites": [
+      "maritime"
+    ],
+    "turns": 1.7
+  },
+  {
+    "key": "barnacles",
+    "name": "Barnacled stone",
+    "th": "ก้อนหินเกาะเพรียง",
+    "group": "Natural debris",
+    "sites": [
+      "rockyCoast"
+    ],
+    "turns": 1.95
+  },
+  {
+    "key": "driftwood",
+    "name": "Mangrove driftwood",
+    "th": "ไม้ลอยน้ำป่าชายเลน",
+    "group": "Natural debris",
+    "sites": [
+      "estuary"
+    ],
+    "turns": 1.55
+  }
+]

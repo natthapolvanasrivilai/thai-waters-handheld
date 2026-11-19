@@ -1,6 +1,6 @@
 # Test evidence and market readiness
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.8/Thai-Waters-0.8-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)
 
 Use **Test plan** to filter by engineering validation (EVT), design validation (DVT) or production validation (PVT). Expand a test to identify the fixture, input condition, acceptance evidence and outstanding action. Review each open item against the SKU that will actually ship.
 

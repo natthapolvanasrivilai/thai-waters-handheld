@@ -1,6 +1,6 @@
 # Inspect the assembly and battery pocket
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.8/Thai-Waters-0.8-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)
 
 Choose **3D assembly** in the handbook. Drag to orbit. Select a wire, screw or board to see its part record, isolate a group, move the explode slider and step through the seven installation stages. Use the section plane at the battery fences and the reel sensor. The detachable grip uses a 35 mm slide with captive M3 retention. The top-left power cap operates a separate switch carrier.
 
@@ -17,3 +17,5 @@ Keep the supplied STL orientations. Five parts use outer brims. The A1 PETG slic
 - [Optional reel brake experiment](../../hardware/mechanical/experiments/reel-brake)
 
 [← Play and evaluate a cast](Game-and-demo.md) · [Read a circuit trace →](Electrical-verification.md)
+
+[Current paired hardware revisions, firmware and first-article status](Software-and-tests.md#current-release)

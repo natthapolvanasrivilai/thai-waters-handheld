@@ -19,8 +19,8 @@ def main():
         ("flash/boot_app0.bin", 0xE000, args.boot_app0),
         ("flash/ThaiWaters.bin", 0x10000, args.build / "WillowCreek.ino.bin"),
     ]
-    manifest = {"version": "0.9.2-controller-preview", "chip": "esp32s3",
-                "board": "Waveshare 31137, R0003, 16 MB flash and OPI PSRAM",
+    manifest = {"version": "0.9.3-controller-preview", "chip": "esp32s3",
+                "board": "Waveshare 31137, Rev F sensor pinout, 16 MB flash and OPI PSRAM",
                 "arduino_esp32": "3.3.10", "distribution": "private USB preview",
                 "images": [], "source_sha256": {}}
     for source in sorted((root / "WillowCreek").iterdir()):

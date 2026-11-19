@@ -53,7 +53,7 @@ const {chromium} = require('playwright-core');
       await page.evaluate(() => new Promise(requestAnimationFrame));
     }
     await page.waitForFunction(() => g.state()===9);
-    assert.equal(await page.evaluate(() => g.junkId()),0);
+    assert(await page.evaluate(() => $('message').textContent.includes(salvageItems[g.junkId()].name)));
     assert.deepEqual(await ledger(),before);
     await page.locator('#openMenu').click();
     await page.locator('[data-to="spots"]').click();
@@ -65,7 +65,7 @@ const {chromium} = require('playwright-core');
     await page.waitForFunction(()=>typeof g?.weather==='function' && !$('act').disabled);
     assert.equal(await page.evaluate(()=>g.weather()),3);
     console.log('PASS concealed cast layouts, storm selection and weather preference restore.');
-    console.log('PASS screen-targeted casts to branch, rock and debris, both on-screen release controls, recovered sandal, zero catch and event credit.');
+    console.log('PASS screen-targeted casts to branch, rock and debris, both on-screen release controls, localized recovery card, zero catch and event credit.');
   } finally {
     await browser.close();
   }

@@ -4,6 +4,7 @@ import csv
 import gzip
 import hashlib
 import re
+import subprocess
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -12,8 +13,9 @@ wiki = root / "docs/wiki"
 book = (root / "docs/index.html").read_text(encoding="utf-8")
 pages = [root / "README.md", *sorted(wiki.glob("*.md"))]
 links = 0
-for page in pages:
-    for href in re.findall(r"\[[^\]]*\]\(([^)]+)\)", page.read_text(encoding="utf-8-sig")):
+tracked = subprocess.check_output(["git", "ls-files", "-z", "*.md"], cwd=root).decode().split("\0")
+for page in (root / name for name in tracked if name):
+    for href in re.findall(r"\[[^\]]*\]\(([^)]+)\)", page.read_bytes().decode("utf-8-sig", errors="replace")):
         dest = urlsplit(href)
         if dest.scheme or not dest.path:
             continue
@@ -33,5 +35,7 @@ for element in ("compressedGame", "compressedModel"):
     assert b"<canvas" in payload or b"createElement('canvas')" in payload or b"WebGL" in payload
     if element == "compressedGame":
         assert payload == (root / "game/Thai-Waters-play.html").read_bytes()
+    if element == "compressedModel":
+        assert payload == (root / "docs/models/TW-A-0001-R0008-exploded.html").read_bytes()
     print(element, len(payload), hashlib.sha256(payload).hexdigest())
-print(f"PASS {len(pages)} README/wiki pages, {links} local links, two embedded apps and all software evidence paths.")
+print(f"PASS {len(pages)} README/wiki pages, {links} local links across tracked Markdown, two embedded apps and all software evidence paths.")

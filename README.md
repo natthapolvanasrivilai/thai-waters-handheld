@@ -1,8 +1,10 @@
 # Thai Waters handheld
 
-[Private touch playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) · [0.9.2 handheld controller preview](firmware/Phone-controller.md) · [Download the USB prototype](releases/prototypes/Thai-Waters-controller-0.9.2.zip) · [Clock and collection recovery](docs/wiki/Clock-and-saves.md)
+[Private touch playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) · [0.9.3 handheld controller preview](firmware/Phone-controller.md) · [Download the USB prototype](releases/prototypes/Thai-Waters-controller-0.9.3.zip) · [Clock and collection recovery](docs/wiki/Clock-and-saves.md)
 
-**[Browse the product wiki](docs/wiki/Home.md)** · **[Download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.8/Thai-Waters-0.8-handbook.html)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
+[Current release and hardware milestone](docs/wiki/Software-and-tests.md#current-release)
+
+**[Browse the product wiki](docs/wiki/Home.md)** · **[Download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
 
 Open the downloaded handbook in a browser, or open `docs/index.html` from a local checkout. It embeds the playable game, exploded CAD, circuit traces, software and test records, assembly routing, searchable BOM and interactive cost model. The wiki provides permanent links into the versioned engineering sources. The [engineering release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/rev-f-engineering-0.7) includes the evidence bundle for offline use.
 

@@ -1,6 +1,6 @@
 # Build, record and service a unit
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.8/Thai-Waters-0.8-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)
 
 Select **Assembly process** for the ten factory stations and the downloadable unit record. In the 3D viewer, step through the mechanical order to inspect access before routing a harness.
 

@@ -7,6 +7,7 @@
 #include "RodController.h"
 #include "AmbientLcd.h"
 #include "FishArt.h"
+#include "SalvageArt.h"
 #include "SpecimenArt.h"
 #include "TackleIcons.h"
 #include <cstdio>
@@ -101,6 +102,15 @@ void drawWaterProp(int kind,int x,int y,int scale=1){
     }
   }
 }
+template<class Pixel> void drawPortrait(int x,int y,float k,const uint16_t* palette,bool silhouette,Pixel pixel){
+  for(int row=0;row<50;row++){
+    int start=0,prev=0;
+    for(int col=0;col<=96;col++){
+      int c=col==96?0:pixel(col,row);
+      if(c!=prev){if(prev)screen.fillRect(x+int(start*k),y+int(row*k),int(col*k)-int(start*k),int((row+1)*k)-int(row*k),silhouette?0x74af:palette[prev]);start=col;prev=c;}
+    }
+  }
+}
 void fish(int x,int y,float k,int kind,bool silhouette=false){
   if(!specimen::has(kind)){
     // An unillustrated catalog entry carries an empty field-note icon.
@@ -112,15 +122,10 @@ void fish(int x,int y,float k,int kind,bool silhouette=false){
   const bool field=kind>=60;
   const auto* frame=field?&specimen::frames[specimen::index[kind]]:nullptr;
   const uint16_t* palette=field?frame->ink:fishInk[kind];
-  k*=.5f;
-  for(int row=0;row<50;row++){
-    int start=0,prev=0;
-    for(int col=0;col<=96;col++){
-      int packed=col==96||field?0:fishArt[kind][row*48+col/2];
-      int c=field&&col<96?specimen::pixel(*frame,col,row):(col&1?packed&15:packed>>4);
-      if(c!=prev){if(prev)screen.fillRect(x+int(start*k),y+int(row*k),int(col*k)-int(start*k),int((row+1)*k)-int(row*k),silhouette?0x74af:palette[prev]);start=col;prev=c;}
-    }
-  }
+  drawPortrait(x,y,k*.5f,palette,silhouette,[&](int col,int row){
+    if(field)return specimen::pixel(*frame,col,row);
+    int pair=fishArt[kind][row*48+col/2];return col&1?pair&15:pair>>4;
+  });
 }
 const char* wheelFault(Field f){
   switch(f){case Field::Weak:return "Magnet too weak";case Field::Strong:return "Magnet too strong";
@@ -419,10 +424,16 @@ void play(const View& v){
     col=gold;tensionLight(bobX,bobY,std::max(.6f,g.heat));break;
   case Phase::HaulingJunk:head="Debris on the line: reel it ashore";break;
   case Phase::JunkLanded:{
-    const char* names[]={"Waterlogged sandal","Tangled line","Dented cup","Torn float"};
-    const int id=std::max(0,std::min(3,int(g.junkId)));
-    drawWaterProp(3+id,239,135,3);snprintf(desc,sizeof(desc),"Recovered: %s",names[id]);
-    head=desc;break;}
+    const int id=g.junkId;
+    if(id<0||id>=salvage::count)break;
+    drawPortrait(4,108,2,salvage::ink[id],false,[&](int x,int y){
+      int pair=salvage::pixels[id][y*48+x/2];return x&1?pair&15:pair>>4;
+    });
+    skyLabel(202,77,"Recovered",gold,1);
+    const int y=catchLines(salvage::items[id].name,100,white,3,24);
+    skyLabel(202,y+12,salvage::items[id].group,paper,1);
+    catchLines(creek::destinations[v.destination].name,y+34,gold,2,18);
+    head=v.practice?"Tap to cast again":"Raise and cast again";break;}
   case Phase::Lost:
     head=g.reason==creek::Reason::NoBite?"No bites - Rod workshop: bait + depth":g.reason==creek::Reason::Early?"Hook set too early":g.reason==creek::Reason::Late?"The bite passed":g.reason==creek::Reason::Snapped?"The line snapped":g.reason==creek::Reason::Unworked?"The fish lost interest":"The fish slipped away";
     sub=v.practice?"Tap to cast again.":"Raise and cast again.";break;

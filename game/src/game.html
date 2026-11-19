@@ -668,7 +668,20 @@ $('startSound').onclick=$('testSound').onclick=soundTest;
 document.addEventListener('click',e=>{if(e.isTrusted&&e.target.closest('main')&&audio?.state!=='running')unlock();},true);
 window.addEventListener('pageshow',()=>{if(audio)audioState();});
 audioState();
-const salvageNames=['Waterlogged sandal','Tangled line','Dented cup','Torn float'];
+const salvageItems=@@SALVAGE_DATA@@;
+const salvageSheet=new Image();salvageSheet.src="@@SALVAGE_ART@@";
+function showRecovery(id){
+ const item=salvageItems[id];if(!item)return;
+ const name=language==='th'?item.th:item.name;
+ ctx.save();ctx.imageSmoothingEnabled=false;
+ ctx.drawImage(salvageSheet,id%4*96,Math.floor(id/4)*50,96,50,4,108,192,100);
+ ctx.restore();
+ caption('Recovered',202,96,'left','#f1c889',14);
+ const y=catchLines(name,130,22,'#fff7df',25,190,'Syy Flowey');
+ catchLines(item.group,y+8,15,'#dcecd8',18);
+ catchLines(atlas.locations[placeId].name,y+39,14,'#eed19f',18);
+ return name;
+}
 const waterArt=@@WATER_ART@@;
 function waterProp(index,x,y,scale=1){
  const rows=waterArt.marks[index];if(!rows)return;
@@ -895,7 +908,7 @@ function landedCatch(age){
  caption(weight,x,stats+23,'left','#fff7df',22);
  caption(g.lengthCm()+' cm',x+136,stats+23,'left','#fff7df',22);
  const originEnd=catchLines('Origin · '+atlas.locations[placeId].name,stats+53,15,'#ffda98',18);
- catchLines(f.fiction?'Fictional · '+f.lore:(f.lore||f.family+' · family illustration'),originEnd+3,14,'#f2f5e5',17);
+ catchLines(f.fiction?'Fictional · '+f.lore:(f.lore||f.family),originEnd+3,14,'#f2f5e5',17);
  const metrics=atlas.ranks[f.tier]+' · '+reward+' · '+size+' '+g.lengthCm()+' cm · Estimated weight '+weight;
  const origin='Origin · '+atlas.locations[placeId].name+'. '+(f.lore||f.family||'');
  if($('metrics').textContent!==metrics)setUi($('metrics'),metrics);
@@ -975,7 +988,7 @@ function draw(){
  if(p===0){const hx=tipX+3*Math.sin(elapsed*.003);ctx.beginPath();ctx.moveTo(tipX,tipY);ctx.lineTo(hx,tipY+24);ctx.stroke();ctx.fillStyle='#de9852';ctx.fillRect(hx-2,tipY+24,4,6);if(baitSheet.naturalWidth){const bait=g.baitChoice()%6;ctx.drawImage(baitSheet,bait%3*96,Math.floor(bait/3)*60,96,60,Math.round(hx-8),Math.round(tipY+24),16,10);}}
  if(p===7){bx=ax;by=ay;}
  if(p===8){const travel=Math.max(0,Math.min(1,g.fraction()));bx=112+(ax-112)*travel;by=249+(ay-249)*travel;waterProp(2,bx,by-1);}
- if(p===9)waterProp(3+g.junkId(),236,136,3);
+
  if((p>=1&&p<=4)||p===7||p===8){ctx.lineWidth=1;ctx.strokeStyle='#617a69';ctx.beginPath();ctx.moveTo(tipX,tipY);ctx.lineTo(bx,by);ctx.stroke();if(p!==4&&p!==7&&p!==8){if(g.technique()===0){ctx.fillStyle='#d78843';ctx.fillRect(bx-4,by-7,8,6);ctx.fillStyle='#f1eeca';ctx.fillRect(bx-4,by-1,8,3);}else{const jig=g.technique()===2;ctx.fillStyle='#f1eeca';ctx.fillRect(bx-2,by-3,jig?4:10,jig?9:4);ctx.fillStyle='#e8a95f';ctx.fillRect(bx-2,by-3,4,3);}ctx.fillRect(bx-12,by+4,24,1)}}
  if(p===3&&$('cue').selectedIndex!==2){ctx.strokeStyle='#ffd383';ctx.lineWidth=2;ctx.strokeRect(bx-18,by-16,36,32)}
  if(p===4){
@@ -993,7 +1006,7 @@ function draw(){
  if(p===5)title=atlas.fish[g.species()].name;
  if(p===7)title=g.contact()===1?'Branch snag · stop winding, then lift':'Rock snag · lower the rod and pay out';
  if(p===8)title='Debris on the line · reel it ashore';
- if(p===9)title='Recovered · '+(salvageNames[g.junkId()]||'Drifting debris');
+ if(p===9)title=L('Recovered')+' · '+showRecovery(g.junkId());
  if((p===2||p===4||p===7||p===8)&&g.sprayAge()<240){
   const t=g.sprayAge()/240;
   ctx.fillStyle='#e3f2d9';
@@ -1009,7 +1022,7 @@ function draw(){
  $('act').hidden=p===1;
  updateRigHud();
  if(!landed&&!menu.open){
-  const hint=p===4?fightHint+'  '+g.remaining().toFixed(1)+' turns':title;
+  const hint=p===9?'Tap the water to aim and cast':p===4?fightHint+'  '+g.remaining().toFixed(1)+' turns':title;
   caption(hint,9,309,'left',p===3&&$('cue').selectedIndex!==2?'#ffd291':'#fff4d8',11);
   if(p===4||p===7)tensionLight(ctx,p===7?Math.max(.6,g.tension()):g.tension(),bx,by);
  }
@@ -1037,7 +1050,7 @@ let currentSlot=0;function frame(now){let dt=Math.min(80,Math.max(0,Math.round(n
  if(powered&&!document.hidden&&!menu.open){if([0,6,9].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();g.place(placeId,currentSlot);}if([0,6,9].includes(g.state()))applyWeather();elapsed+=dt;let step=heldTurn(dt);dialAngle+=step*360;let old=g.state();if([0,6,9].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(audio?.state!=='running'&&!resumeAudio)g.clearFishingSound();if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);showReelCue(pulse);
  if(typeof navigator.vibrate!=='function'&&audio?.state==='running'&&[4,5,6].includes(pulse))previewRhythm(pulse,false);}gestureCast=gestureLift=false;if(old!==5&&g.state()===5){pendingDay=enteredCup;pendingCapture=captureLanding();save();}
  action=false;turns=0;draw()}else if(powered&&!document.hidden&&menu.open){elapsed+=dt;draw()}requestAnimationFrame(frame)}
-Promise.all([WebAssembly.instantiate(bytes,{env:{memset:(p,v,n)=>{new Uint8Array(g.memory.buffer,p,n).fill(v);return p},acosf:Math.acos,atan2f:Math.atan2,sinf:Math.sin,lroundf:x=>Math.sign(x)*Math.round(Math.abs(x))}}),sceneryModule,fishSheet.decode(),baitSheet.decode()]).then(([mod,visual])=>{sceneryEngine=visual.instance.exports;g=mod.instance.exports;g.initialize(Date.now()>>>0);restore();currentSlot=slot();g.place(placeId,currentSlot);applyWeather();refresh();settings();$('act').disabled=false;prev=performance.now();requestAnimationFrame(frame)}).catch(e=>{setUi($('message'),'Could not start Thai Waters: '+e.message)});
+Promise.all([WebAssembly.instantiate(bytes,{env:{memset:(p,v,n)=>{new Uint8Array(g.memory.buffer,p,n).fill(v);return p},acosf:Math.acos,atan2f:Math.atan2,sinf:Math.sin,lroundf:x=>Math.sign(x)*Math.round(Math.abs(x))}}),sceneryModule,fishSheet.decode(),baitSheet.decode(),salvageSheet.decode()]).then(([mod,visual])=>{sceneryEngine=visual.instance.exports;g=mod.instance.exports;g.initialize(Date.now()>>>0);restore();currentSlot=slot();g.place(placeId,currentSlot);applyWeather();refresh();settings();$('act').disabled=false;prev=performance.now();requestAnimationFrame(frame)}).catch(e=>{setUi($('message'),'Could not start Thai Waters: '+e.message)});
 @@FIELD_GUIDE@@
 @@CUP@@
 @@DEVICE_UI@@

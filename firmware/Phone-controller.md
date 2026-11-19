@@ -1,23 +1,23 @@
-# Thai Waters Rod Â· controller preview 0.9.2
+# Thai Waters Rod · controller preview 0.9.3
 
-The handheld sends motion and reel input to the game running in Safari as a Bluetooth Low Energy keyboard. This USB preview targets the Waveshare 31137 ESP32-S3-Touch-LCD-3.5B, the Rev F/R0003 sensor wiring, 16 MB flash and 8 MB OPI PSRAM. Real board and iPhone testing remains open. [Apple accessory pairing](https://support.apple.com/en-us/105108) Â· [Bluetooth HID over GATT](https://www.bluetooth.com/specifications/specs/hid-over-gatt-profile-1-0/) Â· [Espressif 3.3.10 BLE library](https://github.com/espressif/arduino-esp32/tree/3.3.10/libraries/BLE)
+The handheld sends motion and reel input to the game running in Safari as a Bluetooth Low Energy keyboard. This USB preview targets the Waveshare 31137 ESP32-S3-Touch-LCD-3.5B, the documented Rev F sensor wiring, 16 MB flash and 8 MB OPI PSRAM. Real board and iPhone testing remains open. [Apple accessory pairing](https://support.apple.com/en-us/105108) · [Bluetooth HID over GATT](https://www.bluetooth.com/specifications/specs/hid-over-gatt-profile-1-0/) · [Espressif 3.3.10 BLE library](https://github.com/espressif/arduino-esp32/tree/3.3.10/libraries/BLE)
 
-This build uses 2,807,082 of 3,145,728 application bytes on the target board, leaving 338,646 bytes in the application slot. The painted additions occupy 726,765 packed pixel bytes, plus their palette and index tables. The application contains 456 individual portraits. Existing unillustrated catalog records remain available with their catch history.
+The ESP32-S3 target build uses 2,837,294 of 3,145,728 application bytes, leaving 308,434 bytes. The recovery set adds twelve 96 × 50 portraits with 4-bit pixel indices and individual RGB565 palettes. The painted additions occupy 726,765 packed pixel bytes, plus their palette and index tables. The application contains 456 individual portraits. Existing unillustrated catalog records remain available with their catch history.
 
 ## Pair and play
 
-1. On the handheld, calibrate both poses in **Menu â†’ Sound + controls â†’ Rod calibration**. In **Bench test**, turn the knob in your normal winding direction and verify **Winding IN**. Change the reverse option if needed.
-2. Open **Menu â†’ Connections â†’ Phone controller**. On iPhone select **Settings â†’ Bluetooth â†’ Thai Waters Rod**. Enter the six digits displayed on the handheld when prompted.
+1. On the handheld, calibrate both poses in **Menu → Sound + controls → Rod calibration**. In **Bench test**, turn the knob in your normal winding direction and verify **Winding IN**. Change the reverse option if needed.
+2. Open **Menu → Connections → Phone controller**. On iPhone select **Settings → Bluetooth → Thai Waters Rod**. Enter the six digits displayed on the handheld when prompted.
 3. Open the private playtest in Safari, enable its handheld controller and focus the fishing surface. Once paired, tap **Start** on the handheld. Raise the rod, then lower it briskly to cast. Lift at a bite to hook. Wind or pay out line with the knob.
 4. Tap **Pause** before typing or switching apps. iOS routes hardware keys to the foreground app. **Disconnect**, Back or tapping outside the controller sheet disconnects the phone and stops advertising. After an unexpected disconnect, advertising resumes while the sheet remains open. Tap Start to re-arm after reconnecting.
 
-The rod uses the boardâ€™s filtered gravity vector and stored calibration. A weak or missing AS5600 magnetic field suppresses reel travel. Opening the controller sheet pauses local fishing. Local reel-click audio and haptics still follow the physical knob at 12 feedback teeth per turn, subject to the configured intensity and rate limits. Game-driven fish/bite feedback stays on the web game. This keyboard protocol has no game-rumble return channel.
+The rod uses the board’s filtered gravity vector and stored calibration. A weak or missing AS5600 magnetic field suppresses reel travel. Opening the controller sheet pauses local fishing. Local reel-click audio and haptics still follow the physical knob at 12 feedback teeth per turn, subject to the configured intensity and rate limits. Game-driven fish/bite feedback stays on the web game. This keyboard protocol has no game-rumble return channel.
 
 ## Catch receipts and physical controls
 
 Tap anywhere on the landed-fish screen to file the catch. The centered prompt pulses over 2.4 seconds, with the clock and battery at the upper right. Each individual catch stores its measured size and type, estimated mass, species, fishing spot, time period, weather and bait. Its time comes from a valid RTC or network sync. An unavailable clock leaves the timestamp unknown. Open **Menu → Fish collection → Catch log** to browse filed receipts by time and sequence. Undiscovered entries appear as silhouettes in the collection. A tap opens habitat and bait hints. Export committed receipts over USB with `api1 catches` followed by `api1 catch 1` and subsequent sequence numbers. [Storage schema and recovery](Interfaces.md)
 
-The 480Ã—320 touchscreen uses two-column controls for the primary menu, spots, rod workshop, bait, sound settings and connections. Main actions span 196Ã—54 pixels (approximately 30Ã—8.3 mm on the nominal 3.5-inch display). Back areas are 80Ã—48 px, spot selectors are 196Ã—49 px, and the controller buttons are 196Ã—64 px. The bench actions use 120Ã—52 px. The nine diagnostic crosses check touch accuracy to Â±12 pixels. Verify physical tolerance, visibility and operation with a thumb on the actual LCD.
+The 480×320 touchscreen uses two-column controls for the primary menu, spots, rod workshop, bait, sound settings and connections. Main actions span 196×54 pixels (approximately 30×8.3 mm on the nominal 3.5-inch display). Back areas are 80×48 px, spot selectors are 196×49 px, and the controller buttons are 196×64 px. The bench actions use 120×52 px. The nine diagnostic crosses check touch accuracy to Â±12 pixels. Verify physical tolerance, visibility and operation with a thumb on the actual LCD.
 
 ## HID v1
 

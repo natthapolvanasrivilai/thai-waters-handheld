@@ -1,6 +1,6 @@
 # Read a circuit trace
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.8/Thai-Waters-0.8-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)
 
 Open **Circuits**, select a case and inspect its trace, limit and disposition. Start with the derated 3.3 V rail transient and the long I²C rise. Compare nominal and stressed conditions, then use the bench matrix to choose probe points on an actual sample.
 

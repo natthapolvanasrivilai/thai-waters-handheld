@@ -1,6 +1,6 @@
 # Source parts, cost a batch and plan the launch
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.8/Thai-Waters-0.8-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.3/Thai-Waters-0.9.3-handbook.html)
 
 Choose **BOM & business**. Filter by part, supplier or variant. Switch the lot between 1, 100 and 1,000 units and compare the base, rumble, handle and full configurations. A supplier listing, price allowance and actual accepted quote have different levels of certainty.
 

@@ -393,7 +393,7 @@ void printCatchRecord(uint32_t index){
 void setup(){
   Serial.begin(115200);restore();view.game.beginSession(esp_random());view.game.arriveAt(view.destination);offlineWeatherDay=view.game.seed%365;updateLocalWeather();beginBoard();view.battery=readBattery();beginConnected();view.driver=initRumble();beginScene();
   view.audio=startSound();setSound(view.sound,false,false);
-  Serial.printf("Thai Waters 0.9.2 controller preview | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d | CHGLED Type A readback %d\n",screenOK,imuOK,view.audio,powerOK,chargeLampOK);
+  Serial.printf("Thai Waters 0.9.3 controller preview | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d | CHGLED Type A readback %d\n",screenOK,imuOK,view.audio,powerOK,chargeLampOK);
   lastTick=millis();paint(view);confirmUpdateHealth(screenOK && imuOK && powerOK && view.audio);
 }
 void loop(){
