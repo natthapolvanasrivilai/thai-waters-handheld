@@ -10,6 +10,8 @@ A3 uses the native Würth 61900519521 right-angle header model. The 61900511621 
 
 Each revised solid has a source path, hash, installed bounds, solid count and volume in the [STEP component ledger](installed-step.json). The [export check](export-verification.json) compares the reimported compressed STEP with each registered component and records the geometry source notes. The [lower cover check](QA/service-cover.json) measures latch engagement, speaker clearance, rod slide and service-probe reach in the reimported assembly. Manufacturer STEP, drawing-based fit studies and workshop wire routes are identified separately in the [harness manifest](../../electronics/harness-r0004/installed.json).
 
+The final reimport contains 142 installed nodes. The harness check screened 4,340 boundary pairs for the 35 changed nodes and reported zero unintended surface contacts at the stated tessellation resolution. The assembly check measured 156 mm² of covered opening and 4.10 mm of rod-slide clearance. Edge exercised the revised header selection, isolation, section plane and interior views across the 150 inspection records. [Harness clearance report](../../electronics/harness-r0004/clearance.json) · [Browser verification](QA/viewer-verification.json) · [Isolated supplier header in the viewer](QA/A3-header-inspection.png)
+
 ## Rebuild from the registered components
 
 Use the project CadQuery environment and the R0010 dressed compressed STEP with the hash recorded in its export report. Run in this revision directory.

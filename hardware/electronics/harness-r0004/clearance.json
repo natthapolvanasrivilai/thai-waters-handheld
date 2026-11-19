@@ -51,6 +51,61 @@
   "manufacturer_CAD": "61900519521 5-way header",
   "drawing_derived": "61900511621 housing and 61900113722 formed contact. Cavity clearance, latch engagement and contact force remain unverified.",
   "physical_tests": "Not performed",
+  "nominal_socket_paths": {
+    "VCC": {
+      "cavity": 1,
+      "formed_contact_solid_count": 1,
+      "spring_to_individual_posts_mm": {
+        "1": 0.0,
+        "2": 1.52,
+        "3": 4.06,
+        "4": 6.6,
+        "5": 9.14
+      },
+      "socket_to_26awg_conductor_mm": 0.0,
+      "jacket_to_stripped_tee_tip_mm": 0.0
+    },
+    "SCL": {
+      "cavity": 3,
+      "formed_contact_solid_count": 1,
+      "spring_to_individual_posts_mm": {
+        "1": 4.06,
+        "2": 1.52,
+        "3": 0.0,
+        "4": 1.52,
+        "5": 4.06
+      },
+      "socket_to_26awg_conductor_mm": 0.0,
+      "jacket_to_stripped_tee_tip_mm": 0.0
+    },
+    "SDA": {
+      "cavity": 4,
+      "formed_contact_solid_count": 1,
+      "spring_to_individual_posts_mm": {
+        "1": 6.6,
+        "2": 4.06,
+        "3": 1.52,
+        "4": 0.0,
+        "5": 1.52
+      },
+      "socket_to_26awg_conductor_mm": 0.0,
+      "jacket_to_stripped_tee_tip_mm": 0.0
+    },
+    "GND": {
+      "cavity": 5,
+      "formed_contact_solid_count": 1,
+      "spring_to_individual_posts_mm": {
+        "1": 9.14,
+        "2": 6.6,
+        "3": 4.06,
+        "4": 1.52,
+        "5": 0.0
+      },
+      "socket_to_26awg_conductor_mm": 0.0,
+      "jacket_to_stripped_tee_tip_mm": 0.0
+    }
+  },
+  "electrical_limitation": "Geometric contact does not establish measured resistance or spring preload.",
   "step_file": "TW-A-0001-R0011-dressed.step",
   "step_sha256": "0e4101f4cf52a88a5723fe3a6f14ca8afdfa05dec9c00357e04b10ed6992af44"
 }
