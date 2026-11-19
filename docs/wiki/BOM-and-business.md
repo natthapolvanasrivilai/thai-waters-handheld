@@ -1,6 +1,6 @@
 # Prototype BOM and selling price
 
-[Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/Thai-Waters-handbook.html)
+[Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
 
 ## One fully equipped R0009 unit
 

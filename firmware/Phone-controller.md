@@ -1,8 +1,14 @@
-# Thai Waters Rod · controller preview 0.9.3
+# Thai Waters Rod · controller preview 0.9.4
 
 The handheld sends motion and reel input to the game running in Safari as a Bluetooth Low Energy keyboard. This USB preview targets the Waveshare 31137 ESP32-S3-Touch-LCD-3.5B, the documented Rev F sensor wiring, 16 MB flash and 8 MB OPI PSRAM. Real board and iPhone testing remains open. [Apple accessory pairing](https://support.apple.com/en-us/105108) · [Bluetooth HID over GATT](https://www.bluetooth.com/specifications/specs/hid-over-gatt-profile-1-0/) · [Espressif 3.3.10 BLE library](https://github.com/espressif/arduino-esp32/tree/3.3.10/libraries/BLE)
 
-The ESP32-S3 target build uses 2,837,294 of 3,145,728 application bytes, leaving 308,434 bytes. The recovery set adds twelve 96 × 50 portraits with 4-bit pixel indices and individual RGB565 palettes. The painted additions occupy 726,765 packed pixel bytes, plus their palette and index tables. The application contains 456 individual portraits. Existing unillustrated catalog records remain available with their catch history.
+The full field guide carries 2,545 species-specific portraits. The browser includes the entire collection offline. The handheld includes 464 resident portraits, including Brahmaputra labeo, and reads the other 2,081 from the field-art card. Each stored catch keeps its stable ID and receipt history.
+
+The ESP32-S3 target build uses 2,970,566 of 3,145,728 application bytes, leaving 175,162 bytes in its OTA slot. The field-art card file is 3,772,432 bytes. Its SHA-256 is `443b7332de79b57a48791ae31def92792fed1c5317274e84ee2dcd6df2c6c4fa`.
+
+## Prepare the field-art card
+
+Copy the package’s `sdcard/TW-FISH.BIN` into the top level of a FAT32-formatted microSD. Insert the card into the Waveshare 31137 onboard TF slot before powering on. The firmware checks its byte count and SHA-256 against the compiled index and copies the verified pixels to PSRAM. After startup, the game reads that memory to render catch and journal portraits. No installation writes go to the card or the collection filesystem. An absent, damaged, incompatible or unreadable card leaves the 464 resident fish available to catch. The field guide retains the full catalog. Returning the matching card and restarting restores the complete illustrated collection.
 
 ## Pair and play
 
@@ -50,7 +56,7 @@ The firmware requires a subscribed keyboard input on an authenticated, encrypted
 
 Use Arduino-ESP32 3.3.10 and the 0.9 Waveshare Arduino_GFX, SensorLib, XPowersLib and ES8311 libraries. The BLE dependency ships with the core. Build the WillowCreek sketch for **esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi,FlashMode=qio,PartitionScheme=app3M_fat9M_16MB,USBMode=hwcdc,CDCOnBoot=cdc**.
 
-Use the four USB images in the preview archive. The archive includes hashes, a flash utility and the private preview source. The preview is outside the signed OTA release channel. The host fixture in tests/rod_hid.cpp covers signed encoder input, queueing, motion quantization, time rollover and neutral releases. Both target compilation and host tests are separate from the pending physical acceptance.
+Use the four USB images and matching field-art file in the preview archive. The archive includes hashes, a flash utility and the private preview source. The preview is outside the signed OTA release channel. The host fixture in tests/rod_hid.cpp covers signed encoder input, queueing, motion quantization, time rollover and neutral releases. Both target compilation and host tests are separate from the pending physical acceptance.
 
 Extract the ZIP and open a terminal in its top-level directory. Run the offline check first. To install, use a USB data cable, close the serial monitor and replace COM7 with the board port shown by your operating system. On macOS a typical port begins with /dev/cu.usbmodem and on Linux with /dev/ttyACM.
 

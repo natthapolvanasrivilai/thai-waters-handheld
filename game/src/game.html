@@ -289,6 +289,13 @@ function drawSpecimen(c,id,x,y,w,h){
  c.drawImage(plate,x,y,w,h);
 }
 
+function loadFieldBank(engine){
+ const encoded=atob('@@FIELD_BANK@@');
+ const hash=Array.from(new Uint8Array(engine.memory.buffer,engine.fieldBankDigest(),32),x=>x.toString(16).padStart(2,'0')).join('');
+ if(encoded.length!==engine.fieldBankSize()||hash!=='@@BANK_SHA@@')throw Error('The field art and game versions differ');
+ const dst=new Uint8Array(engine.memory.buffer,engine.fieldBank(),encoded.length);
+ for(let i=0;i<dst.length;i++)dst[i]=encoded.charCodeAt(i);
+}
 const bytes=Uint8Array.from(atob('@@WASM@@'),c=>c.charCodeAt(0));
 let powered=true;
 let g=null,audio=null,nextSound=0,prev=0,held=false,dragging=false,lastAngle=0,dialAngle=0,turns=0,action=false,lastLabel='',elapsed=0;
@@ -1050,7 +1057,7 @@ let currentSlot=0;function frame(now){let dt=Math.min(80,Math.max(0,Math.round(n
  if(powered&&!document.hidden&&!menu.open){if([0,6,9].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();g.place(placeId,currentSlot);}if([0,6,9].includes(g.state()))applyWeather();elapsed+=dt;let step=heldTurn(dt);dialAngle+=step*360;let old=g.state();if([0,6,9].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(audio?.state!=='running'&&!resumeAudio)g.clearFishingSound();if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);showReelCue(pulse);
  if(typeof navigator.vibrate!=='function'&&audio?.state==='running'&&[4,5,6].includes(pulse))previewRhythm(pulse,false);}gestureCast=gestureLift=false;if(old!==5&&g.state()===5){pendingDay=enteredCup;pendingCapture=captureLanding();save();}
  action=false;turns=0;draw()}else if(powered&&!document.hidden&&menu.open){elapsed+=dt;draw()}requestAnimationFrame(frame)}
-Promise.all([WebAssembly.instantiate(bytes,{env:{memset:(p,v,n)=>{new Uint8Array(g.memory.buffer,p,n).fill(v);return p},acosf:Math.acos,atan2f:Math.atan2,sinf:Math.sin,lroundf:x=>Math.sign(x)*Math.round(Math.abs(x))}}),sceneryModule,fishSheet.decode(),baitSheet.decode(),salvageSheet.decode()]).then(([mod,visual])=>{sceneryEngine=visual.instance.exports;g=mod.instance.exports;g.initialize(Date.now()>>>0);restore();currentSlot=slot();g.place(placeId,currentSlot);applyWeather();refresh();settings();$('act').disabled=false;prev=performance.now();requestAnimationFrame(frame)}).catch(e=>{setUi($('message'),'Could not start Thai Waters: '+e.message)});
+Promise.all([WebAssembly.instantiate(bytes,{env:{memset:(p,v,n)=>{new Uint8Array(g.memory.buffer,p,n).fill(v);return p},acosf:Math.acos,atan2f:Math.atan2,sinf:Math.sin,lroundf:x=>Math.sign(x)*Math.round(Math.abs(x))}}),sceneryModule,fishSheet.decode(),baitSheet.decode(),salvageSheet.decode()]).then(([mod,visual])=>{sceneryEngine=visual.instance.exports;g=mod.instance.exports;loadFieldBank(g);g.initialize(Date.now()>>>0);restore();currentSlot=slot();g.place(placeId,currentSlot);applyWeather();refresh();settings();$('act').disabled=false;prev=performance.now();requestAnimationFrame(frame)}).catch(e=>{setUi($('message'),'Could not start Thai Waters: '+e.message)});
 @@FIELD_GUIDE@@
 @@CUP@@
 @@DEVICE_UI@@

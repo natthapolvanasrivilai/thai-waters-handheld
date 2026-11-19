@@ -19,7 +19,7 @@ def main():
         ("flash/boot_app0.bin", 0xE000, args.boot_app0),
         ("flash/ThaiWaters.bin", 0x10000, args.build / "WillowCreek.ino.bin"),
     ]
-    manifest = {"version": "0.9.3-controller-preview", "chip": "esp32s3",
+    manifest = {"version": "0.9.4-controller-preview", "chip": "esp32s3",
                 "board": "Waveshare 31137, Rev F sensor pinout, 16 MB flash and OPI PSRAM",
                 "arduino_esp32": "3.3.10", "distribution": "private USB preview",
                 "images": [], "source_sha256": {}}
@@ -42,6 +42,13 @@ def main():
         manifest["images"].append({"path": name, "offset": offset, "bytes": len(data),
                                    "sha256": hashlib.sha256(data).hexdigest()})
         package[name] = data
+    bank=(root.parent / "game/assets/TW-FISH.BIN").read_bytes()
+    digest=hashlib.sha256(bank).digest()
+    art_header=(root / "WillowCreek/SpecimenIndex.h").read_text()
+    if "cardDigest[]={"+",".join(map(str,digest))+"};" not in art_header:
+        raise ValueError("card artwork and firmware have different fingerprints")
+    manifest["card"]={"path":"sdcard/TW-FISH.BIN","bytes":len(bank),"sha256":digest.hex()}
+    package[manifest["card"]["path"]]=bank
     package["manifest.json"] = json.dumps(manifest, indent=2).encode() + b"\n"
     package["README.md"] = (root / "Phone-controller.md").read_bytes()
     package["Interfaces.md"] = (root / "Interfaces.md").read_bytes()
@@ -56,7 +63,7 @@ def main():
     for name in ("Interfaces.md", "README.md", "Phone-controller.md"):
         package["firmware/" + name] = (root / name).read_bytes()
     # Use the exact board libraries and font-license package shipped with baseline 0.9.
-    for name in ('field-evidence.md','thai-field-datasets.csv','thai-field-evidence.csv'):
+    for name in ('field-evidence.md','thai-field-datasets.csv','thai-field-evidence.csv','specimen-image-credits.csv'):
         package['credits/'+name]=(root.parent/'game/content'/name).read_bytes()
     with ZipFile(args.dependencies) as deps:
         for name in deps.namelist():

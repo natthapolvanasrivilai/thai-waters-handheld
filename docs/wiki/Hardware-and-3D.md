@@ -1,6 +1,6 @@
 # Inspect the assembly and battery pocket
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
 
 The default viewer shows **TW-A-0001-R0009 / TW-A-0002-R0003**, the latest engineering design. Use the [new assembly and CAD evidence](../../hardware/mechanical/TW-A-0001-R0009/README.md) and [connector-by-connector routing guide](../../hardware/electronics/harness-r0003/README.md). R0008 remains the released inert fit print.
 

@@ -41,7 +41,10 @@ static void checkStock(){
    }
  }
  assert(checkedEmptyCast && smallestRegularChance>1./16384.);
+ int eligible=0;
  for(int id=0;id<fishCount;++id){
+   if(!specimen::has(id)){Game missing;assert(missing.drawWeight(id)==0);continue;}
+   ++eligible;
    const auto& f=catalog[id];
    Game g;g.site=waterOf(id);g.destination=f.spot;
    if(f.spot==255)for(int p=0;p<destinationCount;++p)if(destinations[p].pool==g.site){g.destination=p;break;}
@@ -53,9 +56,24 @@ static void checkStock(){
    for(uint32_t seed=1;seed<=500000 && !selected;++seed){g.seed=seed;selected=g.drawFish()==id;}
    assert(selected);
  }
- printf("PASS all %d species reachable through actual native draws, real no-stock cast expires with zero credit, rarest eligible regular odds 1/%.0f.\n",fishCount,1./smallestRegularChance);
+ printf("PASS all %d illustrated species reachable through actual native draws, real no-stock cast expires with zero credit, rarest eligible regular odds 1/%.0f.\n",eligible,1./smallestRegularChance);
 }
 int main(){
+ // Cards are optional for storage and for opening a saved journal. Removing
+ // the available pixel bank must narrow the draw pool without renumbering it.
+ const uint8_t* fullBank=specimen::cardPixels;
+ specimen::cardPixels=nullptr;
+ int cardOnly=0;
+ for(int id=0;id<fishCount;++id){
+   if(specimen::index[id]<specimen::residentFrames)continue;
+   Game replay;
+   assert(!specimen::has(id)&&replay.drawWeight(id)==0);
+   replay.fish=id;replay.length=catalog[id].low;replay.enter(Phase::Landed);
+   assert(replay.fileCatch()&&replay.progress.book.entries[id].count==1);
+   ++cardOnly;
+ }
+ assert(cardOnly>0&&specimen::has(1822));
+ specimen::cardPixels=fullBank;
  checkStock();
  // Scientific reference points, the full catalog range, and old ray saves.
  assert(weightGrams(43,12)==20 && weightGrams(prawn,12)==17 && weightGrams(1,12)==27);
@@ -82,6 +100,7 @@ int main(){
    for(int k=0;k<12500;k++){
      g.bait=k%baitCount;g.rig=Technique((k/baitCount)%3);g.enter(Phase::Ready);g.tick(16,true,false,0);
      if(g.emptyCast)continue;
+     assert(specimen::has(g.fish));
      assert(livesHere(g.fish,g.destination,time) && g.baitWeight(g.fish)>0);
      assert(validSavedSize(g.fish,g.length) && weightGrams(g.fish,g.length)>0);
      if(g.fish<originalSpecies)++counts[g.fish];

@@ -1,5 +1,6 @@
 #pragma once
 #include "Waters.h"
+#include "SpecimenAvailability.h"
 #include "Bait.h"
 #include "Weather.h"
 #include "LandingCue.h"
@@ -259,6 +260,7 @@ struct Game {
     }
   }
   int drawWeight(int id) const {
+    if(!specimen::has(id))return 0;
     bool bottom=catalog[id].form>=2;
     bool chase=catalog[id].form==1;
     return baitWeight(id)*encounterWeight(id,timeSlot)*(rig==Technique::Jig && bottom?3:rig==Technique::Spoon && chase?3:1);

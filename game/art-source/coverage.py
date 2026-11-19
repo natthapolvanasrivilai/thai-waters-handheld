@@ -11,6 +11,12 @@ def read(path):
 
 catalog = read(content / "catalog.json")["fish"] + read(content / "extended.json")
 sources = {}
+reviews = {}
+with (base / "reference-review.csv").open(encoding="utf-8") as references:
+    for check in csv.DictReader(references):
+        i = int(check["catalog_id"])
+        assert catalog[i]["name"] == check["scientific_name"] and check["comparison_source"]
+        reviews[i] = "compared with identified source at sprite scale"
 for i in range(60):
     if i < 48:
         sources[i] = (f"plate-{i // 8}.png", 1 + i % 8)
@@ -21,7 +27,10 @@ for i in range(60):
 for plate in read(base / "field" / "plates.json"):
     for cell, (i, name) in enumerate(zip(plate["ids"], plate["species"]), 1):
         assert i not in sources and catalog[i]["name"] == name
-        sources[i] = ("field/" + plate["file"], cell)
+        revision = plate.get("replacements", {}).get(str(i))
+        sources[i] = ("field/" + revision["file"], revision.get("cell", 1)) if revision else ("field/" + plate["file"], cell)
+        if revision:
+            reviews[i] = revision["review"]
 with (base / "coverage.csv").open("w", encoding="utf-8", newline="") as out:
     writer = csv.writer(out, lineterminator="\n")
     writer.writerow(["catalog_id", "name", "portrait", "source_plate", "cell", "identification_review"])
@@ -31,7 +40,7 @@ with (base / "coverage.csv").open("w", encoding="utf-8", newline="") as out:
         review = "pending" if source else ""
         if 52 <= i < 60:
             review = "fictional design"
-        if record["name"] == "Gobiodon citrinus":
-            review = "revise head bars; see artwork README"
+        if i in reviews:
+            review = reviews[i]
         writer.writerow([i, record["name"], status, source, cell, review])
 print(f"{len(sources)} individual portraits; {len(catalog) - len(sources)} awaiting artwork")

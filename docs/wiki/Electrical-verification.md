@@ -1,6 +1,6 @@
 # Read a circuit trace
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
 
 [R0003 indicators and electrical design](../../hardware/electronics/usb-status-r0003/README.md) · [Installed connections and unpowered checks](../../hardware/electronics/harness-r0003/README.md)
 

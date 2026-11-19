@@ -1,5 +1,5 @@
 from pathlib import Path
-import base64,json
+import base64,hashlib,json
 root=Path(__file__).resolve().parent
 def image(path):return 'data:image/png;base64,'+base64.b64encode(path.read_bytes()).decode()
 catalog=json.loads((root/'content/catalog.json').read_text(encoding='utf-8'))
@@ -22,7 +22,10 @@ template=template.replace('</html>', '<!-- Noto Sans Thai: '+(root/'assets/fonts
 for face in ('SyyUDT-Regular','SyyUDS-Regular','SyyFlowey-Bold'):
  values['@@'+face+'@@']=base64.b64encode((root/'assets/fonts'/(face+'.woff2')).read_bytes()).decode()
 template=template.replace('</html>', '<!-- '+(root/'assets/fonts/Syy-OFL.txt').read_text(encoding='utf8')+' -->\n</html>')
-credits=['field-evidence.md','thai-field-datasets.csv','thai-field-evidence.csv']
+credits=['field-evidence.md','thai-field-datasets.csv','thai-field-evidence.csv','specimen-image-credits.csv']
+field_bank=(root/'assets/TW-FISH.BIN').read_bytes()
+values['@@FIELD_BANK@@']=base64.b64encode(field_bank).decode()
+values['@@BANK_SHA@@']=hashlib.sha256(field_bank).hexdigest()
 values['@@FISH_CREDITS@@']=base64.b64encode(('\n\n'.join(name+'\n'+(root/'content'/name).read_text(encoding='utf8') for name in credits)).encode()).decode()
 for token,value in values.items():
  assert template.count(token)==1,token

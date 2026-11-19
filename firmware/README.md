@@ -1,6 +1,6 @@
 # Thai Waters · Firmware 0.9
 
-The **0.9.3 USB controller preview** lets the physical rod and reel drive the phone game through a paired Bluetooth keyboard connection. [Pairing, USB installation and bench checks](Phone-controller.md)
+The **0.9.4 USB controller preview** lets the physical rod and reel drive the phone game through a paired Bluetooth keyboard connection. [Pairing, USB installation and bench checks](Phone-controller.md)
 
 For Waveshare ESP32-S3-Touch-LCD-3.5B (31137), QMI8658, ES8311 and a right-side AS5600 reel at 0x36. The optional DRV2605L at 0x5A adds haptics. The game runs without the haptic module. The bench guide in this folder includes wiring, optional BOM and candidate placement.
 
@@ -66,4 +66,4 @@ See the [interactive product documentation](../docs/wiki/Home.md) for aimed cast
 
 ### USB and power indicators
 
-The proposed three-color USB status carrier belongs to the R0003 electrical candidate. Its bench results are pending. The published R0002 pinout and top-left power key are documented in the [power-key drawing and procedure](../hardware/electronics/rev-f-power-key.md).
+The proposed three-color USB status carrier belongs to the R0003 electrical candidate. The [dressed cable review and status circuitry](../hardware/electronics/harness-r0003/README.md) are documented. Its physical bench results are pending. The published R0002 pinout and top-left power key are documented in the [power-key drawing and procedure](../hardware/electronics/rev-f-power-key.md).

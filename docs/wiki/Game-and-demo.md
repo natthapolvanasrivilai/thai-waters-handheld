@@ -1,6 +1,6 @@
 # Play and evaluate a cast
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
 
 [Open the private phone playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) or choose **Playable demo → Start playable demo** in the handbook. Tap once to enable audio. On a phone, open the playtest directly in the browser for motion permission. The [phone test guide](../../game/sites/Phone-playtest.md) covers calibration and fallback controls.
 
@@ -11,7 +11,7 @@ The web game opens in Thai. Choose **เมนู → English** or **Menu → �
 3. If a branch catches the line, stop winding for half a second, then lift. At a rock, lower the rod and pay out at least 0.30 turns. Reel in salvage to identify the object. It earns no fish record or event score.
 4. For a fish, follow the float, strike on the bite and respond to the run or bottom hold. Inspect the landed specimen at your own pace. Tap anywhere on the catch card to file it, apply its reward and return to fishing. Open the field book and tackle controls inside the LCD.
 
-Open **Rod workshop** before casting to choose a bait and its presentation depth. Try raw shrimp on the bottom for a river prawn. Floating shrimp cannot reach it. The field book gives each entry a bait tip and lets you search by name. Its 2,545 entries include eight fictional species and five Mythics. The [national checklist notes](../../game/content/national-checklist.md) explain the records behind the real-species roster. The [catch measurement notes](../../game/catch-measurements.md) describe the estimates.
+Open **Rod workshop** before casting to choose a bait and its presentation depth. Try raw shrimp on the bottom for a river prawn. Floating shrimp cannot reach it. The field book gives each entry a bait tip and lets you search by name. Each of its 2,545 entries has an individual pixel-art portrait, including eight fictional species and five Mythics. Undiscovered species show their silhouette. Landing a catch reveals its full-color portrait, and tapping files that same image in the journal. The browser contains every portrait. For the complete roster on the handheld, install the field-art card from the [USB prototype package](../../firmware/Phone-controller.md). The [national checklist notes](../../game/content/national-checklist.md) explain the records behind the real-species roster. The [catch measurement notes](../../game/catch-measurements.md) describe the estimates.
 
 The approach and landscape share the 240 × 160 art grid. Trail gravel, grass and lane markings move in perspective. The longtail’s bow stays under the viewpoint as the water moves past. [Compare four captured journeys](../models/arrival-routes.png).
 
@@ -43,4 +43,4 @@ Use the header arrows for settings, destinations and rankings. The journal displ
 
 A loose object stays hidden until reeled ashore. The landing shows its own portrait, name, category and location. Tap the water to cast again. A fixed branch or submerged boulder can still snag the hook. A detached branch or line-wrapped pebble can come ashore. Lotus pods occur in still-water layouts, mangrove driftwood in estuaries and barnacled stones on rocky coasts. These are game encounter rules. Recovery adds no fish, tackle points or tournament credit. [All twelve finds](../../game/content/salvage.json) · [LCD artwork](../../game/assets/salvage.png)
 
-The [fish artwork register](../../game/art-source/coverage.csv) tracks every catalog entry, including missing illustrations and identification review. [Compare a source plate with its LCD sprites](../../game/art-source/README.md#portrait-coverage-and-review)
+The [fish artwork register](../../game/art-source/coverage.csv) tracks every catalog entry, including its individual artwork source and identification-review status. [Compare a source plate with its LCD sprites](../../game/art-source/README.md#portrait-coverage-and-review)

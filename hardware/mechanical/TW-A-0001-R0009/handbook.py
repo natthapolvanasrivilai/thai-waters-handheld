@@ -31,6 +31,13 @@ def link(source):
 data['bom']=[{'Ref':r['Ref'],'Variant':r['group'],'Description':r['Description'],'MPN or process':r['mpn'],'Qty per unit':r['qty'],'UOM':r['UOM'],'USD at 1':r['price'],'Ext USD':r['ext'],'Price basis':r['basis'],'Source':r['mpn'],'Source URL or drawing':link(r['url'])} for r in parts]
 data['productionIntro']='R0009 / R0003 is the current engineering review. R0008 / R0002 remains the released inert-fit baseline. Record connector polarity, service clearances and optical isolation on a first article.'
 data['prototypeBudget']=budget
+with (root/'manufacturing/rev-F-review/software-evidence.csv').open(encoding='utf-8-sig', newline='') as evidence:
+    data['softwareCases']=list(csv.DictReader(evidence))
+data['firmware']=[
+    'Firmware 0.9.4 targets Waveshare 31137 with 16 MB flash, 8 MB OPI PSRAM and two 3 MiB OTA application slots. Record the binary digest, board revision and card bank digest on each unit.',
+    'The standalone browser game includes every species portrait. To use the complete catalog on the handheld, copy the supplied TW-FISH.BIN to the root of the microSD card before powering on. The firmware verifies the bank before using its images.',
+    'Bench acceptance covers cold starts, an absent or incompatible card, clock and journal retention, reel input, touch, radio and audio.'
+]
 update_script('reviewData',json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<',r'\u003c'))
 for key,path in [('compressedGame',game),('compressedModel',root/'docs/models/TW-A-0001-R0009-exploded.html')]:
     update_script(key,base64.b64encode(gzip.compress(path.read_bytes(),mtime=0)).decode())

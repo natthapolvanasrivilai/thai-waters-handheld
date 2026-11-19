@@ -20,6 +20,9 @@ static int crossedTeeth=0,clickPending=0;
 static uint8_t portrait[50][96];
 static int portraitFrame=0;
 extern "C" {
+EXPORT uint8_t* fieldBank(){return specimen::browserPixels;}
+EXPORT const uint8_t* fieldBankDigest(){return specimen::cardDigest;}
+EXPORT int fieldBankSize(){return specimen::cardBytes;}
 EXPORT int hasPortrait(int id){return specimen::has(id);}
 EXPORT uint8_t* speciesPixels(int id){
  if(id<60||!specimen::has(id))return nullptr;

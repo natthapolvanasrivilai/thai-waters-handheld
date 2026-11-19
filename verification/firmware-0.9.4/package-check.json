@@ -1,0 +1,8 @@
+{
+  "offline_verifier": "four flash images and matching card verified",
+  "corrupt_card_check": "rejected",
+  "application_file_bytes": 2970720,
+  "application_sha256": "2c93e45affd00dfd39dfec1b5a40987591c446af62d00f769e0a031a3ae2725e",
+  "archive_file_bytes": 15468889,
+  "archive_sha256": "75a162efb834e44c53a10159eb66a3f266fe2c4467a5734531a8a5958f18140d"
+}

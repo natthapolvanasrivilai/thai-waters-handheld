@@ -113,7 +113,7 @@ template<class Pixel> void drawPortrait(int x,int y,float k,const uint16_t* pale
 }
 void fish(int x,int y,float k,int kind,bool silhouette=false){
   if(!specimen::has(kind)){
-    // An unillustrated catalog entry carries an empty field-note icon.
+    // The field-note marker remains available for a saved catch whose card is absent.
     const int cx=x+int(24*k),cy=y+int(12*k),r=int(5*k);
     screen.drawRect(cx-r,cy-r,r*2,r*2,0x74af);
     screen.drawLine(cx-r/2,cy+r/2,cx+r/2,cy-r/2,0x74af);
@@ -525,6 +525,7 @@ void bookDetail(const View& v){
  if(entry.count)snprintf(line,sizeof(line),"%lu caught | best %u cm",(unsigned long)entry.count,entry.best);
  else snprintf(line,sizeof(line),"Land this species to reveal it.");
  menuText(140,122,line,paper,1);
+ if(!specimen::has(id)&&specimen::index[id]>=0)menuText(140,140,"Insert matching art SD and restart.",gold,1);
  const char* place=item.spot==255?sites[waterOf(id)].name:destinations[item.spot].name;
  snprintf(line,sizeof(line),"Water  %s",place);menuText(14,163,line,paper,2);
  char periods[35]{};

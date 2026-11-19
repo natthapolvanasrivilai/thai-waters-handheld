@@ -1,4 +1,8 @@
-# Rev F purchasing and cost review
+# Current prototype purchasing
+
+The [R0009 full prototype BOM](R0009-prototype-budget.csv) gives the source, quantity, unit price and allocated cost for each of 74 references. Use the [purchasing and design identifiers](R0009-buy-make-bom.csv) for ordering or fabrication and the [source register](R0009-source-evidence.csv) to check part numbers, controlled drawings and outstanding selections. The [private cost review](../../docs/wiki/BOM-and-business.md) covers a single build and the proposed retail price.
+
+## Historical Rev F purchasing and cost review
 
 **Decision basis, 19 November 2026.** Use the workbook for RFQs and pilot pricing. The 54 buy/make lines cover four sellable configurations with an assembled Waveshare controller. Every unit includes the internal rod receiver, a short USB data cable, retail pack, serialized label and bilingual start card. RUMBLE adds the driver, motor, mounting material and four branch conductors. ROD adds the slide-on rod grip, screw keeper, captive socket screw, hex key and sleeve. FULL includes both options.
 

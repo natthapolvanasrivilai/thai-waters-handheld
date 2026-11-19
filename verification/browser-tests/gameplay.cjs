@@ -8,8 +8,8 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
    const draw=CanvasRenderingContext2D.prototype.drawImage;
    window.specimenFrames=[];
    CanvasRenderingContext2D.prototype.drawImage=function(img,...args){
-    if(this.canvas.id==='scene'&&img instanceof HTMLImageElement&&img.naturalWidth===960&&img.naturalHeight===300){
-     if(window.specimenFrames.length<1000)window.specimenFrames.push({phase:g.state(),age:g.age(),x:args[4],y:args[5],w:args[6]});
+    if(this.canvas.id==='scene'&&((img instanceof HTMLCanvasElement&&img.width===96&&img.height===50)||(img instanceof HTMLImageElement&&img.naturalWidth===960&&img.naturalHeight===300))){
+     if(window.specimenFrames.length<1000)window.specimenFrames.push({phase:g.state(),age:g.age(),x:args.at(-4),y:args.at(-3),w:args.at(-2)});
     }
     return draw.call(this,img,...args);
    };
@@ -100,7 +100,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   assert(fights[1].tip[1]>fights[0].tip[1]+20,'The planted ray should visibly bend the rod more than the picking prawn.');
   const card=await pg.evaluate(async()=>{
    await document.fonts.ready;
-   const drawText=ctx.fillText,drawSprite=ctx.drawImage,problems=[],positions=[];
+   const drawText=ctx.fillText,drawSprite=ctx.drawImage,problems=[],positions=new Set();
    let leftmost=480,rightmost=0,lowest=0;
    try{
     ctx.fillText=function(text,x,y){
@@ -109,20 +109,20 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
      leftmost=Math.min(leftmost,x);rightmost=Math.max(rightmost,right);lowest=Math.max(lowest,y);
      if(x<200 || right>468 || y>286 || y<72)problems.push([text,x,y,right]);
     };
-    ctx.drawImage=function(img,...args){if(img===fishSheet)positions.push([args[4],args[5],args[6],args[7]]);};
+    ctx.drawImage=function(img,...args){if(img===fishSheet||img===portraitCache.get(g.species()))positions.add(JSON.stringify(args.slice(-4)));};
     for(let id=0;id<atlas.fish.length;id++){
      g.restoreCatch(id,atlas.fish[id].high);
      for(placeId=0;placeId<atlas.locations.length;placeId++)landedCatch(0);
     }
    }finally{ctx.fillText=drawText;ctx.drawImage=drawSprite;placeId=0;}
    g.restoreEntry(41,3,240);g.restoreCatch(41,240);draw();
-   return {problems:problems.slice(0,5),positions:[...new Set(positions.map(JSON.stringify))],
-    leftmost,rightmost,lowest,legacy:[g.best(41),g.grams(),$('metrics').textContent]};
+   return {problems:problems.slice(0,5),positions:[...positions],
+    layouts:atlas.fish.length*atlas.locations.length,leftmost,rightmost,lowest,legacy:[g.best(41),g.grams(),$('metrics').textContent]};
   });
-  assert.deepEqual(card.problems,[],'All 52 species and 117 waters fit the right column above the action button');
+  assert.deepEqual(card.problems,[],'All species and water names fit the catch card');
   assert.deepEqual(card.positions,['[11,112,178,93]'],'All fish retain their full size in the left column');
   assert.equal(card.legacy[0],240);assert.equal(card.legacy[1],0);assert.match(card.legacy[2],/Recorded size.*Unweighed/);
-  console.log('PASS 6,084 catch card layouts; right edge '+card.rightmost.toFixed(1)+' px, last baseline '+card.lowest+' px.');
+  console.log('PASS '+card.layouts+' catch card layouts; right edge '+card.rightmost.toFixed(1)+' px, last baseline '+card.lowest+' px.');
   assert.equal(errors.length,0,errors.join(';'));console.log('PASS location, catch, collection, mobile motion and distinct loaded-rod visuals for prawn, ray and runner.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,6 +1,6 @@
 # Firmware, simulator and software verification
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/design-review-r0009-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
 
 Open **Software** in the handbook. Filter by feature to see its implementation, automated coverage and remaining on-device acceptance. Select **Test plan** to follow a validation item to its stage and acceptance criteria.
 
@@ -18,8 +18,10 @@ For a bench run, record controller revision, firmware digest, sensor calibration
 
 ## Current release
 
-The private [phone playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) is Sites version 14, source commit `186567eca779eaeec25cd4d8ac07b5a844808120`. Its game, the [standalone simulator](../../game/Thai-Waters-play.html) and the [interactive handbook](../index.html) embed the same playable build. SHA-256 of the standalone HTML is `b9cb3e9a6089be83bc7bf3db700fc07e1b6545768ca8978b7cac78849e4fafeb`.
+The private [phone playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) is Sites version 15, source commit `ebb52eacd05361657ea6013c8f81e641148697fb`. The [standalone simulator](../../game/Thai-Waters-play.html), the hosted game and the [interactive handbook](../index.html) contain the same playable HTML. SHA-256 is `92b1f9f1108c7b42b70128dd875699a44cd5dfabae67dce8ac72d26d156348a6`.
 
-The [0.9.3 USB engineering preview](../../releases/prototypes/Thai-Waters-controller-0.9.3.zip) targets Waveshare 31137. The simulator and firmware share the habitat rules and the twelve recovered-object portraits. See the [rendered-image regression](../../verification/browser-tests/recovered-items.cjs), [engine coverage](../../firmware/tests/cast_water.cpp), and [fish artwork status](../../game/art-source/coverage.csv). Actual board, phone pairing and physical feel remain bench milestones.
+The [0.9.4 USB engineering preview](../../releases/prototypes/Thai-Waters-controller-0.9.4.zip) targets Waveshare 31137. The browser includes all 2,545 individual fish portraits. The hardware package supplies a resident selection and a microSD bank for the full catalog. The game verifies the bank at startup. Read the [board setup and card instructions](../../firmware/Phone-controller.md). The USB package SHA-256 is `75a162efb834e44c53a10159eb66a3f266fe2c4467a5734531a8a5958f18140d` and the matching card bank SHA-256 is `443b7332de79b57a48791ae31def92792fed1c5317274e84ee2dcd6df2c6c4fa`.
+
+The [portrait regression](../../verification/browser-tests/specimen-art.cjs) renders the entire catalog, checks transparency and uniqueness, and compares the reported *Labeo dyocheilus* catch with its journal entry after reloading. The [per-species comparison ledger](../../game/art-source/reference-dispositions.csv) records a non-random sample of 277 illustrations with identified references. All 29 flagged discrepancies have credited corrections. The other 2,268 entries remain outside this visual review. [Artwork assignments and identity-review status](../../game/art-source/coverage.csv) · [Sources and preparing the artwork](../../game/art-source/README.md) · [Recovered-object rendering](../../verification/browser-tests/recovered-items.cjs). On-board card and memory behavior, physical reel feel and phone pairing still require a bench run.
 
 The released inert print is [TW-A-0001-R0008 with TW-A-0002-R0002 electrical integration](../../hardware/revisions/README.md). The [R0009 engineering viewer and R0003 wiring](../../hardware/mechanical/TW-A-0001-R0009/README.md) are registered for design review. The dressed harness has been checked in CAD; physical checks remain open. Use the [published print and gauges](../../hardware/mechanical/TW-A-0001-R0008/PRINT-GUIDE.md) for the first article. Physical fit and production qualification remain open.

@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "SpecimenAvailability.h"
 #include "Arrival.h"
 #include "CatchLog.h"
 #include "Rumble.h"
@@ -391,9 +392,9 @@ void printCatchRecord(uint32_t index){
     (unsigned long)r.utc,r.spot,r.weather,r.period,r.bait,(r.flags&LegacyPending)?"true":"false");
 }
 void setup(){
-  Serial.begin(115200);restore();view.game.beginSession(esp_random());view.game.arriveAt(view.destination);offlineWeatherDay=view.game.seed%365;updateLocalWeather();beginBoard();view.battery=readBattery();beginConnected();view.driver=initRumble();beginScene();
+  Serial.begin(115200);restore();view.game.beginSession(esp_random());view.game.arriveAt(view.destination);offlineWeatherDay=view.game.seed%365;updateLocalWeather();beginBoard();specimen::loadCardArt();view.battery=readBattery();beginConnected();view.driver=initRumble();beginScene();
   view.audio=startSound();setSound(view.sound,false,false);
-  Serial.printf("Thai Waters 0.9.3 controller preview | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d | CHGLED Type A readback %d\n",screenOK,imuOK,view.audio,powerOK,chargeLampOK);
+  Serial.printf("Thai Waters 0.9.4 controller preview | LCD %d IMU %d audio %d charge config 4.20V/300mA readback %d | CHGLED Type A readback %d\n",screenOK,imuOK,view.audio,powerOK,chargeLampOK);
   lastTick=millis();paint(view);confirmUpdateHealth(screenOK && imuOK && powerOK && view.audio);
 }
 void loop(){
