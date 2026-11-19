@@ -30,3 +30,5 @@ In the Motion bench, enable the handheld controller after pairing **Thai Waters 
 [← Thai Waters product wiki](Home.md) · [Inspect the assembly and battery pocket →](Hardware-and-3D.md)
 
 The native simulator uses 52 LCD pixels (about 8 mm) as its baseline tap target, larger in narrow portrait layouts. The collection shows eight fish per page in two rows of four. Drawer routes and gear choices scroll vertically.
+
+The mobile WebKit hit-test traverses all six menu routes, both navigation icons, catalogue paging and detail, all six bait tiles, Cast, and the controller and audio settings. It scrolls each target into view, checks its center reaches the intended element and measures its projected bounds. Landscape 844×390 and 667×375 measured 63.4 and 57.4 CSS pixels respectively at the smallest tested target. Portrait 390×844 and 320×568 measured 45.7 and 45.6. These are simulated viewport measurements. [Repeat the touch checks](../../verification/browser-tests/finger-targets.cjs)

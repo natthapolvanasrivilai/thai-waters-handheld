@@ -2,6 +2,9 @@
 #include <Wire.h>
 namespace {
 constexpr uint8_t addr=0x5a;
+// DRV2605L Eq. 6, 21.59 mV/count in open-loop ERM mode.
+// 138 counts sets 2.979 V average full-scale for the 3 V ROB-08449.
+constexpr uint8_t reelMotorClamp=138;
 bool online=false;
 bool put(uint8_t reg,uint8_t value){Wire.beginTransmission(addr);Wire.write(reg);Wire.write(value);return Wire.endTransmission()==0;}
 }
@@ -11,7 +14,7 @@ bool initRumble(){
  if(!put(1,0))return false;
  delay(2);
  // ERM, open loop, internal ROM trigger. Each effect terminates on the chip.
- online=put(0x0c,0)&&put(3,1)&&put(0x1a,0x36)&&put(0x1d,0xa0)&&put(0x17,0x83)&&put(5,0);
+ online=put(0x0c,0)&&put(3,1)&&put(0x1a,0x36)&&put(0x1d,0xa0)&&put(0x17,reelMotorClamp)&&put(5,0);
  return online;
 }
 void stopRumble(){if(online)online=put(0x0c,0);}

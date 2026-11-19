@@ -1,4 +1,7 @@
 #pragma once
+#include <stdint.h>
+uint32_t pondUtc();
+void printCatchRecord(uint32_t index);
 void beginConnected();
 void tickConnected();
 void startPairing();

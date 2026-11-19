@@ -27,10 +27,16 @@ bool resetPanel(){
 }
 }
 Arduino_Canvas screen(320,480,&panel,0,0,1);
-bool screenOK=false,imuOK=false,powerOK=false;
+bool screenOK=false,imuOK=false,powerOK=false,chargeLampOK=false;
 void beginBoard(){
   Wire.begin(8,7,400000);Wire.setTimeOut(20);
   if(pmu.begin(Wire,AXP2101_SLAVE_ADDRESS,8,7)){
+    // CHGLED stays under charger control while the processor sleeps or is off.
+    pmu.setChargingLedMode(XPOWERS_CHG_LED_CTRL_CHG);
+    const uint8_t ledReg=XPOWERS_AXP2101_CHGLED_SET_CTRL;
+    uint8_t ledControl=0;
+    chargeLampOK=readBytes(AXP2101_SLAVE_ADDRESS,&ledReg,1,&ledControl,1,false)
+      && (ledControl & 0x07)==0x01;
     pmu.enableGauge();
     pmu.setPowerKeyPressOnTime(XPOWERS_POWERON_1S);
     pmu.setPowerKeyPressOffTime(XPOWERS_POWEROFF_4S);

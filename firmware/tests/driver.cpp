@@ -5,6 +5,9 @@ uint32_t testClock=0;
 int main(){
  Wire.nack=true;assert(!initRumble());Wire.nack=false;Wire.id=0x60;assert(!initRumble());assert(Wire.log.empty());
  Wire.id=0xe0;assert(initRumble());auto base=Wire.log.size();driveRumble(Pulse::Pull,0,1);assert(Wire.log.size()==base);
+ bool motorClampSet=false;
+ for(const auto& reg:Wire.log)if(reg==std::make_pair(0x17,138))motorClampSet=true;
+ assert(motorClampSet);
  const int effects[6][3]={{63,62,61},{29,28,27},{51,50,49},{6,5,4},{51,50,49},{36,35,34}};
  for(int p=0;p<6;p++)for(int level=1;level<=3;level++){
   auto n=Wire.log.size();auto pulse=static_cast<Pulse>(p+1);

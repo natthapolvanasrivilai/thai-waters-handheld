@@ -4,11 +4,24 @@ The USB data port exposes the ESP32-S3 ROM programming path. Release 0.6 runs on
 
 ## Native journal storage
 
-The first 52 species and the three tackle ranks retain the 420-byte `willow-v1/atlas-3` NVS format. Units with the older 40-entry `atlas-2` save migrate on startup. The held catch also keeps its original NVS format.
+The first 52 species and the three tackle ranks retain the 420-byte `willow-v1/atlas-3` NVS format. Units with the older 40-entry `atlas-2` save migrate on startup. The 0.9.1 USB preview also imports an unfiled legacy `held-fish` catch if its old species count still matches.
 
 Additional species use permanent catalog IDs. Each group of 32 entries has two 272-byte snapshots on the existing `ffat` data partition. Each successful filing updates one group and verifies its checksum and contents before reporting success. Startup takes the newest valid generation and can recover the previous copy after an interrupted write. On a failed save, the catch stays on screen so the player can retry. A new device provisions the volume on its first extended filing after checking that the partition is erased. The two 3 MiB OTA slots keep their existing offsets. With 2,168 entries, the 2,116 additional records occupy at most 67 pairs of 272-byte files, or 36,448 bytes before filesystem allocation overhead. The in-memory journal uses 17,344 bytes.
 
 ## Native drivers and USB API v1
+
+The private 0.9.1 USB preview supports two additional read-only commands and an opt-in Bluetooth keyboard mode. [Firmware pairing and installation guide](Phone-controller.md)
+
+| USB serial command | Catch journal output |
+| --- | --- |
+| `api1 catches` | Schema number and latest committed sequence. Sequences start at 1. Legacy aggregate counts stay in the field book. |
+| `api1 catch 17` | One committed row by sequence, or a failed lookup. Read rows 1 through count for export. |
+
+Each row stores catalog species ID, integer centimetres and measurement kind, estimated grams (zero for unweighed), destination ID, observed game weather, period, bait selection, time-valid flag, UTC in Unix seconds and a legacy flag. Period is dawn/day/dusk/night (0–3). Weather is clear/light rain/heavy rain/storm (0–3). Bait stores the existing bait index plus six times the depth index. A migrated held catch retains its species/size, computed mass and known prior aggregate values. Its undocumented conditions have value 255 and its UTC has value zero. Previously filed aggregate counts cannot reconstruct individual catches.
+
+When a fish lands, the preview writes one 40-byte atomic Preferences value, `willow-v1/catch-tx1`, containing the receipt and the previous species summary. A tap first makes the acknowledgement durable. Filing writes and reads back a checksummed history page, advances the species summary to its target values and finally closes the transaction. Reboot replays an acknowledged transaction. An unacknowledged fish returns to its landing screen. The sequence and complete record must match an existing row before replay can succeed. Each 32 catches use two alternating files of 912 bytes before FAT allocation. Filesystem capacity bounds history, and a failed write leaves the transaction pending.
+
+The USB preview's panel fixture checks 16 interruptions of the real sketch’s acknowledgement path, including a half-written first FAT page. It checks legacy migration and 72 sequenced rows across multiple history pages. Flash-cell wear, FAT directory integrity during physical brownout and RTC retention still require the board. To accept a build, log a known and an unsynced catch, record both USB JSON rows, power-cycle after landing, after tapping and during a storage write, and compare exported rows and aggregate count after each boot.
 
 Open USB serial at 115200. Send one ASCII line terminated by LF. Consumers read JSON lines and ignore ordinary boot/game diagnostics. Begin with `api1 caps`. Compatible additions may append fields. A changed field unit or meaning requires another major API version.
 

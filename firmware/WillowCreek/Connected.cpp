@@ -41,9 +41,13 @@ void storeClock(time_t t){
 }
 void loadClock(){
  uint8_t b[7]{};if(!settings.getBool("utc-set",false)||!rtcIO(b,false)||(b[0]&128))return;
+ for(auto value:b)if((value&15)>9 || (value>>4)>9)return;
  tm u{};u.tm_sec=decimal(b[0]);u.tm_min=decimal(b[1]);u.tm_hour=decimal(b[2]);u.tm_mday=decimal(b[3]);u.tm_mon=decimal(b[5])-1;u.tm_year=100+decimal(b[6]);
  if(u.tm_sec>59||u.tm_min>59||u.tm_hour>23||u.tm_mday<1||u.tm_mday>31||u.tm_mon<0||u.tm_mon>11||u.tm_year<125)return;
- timeval tv{mktime(&u),0};settimeofday(&tv,nullptr);clockValid=true;
+ int month=u.tm_mon,day=u.tm_mday;
+ timeval tv{mktime(&u),0};
+ if(u.tm_mon!=month || u.tm_mday!=day || tv.tv_sec<1735689600)return;
+ clockValid=settimeofday(&tv,nullptr)==0;
 }
 void refreshClock(){
  if(!clockValid)return;
@@ -70,6 +74,14 @@ void sampleUSB(){
  Serial.printf("{\"api\":1,\"ms\":%lu,\"accel_ok\":%d,\"gyro_ok\":%d,\"accel_g\":[%.5f,%.5f,%.5f],\"gyro_dps\":[%.4f,%.4f,%.4f],\"accel_raw\":[%d,%d,%d],\"gyro_raw\":[%d,%d,%d],\"field\":%d,\"reel_counts\":%d}\n",(unsigned long)s.uptimeMs,s.accelOK,s.gyroOK,s.accelG.x,s.accelG.y,s.accelG.z,s.gyroDps.x,s.gyroDps.y,s.gyroDps.z,s.accelRaw[0],s.accelRaw[1],s.accelRaw[2],s.gyroRaw[0],s.gyroRaw[1],s.gyroRaw[2],int(s.field),s.reel);
 }
 void usb(String line){
+ if(line=="api1 catches"){printCatchRecord(0);return;}
+ if(line.startsWith("api1 catch ")){
+   const String index=line.substring(11);char* end=nullptr;
+   const unsigned long value=strtoul(index.c_str(),&end,10);
+   if(index.length() && isDigit(index[0]) && end && !*end && value)printCatchRecord(value);
+   else Serial.println("{\"ok\":false}");
+   return;
+ }
  if(line=="api1 sample"){sampleUSB();return;}
  if(line=="api1 caps"){Serial.println("{\"api\":1,\"minor\":0,\"board\":\"riffle-e-31137\",\"fw\":6,\"inputs\":[\"accel_raw\",\"gyro_raw\",\"reel_counts\"],\"stream_hz\":10}");return;}
  bool ok=false;
@@ -115,6 +127,10 @@ const char* networkStatus(){if(!pairing&&radio&&WiFi.status()==WL_CONNECTED&&!cl
 const char* setupName(){return pairing?apName:clockValid?clockSource:"Clock awaiting network sync";}
 const char* setupCode(){return pairing?instructions:"Pond time zone: Asia/Bangkok (UTC+7)";}
 const char* pondClock(){return clockText;}
+uint32_t pondUtc(){
+ const time_t now=time(nullptr);
+ return clockValid && now>=1735689600 && uint64_t(now)<=UINT32_MAX?uint32_t(now):0;
+}
 int pondPeriod(){return period;}
 void checkUpdate(){
  if(!radio||WiFi.status()!=WL_CONNECTED){hint="Connect to Wi-Fi first";return;}

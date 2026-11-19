@@ -54,11 +54,11 @@ inline bool restoreExtraBook(Journal& journal){
  }
  return valid;
 }
-inline bool saveExtraEntry(int id,const Entry& entry){
+inline bool saveExtraEntry(int id,const Entry& entry,bool recoverEmptyPage=false){
  if(id<originalSpecies || id>=fishCount || journalDrive(true)!=DiskRead::Good)return false;
  const int index=(id-originalSpecies)/journalPageEntries;
  JournalSector page;int active;
- if(loadSector(index,page,active)==DiskRead::Invalid)return false;
+ if(loadSector(index,page,active)==DiskRead::Invalid && !recoverEmptyPage)return false;
  auto& prior=page.entries[(id-originalSpecies)%journalPageEntries];
  if(prior.count==entry.count && prior.best==entry.best)return true;
  if(entry.count!=prior.count+1 || prior.best>entry.best)return false;

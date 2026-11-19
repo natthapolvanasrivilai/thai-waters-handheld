@@ -4,6 +4,7 @@
 #include "WaterArt.h"
 #include "RodFeedback.h"
 #include "Connected.h"
+#include "RodController.h"
 #include "AmbientLcd.h"
 #include "FishArt.h"
 #include <cstdio>
@@ -97,14 +98,14 @@ void drawWaterProp(int kind,int x,int y,int scale=1){
     }
   }
 }
-void fish(int x,int y,float k,int kind){
+void fish(int x,int y,float k,int kind,bool silhouette=false){
   kind=creek::artForSpecies[kind];k*=.5f;
   for(int row=0;row<50;row++){
     int start=0,prev=0;
     for(int col=0;col<=96;col++){
       int packed=col==96?0:fishArt[kind][row*48+col/2];
       int c=col&1?packed&15:packed>>4;
-      if(c!=prev){if(prev)screen.fillRect(x+int(start*k),y+int(row*k),int(col*k)-int(start*k),int((row+1)*k)-int(row*k),fishInk[kind][prev]);start=col;prev=c;}
+      if(c!=prev){if(prev)screen.fillRect(x+int(start*k),y+int(row*k),int(col*k)-int(start*k),int((row+1)*k)-int(row*k),silhouette?0x74af:fishInk[kind][prev]);start=col;prev=c;}
     }
   }
 }
@@ -145,6 +146,11 @@ void top(const View& v){
   const auto* name=creek::destinations[v.destination].name;
   skyLabel(10,10,name,white,strlen(name)>18?1:2,225);
   char t[50];snprintf(t,sizeof(t),"%s  %s",creek::times[v.game.timeSlot],pondClock());
+  if(v.game.phase==creek::Phase::Landed){
+    const char* clock=strstr(t,"needs sync")?"Clock needs sync":t;
+    skyLabel(432-textWidth(clock,1),12,clock,white,1,434);batteryIcon(443,10,v.battery);
+    return;
+  }
   skyLabel(229,12,strstr(t,"needs sync")?"Clock needs sync":t,white,1,361);
   batteryIcon(365,10,v.battery);skyLabel(404,9,"MENU",gold,2);
 }
@@ -153,7 +159,7 @@ void menuText(int x,int y,const char* text,int color=white,int size=2,int width=
   if(size==2 && textWidth(text,size)>available)size=1;
   label(menuui::x+x,menuui::y+y,text,color,size,menuui::x+x+available);
 }
-void menuHeader(const char* title,const char* action="BACK"){
+void menuHeader(const char* title,const char* action="BACK",int height=menuui::header){
   auto fb=screen.getFramebuffer();
   // RGB565 channel-aligned arithmetic. Retain one quarter of the actual scene.
   for(int x=0;x<menuui::w;x++)for(int y=0;y<menuui::h;y++){
@@ -163,14 +169,15 @@ void menuHeader(const char* title,const char* action="BACK"){
     pixel=((pixel&0xe79c)>>2)+((ink&0xf7de)>>1)+((ink&0xe79c)>>2);
   }
   screen.drawRoundRect(menuui::x,menuui::y,menuui::w,menuui::h,7,0x6bf0);
-  menuText(12,10,title,paper);
-  menuText(menuui::w-58,12,action,gold,1);
-  screen.drawFastHLine(menuui::x+8,menuui::y+menuui::header-1,menuui::w-16,0x526d);
+  menuText(12,(height-14)/2,title,paper);
+  menuText(menuui::w-58,(height-10)/2,action,gold,1);
+  screen.drawFastHLine(menuui::x+8,menuui::y+height-1,menuui::w-16,0x526d);
 }
-void menuRow(int y,int height,const char* name,const char* value){
-  menuText(12,y+(height-14)/2,name,white,2,204);
-  menuText(220,y+(height-14)/2,value,gold,2,164);
-  screen.drawFastHLine(menuui::x+10,menuui::y+y+height-1,menuui::w-20,0x426a);
+void gridButton(int index,int top,int row,const char* name,const char* value){
+  int x=(index%2)*menuui::w/2,y=top+(index/2)*row;
+  screen.drawRoundRect(menuui::x+x+3,menuui::y+y+2,menuui::w/2-6,row-4,5,0x526d);
+  menuText(x+12,y+(row-31)/2,name,white,2,menuui::w/2-22);
+  menuText(x+12,y+(row-31)/2+20,value,gold,1,menuui::w/2-22);
 }
 void options(const View& v){
   const char* music[]={"Adaptive","Drift","Melody","Off"};
@@ -179,9 +186,8 @@ void options(const View& v){
   const char* rows[]={"Music","Music volume","Bite cue","Cue volume","Reel direction","Controls","Rod calibration","Reel click"};
   const char* vals[]={music[v.sound.music],volume[v.sound.volume],cues[v.sound.cue],volume[v.sound.cueVolume],
     v.sound.reverse?"Reversed":"Forward",v.practice?"Touch practice":"Motion + knob","Set two poses",volume[v.sound.reelVolume]};
-  menuHeader("SOUND + CONTROLS");
-  for(int i=0;i<8;i++)menuRow(menuui::header+i*menuui::optionRow,menuui::optionRow,rows[i],vals[i]);
-  if(!v.audio)menuText(12,259,"Audio unavailable - check codec.",gold,1);
+  menuHeader("SOUND + CONTROLS","BACK",menuui::gridTop);
+  for(int i=0;i<8;i++)gridButton(i,menuui::gridTop,menuui::gridRow,rows[i],!v.audio&&i==1?"Codec unavailable":vals[i]);
 }
 void calibration(const View& v){
   bool rest=v.page==Page::Rest;
@@ -347,7 +353,7 @@ void play(const View& v){
       int cx=100+int(347*ease),cy=158-int(99*ease+46*4*t*(1-t));
       fish(cx-int(24*k),cy-int(12.5f*k),k,g.fish);
     }
-    if(g.filed){skyLabel(12,300,"Adding to journal",white,1);return;}
+    if(g.filed){const char* s="Adding to journal";skyLabel((480-textWidth(s,1))/2,300,s,white,1);return;}
     const char* rewards[]={"Catch landed","Personal best","New species","New species +1 tackle point"};
     const int colors[]={white,0xb717,0xbebf,0xe63f,0xfed1,0x87ff};
     snprintf(desc,sizeof(desc),"%s  /  %s",creek::ranks[f.tier],rewards[int(g.landingReward())]);
@@ -368,7 +374,10 @@ void play(const View& v){
     if(fictional){
       char legend[130];snprintf(legend,sizeof(legend),"Fictional - %s",f.lore);catchLines(legend,originEnd+4,paper,2,17);
     }else catchLines(f.lore[0]?f.lore:"Family illustration / game size estimate",originEnd+4,paper,2,17);
-    skyLabel(12,300,"Tap to add to journal",white,1);
+    const char* prompt="Tap to add to journal";
+    const float glow=(1.f-std::cos((v.time%2400)*.002617994f))*.5f;
+    const int tone=(int(22+9*glow)<<11)|(int(50+13*glow)<<5)|int(23+8*glow);
+    skyLabel((480-textWidth(prompt,2))/2,294,prompt,tone,2);
     return;}
   case Phase::Snag:
     head=g.contact==1?"Branch snag: stop, then lift":"Rock snag: lower rod and pay out";
@@ -406,10 +415,10 @@ void bar(const char* title){
  screen.fillScreen(ink);label(12,11,title,paper);label(400,11,"BACK",gold);screen.drawFastHLine(10,36,460,green);
 }
 void hub(const View& v){
- menuHeader("THAI WATERS","RESUME");
- const char* names[]={"Fishing spots","Fish collection","Rod workshop","Bench test","Sound + controls","Touch practice","Wi-Fi + clock"};
+ menuHeader("THAI WATERS","RESUME",menuui::gridTop);
+ const char* names[]={"Fishing spots","Fish collection","Rod workshop","Bench test","Sound + controls","Touch practice","Connections"};
  const char* values[]={sites[v.game.site].water,"Collection",chapters[v.game.progress.chapter()],"Live readings","Settings",v.practice?"On":"Off","Updates"};
- for(int i=0;i<7;i++)menuRow(menuui::header+i*menuui::hubRow,menuui::hubRow,names[i],values[i]);
+ for(int i=0;i<7;i++)gridButton(i,menuui::gridTop,menuui::gridRow,names[i],values[i]);
 }
 void waters(const View& v){
  menuHeader("FISHING SPOTS");
@@ -417,88 +426,133 @@ void waters(const View& v){
  screen.drawRoundRect(menuui::x+130,menuui::y+3,173,24,4,0x6bf0);
  menuText(138,11,sky,gold,1);
  for(int i=0;i<4;i++){
-   int id=v.spotPage*4+i;if(id>=destinationCount)break;
-   int y=menuui::header+menuui::waterRow*i;
-   const auto& spot=destinations[id];
-   if(id==v.pendingSite)screen.fillRect(menuui::x+4,menuui::y+y+3,3,menuui::waterRow-5,gold);
-   menuText(12,y+2,spot.name,id==v.pendingSite?gold:white);
-   constexpr int columns=(menuui::w-24)/6;
-   char first[columns+1]{};size_t split=std::min<size_t>(columns,strlen(spot.story));
-   if(spot.story[split])while(split&&spot.story[split]!=' ')--split;
-   memcpy(first,spot.story,split);menuText(12,y+17,first,paper,1);
-   if(spot.story[split])menuText(12,y+25,spot.story+split+1,paper,1);
+   const int id=v.spotPage*4+i;if(id>=destinationCount)break;
+   gridButton(i,menuui::gridTop,menuui::waterRow,destinations[id].name,id==v.pendingSite?"Selected":sites[destinations[id].pool].name);
  }
+ const char* story=destinations[v.pendingSite].story;
+ constexpr int columns=67;
+ size_t split=std::min<size_t>(columns,strlen(story));
+ if(story[split])while(split && story[split]!=' ')--split;
+ char line[columns+1]{};memcpy(line,story,split);menuText(10,148,line,paper,1);
+ if(story[split])menuText(10,158,story+split+1,paper,1);
  for(int i=0;i<5;i++){
    int left=i*menuui::w/5;
-   if(i==v.pendingTime)screen.drawRect(menuui::x+left+4,menuui::y+menuui::periodY,menuui::w/5-8,29,gold);
-   menuText(left+10,menuui::periodY+10,i==4?"Live":times[i],i==v.pendingTime?gold:white,1);
+   if(i==v.pendingTime)screen.drawRect(menuui::x+left+4,menuui::y+menuui::periodY+3,menuui::w/5-8,43,gold);
+   menuText(left+10,menuui::periodY+18,i==4?"Live":times[i],i==v.pendingTime?gold:white,1);
  }
- menuText(12,menuui::travelY+12,"< PREV",gold,1);
- screen.fillRoundRect(menuui::x+menuui::w/4,menuui::y+menuui::travelY,menuui::w/2,32,5,0x336b);
- menuText(140,menuui::travelY+8,"FISH HERE");menuText(340,menuui::travelY+12,"NEXT >",gold,1);
+ menuText(12,menuui::travelY+19,"< PREV",gold,1);
+ screen.fillRoundRect(menuui::x+menuui::w/4,menuui::y+menuui::travelY+3,menuui::w/2,45,5,0x336b);
+ menuText(140,menuui::travelY+16,"FISH HERE");menuText(340,menuui::travelY+19,"NEXT >",gold,1);
 }
 void book(const View& v){
  const auto& journal=v.game.progress.book;const int site=v.bookWater;char buf[110];
- menuHeader("FISH COLLECTION");
+ menuHeader("COLLECTION");
  const int caught=journal.waterCount(site,v.destination,BookFilter::Caught),total=stockSize(site);
  const int shown=journal.waterCount(site,v.destination,v.bookFilter);
- snprintf(buf,sizeof(buf),"%s   %d / %d   > Change water",sites[site].name,caught,total);
- menuText(12,38,buf,gold,1);
- const int start=v.bookPage*menuui::bookRows;int match=0,rows=0;
- for(int k=0;k<total && rows<menuui::bookRows;k++){
-   const int id=stockId(site,k);const auto& e=journal.entries[id];
-   if(!journal.visible(id,v.destination,v.bookFilter))continue;
-   if(match++<start)continue;
-   int y=56+43*rows++;
-   menuText(12,y,catalog[id].name,e.count?white:green);
-   if(e.count)snprintf(buf,sizeof(buf),"%s | %lu caught | best %u cm",ranks[catalog[id].tier],(unsigned long)e.count,(unsigned)e.best);
-   else if(id>=originalSpecies){
-     const auto& species=catalog[id];
-     const char* place=species.spot==255?sites[site].name:destinations[species.spot].name;
-     char periods[32]="";
-     for(int t=0;t<4;++t)if(species.timeMask&(1<<t)){
-       const auto used=strlen(periods);snprintf(periods+used,sizeof(periods)-used,"%s%s",used?"/":"",times[t]);
-     }
-     snprintf(buf,sizeof(buf),"%s | %s | %s",ranks[species.tier],place,periods);
-   }else snprintf(buf,sizeof(buf),"%s | %s",ranks[catalog[id].tier],id==prawn?"Dusk ferry piles - lift quickly":id==ray?"Night sandbars - ease off on long runs":times[id%4]);
-   menuText(12,y+16,buf,paper,1);
-   const int best=preferredChoice(id);
-   snprintf(buf,sizeof(buf),"Bait: %s / %s",baitNames[best%6],depthNames[best/6]);
-   menuText(12,y+27,buf,gold,1);
+ snprintf(buf,sizeof(buf),"%s  %d/%d >",sites[site].name,caught,total);
+ menuText(148,20,buf,gold,1,151);
+ int drawn=0;
+ for(int tile=0;tile<4;tile++){
+   const int id=bookTile(v,tile);if(id<0)break;
+   const auto& e=journal.entries[id];
+   const int x=(tile%2)*menuui::w/2,y=menuui::gridTop+(tile/2)*86;
+   screen.drawRoundRect(menuui::x+x+3,menuui::y+y+2,menuui::w/2-6,82,5,0x526d);
+   fish(menuui::x+x+10,menuui::y+y+8,1.15f,id,!e.count);
+   menuText(x+74,y+15,ranks[catalog[id].tier],e.count?gold:green,1,110);
+   menuText(x+10,y+43,e.count?catalog[id].name:"Undiscovered",e.count?white:paper,2,menuui::w/2-20);
+   if(e.count)snprintf(buf,sizeof(buf),"%lu caught | best %u cm",(unsigned long)e.count,e.best);
+   else snprintf(buf,sizeof(buf),"Tap for habitat and bait");
+   menuText(x+10,y+66,buf,green,1,menuui::w/2-20);++drawn;
  }
- if(!rows)menuText(12,80,"No catches in this water yet.",paper);
- menuText(12,menuui::bookNav+12,"< PREV",gold,1);
- snprintf(buf,sizeof(buf),"%s   %d / %d",v.bookFilter==BookFilter::Nearby?"Here":v.bookFilter==BookFilter::Caught?"Caught":"All species",v.bookPage+1,std::max(1,(shown+menuui::bookRows-1)/menuui::bookRows));
- menuText(130,menuui::bookNav+10,buf);menuText(340,menuui::bookNav+12,"NEXT >",gold,1);
+ if(!drawn)menuText(12,86,"No catches in this water yet.",paper);
+ menuText(10,menuui::bookNav+19,"< PREV",gold,1,78);
+ snprintf(buf,sizeof(buf),"%s %d/%d",v.bookFilter==BookFilter::Nearby?"Here":v.bookFilter==BookFilter::Caught?"Caught":"All",v.bookPage+1,std::max(1,(shown+menuui::bookRows-1)/menuui::bookRows));
+ menuText(103,menuui::bookNav+19,buf,paper,1,85);
+ menuText(203,menuui::bookNav+19,"CATCH LOG",gold,1,86);menuText(328,menuui::bookNav+19,"NEXT >",gold,1);
 }
+void bookDetail(const View& v){
+ const int id=v.bookSpecies;if(id<0||id>=fishCount)return;
+ const auto& item=catalog[id];const auto& entry=v.game.progress.book.entries[id];char line[108];
+ menuHeader("FIELD GUIDE");
+ menuText(14,61,entry.count?item.name:"Undiscovered species",white);
+ fish(menuui::x+15,menuui::y+91,2.15f,id,!entry.count);
+ menuText(140,98,ranks[item.tier],gold);
+ if(entry.count)snprintf(line,sizeof(line),"%lu caught | best %u cm",(unsigned long)entry.count,entry.best);
+ else snprintf(line,sizeof(line),"Land this species to reveal it.");
+ menuText(140,122,line,paper,1);
+ const char* place=item.spot==255?sites[waterOf(id)].name:destinations[item.spot].name;
+ snprintf(line,sizeof(line),"Water  %s",place);menuText(14,163,line,paper,2);
+ char periods[35]{};
+ for(int t=0;t<4;t++)if(encounterWeight(id,t)>0){const auto at=strlen(periods);snprintf(periods+at,sizeof(periods)-at,"%s%s",at?" / ":"",times[t]);}
+ menuText(14,191,periods,green,2);
+ const int best=preferredChoice(id);snprintf(line,sizeof(line),"Bait  %s / %s",baitNames[best%6],depthNames[best/6]);menuText(14,219,line,gold,2);
+}
+void catchHistory(const View& v){
+ menuHeader("CATCH LOG");
+ if(v.historyError){menuText(14,85,"Could not read the stored catch.",gold);return;}
+ if(!v.historyCount){menuText(14,85,"Your next filed catch starts the log.",paper);return;}
+ const auto& r=v.history;char line[120];
+ snprintf(line,sizeof(line),"#%lu / %lu",(unsigned long)r.sequence,(unsigned long)v.historyCount);
+ menuText(14,56,line,gold,1);menuText(14,75,catalog[r.species].name,white,2);
+ snprintf(line,sizeof(line),"%u cm %s  |  %lu g",r.cm,archivedMeasures[r.measurement],(unsigned long)r.grams);
+ menuText(14,103,line,paper);
+ if(r.flags&TimeKnown){
+   time_t local=time_t(r.utc)+7*3600;tm t{};gmtime_r(&local,&t);
+   snprintf(line,sizeof(line),"%04d-%02d-%02d   %02d:%02d ICT",1900+t.tm_year,1+t.tm_mon,t.tm_mday,t.tm_hour,t.tm_min);
+ }else snprintf(line,sizeof(line),"Time unknown (no verified clock)");
+ menuText(14,133,line,gold,2);
+ menuText(14,160,r.spot<destinationCount?destinations[r.spot].name:"Location unrecorded",paper,2);
+ if(r.period<4 && r.weather<4 && r.bait<18)snprintf(line,sizeof(line),"%s / %s / %s / %s",times[r.period],weatherNames[r.weather],baitNames[r.bait%6],depthNames[r.bait/6]);
+ else snprintf(line,sizeof(line),"Legacy catch conditions unrecorded");
+ menuText(14,187,line,green,1);
+ screen.drawFastHLine(menuui::x+8,menuui::y+menuui::bookNav,menuui::w-16,0x526d);
+ menuText(15,menuui::bookNav+18,"< OLDER",r.sequence>1?gold:green,1);
+ menuText(292,menuui::bookNav+18,"NEWER >",r.sequence<v.historyCount?gold:green,1);
+}
+
 void network(){
- menuHeader("WI-FI + CLOCK");menuText(12,38,networkStatus(),white,1);menuText(12,53,updateStatus(),green,1);
- menuText(12,72,setupName(),gold);menuText(12,94,setupCode(),paper,1);menuText(12,111,pondClock());
- menuRow(138,31,"Phone setup","Start");menuRow(169,31,"Online update","Check");
- menuRow(200,31,"Wi-Fi radio",radioEnabled()?"On":"Off");menuRow(231,31,"Shared event",eventActive()?"Joined":"Join");
+ menuHeader("CONNECTIONS","BACK",menuui::gridTop);menuText(12,50,networkStatus(),white,1);menuText(12,64,updateStatus(),green,1);
+ menuText(12,78,setupName(),gold,1);menuText(12,92,setupCode(),paper,1);
+ const char* names[]={"Phone setup","Online update","Wi-Fi radio","Shared event","Phone controller"};
+ const char* values[]={"Wi-Fi","Check",radioEnabled()?"On":"Off",eventActive()?"Joined":"Join","Bluetooth"};
+ for(int i=0;i<5;i++)gridButton(i,menuui::networkTop,menuui::networkRow,names[i],values[i]);
  menuText(12,263,eventStatus(),green,1);
+}
+void phoneController(const View& v){
+ menuHeader("PHONE CONTROLLER","BACK",menuui::gridTop);
+ menuText(12,51,rodControllerStatus(),green,1);
+ menuText(12,64,"iPhone Settings > Bluetooth > Thai Waters Rod",paper,1);
+ char line[60];snprintf(line,sizeof(line),"Pairing code: %06u",rodPairCode());
+ menuText(12,89,line,gold);
+ menuText(12,120,"Open the fishing game in Safari, then enable",paper,1);
+ menuText(12,136,"its handheld controller before starting input.",paper,1);
+ menuText(12,159,v.calibrated?"Rod calibration ready":"Set rod calibration in Sound + controls",green,1);
+ gridButton(0,menuui::controllerTop,menuui::controllerRow,"Send controls",rodControllerStreaming()?"Pause":rodControllerReady()?"Start":"Pair first");
+ gridButton(1,menuui::controllerTop,menuui::controllerRow,"Disconnect","Radio off");
 }
 void baitPanel(const View& v){
  menuHeader("HOOK BAIT");const int c=v.game.bait;
- for(int i=0;i<6;i++)menuRow(38+i*27,27,creek::baitNames[i],i==c%6?"Selected":"");
- for(int i=0;i<3;i++)menuText(12+i*(menuui::w/3),220,creek::depthNames[i],c/6==i?gold:white,2);
+ for(int i=0;i<6;i++)gridButton(i,menuui::gridTop,menuui::baitRow,creek::baitNames[i],i==c%6?"Selected":"");
  const bool locked=v.game.running() || v.game.phase==Phase::Landed;
- menuText(12,251,locked?"Finish or file this catch before changing bait":"Choose the hook bait, then tap a depth",green,1);
+ menuText(12,205,locked?"Finish or file this catch before changing bait":"Set the fishing depth",green,1);
+ for(int i=0;i<3;i++){
+   const int x=i*menuui::w/3;
+   screen.drawRoundRect(menuui::x+x+4,menuui::y+menuui::depthY+3,menuui::w/3-8,45,5,c/6==i?gold:0x526d);
+   menuText(x+12,menuui::depthY+18,creek::depthNames[i],c/6==i?gold:white,2,menuui::w/3-20);
+ }
 }
 void journey(const View& v){
- const auto& p=v.game.progress;char buf[80];menuHeader("ROD WORKSHOP");menuText(180,9,"BAIT + DEPTH",gold,1);
- snprintf(buf,sizeof(buf),"%s  |  %d points",chapters[p.chapter()],p.points());menuText(12,37,buf,gold,1);
- snprintf(buf,sizeof(buf),"Technique   %s  >",techniques[int(v.game.rig)]);
- menuText(12,menuui::rigY+4,buf,white);
- menuText(12,80,story[p.chapter()],green,1);
- const char* units[]={"+150 ms per rank","+12% retrieval per rank","-10% tension gain per rank"};
+ const auto& p=v.game.progress;char buf[80];menuHeader("ROD WORKSHOP");menuText(180,19,"BAIT + DEPTH",gold,1);
+ snprintf(buf,sizeof(buf),"%s  |  %d points",chapters[p.chapter()],p.points());menuText(12,52,buf,gold,1);
+ menuText(12,67,story[p.chapter()],green,1);
+ gridButton(0,menuui::workshopTop,menuui::workshopRow,"Technique",techniques[int(v.game.rig)]);
+ gridButton(1,menuui::workshopTop,menuui::workshopRow,"Rod finish",finishes[v.rodFinish]);
+ const char* units[]={"+150 ms","+12% retrieval","-10% tension"};
  for(int i=0;i<3;i++){
-   int y=menuui::upgradeY+i*menuui::upgradeRow;
-   menuText(12,y+3,paths[i]);snprintf(buf,sizeof(buf),"Rank %d/3",p.rank[i]);menuText(272,y+3,buf,green);
-   snprintf(buf,sizeof(buf),"%s / next cost %d",units[i],p.rank[i]+1);menuText(12,y+20,p.rank[i]==3?"Maximum rank":buf,paper,1);
+   snprintf(buf,sizeof(buf),"%d/3 | %s | cost %d",p.rank[i],units[i],p.rank[i]+1);
+   gridButton(i+2,menuui::workshopTop,menuui::workshopRow,paths[i],p.rank[i]==3?"Maximum rank":buf);
  }
- menuText(12,menuui::finishY,"ROD FINISH",green,1);menuText(12,menuui::finishY+15,finishes[v.rodFinish],white);
- menuText(210,menuui::finishY+15,v.refundConfirm?"Confirm refund":"Refund points",gold);
+ gridButton(5,menuui::workshopTop,menuui::workshopRow,"Refund points",v.refundConfirm?"Tap to confirm":"Retrain");
  menuText(12,251,v.notice,green,1);
 }
 void bench(const View& v){
@@ -513,12 +567,15 @@ void bench(const View& v){
  snprintf(b,sizeof(b),"%s | acceleration %.2f g",v.benchEvent,v.accelG);label(12,99,b,green,1);
  snprintf(b,sizeof(b),"Raw %d   %+.2f turns",v.raw,v.turns);label(12,123,v.field==Field::Good?b:wheelFault(v.field),gold);
  label(12,148,v.field!=Field::Good?"Reel paused":v.direction>0?"Winding IN":v.direction<0?"Paying OUT":"Turn the knob",white);
- label(12,175,v.sound.reverse?"Reverse direction: ON":"Reverse direction: OFF",green);
- snprintf(b,sizeof(b),"Cue level %d/3",v.sound.cueVolume);label(12,209,b,gold);label(251,209,"PLAY BITE",white);
- snprintf(b,sizeof(b),"Rumble %d/3",v.rumble);label(12,246,b,gold);label(177,246,"Tease",white);label(286,246,"Bite",white);label(387,246,"Pull",white);
- label(12,279,"Prawn pick",green);label(170,279,"Bottom hold",green);label(333,279,"Fast run",green);
- label(12,304,v.driver?"DRV2605L detected":"No DRV2605L detected",green,1);
- label(290,304,"TEST TOUCH GRID >",gold,1);
+ char cue[15],rumble[15];
+ snprintf(cue,sizeof(cue),"Cue level %d/3",v.sound.cueVolume);snprintf(rumble,sizeof(rumble),"Rumble %d/3",v.rumble);
+ const char* names[]={v.sound.reverse?"Reel reversed":"Reel forward",cue,"Play bite",rumble,"Tease","Bite","Pull",v.driver?"DRV2605L ready":"Driver absent","Prawn pick","Bottom hold","Fast run","Touch grid"};
+ for(int i=0;i<12;i++){
+   const int x=i%4*120,y=menuui::benchTop+i/4*menuui::benchRow;
+   if(i!=7)screen.drawRoundRect(x+2,y+2,116,48,4,0x526d);
+   label(x+8,y+17,names[i],i==7?green:white,2,x+117);
+ }
+
 }
 void touchCheck(const View& v){
  screen.fillScreen(ink);
@@ -530,7 +587,7 @@ void touchCheck(const View& v){
    const int x=touchColumn[i%3],y=touchRow[i/3],col=i<v.touchStep?green:i==v.touchStep?gold:0x52aa;
    screen.drawRect(x-12,y-12,25,25,col);screen.drawLine(x-6,y,x+6,y,col);screen.drawLine(x,y-6,x,y+6,col);
  }
- screen.drawRect(52,284,101,31,paper);label(68,294,"BACK",paper,1);
+ screen.drawRect(52,270,101,49,paper);label(68,294,"BACK",paper,1);
 }
 }
 void paint(const View& v){
@@ -538,11 +595,13 @@ void paint(const View& v){
  if(menuui::overlay(v.page))play(v);
  switch(v.page){
  case Page::Arrival:case Page::Play:play(v);break;case Page::Hub:hub(v);break;case Page::Waters:waters(v);break;
- case Page::Book:book(v);break;case Page::Bait:baitPanel(v);break;case Page::Journey:journey(v);break;case Page::Bench:bench(v);break;
+ case Page::Book:book(v);break;case Page::BookDetail:bookDetail(v);break;case Page::CatchHistory:catchHistory(v);break;case Page::Bait:baitPanel(v);break;case Page::Journey:journey(v);break;case Page::Bench:bench(v);break;
  case Page::TouchCheck:touchCheck(v);break;
- case Page::Network:network();break;case Page::Options:options(v);break;default:calibration(v);break;
+ case Page::Controller:phoneController(v);break;case Page::Network:network();break;case Page::Options:options(v);break;default:calibration(v);break;
  }
  if(v.saveFailed){screen.fillRect(0,302,480,18,ink);label(12,305,"Journal save failed - keep power on and check storage.",red,1);}
  screen.flush();
 }
+
+
 

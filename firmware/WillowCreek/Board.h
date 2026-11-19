@@ -2,7 +2,7 @@
 #include "Creek.h"
 #include <Arduino_GFX_Library.h>
 extern Arduino_Canvas screen;
-extern bool screenOK,imuOK,powerOK;
+extern bool screenOK,imuOK,powerOK,chargeLampOK;
 enum class Field { Missing, Weak, Strong, NoMagnet, Good };
 struct BatteryReading {
   bool valid=false, present=false, usb=false, charging=false;
