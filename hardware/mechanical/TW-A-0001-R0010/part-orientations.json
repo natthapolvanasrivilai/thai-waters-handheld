@@ -1,0 +1,904 @@
+{
+  "housing-battery-bay": {
+    "viewer_id": "Housing",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/housing-battery-bay.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/housing-battery-bay.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/housing-battery-bay.stl",
+    "assembly_to_print": [
+      [
+        0.7071067812,
+        0.0,
+        -0.7071067812,
+        7.5320500792
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -2.57499995
+      ],
+      [
+        0.7071067812,
+        0.0,
+        0.7071067812,
+        33.941125597
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.7071067812,
+      0.0,
+      0.7071067812
+    ],
+    "bed_face": "West rear 45-degree land",
+    "brim": "8 mm outer brim",
+    "material": "Opaque PETG, case colour",
+    "assembly_volume_mm3": 39660.2631,
+    "extents_mm": [
+      94.0671,
+      74.25,
+      94.5174
+    ],
+    "sha256": "e60dbe9d59b14e4a9a5c86b6946a88ad02a21d0a198f2d079d98d58d910cdf86"
+  },
+  "bezel": {
+    "viewer_id": "Bezel",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/bezel.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/bezel.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/bezel.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -4.25
+      ],
+      [
+        0.0,
+        -1.0,
+        -0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        30.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "bed_face": "Front bezel face",
+    "brim": "None",
+    "assembly_volume_mm3": 4531.3725,
+    "extents_mm": [
+      107.22,
+      67.72,
+      2.2
+    ],
+    "sha256": "884689068a860869042a2fe26173f46fd6f6a5592a4c1a6676ee6f363183a54c"
+  },
+  "rotor": {
+    "viewer_id": "Rotor",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/rotor.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/rotor.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/rotor.stl",
+    "assembly_to_print": [
+      [
+        0.7071067812,
+        0.0,
+        0.7071067812,
+        -47.9322203567
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -0.0
+      ],
+      [
+        -0.7071067812,
+        0.0,
+        0.7071067812,
+        37.6180808591
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      -0.7071067812,
+      0.0,
+      0.7071067812
+    ],
+    "bed_face": "Oblique outer rim land",
+    "brim": "5 mm outer brim",
+    "assembly_volume_mm3": 2818.2695,
+    "extents_mm": [
+      23.6676,
+      25.5,
+      22.4495
+    ],
+    "sha256": "9a4adf6cfb23f5846e4c2221b5a362c46cb7e96ae885004b8fd882d0d9cd1cb3"
+  },
+  "folding-stem": {
+    "viewer_id": "Stem",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/folding-stem.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/folding-stem.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/folding-stem.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -53.6
+      ],
+      [
+        0.0,
+        0.7071067812,
+        0.7071067812,
+        -11.2359268031
+      ],
+      [
+        0.0,
+        -0.7071067812,
+        0.7071067812,
+        -2.2627415998
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      -0.7071067812,
+      0.7071067812
+    ],
+    "bed_face": "Oblique flat on hinge eye",
+    "brim": "5 mm outer brim",
+    "assembly_volume_mm3": 222.3652,
+    "extents_mm": [
+      5.3,
+      15.8954,
+      15.3794
+    ],
+    "sha256": "1c52d3561b72c1748f61059dccf2f517fffeebddbdd256903ca64134d0f8b244"
+  },
+  "grip": {
+    "viewer_id": "Grip",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/grip.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/grip.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/grip.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -53.6
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        14.8
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        7.9500001
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "bed_face": "Sleeve end",
+    "brim": "None",
+    "assembly_volume_mm3": 245.6258,
+    "extents_mm": [
+      7.4555,
+      7.4555,
+      9.3
+    ],
+    "sha256": "320f70864b76ce81897db9a13b81f2b3b551614ae86548235694e2fc219a0922"
+  },
+  "collar": {
+    "viewer_id": "Collar",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/collar.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/collar.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/collar.stl",
+    "assembly_to_print": [
+      [
+        0.0,
+        0.0,
+        1.0,
+        -14.8
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -0.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        46.65
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      -1.0,
+      0.0,
+      0.0
+    ],
+    "bed_face": "Annular thrust face",
+    "brim": "None",
+    "assembly_volume_mm3": 168.625,
+    "extents_mm": [
+      13.1983,
+      13.2,
+      2.5
+    ],
+    "sha256": "23672beb52fe5706187a3ae489d18b48e0c3477f0ecdb736167fd9cb39bd1d2a"
+  },
+  "power-cap": {
+    "viewer_id": "Key cap",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/power-cap.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/power-cap.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/power-cap.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        36.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        12.5
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -33.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "bed_face": "Back flange face",
+    "brim": "None",
+    "assembly_volume_mm3": 42.1499,
+    "extents_mm": [
+      7.699,
+      7.7,
+      1.32
+    ],
+    "sha256": "5f568806c412dea751cfd2756eb365d68b1d273782ad58715ec50655ebff0f13"
+  },
+  "rod-grip": {
+    "viewer_id": "Removable rod grip",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/rod-grip.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/rod-grip.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/rod-grip.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -17.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        16.7638261015
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0,
+        5.0000001
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      -1.0,
+      0.0
+    ],
+    "bed_face": "Flat dovetail leading nose",
+    "brim": "8 mm outer brim",
+    "assembly_volume_mm3": 51763.3309,
+    "extents_mm": [
+      31.0,
+      34.5467,
+      130.4
+    ],
+    "sha256": "bd01b66469fc246ee8f7bc4490af0b6b5c32600f4e5809a07521538c3c04e4cf"
+  },
+  "grip-screw-keeper": {
+    "viewer_id": "Grip screw keeper",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/grip-screw-keeper.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/grip-screw-keeper.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/grip-screw-keeper.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -17.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        24.5
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        15.06
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "bed_face": "Washer face",
+    "brim": "None",
+    "assembly_volume_mm3": 84.5057,
+    "extents_mm": [
+      9.02,
+      9.0188,
+      1.59
+    ],
+    "sha256": "42adc94b176ae1d6763725a28c78ef1ab10862975d5d382705c291059f5143ba"
+  },
+  "receiver-nut-keeper": {
+    "viewer_id": "Receiver nut keeper",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/receiver-nut-keeper.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/receiver-nut-keeper.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/receiver-nut-keeper.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -17.0
+      ],
+      [
+        0.0,
+        -1.0,
+        -0.0,
+        -24.5
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        5.95
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "bed_face": "Closed flat cap face",
+    "brim": "None",
+    "assembly_volume_mm3": 34.2731,
+    "extents_mm": [
+      7.7,
+      7.699,
+      0.83
+    ],
+    "sha256": "cc8201225b69649f153c787ac7b3d54465c6b58ebbf9059e78344854342ebdb4"
+  },
+  "key-board-retainer-west": {
+    "viewer_id": "Retainer",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/key-board-retainer-west.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/key-board-retainer-west.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/key-board-retainer-west.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        37.75
+      ],
+      [
+        0.0,
+        -1.0,
+        -0.0,
+        29.525
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        19.15
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "bed_face": "Top bar face",
+    "brim": "None",
+    "assembly_volume_mm3": 134.0366,
+    "extents_mm": [
+      16.8,
+      5.35,
+      7.47
+    ],
+    "sha256": "79bf8874347422a7368fd6c18b4a39abf89defa52fee0205a9b513349599c916"
+  },
+  "battery-wire-bridge": {
+    "viewer_id": "bridge",
+    "coordinate_frame": "assembly",
+    "original_stl": "TW-A-0001-R0008/Print/battery-wire-bridge.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/battery-wire-bridge.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/battery-wire-bridge.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        10.5538617878
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -15.7341145635
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        -9.55
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "bed_face": "Flat deck underside",
+    "brim": "None",
+    "assembly_volume_mm3": 426.2453,
+    "extents_mm": [
+      47.5177,
+      12.0966,
+      3.33
+    ],
+    "sha256": "12490e06f93aa0ae1c6a8333f53de835fde79d280d805d7fcd41003ee345a457"
+  },
+  "PKCELL-max-body-with-wire-sockets": {
+    "viewer_id": null,
+    "coordinate_frame": "supplier gauge",
+    "original_stl": "TW-A-0001-R0008/Print/PKCELL-max-body-with-wire-sockets.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/PKCELL-max-body-with-wire-sockets.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/PKCELL-max-body-with-wire-sockets.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        -0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "bed_face": "Maximum-pack broad face",
+    "brim": "None",
+    "assembly_volume_mm3": 11630.7906,
+    "extents_mm": [
+      35.3,
+      62.3,
+      5.3
+    ],
+    "sha256": "02f3cc2959909541cb1fb11ef2e718a71b5a21ef75b5b74cae55b110fc77404c"
+  },
+  "Adafruit-258-CAD-with-PCM-and-stubs": {
+    "viewer_id": null,
+    "coordinate_frame": "supplier gauge",
+    "original_stl": "TW-A-0001-R0008/Print/Adafruit-258-CAD-with-PCM-and-stubs.stl",
+    "assembly_brep": "../TW-A-0001-R0009/CAD/Adafruit-258-CAD-with-PCM-and-stubs.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/Adafruit-258-CAD-with-PCM-and-stubs.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        3.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        30.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "bed_face": "Flat end opposite lead stubs",
+    "brim": "5 mm outer brim",
+    "assembly_volume_mm3": 11069.8975,
+    "extents_mm": [
+      37.0,
+      6.0,
+      63.0
+    ],
+    "sha256": "00d6d7a89e41ef77ed18c887e07ebcd468e7f56cc53aea8d2870b24d597f7c28"
+  },
+  "usb-c-shield-mask": {
+    "viewer_id": "usbSurround",
+    "coordinate_frame": "assembly",
+    "original_stl": null,
+    "assembly_brep": "../TW-A-0001-R0009/CAD/usb-c-shield-mask.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/usb-c-shield-mask.stl",
+    "assembly_to_print": [
+      [
+        0.0,
+        0.0,
+        -1.0,
+        19.33
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        39.7800001
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "bed_face": "Full outward-facing diaphragm",
+    "brim": "None",
+    "material": "Opaque TPU 95A, shell-colour flange and matte charcoal lip",
+    "assembly_volume_mm3": 36.2611,
+    "extents_mm": [
+      8.01,
+      13.88,
+      0.51
+    ],
+    "sha256": "ed765e28ffcbb26bfcc842a749ef9b253c336eaabe7df4a15c33af6ed5a79d87",
+    "print_source_brep": "CAD/usb-c-shield-mask-unloaded.brep",
+    "shape_state": "Preloaded service shape in assembly_brep; stress-free shape in print_source_brep and print_stl.",
+    "print_volume_mm3": 36.2611,
+    "radial_preload_mm": 0.38
+  },
+  "status-charge-guide": {
+    "viewer_id": "statusChgGuide",
+    "coordinate_frame": "assembly",
+    "original_stl": null,
+    "assembly_brep": "../TW-A-0001-R0009/CAD/status-charge-guide.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/status-charge-guide.stl",
+    "assembly_to_print": [
+      [
+        0.8816814321,
+        -0.32298496,
+        -0.3439746617,
+        42.5053333027
+      ],
+      [
+        -0.32298496,
+        0.1183185679,
+        -0.9389789306,
+        2.4539872831
+      ],
+      [
+        0.3439746617,
+        0.9389789306,
+        0.0,
+        23.4326238359
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0.3439746617,
+      0.9389789306,
+      0.0
+    ],
+    "bed_face": "Longitudinal guide flat",
+    "brim": "3 mm outer brim",
+    "material": "Clear optical-grade resin or transparent PETG fit prototype",
+    "assembly_volume_mm3": 12.9314,
+    "extents_mm": [
+      8.7819,
+      12.3398,
+      1.1268
+    ],
+    "sha256": "91647ce61b6cb100b4d7c6777f86529c24d7ddb55ff6e72b9f6926f7ccac765e"
+  },
+  "status-usb-guide": {
+    "viewer_id": "statusUsbGuide",
+    "coordinate_frame": "assembly",
+    "original_stl": null,
+    "assembly_brep": "../TW-A-0001-R0009/CAD/status-usb-guide.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/status-usb-guide.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        46.31
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        13.1
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.6000001
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      -0.0,
+      1.0,
+      0.0
+    ],
+    "bed_face": "Longitudinal guide flat",
+    "brim": "3 mm outer brim",
+    "material": "Clear optical-grade resin or transparent PETG fit prototype",
+    "assembly_volume_mm3": 8.7323,
+    "extents_mm": [
+      7.32,
+      1.2,
+      1.2
+    ],
+    "sha256": "a9cfda6d2fcd0031a487e3a490ef514ca4f501d2a45f067178bdfc6e8e97d1b3"
+  },
+  "status-power-guide": {
+    "viewer_id": "statusPwrGuide",
+    "coordinate_frame": "assembly",
+    "original_stl": null,
+    "assembly_brep": "../TW-A-0001-R0009/CAD/status-power-guide.brep",
+    "print_stl": "../TW-A-0001-R0009/Print/status-power-guide.stl",
+    "assembly_to_print": [
+      [
+        0.8838819442,
+        0.3203664353,
+        0.3407609951,
+        31.0419839787
+      ],
+      [
+        0.3203664353,
+        0.1161180558,
+        -0.9401499584,
+        29.2537345815
+      ],
+      [
+        -0.3407609951,
+        0.9401499584,
+        0.0,
+        -22.1516440965
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      -0.3407609951,
+      0.9401499584,
+      0.0
+    ],
+    "bed_face": "Longitudinal guide flat",
+    "brim": "3 mm outer brim",
+    "material": "Clear optical-grade resin or transparent PETG fit prototype",
+    "assembly_volume_mm3": 12.9314,
+    "extents_mm": [
+      14.015,
+      4.449,
+      1.1282
+    ],
+    "sha256": "c58766b2d7500945a5adf90e5d8950970dd391ec6edf4ce613cb7e991b07d60f"
+  },
+  "service-cover": {
+    "viewer_id": "serviceCover",
+    "coordinate_frame": "assembly",
+    "assembly_brep": "CAD/service-cover.brep",
+    "print_stl": "Print/service-cover.stl",
+    "assembly_to_print": [
+      [
+        1,
+        0,
+        0,
+        17
+      ],
+      [
+        0,
+        0,
+        -1,
+        20.5
+      ],
+      [
+        0,
+        1,
+        0,
+        35.7
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "build_up_assembly": [
+      0,
+      1,
+      0
+    ],
+    "bed_face": "Flat outer face",
+    "brim": "None",
+    "material": "Opaque TPU 95A, case colour",
+    "assembly_volume_mm3": 375.6702,
+    "extents_mm": [
+      28.8,
+      8.8,
+      4.52
+    ],
+    "sha256": "c27e103a25f009add42ce397efa5d36b027f01933469f4bd5742828d7264aa92"
+  }
+}

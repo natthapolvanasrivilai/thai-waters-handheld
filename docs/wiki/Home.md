@@ -1,5 +1,7 @@
 # Thai Waters product wiki
 
+[Hardware closure and playtest issues](../../quality/hardware-gate.md) · [Open the private tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
+
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html)
 
 This handbook follows a unit from a cast on the simulator through component selection, enclosure fit, programming, factory acceptance and sale. Start with the activity below, or [download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/firmware-v0.9.4/Thai-Waters-handbook.html). Open the downloaded HTML in a browser. The playable game, 3D meshes, circuit traces and costing data are embedded. A local copy is also available at [docs/index.html](../index.html) in your checkout.

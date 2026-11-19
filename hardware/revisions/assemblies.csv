@@ -11,3 +11,4 @@ TW-A-0002-R0002,Rev F wiring,Electrical integration package,Base harness and top
 TW-A-0001-R0008,,Matched FDM enclosure print set,Twelve build-oriented PETG device parts with seven redesigned installed solids. Two inert gauges accompany the print package as shop tools.,hardware/mechanical/TW-A-0001-R0008/PRINT-GUIDE.md,R0008-001
 TW-A-0001-R0009,,Source-model inspection enclosure,"Fitted speaker, close-fitting USB-C access, separated light guides and matched prints.",hardware/mechanical/TW-A-0001-R0009/assembly-parts.json,R0009-001
 TW-A-0002-R0003,,USB status and haptic integration,Independent USB indication and autonomous power and charging status.,hardware/electronics/usb-status-r0003/README.md,R0003-001
+TW-A-0001-R0010,,Dressed enclosure with removable lower service cover,"Matched R0009 print set plus P17 opaque TPU cover for PWR, RESET and BOOT.",hardware/mechanical/TW-A-0001-R0010/README.md,R0010-001

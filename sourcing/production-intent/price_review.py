@@ -1,4 +1,5 @@
-"""Roll up the dressed R0009 prototype BOM using the released slice and wire routes."""
+"""Roll up the selected prototype BOM using its sliced parts and dressed wire routes."""
+import argparse
 import csv
 import hashlib
 import json
@@ -10,9 +11,12 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
-CAD = ROOT / "hardware/mechanical/TW-A-0001-R0009"
+parser = argparse.ArgumentParser()
+parser.add_argument("--revision", choices=("R0009", "R0010"), default="R0009")
+revision = parser.parse_args().revision
+CAD = ROOT / "hardware/mechanical" / f"TW-A-0001-{revision}"
 ELECTRONICS = ROOT / "hardware/electronics"
-BOM = HERE / "R0009-buy-make-bom.csv"
+BOM = HERE / f"{revision}-buy-make-bom.csv"
 D = Decimal
 
 
@@ -92,8 +96,8 @@ for row in rows:
         printed.add(mpn)
         piece = slices[mpn]
         weight = D(str(piece["total_g"]))
-        rate = D(".045") if mpn == "usb-c-shield-mask" else D(".025")
-        material = "two opaque TPU 95A colours" if mpn == "usb-c-shield-mask" else "transparent PETG" if mpn.startswith("status-") else "opaque PETG"
+        rate = D(".045") if mpn in {"usb-c-shield-mask", "service-cover"} else D(".025")
+        material = "two opaque TPU 95A colours" if mpn == "usb-c-shield-mask" else "case-colour opaque TPU 95A" if mpn == "service-cover" else "transparent PETG" if mpn.startswith("status-") else "opaque PETG"
         row["USD at 1"] = str(weight * rate)
         row["Price basis"] = f"{weight} g {material} × USD {rate * 1000}/kg on single-material slice, includes slice support and brim. Two-colour TPU changeover excluded."
         grams += weight
@@ -115,12 +119,13 @@ for row in rows:
     details.append(dict(Ref=ref,group=category,Variant=row["Variant"],Description=row["Description"],mpn=mpn,
                         qty=qty,UOM=row["UOM"],price=price if price is not None else "",ext=rounded(cost,6),
                         Source=row["Source"],url=url,basis=row["Price basis"]))
-if len(printed) != 16 or len(set(slices) - printed) != 2:
-    raise ValueError("Expected 16 installed prints and two excluded battery gauges")
+expected_print_count = {"R0009": 16, "R0010": 17}[revision]
+if len(printed) != expected_print_count or len(set(slices) - printed) != 2:
+    raise ValueError(f"Expected {expected_print_count} installed prints and two excluded battery gauges")
 
 write_csv(BOM, rows)
-write_csv(HERE / "R0009-prototype-budget.csv", details)
-write_csv(HERE / "R0009-source-evidence.csv", evidence)
+write_csv(HERE / f"{revision}-prototype-budget.csv", details)
+write_csv(HERE / f"{revision}-source-evidence.csv", evidence)
 materials = sum(totals.values())
 hours = D(seconds) / D(3600)
 labor = D("2.5") * 12
@@ -145,5 +150,5 @@ summary = dict(
                       "labor_usd":usd(labor),"printer_usd":usd(machine),"energy_usd":usd(power)},
     scope="One dressed, packaged prototype with rumble, handle, full artwork card and cable. Excludes RTC backup cell, shop gauges, two-colour purge and setup, tax, freight, yield and production qualification. Totals use unrounded extensions."
 )
-(HERE / "R0009-budget.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False)+"\n",encoding="utf8")
+(HERE / f"{revision}-budget.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False)+"\n",encoding="utf8")
 print(json.dumps(summary,indent=2,ensure_ascii=True))

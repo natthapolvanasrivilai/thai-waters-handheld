@@ -1,5 +1,7 @@
 # Thai Waters handheld
 
+[Hardware closure and playtest issues](quality/hardware-gate.md) · [Open the private tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
+
 [Private touch playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) · [0.9.4 handheld controller preview](firmware/Phone-controller.md) · [Download the USB prototype](releases/prototypes/Thai-Waters-controller-0.9.4.zip) · [Clock and collection recovery](docs/wiki/Clock-and-saves.md)
 
 [R0009 dressed hardware](docs/wiki/Hardware-and-3D.md) · [One-unit BOM and price research](docs/wiki/BOM-and-business.md) · [Current release and hardware milestone](docs/wiki/Software-and-tests.md#current-release)

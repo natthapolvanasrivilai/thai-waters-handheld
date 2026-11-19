@@ -1,0 +1,9 @@
+{
+  "source_assembly": "TW-A-0001-R0009",
+  "source_step_sha256": "b00a510732936987fbd56f1ba235df6cd6b67a716ea4e9717c0161fd88835b67",
+  "installed_step_components": 135,
+  "step_sha256": "1d4b7b08d1cc3e387dd93d26b043cb375c6f653a1bbed839e622554542be339e",
+  "packed_step_sha256": "29e97d75ddd78bcc2724cb4a1750438b5537fed868c21ef0f2a4c59144beddd4",
+  "max_roundtrip_absolute_volume_delta_mm3": 0.000298,
+  "max_bounds_delta_mm": 0.0001
+}

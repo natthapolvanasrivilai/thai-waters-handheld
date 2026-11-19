@@ -2,7 +2,7 @@
 
 The next inert fit print uses enclosure **TW-A-0001-R0008** (FDM print set) and electrical integration package **TW-A-0002-R0002** (Rev F wiring). Record both IDs on the traveler. Record the firmware version and binary SHA-256 separately. An assembly ID identifies a design configuration. Each physical unit still needs its own serial, option set, incoming part lots and test results.
 
-[R0009 engineering review, paired with R0003 electrical integration](../mechanical/TW-A-0001-R0009/README.md) includes the dressed cable verification. The register identifies the engineering configuration separately from first-article approval.
+[R0010 engineering review](../mechanical/TW-A-0001-R0010/README.md) adds the removable P17 service cover. Its parent enclosure has 17 device print positions and pairs with R0003 electrical integration. The historical [R0009 engineering review, paired with R0003 electrical integration](../mechanical/TW-A-0001-R0009/README.md) includes the dressed cable verification. The register identifies the engineering configuration separately from first-article approval.
 
 ## Find a baseline
 

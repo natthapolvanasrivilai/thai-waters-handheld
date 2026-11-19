@@ -1,0 +1,44 @@
+{
+  "groups_usd": {
+    "Controller, battery, reel sensor and magnet": 48.86,
+    "Audio and rumble": 11.16,
+    "Wiring, switches, indicators and consumables": 11.34,
+    "Fasteners and handle hardware": 6.72,
+    "Printed parts": 2.03,
+    "Pack and USB cable": 11.95,
+    "Full artwork microSD": 19.99
+  },
+  "variant_materials_usd": {
+    "Core": 81.04,
+    "Rumble": 9.08,
+    "Handle": 1.95,
+    "Production hold": 0.0,
+    "Full artwork": 19.99
+  },
+  "line_count": 75,
+  "positive_quantity_lines": 74,
+  "installed_prints": 17,
+  "printed_grams": 80.82,
+  "sliced_hours": 5.995,
+  "materials_usd": 112.06,
+  "conversion_usd": 34.6,
+  "assembled_usd": 146.65,
+  "built_in_only_materials_usd": 92.07,
+  "built_in_only_assembled_usd": 126.66,
+  "cash_low_usd": 152.06,
+  "cash_high_usd": 227.06,
+  "cash_basis": "Illustrative stocked-workshop allocation with USD 25–70 in extra pack/setup charges and USD 15–45 in freight. Excludes tax and labor. This is not an empty-shelf purchase quote.",
+  "empty_shelf_checkout_usd": null,
+  "empty_shelf_example": "Just the selected Kester spool ($263.31), 3M 4991 roll ($179.24), DOWSIL tube ($75.88) and two Jonard spools ($24.86 each) total $568.15 before shipment or any other line. Converter, PCB and remaining checkout totals require quotes.",
+  "conversion_basis": {
+    "assembly_hours": 2.5,
+    "labor_usd_per_hour": 12,
+    "printer_usd_per_hour": 0.75,
+    "average_printer_kW": 0.12,
+    "energy_usd_per_kWh": 0.14,
+    "labor_usd": 30.0,
+    "printer_usd": 4.5,
+    "energy_usd": 0.1
+  },
+  "scope": "One dressed, packaged prototype with rumble, handle, full artwork card and cable. Excludes RTC backup cell, shop gauges, two-colour purge and setup, tax, freight, yield and production qualification. Totals use unrounded extensions."
+}
