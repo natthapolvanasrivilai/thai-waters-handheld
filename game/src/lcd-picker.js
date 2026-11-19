@@ -5,7 +5,7 @@
  const picker=document.createElement('div');
  picker.id='lcdPicker';picker.hidden=true;
  picker.setAttribute('role','dialog');picker.setAttribute('aria-labelledby','lcdPickerTitle');
- picker.innerHTML='<div class="menubar"><button type="button">Back</button><h2 id="lcdPickerTitle"></h2></div><div class="choice-list" role="listbox" aria-labelledby="lcdPickerTitle"></div>';
+ picker.innerHTML='<div class="menubar"><button type="button" data-navicon="back" aria-label="Back" title="Back"></button><h2 id="lcdPickerTitle"></h2></div><div class="choice-list" role="listbox" aria-labelledby="lcdPickerTitle"></div>';
  menu.append(picker);
  const heading=picker.querySelector('h2'),list=picker.querySelector('.choice-list');
  const triggers=new Map();
@@ -28,12 +28,17 @@
  function openPicker(select){
   const trigger=triggers.get(select);
   if(trigger.disabled)return;
-  current=select;heading.textContent=trigger.dataset.label;
+  current=select;picker.dataset.field=select.id;heading.textContent=trigger.dataset.label;
   trigger.setAttribute('aria-expanded','true');
   const options=document.createDocumentFragment();
   for(const [index,option] of [...select.options].entries()){
    const row=document.createElement('button');
    row.type='button';row.textContent=option.text;row.dataset.index=String(index);
+   if(select.id==='hookBait'){
+    const icon=document.createElement('canvas');icon.width=48;icon.height=30;icon.setAttribute('aria-hidden','true');
+    const label=document.createElement('span');label.textContent=index===2?L('Rum rice bran'):option.text;
+    row.classList.add('bait-option');row.replaceChildren(icon,label);drawBait(icon,index);
+   }
    row.setAttribute('role','option');row.setAttribute('aria-selected',String(option.selected));
    row.disabled=option.disabled;row.tabIndex=option.selected?0:-1;options.append(row);
   }
@@ -74,7 +79,7 @@
   const field=document.createElement('div'),caption=document.createElement('span'),wrap=document.createElement('span');
   field.className='lcd-choice';wrap.className='lcd-select-wrap';
   caption.textContent=[...label.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE).map(n=>n.textContent.trim()).join(' ');
-  const trigger=document.createElement('button');trigger.type='button';trigger.dataset.label=caption.textContent;
+  const trigger=document.createElement('button');trigger.type='button';trigger.dataset.label=caption.textContent;caption.dataset.choiceCaption=caption.textContent;
   trigger.setAttribute('aria-haspopup','listbox');trigger.setAttribute('aria-controls','lcdPicker');trigger.setAttribute('aria-expanded','false');
   trigger.onclick=()=>openPicker(select);
   trigger.onkeydown=e=>{if(e.key==='ArrowDown'){e.preventDefault();openPicker(select);}};
@@ -83,6 +88,14 @@
   select.addEventListener('change',()=>sync(select));
   new MutationObserver(()=>sync(select)).observe(select,{attributes:true,childList:true,subtree:true});
  }
+ document.addEventListener('game-language',()=>{
+  const back=picker.querySelector('.menubar button');back.title=L('Back');back.setAttribute('aria-label',L('Back'));closePicker(false);
+  for(const [select,button] of triggers){
+   const caption=button.closest('.lcd-choice').querySelector('[data-choice-caption]');
+   caption.textContent=L(caption.dataset.choiceCaption);button.dataset.label=caption.textContent;
+   select.setAttribute('aria-label',caption.textContent);sync(select);
+  }
+ });
  new MutationObserver(()=>{
   if(menu.open){for(const select of triggers.keys())sync(select);}else closePicker(false);
  }).observe(menu,{attributes:true,attributeFilter:['open']});

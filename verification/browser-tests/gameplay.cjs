@@ -13,6 +13,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
     return draw.call(this,img,...args);
    };
   });
+  await pg.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await pg.goto(pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href);
   await pg.waitForFunction(()=>!document.querySelector('#act').disabled,null,{timeout:12000});
   await pg.waitForFunction(()=>document.documentElement.dataset.device);if(await pg.locator('#product').isVisible())await pg.locator('#viewMode').click();
@@ -46,16 +47,15 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   const widths=await pg.evaluate(()=>window.specimenFrames.map(f=>f.w));
   assert(widths.length>1 && widths.every(w=>w===widths[0]),'Specimen stays full size until filed');
   const heldWeight=await pg.evaluate(()=>g.grams());
-  await pg.reload();await pg.waitForFunction(()=>g?.state()===5 && !$('catchBook').hidden);
+  await pg.reload();await pg.waitForFunction(()=>g?.state()===5 && !$('catchContinue').hidden);
   assert.equal(await pg.evaluate(()=>g.caught(40)),0);
   assert.equal(await pg.evaluate(()=>g.grams()),heldWeight,'Pending catch retains its individual weight after reload');
-  await pg.locator('#catchBook').click();await pg.waitForFunction(()=>document.activeElement.id==='species-40');
-  await pg.locator('#resume').click();
+  await pg.locator('#catchContinue').click();await pg.waitForFunction(()=>g.state()===0&&!document.querySelector('#menu').open);
   assert.equal(await pg.evaluate(()=>g.caught(40)),1,'Transfer must not count the catch twice');
   await menu('rod');await pg.selectOption('#finish','Copper');await pg.selectOption('#technique',{label:'Vertical jig'});await pg.locator('#builds button').nth(1).click();assert.equal(await pg.evaluate(()=>g.rank(1)),1);await pg.locator('#resume').click();
   await pg.reload();await pg.waitForFunction(()=>!document.querySelector('#act').disabled);assert.equal(await pg.evaluate(()=>g.caught(40)),1);assert.equal(await pg.evaluate(()=>finish),1);
   assert.equal(await pg.evaluate(()=>g.technique()),2,'Remember the selected presentation');
-  await menu('book');assert.equal(await pg.locator('.record').count(),12);await pg.locator('#bookFilter').selectOption({label:'Mythic'});assert.equal(await pg.locator('.record').count(),5);await pg.locator('#resume').click();
+  await menu('book');assert.equal(await pg.locator('.record').count(),8);await pg.locator('#bookFilter').selectOption({label:'Mythic'});assert.equal(await pg.locator('.record').count(),5);await pg.locator('#resume').click();
   await pg.setViewportSize({width:390,height:844});await menu('sensors');
   // Gravity in m/s², rest / raised vectors and stable dwell.
   for(const [xyz,button] of [[[0,0,9.80665],'restPose'],[[0,6.30,7.51],'liftPose']]){
@@ -103,6 +103,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
    let leftmost=480,rightmost=0,lowest=0;
    try{
     ctx.fillText=function(text,x,y){
+     if(text==='Tap to continue'){if(x!==240||y!==310)problems.push([text,x,y]);return;}
      const right=x+ctx.measureText(text).width;
      leftmost=Math.min(leftmost,x);rightmost=Math.max(rightmost,right);lowest=Math.max(lowest,y);
      if(x<200 || right>468 || y>286 || y<72)problems.push([text,x,y,right]);

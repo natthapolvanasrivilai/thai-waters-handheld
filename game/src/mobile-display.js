@@ -14,7 +14,7 @@
   root.classList.toggle('immersive',fill);
   const leaving=nativeActive()||(fill&&(!allowed()||declined||manual));
   const label=leaving?'Exit fullscreen':'Enter fullscreen';
-  button.title=label;button.setAttribute('aria-label',label);
+  button.title=label;button.setAttribute('aria-label',L(label));
   button.setAttribute('aria-pressed',String(fill));
   requestAnimationFrame(()=>{fitFlat();if(!product.hidden)physicalView?.resize();});
  }

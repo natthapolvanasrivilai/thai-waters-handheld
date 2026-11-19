@@ -118,6 +118,7 @@ EXPORT void restPose(float x,float y,float z){rest=unit({x,y,z});calibrated=fals
 EXPORT int liftPose(float x,float y,float z){pose={rest,unit({x,y,z})};calibrated=pose.valid();return calibrated;}
 EXPORT float angle(float x,float y,float z){return calibrated?pose.tilt(unit({x,y,z})):0;}
 EXPORT int gesture(float deg,unsigned now){if(!calibrated)return 0;motion.sample(deg,pose.span(),now);g.rodHeldHigh=motion.high;return motion.cast?1:motion.rise?2:0;}
+EXPORT void handheldRodHigh(int high){g.rodHeldHigh=high!=0;}
 EXPORT void resetGesture(){motion=Gesture{};g.rodHeldHigh=false;}
 EXPORT void travel(int i){if(i>=0 && i<siteCount){g.site=i;s.site=i;g.enter(Phase::Ready);cuePending=false;}}
 static Wheel phoneDial;

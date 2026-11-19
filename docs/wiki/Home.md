@@ -15,3 +15,5 @@ This handbook follows a unit from a cast on the simulator through component sele
 5. [Test evidence and market readiness](Validation-and-compliance.md)
 6. [Build, record and service a unit](Factory-and-service.md)
 7. [Source parts, cost a batch and plan the launch](BOM-and-business.md)
+
+[Clock retention and collection recovery](Clock-and-saves.md)

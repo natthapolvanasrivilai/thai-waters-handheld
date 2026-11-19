@@ -76,7 +76,7 @@ const paintLcdInterface = (() => {
    const rect=range.getBoundingClientRect();
    lettering(content.slice(lineStart,lineEnd).replace(/\s+/g,' '),rect.left-origin.left,baseline(rect),outline);
   }
-  for (const match of content.matchAll(/\S+/g)) {
+  for (const match of layoutSegments(content)) {
    range.setStart(node,match.index);range.setEnd(node,match.index+match[0].length);
    const top=range.getBoundingClientRect().top;
    if (lineStart<0 || Math.abs(top-lineTop)>1) {
@@ -141,7 +141,8 @@ const paintLcdInterface = (() => {
     pen.fillStyle=z>a?'#526f60':'#fff0c7';pen.fillRect(left+a,y-7,Math.max(1,z-a),14);
     pen.fillStyle=style.color;
    }
-   pen.fillText(el.value,left,y);pen.restore();
+   if(!el.value)pen.fillStyle='#bccdbe';
+   pen.fillText(el.value||el.placeholder||'',left,y);pen.restore();
   }
  }
  function scrollbar(el,b) {
@@ -157,7 +158,8 @@ const paintLcdInterface = (() => {
   const style=getComputedStyle(el);
   if(style.visibility!=='visible') return;
   pen.save();pen.globalAlpha*=Number(style.opacity);
-  background(el,style,b);
+  if(el.id==='act')background(el,style,{x:b.x+3,y:b.y+6,w:b.w-6,h:b.h-12});
+  else background(el,style,b);
   const scroll=style.overflowY==='auto'||style.overflowY==='scroll';
   if(scroll || style.overflow==='hidden') {
    pen.beginPath();pen.roundRect(b.x,b.y,b.w,b.h,px(style.borderTopLeftRadius));pen.clip();
@@ -184,8 +186,8 @@ const paintLcdInterface = (() => {
   pen.restore();
  }
  return function(context) {
-  const state=[menu.open,$('spot').textContent,$('pondClock').textContent,$('simBattery').value,
-   $('act').textContent,$('act').disabled,$('catchBook').hidden,$('startSound').hidden,$('liveCrew').textContent].join('|');
+  const state=[language,menu.open,$('spot').textContent,$('pondClock').textContent,$('simBattery').value,
+   $('act').textContent,$('act').disabled,$('catchContinue').hidden,$('startSound').hidden,$('liveCrew').textContent].join('|');
   if(menuChanges.takeRecords().length || dirty || state!==previousState) {
    // Measure in native LCD coordinates even when the hit surface is projected
    // onto the angled 3D model. Restore its transform before the browser paints.
@@ -196,7 +198,7 @@ const paintLcdInterface = (() => {
     const clip={top:0,bottom:320};
     paintElement(ui.querySelector('.lcd-hud'),clip,true);
     if(menu.open)paintElement(menu,clip);
-    else for(const el of [ui.querySelector('.lcd-actions'),$('catchBook'),$('startSound'),$('liveCrew')])paintElement(el,clip);
+    else for(const el of [ui.querySelector('.lcd-actions'),$('startSound'),$('liveCrew')])paintElement(el,clip);
     previousState=state;dirty=false;
    } finally {ui.style.transform=projection;}
   }

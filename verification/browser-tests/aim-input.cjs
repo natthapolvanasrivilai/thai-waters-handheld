@@ -10,7 +10,8 @@ const {chromium} = require('playwright-core');
   });
   try {
     const page = await browser.newPage({viewport: {width: 960, height: 850}});
-    await page.goto(pathToFileURL(process.env.GAME_HTML || path.resolve(__dirname, '../../game/Thai-Waters-play.html')).href);
+    await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
+  await page.goto(pathToFileURL(process.env.GAME_HTML || path.resolve(__dirname, '../../game/Thai-Waters-play.html')).href);
     await page.waitForFunction(() => window.document.documentElement.dataset.device && !document.querySelector('#act').disabled);
     if (await page.locator('#product').isVisible()) await page.locator('#viewMode').click();
     const hidden=await page.evaluate(()=>{

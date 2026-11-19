@@ -19,7 +19,7 @@ async function raster(page) {
    }
    return {visible,hash};
   }
-  return {size:[overlay.width,overlay.height],transparent:samples(140,0,120,29).visible,
+  return {size:[overlay.width,overlay.height],transparent:samples(170,0,60,25).visible,
    header:samples(6,0,130,29).visible,action:samples(420,286,59,33).visible,
    drawer:samples(245,38,222,266),hitOpacity:getComputedStyle(lcdUI).opacity};
  });
@@ -30,6 +30,7 @@ async function raster(page) {
  try{
   const url=pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href;
   const p=await browser.newPage({viewport:{width:1050,height:780}});
+  await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await p.goto(url);await p.waitForFunction(()=>g&&physicalView);
   const main=await raster(p);
   assert.deepEqual(main.size,[480,320]);assert.equal(main.hitOpacity,'0');
@@ -55,15 +56,14 @@ async function raster(page) {
    assert(await p.evaluate(()=>{
     const shell=$('lcdUI').getBoundingClientRect(),dialog=$('menu').getBoundingClientRect();
     return $('menu').closest('#product')&&dialog.top>=shell.top&&dialog.right<=shell.right+1
-      &&dialog.bottom<=shell.bottom+1&&dialog.left>shell.left+shell.width*.43&&dialog.width<shell.width*.55;
+      &&dialog.bottom<=shell.bottom+1&&($('menu').dataset.page==='book'?dialog.width>=shell.width*.99:dialog.left>shell.left+shell.width*.43&&dialog.width<shell.width*.55);
    }),'Route left the modeled screen: '+route);
    const drawer=(await raster(p)).drawer;
    assert(drawer.visible>50000,'missing drawer pixels on '+route);rasterPages.add(drawer.hash);
    if(route==='book'){
-    await p.locator('[data-section=book]').evaluate(el=>el.scrollTop=200);
-    await p.waitForFunction(()=>document.querySelector('[data-section=book]').scrollTop>=190);
-    await p.evaluate(()=>new Promise(requestAnimationFrame));
-    assert.notEqual((await raster(p)).drawer.hash,drawer.hash,'journal scroll must change its pixels');
+    await p.locator('#species-0').click();assert(await p.locator('#bookDetail').isVisible());
+    assert.notEqual((await raster(p)).drawer.hash,drawer.hash,'specimen detail must change its pixels');
+    await p.locator('#back').click();
    }
    if(route==='sound'){
     await p.locator('#rumbleLevel + button').click();
@@ -77,6 +77,7 @@ async function raster(page) {
   assert.equal(rasterPages.size,6,'six distinct rasterized routes');
   await p.locator('#resume').click();assert.equal(await p.locator('#menu').isVisible(),false);
   const phone=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:390,height:844}});
+  await phone.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await phone.goto(url);await phone.waitForFunction(()=>g);
   await phone.setViewportSize({width:844,height:390});
   await phone.waitForFunction(()=>document.documentElement.classList.contains('immersive'));

@@ -14,7 +14,8 @@ const assert=require('node:assert/strict');
       window.pulses=[];
       Object.defineProperty(navigator,'vibrate',{configurable:true,value:pattern=>{pulses.push(pattern);return true;}});
     });
-    await page.goto(pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href);
+    await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
+  await page.goto(pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href);
     await page.waitForFunction(()=>!document.querySelector('#act').disabled);
     async function openMix(){
       await page.locator('#openMenu').tap();

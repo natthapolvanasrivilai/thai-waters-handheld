@@ -16,16 +16,17 @@ const assert=require('node:assert/strict');
   for(let i=0;i<2;i++){
    const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
    const page=await context.newPage();players.push(page);
-   await page.goto(invitation);await page.waitForFunction(()=>!$('act').disabled);
+   await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
+  await page.goto(invitation);await page.waitForFunction(()=>!$('act').disabled);
    await page.locator('#openMenu').tap();await page.locator('[data-to=crew]').tap();
    await page.waitForFunction(()=>!!cupBoard);
    await page.locator('#cupJoin').tap();await page.waitForFunction(()=>enteredCup===cupBoard.goal.day);
    await page.locator('#cupTravel').tap();
    // Resume a held specimen, as after a phone reload, and use the real touch filing path.
    await page.evaluate(bonus=>{const goal=cupBoard.goal;g.restoreCatch(goal.species,goal.minimum+bonus);pendingDay=goal.day;save();},i);
-   await page.waitForFunction(()=>!$('catchBook').hidden);
+   await page.waitForFunction(()=>!$('catchContinue').hidden);
    assert.equal(await page.evaluate(()=>g.caught(g.species())),0);
-   await page.locator('#act').tap();await page.waitForFunction(()=>cupBoard.best>0&&g.state()===0);
+   await page.locator('#catchContinue').tap();await page.waitForFunction(()=>cupBoard.best>0&&g.state()===0);
    assert.equal(await page.evaluate(()=>g.caught(g.species())),1);
   }
   const first=players[0];await first.locator('#openMenu').tap();await first.locator('[data-to=crew]').tap();

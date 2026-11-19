@@ -1,0 +1,3 @@
+Thai display lettering comes from [Syy BENEATHPOEM](https://github.com/Plaenithaan/Syy-BENEATHPOEM/tree/f73e8a33bff74ec0d94ad5b8abb01c4e839aa189/fonts/webfonts). The bundled WOFF2 files are Thai-script subsets of the hinted upstream web fonts, with all shaping features preserved. Their OFL notice travels in the standalone game and alongside these files.
+
+Syy UDT marks still waters and menu routes, Syy UDS marks river destinations, and Syy Flowey Bold marks coastal destinations, landed species and competition headings. Status readings, measurements and field notes use Noto Sans Thai. Latin names and numbers retain the existing game font.

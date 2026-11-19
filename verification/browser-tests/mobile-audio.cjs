@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 (async()=>{
  const webkitRun=process.env.TEST_WEBKIT==='1';
  const browser=webkitRun?await webkit.launch():await chromium.launch({executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
- const html=fs.readFileSync(path.resolve(__dirname,'../../game/Thai-Waters-play.html'));
+ const html=fs.readFileSync(process.env.PLAYTEST_HTML||path.resolve(__dirname,'../../game/Thai-Waters-play.html'));
  const server=http.createServer((req,res)=>{res.setHeader('content-type','text/html');res.end(html);});
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  try{
@@ -29,10 +29,29 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
    };
    Object.defineProperty(navigator,'vibrate',{configurable:true,value:undefined});
   });
+  await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await p.goto('http://127.0.0.1:'+server.address().port);
   await p.waitForFunction(()=>typeof g!=='undefined'&&g);
   const graph=await p.evaluate(()=>Boolean(window.AudioContext||window.webkitAudioContext));
+  const dial=p.locator('#dial'),rail=await dial.boundingBox(),field=await p.locator('#flatStage').boundingBox();
+  assert(rail.width>=104&&rail.x>=field.x+field.width,'Right thumb target clears the fishing surface.');
+  assert((await dial.locator('.dial-hub').boundingBox()).width>=44,'Visible hold target meets finger size.');
   await p.locator('#startSound').tap();
+  assert(await p.locator('#dialAutoRow').isVisible(),'iPhone exposes its user-operated reel control.');
+  {
+   await p.evaluate(()=>{
+    window.trustedReelTaps=[];window.startTurns=dialAngle;
+    document.getElementById('dialAuto').addEventListener('change',e=>trustedReelTaps.push(e.isTrusted));
+   });
+   await p.locator('#dialAuto').tap();assert(await p.locator('#dialAuto').isChecked());
+   await p.waitForFunction(()=>dialAngle-startTurns>65);
+   await p.locator('#dialAuto').tap();assert(!await p.locator('#dialAuto').isChecked());
+   const stopped=await p.evaluate(()=>dialAngle);await p.waitForTimeout(200);
+   assert.equal(await p.evaluate(()=>dialAngle),stopped);
+   assert.deepEqual(await p.evaluate(()=>trustedReelTaps),[true,true]);
+   await p.locator('#dialAuto').tap();await p.locator('#dial').tap({position:{x:8,y:60}});
+   assert(!await p.locator('#dialAuto').isChecked(),'Manual winding disengages automatic winding.');
+  }
   if(graph)await p.waitForFunction(()=>audio?.state==='running'&&probe.peak>.004&&probe.sources>4);
   assert(await p.evaluate(async()=>{
    const bytes=await (await fetch(speakerCheck.src)).arrayBuffer();

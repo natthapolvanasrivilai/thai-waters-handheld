@@ -4,6 +4,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
  try{
   const page=await browser.newPage({viewport:{width:1080,height:830},deviceScaleFactor:1});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await page.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);await page.waitForFunction(()=>document.documentElement.dataset.device&&g);
   assert.equal(await page.evaluate(()=>document.documentElement.dataset.device),'ready',errors.join('\n'));
   await page.waitForTimeout(900);

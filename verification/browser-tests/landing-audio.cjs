@@ -35,6 +35,7 @@ const {pathToFileURL}=require('node:url');
    };
   });
   const html=process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html');
+  await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await page.goto(pathToFileURL(path.resolve(html)).href);
   await page.waitForFunction(()=>!!g && !$('act').disabled);
   await page.evaluate(()=>{
@@ -78,10 +79,10 @@ const {pathToFileURL}=require('node:url');
   assert(capture.heard[0]<450,'Fanfare begins as the catch card opens');
   await page.reload();
   await page.waitForFunction(()=>g?.state()===5);
-  await page.keyboard.press('r');
+  await page.locator('#dial').tap();
   await page.waitForFunction(()=>audio?.state==='running' && g.age()>1400);
   assert.deepEqual(await page.evaluate(()=>landingProbe.heard),[],'Restored card stays quiet');
-  await page.locator('#act').tap();
+  await page.locator('#catchContinue').tap();
   // A second filing request is harmless even if two controls dispatch in one frame.
   await page.evaluate(()=>fileSpecimen());
   await page.waitForFunction(()=>g.state()===0);

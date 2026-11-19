@@ -9,12 +9,13 @@ function tournamentGoal(){
  return {day,spot,species:atlas.fish.indexOf(f),name:f.name,location:atlas.locations[spot].name,minimum:Math.ceil(f.low+(f.high-f.low)*.45)};
 }
 let cupBoard=null;
-function cupText(id,value){if($(id).textContent!==value)$(id).textContent=value;}
+function cupText(id,value){if($(id).textContent!==value)setUi($(id),value);}
 function drawCup(){
  const goal=cupBoard?.goal||tournamentGoal(), joined=enteredCup===goal.day;
  const timing=goal.species===40?' Fish at dusk or night.':goal.species===41?' Fish at dawn or night.':'';
- cupText('cupGoal',goal.name+' · '+goal.minimum+' cm minimum '+(g?readEngineText(g.measurement(goal.species,goal.minimum)).toLowerCase():'length')+(g?' · '+baitTip(goal.species):''));
- cupText('cupLocation',goal.location+' · closes at midnight, Bangkok time.'+timing);
+ if(language==='th')cupText('cupGoal',atlas.fish[goal.species].name+' · '+(g?L(readEngineText(g.measurement(goal.species,goal.minimum))):'ความยาว')+' อย่างน้อย '+goal.minimum+' ซม.'+(g?' · '+baitTip(goal.species):''));
+ else cupText('cupGoal',atlas.fish[goal.species].name+' · '+goal.minimum+' cm minimum '+(g?readEngineText(g.measurement(goal.species,goal.minimum)).toLowerCase():'length')+(g?' · '+baitTip(goal.species):''));
+ cupText('cupLocation',atlas.locations[goal.spot].name+' · closes at midnight, Bangkok time.'+timing);
  cupText('cupJoin',joined?'Fishing this cup':'Enter daily cup');
  $('cupJoin').disabled=joined||requestInFlight||location.protocol==='file:';
  $('cupTravel').disabled=!g||g.state()===5;
@@ -24,7 +25,7 @@ function drawCup(){
  const key=JSON.stringify(rows);
  if(list.dataset.rows!==key){
   list.dataset.rows=key;list.replaceChildren();
-  for(const r of rows){const line=document.createElement('div');line.textContent='#'+r.rank+'  '+(r.you?'You':r.angler)+'  ·  '+r.cm+' cm';list.append(line);}
+  for(const r of rows){const line=document.createElement('div');setUi(line,'#'+r.rank+'  '+(r.you?'You':r.angler)+'  ·  '+r.cm+' cm');list.append(line);}
  }
  cupText('cupEmpty',!rows.length?(location.protocol==='file:'?'Open the hosted or LAN game to compete.':cupNotice?'Waiting for the event host.':cupBoard?'No qualifying catches yet.':'Connecting to the standings…'):'');
 }

@@ -10,7 +10,8 @@ const {chromium} = require('playwright-core');
   for(const reduced of [false,true]){
    const page=await browser.newPage({viewport:reduced?{width:390,height:844}:{width:960,height:760},hasTouch:reduced,isMobile:reduced,reducedMotion:reduced?'reduce':'no-preference'});
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
-   await page.goto(url);await page.waitForFunction(()=>!document.getElementById('act').disabled);
+   await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
+  await page.goto(url);await page.waitForFunction(()=>!document.getElementById('act').disabled);
    if(await page.locator('#product').isVisible())await page.locator('#viewMode').click();
    assert.match(await page.title(),/Thai Waters/);
    assert.equal(await page.locator('#arrivalSkip').isVisible(),false,'Boot must start directly at the saved water');

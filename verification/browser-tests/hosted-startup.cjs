@@ -14,7 +14,8 @@ const {chromium, webkit} = require('playwright-core');
     // locally so this startup regression runs without a network or owner login.
     const url = 'https://thai-waters-pocket-angler.shoung0690.chatgpt.site/';
     await page.route(url, route => route.fulfill({path:path.resolve(__dirname,'../../game/Thai-Waters-play.html'),contentType:'text/html'}));
-    await page.goto(url);
+    await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
+  await page.goto(url);
     await page.waitForFunction(() => !document.getElementById('act').disabled);
     await page.locator('#act').tap();
     await page.waitForFunction(() => g.state() !== 0);
