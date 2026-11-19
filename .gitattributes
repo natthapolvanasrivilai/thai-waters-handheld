@@ -12,3 +12,4 @@
 *.wasm binary
 docs/index.html -text
 game/Thai-Waters-play.html -text
+docs/models/*.html -text

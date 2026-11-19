@@ -18,8 +18,14 @@ let mode='exploded',station=0,selected=null,isolation=null,axis=56,renderer,cam,
 const scene=new T.Scene(),host=by('stage');
 const gaze={assembled:[135,72,185],exploded:[150,50,117],interior:[120,85,-198],wiring:[-48,75,-198],grip:[80,-60,-170]};
 const nameFor={assembled:'Assembled product',exploded:'Exploded assembly',interior:'Internal assembly',wiring:'Wire routing',grip:'Slide-lock interface'};
+if(checks.revision==='G'){
+ gaze.battery=[32,-76,185];nameFor.battery='Battery bay';
+ stages[3][1]='Use the west-side key keeper with the original top-left cap and carrier.';
+ stages[4][1]='Install the inert gauge from above, dress both leads outward into the return tunnel, then fit the lift-out bridge and seat the PH adapter.';
+}
 const borderClass=new Set(['Housing','Bezel','A1-touch','A1-backing','A1-carrier']);
 function options(r){
+ if(r.batteryVariant)return by('cell').value===r.batteryVariant;
  if(['alt','drawing'].includes(r.option))return by('cell').value===r.option;
  if(['pack0','pack1'].includes(r.id)&&by('cell').value!=='catalog')return false;
  if(r.id==='Cell')return by('cell').value==='catalog';
@@ -32,6 +38,7 @@ function allowed(r,skipIsolation=false){
  if(!options(r))return false;
  if(!skipIsolation&&isolation)return isolation.id?r.id===isolation.id:r.group===isolation.group;
  if(station)return r.stage<=station;
+ if(mode==='battery')return r.id==='Housing'||r.id==='bridge'||r.id.startsWith('tieS')||r.id==='Retainer'||r.ref==='B1'||['ph','packplug','batt0','batt1','shrink0','shrink1','j7plug','A1-J7'].includes(r.id);
  if(mode==='interior')return !borderClass.has(r.id)&&r.id!=='Removable rod grip'&&r.option!=='rod';
  if(mode==='wiring')return r.group==='Wiring'||['A1-J7','A1-J8','A1-J9','A1-k3','A2-pcb','Speaker','Cell','cellAlt','cellDrawing','drvBoard','motor','Key PCB'].includes(r.id);
  if(mode==='grip')return r.group==='Rod handle'||r.id==='Housing';
@@ -40,8 +47,8 @@ function allowed(r,skipIsolation=false){
 const groups=[...new Set(data.map(r=>r.group))];
 for(const g of groups)by('group').add(new Option(g,g));
 by('evidence').textContent=checks.pair_tests+' dressed-part pairs checked. '+checks.intersections.filter(x=>x.status==='resolve').length+' unresolved nominal pairs at the '+checks.threshold_mm3+' mm³ threshold. Mating contacts are identified in the measurement ledger.';
-const cellHit=checks.cell_tests[0].intersections.find(h=>h.part==='Housing');
-by('cellResult').textContent='Supplier cell CAD overlaps the centered housing by '+cellHit.mm3+' mm³. Measure the incoming pack and protective cap before approving the pocket.';
+const cellHit=checks.cell_tests?.[0].intersections.find(h=>h.part==='Housing');
+if(cellHit)by('cellResult').textContent='Supplier cell CAD overlaps the centered housing by '+cellHit.mm3+' mm³. Measure the incoming pack and protective cap before approving the pocket.';
 function partList(){
  const search=by('find').value.toLowerCase().trim(),group=by('group').value;
  const entries=data.filter(r=>(group==='All groups'||r.group===group)&&[r.id,r.name,r.ref,r.kind].join(' ').toLowerCase().includes(search));
@@ -57,6 +64,7 @@ function partList(){
 function select(id,fromRegister=false){
  const r=lookup.get(id);if(!r)return;
  if(fromRegister&&!allowed(r)){
+  if(r.batteryVariant)by('cell').value=r.batteryVariant;
   if(r.id==='Cell'||['alt','drawing'].includes(r.option))by('cell').value=r.option||'catalog';
   if(r.option==='haptic')by('haptic').checked=true;if(r.option==='rod')by('rod').checked=true;if(r.option==='usb')by('usb').checked=true;
   isolation=null;station=0;mode='exploded';
@@ -64,11 +72,15 @@ function select(id,fromRegister=false){
  selected=id;sync();
 }
 function panel(){
+ if(checks.revision==='G'){
+  const v=by('cell').value,caseData=checks.variants[v];
+  by('cellResult').textContent=caseData.pair_tests+' seated pairs checked for this pack. '+caseData.intersections.filter(x=>x.status==='resolve').length+' unresolved. Open-shell insertion overlap: 0 mm³. Gauge on the print before installing a cell.';
+ }
  const r=lookup.get(selected);
  by('selected').textContent=r?r.name:nameFor[mode];
- by('ref').textContent=r?r.ref:'Rev F';
+ by('ref').textContent=r?r.ref:'Rev '+(checks.revision||'F');
  by('basis').textContent=r?r.kind:(station?'Assembly sequence':'Mechanical review');
- by('details').textContent=r?r.note:({exploded:'Select a part in the model or register to inspect its BOM reference and geometry source.',assembled:'The right-side reel is folded. The rear shoe remains on the case when the handle is removed.',interior:'Shell, glass and PCB substrate hidden to expose the mounted electronics.',wiring:'Connector bodies, switch leads, reel bus, battery, speaker and optional motor wiring in their seated reference poses.',grip:'The 35 mm rear dovetail locates the handle. The captive screw locks into the installed M3 nut.'})[mode];
+ by('details').textContent=r?r.note:({battery:'View the open bay, outboard PH saddle, bridge and routed leads for the selected pack.',exploded:'Select a part in the model or register to inspect its BOM reference and geometry source.',assembled:'The right-side reel is folded. The rear shoe remains on the case when the handle is removed.',interior:'Shell, glass and PCB substrate hidden to expose the mounted electronics.',wiring:'Connector bodies, switch leads, reel bus, battery, speaker and optional motor wiring in their seated reference poses.',grip:'The 35 mm rear dovetail locates the handle. The captive screw locks into the installed M3 nut.'})[mode];
  by('measure').textContent=r?['X','Y','Z'].map((a,i)=>a+' '+(r.bounds_mm[i*2+1]-r.bounds_mm[i*2]).toFixed(1)).join('  ·  ')+' mm':'';
  by('isolate').disabled=!r||!!isolation;by('clear').disabled=!isolation&&!selected;
  by('stepTitle').textContent=stages[station][0];by('stepNote').textContent=stages[station][1];by('prev').disabled=station===0;by('next').disabled=station===7;
@@ -154,7 +166,7 @@ async function boot(){
   if(hit)select(hit.object.name);
  });
  const size=()=>{renderer.setSize(host.clientWidth,host.clientHeight,false);fit();};
- new ResizeObserver(size).observe(host);size();setMode('exploded');
+ new ResizeObserver(size).observe(host);size();setMode(checks.revision==='G'?'battery':'exploded');
  const query=new URLSearchParams(location.hash.slice(1));if(gaze[query.get('view')])setMode(query.get('view'));
  if(lookup.has(query.get('part'))){select(query.get('part'),true);isolation={id:selected};sync();fit();}
  by('load').hidden=true;document.documentElement.dataset.ready='true';

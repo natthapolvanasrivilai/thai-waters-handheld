@@ -1,0 +1,18 @@
+{
+  "step_sha256": "1f1b15b092394d9874e3d6e5d8921800b4bc8913c28eb5f97512674cfa5200e2",
+  "named_parts": 79,
+  "housing_extent_y_mm": 74.25,
+  "max_pack_to_bridge_mm": 0.65,
+  "ph_withdrawal_4mm_overlap_mm3": {
+    "cellDrawing": 0.0,
+    "Housing": 0.0,
+    "Receiver nut keeper": 0.0,
+    "bridge": 0.0,
+    "drvBoard": 0.0,
+    "batt0": 0.0,
+    "batt1": 0.0
+  },
+  "verified_prints": 12,
+  "verified_inert_gauges": 2,
+  "verified_kit_members": 23
+}

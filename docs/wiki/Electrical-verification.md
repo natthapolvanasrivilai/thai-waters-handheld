@@ -1,6 +1,6 @@
 # Read a circuit trace
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-f-engineering-0.7/Riffle-Rev-F-engineering-review.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-g-fit-print/Riffle-Rev-G-handbook.html)
 
 Open **Circuits**, select a case and inspect its trace, limit and disposition. Start with the derated 3.3 V rail transient and the long I²C rise. Compare nominal and stressed conditions, then use the bench matrix to choose probe points on an actual sample.
 

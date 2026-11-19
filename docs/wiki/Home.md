@@ -1,10 +1,10 @@
 # Thai Waters product wiki
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-f-engineering-0.7/Riffle-Rev-F-engineering-review.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-g-fit-print/Riffle-Rev-G-handbook.html)
 
-This handbook follows a unit from a cast on the simulator through component selection, enclosure fit, programming, factory acceptance and sale. Start with the activity below, or [download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-f-engineering-0.7/Riffle-Rev-F-engineering-review.html). Open the downloaded HTML in a browser. The playable game, 3D meshes, circuit traces and costing data are embedded. A local copy is also available at [docs/index.html](../index.html) in your checkout.
+This handbook follows a unit from a cast on the simulator through component selection, enclosure fit, programming, factory acceptance and sale. Start with the activity below, or [download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-g-fit-print/Riffle-Rev-G-handbook.html). Open the downloaded HTML in a browser. The playable game, 3D meshes, circuit traces and costing data are embedded. A local copy is also available at [docs/index.html](../index.html) in your checkout.
 
-**Build disposition — Rev F is an engineering fit print.** The linked cell drawing exceeds the available pocket. The rail transient, shared I²C bus, speaker drive and charger behavior have outstanding measurements. Check [electrical verification](Electrical-verification.md) and [mechanical fit](Hardware-and-3D.md) before closing a powered case.
+**Build disposition — Rev G is the next inert fit print.** The revised pocket and wire routes clear both maximum pack envelopes. Follow the [Rev G gauge procedure](../../hardware/mechanical/rev-G/README.md) before powered closure. The rail transient, shared I²C bus, speaker drive and charger behavior have outstanding measurements. Check [electrical verification](Electrical-verification.md) and [mechanical fit](Hardware-and-3D.md) before closing a powered case.
 
 ## Table of contents
 

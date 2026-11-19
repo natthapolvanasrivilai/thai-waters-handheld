@@ -1,6 +1,6 @@
 # Play and evaluate a cast
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-f-engineering-0.7/Riffle-Rev-F-engineering-review.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/rev-g-fit-print/Riffle-Rev-G-handbook.html)
 
 [Open the private phone playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) or choose **Playable demo → Start playable demo** in the handbook. Tap once to enable audio. On a phone, open the playtest directly in the browser for motion permission. The [phone test guide](../../game/sites/Phone-playtest.md) covers calibration and fallback controls.
 

@@ -1,5 +1,7 @@
 # Maintaining the interactive product handbook
 
+The current repository handbook contains the [Rev G mechanical fit print](../../hardware/mechanical/rev-G/README.md). The steps below reproduce the historical Rev F release. Use a separate export directory for that release. To update the current handbook, build the Rev G viewer, then run `hardware/mechanical/rev-G/handbook.py --exports <directory>` with the frozen Rev F baseline and current Rev G exports.
+
 The front door is [the repository wiki](../../docs/wiki/Home.md). The compiled [offline handbook](../../docs/index.html) has eight bookmarkable views. Append `#assembly`, `#circuits`, `#software`, `#validation`, `#factory`, `#business` or `#demo` to its local URL to share a starting point. Each chapter links to the corresponding source or test file.
 
 ## Rebuild a revision

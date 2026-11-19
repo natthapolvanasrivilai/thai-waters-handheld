@@ -1,0 +1,110 @@
+{
+  "housing-battery-bay": {
+    "extents_mm": [
+      108.5,
+      74.25,
+      31.0
+    ],
+    "sha256": "0b6f06c18a5166db6f2c87a3490c3220a98f195e59b5250ab16c09c898b8fb41",
+    "inherited": false
+  },
+  "key-board-retainer-west": {
+    "extents_mm": [
+      16.8,
+      5.35,
+      7.47
+    ],
+    "sha256": "5131704b423bb59306b9686599e30438f9a615979d47d5fe5cd0432e1150c95d",
+    "inherited": false
+  },
+  "battery-wire-bridge": {
+    "extents_mm": [
+      47.517,
+      12.096,
+      3.33
+    ],
+    "sha256": "e179d8599900d1e8efecd2be5283dda11dbe0720dc43edf3a42fb987142d7af8",
+    "inherited": false
+  },
+  "bezel": {
+    "extents_mm": [
+      107.236,
+      67.736,
+      2.2
+    ],
+    "sha256": "802629e156a09a12a1fc4892608d733d3e0f85c5864d166a578058426ff51838",
+    "inherited": true
+  },
+  "rotor": {
+    "extents_mm": [
+      25.5,
+      25.5,
+      13.9
+    ],
+    "sha256": "9e604a5ebc6debbc936582419cec03a6105fca7a0aecbfe6846fe56e9b1e6910",
+    "inherited": true
+  },
+  "folding-stem": {
+    "extents_mm": [
+      5.3,
+      5.298,
+      18.279
+    ],
+    "sha256": "8af7b3da22baaabd8acac9b5cef25adfd291ffbd2b20ab94bd410ecaaed6850e",
+    "inherited": true
+  },
+  "grip": {
+    "extents_mm": [
+      7.455,
+      7.455,
+      9.3
+    ],
+    "sha256": "1502845dc048d840e919cb744caf31c82b6e156c0a3e6baa315e8b2ef4785c12",
+    "inherited": true
+  },
+  "collar": {
+    "extents_mm": [
+      13.196,
+      13.2,
+      2.5
+    ],
+    "sha256": "3dbb98fecf743e1d1f27d24d2d992ecc29bda0234ec12ed6d257671bb0be9b99",
+    "inherited": true
+  },
+  "power-cap": {
+    "extents_mm": [
+      7.698,
+      7.7,
+      1.32
+    ],
+    "sha256": "dcc29ce84bd9f180649f3d184a522029b1c26253067dc4813fc26031fb664670",
+    "inherited": true
+  },
+  "rod-grip": {
+    "extents_mm": [
+      34.539,
+      130.4,
+      31.0
+    ],
+    "sha256": "48f0b6b49ea4ce2221d1363a7ce071692a57339151b23caa83ac2e19144083f9",
+    "inherited": true
+  },
+  "grip-screw-keeper": {
+    "extents_mm": [
+      9.018,
+      9.019,
+      1.59
+    ],
+    "sha256": "541a8acd765efb731c3d8c28f4c234218d2b5c80b1515e045c276ae49589c77c",
+    "inherited": true
+  },
+  "receiver-nut-keeper": {
+    "extents_mm": [
+      7.698,
+      7.699,
+      0.83
+    ],
+    "sha256": "d363d84a611d3dee2d13527015bd45bf6e46baad45390055b20f5fc25770aaaa",
+    "inherited": true
+  }
+}

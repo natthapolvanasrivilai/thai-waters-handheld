@@ -1,0 +1,8 @@
+Ref,Item,Qty per unit,Fit-print disposition
+P1,Rev G housing,1,Replaces Rev F housing-top-power
+P1-K,Rev G west-side power-key retainer,1,Replaces previous retainer and reuses H6 M2 x 6
+P2,Lift-out printed wire bridge,1,New part with two raised screw seats on housing
+H9,M2 x 4 pan-head screw,2,4 mm measured under head; 3.7 mm nominal head diameter; verify engagement and hold in print
+SHOP1,0.5 mm compliant battery mounting strips,2,23 x 6 mm maximum on mounting lands; qualify supplier material before live pack
+SHOP1,Thin insulating tape loops,2,Thread through bridge slots; avoid adding stack under the bridge
+SHOP1,Thin adapter mounting tape,1,0.25 mm design allowance on the PH saddle

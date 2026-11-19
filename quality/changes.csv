@@ -4,3 +4,4 @@ E-002,Rev E production,Haptic motor and pack lead routing,"Review adhesive, harn
 F-001,Rev F,Top-left physical power key,"Captive cap and normally open SW1 on carrier wired across original K3",Battery cold start and shutdown; key travel and harness clearance,Physical test pending
 F-002,Rev F,Capacitive touchscreen required,"Retain A1 SKU 31137 and qualify exposed OEM glass in the bezel",Nine-point closed-case touch test on battery and USB,Physical test pending
 F-003,Rev F,Rigid removable rod grip,"Load-bearing slide rails against an end stop with captive metal-threaded screw retention",Measure grip-tip play and displacement; axial retention and repeated casting and attachment wear,Physical test pending
+G-001,Rev G,Battery fit print,"Revised fences and lead tunnel; removable wire bridge; outboard PH saddle; west-side key keeper",Maximum drawing and supplier STEP collision and insertion tests passed,Inert fit print pending

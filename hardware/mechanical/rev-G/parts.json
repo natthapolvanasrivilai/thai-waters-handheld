@@ -1,0 +1,2330 @@
+[
+  {
+    "id": "Housing",
+    "name": "Rev G battery-bay housing",
+    "ref": "P1",
+    "group": "Enclosure",
+    "kind": "Rev G fit-print CAD",
+    "delta": [
+      0,
+      0,
+      -28
+    ],
+    "stage": 1,
+    "note": "Revised battery fences, mounting lands, lead turnaround and PH adapter saddle.",
+    "color": "#91a994",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -50.0,
+      58.5,
+      -34.55,
+      39.7,
+      -3.2,
+      27.8
+    ]
+  },
+  {
+    "id": "Bezel",
+    "name": "Display bezel",
+    "ref": "P1",
+    "group": "Enclosure",
+    "kind": "Released STEP",
+    "delta": [
+      0,
+      0,
+      113
+    ],
+    "stage": 6,
+    "note": "Printed front frame. Glass clearance at the rim is only 0.25 mm nominal.",
+    "color": "#293f39",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -49.368,
+      57.868,
+      -33.868,
+      33.868,
+      27.8,
+      30.0
+    ]
+  },
+  {
+    "id": "Rotor",
+    "name": "Reel rotor",
+    "ref": "P1",
+    "group": "Reel & encoder",
+    "kind": "Released STEP",
+    "delta": [
+      65,
+      0,
+      0
+    ],
+    "stage": 2,
+    "note": "Right-edge reel. Shown folded in the released assembly.",
+    "color": "#52796c",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      43.6,
+      57.5,
+      -12.75,
+      12.75,
+      2.05,
+      27.55
+    ]
+  },
+  {
+    "id": "Stem",
+    "name": "Folding crank arm",
+    "ref": "P1",
+    "group": "Reel & encoder",
+    "kind": "Released STEP",
+    "delta": [
+      91,
+      0,
+      0
+    ],
+    "stage": 2,
+    "note": "Right-edge reel. Shown folded in the released assembly.",
+    "color": "#b68f57",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      50.95,
+      56.25,
+      -8.25,
+      10.03,
+      12.15,
+      17.45
+    ]
+  },
+  {
+    "id": "Grip",
+    "name": "Reel knob",
+    "ref": "P1",
+    "group": "Reel & encoder",
+    "kind": "Released STEP",
+    "delta": [
+      90,
+      -19,
+      0
+    ],
+    "stage": 2,
+    "note": "Right-edge reel. Shown folded in the released assembly.",
+    "color": "#d0a065",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      49.872,
+      57.328,
+      -7.95,
+      1.35,
+      11.072,
+      18.528
+    ]
+  },
+  {
+    "id": "Collar",
+    "name": "Axle collar",
+    "ref": "P1",
+    "group": "Reel & encoder",
+    "kind": "Released STEP",
+    "delta": [
+      38,
+      0,
+      0
+    ],
+    "stage": 2,
+    "note": "Right-edge reel. Shown folded in the released assembly.",
+    "color": "#497965",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      44.15,
+      46.65,
+      -6.6,
+      6.6,
+      8.2,
+      21.4
+    ]
+  },
+  {
+    "id": "reel0",
+    "name": "Hinge screw",
+    "ref": "H2",
+    "group": "Reel & encoder",
+    "kind": "Released STEP",
+    "delta": [
+      90,
+      0,
+      18
+    ],
+    "stage": 2,
+    "note": "Released nominal screw or magnet envelope, without a thread or pole marking.",
+    "color": "#9ca7a4",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      51.9,
+      55.3,
+      6.1,
+      9.5,
+      9.6,
+      20.95
+    ]
+  },
+  {
+    "id": "reel1",
+    "name": "Knob retainer",
+    "ref": "H4",
+    "group": "Reel & encoder",
+    "kind": "Released STEP",
+    "delta": [
+      91,
+      -32,
+      0
+    ],
+    "stage": 2,
+    "note": "Released nominal screw or magnet envelope, without a thread or pole marking.",
+    "color": "#87928d",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      50.9,
+      56.3,
+      -10.2,
+      -8.25,
+      12.1,
+      17.5
+    ]
+  },
+  {
+    "id": "reel2",
+    "name": "Diametric magnet",
+    "ref": "MG1",
+    "group": "Reel & encoder",
+    "kind": "Released STEP",
+    "delta": [
+      52,
+      0,
+      0
+    ],
+    "stage": 2,
+    "note": "Released nominal screw or magnet envelope, without a thread or pole marking.",
+    "color": "#77969b",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      43.75,
+      46.25,
+      -3.0,
+      3.0,
+      11.8,
+      17.8
+    ]
+  },
+  {
+    "id": "Key cap",
+    "name": "Top power cap",
+    "ref": "P1",
+    "group": "Power key",
+    "kind": "Released STEP",
+    "delta": [
+      0,
+      32,
+      0
+    ],
+    "stage": 3,
+    "note": "Captured key and carrier. Physical free travel, insulation and trimmed leads require inspection.",
+    "color": "#d1a267",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -39.85,
+      -32.15,
+      33.0,
+      34.32,
+      8.65,
+      16.35
+    ]
+  },
+  {
+    "id": "Retainer",
+    "name": "Key-carrier retainer",
+    "ref": "P1",
+    "group": "Power key",
+    "kind": "Released STEP",
+    "delta": [
+      -18,
+      28,
+      19
+    ],
+    "stage": 3,
+    "note": "West-side carrier keeper at X −43.2, Y 28.7; top-left switch and cap retain their Rev F positions.",
+    "color": "#698b78",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -46.15,
+      -29.35,
+      26.85,
+      32.2,
+      11.68,
+      19.15
+    ]
+  },
+  {
+    "id": "Key PCB",
+    "name": "Power-key PCB",
+    "ref": "PCB1",
+    "group": "Power key",
+    "kind": "Released STEP",
+    "delta": [
+      -16,
+      18,
+      8
+    ],
+    "stage": 3,
+    "note": "Captured key and carrier. Physical free travel, insulation and trimmed leads require inspection.",
+    "color": "#367665",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -41.5,
+      -30.5,
+      27.65,
+      28.65,
+      7.5,
+      17.5
+    ]
+  },
+  {
+    "id": "Switch case",
+    "name": "Momentary switch",
+    "ref": "SW1",
+    "group": "Power key",
+    "kind": "Nominal envelope",
+    "delta": [
+      -16,
+      18,
+      8
+    ],
+    "stage": 3,
+    "note": "Captured key and carrier. Physical free travel, insulation and trimmed leads require inspection.",
+    "color": "#3f4748",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -39.05,
+      -32.95,
+      28.65,
+      32.0,
+      9.45,
+      15.55
+    ]
+  },
+  {
+    "id": "Switch plunger",
+    "name": "Switch actuator",
+    "ref": "SW1",
+    "group": "Power key",
+    "kind": "Nominal envelope",
+    "delta": [
+      -16,
+      18,
+      8
+    ],
+    "stage": 3,
+    "note": "Captured key and carrier. Physical free travel, insulation and trimmed leads require inspection.",
+    "color": "#c49455",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -37.75,
+      -34.25,
+      32.0,
+      32.95,
+      10.75,
+      14.25
+    ]
+  },
+  {
+    "id": "Trimmed terminals",
+    "name": "Switch solder tails",
+    "ref": "SW1",
+    "group": "Power key",
+    "kind": "Nominal envelope",
+    "delta": [
+      -16,
+      18,
+      8
+    ],
+    "stage": 3,
+    "note": "Captured key and carrier. Physical free travel, insulation and trimmed leads require inspection.",
+    "color": "#b1a27b",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 4,
+    "bounds_mm": [
+      -39.68,
+      -32.32,
+      26.85,
+      28.65,
+      9.82,
+      15.18
+    ]
+  },
+  {
+    "id": "Keeper screw",
+    "name": "Carrier screw",
+    "ref": "H6",
+    "group": "Power key",
+    "kind": "Nominal envelope",
+    "delta": [
+      -18,
+      28,
+      35
+    ],
+    "stage": 3,
+    "note": "West-side carrier keeper at X −43.2, Y 28.7; top-left switch and cap retain their Rev F positions.",
+    "color": "#838e92",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -45.2,
+      -41.2,
+      26.7,
+      30.7,
+      13.15,
+      20.75
+    ]
+  },
+  {
+    "id": "Removable rod grip",
+    "name": "Detachable rod handle",
+    "ref": "G1",
+    "group": "Rod handle",
+    "kind": "Released STEP",
+    "delta": [
+      0,
+      -48,
+      -12
+    ],
+    "stage": 7,
+    "note": "Rear rail carries bending load. Screw threads and printed skin finish are idealized.",
+    "color": "#536e5e",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "rod",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      1.5,
+      32.5,
+      -125.4,
+      5.0,
+      -34.038,
+      0.51
+    ]
+  },
+  {
+    "id": "Grip lock screw",
+    "name": "Captive M3 × 10",
+    "ref": "H7",
+    "group": "Rod handle",
+    "kind": "Released STEP",
+    "delta": [
+      0,
+      -48,
+      -34
+    ],
+    "stage": 7,
+    "note": "Rear rail carries bending load. Screw threads and printed skin finish are idealized.",
+    "color": "#9ba9ac",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "rod",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      14.25,
+      19.75,
+      -27.25,
+      -21.75,
+      -8.1,
+      4.9
+    ]
+  },
+  {
+    "id": "Grip screw keeper",
+    "name": "Screw keeper",
+    "ref": "G1",
+    "group": "Rod handle",
+    "kind": "Released STEP",
+    "delta": [
+      0,
+      -48,
+      -42
+    ],
+    "stage": 7,
+    "note": "Rear rail carries bending load. Screw threads and printed skin finish are idealized.",
+    "color": "#71917c",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "rod",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      12.49,
+      21.51,
+      -29.01,
+      -19.99,
+      -15.06,
+      -13.47
+    ]
+  },
+  {
+    "id": "Receiver nut",
+    "name": "Trapped M3 nut",
+    "ref": "H8",
+    "group": "Rod handle",
+    "kind": "Released STEP",
+    "delta": [
+      0,
+      0,
+      -16
+    ],
+    "stage": 1,
+    "note": "Rear rail carries bending load. Screw threads and printed skin finish are idealized.",
+    "color": "#8b999d",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      13.825,
+      20.175,
+      -27.25,
+      -21.75,
+      2.15,
+      4.55
+    ]
+  },
+  {
+    "id": "Receiver nut keeper",
+    "name": "Nut keeper",
+    "ref": "P1",
+    "group": "Rod handle",
+    "kind": "Released STEP",
+    "delta": [
+      0,
+      0,
+      -8
+    ],
+    "stage": 1,
+    "note": "Rear rail carries bending load. Screw threads and printed skin finish are idealized.",
+    "color": "#668a71",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      13.15,
+      20.85,
+      -28.35,
+      -20.65,
+      5.12,
+      5.95
+    ]
+  },
+  {
+    "id": "A1-touch",
+    "name": "Capacitive display stack",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#253a39",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -46.22,
+      46.22,
+      -30.5,
+      30.5,
+      20.1,
+      28.5
+    ]
+  },
+  {
+    "id": "A1-mounts",
+    "name": "Board fixings",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#bdaf86",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 4,
+    "bounds_mm": [
+      -38.0,
+      38.0,
+      -26.25,
+      26.25,
+      17.0,
+      22.5
+    ]
+  },
+  {
+    "id": "A1-carrier",
+    "name": "Main controller PCB",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#2a7561",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -39.009,
+      39.009,
+      -27.259,
+      27.259,
+      21.0,
+      22.6
+    ]
+  },
+  {
+    "id": "A1-population",
+    "name": "A1 populated components",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#7e8d88",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 532,
+    "bounds_mm": [
+      -38.75,
+      38.5,
+      -29.65,
+      25.95,
+      15.1,
+      21.6
+    ]
+  },
+  {
+    "id": "A1-J8",
+    "name": "Expansion header J8",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#393e3b",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -20.611,
+      20.589,
+      19.69,
+      26.29,
+      15.9,
+      21.0
+    ]
+  },
+  {
+    "id": "A1-usb",
+    "name": "USB-C socket",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#a4ada7",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -40.0,
+      -32.4,
+      -4.47,
+      4.47,
+      17.75,
+      21.811
+    ]
+  },
+  {
+    "id": "A1-k3",
+    "name": "Onboard PWR switch K3",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#5e6b6d",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -27.276,
+      -22.726,
+      -26.85,
+      -23.2,
+      19.2,
+      21.4
+    ]
+  },
+  {
+    "id": "A1-reset",
+    "name": "Onboard RESET",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#6f7977",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -18.776,
+      -14.226,
+      -26.85,
+      -23.2,
+      19.2,
+      21.4
+    ]
+  },
+  {
+    "id": "A1-boot",
+    "name": "Onboard BOOT",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#6f7977",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -10.276,
+      -5.726,
+      -26.85,
+      -23.2,
+      19.2,
+      21.4
+    ]
+  },
+  {
+    "id": "A1-J7",
+    "name": "Battery socket J7",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#c8c0a3",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -29.078,
+      -21.428,
+      20.75,
+      25.95,
+      17.6,
+      21.0
+    ]
+  },
+  {
+    "id": "A1-J9",
+    "name": "Speaker socket J9",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#d0c9ad",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -4.515,
+      3.135,
+      -24.45,
+      -19.25,
+      17.6,
+      21.0
+    ]
+  },
+  {
+    "id": "A1-backing",
+    "name": "Display backing",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#879896",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -39.0,
+      39.0,
+      -27.25,
+      27.25,
+      22.6,
+      25.1
+    ]
+  },
+  {
+    "id": "A2-pcb",
+    "name": "Magnetic encoder PCB",
+    "ref": "A2",
+    "group": "Reel & encoder",
+    "kind": "Supplier geometry",
+    "delta": [
+      28,
+      0,
+      24
+    ],
+    "stage": 2,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#326952",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      39.48,
+      41.05,
+      -12.7,
+      12.7,
+      5.91,
+      23.69
+    ]
+  },
+  {
+    "id": "A2-population",
+    "name": "A2 populated components",
+    "ref": "A2",
+    "group": "Reel & encoder",
+    "kind": "Supplier geometry",
+    "delta": [
+      28,
+      0,
+      24
+    ],
+    "stage": 2,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#7e8d88",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 21,
+    "bounds_mm": [
+      41.05,
+      42.45,
+      -9.944,
+      6.287,
+      11.006,
+      19.822
+    ]
+  },
+  {
+    "id": "A2-sockets",
+    "name": "STEMMA QT sockets",
+    "ref": "A2",
+    "group": "Reel & encoder",
+    "kind": "Supplier geometry",
+    "delta": [
+      28,
+      0,
+      24
+    ],
+    "stage": 2,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#cec49b",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 2,
+    "bounds_mm": [
+      41.05,
+      44.01,
+      -12.127,
+      12.127,
+      11.8,
+      17.8
+    ]
+  },
+  {
+    "id": "A2-chip",
+    "name": "AS5600 angle sensor",
+    "ref": "A2",
+    "group": "Reel & encoder",
+    "kind": "Supplier geometry",
+    "delta": [
+      28,
+      0,
+      24
+    ],
+    "stage": 2,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#424b46",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      41.3,
+      42.55,
+      -2.45,
+      2.45,
+      12.85,
+      16.75
+    ]
+  },
+  {
+    "id": "Cell",
+    "name": "Design cell envelope",
+    "ref": "B1",
+    "group": "Battery & audio",
+    "kind": "Nominal envelope",
+    "delta": [
+      -41,
+      6,
+      25
+    ],
+    "stage": 4,
+    "note": "Catalog envelope on the new datum. Select drawing maximum or supplier STEP to change both pack and leads.",
+    "color": "#8da4ad",
+    "source": "rev-G/geometry.py with Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -27.4,
+      6.6,
+      -31.65,
+      30.35,
+      3.6,
+      8.6
+    ]
+  },
+  {
+    "id": "Speaker",
+    "name": "Kit speaker envelope",
+    "ref": "SP1",
+    "group": "Battery & audio",
+    "kind": "Nominal envelope",
+    "delta": [
+      -48,
+      -20,
+      10
+    ],
+    "stage": 4,
+    "note": "15 × 30 × 7 mm design allowance. Source STEP for the current kit speaker is unavailable.",
+    "color": "#767282",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -46.15,
+      -31.15,
+      -15.0,
+      15.0,
+      3.2,
+      10.2
+    ]
+  },
+  {
+    "id": "cellAlt",
+    "name": "Alternate supplier cell CAD",
+    "ref": "B1",
+    "group": "Battery & audio",
+    "kind": "Supplier geometry",
+    "delta": [
+      -41,
+      6,
+      25
+    ],
+    "stage": 4,
+    "note": "Compare to the catalog envelope. This model has a 37 × 60 mm body, 6 mm at the protection board and 63 mm with lead stubs. Confirm latest production lot.",
+    "color": "#c8774e",
+    "source": "rev-G/geometry.py with Adafruit-258.step",
+    "option": "alt",
+    "added": true,
+    "solids": 4,
+    "bounds_mm": [
+      -28.9,
+      8.1,
+      -30.65,
+      32.35,
+      3.6,
+      9.6
+    ]
+  },
+  {
+    "id": "cellDrawing",
+    "name": "PKCELL drawing maximum",
+    "ref": "B1",
+    "group": "Battery & audio",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -41,
+      6,
+      25
+    ],
+    "stage": 4,
+    "note": "35.3 × 62.3 × 5.3 mm maximum body from QA.S.0228 edition A. Add lead dressing and supplier life-cycle allowance.",
+    "color": "#bf9959",
+    "source": "rev-G/geometry.py with PKCELL QA.S.0228 edition A, p. 5",
+    "option": "drawing",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -28.05,
+      7.25,
+      -31.8,
+      30.5,
+      3.6,
+      8.9
+    ]
+  },
+  {
+    "id": "H1-1",
+    "name": "Main-board screw 1",
+    "ref": "H1",
+    "group": "Controller",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      0,
+      0,
+      -47
+    ],
+    "stage": 6,
+    "note": "M2 × 8 reference at the Rev E tool-gauge datum. Thread and drive are idealized.",
+    "color": "#a4abaa",
+    "source": "rev-E/scripts/gauges.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -38.2,
+      -33.8,
+      -26.45,
+      -22.05,
+      9.4,
+      19.0
+    ]
+  },
+  {
+    "id": "H1-2",
+    "name": "Main-board screw 2",
+    "ref": "H1",
+    "group": "Controller",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      0,
+      0,
+      -47
+    ],
+    "stage": 6,
+    "note": "M2 × 8 reference at the Rev E tool-gauge datum. Thread and drive are idealized.",
+    "color": "#a4abaa",
+    "source": "rev-E/scripts/gauges.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -38.2,
+      -33.8,
+      22.05,
+      26.45,
+      9.4,
+      19.0
+    ]
+  },
+  {
+    "id": "H1-3",
+    "name": "Main-board screw 3",
+    "ref": "H1",
+    "group": "Controller",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      0,
+      0,
+      -47
+    ],
+    "stage": 6,
+    "note": "M2 × 8 reference at the Rev E tool-gauge datum. Thread and drive are idealized.",
+    "color": "#a4abaa",
+    "source": "rev-E/scripts/gauges.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      33.8,
+      38.2,
+      -26.45,
+      -22.05,
+      9.4,
+      19.0
+    ]
+  },
+  {
+    "id": "H1-4",
+    "name": "Main-board screw 4",
+    "ref": "H1",
+    "group": "Controller",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      0,
+      0,
+      -47
+    ],
+    "stage": 6,
+    "note": "M2 × 8 reference at the Rev E tool-gauge datum. Thread and drive are idealized.",
+    "color": "#a4abaa",
+    "source": "rev-E/scripts/gauges.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      33.8,
+      38.2,
+      22.05,
+      26.45,
+      9.4,
+      19.0
+    ]
+  },
+  {
+    "id": "H3-1",
+    "name": "Hinge shim 1",
+    "ref": "H3",
+    "group": "Reel & encoder",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      91,
+      0,
+      -10
+    ],
+    "stage": 2,
+    "note": "Nominal 0.30 mm nylon shim on the hinge axis.",
+    "color": "#e0d7b9",
+    "source": "rev-E/scripts/gauges.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      51.5,
+      55.7,
+      5.7,
+      9.9,
+      12.2,
+      12.5
+    ]
+  },
+  {
+    "id": "H3-2",
+    "name": "Hinge shim 2",
+    "ref": "H3",
+    "group": "Reel & encoder",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      91,
+      0,
+      10
+    ],
+    "stage": 2,
+    "note": "Nominal 0.30 mm nylon shim on the hinge axis.",
+    "color": "#e0d7b9",
+    "source": "rev-E/scripts/gauges.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      51.5,
+      55.7,
+      5.7,
+      9.9,
+      17.1,
+      17.4
+    ]
+  },
+  {
+    "id": "H5",
+    "name": "Knob thrust washer",
+    "ref": "H5",
+    "group": "Reel & encoder",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      91,
+      -25,
+      0
+    ],
+    "stage": 2,
+    "note": "Nominal washer under the screw head. The shoulder stack and end float require a real hardware section.",
+    "color": "#c1b8a4",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      50.9,
+      56.3,
+      -8.65,
+      -8.25,
+      12.1,
+      17.5
+    ]
+  },
+  {
+    "id": "drvBoard",
+    "name": "Haptic controller PCB",
+    "ref": "A3",
+    "group": "Haptics",
+    "kind": "Supplier PCB layout",
+    "delta": [
+      8,
+      -30,
+      28
+    ],
+    "stage": 4,
+    "note": "Current QT board outline and holes from the vendor Eagle layout. The vendor STEP describes the smaller legacy board.",
+    "color": "#296c5b",
+    "source": "Adafruit-2305-QT.brd",
+    "option": "haptic",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      10.11,
+      27.89,
+      -18.7,
+      6.7,
+      3.0,
+      4.57
+    ]
+  },
+  {
+    "id": "drvParts",
+    "name": "Driver IC, sockets and passives",
+    "ref": "A3",
+    "group": "Haptics",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      8,
+      -30,
+      28
+    ],
+    "stage": 4,
+    "note": "Component centers follow Eagle; package bodies are bounding solids. Measure populated board height and wire loop.",
+    "color": "#9aa998",
+    "source": "Adafruit-2305-QT.brd",
+    "option": "haptic",
+    "added": true,
+    "solids": 9,
+    "bounds_mm": [
+      14.917,
+      21.925,
+      -18.508,
+      6.508,
+      4.57,
+      7.53
+    ]
+  },
+  {
+    "id": "motor",
+    "name": "Coin vibration motor",
+    "ref": "M1",
+    "group": "Haptics",
+    "kind": "Nominal envelope",
+    "delta": [
+      5,
+      30,
+      26
+    ],
+    "stage": 4,
+    "note": "Ø10 × 2.7 mm envelope. Leads are separately selectable. Confirm bond transfer and EMI on a live board.",
+    "color": "#908992",
+    "source": "build_review.py",
+    "option": "haptic",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      14.0,
+      24.0,
+      14.0,
+      24.0,
+      3.0,
+      5.7
+    ]
+  },
+  {
+    "id": "J8plug",
+    "name": "Four-way right-angle J8 plug",
+    "ref": "W1-P",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      0,
+      26,
+      43
+    ],
+    "stage": 5,
+    "note": "Connector body envelope and proposed insertion pose. Mate, key, contact engagement and polarity require a received sample.",
+    "color": "#d7cdb0",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      10.1,
+      20.3,
+      20.0,
+      25.8,
+      12.0,
+      14.8
+    ]
+  },
+  {
+    "id": "ph",
+    "name": "PH battery adapter mate",
+    "ref": "W2-A",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -35,
+      0,
+      20
+    ],
+    "stage": 5,
+    "note": "W2 adapter half on the outboard saddle with 0.25 mm mounting allowance; mate from the left.",
+    "color": "#d7cdb0",
+    "source": "rev-G/geometry.py with build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      19.5,
+      27.3,
+      -25.0,
+      -21.0,
+      8.65,
+      11.85
+    ]
+  },
+  {
+    "id": "packplug",
+    "name": "Battery factory PH plug",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -35,
+      0,
+      20
+    ],
+    "stage": 5,
+    "note": "Connector body envelope and proposed insertion pose. Mate, key, contact engagement and polarity require a received sample.",
+    "color": "#d7cdb0",
+    "source": "rev-G/geometry.py with build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      14.0,
+      19.5,
+      -25.0,
+      -21.0,
+      8.65,
+      11.85
+    ]
+  },
+  {
+    "id": "j7plug",
+    "name": "Battery board-side plug",
+    "ref": "W2-B",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -18,
+      12,
+      44
+    ],
+    "stage": 5,
+    "note": "Connector body envelope and proposed insertion pose. Mate, key, contact engagement and polarity require a received sample.",
+    "color": "#d7cdb0",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -27.4,
+      -22.8,
+      22.8,
+      26.2,
+      15.2,
+      17.6
+    ]
+  },
+  {
+    "id": "j9plug",
+    "name": "Speaker plug",
+    "ref": "SP1",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -18,
+      -10,
+      45
+    ],
+    "stage": 5,
+    "note": "Connector body envelope and proposed insertion pose. Mate, key, contact engagement and polarity require a received sample.",
+    "color": "#d7cdb0",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -2.9,
+      1.7,
+      -26.7,
+      -23.3,
+      16.1,
+      18.5
+    ]
+  },
+  {
+    "id": "w1VCC",
+    "name": "Reel VIN",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "A2 JP1 pad to J8 plug. 28 AWG design path; trim and strain-relieve after dry fit.",
+    "color": "#cc6048",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      10.59,
+      39.48,
+      -6.75,
+      21.952,
+      8.05,
+      12.241
+    ]
+  },
+  {
+    "id": "w1GND",
+    "name": "Reel GND",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "A2 JP1 pad to J8 plug. 28 AWG design path; trim and strain-relieve after dry fit.",
+    "color": "#454b4d",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      13.13,
+      39.48,
+      -1.67,
+      21.905,
+      8.05,
+      12.308
+    ]
+  },
+  {
+    "id": "w1SDA",
+    "name": "Reel SDA",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "A2 JP1 pad to J8 plug. 28 AWG design path; trim and strain-relieve after dry fit.",
+    "color": "#4e8eaa",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      15.67,
+      39.48,
+      3.41,
+      21.784,
+      8.05,
+      12.405
+    ]
+  },
+  {
+    "id": "w1SCL",
+    "name": "Reel SCL",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "A2 JP1 pad to J8 plug. 28 AWG design path; trim and strain-relieve after dry fit.",
+    "color": "#c8a24e",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      18.21,
+      39.48,
+      0.87,
+      21.657,
+      8.05,
+      12.68
+    ]
+  },
+  {
+    "id": "whVCC",
+    "name": "Driver VCC",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Optional four-conductor branch on the W1 bus to A3 header pads. Define splice and clamp process.",
+    "color": "#cb6554",
+    "source": "build_review.py",
+    "option": "haptic",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      22.76,
+      30.212,
+      -11.42,
+      17.265,
+      4.56,
+      9.44
+    ]
+  },
+  {
+    "id": "whGND",
+    "name": "Driver GND",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Optional four-conductor branch on the W1 bus to A3 header pads. Define splice and clamp process.",
+    "color": "#50494a",
+    "source": "build_review.py",
+    "option": "haptic",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      22.76,
+      30.212,
+      -8.88,
+      17.265,
+      4.56,
+      10.5
+    ]
+  },
+  {
+    "id": "whSDA",
+    "name": "Driver SDA",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Optional four-conductor branch on the W1 bus to A3 header pads. Define splice and clamp process.",
+    "color": "#4f93a1",
+    "source": "build_review.py",
+    "option": "haptic",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      22.76,
+      30.212,
+      -3.8,
+      17.265,
+      4.56,
+      11.56
+    ]
+  },
+  {
+    "id": "whSCL",
+    "name": "Driver SCL",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Optional four-conductor branch on the W1 bus to A3 header pads. Define splice and clamp process.",
+    "color": "#bda354",
+    "source": "build_review.py",
+    "option": "haptic",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      22.76,
+      30.212,
+      -6.34,
+      17.265,
+      4.56,
+      12.62
+    ]
+  },
+  {
+    "id": "wm0",
+    "name": "Motor OUT+",
+    "ref": "M1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Motor leads route to the two driver output pads. Leave motor plate free to bond.",
+    "color": "#c06754",
+    "source": "build_review.py",
+    "option": "haptic",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      12.3,
+      17.65,
+      -1.27,
+      14.536,
+      4.57,
+      8.65
+    ]
+  },
+  {
+    "id": "wm1",
+    "name": "Motor OUT-",
+    "ref": "M1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Motor leads route to the two driver output pads. Leave motor plate free to bond.",
+    "color": "#577999",
+    "source": "build_review.py",
+    "option": "haptic",
+    "added": true,
+    "solids": 4,
+    "bounds_mm": [
+      12.3,
+      18.41,
+      -11.43,
+      14.584,
+      4.57,
+      9.17
+    ]
+  },
+  {
+    "id": "pack0",
+    "name": "Cell tail BAT+",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "100 mm total factory lead including modeled supplier stub where applicable. Clearance and bend limits require an inert harness trial.",
+    "color": "#c35542",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -25.4515,
+      14.0,
+      -24.65,
+      35.25,
+      5.4,
+      12.25
+    ],
+    "batteryVariant": "catalog"
+  },
+  {
+    "id": "batt0",
+    "name": "Battery adapter BAT+",
+    "ref": "W2-A / W2-B",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Two spliced adapter halves. Continuity-test both connector pinouts before installing B1.",
+    "color": "#c35542",
+    "source": "rev-G/geometry.py with build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -27.6872,
+      32.6,
+      -24.45,
+      22.9805,
+      9.55,
+      16.0215
+    ]
+  },
+  {
+    "id": "spk0",
+    "name": "Speaker +",
+    "ref": "SP1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Factory speaker pair to J9 amplifier outputs. The terminal positions on the speaker are provisional.",
+    "color": "#99718d",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -35.109,
+      -1.475,
+      -24.897,
+      -14.419,
+      8.909,
+      16.547
+    ]
+  },
+  {
+    "id": "pack1",
+    "name": "Cell tail GND",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "100 mm total factory lead including modeled supplier stub where applicable. Clearance and bend limits require an inert harness trial.",
+    "color": "#474a49",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -20.2067,
+      14.0,
+      -22.75,
+      35.25,
+      5.4,
+      14.4
+    ],
+    "batteryVariant": "catalog"
+  },
+  {
+    "id": "batt1",
+    "name": "Battery adapter GND",
+    "ref": "W2-A / W2-B",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Two spliced adapter halves. Continuity-test both connector pinouts before installing B1.",
+    "color": "#474a49",
+    "source": "rev-G/geometry.py with build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -28.4774,
+      30.65,
+      -22.45,
+      22.958,
+      10.05,
+      17.1798
+    ]
+  },
+  {
+    "id": "spk1",
+    "name": "Speaker −",
+    "ref": "SP1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "Factory speaker pair to J9 amplifier outputs. The terminal positions on the speaker are provisional.",
+    "color": "#6c6b7a",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -33.5,
+      0.149,
+      -24.887,
+      -14.401,
+      8.939,
+      17.453
+    ]
+  },
+  {
+    "id": "w30",
+    "name": "Power key signal",
+    "ref": "W3",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "SW1 to K3. Endpoints identify the switch region; continuity-locate K3 pads and confirm solder allowance and wire dressing.",
+    "color": "#d9d4bb",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -40.9,
+      -25.211,
+      -23.803,
+      27.155,
+      9.978,
+      19.364
+    ]
+  },
+  {
+    "id": "w31",
+    "name": "Power key return",
+    "ref": "W3",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "SW1 to K3. Endpoints identify the switch region; continuity-locate K3 pads and confirm solder allowance and wire dressing.",
+    "color": "#4c5052",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -33.15,
+      -22.842,
+      -23.778,
+      27.081,
+      13.25,
+      19.418
+    ]
+  },
+  {
+    "id": "adhH",
+    "name": "Haptic mounting pads",
+    "ref": "SHOP1",
+    "group": "Haptics",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      3,
+      0,
+      9
+    ],
+    "stage": 4,
+    "note": "0.5 mm adhesive allowance. Neither size, grade, adhesion nor transfer is production-qualified.",
+    "color": "#beb7a1",
+    "source": "build_review.py",
+    "option": "haptic",
+    "added": true,
+    "solids": 3,
+    "bounds_mm": [
+      12.0,
+      26.0,
+      -17.0,
+      23.3,
+      2.5,
+      3.0
+    ]
+  },
+  {
+    "id": "hdrPins",
+    "name": "J8 male header contacts",
+    "ref": "W1-P",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      0,
+      26,
+      43
+    ],
+    "stage": 5,
+    "note": "Four nominal 0.64 mm square contacts. Gauge the insertion depth and pin-1 orientation on the actual socket.",
+    "color": "#c39c58",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 4,
+    "bounds_mm": [
+      10.67,
+      18.93,
+      21.28,
+      21.92,
+      14.75,
+      17.75
+    ]
+  },
+  {
+    "id": "shrink0",
+    "name": "Battery splice sleeve 1",
+    "ref": "SHOP1",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -28,
+      0,
+      30
+    ],
+    "stage": 5,
+    "note": "Nominal shrunk insulation on a battery-adapter splice. Gauge joint diameter, support and isolation.",
+    "color": "#70736c",
+    "source": "rev-G/geometry.py with build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      3.0754,
+      6.8254,
+      -15.52,
+      -14.08,
+      13.63,
+      15.07
+    ]
+  },
+  {
+    "id": "shrink1",
+    "name": "Battery splice sleeve 2",
+    "ref": "SHOP1",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -28,
+      0,
+      30
+    ],
+    "stage": 5,
+    "note": "Nominal shrunk insulation on a battery-adapter splice. Gauge joint diameter, support and isolation.",
+    "color": "#70736c",
+    "source": "rev-G/geometry.py with build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      1.2746,
+      5.0246,
+      -16.97,
+      -15.53,
+      13.81,
+      15.25
+    ]
+  },
+  {
+    "id": "usbGauge",
+    "name": "USB data plug gauge",
+    "ref": "USB1",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -35,
+      0,
+      0
+    ],
+    "stage": 6,
+    "note": "External fixture modeled for plug approach only. Excluded from closed-unit mass, coverage and interference totals.",
+    "color": "#7c8986",
+    "source": "rev-E/scripts/gauges.py",
+    "option": "usb",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -63.0,
+      -40.0,
+      -6.0,
+      6.0,
+      16.45,
+      22.95
+    ]
+  },
+  {
+    "id": "bridge",
+    "name": "Lift-out wire bridge",
+    "ref": "P2",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -35,
+      0,
+      20
+    ],
+    "stage": 4,
+    "note": "Lift out before installing or removing the inert gauge. Use two M2 × 4 fasteners in the outboard blind pilots. Insulating tape loops go through the four slots.",
+    "color": "#8ba69b",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -34.3127,
+      13.205,
+      9.6858,
+      21.7824,
+      9.55,
+      12.88
+    ]
+  },
+  {
+    "id": "tieS1",
+    "name": "Bridge screw, left",
+    "ref": "H9",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -35,
+      0,
+      20
+    ],
+    "stage": 4,
+    "note": "Lift out before installing or removing the inert gauge. Use two M2 × 4 fasteners in the outboard blind pilots. Insulating tape loops go through the four slots.",
+    "color": "#a5aaa6",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -33.7,
+      -30.0,
+      16.65,
+      20.35,
+      6.75,
+      12.25
+    ]
+  },
+  {
+    "id": "tieS2",
+    "name": "Bridge screw, right",
+    "ref": "H9",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -35,
+      0,
+      20
+    ],
+    "stage": 4,
+    "note": "Lift out before installing or removing the inert gauge. Use two M2 × 4 fasteners in the outboard blind pilots. Insulating tape loops go through the four slots.",
+    "color": "#a5aaa6",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      8.8923,
+      12.5923,
+      11.1182,
+      14.8182,
+      6.75,
+      12.25
+    ]
+  },
+  {
+    "id": "altTail0",
+    "name": "Cell tail BAT+",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "100 mm total factory lead including modeled supplier stub where applicable. Clearance and bend limits require an inert harness trial.",
+    "color": "#c35542",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -22.3418,
+      14.0,
+      -24.65,
+      37.25,
+      8.4,
+      12.25
+    ],
+    "batteryVariant": "alt"
+  },
+  {
+    "id": "altTail1",
+    "name": "Cell tail GND",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "100 mm total factory lead including modeled supplier stub where applicable. Clearance and bend limits require an inert harness trial.",
+    "color": "#474a49",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -16.2156,
+      14.0,
+      -22.75,
+      37.25,
+      8.4,
+      14.4
+    ],
+    "batteryVariant": "alt"
+  },
+  {
+    "id": "drawingTail0",
+    "name": "Cell tail BAT+",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "100 mm total factory lead including modeled supplier stub where applicable. Clearance and bend limits require an inert harness trial.",
+    "color": "#c35542",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -25.3996,
+      14.0,
+      -24.65,
+      35.4,
+      5.55,
+      12.25
+    ],
+    "batteryVariant": "drawing"
+  },
+  {
+    "id": "drawingTail1",
+    "name": "Cell tail GND",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "100 mm total factory lead including modeled supplier stub where applicable. Clearance and bend limits require an inert harness trial.",
+    "color": "#474a49",
+    "source": "rev-G/geometry.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -20.0578,
+      14.0,
+      -22.75,
+      35.4,
+      5.55,
+      14.4
+    ],
+    "batteryVariant": "drawing"
+  }
+]

@@ -1,0 +1,488 @@
+{
+  "catalog": {
+    "pair_tests": 2486,
+    "bbox_candidates": 281,
+    "intersections": [
+      {
+        "first": "A1-J8",
+        "second": "hdrPins",
+        "mm3": 0.6119,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "A1-J9",
+        "second": "j9plug",
+        "mm3": 0.3937,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "A1-k3",
+        "second": "w30",
+        "mm3": 0.0049,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "A1-k3",
+        "second": "w31",
+        "mm3": 0.0112,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Housing",
+        "second": "Keeper screw",
+        "mm3": 5.0894,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Housing",
+        "second": "tieS1",
+        "mm3": 3.1667,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Housing",
+        "second": "tieS2",
+        "mm3": 3.1667,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "hdrPins",
+        "mm3": 0.0819,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1GND",
+        "mm3": 0.0546,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1SCL",
+        "mm3": 0.9195,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1SDA",
+        "mm3": 0.112,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1VCC",
+        "mm3": 0.0398,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Speaker",
+        "second": "spk0",
+        "mm3": 0.1956,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Speaker",
+        "second": "spk1",
+        "mm3": 0.2186,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Trimmed terminals",
+        "second": "w30",
+        "mm3": 0.042,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Trimmed terminals",
+        "second": "w31",
+        "mm3": 0.0249,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "batt0",
+        "second": "j7plug",
+        "mm3": 0.0243,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "batt1",
+        "second": "j7plug",
+        "mm3": 0.0228,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "j9plug",
+        "second": "spk0",
+        "mm3": 0.1991,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "j9plug",
+        "second": "spk1",
+        "mm3": 0.8749,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "motor",
+        "second": "wm0",
+        "mm3": 0.0439,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "motor",
+        "second": "wm1",
+        "mm3": 0.1393,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1GND",
+        "second": "whGND",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1SCL",
+        "second": "whSCL",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1SDA",
+        "second": "whSDA",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1VCC",
+        "second": "whVCC",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      }
+    ]
+  },
+  "alt": {
+    "pair_tests": 2486,
+    "bbox_candidates": 282,
+    "intersections": [
+      {
+        "first": "A1-J8",
+        "second": "hdrPins",
+        "mm3": 0.6119,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "A1-J9",
+        "second": "j9plug",
+        "mm3": 0.3937,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "A1-k3",
+        "second": "w30",
+        "mm3": 0.0049,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "A1-k3",
+        "second": "w31",
+        "mm3": 0.0112,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Housing",
+        "second": "Keeper screw",
+        "mm3": 5.0894,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Housing",
+        "second": "tieS1",
+        "mm3": 3.1667,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Housing",
+        "second": "tieS2",
+        "mm3": 3.1667,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "hdrPins",
+        "mm3": 0.0819,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1GND",
+        "mm3": 0.0546,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1SCL",
+        "mm3": 0.9195,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1SDA",
+        "mm3": 0.112,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1VCC",
+        "mm3": 0.0398,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Speaker",
+        "second": "spk0",
+        "mm3": 0.1956,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Speaker",
+        "second": "spk1",
+        "mm3": 0.2186,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Trimmed terminals",
+        "second": "w30",
+        "mm3": 0.042,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Trimmed terminals",
+        "second": "w31",
+        "mm3": 0.0249,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "batt0",
+        "second": "j7plug",
+        "mm3": 0.0243,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "batt1",
+        "second": "j7plug",
+        "mm3": 0.0228,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "j9plug",
+        "second": "spk0",
+        "mm3": 0.1991,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "j9plug",
+        "second": "spk1",
+        "mm3": 0.8749,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "motor",
+        "second": "wm0",
+        "mm3": 0.0439,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "motor",
+        "second": "wm1",
+        "mm3": 0.1393,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1GND",
+        "second": "whGND",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1SCL",
+        "second": "whSCL",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1SDA",
+        "second": "whSDA",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1VCC",
+        "second": "whVCC",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      }
+    ]
+  },
+  "drawing": {
+    "pair_tests": 2486,
+    "bbox_candidates": 281,
+    "intersections": [
+      {
+        "first": "A1-J8",
+        "second": "hdrPins",
+        "mm3": 0.6119,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "A1-J9",
+        "second": "j9plug",
+        "mm3": 0.3937,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "A1-k3",
+        "second": "w30",
+        "mm3": 0.0049,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "A1-k3",
+        "second": "w31",
+        "mm3": 0.0112,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Housing",
+        "second": "Keeper screw",
+        "mm3": 5.0894,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Housing",
+        "second": "tieS1",
+        "mm3": 3.1667,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Housing",
+        "second": "tieS2",
+        "mm3": 3.1667,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "hdrPins",
+        "mm3": 0.0819,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1GND",
+        "mm3": 0.0546,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1SCL",
+        "mm3": 0.9195,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1SDA",
+        "mm3": 0.112,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "J8plug",
+        "second": "w1VCC",
+        "mm3": 0.0398,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Speaker",
+        "second": "spk0",
+        "mm3": 0.1956,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Speaker",
+        "second": "spk1",
+        "mm3": 0.2186,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Trimmed terminals",
+        "second": "w30",
+        "mm3": 0.042,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "Trimmed terminals",
+        "second": "w31",
+        "mm3": 0.0249,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "batt0",
+        "second": "j7plug",
+        "mm3": 0.0243,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "batt1",
+        "second": "j7plug",
+        "mm3": 0.0228,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "j9plug",
+        "second": "spk0",
+        "mm3": 0.1991,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "j9plug",
+        "second": "spk1",
+        "mm3": 0.8749,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "motor",
+        "second": "wm0",
+        "mm3": 0.0439,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "motor",
+        "second": "wm1",
+        "mm3": 0.1393,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1GND",
+        "second": "whGND",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1SCL",
+        "second": "whSCL",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1SDA",
+        "second": "whSDA",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      },
+      {
+        "first": "w1VCC",
+        "second": "whVCC",
+        "mm3": 0.1672,
+        "status": "mating or inherited contact"
+      }
+    ]
+  }
+}
