@@ -32,6 +32,19 @@ This compares 936 full frames, including native 2 × 2 pixel expansion. Physical
 
 The HUD, scene captions, settings, journal and simulator use the bundled Atkinson Hyperlegible Next variable font. The build embeds the font and the two-note WAV speaker check for offline play. The font license is in `assets/fonts/OFL.txt`.
 
+## Arrival pacing and transition
+
+Destination changes retain the 4.2-second arrival and 3.33-second rod cue. Footpath, hiking, driving and longtail approaches cruise at 1.20, 0.95, 6.00 and 3.00 m/s. They cover 3.426, 2.712, 17.130 and 8.565 m after easing in through 0.30 s and settling from 2.68 to 3.33 s. Walking camera motion follows step distance rather than a timer; the vehicle uses a firmer suspension motion and the longtail a slower hull heave. The shared indexed renderer reveals the already-rendered fishing bank from 3.03 to 3.76 s under the rod raise. The browser's reduced-motion path is still a 550 ms still, and skipping does not cast.
+
+```sh
+c++ -std=c++17 -O2 verification/browser-tests/arrival-native.cpp -o arrival-native
+./arrival-native
+# Rebuild game/assets/landscape.wasm with Zig 0.13.0 using the command above,
+# then regenerate the interactive HTML and run the browser integration check.
+python game/build.py
+node verification/browser-tests/arrival.cjs
+```
+
 ## Cast contact and salvage fixtures
 
 The simulator and ESP32 use the same submerged layout from CastWater.h and Creek.h. Each visit rolls for submerged branches, rocks and debris using the destination's terrain and the season. A water can be entirely clear. Structures stay put across casts and changes of light, so a player can avoid a known snag. Returning after travel can yield a new layout. A cast through a debris patch can miss it. Marshes lack rocky outcrops, and exposed Gulf waters lack submerged trees. Each present feature gets a position on either side of the middle channel. Splashdown resolves the contact. To free a branch, stop winding for half a second and lift. To free a rock, lower the rod and pay out 0.30 turns. Salvage takes 1.00–1.81 forward turns and earns no catch or event credit.
