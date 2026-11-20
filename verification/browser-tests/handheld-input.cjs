@@ -72,25 +72,8 @@ async function verify(browser,mobile){
   assert.equal(await page.evaluate(()=>dialAngle),225);
   for(const key of ['k','n','m','p'])await press(key);
   assert.equal(await page.evaluate(()=>dialAngle),0,'Four signed detent packet sizes round-trip');
-  // A reproducible rock encounter exercises the signed reverse input in the actual game engine.
-  assert.deepEqual(await page.evaluate(()=>{
-   g.initialize(5);g.place(0,0);g.conditions(1,1,20466);g.setAim(g.zoneX(2),g.zoneY(2));
-   return [currentSlot,g.featureAt(g.aimX(),g.aimY())];
-  }),[0,2],'Dawn fixture targets a rock before the HID cast');
-  await press('v');await press('c');
-  await page.waitForFunction(()=>g.state()!==0,null,{timeout:8000});
-  assert.deepEqual(await page.evaluate(()=>{
-   // The actual HID event starts the cast. Step inert flight on slow rendering hosts.
-   if(g.state()===1)g.advance(g.flightMs(),0,0,0);
-   return [g.state(),g.contact()];
-  }),[7,2],'The handheld cast lands on the selected rock');
-  await press('v');await press('9');await press('p');await page.waitForTimeout(90);
-  assert.equal(await page.evaluate(()=>g.state()),7,'Rock stays snagged when the rod is raised');
-  await press('v');await press('1');await press('p');
-  await page.waitForFunction(()=>g.state()===2,null,{timeout:2500});
-  // Hook only on the explicit lift packet; a high angle alone never hooks a fish.
-  // Park only the game rAF while testing transient bite state. Real HID events
-  // and heartbeat clocks keep running; unrelated animation callbacks are untouched.
+  // Park only the game rAF for the two transient gameplay fixtures. Real HID
+  // events, performance.now and heartbeat expiry timers still run normally.
   await page.evaluate(()=>new Promise(resolve=>{
    const schedule=window.requestAnimationFrame;
    window.resumeHidFixture=()=>{
@@ -103,10 +86,37 @@ async function verify(browser,mobile){
     return schedule.call(window,cb);
    };
   }));
+  const tick=()=>page.evaluate(()=>{frame(prev+16);return g.state();});
   try{
+   // A reproducible rock encounter exercises signed payout in the real engine.
+   assert.deepEqual(await page.evaluate(()=>{
+    g.initialize(5);g.place(0,0);g.conditions(1,1,20466);g.setAim(g.zoneX(2),g.zoneY(2));
+    return [currentSlot,g.featureAt(g.aimX(),g.aimY()),turns];
+   }),[0,2,0],'Dawn fixture targets a rock with no preceding reel reports');
+   await press('v');await press('c');
+   assert.equal(await tick(),1,'HID cast starts engine flight');
+   assert.deepEqual(await page.evaluate(()=>{
+    g.advance(g.flightMs(),0,0,0);
+    return [g.state(),g.contact()];
+   }),[7,2],'The handheld cast lands on the selected rock');
+   for(const high of [true,false]){
+    const before=await page.evaluate(()=>dialAngle);
+    await press('v');await press(high?'9':'1');
+    assert.equal(await page.evaluate(()=>g.rodUp()),Number(high),'HID pitch reaches the engine before payout');
+    await press('v');await press('p');
+    const [angle,payout]=await page.evaluate(()=>[dialAngle,turns]);
+    assert.equal(angle-before,-120,'One real reverse packet moves eight detents');
+    assert(payout<=-.2999,'The AS5600 emulation queued enough actual reverse turns');
+    const expected=high?[7,2,0,0]:[2,0,0,0];
+    assert.deepEqual(await page.evaluate(()=>{
+     frame(prev+16);
+     return [g.state(),g.contact(),g.releaseProgress(),turns];
+    }),expected,high?'Raised rod stays snagged and does not retain payout':'Low rod releases the rock on actual payout');
+   }
+   // Hook only on the explicit lift packet; the high posture never hooks alone.
    await page.evaluate(()=>{g.initialize(36);g.place(0,0);g.conditions(1,1,20466);g.setAim(.88,.85);});
    await press('v');await press('c');
-   assert.equal(await page.evaluate(()=>{frame(prev+16);return g.state();}),1,'HID cast starts engine flight');
+   assert.equal(await tick(),1,'HID cast starts engine flight');
    assert.equal(await page.evaluate(()=>{
     for(let elapsed=0;elapsed<18000&&[1,2].includes(g.state());elapsed+=40)g.advance(40,0,0,0);
     return g.state();
@@ -115,9 +125,9 @@ async function verify(browser,mobile){
    assert.deepEqual(await page.evaluate(()=>{frame(prev+16);return [g.state(),g.rodUp()];}),[3,1],
     'High HID posture alone does not hook the fish');
    await press('v');await press('h');
-   assert.equal(await page.evaluate(()=>{frame(prev+16);return g.state();}),4,'Explicit HID lift hooks the fish');
+   assert.equal(await tick(),4,'Explicit HID lift hooks the fish');
   }finally{await page.evaluate(()=>window.resumeHidFixture());}
-  await page.waitForFunction(()=>!handheldInput.ownsRod()&&!g.rodUp()&&rodAngle===0,null,{timeout:5500});
+  await page.waitForFunction(()=>!handheldInput.ownsRod()&&!g.rodUp()&&rodAngle===0,null,{timeout:5500,polling:100});
   assert.match(await status.textContent(),/Waiting/);
   await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),0,'Stale reports require a new heartbeat');
   await press('v');await press('9');await page.evaluate(()=>window.dispatchEvent(new Event('blur')));
