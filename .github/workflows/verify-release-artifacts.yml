@@ -2,7 +2,6 @@ name: Verify release artifacts
 on:
   push:
     branches: [ci/verified-release-builds]
-    paths: ['.github/workflows/verify-release-artifacts.yml']
   workflow_dispatch:
     inputs:
       source_sha:
