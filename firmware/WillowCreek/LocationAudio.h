@@ -7,11 +7,16 @@ namespace locationaudio {
 constexpr unsigned sampleRate=16000;
 constexpr unsigned releaseSamples=sampleRate/50; // the outgoing score alone fades for 20 ms
 constexpr unsigned destinationCount=sizeof(scenery::recipes)/sizeof(scenery::recipes[0]);
-enum class MusicKind : uint8_t { Location, Action, Reward };
+enum class MusicKind : uint8_t { Location, Action, Reward, ActionTail };
+constexpr unsigned fightTickSamples=sampleRate*15/128; // sixteenth notes at 128 BPM
+constexpr unsigned fightPickupSamples=sampleRate*23/100;
+constexpr unsigned fightExitSamples=sampleRate*66/100;
 constexpr unsigned actionTrack=destinationCount;
 constexpr unsigned rewardTrack=actionTrack+1;
 constexpr unsigned rewardCount=6;
-constexpr unsigned noTrack=rewardTrack+rewardCount;
+constexpr unsigned pickupTrack=rewardTrack+rewardCount;
+constexpr unsigned exitTrack=pickupTrack+1;
+constexpr unsigned noTrack=exitTrack+1;
 enum class Instrument : uint8_t { Nylon, Mallet, Flute, Acoustic, Bowed };
 struct Palette {Instrument instrument; uint8_t water, motion;};
 constexpr Palette palette(scenery::Water water){
@@ -28,8 +33,9 @@ constexpr Palette palette(scenery::Water water){
 class Score {
   struct Event {uint32_t start=0, step=0; unsigned duration=0, level=0, voice=0;};
   struct Voice {uint32_t phase=0, step=0, life=0; unsigned age=0, duration=0; int level=0;};
-  Event events[48]{};
-  Voice voices[2]{};
+  Event events[124]{};
+  Voice voices[3]{};
+  unsigned pressure=0;
   Palette scene{Instrument::Nylon,0,0};
   unsigned id=noTrack, reward=rewardCount, length=0, clock=0, cursor=0, count=0, release=0;
   uint32_t noise=1, swell=0;
@@ -68,18 +74,56 @@ class Score {
   }
   void catchTheme(unsigned track){
     scene={Instrument::Acoustic,0,0};
-    static constexpr Note action[]={
-      {0,62,1},{1,66,1},{2,69,2},{4,66,1},{5,69,1},{6,71,2},
-      {8,67,1},{9,71,1},{10,74,2},{12,73,1},{13,71,1},{14,69,2}
-    };
-    static constexpr Note pulse[]={
-      {0,50,2},{3,57,1},{4,50,2},{7,54,1},{8,43,2},{11,50,1},{12,45,2},{15,55,1}
-    };
+    if(track==pickupTrack){
+      // Soft low string and A–C# pickup into the established D minor hook.
+      scene.instrument=Instrument::Nylon;
+      length=fightPickupSamples;
+      add(0,2200,11000,2100,1);
+      add(430,1560,44000,3400,0);
+      add(2050,1560,55437,4600,0);
+      return;
+    }
+    if(track==exitTrack){
+      // A quiet falling F–E–D resolution for a missed or escaped fish.
+      // The tonic and the low D decay to silence before the place resumes.
+      scene.instrument=Instrument::Nylon;
+      length=fightExitSamples;
+      add(0,2330,34923,4650,0);
+      add(2580,2040,32963,3900,0);
+      add(4790,5650,29366,4000,0);
+      add(4870,5570,14683,3000,1);
+      return;
+    }
     if(track==actionTrack){
-      const unsigned eighth=referenceEighth(116);
-      length=16*eighth;
-      addPhrase(action,eighth,0,7500,0);
-      addPhrase(pulse,eighth,0,3400,1);
+      // D minor: Dm–Bb–F–C / Gm–Bb–A7–Dm. Opening and answer vary
+      // the hook before an A7 pull and a deliberate D minor resolution.
+      // Sixteenth-note notation. One arrangement, three acoustic voices.
+      static constexpr Note hook[]={
+        {0,62,3},{3,65,2},{6,69,3},{10,72,2},{13,69,3},
+        {16,70,3},{20,69,2},{23,65,3},{28,62,3},
+        {32,65,3},{35,69,2},{38,72,4},{44,77,2},{47,76,1},
+        {48,74,3},{52,72,2},{55,67,3},{60,64,3},
+        {64,67,2},{67,70,2},{70,74,3},{74,77,2},{77,74,3},
+        {80,82,3},{84,77,2},{87,74,3},{92,70,3},
+        {96,69,2},{99,73,2},{102,76,3},{106,79,2},{109,76,3},
+        {112,74,3},{116,77,2},{119,81,3},{124,74,4}
+      };
+      static constexpr uint8_t bass[]={38,46,41,48,43,46,45,38};
+      static constexpr uint8_t inner[][3]={
+        {57,62,65},{58,62,65},{57,60,65},{55,60,64},
+        {55,58,62},{58,62,65},{57,61,67},{57,62,65}
+      };
+      length=128*fightTickSamples;
+      addPhrase(hook,fightTickSamples,0,9300,0);
+      for(unsigned bar=0;bar<8;++bar){
+        const unsigned start=16*bar;
+        const Note low[]={{uint8_t(start),bass[bar],4},{uint8_t(start+5),bass[bar],2},
+          {uint8_t(start+8),uint8_t(bass[bar]+7),4},{uint8_t(start+13),uint8_t(bass[bar]+12),2}};
+        const Note picking[]={{uint8_t(start+2),inner[bar][0],2},{uint8_t(start+6),inner[bar][1],2},
+          {uint8_t(start+10),inner[bar][2],2},{uint8_t(start+14),inner[bar][1],2}};
+        addPhrase(low,fightTickSamples,0,5400,1);
+        addPhrase(picking,fightTickSamples,0,5200,2);
+      }
       return;
     }
     // Successive rarities climb to broader openings and longer resolutions.
@@ -111,6 +155,7 @@ class Score {
     clock=cursor=count=release=0;for(auto& v:voices)v={};
     noise=hash(id+411u);if(!noise)noise=1;
     body=slow=0;swell=0;
+    pressure=0;
     if(id>=actionTrack){catchTheme(id);return;}
     scene=palette(scenery::recipes[id].water);
     if(id==8)scene.water=58; // match the approved creek music/water balance
@@ -199,7 +244,7 @@ class Score {
         attack=1840;decay=65530;break;
       case Instrument::Acoustic:
         wave=osc(1)*3/5+(osc(2)/5+osc(3)/9+osc(4)/20+osc(5)/30)*bright/1024;
-        attack=110;decay=65524;break;
+        attack=id==actionTrack?220:110;decay=65524;break;
       case Instrument::Bowed:
         // Soft string body, slowly opening articulation and unobtrusive vibrato.
         wave=osc(1)*2/3+(osc(2)/5+osc(3)/8+osc(4)/21)*bright/1024;
@@ -230,17 +275,21 @@ class Score {
 public:
   unsigned locationId() const {return id;}
   MusicKind musicKind() const {
-    return id<actionTrack || id==noTrack?MusicKind::Location:id==actionTrack?MusicKind::Action:MusicKind::Reward;
+    if(id==exitTrack)return MusicKind::ActionTail;
+    if(id==actionTrack || id==pickupTrack)return MusicKind::Action;
+    return id>=rewardTrack && id<pickupTrack?MusicKind::Reward:MusicKind::Location;
   }
   void rewardContext(bool eligible,unsigned edge){
     if(!eligible)reward=rewardCount;
     else if(edge<rewardCount)reward=edge;
   }
   void reset(){*this=Score{};}
-  int sample(unsigned requested,const int16_t* sine,unsigned music,unsigned volume,bool chase,bool duck){
+  int sample(unsigned requested,const int16_t* sine,unsigned music,unsigned volume,bool chase,bool duck,bool surge=false,bool lost=false){
     requested=requested<destinationCount?requested:0;
-    const unsigned base=chase?actionTrack:requested;
-    requested=reward<rewardCount?rewardTrack+reward:base;
+    const unsigned place=requested;
+    const unsigned base=chase?(id==actionTrack?actionTrack:pickupTrack):place;
+    const bool closeFight=lost && !chase && (id==actionTrack || id==pickupTrack || id==exitTrack);
+    requested=reward<rewardCount?rewardTrack+reward:closeFight?exitTrack:base;
     if(id==noTrack)start(requested);
     if(id!=requested && !release)release=releaseSamples;
     while(cursor<count && events[cursor].start==clock){
@@ -249,6 +298,16 @@ public:
     }
     const int main=voiceSample(voices[0],sine), harmony=voiceSample(voices[1],sine);
     int bed=main+(music==1?harmony/3:harmony);
+    if(id==actionTrack){
+      // Articulate the picked parts over a short ramp when a fish runs.
+      // The soundtrack contains notes only; bite, reel and foley are emitted
+      // separately by game events in CreekSynth, never on musical beats.
+      if(surge && pressure<2048)++pressure;
+      else if(!surge && pressure>0)--pressure;
+      const int picking=voiceSample(voices[2],sine);
+      bed=main*(4096+int(pressure)*5/8)/4096+harmony+
+        picking*(2400+int(pressure)*3/2)/4096;
+    }
     if(id<actionTrack){
       if(music!=2)bed+=ambience(sine);else (void)ambience(sine);
     }
@@ -263,6 +322,10 @@ public:
         // merely because the catch screen is still open.
         if(reward<rewardCount && id==rewardTrack+reward)reward=rewardCount;
         start(reward<rewardCount?rewardTrack+reward:base);
+      }else if(id==pickupTrack){
+        start(requested==pickupTrack?actionTrack:requested);
+      }else if(id==exitTrack){
+        start(requested==exitTrack?place:requested);
       }else{clock=cursor=0;for(auto& v:voices)v={};}
     }
     if(release){

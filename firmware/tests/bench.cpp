@@ -119,7 +119,7 @@ EXPORT void reelVolume(int level){if(level>=0&&level<=3)s.reelVolume=level;}
 EXPORT int16_t* samples(){
  const bool held=g.phase==Phase::Landed && !g.filed;
  synth.render(stereo,256,s,g.phase==Phase::Bite || g.phase==Phase::Fight,cuePending && g.phase==Phase::Bite,
-   clickPending,held?landingPending:LandingCue{},waterSounds,held);waterSounds=0;
+   clickPending,held?landingPending:LandingCue{},waterSounds,held,g.surge(),g.phase==Phase::Lost);waterSounds=0;
  cuePending=false;clickPending=0;landingPending={};return stereo;
 }
 
