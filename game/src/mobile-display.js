@@ -3,6 +3,11 @@
 (()=>{
  const root=document.documentElement,button=$('fullscreen'),mobileButton=$('mobileFullscreen');
  const motion=$('motionShortcut'),note=$('displayModeNote');
+ // Suppress pointer menus in the game shell, not native editing or keyboard menus.
+ document.querySelector('main').addEventListener('contextmenu',event=>{
+  if(event.target.closest?.('input,textarea,select,[contenteditable]:not([contenteditable="false"])'))return;
+  if(event.button===2||event.pointerType==='touch'||event.pointerType==='pen'||event.sourceCapabilities?.firesTouchEvents)event.preventDefault();
+ });
  const coarse=matchMedia('(pointer: coarse)'),landscape=matchMedia('(orientation: landscape)');
  let manual=false,stayWindowed=false,declined=false,pending=false;
  const isPhone=()=>navigator.maxTouchPoints>0||coarse.matches;

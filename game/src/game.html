@@ -835,7 +835,6 @@ dial.onpointermove=e=>{
  if(samples?.length){for(const sample of samples)rimSample(sample);}else rimSample(e);
 };
 dial.onpointerup=dial.onpointercancel=dial.onlostpointercapture=e=>{if(e.pointerId===dialPointer)endDial();};
-dial.oncontextmenu=e=>e.preventDefault();
 function dialKeyStep(step){
  if(!dialReady())return;
  stopAutoReel();

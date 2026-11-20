@@ -8,7 +8,8 @@ function fixture(mode='native',touch=true) {
     lang:'en',toggleAttribute(k,v){this[k]=v;},classList:{toggle(k,v){v?classes.add(k):classes.delete(k);},contains:k=>classes.has(k)}
   };
   const $=id=>elements[id]??={setAttribute(k,v){this[k]=v;}};
-  const doc={documentElement:root,addEventListener(k,v){listeners[k]=v;}};
+  const shell={addEventListener(k,v){listeners[k]=v;}};
+  const doc={documentElement:root,querySelector(){return shell;},addEventListener(k,v){listeners[k]=v;}};
   let calls=0,requested,sectionChosen,focused=false;
   if(mode!=='unsupported')root.requestFullscreen=async()=>{calls++;if(mode==='denied')throw Error('blocked');doc.fullscreenElement=root;listeners.fullscreenchange();};
   doc.exitFullscreen=async()=>{doc.fullscreenElement=null;listeners.fullscreenchange();};
@@ -25,6 +26,17 @@ function fixture(mode='native',touch=true) {
   assert.equal(a.root.classList.contains('immersive'),true);
   assert.equal(a.calls(),0);
   assert.ok(!a.listeners.pointerup,'no gameplay gesture changes fullscreen');
+  function prevented({button=0,pointerType='',editable=false,firesTouchEvents=false}={}){
+    let cancelled=false;
+    a.listeners.contextmenu({button,pointerType,sourceCapabilities:{firesTouchEvents},
+      target:{closest:()=>editable?{}:null},preventDefault(){cancelled=true;}});
+    return cancelled;
+  }
+  assert.equal(prevented({button:2}),true,'right mouse stops only a game-shell pointer menu');
+  assert.equal(prevented({pointerType:'touch'}),true,'touch long-press');
+  assert.equal(prevented({firesTouchEvents:true}),true,'legacy touch-generated menu');
+  assert.equal(prevented({button:2,editable:true}),false,'native editing menu remains');
+  assert.equal(prevented({}),false,'keyboard context menu remains');
   a.rotate();
   assert.equal(a.root.classList.contains('immersive'),true);
   assert.equal(a.calls(),0);
