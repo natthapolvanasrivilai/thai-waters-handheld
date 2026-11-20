@@ -67,9 +67,13 @@ const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=requ
    menu.show();section('book');showBookEntry(id);
    const unseen=document.querySelector('#bookDetail .fish-thumb').dataset.fishArt;
    g.restoreEntry(id,1,Math.round((atlas.fish[id].low+atlas.fish[id].high)/2));
-   showBookEntry(id);await loadDetailArt(id).done;await Promise.resolve();
+   showBookEntry(id);
    const tile=document.querySelector('#bookDetail .fish-thumb');
-   const box=tile.getBoundingClientRect(),name=document.querySelector('#bookDetail h2').textContent;
+   // Compare against the same rendered canvas before its intrinsic bitmap is replaced.
+   // A fixed viewport-pixel ceiling is sensitive to the mobile menu's responsive sizing.
+   const legacyLayout=[tile.offsetWidth,tile.offsetHeight],legacyBitmap=[tile.width,tile.height];
+   await loadDetailArt(id).done;await Promise.resolve();
+   const layout=[tile.offsetWidth,tile.offsetHeight],name=document.querySelector('#bookDetail h2').textContent;
    const scientific=originalAtlas.fish[id].name;
    const labels=[...document.querySelectorAll('#bookDetail small')].map(n=>n.textContent);
    g.restoreCatch(id,Math.round((atlas.fish[id].low+atlas.fish[id].high)/2));
@@ -81,11 +85,13 @@ const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=requ
    }finally{CanvasRenderingContext2D.prototype.drawImage=original;}
    const unmatched=originalAtlas.fish[id].name;originalAtlas.fish[id].name='test wrong species';
    let rejected;try{rejected=loadDetailArt(id)===null;}finally{originalAtlas.fish[id].name=unmatched;}
-   return {ready,unseen:unseen||null,hq:tile.dataset.fishArt,px:[tile.width,tile.height],css:[box.width,box.height],name,expected:atlas.fish[id].name,labels,scientific,hit,unknown:loadDetailArt(unknown)===null,rejected,dpr:devicePixelRatio};
+   return {ready,unseen:unseen||null,hq:tile.dataset.fishArt,px:[tile.width,tile.height],layout,legacyLayout,legacyBitmap,name,expected:atlas.fish[id].name,labels,scientific,hit,unknown:loadDetailArt(unknown)===null,rejected,dpr:devicePixelRatio};
   });
   assert.equal(state.dpr,dpr);assert.deepEqual(state.ready,[true,true,true,true,true]);
   assert.equal(state.unseen,null);assert.equal(state.hq,'hq');assert.deepEqual(state.px,[288,150]);
-  assert(state.css[0]>0&&state.css[0]<=145&&state.css[1]>0&&state.css[1]<=79);
+  assert.deepEqual(state.legacyBitmap,[144,75]);
+  assert(state.legacyLayout.every(n=>n>0),'Legacy profile is visibly laid out');
+  assert.deepEqual(state.layout,state.legacyLayout,'HQ bitmap must not change the original profile layout');
   assert.equal(state.name,state.expected);assert(state.name===state.scientific||state.labels.includes(state.scientific));
   assert.equal(state.hit.length,1,'Catch paints the matching source-resolution image');
   assert.equal(state.unknown,true);assert.equal(state.rejected,true);
