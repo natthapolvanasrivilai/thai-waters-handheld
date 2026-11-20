@@ -25,6 +25,18 @@ Supports are enabled only for the housing and rotor (automatic normal, 30°; sup
 
 The project completed all six plates in two native slicing passes, including a separate reopen and re-slice of the saved release file. Both passed without slicing warnings, out-of-bed objects or material changes on any plate. This is slicer evidence, not a physical first article. The printer firmware and exact spools have not been verified through this check. No print was started, and no device was powered.
 
+## Separate seven-plate Cap29 inert fit trial
+
+Download [Pocket-Reel-R0011-X1C-Cap29-Inert-Trial.3mf](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-receiver-toolpaths-2/Pocket-Reel-R0011-X1C-Cap29-Inert-Trial.3mf) for the [#29 power-cap fit trial](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/29). Verify SHA-256:
+
+```text
+c1d969df235f458e269a065e16eeefd1f8d796a381204efff695b37a41484429
+```
+
+This separate R0011-derived project retains plates 1–6 unchanged, including their toolpaths. Nothing is substituted in the baseline, this is **not R0012**, and it does not include replacements for the other open geometry issues. The saved project was reopened and all seven plates re-sliced in Bambu Studio; it has not been physically printed or fit-tested.
+
+Print only plate 7 for this trial. Confirm opaque PETG and SuperTack on the actual X1C. Keep the caps identified as removed: left +0.30 mm, **center +0.40 mm (try first)**, right +0.50 mm. Dry-fit only in an **empty, undamaged, unpowered R0011 housing without PCB or battery**. Check seating, capture and free travel without forcing, sanding, drilling or gluing. Stop if the stock opening is damaged. Powered fit and use remain unverified.
+
 ## Physical first-article checks still open
 
 1. In Preview, inspect the first-layer U-shaped housing contact (both receiver lips joined by the closed end), support-only starts, seam positions and dimensional surfaces on the affected plates. Save screenshots with the checked profile. Before a full kit, run small adhesion/stringing coupons or the affected parts on the actual X1C. Record its firmware, actual filament and drying, plate prep and settings. Change one factor at a time. Do not sand the device exterior.
