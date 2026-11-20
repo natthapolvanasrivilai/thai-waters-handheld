@@ -58,5 +58,5 @@ const menuSheets=(()=>{
  }
  function step(by){const pagesHere=pages.get(menuPage);if(!pagesHere)return;positions.set(menuPage,Math.max(0,Math.min(pagesHere.length-1,(positions.get(menuPage)||0)+by)));open(menuPage);}
  prev.onclick=()=>step(-1);next.onclick=()=>step(1);
- return {open};
+ return {open,reset:name=>positions.delete(name)};
 })();

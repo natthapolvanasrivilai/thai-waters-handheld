@@ -34,6 +34,7 @@ const {chromium,webkit}=require('playwright-core');
     }
     if(route==='rod'){
      await p.locator('#careerOpen').tap();await fits();
+     assert.equal(await p.locator('#sheetNumber').textContent(),'1/2','Repeated Career entry resumes at the summary');
      await p.locator('#sheetNext').tap();await fits();
      await p.locator('#back').tap();await fits();
     }

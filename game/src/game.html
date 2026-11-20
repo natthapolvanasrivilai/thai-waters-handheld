@@ -355,7 +355,7 @@ function listSpots(){
 function section(name){
  if(menuPage==='sound' && name!=='sound')resetHaptics();
  $('careerOpen').textContent=careerWords('Career & backups','บันทึกนักตกปลา');
- if(name==='career')drawCareer();else if(menuPage==='career')resetCareerFile();
+ if(name==='career'){menuSheets.reset('career');drawCareer();}else if(menuPage==='career')resetCareerFile();
 
  if(name==='book')renderBook();else bookSpecies=null;if(name==='crew'){drawCup();void syncCup();}if(name==='rod')showRig();menuPage=name;menu.dataset.page=name;setUi($('menuTitle'),pageNames[name]);if(name==='career')$('menuTitle').textContent=careerWords('Career & backups','อาชีพนักตกปลาและไฟล์สำรอง');menu.querySelectorAll('[data-section]').forEach(s=>s.hidden=s.dataset.section!==name);
  $('back').hidden=name==='home';if(name==='spots'){pendingSpot=placeId;pendingTime=timeMode;$('searchSpot').value='';$('waterType').value='all';$('period').selectedIndex=pendingTime;$('weatherChoice').selectedIndex=weatherMode;listSpots();}
