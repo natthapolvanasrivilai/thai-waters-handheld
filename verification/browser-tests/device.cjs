@@ -6,6 +6,9 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await page.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);await page.waitForFunction(()=>document.documentElement.dataset.device&&g);
+  assert.equal(await page.locator('html').getAttribute('data-view'),'screen');
+  await page.locator('#viewMode').click();
+  await page.waitForFunction(()=>['ready','fallback'].includes(document.documentElement.dataset.device));
   assert.equal(await page.evaluate(()=>document.documentElement.dataset.device),'ready',errors.join('\n'));
   await page.waitForTimeout(900);
   const b=await page.locator('#product').boundingBox();console.log('bounds',b);
@@ -55,5 +58,3 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   console.log('errors',errors);assert(!errors.length);
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
-
-
