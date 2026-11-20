@@ -2,7 +2,7 @@
 
 [Hardware closure and playtest issues](quality/hardware-gate.md) · [Open the private tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
 
-[Private touch playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) · [Matching engineering prerelease](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/engineering-2026-11-20-large-reel-cf0d4d2) · [Clock and collection recovery](docs/wiki/Clock-and-saves.md)
+[Private touch playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) · [Matching engineering prerelease](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/engineering-2026-11-20-career-swipe-efc0dd6) · [Clock and collection recovery](docs/wiki/Clock-and-saves.md)
 
 [Hardware revisions and CAD](docs/wiki/Hardware-and-3D.md) · [One-unit BOM and price research](docs/wiki/BOM-and-business.md) · [Current release and hardware milestone](docs/wiki/Software-and-tests.md#current-release)
 
@@ -21,7 +21,7 @@ Personal product project of GitHub user natthapolvanasrivilai. The handheld uses
 | Industrial design and fit | [R0011 assembly inspection and STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-hardware-review-1) · [Mechanical verification](hardware/mechanical/TW-A-0001-R0011/README.md) |
 | Current mechanical candidate | [R0011 receiver toolpaths](hardware/mechanical/TW-A-0001-R0011/README.md) · [Lower service cover and fitted STEP](hardware/mechanical/TW-A-0001-R0010/README.md) |
 | Parts and procurement | [R0011 / R0004 engineering BOM](sourcing/production-intent/R0011-R0004-BOM.md) · [Line items and source evidence](sourcing/production-intent/R0011-R0004-engineering-BOM.csv) · [Cable routes and connections](hardware/electronics/harness-r0003/README.md) |
-| Firmware and game content | [Arduino sketch](firmware/WillowCreek) · [Released standalone browser game](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/engineering-2026-11-20-large-reel-cf0d4d2/Thai-Waters-play.html) · [USB prototype for this build](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/engineering-2026-11-20-large-reel-cf0d4d2/Thai-Waters-controller-cf0d4d2.zip) |
+| Firmware and game content | [Arduino sketch](firmware/WillowCreek) · [Released standalone browser game](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/engineering-2026-11-20-career-swipe-efc0dd6/Thai-Waters-play.html) · [USB prototype for this build](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/engineering-2026-11-20-career-swipe-efc0dd6/Thai-Waters-controller-efc0dd6.zip) |
 | Phone testing | [Private hosted game, QR and motion controls](game/sites/Phone-playtest.md) |
 | Verification | [Prototype evidence](verification/fit-review.md) and [bench procedure](verification/bench-guide.md) |
 | Market access | [Design and certification review](compliance/market-access.md) |
