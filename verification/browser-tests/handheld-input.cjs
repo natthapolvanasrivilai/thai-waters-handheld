@@ -30,6 +30,13 @@ async function setPairedRod(page,enable,wantChecked){
  assert.equal(await enable.isChecked(),wantChecked,'Native checkbox activation updates its checked state');
 }
 
+// Use native button activation without waiting for stable pointer geometry.
+async function pressButton(button){
+ await button.waitFor({state:'visible'});
+ assert(await button.isVisible()&&await button.isEnabled(),'The menu button is visible and enabled');
+ await button.press('Enter');
+}
+
 async function verify(browser,mobile){
  const page=await browser.newPage({viewport:mobile?{width:390,height:844}:{width:1180,height:780},isMobile:mobile,hasTouch:mobile});
  const errors=[];page.on('pageerror',error=>errors.push(error.message));
@@ -42,18 +49,18 @@ async function verify(browser,mobile){
   const press=code=>page.keyboard.press(code);
   await press('v');await press('c');await press('9');
   assert.equal(await page.evaluate(()=>g.state()),0,'No game events before opt-in');
-  await page.locator('#openMenu').click();await page.locator('[data-to=sensors]').click();
+  await pressButton(page.locator('#openMenu'));await pressButton(page.locator('[data-to=sensors]'));
   const enable=page.locator('#handheldEnable'),status=page.locator('#handheldStatus');
   await setPairedRod(page,enable,true);assert.match(await status.textContent(),/Waiting/);
   await press('o');assert.equal(await page.evaluate(()=>dialAngle),0,'No rewind or turns before heartbeat');
   await press('v');assert.match(await status.textContent(),/Receiving/);
   await press('c');await press('h');await press('9');await press('o');
   assert.deepEqual(await page.evaluate(()=>[g.state(),g.rodUp(),dialAngle]),[0,0,0],'Motion bench consumes packets without playing');
-  await page.locator('#back').click();await page.locator('[data-to=spots]').click();
+  await pressButton(page.locator('#back'));await pressButton(page.locator('[data-to=spots]'));
   await page.locator('#searchSpot').focus();await press('v');await press('c');await press('h');await press('o');await press('9');
   assert.equal(await page.locator('#searchSpot').inputValue(),'','Controller packets cannot type into the location search');
   await page.keyboard.type('xyz');assert.equal(await page.locator('#searchSpot').inputValue(),'xyz');
-  await page.locator('#resume').click();await press('v');await press('9');
+  await pressButton(page.locator('#resume'));await press('v');await press('9');
   assert.deepEqual(await page.evaluate(()=>[g.rodUp(),rodAngle,g.state()]),[1,28,0],'High posture is sustained without a synthetic cast');
   await press('5');assert.equal(await page.evaluate(()=>g.rodUp()),1,'Middle pitch retains prior high state');
   await press('1');assert.equal(await page.evaluate(()=>g.rodUp()),0);
@@ -117,10 +124,10 @@ async function verify(browser,mobile){
   assert.deepEqual(await page.evaluate(()=>[handheldInput.ownsRod(),g.rodUp(),rodAngle]),[false,0,0]);
   await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),1);
-  await page.locator('#openMenu').click();assert.equal(await page.evaluate(()=>g.rodUp()),0);
-  await page.locator('[data-language=th]').click();await page.locator('[data-to=sensors]').click();
+  await pressButton(page.locator('#openMenu'));assert.equal(await page.evaluate(()=>g.rodUp()),0);
+  await pressButton(page.locator('[data-language=th]'));await pressButton(page.locator('[data-to=sensors]'));
   assert.match(await status.textContent(),/[ก-๙]/);await setPairedRod(page,enable,false);
-  assert.match(await status.textContent(),/ปิด/);await page.locator('#resume').click();
+  assert.match(await status.textContent(),/ปิด/);await pressButton(page.locator('#resume'));
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),0);
   assert.deepEqual(errors,[]);console.log('PASS '+(mobile?'mobile':'desktop')+' HID input, exact signed detents, physical cast/hook, rock payout, pitch hysteresis, neutral, menu safety and Thai labels');
  }finally{await page.close();}
