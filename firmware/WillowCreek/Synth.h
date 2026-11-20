@@ -1,15 +1,14 @@
 #pragma once
 #include "Sound.h"
-#include "Score.h"
+#include "LocationAudio.h"
 #include "FishingPcm.h"
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
 class CreekSynth {
-  struct Voice {uint32_t phase=0, step=0; int age=0,length=0,amp=0;};
   int16_t sineTable[256]{};
-  Voice voice[4]{};
-  int playing=-1,arrangement=-1; unsigned cursor=0,clock=0,cueAge=10000;
+  locationaudio::Score score;
+  unsigned cueAge=10000;
   uint32_t cuePhase=0;
   unsigned toothAge=144,toothNoise=1,toothPhase=0,toothStep=0;
   creek::LandingCue landing{};
@@ -62,7 +61,8 @@ class CreekSynth {
   }
 public:
   void clearFoley(){for(auto &v:foley)v={};}
-  void begin(){landing={};for(auto &v:foley)v={};for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);}
+  unsigned locationId() const {return score.locationId();}
+  void begin(){score.reset();landing={};for(auto &v:foley)v={};for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);}
   void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0){
     if(fishingSounds)playFoley(fishingSounds);
     if(s.cue==1 || !s.cueVolume)landing={};
@@ -71,26 +71,9 @@ public:
       toothAge=0;toothPhase=0;
       toothStep=reelClick>0?584115552u:507342336u;
     }
-    if(playing!=s.site||arrangement!=s.arrangement){playing=s.site%4;arrangement=s.arrangement;cursor=clock=0;for(auto& v:voice)v=Voice{};} const Note* notes=songs[playing]; if(trigger){cueAge=0;cuePhase=0;}
+    if(trigger){cueAge=0;cuePhase=0;}
     for(size_t i=0;i<frames;i++){
-      while(cursor<songSizes[playing] && notes[cursor].start==clock){
-        const Note& n=notes[cursor++];
-        static constexpr unsigned tuning[]={1024,1085,1149,1218,1290,1367,1448};
-        unsigned variant=s.arrangement<4?0:1+s.arrangement;
-        unsigned key=variant?(variant+n.voice*3+(cursor/(3+variant%5))%3)%7:0;
-        unsigned gate=variant?78+(variant*7+n.voice*11)%40:100;
-        voice[n.voice]={0,uint32_t(uint64_t(n.step)*tuning[key]/1024),0,int(n.duration*gate/100),n.level};
-      }
-      int music=0;
-      for(int v=0;v<4;v++){
-        Voice& o=voice[v];
-        if(o.age>=o.length)continue;
-        int env=std::min(96,o.age)*std::min(192,o.length-o.age)/192;
-        int value=sineTable[o.phase>>24]*o.amp/32768;
-        if(s.music!=3 && (v!=1 || s.music!=1) && (v!=3 || (s.music==0 && chase)))music+=value*env/96;
-        o.age++;o.phase+=o.step;
-      }
-      int pcm=music*s.volume/(cueAge<6200||landing.active()?12:4);
+      int pcm=score.sample(s.arrangement,sineTable,s.music,s.volume,chase,cueAge<6200||landing.active());
       pcm+=foleySample(s);
       if(landing.active())pcm+=landingSample(s.cueVolume);
       if(toothAge<144){
@@ -111,7 +94,6 @@ public:
       }
       if(cueAge<10000)cueAge++;
       buffer[i*2]=buffer[i*2+1]=std::max(-32760,std::min(32760,pcm));
-      if(++clock==songEnds[playing]){clock=0;cursor=0;}
     }
   }
 };

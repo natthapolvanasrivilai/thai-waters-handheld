@@ -31,7 +31,7 @@ EXPORT uint8_t* speciesPixels(int id){
  return &portrait[0][0];
 }
 EXPORT const uint16_t* speciesInk(){return specimen::frames[portraitFrame].ink;}
-EXPORT void initialize(unsigned seed){waterSounds=0;g=Game{};g.beginSession(seed);synth.begin();detents=ReelDetents{};tactile=RumblePlan{};cuePending=false;landingPending={};crossedTeeth=clickPending=0;}
+EXPORT void initialize(unsigned seed){waterSounds=0;g=Game{};g.beginSession(seed);s.site=g.site%4;s.arrangement=g.destination;synth.begin();detents=ReelDetents{};tactile=RumblePlan{};cuePending=false;landingPending={};crossedTeeth=clickPending=0;}
 EXPORT void advance(unsigned dt,int cast,int lift,float turns){
  auto before=g.phase;g.tick(dt,cast,lift,turns);waterSounds|=g.soundEdges;
  if(before!=g.phase && g.phase==Phase::Bite && s.cue!=1)cuePending=true;
