@@ -2,6 +2,7 @@
 #include "Sound.h"
 #include "Score.h"
 #include "FishingPcm.h"
+#include "BiomeAudio.h"
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
@@ -11,6 +12,9 @@ class CreekSynth {
   Voice voice[4]{};
   int playing=-1,arrangement=-1; unsigned cursor=0,clock=0,cueAge=10000;
   uint32_t cuePhase=0;
+  BiomeAudio biome;
+  unsigned songPass=0;
+  bool soundscapePreview=false;
   unsigned toothAge=144,toothNoise=1,toothPhase=0,toothStep=0;
   creek::LandingCue landing{};
   unsigned landingNote=0,noteAge=0,noteLength=0;
@@ -61,6 +65,8 @@ class CreekSynth {
     return sample*int(level)/2;
   }
 public:
+  // Internal audition only. No save, wire, firmware UI or browser ABI change.
+  void setSoundscapePreview(bool enabled){soundscapePreview=enabled;}
   void clearFoley(){for(auto &v:foley)v={};}
   void begin(){landing={};for(auto &v:foley)v={};for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);}
   void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0){
@@ -71,7 +77,7 @@ public:
       toothAge=0;toothPhase=0;
       toothStep=reelClick>0?584115552u:507342336u;
     }
-    if(playing!=s.site||arrangement!=s.arrangement){playing=s.site%4;arrangement=s.arrangement;cursor=clock=0;for(auto& v:voice)v=Voice{};} const Note* notes=songs[playing]; if(trigger){cueAge=0;cuePhase=0;}
+    if(playing!=s.site||arrangement!=s.arrangement){playing=s.site%4;arrangement=s.arrangement;cursor=clock=songPass=0;for(auto& v:voice)v=Voice{};} const Note* notes=songs[playing]; if(trigger){cueAge=0;cuePhase=0;}
     for(size_t i=0;i<frames;i++){
       while(cursor<songSizes[playing] && notes[cursor].start==clock){
         const Note& n=notes[cursor++];
@@ -79,7 +85,14 @@ public:
         unsigned variant=s.arrangement<4?0:1+s.arrangement;
         unsigned key=variant?(variant+n.voice*3+(cursor/(3+variant%5))%3)%7:0;
         unsigned gate=variant?78+(variant*7+n.voice*11)%40:100;
-        voice[n.voice]={0,uint32_t(uint64_t(n.step)*tuning[key]/1024),0,int(n.duration*gate/100),n.level};
+        int level=n.level;
+        // Controlled phrasing variation, not random pitches or tempo jumps.
+        if(soundscapePreview && n.voice!=0){
+          const unsigned expression=(songPass+n.voice+cursor/4)%4;
+          gate=gate*(92+expression*5)/100;
+          level=level*(88+expression*6)/100;
+        }
+        voice[n.voice]={0,uint32_t(uint64_t(n.step)*tuning[key]/1024),0,int(n.duration*gate/100),level};
       }
       int music=0;
       for(int v=0;v<4;v++){
@@ -91,6 +104,8 @@ public:
         o.age++;o.phase+=o.step;
       }
       int pcm=music*s.volume/(cueAge<6200||landing.active()?12:4);
+      const bool duck=cueAge<6200||landing.active()||chase;
+      pcm+=biome.sample(s.arrangement,soundscapePreview?s.volume:0,sineTable,duck);
       pcm+=foleySample(s);
       if(landing.active())pcm+=landingSample(s.cueVolume);
       if(toothAge<144){
@@ -111,7 +126,7 @@ public:
       }
       if(cueAge<10000)cueAge++;
       buffer[i*2]=buffer[i*2+1]=std::max(-32760,std::min(32760,pcm));
-      if(++clock==songEnds[playing]){clock=0;cursor=0;}
+      if(++clock==songEnds[playing]){clock=0;cursor=0;++songPass;}
     }
   }
 };
