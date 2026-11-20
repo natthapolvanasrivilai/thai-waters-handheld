@@ -73,7 +73,7 @@ public:
     cueAge=10000;cuePhase=0;toothAge=144;toothNoise=1;toothPhase=toothStep=0;
     for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);
   }
-  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0,bool held=false){
+  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0,bool held=false,bool surge=false,bool lost=false){
     if(fishingSounds)playFoley(fishingSounds);
     const bool cueEnabled=s.cue!=1 && s.cueVolume;
     const bool rewardMusic=held && cueEnabled && s.music!=3 && s.volume;
@@ -87,7 +87,7 @@ public:
     }
     if(trigger){cueAge=0;cuePhase=0;}
     for(size_t i=0;i<frames;i++){
-      int pcm=score.sample(s.arrangement,sineTable,s.music,s.volume,chase,cueAge<6200||landing.active());
+      int pcm=score.sample(s.arrangement,sineTable,s.music,s.volume,chase,cueAge<6200||landing.active(),surge,lost);
       pcm+=foleySample(s);
       if(landing.active())pcm+=landingSample(s.cueVolume);
       if(toothAge<144){
