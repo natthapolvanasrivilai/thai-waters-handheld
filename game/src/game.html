@@ -167,8 +167,10 @@ function viewOfPlace(place,period){
  landscapeContext.imageSmoothingEnabled=false;landscapeContext.drawImage(pixelCanvas,0,0,480,320);
  lastLandscape=key;return landscapeCanvas;
 }
+let nearbyBoatMix=0;
 function paintAmbientScene(context,milliseconds,live){
  const n=sceneryEngine.sampleAmbient(milliseconds>>>0,live?milliseconds%86400000+1:0);
+ nearbyBoatMix=sceneryEngine.ambientBoatMix();
  for(let i=0;i<n*4;i+=4){
    context.fillStyle=sceneInks[scenicSpans[i+3]];
    context.fillRect(scenicSpans[i]*2,scenicSpans[i+1]*2,scenicSpans[i+2]*2,2);
@@ -608,12 +610,33 @@ function syncBiteSwitch(){$('iosSwitch').checked=$('cue').selectedIndex!==1;}
 keys.forEach(k=>$(k).onchange=()=>{settings();syncBiteSwitch();});
 $('iosSwitch').onchange=()=>{$('cue').selectedIndex=$('iosSwitch').checked?0:1;$('cue').dispatchEvent(new Event('change',{bubbles:true}));};
 syncBiteSwitch();
+let boatAudioBus=null;
+function boatEffects(){
+ const volume=powered&&!menu.open&&!document.hidden&&arrivalSince===null?$('fx').selectedIndex:0;
+ if(boatAudioBus)boatAudioBus.gain.value=volume>0?1:0;
+ return volume;
+}
+function muteBoatBus(){if(boatAudioBus)boatAudioBus.gain.value=0;}
+document.addEventListener('visibilitychange',boatEffects);
+window.addEventListener('pagehide',muteBoatBus);
+$('fx').addEventListener('change',boatEffects);
+const boatGate=new MutationObserver(boatEffects);
+boatGate.observe(menu,{attributes:true,attributeFilter:['open']});
+boatGate.observe($('lcdUI'),{attributes:true,attributeFilter:['data-arriving']});
 function pump(){
+ const boatVolume=boatEffects();
  if(!powered||!g||!audio||audio.state!=='running'||document.hidden)return;
  nextSound=Math.max(nextSound,audio.currentTime);
  while(nextSound<audio.currentTime+.075){
   const buf=audio.createBuffer(1,256,16000),ptr=g.samples(),src=new Int16Array(g.memory.buffer,ptr,512),floats=buf.getChannelData(0);
   for(let i=0;i<256;i++)floats[i]=src[2*i]/32768;
+  const boatPtr=sceneryEngine.ambientBoatPcm(boatVolume?nearbyBoatMix:0,boatVolume);
+  const boats=new Int16Array(sceneryEngine.memory.buffer,boatPtr,256);
+  if(boatVolume&&boats.some(n=>n!==0)){
+   const vessel=audio.createBuffer(1,256,16000),mix=vessel.getChannelData(0);
+   for(let i=0;i<256;i++)mix[i]=(Math.max(-32768,Math.min(32767,src[2*i]+boats[i]))-src[2*i])/32768;
+   const note=audio.createBufferSource();note.buffer=vessel;note.connect(boatAudioBus);note.start(nextSound);
+  }
   const s=audio.createBufferSource();s.buffer=buf;s.connect(audio.destination);s.start(nextSound);nextSound+=256/16000;
  }
 }
@@ -633,6 +656,7 @@ function unlock(){
   if(!audio||audio.state==='closed'){
    const AudioEngine=window.AudioContext||window.webkitAudioContext;
    audio=new AudioEngine();
+   boatAudioBus=audio.createGain();boatAudioBus.connect(audio.destination);boatEffects();
    audio.onstatechange=audioState;
    clearInterval(audioTimer);audioTimer=setInterval(pump,20);
   }

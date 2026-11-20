@@ -2,12 +2,14 @@
 #include "Sound.h"
 #include "LocationAudio.h"
 #include "FishingPcm.h"
+#include "BoatAmbience.h"
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
 class CreekSynth {
   int16_t sineTable[256]{};
   locationaudio::Score score;
+  scenery::BoatAmbience boatAmbience;
   bool wasHeld=false;
   unsigned cueAge=10000;
   uint32_t cuePhase=0;
@@ -69,11 +71,11 @@ public:
   unsigned locationId() const {return score.locationId();}
   locationaudio::MusicKind musicKind() const {return score.musicKind();}
   void begin(){
-    score.reset();wasHeld=false;landing={};clearFoley();
+    score.reset();boatAmbience={};wasHeld=false;landing={};clearFoley();
     cueAge=10000;cuePhase=0;toothAge=144;toothNoise=1;toothPhase=toothStep=0;
     for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);
   }
-  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0,bool held=false,bool surge=false,bool lost=false){
+  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0,bool held=false,bool surge=false,bool lost=false,uint16_t boat=0,bool boatOn=true){
     if(fishingSounds)playFoley(fishingSounds);
     const bool cueEnabled=s.cue!=1 && s.cueVolume;
     const bool rewardMusic=held && cueEnabled && s.music!=3 && s.volume;
@@ -89,6 +91,7 @@ public:
     for(size_t i=0;i<frames;i++){
       int pcm=score.sample(s.arrangement,sineTable,s.music,s.volume,chase,cueAge<6200||landing.active(),surge,lost);
       pcm+=foleySample(s);
+      pcm+=boatAmbience.sample(boat,boatOn?s.cueVolume:0);
       if(landing.active())pcm+=landingSample(s.cueVolume);
       if(toothAge<144){
         // A dry pawl impact excites a short metallic ring at 16 kHz.

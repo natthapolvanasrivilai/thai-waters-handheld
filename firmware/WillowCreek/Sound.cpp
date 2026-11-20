@@ -15,6 +15,8 @@ bool fight=false,held=false,running=false,missed=false;
 uint32_t signalNumber=0;
 int pendingClick=0;
 uint8_t pendingFoley=0;
+uint16_t boatMix=0;
+bool boatEnabled=false;
 creek::LandingCue pendingLanding;
 CreekSynth synth;
 void stream(void*) {
@@ -26,8 +28,10 @@ void stream(void*) {
     int click=pendingClick;pendingClick=0;
     const auto foley=pendingFoley;pendingFoley=0;
     auto landing=pendingLanding;pendingLanding={};
+    const auto boat=boatMix;
+    const auto boatOn=boatEnabled;
     portEXIT_CRITICAL(&lock);
-    synth.render(buffer,128,s,chase,signal!=seen,click,landing,foley,landed,surge,lost);
+    synth.render(buffer,128,s,chase,signal!=seen,click,landing,foley,landed,surge,lost,boat,boatOn);
     seen=signal;
     output.write(reinterpret_cast<uint8_t*>(buffer),sizeof(buffer));
   }
@@ -42,6 +46,9 @@ bool startSound(){
   if(!c || es8311_init(c,&clk,ES8311_RESOLUTION_16,ES8311_RESOLUTION_16)!=ESP_OK ||
      es8311_voice_volume_set(c,65,nullptr)!=ESP_OK || es8311_voice_mute(c,false)!=ESP_OK)return false;
   return xTaskCreatePinnedToCore(stream,"creek-audio",4096,nullptr,2,nullptr,0)==pdPASS;
+}
+void setBoatAmbience(uint16_t mix,bool enabled){
+  portENTER_CRITICAL(&lock);boatMix=mix;boatEnabled=enabled;portEXIT_CRITICAL(&lock);
 }
 void setSound(const SoundSettings& s,bool chase,bool bite,int reelClick,creek::LandingCue landing,uint8_t fishingSounds,bool landed,bool surge,bool lost){
   portENTER_CRITICAL(&lock);
