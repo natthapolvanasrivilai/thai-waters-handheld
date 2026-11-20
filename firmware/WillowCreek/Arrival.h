@@ -22,6 +22,31 @@ inline float ease(unsigned ms,unsigned start,unsigned length){
   const float t=float(ms-start)/length;
   return t*t*(3-2*t);
 }
+// Metres per second at cruise. Timings share the existing rod-raise cue.
+constexpr unsigned rampEnd=300, cruiseEnd=2680, revealStart=3030, revealEnd=3760;
+struct Motion {float distance, speedFraction;};
+inline Motion motion(Route route,unsigned ms){
+  constexpr float speeds[]={1.20f,.95f,6.f,3.f};
+  constexpr unsigned braking=raiseRod-cruiseEnd;
+  constexpr float beforeBraking=rampEnd*.5f+(cruiseEnd-rampEnd);
+  const float cruise=speeds[route]*.001f;
+  // The integral of smoothstep is t^3 * (1 - t/2).
+  auto integrated=[](float t){return t*t*t*(1.f-.5f*t);};
+  if(ms<rampEnd){
+    const float t=float(ms)/rampEnd;
+    return {cruise*rampEnd*integrated(t),ease(ms,0,rampEnd)};
+  }
+  if(ms<cruiseEnd)return {cruise*(rampEnd*.5f+ms-rampEnd),1.f};
+  if(ms>=raiseRod)return {cruise*(beforeBraking+braking*.5f),0.f};
+  const float t=float(ms-cruiseEnd)/braking;
+  return {cruise*(beforeBraking+braking*(t-integrated(t))),1.f-ease(ms,cruiseEnd,braking)};
+}
+// Smooth periodic camera displacement without requiring trig in the LCD/WASM renderer.
+inline float cycle(float phase){
+  float t=(phase-unsigned(phase))*2.f;
+  if(t>1.f)t=2.f-t;
+  return 1.f-2.f*t*t*(3.f-2.f*t);
+}
 enum Kind {Line,Triangle,Sprite};
 enum Surface {Grass=64, Earth, Gravel, Asphalt, Gunwale, Dashboard};
 enum Detail { Broadleaf, Rushes };
@@ -32,6 +57,7 @@ struct Frame {
   Shape shapes[maxShapes];int count;
   float distance,eye,horizon,center,bend,boatShift,boatDrop;
   unsigned seed;
+  unsigned reveal;
   void sprite(Point a,Point b,int detail){
     if(count<maxShapes)shapes[count++]={Sprite,int16_t(detail),int16_t(a.x),int16_t(a.y),int16_t(b.x),int16_t(b.y),0,0};
   }
@@ -143,17 +169,32 @@ inline void prow(Frame& f,float drift,float sink){
 }
 inline void draw(Frame& f,int site,int pool,unsigned ms){
   f.count=0;
-  if(ms>=duration)return;
+  f.reveal=unsigned(64.f*ease(ms,revealStart,revealEnd-revealStart));
   const Route route=landing(site,pool);
-  const float travel=ease(ms,0,3400), settle=ease(ms,2870,690);
-  const unsigned cadence=route==Hike?550:route==Footpath?470:route==Longtail?1350:1050;
-  const float phase=float(ms%cadence)/cadence;
-  const float swing=1-4*(phase<.5f?.5f-phase:phase-.5f);
-  const float sway=swing*(1-settle);
-  Camera c{travel*21.6f,1.55f-.39f*settle,128.f+sway*(route==Hike?3:1.5f),
-           239.f+sway*(route==Longtail?3.5f:2.f),float(int(scenery::hash(site+5)%9)-4)*.7f};
-  f.distance=c.distance;f.eye=c.eye;f.center=c.center;f.horizon=c.horizon;f.bend=c.bend;
-  f.boatShift=sway*3;f.boatDrop=route==Drive?116*settle:139*settle+sway*2;f.seed=scenery::hash(site);
+  const Motion travel=motion(route,ms);
+  f.distance=travel.distance;
+  if(ms>=revealEnd)return;
+  const float settle=ease(ms,cruiseEnd,raiseRod-cruiseEnd);
+  float side,vertical;
+  if(route==Footpath||route==Hike){
+    // Each step drives a rise/fall; alternating steps shift the eye side to side.
+    const float strides=travel.distance/(route==Hike?.58f:.68f);
+    side=2.f*cycle(strides*.5f+.25f);
+    vertical=(route==Hike?3.f:1.5f)*cycle(strides+.25f);
+  }else if(route==Drive){
+    side=.85f*cycle(float(ms%690)/690.f+.25f);
+    vertical=1.1f*cycle(float(ms%690)/690.f);
+  }else{
+    side=3.f*cycle(float(ms%1700)/1700.f+.25f);
+    vertical=2.f*cycle(float(ms%1700)/1700.f);
+  }
+  side*=travel.speedFraction;vertical*=travel.speedFraction;
+  Camera c{travel.distance,1.55f-.39f*settle,128.f+vertical,239.f+side,
+           float(int(scenery::hash(site+5)%9)-4)*.7f};
+  f.eye=c.eye;f.center=c.center;f.horizon=c.horizon;f.bend=c.bend;
+  f.boatShift=route==Longtail?side:route==Drive?-side:0.f;
+  f.boatDrop=route==Longtail?139*settle+vertical:route==Drive?116*settle:0.f;
+  f.seed=scenery::hash(site);
   if(route==Longtail){
     // Passing surface flecks and mooring markers move relative to the bow.
     for(int i=0;i<39;i++){
@@ -169,10 +210,10 @@ inline void draw(Frame& f,int site,int pool,unsigned ms){
       f.quad(c.at(-2.9f,0,markerZ),c.at(-2.82f,0,markerZ),c.at(-2.82f,1.44f,markerZ),c.at(-2.9f,1.44f,markerZ),scenery::Post);
       f.line(c.at(-2.86f,1.16f,markerZ),c.at(-2.86f,1.39f,markerZ),scenery::Canvas);
     }
-    prow(f,sway*3,139*settle+sway*2);
+    prow(f,f.boatShift,f.boatDrop);
   }else{
     ground(f,c,route,site);
-    if(route==Drive)cockpit(f,-sway,116*settle);
+    if(route==Drive)cockpit(f,f.boatShift,f.boatDrop);
   }
 }
 }
