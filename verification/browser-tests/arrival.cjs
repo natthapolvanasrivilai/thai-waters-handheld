@@ -39,11 +39,14 @@ const {chromium} = require('playwright-core');
        const ptr=sceneryEngine.arrivalPixels(place,atlas.locations[place].pool,ms);
        return new Uint8Array(sceneryEngine.memory.buffer,ptr,240*160).slice();
      };
-     let varied=true,valid=true;
+     let varied=true,valid=true,bankReveal=true;
      for(const spot of [16,4,3,2]){
        const pre=sample(spot,900),post=sample(spot,1600);
        valid&&=pre.every(c=>c<64||c===255)&&pre.includes(255);
        varied&&=new Set(pre).size>=8&&pre.some((c,i)=>c!==post[i]);
+       const occupied=layer=>layer.reduce((n,c)=>n+(c!==255),0);
+       const raising=occupied(sample(spot,3330)),last=occupied(sample(spot,3759));
+       bankReveal&&=raising>0&&last<raising&&occupied(sample(spot,3760))===0;
      }
      // Read the real composited canvas. Source pixels below the captions must
      // fill their entire 2x2 LCD block with exactly their tinted palette color.
@@ -56,9 +59,9 @@ const {chromium} = require('playwright-core');
        let j=y*960+2*x;checked++;
        for(const delta of [0,1,480,481])matched&&=canvasPixels[j+delta]===arrivalPalette[k];
      }
-     return {varied,valid,matched,checked};
+     return {varied,valid,bankReveal,matched,checked};
    });
-   assert(pixels.valid&&pixels.varied&&pixels.matched&&pixels.checked>50,JSON.stringify(pixels));
+   assert(pixels.valid&&pixels.varied&&pixels.bankReveal&&pixels.matched&&pixels.checked>50,JSON.stringify(pixels));
    const routes=await page.evaluate(()=>['Kwan Phayao','Salween River','Mekong at Nong Khai','Cheow Lan Lake'].map(name=>{
      const l=atlas.locations.find(r=>r.name===name);return sceneryEngine.arrivalLanding(l.id,l.pool);
    }));
