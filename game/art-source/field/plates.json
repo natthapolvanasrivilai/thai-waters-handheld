@@ -112,7 +112,7 @@
    "Bangana devdevi",
    "Barbodes rhombeus"
   ],
-  "sha256": "1c69d32f64cd237ade34c9058dcb3cec916408a754f6e79441dbb0241e1cbf7e"
+  "sha256": "95432b7da4faba543e340e97f126aea96d7feabdf3c92267589e9166cbc1a40a"
  },
  {
   "file": "field-003.png",
@@ -153,7 +153,7 @@
    "Bryaninops amplus",
    "Bryaninops loki"
   ],
-  "sha256": "23bf0704d24a01b323cb2df618224f60e44f85dda537e1f6147a71e9f44cc70e"
+  "sha256": "4bbe77d96592458c0a28b975a366820a990d4541b21feb2041006566eb3da6f4"
  },
  {
   "file": "field-004.png",
@@ -399,7 +399,7 @@
    "Gobiodon prolixus",
    "Gobiopterus panayensis"
   ],
-  "sha256": "11b78d028fd10f5b55634e7da8bd690dc2e16b894edf4e0e935cb66b4c0a04c6",
+  "sha256": "b30dea73e1d22ee3cd3847e176b3fc5ae6473f6e3648146707af4165e5964455",
   "replacements": {
    "2314": {
     "file": "portrait-2314.png",
@@ -449,7 +449,7 @@
    "Halichoeres binotopsis",
    "Halophryne diemensis"
   ],
-  "sha256": "82c4ead50b1ca2be902ff97c424b6150ed9f52cc538323768ec039b6c95e3e19"
+  "sha256": "729876f435482d6c3eddb2e58823e49f9e1a351cebfe2cf8948c7bed22ec14c2"
  },
  {
   "file": "field-011.png",
@@ -695,7 +695,7 @@
    "Parupeneus pleurostigma",
    "Pempheris adusta"
   ],
-  "sha256": "8334e89bcd0cbdf8d42c0452305d3b0ed8622f84a92de26bce637efc930fe8ec"
+  "sha256": "195c900882188867417a17f5287f9bd6594ea46d377fc166dce75f3ec1e1a483"
  },
  {
   "file": "field-017.png",
@@ -2058,7 +2058,7 @@
    "Cosmocampus investigatoris",
    "Cottapistus cottoides"
   ],
-  "sha256": "d23778c760d5d78f1766ce97034dae25cadbc27299fc8df379f00bffd3f469e9",
+  "sha256": "ef74f7cdcca464f569876f115402223bd26f5f4326b32c5b64085821a0adea8a",
   "storage": "card"
  },
  {
@@ -2142,7 +2142,7 @@
    "Cynoglossus suyeni",
    "Cynoglossus trulla"
   ],
-  "sha256": "4a4a2ebd69dbd438e9c04c58d194e719dc70940c888c81fe23c55580ae82e04b",
+  "sha256": "6fb51b3c1db5e0f722cadab5d6a189bff893094827c1249e3f5c2bfbad3e451d",
   "storage": "card"
  },
  {
@@ -2335,7 +2335,7 @@
    "Enneapterygius rhabdotus",
    "Enneapterygius tutuilae"
   ],
-  "sha256": "80b6b1b81e07381fa5f59a57f9fc658de6d65b045fef9feca94bbbacf9804d5a",
+  "sha256": "0044afb3f017d827fd6e2206265f608a05c0082423920cc89a495b5bff18ef3a",
   "storage": "card"
  },
  {
@@ -2377,7 +2377,7 @@
    "Epinephelus erythrurus",
    "Epinephelus fasciatus"
   ],
-  "sha256": "0ac558353d2dd0f9200a44e9bb016f008b96c67ecffb60dca90295a79202e747",
+  "sha256": "130136dd1a6dc16bda87d78b07176fa4c7e0e80ae69898a93dfd68b18e89d91a",
   "storage": "card"
  },
  {
@@ -2419,7 +2419,7 @@
    "Escualosa elongata",
    "Escualosa thoracata"
   ],
-  "sha256": "b58035eb83be3d136082f6cbab151703f4aac25eafab75e8f759f96215cbb555",
+  "sha256": "a676d71644fb5aa94c7cc43ae73ad0634ad4957b4ea9f69b822ac8550af29ab9",
   "storage": "card"
  },
  {
@@ -2559,7 +2559,7 @@
    "Gillichthys seta",
    "Giuris margaritacea"
   ],
-  "sha256": "d7f7e6a1f717ca99e273e146acdd386236f6a8163b93f9f3ec01f38453fca7c5",
+  "sha256": "a5528b4b9f0730b5a09fd7c0ccaef6ecc84e6b58dacd6812f65ee67a9082a179",
   "storage": "card"
  },
  {
@@ -2643,7 +2643,7 @@
    "Gobiopsis malekulae",
    "Gobiopsis quinquecincta"
   ],
-  "sha256": "8531e917c4689582a366bbd61b3d195b92a4c85022d9b23e142c39c88f545a49",
+  "sha256": "710288413cfe05ae740bbd0e7699815b98803d7dbbb52d7a582e24735d837e7c",
   "storage": "card"
  },
  {
@@ -3545,7 +3545,7 @@
    "Nemapteryx caelata",
    "Nemapteryx nenga"
   ],
-  "sha256": "5b9b3738087bd0f0afcf86de5d6d5315de02a249cd42b2b42d75a4846ce1e460",
+  "sha256": "248e9fd1529db7465a8c7cda03924433fd9b13be4af022dd6af78ba276cc613f",
   "storage": "card"
  },
  {
@@ -3881,7 +3881,7 @@
    "Parachaeturichthys polynema",
    "Paragobiodon echinocephalus"
   ],
-  "sha256": "c5f9454b12defae32bfdae2bf3416867e0e37783bc1424def526183b25242f5f",
+  "sha256": "a79479b15f7afda916af05a4e648bffc9d4bc0f3c86106e2095ca8c3f5881afb",
   "storage": "card",
   "replacements": {
    "1075": {
@@ -4117,7 +4117,7 @@
    "Plectorhinchus pictus",
    "Plectorhinchus vittatus"
   ],
-  "sha256": "71cd44e997774eb11f97176c85acfb495fb569dba062379da0103c944ee6af3c",
+  "sha256": "8a332dbff29b8b78b5e93157a207bcde4e4866025d3a22aeb4ae9ea249600e4d",
   "storage": "card"
  },
  {
@@ -4369,7 +4369,7 @@
    "Pterois miles",
    "Pterois russelii"
   ],
-  "sha256": "23d79ae6a0e77c606ed97f5764d08fb967f986cd455d3ea83013ce8881a69123",
+  "sha256": "4d4c3b7b1a6d0593d687bccdc69e34934af442666a5a70f108c834e58f76a7d9",
   "storage": "card"
  },
  {
@@ -5429,7 +5429,7 @@
    "Chagunius chagunio",
    "Champsodon capensis"
   ],
-  "sha256": "495dca7d303981607905b4ce6f512b566b2376fd1421d40a7055e6c9a2504e7b",
+  "sha256": "29b6d31b2a1c0dff85206bb9baa64c5d69217aed18bb6c23c572b8932a4785a6",
   "storage": "card"
  },
  {
@@ -5898,7 +5898,7 @@
    "Labracinus cyclophthalmus",
    "Laubuka caeruleostigmata"
   ],
-  "sha256": "00b26413bb8a3607dbeec4fad59764ccf93ebdeac2ce9b34753e04d6fc4e0e88",
+  "sha256": "a7488707e342a237b567e15b2f021ee791d39f862d1b6fff28f50af0cc7ec42a",
   "storage": "card",
   "replacements": {
    "1817": {
@@ -6759,7 +6759,7 @@
    "Upeneus luzonius",
    "Upeneus vittatus"
   ],
-  "sha256": "d3fd5abcf56512afd217ba2069e91ea1239a179eeb0b641df997ff2afba47973",
+  "sha256": "e8b030d6d6081c6e39213709bb28bdc1025ee5c78a03154bf643326d2a5bb6f8",
   "storage": "card"
  },
  {
