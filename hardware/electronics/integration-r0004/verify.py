@@ -97,6 +97,14 @@ def main():
                     value = float(re.search(r'^'+tag+r'\s*=\s*([0-9.eE+-]+)',trace,re.M)[1])
                     status = 'RECORD' if low is None else 'WITHIN' if low <= value <= high else 'OUTSIDE'
                     results.append(dict(case=name,metric=tag,value=value,unit=unit,lo=low,hi=high,status=status))
+        failures = {(r['case'],r['metric']) for r in results if r['status']=='OUTSIDE'}
+        expected = {('diagnostic_'+name,'pmic_v') for name in ('no_cell_default','no_cell_configured','no_cell_grant_loss')}
+        expected.add(('diagnostic_previous_play_with_lamp','port'))
+        expected.add(('diagnostic_mux_old_termination','rise'))
+        if failures != expected:
+            raise SystemExit(f'Unexpected range results: {sorted(failures - expected)}; '
+                             f'missing negative controls: {sorted(expected - failures)}; '
+                             'published evidence left unchanged')
         shutil.copyfile(tmp/'evidence.zip', HERE/'solver-evidence.zip')
     with (HERE/'results.csv').open('w', newline='', encoding='utf-8') as out:
         writer = csv.DictWriter(out,fieldnames=results[0].keys())
@@ -108,12 +116,6 @@ def main():
                    evidence_sha256=digest(HERE/'solver-evidence.zip'))
     (HERE/'verification.json').write_text(json.dumps(summary,indent=2)+'\n', encoding='utf-8')
     print(summary['candidate_cases'], counts)
-    failures = {(r['case'],r['metric']) for r in results if r['status']=='OUTSIDE'}
-    expected = {('diagnostic_'+name,'pmic_v') for name in ('no_cell_default','no_cell_configured','no_cell_grant_loss')}
-    expected.add(('diagnostic_previous_play_with_lamp','port'))
-    expected.add(('diagnostic_mux_old_termination','rise'))
-    if failures != expected:
-        raise SystemExit('Unexpected range result in candidate or negative controls; see results.csv')
 
 if __name__ == '__main__':
     main()
