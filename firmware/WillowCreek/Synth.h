@@ -8,6 +8,7 @@
 class CreekSynth {
   int16_t sineTable[256]{};
   locationaudio::Score score;
+  bool wasHeld=false;
   unsigned cueAge=10000;
   uint32_t cuePhase=0;
   unsigned toothAge=144,toothNoise=1,toothPhase=0,toothStep=0;
@@ -61,12 +62,25 @@ class CreekSynth {
   }
 public:
   void clearFoley(){for(auto &v:foley)v={};}
+  void clearCatchAudio(){
+    cueAge=10000;cuePhase=0;landing={};
+    score.rewardContext(false,255); // active reward releases exclusively on next render
+  }
   unsigned locationId() const {return score.locationId();}
-  void begin(){score.reset();landing={};for(auto &v:foley)v={};for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);}
-  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0){
+  locationaudio::MusicKind musicKind() const {return score.musicKind();}
+  void begin(){
+    score.reset();wasHeld=false;landing={};clearFoley();
+    cueAge=10000;cuePhase=0;toothAge=144;toothNoise=1;toothPhase=toothStep=0;
+    for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);
+  }
+  void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0,bool held=false){
     if(fishingSounds)playFoley(fishingSounds);
-    if(s.cue==1 || !s.cueVolume)landing={};
+    const bool cueEnabled=s.cue!=1 && s.cueVolume;
+    const bool rewardMusic=held && cueEnabled && s.music!=3 && s.volume;
+    score.rewardContext(rewardMusic,reveal.tier);
+    if(!cueEnabled || (wasHeld && !held) || rewardMusic)landing={};
     else if(reveal.active()){landing=reveal;landingNote=0;nextLandingNote();}
+    wasHeld=held;
     if(reelClick && !trigger && s.reelVolume){
       toothAge=0;toothPhase=0;
       toothStep=reelClick>0?584115552u:507342336u;
