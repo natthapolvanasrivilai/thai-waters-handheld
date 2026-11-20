@@ -7,6 +7,11 @@ namespace locationaudio {
 constexpr unsigned sampleRate=16000;
 constexpr unsigned releaseSamples=sampleRate/50; // the outgoing score alone fades for 20 ms
 constexpr unsigned destinationCount=sizeof(scenery::recipes)/sizeof(scenery::recipes[0]);
+enum class MusicKind : uint8_t { Location, Action, Reward };
+constexpr unsigned actionTrack=destinationCount;
+constexpr unsigned rewardTrack=actionTrack+1;
+constexpr unsigned rewardCount=6;
+constexpr unsigned noTrack=rewardTrack+rewardCount;
 enum class Instrument : uint8_t { Nylon, Mallet, Flute, Acoustic, Bowed };
 struct Palette {Instrument instrument; uint8_t water, motion;};
 constexpr Palette palette(scenery::Water water){
@@ -26,7 +31,7 @@ class Score {
   Event events[48]{};
   Voice voices[2]{};
   Palette scene{Instrument::Nylon,0,0};
-  unsigned id=destinationCount, length=0, clock=0, cursor=0, count=0, release=0;
+  unsigned id=noTrack, reward=rewardCount, length=0, clock=0, cursor=0, count=0, release=0;
   uint32_t noise=1, swell=0;
   int body=0, slow=0;
 
@@ -61,12 +66,54 @@ class Score {
       add(n.at*eighth,n.gate*eighth,centihz[int(n.midi)+transpose-36],accent,voice);
     }
   }
+  void catchTheme(unsigned track){
+    scene={Instrument::Acoustic,0,0};
+    static constexpr Note action[]={
+      {0,62,1},{1,66,1},{2,69,2},{4,66,1},{5,69,1},{6,71,2},
+      {8,67,1},{9,71,1},{10,74,2},{12,73,1},{13,71,1},{14,69,2}
+    };
+    static constexpr Note pulse[]={
+      {0,50,2},{3,57,1},{4,50,2},{7,54,1},{8,43,2},{11,50,1},{12,45,2},{15,55,1}
+    };
+    if(track==actionTrack){
+      const unsigned eighth=referenceEighth(116);
+      length=16*eighth;
+      addPhrase(action,eighth,0,7500,0);
+      addPhrase(pulse,eighth,0,3400,1);
+      return;
+    }
+    // Successive rarities climb to broader openings and longer resolutions.
+    static constexpr Note common[]={{0,66,1},{1,62,3}};
+    static constexpr Note uncommon[]={{0,64,1},{1,66,1},{2,62,3}};
+    static constexpr Note rare[]={{0,62,1},{1,66,1},{2,69,2},{4,66,1},{5,62,3}};
+    static constexpr Note epic[]={{0,62,1},{1,66,1},{2,69,1},{3,74,2},{5,73,1},{6,74,4}};
+    static constexpr Note legendary[]={{0,66,1},{1,69,1},{2,71,1},{3,74,2},{5,76,1},{6,73,2},{8,74,5}};
+    static constexpr Note mythic[]={{0,62,1},{1,66,1},{2,69,1},{3,74,2},{5,76,1},{6,78,2},{8,76,1},{9,73,1},{10,74,6}};
+    static constexpr unsigned ending[]={4,5,8,10,13,16};
+    static constexpr unsigned resolution[]={0,0,0,6,8,10};
+    const unsigned tier=track-rewardTrack,eighth=referenceEighth(112);
+    length=ending[tier]*eighth+eighth/2;
+    scene.instrument=Instrument::Nylon;
+    const unsigned gain=7600+tier*210;
+    switch(tier){
+      case 0:addPhrase(common,eighth,0,gain,0);break;
+      case 1:addPhrase(uncommon,eighth,0,gain,0);break;
+      case 2:addPhrase(rare,eighth,0,gain,0);break;
+      case 3:addPhrase(epic,eighth,0,gain,0);break;
+      case 4:addPhrase(legendary,eighth,0,gain,0);break;
+      case 5:addPhrase(mythic,eighth,0,gain,0);break;
+    }
+    add(0,4*eighth,14683u,gain/4,1); // low D
+    if(tier>=3)add(resolution[tier]*eighth,(ending[tier]-resolution[tier])*eighth,14683u,gain/3,1);
+  }
   void start(unsigned place){
-    id=place;scene=palette(scenery::recipes[id].water);
-    if(id==8)scene.water=58; // match the approved creek music/water balance
+    id=place;
     clock=cursor=count=release=0;for(auto& v:voices)v={};
     noise=hash(id+411u);if(!noise)noise=1;
     body=slow=0;swell=0;
+    if(id>=actionTrack){catchTheme(id);return;}
+    scene=palette(scenery::recipes[id].water);
+    if(id==8)scene.water=58; // match the approved creek music/water balance
     // Same transcription as the creek, lake, gorge and coastal listening demos.
     static constexpr Note creekLead[]={
       {0,62,2},{2,66,2},{4,69,3},{8,71,2},{10,69,2},{12,66,3},
@@ -182,10 +229,19 @@ class Score {
   }
 public:
   unsigned locationId() const {return id;}
+  MusicKind musicKind() const {
+    return id<actionTrack || id==noTrack?MusicKind::Location:id==actionTrack?MusicKind::Action:MusicKind::Reward;
+  }
+  void rewardContext(bool eligible,unsigned edge){
+    if(!eligible)reward=rewardCount;
+    else if(edge<rewardCount)reward=edge;
+  }
   void reset(){*this=Score{};}
   int sample(unsigned requested,const int16_t* sine,unsigned music,unsigned volume,bool chase,bool duck){
     requested=requested<destinationCount?requested:0;
-    if(id==destinationCount)start(requested);
+    const unsigned base=chase?actionTrack:requested;
+    requested=reward<rewardCount?rewardTrack+reward:base;
+    if(id==noTrack)start(requested);
     if(id!=requested && !release)release=releaseSamples;
     while(cursor<count && events[cursor].start==clock){
       const auto e=events[cursor++];
@@ -193,14 +249,22 @@ public:
     }
     const int main=voiceSample(voices[0],sine), harmony=voiceSample(voices[1],sine);
     int bed=main+(music==1?harmony/3:harmony);
-    if(music==0 && chase)bed=bed*3/4; // adaptive headroom, never a second score
-    if(music!=2)bed+=ambience(sine);else (void)ambience(sine);
+    if(id<actionTrack){
+      if(music!=2)bed+=ambience(sine);else (void)ambience(sine);
+    }
     int pcm=(music==3?0:bed*int(volume)/(duck?6:2));
     // Ambience state stays continuous across score loops. Ramp the whole bed
     // to silence at the boundary before voices reset, even for long strings.
     const unsigned edge=std::min(releaseSamples,std::min(clock,length-clock-1));
     pcm=pcm*int(edge)/int(releaseSamples);
-    if(++clock==length){clock=cursor=0;for(auto& v:voices)v={};}
+    if(++clock==length){
+      if(musicKind()==MusicKind::Reward){
+        // A one-shot reaches silence naturally and never loops or replays
+        // merely because the catch screen is still open.
+        if(reward<rewardCount && id==rewardTrack+reward)reward=rewardCount;
+        start(reward<rewardCount?rewardTrack+reward:base);
+      }else{clock=cursor=0;for(auto& v:voices)v={};}
+    }
     if(release){
       pcm=pcm*int(release)/int(releaseSamples);
       if(--release==0)start(requested);

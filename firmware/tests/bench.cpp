@@ -19,6 +19,10 @@ static int crossedTeeth=0,clickPending=0;
 #define EXPORT __attribute__((visibility("default")))
 static uint8_t portrait[50][96];
 static int portraitFrame=0;
+static void clearTransientSound(){
+ cuePending=false;clickPending=0;landingPending={};waterSounds=0;
+ synth.clearFoley();synth.clearCatchAudio();
+}
 extern "C" {
 EXPORT uint8_t* fieldBank(){return specimen::browserPixels;}
 EXPORT const uint8_t* fieldBankDigest(){return specimen::cardDigest;}
@@ -34,15 +38,17 @@ EXPORT const uint16_t* speciesInk(){return specimen::frames[portraitFrame].ink;}
 EXPORT void initialize(unsigned seed){waterSounds=0;g=Game{};g.beginSession(seed);s.site=g.site%4;s.arrangement=g.destination;synth.begin();detents=ReelDetents{};tactile=RumblePlan{};cuePending=false;landingPending={};crossedTeeth=clickPending=0;}
 EXPORT void advance(unsigned dt,int cast,int lift,float turns){
  auto before=g.phase;g.tick(dt,cast,lift,turns);waterSounds|=g.soundEdges;
- if(before!=g.phase && g.phase==Phase::Bite && s.cue!=1)cuePending=true;
+ if(g.phase!=Phase::Bite)cuePending=false;
+ else if(before!=g.phase && s.cue!=1)cuePending=true;
  if(before!=g.phase && g.phase==Phase::Landed && s.cue!=1 && s.cueVolume)
    landingPending={catalog[g.fish].tier,g.landingReward()};
  if(g.phase!=Phase::Landed)landingPending={};
 }
 EXPORT int fileCatch(){
- // A suspended browser audio graph may never have consumed the reveal.
- landingPending={};waterSounds=0;synth.clearFoley();
- return g.fileCatch();
+ // Only filing a real catch dismisses its in-progress or queued reveal.
+ if(!g.fileCatch())return false;
+ clearTransientSound();
+ return true;
 }
 EXPORT int filed(){return g.filed;}
 EXPORT int setBait(int choice){return g.setBait(choice);}
@@ -54,14 +60,14 @@ EXPORT int recommendedBait(int id){return id>=0 && id<fishCount?preferredChoice(
 EXPORT int landingReward(){return int(g.landingReward());}
 EXPORT void restoreCatch(int fish,int length){
  if(validSavedSize(fish,length)){
-   landingPending={};
+   clearTransientSound();
    g.emptyCast=false;g.fish=fish;g.length=length;g.filed=false;g.enter(Phase::Landed);
  }
 }
 EXPORT int sprayAge(){return g.sprayAge;}
 EXPORT int windupMs(){return castWindupMs;}
 EXPORT int flightMs(){return castDurationMs;}
-EXPORT void clearFishingSound(){waterSounds=0;synth.clearFoley();}
+EXPORT void clearFishingSound(){clearTransientSound();}
 EXPORT int state(){return int(g.phase);}
 EXPORT void setAim(float x,float y){g.setAim(x,y);}
 EXPORT float aimX(){return g.aimX;}
@@ -111,7 +117,9 @@ EXPORT float lureTravel(){return g.lureTurns;}
 EXPORT void config(int mode,int volume,int cue,int fx){s.music=mode;s.volume=volume;s.cue=cue;s.cueVolume=fx;}
 EXPORT void reelVolume(int level){if(level>=0&&level<=3)s.reelVolume=level;}
 EXPORT int16_t* samples(){
- synth.render(stereo,256,s,g.phase==Phase::Fight,cuePending,clickPending,landingPending,waterSounds);waterSounds=0;
+ const bool held=g.phase==Phase::Landed && !g.filed;
+ synth.render(stereo,256,s,g.phase==Phase::Bite || g.phase==Phase::Fight,cuePending && g.phase==Phase::Bite,
+   clickPending,held?landingPending:LandingCue{},waterSounds,held);waterSounds=0;
  cuePending=false;clickPending=0;landingPending={};return stereo;
 }
 

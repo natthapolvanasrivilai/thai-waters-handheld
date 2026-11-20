@@ -455,7 +455,7 @@ void loop(){
   else if(click)view.driver=driveRumble(Pulse::Detent,view.rumble,0);
   if(auditioning && now-audition>=420)auditioning=false;
   SoundSettings mix=view.sound;if(controller)mix.music=3;if(auditioning)mix.cue=0;
-  setSound(mix,active && view.game.phase==Phase::Fight,view.game.phase!=before&&view.game.phase==Phase::Bite,click,landing,view.game.soundEdges);
+  setSound(mix,active && (view.game.phase==Phase::Bite || view.game.phase==Phase::Fight),view.game.phase!=before&&view.game.phase==Phase::Bite,click,landing,view.game.soundEdges,view.game.phase==Phase::Landed && !view.game.filed);
   if(!everDrawn||now-lastDraw>=(controller?320u:55u)){lastDraw=now;everDrawn=true;paint(view);}
 }
 
