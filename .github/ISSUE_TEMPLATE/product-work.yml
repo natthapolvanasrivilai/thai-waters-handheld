@@ -1,0 +1,43 @@
+name: Product work
+description: Capture an outcome, the work area, and evidence for Pocket Reel.
+title: "[Product] "
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What should be different for the player, bench operator, or product?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Gameplay and experience
+        - Art and species
+        - Firmware and diagnostics
+        - Electrical and power
+        - Mechanical and assembly
+        - 3D printing and DFM
+        - Validation and test
+        - Build and release
+        - Manufacturing and sourcing
+        - Product and commercial
+        - Compliance and safety
+        - Service and support
+        - Cross-cutting or unsure
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and acceptance
+      description: Link a private reproduction, trace, measured result, or discussion. State what would prove completion, and mark assumptions explicitly. Do not include credentials.
+    validations:
+      required: true
+  - type: input
+    id: milestone
+    attributes:
+      label: Outcome milestone or dependency
+      description: Link an existing milestone or issue, if known.
