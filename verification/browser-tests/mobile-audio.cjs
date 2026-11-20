@@ -28,6 +28,18 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
     }
     return connect.call(this,dest,...args);
    };
+   if(window.AudioBufferSourceNode){
+    const start=AudioBufferSourceNode.prototype.start;
+    window.uiPcm=[];
+    AudioBufferSourceNode.prototype.start=function(...args){
+     const b=this.buffer;
+     if(b?.sampleRate===16000&&[192,288,432].includes(b.length)){
+      const pcm=b.getChannelData(0);
+      uiPcm.push({frames:b.length,peak:pcm.reduce((peak,x)=>Math.max(peak,Math.abs(x)),0)});
+     }
+     return start.apply(this,args);
+    };
+   }
    Object.defineProperty(navigator,'vibrate',{configurable:true,value:undefined});
   });
   await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
@@ -71,6 +83,43 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
   if(graph){
    await p.evaluate(async()=>{await audio.suspend();});await showControl(p,'#testSound');await p.locator('#testSound').tap();
    await p.waitForFunction(()=>audio.state==='running');
+  }
+  if(graph&&await p.evaluate(()=>Array.isArray(window.uiPcm))){
+   await p.locator('#resume').tap();
+   await p.evaluate(()=>uiPcm.length=0);
+   const frames=()=>p.evaluate(()=>uiPcm.map(({frames})=>frames));
+   await p.locator('#openMenu').tap();
+   assert.deepEqual(await frames(),[432],'one menu cue for a real tap');
+   assert(await p.evaluate(()=>uiPcm[0].peak>.003),'menu cue contains nonzero PCM');
+   await p.evaluate(()=>{$('resume').click();$('openMenu').click();$('resume').click();});
+   assert.deepEqual(await frames(),[432],'programmatic menu clicks stay silent');
+   await p.locator('#openMenu').press('Enter');
+   assert.deepEqual(await frames(),[432,432],'keyboard activation has exactly one menu cue');
+   // Product pages paginate. Give the actual menu one real scrolling region
+   // for this test so scrolling can be driven by the browser, not dispatchEvent.
+   await p.evaluate(()=>{
+    const area=document.createElement('section');area.id='uiAudioScrollFixture';
+    area.style.cssText='position:absolute;inset:70px 16px auto;width:230px;height:110px;overflow:auto;pointer-events:auto;z-index:12';
+    const inner=document.createElement('div');inner.style.height='600px';area.append(inner);
+    $('menu').append(area);
+    area.scrollTop=30;
+   });
+   await p.waitForTimeout(140);
+   assert(await p.locator('#uiAudioScrollFixture').evaluate(el=>el.scrollTop>0),'scroll fixture moved');
+   assert.deepEqual(await frames(),[432,432],'programmatic scrolling stays silent');
+   const area=p.locator('#uiAudioScrollFixture'),box=await area.boundingBox();
+   await p.mouse.move(box.x+box.width/2,box.y+box.height/2);
+   await p.mouse.wheel(0,180);
+   await p.waitForFunction(()=>$('uiAudioScrollFixture').scrollTop>0&&uiPcm.some(x=>x.frames===192));
+   assert.deepEqual(await frames(),[432,432,192],'one cue for an actual scroll');
+   await p.evaluate(()=>{$('uiAudioScrollFixture').remove();window.priorFx=$('fx').selectedIndex;$('fx').selectedIndex=0;$('fx').dispatchEvent(new Event('change',{bubbles:true}));});
+   await p.locator('#resume').tap();await p.locator('#openMenu').tap();
+   assert.deepEqual(await frames(),[432,432,192],'FX mute also suppresses trusted menu interactions');
+   await p.evaluate(()=>{$('fx').selectedIndex=priorFx;$('fx').dispatchEvent(new Event('change',{bubbles:true}));});
+   await p.locator('#resume').tap();
+   await p.evaluate(()=>uiPcm.length=0);
+   await p.locator('#act').tap();
+   assert.deepEqual(await frames(),[288],'one short cue for a trusted play-control tap');
   }
   await p.evaluate(()=>document.fonts.ready);
   assert(await p.evaluate(()=>document.fonts.check('600 14px "Atkinson Hyperlegible Next"')&&
