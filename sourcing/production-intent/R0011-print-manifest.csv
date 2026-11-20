@@ -1,0 +1,21 @@
+file,part,role,quantity_per_unit,material,sha256
+Print/housing-battery-bay.stl,TW-P-0001-R0010,device,1,"Opaque PETG, case colour",ccbdd035b46d46a761a75ca0661b0c19c966b78cc7e3c5e46169c9874fb2e922
+Print/bezel.stl,TW-P-0006-R0004,device,1,Generic PETG @BBL A1,884689068a860869042a2fe26173f46fd6f6a5592a4c1a6676ee6f363183a54c
+Print/rotor.stl,TW-P-0007-R0005,device,1,Generic PETG @BBL A1,9a4adf6cfb23f5846e4c2221b5a362c46cb7e96ae885004b8fd882d0d9cd1cb3
+Print/folding-stem.stl,TW-P-0010-R0003,device,1,Generic PETG @BBL A1,1c52d3561b72c1748f61059dccf2f517fffeebddbdd256903ca64134d0f8b244
+Print/grip.stl,TW-P-0004-R0005,device,1,Generic PETG @BBL A1,320f70864b76ce81897db9a13b81f2b3b551614ae86548235694e2fc219a0922
+Print/collar.stl,TW-P-0009-R0003,device,1,Generic PETG @BBL A1,23672beb52fe5706187a3ae489d18b48e0c3477f0ecdb736167fd9cb39bd1d2a
+Print/power-cap.stl,TW-P-0013-R0002,device,1,Generic PETG @BBL A1,5f568806c412dea751cfd2756eb365d68b1d273782ad58715ec50655ebff0f13
+Print/rod-grip.stl,TW-P-0015-R0002,device,1,Generic PETG @BBL A1,bd01b66469fc246ee8f7bc4490af0b6b5c32600f4e5809a07521538c3c04e4cf
+Print/grip-screw-keeper.stl,TW-P-0011-R0002,device,1,Generic PETG @BBL A1,42adc94b176ae1d6763725a28c78ef1ab10862975d5d382705c291059f5143ba
+Print/receiver-nut-keeper.stl,TW-P-0014-R0002,device,1,Generic PETG @BBL A1,cc8201225b69649f153c787ac7b3d54465c6b58ebbf9059e78344854342ebdb4
+Print/key-board-retainer-west.stl,TW-P-0012-R0003,device,1,Generic PETG @BBL A1,79bf8874347422a7368fd6c18b4a39abf89defa52fee0205a9b513349599c916
+Print/battery-wire-bridge.stl,TW-P-0016-R0002,device,1,Generic PETG @BBL A1,12490e06f93aa0ae1c6a8333f53de835fde79d280d805d7fcd41003ee345a457
+Print/PKCELL-max-body-with-wire-sockets.stl,,inert gauge,0,Generic PETG @BBL A1,02f3cc2959909541cb1fb11ef2e718a71b5a21ef75b5b74cae55b110fc77404c
+Print/Adafruit-258-CAD-with-PCM-and-stubs.stl,,inert gauge,0,Generic PETG @BBL A1,00d6d7a89e41ef77ed18c887e07ebcd468e7f56cc53aea8d2870b24d597f7c28
+Print/usb-c-shield-mask.stl,TW-P-0020-R0001,single-colour alternative to two-colour 3MF,0,"Opaque TPU 95A, shell-colour flange and matte charcoal lip",ed765e28ffcbb26bfcc842a749ef9b253c336eaabe7df4a15c33af6ed5a79d87
+Print/status-charge-guide.stl,TW-P-0021-R0001,device,1,Clear optical-grade resin or transparent PETG fit prototype,91647ce61b6cb100b4d7c6777f86529c24d7ddb55ff6e72b9f6926f7ccac765e
+Print/status-usb-guide.stl,TW-P-0022-R0001,device,1,Clear optical-grade resin or transparent PETG fit prototype,a9cfda6d2fcd0031a487e3a490ef514ca4f501d2a45f067178bdfc6e8e97d1b3
+Print/status-power-guide.stl,TW-P-0023-R0001,device,1,Clear optical-grade resin or transparent PETG fit prototype,c58766b2d7500945a5adf90e5d8950970dd391ec6edf4ce613cb7e991b07d60f
+Print/service-cover.stl,TW-P-0027-R0001,device,1,"Opaque TPU 95A, case colour",c27e103a25f009add42ce397efa5d36b027f01933469f4bd5742828d7264aa92
+Print/usb-c-shield-mask-two-colour.3mf,TW-P-0020-R0001,device,1,"Opaque TPU 95A, two regions",a0214eade7952dbed488e54580ed427bdb868d7c39e4a74b9ca274959f2e9e88
