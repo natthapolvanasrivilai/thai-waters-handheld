@@ -1,5 +1,5 @@
 # Pocket Reel Thai names — verified names and attribution
- 
+
 The Thai overlay is additive and browser-only. Stable IDs, art, English original, scientific identifiers, saves, and fictional labels are unchanged. No firmware change.
 
 ## Coverage
