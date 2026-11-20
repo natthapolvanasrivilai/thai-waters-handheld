@@ -116,3 +116,89 @@ function resetBook(){bookOffset=0;bookSpecies=null;renderBook();}
 $('bookFilter').onchange=$('bookSearch').oninput=resetBook;
 $('bookPrev').onclick=()=>{bookOffset--;renderBook();};
 $('bookNext').onclick=()=>{bookOffset++;renderBook();};
+
+// Turn the list by page or the open profile by species, keeping active filters.
+function turnBook(direction){
+ if(bookSpecies===null){
+  const button=$(direction<0?'bookPrev':'bookNext');
+  if(!button.disabled)button.click();
+  return;
+ }
+ const matches=bookMatches(),index=matches.indexOf(bookSpecies),next=index+direction;
+ if(index<0||next<0||next>=matches.length)return;
+ bookOffset=Math.floor(next/bookSize);bookSpecies=matches[next];historyPage=0;
+ renderBook();$('bookDetail').focus({preventScroll:true});
+}
+
+// Track on the content only. Preserve vertical scroll, pinch, and ordinary taps.
+let bookSwipe=null,bookSwipeClick=null;
+const activeBook=()=>menu.open&&menuPage==='book';
+window.addEventListener('pointerdown',e=>{
+ if(bookSwipe&&e.pointerId!==bookSwipe.id)bookSwipe=null;
+ if(e.isPrimary)bookSwipeClick=null;
+},true);
+for(const surface of [$('records'),$('bookDetail')]){
+ surface.style.touchAction='pan-y pinch-zoom';
+ surface.addEventListener('pointerdown',e=>{
+  if(!activeBook()||!e.isPrimary||e.button!==0||
+    e.target.closest('input,select,textarea,a,[contenteditable],#bookDetail button'))return;
+  bookSwipe={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies};
+ });
+}
+window.addEventListener('pointercancel',e=>{if(bookSwipe?.id===e.pointerId)bookSwipe=null;});
+window.addEventListener('pointerup',e=>{
+ if(bookSwipe?.id!==e.pointerId)return;
+ const start=bookSwipe;bookSwipe=null;
+ const dx=e.clientX-start.x,dy=e.clientY-start.y;
+ if(!activeBook()||start.entry!==bookSpecies||Math.abs(dx)<44||Math.abs(dx)<1.5*Math.abs(dy))return;
+ // Replacing tiles can retarget a synthesized click; capture it at window level.
+ bookSwipeClick={id:e.pointerId,x:e.clientX,y:e.clientY,until:performance.now()+450};
+ e.preventDefault();
+ turnBook(dx<0?1:-1);
+});
+window.addEventListener('click',e=>{
+ if(!bookSwipeClick||!e.detail||!activeBook())return;
+ const {id,x,y,until}=bookSwipeClick;
+ if(performance.now()>until)return;
+ if(e.pointerId>0&&e.pointerId!==id)return;
+ if(Math.hypot(e.clientX-x,e.clientY-y)>24)return;
+ bookSwipeClick=null;e.preventDefault();e.stopImmediatePropagation();
+},true);
+
+// Chromium can deliver the complete first Back touch after a profile swipe
+// without synthesizing a click. Recognize just that native button tap; retain
+// the normal click path for mouse, keyboard and accessibility activation.
+{
+ const back=$('back'),radius=12;
+ let contact=null,completed=null;
+ const within=(e,start)=>Math.hypot(e.clientX-start.x,e.clientY-start.y)<=radius;
+ const hitsBack=e=>document.elementFromPoint(e.clientX,e.clientY)?.closest('button')===back;
+ window.addEventListener('pointerdown',e=>{
+  if(e.isPrimary)completed=null;
+  if(contact){contact=null;return;}
+  if(e.isTrusted&&e.pointerType==='touch'&&e.isPrimary&&e.button===0&&activeBook()&&
+    bookSpecies!==null&&!back.disabled&&e.target.closest?.('button')===back&&hitsBack(e))
+   contact={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies};
+ },true);
+ window.addEventListener('pointermove',e=>{
+  if(contact?.id===e.pointerId&&!within(e,contact))contact=null;
+ },true);
+ for(const type of ['pointercancel','lostpointercapture'])window.addEventListener(type,e=>{
+  if(contact?.id===e.pointerId)contact=null;
+ },true);
+ window.addEventListener('pointerup',e=>{
+  if(contact?.id!==e.pointerId)return;
+  const start=contact;contact=null;
+  if(!e.isTrusted||e.pointerType!=='touch'||!e.isPrimary||!activeBook()||
+    start.entry!==bookSpecies||back.disabled||!within(e,start)||!hitsBack(e))return;
+  completed={id:e.pointerId,x:e.clientX,y:e.clientY,until:performance.now()+500};
+  closeBookDetail();
+ },true);
+ back.addEventListener('click',e=>{
+  const tap=completed;
+  if(!tap||!e.isTrusted||!e.detail||performance.now()>tap.until||!within(e,tap))return;
+  if(e.pointerType==='touch'?e.pointerId!==tap.id:
+    Boolean(e.pointerType)||!e.sourceCapabilities?.firesTouchEvents)return;
+  completed=null;e.preventDefault();e.stopImmediatePropagation();
+ },true);
+}
