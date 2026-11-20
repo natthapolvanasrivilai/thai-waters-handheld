@@ -27,9 +27,27 @@ const {webkit,chromium}=require('playwright-core');
  assert.deepEqual(await page.evaluate(()=>catchHistory),[captured]);
  await page.locator('#openMenu').tap();await page.locator('[data-to=book]').tap();await page.waitForFunction(()=>$('records').children.length===8);
  assert.equal(await page.locator('#menu').evaluate(m=>m.offsetWidth),480);assert.equal(await page.locator('#menu').evaluate(m=>m.offsetHeight),320);
+ const touch=process.env.TEST_WEBKIT?null:await page.context().newCDPSession(page);
+ async function swipe(selector,dx,dy=0){
+  const box=await page.locator(selector).boundingBox();assert(box,selector);
+  const x=Math.round(box.x+box.width/2),y=Math.round(box.y+Math.min(50,box.height/2));
+  if(touch){
+   await touch.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+   for(let i=1;i<=5;i++)await touch.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+Math.round(dx*i/5),y:y+Math.round(dy*i/5)}]});
+   await touch.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  }else{
+   await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+dx,y+dy,{steps:5});await page.mouse.up();
+  }
+ }
+ await swipe('#records',-82);await page.waitForFunction(()=>bookOffset===1&&bookSpecies===null);
+ await swipe('#records',82);await page.waitForFunction(()=>bookOffset===0&&bookSpecies===null);
+ await swipe('#records',82);assert.equal(await page.evaluate(()=>bookOffset),0); // no wrap; no tile activation
+ await swipe('#records',7,54);assert.deepEqual(await page.evaluate(()=>[bookOffset,bookSpecies]),[0,null]);
  const unknown=page.locator('#species-0');
  assert.equal(await unknown.locator('b').count(),0);assert.equal((await unknown.innerText()).trim(),'');
  await unknown.tap();assert(!await page.locator('#bookDetail').innerText().then(s=>s.includes('Climbing perch')||s.includes('ปลาหมอไทย')));
+ await swipe('#bookDetail',-82);await page.waitForFunction(()=>bookSpecies===1);
+ await swipe('#bookDetail',82);await page.waitForFunction(()=>bookSpecies===0);
  await page.locator('#back').tap();
  assert(await unknown.locator('canvas').evaluate(c=>{const b=c.getContext('2d').getImageData(0,0,c.width,c.height).data,colors=new Set();for(let i=0;i<b.length;i+=4)if(b[i+3]===255)colors.add(b.slice(i,i+3).join(','));return colors.size===1;}));
  for(let i=0;i<Math.floor(40/8);i++)await page.locator('#bookNext').tap();

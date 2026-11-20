@@ -110,3 +110,51 @@ function resetBook(){bookOffset=0;bookSpecies=null;renderBook();}
 $('bookFilter').onchange=$('bookSearch').oninput=resetBook;
 $('bookPrev').onclick=()=>{bookOffset--;renderBook();};
 $('bookNext').onclick=()=>{bookOffset++;renderBook();};
+
+// Turn the list by page or the open profile by species, keeping active filters.
+function turnBook(direction){
+ if(bookSpecies===null){
+  const button=$(direction<0?'bookPrev':'bookNext');
+  if(!button.disabled)button.click();
+  return;
+ }
+ const matches=bookMatches(),index=matches.indexOf(bookSpecies),next=index+direction;
+ if(index<0||next<0||next>=matches.length)return;
+ bookOffset=Math.floor(next/bookSize);bookSpecies=matches[next];historyPage=0;
+ renderBook();$('bookDetail').focus({preventScroll:true});
+}
+
+// Track on the content only. Preserve vertical scroll, pinch, and ordinary taps.
+let bookSwipe=null,bookSwipeClick=null;
+const activeBook=()=>menu.open&&menuPage==='book';
+window.addEventListener('pointerdown',e=>{
+ if(bookSwipe&&e.pointerId!==bookSwipe.id)bookSwipe=null;
+ if(e.isPrimary)bookSwipeClick=null;
+},true);
+for(const surface of [$('records'),$('bookDetail')]){
+ surface.style.touchAction='pan-y pinch-zoom';
+ surface.addEventListener('pointerdown',e=>{
+  if(!activeBook()||!e.isPrimary||e.button!==0||
+    e.target.closest('input,select,textarea,a,[contenteditable],#bookDetail button'))return;
+  bookSwipe={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies};
+ });
+}
+window.addEventListener('pointercancel',e=>{if(bookSwipe?.id===e.pointerId)bookSwipe=null;});
+window.addEventListener('pointerup',e=>{
+ if(bookSwipe?.id!==e.pointerId)return;
+ const start=bookSwipe;bookSwipe=null;
+ const dx=e.clientX-start.x,dy=e.clientY-start.y;
+ if(!activeBook()||start.entry!==bookSpecies||Math.abs(dx)<44||Math.abs(dx)<1.5*Math.abs(dy))return;
+ // Replacing tiles can retarget a synthesized click; capture it at window level.
+ bookSwipeClick={id:e.pointerId,x:e.clientX,y:e.clientY,until:performance.now()+450};
+ e.preventDefault();
+ turnBook(dx<0?1:-1);
+});
+window.addEventListener('click',e=>{
+ if(!bookSwipeClick||!e.detail||!activeBook())return;
+ const {id,x,y,until}=bookSwipeClick;
+ if(performance.now()>until)return;
+ if(e.pointerId>0&&e.pointerId!==id)return;
+ if(Math.hypot(e.clientX-x,e.clientY-y)>24)return;
+ bookSwipeClick=null;e.preventDefault();e.stopImmediatePropagation();
+},true);
