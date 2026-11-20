@@ -36,7 +36,7 @@ html.immersive[data-view] main{
 html.immersive[data-view] main>header,html.immersive[data-view]:not([data-device="fallback"]) #viewHint{display:none}
 html.immersive[data-view] #product,html.immersive[data-view] #flatStage{border:0;border-radius:0}
 html.immersive[data-view] .viewtools{padding:2px 4px}
-html.immersive[data-view] #dial{--dial-size:clamp(86px,min(17dvw,31dvh),144px);width:var(--dial-size);height:var(--dial-size);--hub:clamp(44px,14dvh,62px);margin:0}
+html.immersive[data-view] #dial{--dial-size:clamp(86px,min(17dvw,31dvh),144px);width:var(--dial-size);height:var(--dial-size);--hub:clamp(44px,min(14dvh,calc(var(--dial-size) - 36px)),62px);margin:0}
 html.immersive .tools{position:absolute;right:max(4px,env(safe-area-inset-right));bottom:max(4px,env(safe-area-inset-bottom));margin:0;pointer-events:none}
 html.immersive .tools>span{display:none}
 html.immersive[data-view="device"] .tools,html.immersive.lcd-menu-open .tools{display:none}
