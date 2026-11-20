@@ -158,3 +158,41 @@ window.addEventListener('click',e=>{
  if(Math.hypot(e.clientX-x,e.clientY-y)>24)return;
  bookSwipeClick=null;e.preventDefault();e.stopImmediatePropagation();
 },true);
+
+// Chromium can deliver the complete first Back touch after a profile swipe
+// without synthesizing a click. Recognize just that native button tap; retain
+// the normal click path for mouse, keyboard and accessibility activation.
+{
+ const back=$('back'),radius=12;
+ let contact=null,completed=null;
+ const within=(e,start)=>Math.hypot(e.clientX-start.x,e.clientY-start.y)<=radius;
+ const hitsBack=e=>document.elementFromPoint(e.clientX,e.clientY)?.closest('button')===back;
+ window.addEventListener('pointerdown',e=>{
+  if(e.isPrimary)completed=null;
+  if(contact){contact=null;return;}
+  if(e.isTrusted&&e.pointerType==='touch'&&e.isPrimary&&e.button===0&&activeBook()&&
+    bookSpecies!==null&&!back.disabled&&e.target.closest?.('button')===back&&hitsBack(e))
+   contact={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies};
+ },true);
+ window.addEventListener('pointermove',e=>{
+  if(contact?.id===e.pointerId&&!within(e,contact))contact=null;
+ },true);
+ for(const type of ['pointercancel','lostpointercapture'])window.addEventListener(type,e=>{
+  if(contact?.id===e.pointerId)contact=null;
+ },true);
+ window.addEventListener('pointerup',e=>{
+  if(contact?.id!==e.pointerId)return;
+  const start=contact;contact=null;
+  if(!e.isTrusted||e.pointerType!=='touch'||!e.isPrimary||!activeBook()||
+    start.entry!==bookSpecies||back.disabled||!within(e,start)||!hitsBack(e))return;
+  completed={id:e.pointerId,x:e.clientX,y:e.clientY,until:performance.now()+500};
+  closeBookDetail();
+ },true);
+ back.addEventListener('click',e=>{
+  const tap=completed;
+  if(!tap||!e.isTrusted||!e.detail||performance.now()>tap.until||!within(e,tap))return;
+  if(e.pointerType==='touch'?e.pointerId!==tap.id:
+    Boolean(e.pointerType)||!e.sourceCapabilities?.firesTouchEvents)return;
+  completed=null;e.preventDefault();e.stopImmediatePropagation();
+ },true);
+}
