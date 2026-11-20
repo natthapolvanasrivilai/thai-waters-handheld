@@ -16,11 +16,11 @@ const {chromium} = require('playwright-core');
    if(await page.locator('#product').isVisible())await page.locator('#viewMode').click();
    assert.match(await page.title(),/Thai Waters/);
    assert.equal(await page.locator('#arrivalSkip').isVisible(),false,'Boot must start directly at the saved water');
-   async function travel(name,period){
+   async function travel(name,period,beforeSubmit){
     await page.locator('#openMenu').click();await page.locator('[data-to=spots]').click();
     if(name){await showControl(page,'#places');await page.getByRole('button',{name:/Fishing location ·/}).click();await chooseNamed(page,name);}
     if(period){await showControl(page,'#period');await page.getByRole('button',{name:/Pond time ·/}).click();await page.getByRole('option',{name:period,exact:true}).click();}
-    await showControl(page,'#fishHere');await page.locator('#fishHere').click();
+    await showControl(page,'#fishHere');if(beforeSubmit)await beforeSubmit();await page.locator('#fishHere').click();
    }
    const shapes=await page.evaluate(()=>{
     const art=(site,age)=>{
@@ -64,40 +64,102 @@ const {chromium} = require('playwright-core');
    }));
    assert.deepEqual(routes,[0,1,2,3],'water-specific approaches');
    assert(shapes.every(s=>s.valid));assert.equal(new Set(shapes.map(s=>s.family)).size,4);
-   await travel('Chao Phraya River','Dusk');
-   await page.locator('#arrivalSkip').waitFor({state:'visible'});
-   assert.equal(await page.evaluate(()=>g.state()),0);
-   if(!reduced){
-    await page.keyboard.down('r');
-    await page.waitForTimeout(130);await page.keyboard.up('r');
-    assert.equal(await page.evaluate(()=>held||action||!!turns||!!g.age()),false,'Travel must quarantine all fishing input');
-    const measured=await page.evaluate(()=>new Promise(resolve=>{
-     const start=arrivalSince;const observer=new MutationObserver(()=>{
-      if(arrivalSince===null){observer.disconnect();resolve(performance.now()-start);}
-     });observer.observe($('lcdUI'),{attributes:true,attributeFilter:['data-arriving']});
-    }));
-    assert(measured>=4180&&measured<5300,'4.2 second arrival, measured '+measured);
-   }else{
-    const same=await page.evaluate(async()=>{
-      draw();const first=canvas.toDataURL();await new Promise(r=>setTimeout(r,90));draw();return first===canvas.toDataURL();
+   const probeTrip=(kind,capture=false)=>page.evaluate(({kind,capture})=>{
+    window.arrivalProbe=new Promise((resolve,reject)=>{
+     const lcd=$('lcdUI'),submit=$('fishHere'),skip=$('arrivalSkip');
+     const state=()=>[g.state(),g.age(),held,action,turns,menu.open];
+     const key=type=>$('act').dispatchEvent(new KeyboardEvent(type,
+       {key:'r',code:'KeyR',bubbles:true,cancelable:true}));
+     let observer,timeout,keydown=false;
+     function finish(error,result){
+      clearTimeout(timeout);observer?.disconnect();submit.removeEventListener('click',afterSubmit);
+      if(keydown)key('keyup');
+      if(error)reject(error);else resolve(result);
+     }
+     function afterSubmit(){
+      try{
+       // Capture the live feature after its actual submit handler in the same task.
+       const start=arrivalSince,before=state();
+       const visible=!skip.hidden&&skip.getClientRects().length>0&&getComputedStyle(skip).visibility==='visible';
+       if(kind==='time'){finish(null,{started:start!==null,visible,phase:before[0]});return;}
+       if(start===null||!visible)throw new Error('Destination did not show an active Skip control');
+       const info={before,reduced:arrivalReduced,family:sceneryEngine.arrivalLanding(placeId,locationId)};
+       if(kind==='skip'){
+        if(capture){paintArrival(1850,0);info.capture=canvas.toDataURL('image/png');}
+        skip.click();
+        finish(null,{...info,after:state(),active:arrivalSince!==null,hidden:skip.hidden});
+        return;
+       }
+       observer=new MutationObserver(()=>{
+        if(arrivalSince!==null)return;
+        finish(null,{...info,end:state(),hidden:skip.hidden,duration:performance.now()-start});
+       });
+       observer.observe(lcd,{attributes:true,attributeFilter:['data-arriving']});
+       if(kind==='desktop'){
+        keydown=true;key('keydown');info.after=state();
+       }else{
+        // Arrival is a translucent overlay; compare renders on the same base.
+        const base=ctx.getImageData(0,0,canvas.width,canvas.height);
+        paintArrival(0,0);const first=canvas.toDataURL();
+        ctx.putImageData(base,0,0);
+        paintArrival(500,0);info.static=first===canvas.toDataURL();
+        ctx.putImageData(base,0,0);
+       }
+      }catch(e){finish(e);}
+     }
+     timeout=setTimeout(()=>finish(new Error('Timed out observing arrival '+kind)),60000);
+     submit.addEventListener('click',afterSubmit,{once:true});
     });
-    assert(same,'Reduced-motion arrival should be completely static');
-    await page.waitForTimeout(540);assert.equal(await page.locator('#arrivalSkip').isVisible(),false,'Reduced motion ends after a short static card');
+    window.arrivalProbe.catch(()=>{});
+   },{kind,capture});
+   const checkTrip=()=>page.evaluate(()=>window.arrivalProbe);
+   const neutral=[0,0,false,false,0,false];
+   await travel('Chao Phraya River','Dusk',()=>probeTrip(reduced?'reduced':'desktop'));
+   const natural=await checkTrip();
+   assert.deepEqual(natural.before,neutral,'Arrival starts with neutral fishing inputs');
+   assert.deepEqual(natural.end,neutral,'Fishing stays neutral until travel ends naturally');
+   assert.equal(natural.hidden,true,'Natural completion hides Skip');
+   assert.equal(natural.reduced,reduced,'Arrival uses the browser motion preference');
+   if(reduced){
+    assert(natural.static,'Reduced-motion arrival should be completely static');
+    assert(natural.duration>=530&&natural.duration<1600,'Short reduced-motion card, measured '+natural.duration);
+   }else{
+    assert.deepEqual(natural.after,neutral,'Travel must quarantine the dispatched reel key');
+    assert(natural.duration>=4180&&natural.duration<5300,'4.2 second arrival, measured '+natural.duration);
    }
-   assert.equal(await page.evaluate(()=>g.state()),0);
-   await travel(null,'Night');assert.equal(await page.locator('#arrivalSkip').isVisible(),false,'Time-only selection');
-   await travel('Kwan Phayao','Day');await page.locator('#arrivalSkip').waitFor({state:'visible'});
-   if(!reduced&&process.env.ARRIVAL_CAPTURE){
-    await page.waitForTimeout(1850);await page.locator('#scene').screenshot({path:process.env.ARRIVAL_CAPTURE});
-   }
-   await page.locator('#arrivalSkip').click();await page.waitForTimeout(85);assert.equal(await page.evaluate(()=>g.state()),0,'Skip is consumed before the next tap');
-   await page.locator('#act').click();await page.waitForFunction(()=>g.state()===1||g.state()===2);
+   await travel(null,'Night',()=>probeTrip('time'));
+   assert.deepEqual(await checkTrip(),{started:false,visible:false,phase:0},'Time-only selection does not start travel');
+   await travel('Kwan Phayao','Day',()=>probeTrip('skip',!reduced&&Boolean(process.env.ARRIVAL_CAPTURE)));
+   const kwan=await checkTrip();
+   assert.deepEqual(kwan.before,neutral);
+   assert.deepEqual(kwan.after,neutral,'Skip is consumed before the next tap');
+   assert(!kwan.active&&kwan.hidden,'Skip finishes live travel');
+   if(kwan.capture)require('node:fs').writeFileSync(process.env.ARRIVAL_CAPTURE,
+    Buffer.from(kwan.capture.split(',')[1],'base64'));
+   await page.evaluate(()=>{
+    window.castProbe=new Promise((resolve,reject)=>{
+     const timeout=setTimeout(()=>reject(new Error('No fishing transition after Act')),12000);
+     $('act').addEventListener('click',()=>{
+      const observe=()=>{
+       const phase=g.state();
+       if(phase===0)requestAnimationFrame(observe);
+       else{clearTimeout(timeout);resolve(phase);}
+      };
+      observe();
+     },{once:true});
+    });
+    window.castProbe.catch(()=>{});
+   });
+   await page.locator('#act').click();
+   assert([1,2].includes(await page.evaluate(()=>window.castProbe)),'The tap after Skip starts fishing');
    await page.reload();await page.waitForFunction(()=>!document.getElementById('act').disabled);
    assert.equal(await page.locator('#arrivalSkip').isVisible(),false);
    assert.equal(await page.locator('#spot').textContent(),'Kwan Phayao');
-   await travel('Krabi coastal waters','Dawn');await page.locator('#arrivalSkip').waitFor({state:'visible'});
-   assert.equal(await page.evaluate(()=>sceneryEngine.arrivalLanding(placeId,locationId)),3);
-   await page.locator('#arrivalSkip').click();
+   await travel('Krabi coastal waters','Dawn',()=>probeTrip('skip'));
+   const krabi=await checkTrip();
+   assert.equal(krabi.family,3,'Krabi uses the longtail-boat approach');
+   assert.deepEqual(krabi.after,neutral,'Skip leaves the coastal trip ready to fish');
+   assert(!krabi.active&&krabi.hidden,'Skip finishes the coastal trip');
    assert.deepEqual(errors,[]);
    await page.close();
   }

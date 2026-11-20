@@ -232,7 +232,7 @@ class Score {
     const auto osc=[&](unsigned harmonic){return int(sine[(v.phase*harmonic)>>24]);};
     int wave=0;unsigned attack=160,decay=65526;
     int vibrato=0;
-    const int bright=int(std::min(v.life>>10,1024u));
+    const int bright=int(std::min<uint32_t>(v.life>>10,1024u));
     switch(scene.instrument){
       case Instrument::Nylon:
         wave=osc(1)*5/8+(osc(2)/5+osc(3)/13-osc(5)/26)*bright/1024;break;

@@ -58,12 +58,31 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   assert.equal(await pg.evaluate(()=>g.technique()),2,'Remember the selected presentation');
   await menu('book');assert.equal(await pg.locator('.record').count(),8);await pg.locator('#bookFilter').selectOption({label:'Mythic'});assert.equal(await pg.locator('.record').count(),5);await pg.locator('#resume').click();
   await pg.setViewportSize({width:390,height:844});await menu('sensors');
-  // Gravity in m/s², rest / raised vectors and stable dwell.
-  for(const [xyz,button] of [[[0,0,9.80665],'restPose'],[[0,6.30,7.51],'liftPose']]){
-   await pg.evaluate(async xyz=>{for(let i=0;i<64;i++){onMotion({accelerationIncludingGravity:{x:xyz[0],y:xyz[1],z:xyz[2]},rotationRate:{alpha:0,beta:2,gamma:1}});await new Promise(r=>setTimeout(r,17));}},xyz);
-   await pg.locator('#'+button).click();
-  }
-  assert.equal(await pg.evaluate(()=>calibratedMobile),true);
+   // Replay the same physical rest/lift samples in page time, so locator
+   // actionability cannot age out the final sample before either button.
+   const calibration=await pg.evaluate(()=>{
+    const ownNow=Object.getOwnPropertyDescriptor(performance,'now');
+    let sampleTime=performance.now()-128*17;
+    Object.defineProperty(performance,'now',{configurable:true,value:()=>sampleTime});
+    const feed=([x,y,z])=>{
+     for(let i=0;i<64;i++){
+      sampleTime+=17;
+      onMotion({accelerationIncludingGravity:{x,y,z},rotationRate:{alpha:0,beta:2,gamma:1}});
+     }
+    };
+    try{
+     feed([0,0,9.80665]);$('restPose').click();
+     const centered=basePose;
+     feed([0,6.30,7.51]);
+     const ready=!!steady(),span=rodAngle;
+     $('liftPose').click();
+     return {centered,ready,span,calibrated:calibratedMobile,status:$('motionStatus').textContent};
+    }finally{
+     if(ownNow)Object.defineProperty(performance,'now',ownNow);else delete performance.now;
+    }
+   });
+   assert(calibration.centered&&calibration.ready&&calibration.calibrated,JSON.stringify(calibration));
+   assert.match(calibration.status,/Custom lift saved/);
   await pg.locator('#resume').click();assert.equal(await pg.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   // Use normal touch controls for a complete active presentation of each lure.
   for(const [name,rig] of [['Stop-and-go spoon',1],['Vertical jig',2]]){
