@@ -27,6 +27,7 @@ field_bank=(root/'assets/TW-FISH.BIN').read_bytes()
 values['@@FIELD_BANK@@']=base64.b64encode(field_bank).decode()
 values['@@BANK_SHA@@']=hashlib.sha256(field_bank).hexdigest()
 values['@@FISH_CREDITS@@']=base64.b64encode(('\n\n'.join(name+'\n'+(root/'content'/name).read_text(encoding='utf8') for name in credits)).encode()).decode()
+values['@@UI_AUDIO@@']=(root/'src/ui-audio.js').read_text(encoding='utf8')
 for token,value in values.items():
  assert template.count(token)==1,token
  template=template.replace(token,value)

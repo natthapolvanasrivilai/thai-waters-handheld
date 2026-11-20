@@ -721,11 +721,12 @@ function aimAt(x,y){
  if(!g||menu.open||!powered||arrivalSince!==null||![0,6,9].includes(g.state())||y<.44||y>.94)return false;
  g.setAim(x,y);aimUntil=performance.now()+1350;return true;
 }
-function scenePress(x,y){
+function scenePress(x,y,trusted=false){
  if(!powered||menu.open)return;
  if(arrivalSince!==null){stopArrival();return;}
  if(g?.state()===5){fileSpecimen();return;}
  if([0,6,9].includes(g?.state())&&!aimAt(x,y))return;
+ if(trusted)menuAudio.tap();
  tap();
 }
 function tap(){
@@ -849,7 +850,7 @@ function fileSpecimen(){
 $('catchContinue').onclick=()=>{if(powered&&!menu.open&&g?.state()===5)fileSpecimen();};
 canvas.onclick=e=>{
  const bounds=canvas.getBoundingClientRect(),x=(e.clientX-bounds.left)*480/bounds.width,y=(e.clientY-bounds.top)*320/bounds.height;
- scenePress(x/480,y/320);
+ scenePress(x/480,y/320,e.isTrusted);
 };
 function splash(x,y,age,surge){
  const period=surge?390:690;
@@ -1070,6 +1071,7 @@ for(const b of document.querySelectorAll("[data-navicon]"))b.append(journalIcon(
 @@LCD_RENDERER@@
 @@MOBILE_DISPLAY@@
 @@LANGUAGE_CONTROL@@
+@@UI_AUDIO@@
 explainRumble();
 
 
