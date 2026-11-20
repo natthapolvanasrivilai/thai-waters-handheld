@@ -98,8 +98,12 @@ const {chromium} = require('playwright-core');
        if(kind==='desktop'){
         keydown=true;key('keydown');info.after=state();
        }else{
+        // Arrival is a translucent overlay; compare renders on the same base.
+        const base=ctx.getImageData(0,0,canvas.width,canvas.height);
         paintArrival(0,0);const first=canvas.toDataURL();
+        ctx.putImageData(base,0,0);
         paintArrival(500,0);info.static=first===canvas.toDataURL();
+        ctx.putImageData(base,0,0);
        }
       }catch(e){finish(e);}
      }
