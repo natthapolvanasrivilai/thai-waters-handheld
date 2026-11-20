@@ -36,5 +36,18 @@ const wasm=fs.readFileSync(path.resolve(__dirname,'../../game/assets/atlas.wasm'
   let mutedTicks=0;
   for(let i=0;i<12;i++){if(sample(130)===9)mutedTicks++;assert(!hasAudio());}
   assert(mutedTicks>0);
+  // Browser virtual encoder starts at 0, rAF sound gate uses the page clock.
+  g.initialize(123);g.config(3,0,1,0);g.reelVolume(2);g.dialReset();
+  let elapsed=0,position=0,motor=0,audible=0;
+  g.dialSample(position,0);assert.equal(g.rumbleEvent(10000,1),0);assert(!hasAudio());
+  for(let packet=0;packet<500;packet++){
+    elapsed+=8;position=(position+192)&4095;
+    assert.equal(g.dialSample(position,elapsed),192/4096);
+    if(g.rumbleEvent(10000+elapsed,1)===9)motor++;
+    if(hasAudio())audible++;
+  }
+  assert.equal(motor,110,'32ms physical haptic gating remains unchanged');
+  assert.equal(audible,141,'24ms audio budget is independent without waveform backlog');
+  for(let t=32;t<=320;t+=32){assert.equal(g.rumbleEvent(10000+elapsed+t,1),0);assert(!hasAudio());}
   console.log('PASS real WASM detents: CW/CCW, wrapped samples, pause, magnet dropout, click PCM, independent mute and silent synthetic winding.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

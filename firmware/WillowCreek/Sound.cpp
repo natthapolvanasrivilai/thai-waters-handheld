@@ -43,11 +43,11 @@ bool startSound(){
      es8311_voice_volume_set(c,65,nullptr)!=ESP_OK || es8311_voice_mute(c,false)!=ESP_OK)return false;
   return xTaskCreatePinnedToCore(stream,"creek-audio",4096,nullptr,2,nullptr,0)==pdPASS;
 }
-void setSound(const SoundSettings& s,bool chase,bool bite,int reelClick,creek::LandingCue landing,uint8_t fishingSounds,bool landed,bool surge,bool lost){
+void setSound(const SoundSettings& s,bool chase,bool bite,int reelClick,creek::LandingCue landing,uint8_t fishingSounds,bool landed,bool surge,bool lost,bool discardReelClick){
   portENTER_CRITICAL(&lock);
   pendingFoley|=fishingSounds;current=s;fight=chase;held=landed;running=surge;missed=lost;if(bite && s.cue!=1)signalNumber++;
   if(!held || s.cue==1 || !s.cueVolume)pendingLanding={};
   else if(landing.active())pendingLanding=landing;
-  if(bite || !s.reelVolume)pendingClick=0;else if(reelClick)pendingClick=reelClick;
+  if(bite || landing.active() || !s.reelVolume || discardReelClick)pendingClick=0;else if(reelClick)pendingClick=reelClick;
   portEXIT_CRITICAL(&lock);
 }

@@ -43,13 +43,15 @@ struct Gesture {
 struct Wheel {
   int previous=-1;
   uint32_t last=0;
-  float read(int raw, bool fieldOK, uint32_t now, bool reversed) {
+  float read(int raw, bool fieldOK, uint32_t now, bool reversed,uint32_t* validSampleMs=nullptr) {
+    if(validSampleMs)*validSampleMs=0;
     if(!fieldOK){previous=-1;return 0;}
     int old=previous;previous=raw;
     uint32_t dt=now-last;last=now;
     if(old<0 || dt==0 || dt>90)return 0;
     int change=(raw-old+6144)%4096-2048;
     if(std::abs(change)>8+static_cast<int>(dt*24.576f))return 0; // 6 turns/s
+    if(validSampleMs)*validSampleMs=dt;
     return (reversed?-change:change)/4096.f;
   }
 };
