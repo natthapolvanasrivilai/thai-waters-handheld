@@ -205,7 +205,7 @@ jobs:
           retention-days: 5
   nightly_release:
     needs: [browser_release, controller]
-    if: github.event_name == 'schedule' && github.event.repository.private && github.ref_name == github.event.repository.default_branch
+    if: github.event_name == 'schedule' && github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
