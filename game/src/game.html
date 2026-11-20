@@ -847,7 +847,7 @@ function fileSpecimen(){
  submitTournamentCatch();
  save();refresh();
 }
-$('catchContinue').onclick=()=>{if(powered&&!menu.open&&g?.state()===5)fileSpecimen();};
+$('catchContinue').onclick=()=>{if(powered&&!menu.open&&g?.state()===5&&!g.filed())fileSpecimen();};
 canvas.onclick=e=>{
  const bounds=canvas.getBoundingClientRect(),x=(e.clientX-bounds.left)*480/bounds.width,y=(e.clientY-bounds.top)*320/bounds.height;
  scenePress(x/480,y/320,e.isTrusted);
@@ -871,6 +871,7 @@ function caption(text,x,y,align='left',color='#fff4d8',size=12,display=''){
  ctx.save();ctx.textAlign=align;ctx.font=canvasTypeface(size,display);ctx.lineJoin='round';ctx.lineWidth=3;
  ctx.strokeStyle='#183830';ctx.strokeText(L(text),x,y);ctx.fillStyle=color;ctx.fillText(L(text),x,y);ctx.restore();
 }
+const catchContinueLabel='Save catch & keep fishing';
 const rewardText=['Catch landed','Personal best','New species','New species +1 tackle point'];
 const rarityInk=['#e3eee4','#b6e3bc','#baddff','#e4c9ff','#ffda8c','#a9ffdf'];
 function displayMass(grams){
@@ -908,7 +909,7 @@ function landedCatch(age){
  if(t<1)drawSpecimen(ctx,id,
   Math.round(cx-24*k),Math.round(cy-12.5*k),Math.round(48*k),Math.round(25*k));
  if(g.filed())return;
- ctx.save();ctx.globalAlpha=catchPromptOpacity(age);caption('Tap to continue',240,310,'center','#fff4d8',13);ctx.restore();
+ ctx.save();ctx.globalAlpha=catchPromptOpacity(age);caption(catchContinueLabel,240,310,'center','#fff4d8',13);ctx.restore();
  const x=202;
  caption(atlas.ranks[f.tier]+'  ·  '+L(reward),x,82,'left',rarityInk[f.tier],13);
  const afterName=catchLines(f.name,110,language==='th'?24:23,'#fff7df',26,286,'Syy Flowey');
@@ -1024,9 +1025,14 @@ function draw(){
  }
  const landed=p===5;
  if(!landed && $('metrics').textContent){setUi($('metrics'),'');setUi($('origin'),'');}
- const firstReveal=landed&&!menu.open&&$('catchContinue').hidden;
- $('catchContinue').hidden=!landed||menu.open;
- if(firstReveal)$('catchContinue').focus({preventScroll:true});
+ const catchButton=$('catchContinue'),canFile=landed&&!g.filed()&&!menu.open;
+ const firstReveal=canFile&&catchButton.hidden;
+ if(canFile){
+  const label=L(catchContinueLabel);
+  if(catchButton.getAttribute('aria-label')!==label)catchButton.setAttribute('aria-label',label);
+ }
+ catchButton.hidden=!canFile;
+ if(firstReveal)catchButton.focus({preventScroll:true});
  $('lcdUI').toggleAttribute('data-catch',landed);
  $('lcdUI').toggleAttribute('data-casting-water',[0,6,9].includes(p));
  $('act').hidden=p===1;
