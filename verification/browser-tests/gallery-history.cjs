@@ -121,9 +121,29 @@ const {webkit,chromium}=require('playwright-core');
  await swipe('#records',82);await page.waitForFunction(()=>bookOffset===0&&bookSpecies===null);
  assert.equal(await page.evaluate(()=>galleryPageCues.length),2,'Muted page changes must stay silent');
  await page.evaluate(()=>{$('fx').selectedIndex=1;$('cue').selectedIndex=1;});
- await tapBookButton('#bookNext');await page.waitForFunction(()=>bookOffset===1);
- await tapBookButton('#bookPrev');await page.waitForFunction(()=>bookOffset===0);
+ await page.evaluate(()=>{
+  window.galleryPagerTrace=[];
+  for(const kind of ['pointerdown','pointerup','pointercancel','lostpointercapture','touchend','click']){
+   window.addEventListener(kind,e=>{
+    const target=e.target.closest?.('button')?.id;
+    if(!['bookPrev','bookNext'].includes(target)||galleryPagerTrace.length>=24)return;
+    const row={kind,target,phase:e.pointerType||null,trust:e.isTrusted,page:bookOffset};
+    galleryPagerTrace.push(row);
+    queueMicrotask(()=>{row.prevented=e.defaultPrevented;row.next=bookOffset;});
+   },true);
+  }
+ });
+ async function expectPager(selector,target){
+  await tapBookButton(selector);
+  await page.waitForFunction(n=>bookOffset===n,target,{timeout:2500}).catch(()=>{});
+  const trace=await page.evaluate(()=>({page:bookOffset,events:galleryPagerTrace.slice()}));
+  assert.equal(trace.page,target,'Immediate native touch on '+selector+' must turn one page: '+JSON.stringify(trace));
+ }
+ await expectPager('#bookNext',1);await expectPager('#bookPrev',0);
  assert.equal(await page.evaluate(()=>galleryPageCues.filter(n=>n.gain<.062).length),2,'Navigation sounds on both arrows and respects Low even in bite-only Light mode');
+ await page.locator('#bookNext').click();await page.waitForFunction(()=>bookOffset===1);
+ await page.locator('#bookPrev').press('Enter');await page.waitForFunction(()=>bookOffset===0);
+ assert.equal(await page.evaluate(()=>galleryPageCues.length),6,'Ordinary mouse and keyboard actions still move one page and sound once');
  await page.evaluate(()=>{
   audio=gallerySoundBefore.audio;pluck=gallerySoundBefore.pluck;$('fx').selectedIndex=gallerySoundBefore.fx;$('cue').selectedIndex=gallerySoundBefore.cue;
   if(audio)audioTimer=setInterval(pump,20);

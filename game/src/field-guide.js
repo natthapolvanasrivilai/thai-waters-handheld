@@ -163,20 +163,20 @@ window.addEventListener('click',e=>{
  bookSwipeClick=null;e.preventDefault();e.stopImmediatePropagation();
 },true);
 
-// Chromium can deliver the complete first Back touch after a profile swipe
-// without synthesizing a click. Recognize just that native button tap; retain
-// the normal click path for mouse, keyboard and accessibility activation.
+// Some touch engines deliver the first tap after a swipe without a click.
+// Match only a genuine same-button touch; retain mouse, keyboard and AT clicks.
 {
- const back=$('back'),radius=12;
+ const back=$('back'),arrows=new Map([[$('bookPrev'),-1],[$('bookNext'),1]]),radius=12;
  let contact=null,completed=null;
  const within=(e,start)=>Math.hypot(e.clientX-start.x,e.clientY-start.y)<=radius;
- const hitsBack=e=>document.elementFromPoint(e.clientX,e.clientY)?.closest('button')===back;
+ const hit=e=>document.elementFromPoint(e.clientX,e.clientY)?.closest('button');
+ const eligible=b=>Boolean(b&&!b.disabled&&(bookSpecies!==null?b===back:arrows.has(b)));
  window.addEventListener('pointerdown',e=>{
   if(e.isPrimary)completed=null;
   if(contact){contact=null;return;}
-  if(e.isTrusted&&e.pointerType==='touch'&&e.isPrimary&&e.button===0&&activeBook()&&
-    bookSpecies!==null&&!back.disabled&&e.target.closest?.('button')===back&&hitsBack(e))
-   contact={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies};
+  const target=e.target.closest?.('button');
+  if(e.isTrusted&&e.pointerType==='touch'&&e.isPrimary&&e.button===0&&activeBook()&&eligible(target)&&hit(e)===target)
+   contact={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies,page:bookOffset,target};
  },true);
  window.addEventListener('pointermove',e=>{
   if(contact?.id===e.pointerId&&!within(e,contact))contact=null;
@@ -188,15 +188,15 @@ window.addEventListener('click',e=>{
   if(contact?.id!==e.pointerId)return;
   const start=contact;contact=null;
   if(!e.isTrusted||e.pointerType!=='touch'||!e.isPrimary||!activeBook()||
-    start.entry!==bookSpecies||back.disabled||!within(e,start)||!hitsBack(e))return;
-  completed={id:e.pointerId,x:e.clientX,y:e.clientY,until:performance.now()+500};
-  closeBookDetail();
+    start.entry!==bookSpecies||start.page!==bookOffset||!eligible(start.target)||!within(e,start)||hit(e)!==start.target)return;
+  completed={id:e.pointerId,x:e.clientX,y:e.clientY,target:start.target,until:performance.now()+500};
+  if(start.target===back)closeBookDetail();
+  else changeBookPage(arrows.get(start.target));
  },true);
- back.addEventListener('click',e=>{
+ for(const b of [back,...arrows.keys()])b.addEventListener('click',e=>{
   const tap=completed;
-  if(!tap||!e.isTrusted||!e.detail||performance.now()>tap.until||!within(e,tap))return;
-  if(e.pointerType==='touch'?e.pointerId!==tap.id:
-    Boolean(e.pointerType)||!e.sourceCapabilities?.firesTouchEvents)return;
+  if(!tap||tap.target!==b||!e.isTrusted||!e.detail||performance.now()>tap.until||!within(e,tap))return;
+  if(e.pointerType==='touch'?e.pointerId!==tap.id:!e.sourceCapabilities?.firesTouchEvents)return;
   completed=null;e.preventDefault();e.stopImmediatePropagation();
  },true);
 }
