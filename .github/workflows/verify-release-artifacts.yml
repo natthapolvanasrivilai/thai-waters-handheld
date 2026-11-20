@@ -1,5 +1,7 @@
 name: Verify release artifacts
 on:
+  schedule:
+    - cron: '17 18 * * *' # 01:17 Asia/Bangkok
   push:
     branches: [ci/verified-release-builds]
   workflow_dispatch:
@@ -201,3 +203,35 @@ jobs:
             verify/
           if-no-files-found: error
           retention-days: 5
+  nightly_release:
+    needs: [browser_release, controller]
+    if: github.event_name == 'schedule' && github.event.repository.private && github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    concurrency:
+      group: verified-pocket-reel-nightly-release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.workflow_sha }}
+          sparse-checkout: .github/scripts
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: browser-${{ env.SOURCE_SHA }}
+          path: nightly/browser
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: controller-${{ env.SOURCE_SHA }}
+          path: nightly/controller
+      - name: Test nightly packaging and publication guards
+        run: python3 .github/scripts/test_nightly_release.py
+      - name: Verify and package the testable build
+        run: python3 .github/scripts/nightly-release.py prepare nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
+      - name: Publish a private prerelease with verified assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .github/scripts/nightly-release.py publish nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
