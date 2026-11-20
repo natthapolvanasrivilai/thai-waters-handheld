@@ -1,0 +1,8 @@
+# Single-device career and offline backup
+
+Extend the existing browser journal; do not add a backend, account, networking, second active profile, new catch progression, or a firmware NVS converter. Keep the existing storage key for compatibility and introduce schema 4; compatible schema 3 and earlier flat saves migrate on read, preserving stable fish index and journal data. Keep the prior single storage value when a new import is invalid or fails to write.
+
+1. Write host regression `verification/browser-tests/career-storage.cjs`: seed legacy/sparse journal including pending catch, capture personal best and rank, verify prior bytes untouched after load/validation, export/import exact versioned payload, prove quota failure or corrupt/future input never replace data.
+2. Add `game/src/career-storage.js`: normalize and whitelist known legacy fields, strict import/current schema validation, explicit offline envelope, transactional commit using one existing localStorage key. Shelf life depends on local browser storage; export remains user-controlled.
+3. Keep existing snapshot producer/restore engine and numerical IDs. Bind a small Career & backups menu page to one existing slot, show species and catch counters, export local JSON, preview one selected valid file, and replace only on explicit click. Reload after successful commit to avoid mutating a live earlier WASM state or adding old catches. No touch/audio/cast change.
+4. Run syntax, deterministic storage tests and existing gallery-history via the browser artifact workflow. Test on actual phone Safari as a separate release acceptance item.

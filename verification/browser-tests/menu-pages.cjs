@@ -32,6 +32,12 @@ const {chromium,webkit}=require('playwright-core');
      if(!await p.locator('#sheetNext').isVisible()||!await p.locator('#sheetNext').isEnabled())break;
      await p.locator('#sheetNext').tap();
     }
+    if(route==='rod'){
+     await p.locator('#careerOpen').tap();await fits();
+     assert.equal(await p.locator('#sheetNumber').textContent(),'1/2','Repeated Career entry resumes at the summary');
+     await p.locator('#sheetNext').tap();await fits();
+     await p.locator('#back').tap();await fits();
+    }
     if(route==='book'){
      await p.evaluate(()=>{g.restoreEntry(40,12,25);catchHistory=Array.from({length:12},(_,i)=>({id:40,at:Date.UTC(2026,10,18-i),place:106,period:3,weather:2,bait:14,cm:25,grams:130}));showBookEntry(40);});
      await fits();const forward=p.locator('#bookDetail .history-nav button').last();for(let i=0;i<11;i++)await forward.tap();assert(await forward.isDisabled());await fits();
