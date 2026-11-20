@@ -29,6 +29,16 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/22338"
     },
+    "1433": {
+      "key": 5215810,
+      "scientific": "Taeniura lymma",
+      "name": "ปลากระเบนทอง",
+      "aliases": [
+        "ปลากระเบนหางพัดจุดฟ้า"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/427",
+      "reference": "Thai Department of Fisheries coastal-resource survey, https://www4.fisheries.go.th/local/file_document/20210426102505_1_file.pdf"
+    },
     "151": {
       "key": 5212081,
       "scientific": "Amphiprion clarkii",
