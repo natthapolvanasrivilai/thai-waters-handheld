@@ -16,12 +16,26 @@ const {chromium}=require('playwright-core');
    target:atlas.fish[2152].name, a:atlas.fish[77].name,b:atlas.fish[2354].name,unconfirmed:atlas.fish[805].name,
    kinds:atlas.fish.slice(60).reduce((x,f)=>(x[f.thaiNameKind]=(x[f.thaiNameKind]||0)+1,x),{})
   }));
+  assert.deepEqual(await page.evaluate(()=>[42,47].map(id=>atlas.fish[id].name)),['ปลาลัง','ปลาสละ']);
+  const ray=await page.evaluate(()=>({name:atlas.fish[1433].name,kind:atlas.fish[1433].thaiNameKind,
+   base:originalAtlas.fish[1433].name,art:atlas.fish[1433].art,key:atlas.fish[1433].key}));
+  assert.deepEqual(ray,{name:'ปลากระเบนทอง',kind:'species',base:'Taeniura lymma',art:1433,key:5215810});
+  await page.evaluate(()=>{$('bookSearch').value='ปลากระเบนหางพัดจุดฟ้า';});
+  assert(!await page.evaluate(()=>bookMatches().includes(1433)));
+  await page.evaluate(()=>{g.restoreCatch(1433,35);pendingDay=0;save();draw();});
+  await page.waitForFunction(()=>$('message').textContent==='ปลากระเบนทอง'&&!$('catchContinue').hidden);
+  await page.evaluate(()=>$('catchContinue').click());
+  await page.waitForFunction(()=>g.caught(1433)===1&&g.state()===0);
+  assert.deepEqual(await page.evaluate(()=>['ปลากระเบนทอง','ปลากระเบนหางพัดจุดฟ้า','Taeniura lymma'].map(q=>{$('bookSearch').value=q;return bookMatches();})),[[1433],[1433],[1433]]);
+  await page.evaluate(()=>showBookEntry(1433));
+  assert.equal(await page.locator('#bookDetail h2').textContent(),'ปลากระเบนทอง');
+  assert.match(await page.locator('#bookDetail').textContent(),/Taeniura lymma/u);
   assert.equal(initial.target,'ปลาจุ้ยจินบั้ง');
   assert.equal(initial.a,'ปลาขี้ตังเบ็ดฟ้าอกขาว');
   assert.equal(initial.b,'ปลาก้างพระร่วง');
   assert.deepEqual(await page.evaluate(()=>[151,152,153,155,827,1565,1566,1731].map(id=>atlas.fish[id].name)),['ปลาการ์ตูนลายปล้อง','ปลาการ์ตูนแดงดำ','ปลาการ์ตูนส้มขาว','ปลาการ์ตูนลายปล้องหางเหลือง','ปลากะพงขาว','ปลาการ์ตูนเพอร์คูลาร์','ปลาการ์ตูนอานม้า','ปลาทรงเครื่อง']);
   assert.equal(initial.unconfirmed,'ยังไม่มีชื่อไทยที่ยืนยัน');
-  assert.deepEqual(initial.kinds,{species:11,family:345,unconfirmed:2129});
+  assert.deepEqual(initial.kinds,{species:12,family:345,unconfirmed:2128});
   assert.deepEqual([initial.size,initial.art,initial.key,initial.original],[2545,2152,2391358,'Uraspis uraspis']);
   await page.evaluate(()=>{$('bookSearch').value='ปลาจุ้ยจินบั้ง';});
   assert.equal(await page.evaluate(()=>bookMatches().includes(2152)),false);
@@ -39,6 +53,7 @@ const {chromium}=require('playwright-core');
   assert.match(await page.locator('#cupGoal').textContent(),/^ปลาจุ้ยจินบั้ง/u);
   await page.reload();await page.waitForFunction(()=>typeof g!=='undefined'&&g&&!$('act').disabled);
   assert.equal(await page.evaluate(()=>g.caught(2152)),1);
+  assert.equal(await page.evaluate(()=>g.caught(1433)),1);
   await page.evaluate(()=>{language='en';chooseAtlas();showBookEntry(2152);});
   assert.equal(await page.locator('#bookDetail h2').textContent(),'Uraspis uraspis');
   assert.deepEqual(errors,[]);
