@@ -967,6 +967,17 @@ function paintArrival(age,rot){
    ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,y+24);ctx.stroke();ctx.fillStyle='#de9852';ctx.fillRect(x-2,y+24,4,6);ctx.restore();
  }
 }
+function paintFishHint(){
+ if(menu.open||cupIsJoined())return;
+ const hint=g.sampleFishHint();if(!hint)return;
+ const x=g.fishHintX()*480,y=g.fishHintY()*320,t=g.fishHintPhase();
+ const scale=hint===2?2:1;
+ ctx.save();ctx.globalAlpha=.30*Math.min(1,5*Math.min(t,1-t));
+ ctx.fillStyle='#0c2330';
+ ctx.beginPath();ctx.ellipse(x,y,7*scale,3*scale,0,0,Math.PI*2);
+ ctx.moveTo(x-5*scale,y);ctx.lineTo(x-11*scale,y+3*scale);
+ ctx.lineTo(x-11*scale,y-3*scale);ctx.closePath();ctx.fill();ctx.restore();
+}
 function draw(){
  const p=g.state(),age=g.age(),time=currentSlot;
  const img=viewOfPlace(placeId,timeMode===4?slot():time);ctx.imageSmoothingEnabled=false;ctx.drawImage(img,0,0,480,320);
@@ -979,6 +990,7 @@ function draw(){
  const rot=(48+bend+.56*Math.max(-25,Math.min(80,rodAngle))+1.2*Math.sin(elapsed*.0024))*Math.PI/180;
  paintWeather(stillArrival?0:elapsed);
  if(arrivalSince!==null){paintArrival(performance.now()-arrivalSince,rot);return;}
+ paintFishHint();
  const ax=g.aimX()*480,ay=g.aimY()*320;
  if(!menu.open&&(p===1||performance.now()<aimUntil)){
   ctx.strokeStyle='#f5e9a8';ctx.lineWidth=1;ctx.beginPath();
@@ -1059,7 +1071,7 @@ let currentSlot=0;function frame(now){let dt=Math.min(80,Math.max(0,Math.round(n
    if(now-arrivalSince>=(arrivalReduced?550:sceneryEngine.arrivalDuration()))stopArrival();
    elapsed+=dt;draw();requestAnimationFrame(frame);return;
  }
- if(powered&&!document.hidden&&!menu.open){if([0,6,9].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();g.place(placeId,currentSlot);}if([0,6,9].includes(g.state()))applyWeather();elapsed+=dt;let step=heldTurn(dt);dialAngle+=step*360;let old=g.state();if([0,6,9].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(audio?.state!=='running'&&!resumeAudio)g.clearFishingSound();if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);showReelCue(pulse);
+ if(powered&&!document.hidden&&!menu.open){if([0,6,9].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();g.place(placeId,currentSlot);}if([0,6,9].includes(g.state()))applyWeather();elapsed+=dt;let step=heldTurn(dt);dialAngle+=step*360;let old=g.state();if([0,6,9].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.fishHintsEnabled(!cupIsJoined());g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(audio?.state!=='running'&&!resumeAudio)g.clearFishingSound();if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);showReelCue(pulse);
  if(typeof navigator.vibrate!=='function'&&audio?.state==='running'&&[4,5,6].includes(pulse))previewRhythm(pulse,false);}gestureCast=gestureLift=false;if(old!==5&&g.state()===5){pendingDay=enteredCup;pendingCapture=captureLanding();save();}
  action=false;turns=0;draw()}else if(powered&&!document.hidden&&menu.open){elapsed+=dt;draw()}requestAnimationFrame(frame)}
 Promise.all([WebAssembly.instantiate(bytes,{env:{memset:(p,v,n)=>{new Uint8Array(g.memory.buffer,p,n).fill(v);return p},acosf:Math.acos,atan2f:Math.atan2,sinf:Math.sin,lroundf:x=>Math.sign(x)*Math.round(Math.abs(x))}}),sceneryModule,fishSheet.decode(),baitSheet.decode(),salvageSheet.decode()]).then(([mod,visual])=>{sceneryEngine=visual.instance.exports;g=mod.instance.exports;loadFieldBank(g);g.initialize(Date.now()>>>0);restore();currentSlot=slot();g.place(placeId,currentSlot);applyWeather();refresh();settings();$('act').disabled=false;prev=performance.now();requestAnimationFrame(frame)}).catch(e=>{setUi($('message'),'Could not start Thai Waters: '+e.message)});

@@ -433,6 +433,7 @@ void loop(){
   Phase before=view.game.phase;
   view.game.soundEdges=0;
   if(!wasArriving && view.page==Page::Play && (view.practice||(view.motion&&view.field==Field::Good))){
+    view.game.setFishHints(!eventActive());
     view.game.rodHeldHigh=!view.practice && rod.high;
     view.game.tick(dt,view.practice?tap:rod.cast,view.practice?tap:rod.rise,view.practice?(tap?(view.game.phase==Phase::Snag&&view.game.contact==2?-.19f:.25f):0):turns);
   } else if(view.page==Page::Play)rod=Gesture{};
