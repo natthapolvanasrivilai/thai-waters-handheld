@@ -13,3 +13,4 @@ Original owner-supplied JPEG files, retained byte-for-byte in the private projec
 | [IMG_9398.jpeg](IMG_9398.jpeg) | Housing exterior, grille and receiver | 492118 | `49fa172a05ae141f2135e6c4949d4ebd69f2af6105d4088379b3cd45ad4ee1ff` |
 | [IMG_9399.jpeg](IMG_9399.jpeg) | Loose part, opening or recess; part ID to confirm | 329784 | `e82027834f8367ae753e8ab537386130b67d3ba2c0bcbc77d50884d8724b620d` |
 | [IMG_9400.jpeg](IMG_9400.jpeg) | Loose part, opening or recess; part ID to confirm | 291671 | `fdcab19884b0b596a7627db5c2e69fb9d14927ec539ef0b65e7700e97242531a` |
+| [IMG_9401.jpeg](IMG_9401.jpeg) | Fastener feature fracture reported during insertion; see [#23](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/23) | 442978 | `6798a739a6d04122c5a1ee15b8e3116575747b8e17f7de068ba9cc6d5ef3a62b` |
