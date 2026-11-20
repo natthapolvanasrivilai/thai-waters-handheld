@@ -167,8 +167,10 @@ function viewOfPlace(place,period){
  landscapeContext.imageSmoothingEnabled=false;landscapeContext.drawImage(pixelCanvas,0,0,480,320);
  lastLandscape=key;return landscapeCanvas;
 }
+let nearbyBoatMix=0;
 function paintAmbientScene(context,milliseconds,live){
  const n=sceneryEngine.sampleAmbient(milliseconds>>>0,live?milliseconds%86400000+1:0);
+ nearbyBoatMix=sceneryEngine.ambientBoatMix();
  for(let i=0;i<n*4;i+=4){
    context.fillStyle=sceneInks[scenicSpans[i+3]];
    context.fillRect(scenicSpans[i]*2,scenicSpans[i+1]*2,scenicSpans[i+2]*2,2);
@@ -657,12 +659,33 @@ function syncBiteSwitch(){$('iosSwitch').checked=$('cue').selectedIndex!==1;}
 keys.forEach(k=>$(k).onchange=()=>{settings();syncBiteSwitch();});
 $('iosSwitch').onchange=()=>{$('cue').selectedIndex=$('iosSwitch').checked?0:1;$('cue').dispatchEvent(new Event('change',{bubbles:true}));};
 syncBiteSwitch();
+let boatAudioBus=null;
+function boatEffects(){
+ const volume=powered&&!menu.open&&!document.hidden&&arrivalSince===null?$('fx').selectedIndex:0;
+ if(boatAudioBus)boatAudioBus.gain.value=volume>0?1:0;
+ return volume;
+}
+function muteBoatBus(){if(boatAudioBus)boatAudioBus.gain.value=0;}
+document.addEventListener('visibilitychange',boatEffects);
+window.addEventListener('pagehide',muteBoatBus);
+$('fx').addEventListener('change',boatEffects);
+const boatGate=new MutationObserver(boatEffects);
+boatGate.observe(menu,{attributes:true,attributeFilter:['open']});
+boatGate.observe($('lcdUI'),{attributes:true,attributeFilter:['data-arriving']});
 function pump(){
+ const boatVolume=boatEffects();
  if(!powered||!g||!audio||audio.state!=='running'||document.hidden)return;
  nextSound=Math.max(nextSound,audio.currentTime);
  while(nextSound<audio.currentTime+.075){
   const buf=audio.createBuffer(1,256,16000),ptr=g.samples(),src=new Int16Array(g.memory.buffer,ptr,512),floats=buf.getChannelData(0);
   for(let i=0;i<256;i++)floats[i]=src[2*i]/32768;
+  const boatPtr=sceneryEngine.ambientBoatPcm(boatVolume?nearbyBoatMix:0,boatVolume);
+  const boats=new Int16Array(sceneryEngine.memory.buffer,boatPtr,256);
+  if(boatVolume&&boats.some(n=>n!==0)){
+   const vessel=audio.createBuffer(1,256,16000),mix=vessel.getChannelData(0);
+   for(let i=0;i<256;i++)mix[i]=(Math.max(-32768,Math.min(32767,src[2*i]+boats[i]))-src[2*i])/32768;
+   const note=audio.createBufferSource();note.buffer=vessel;note.connect(boatAudioBus);note.start(nextSound);
+  }
   const s=audio.createBufferSource();s.buffer=buf;s.connect(audio.destination);s.start(nextSound);nextSound+=256/16000;
  }
 }
@@ -682,6 +705,7 @@ function unlock(){
   if(!audio||audio.state==='closed'){
    const AudioEngine=window.AudioContext||window.webkitAudioContext;
    audio=new AudioEngine();
+   boatAudioBus=audio.createGain();boatAudioBus.connect(audio.destination);boatEffects();
    audio.onstatechange=audioState;
    clearInterval(audioTimer);audioTimer=setInterval(pump,20);
   }
@@ -860,7 +884,6 @@ dial.onpointermove=e=>{
  if(samples?.length){for(const sample of samples)rimSample(sample);}else rimSample(e);
 };
 dial.onpointerup=dial.onpointercancel=dial.onlostpointercapture=e=>{if(e.pointerId===dialPointer)endDial();};
-dial.oncontextmenu=e=>e.preventDefault();
 function dialKeyStep(step){
  if(!dialReady())return;
  stopAutoReel();
@@ -896,7 +919,7 @@ function fileSpecimen(){
  submitTournamentCatch();
  save();refresh();
 }
-$('catchContinue').onclick=()=>{if(powered&&!menu.open&&g?.state()===5)fileSpecimen();};
+$('catchContinue').onclick=()=>{if(powered&&!menu.open&&g?.state()===5&&!g.filed())fileSpecimen();};
 canvas.onclick=e=>{
  const bounds=canvas.getBoundingClientRect(),x=(e.clientX-bounds.left)*480/bounds.width,y=(e.clientY-bounds.top)*320/bounds.height;
  scenePress(x/480,y/320,e.isTrusted);
@@ -916,10 +939,12 @@ function canvasTypeface(size,display){
  const base='"Atkinson Hyperlegible Next",sans-serif';
  return '600 '+size+'px '+(language==='th'&&display?'"'+display+'",':'')+base;
 }
-function caption(text,x,y,align='left',color='#fff4d8',size=12,display=''){
+function caption(text,x,y,align='left',color='#fff4d8',size=12,display='',translate=true){
  ctx.save();ctx.textAlign=align;ctx.font=canvasTypeface(size,display);ctx.lineJoin='round';ctx.lineWidth=3;
- ctx.strokeStyle='#183830';ctx.strokeText(L(text),x,y);ctx.fillStyle=color;ctx.fillText(L(text),x,y);ctx.restore();
+ const label=translate?L(text):text;
+ ctx.strokeStyle='#183830';ctx.strokeText(label,x,y);ctx.fillStyle=color;ctx.fillText(label,x,y);ctx.restore();
 }
+const catchContinueLabel='Save catch & keep fishing';
 const rewardText=['Catch landed','Personal best','New species','New species +1 tackle point'];
 const rarityInk=['#e3eee4','#b6e3bc','#baddff','#e4c9ff','#ffda8c','#a9ffdf'];
 function displayMass(grams){
@@ -957,11 +982,12 @@ function landedCatch(age){
  if(t<1)drawSpecimen(ctx,id,
   Math.round(cx-24*k),Math.round(cy-12.5*k),Math.round(48*k),Math.round(25*k));
  if(g.filed())return;
- ctx.save();ctx.globalAlpha=catchPromptOpacity(age);caption('Tap to continue',240,310,'center','#fff4d8',13);ctx.restore();
+ ctx.save();ctx.globalAlpha=catchPromptOpacity(age);caption(catchContinueLabel,240,310,'center','#fff4d8',13);ctx.restore();
  const x=202;
  caption(atlas.ranks[f.tier]+'  ·  '+L(reward),x,82,'left',rarityInk[f.tier],13);
  const afterName=catchLines(f.name,110,language==='th'?24:23,'#fff7df',26,286,'Syy Flowey');
- const stats=afterName+10;
+ if(f.scientificName)caption(f.scientificName,x,afterName,'left','#d2e9e1',13,'',false);
+ const stats=afterName+(f.scientificName?20:10);
  caption('EST. WEIGHT',x,stats,'left','#d2e9e1',12);
  caption(size.toUpperCase(),x+136,stats,'left','#d2e9e1',12);
  caption(weight,x,stats+23,'left','#fff7df',22);
@@ -1014,6 +1040,18 @@ function paintArrival(age,rot){
    ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,y+24);ctx.stroke();ctx.fillStyle='#de9852';ctx.fillRect(x-2,y+24,4,6);ctx.restore();
  }
 }
+function fishHintsAllowed(){return !crewOn&&!cupIsJoined();}
+function paintFishHint(){
+ if(menu.open||!fishHintsAllowed())return;
+ const hint=g.sampleFishHint();if(!hint)return;
+ const x=g.fishHintX()*480,y=g.fishHintY()*320,t=g.fishHintPhase();
+ const scale=hint===2?2:1;
+ ctx.save();ctx.globalAlpha=.30*Math.min(1,5*Math.min(t,1-t));
+ ctx.fillStyle='#0c2330';
+ ctx.beginPath();ctx.ellipse(x,y,7*scale,3*scale,0,0,Math.PI*2);
+ ctx.moveTo(x-5*scale,y);ctx.lineTo(x-11*scale,y+3*scale);
+ ctx.lineTo(x-11*scale,y-3*scale);ctx.closePath();ctx.fill();ctx.restore();
+}
 function draw(){
  const p=g.state(),age=g.age(),time=currentSlot;
  const img=viewOfPlace(placeId,timeMode===4?slot():time);ctx.imageSmoothingEnabled=false;ctx.drawImage(img,0,0,480,320);
@@ -1026,6 +1064,7 @@ function draw(){
  const rot=(48+bend+.56*Math.max(-25,Math.min(80,rodAngle))+1.2*Math.sin(elapsed*.0024))*Math.PI/180;
  paintWeather(stillArrival?0:elapsed);
  if(arrivalSince!==null){paintArrival(performance.now()-arrivalSince,rot);return;}
+ paintFishHint();
  const ax=g.aimX()*480,ay=g.aimY()*320;
  if(!menu.open&&(p===1||performance.now()<aimUntil)){
   ctx.strokeStyle='#f5e9a8';ctx.lineWidth=1;ctx.beginPath();
@@ -1073,9 +1112,14 @@ function draw(){
  }
  const landed=p===5;
  if(!landed && $('metrics').textContent){setUi($('metrics'),'');setUi($('origin'),'');}
- const firstReveal=landed&&!menu.open&&$('catchContinue').hidden;
- $('catchContinue').hidden=!landed||menu.open;
- if(firstReveal)$('catchContinue').focus({preventScroll:true});
+ const catchButton=$('catchContinue'),canFile=landed&&!g.filed()&&!menu.open;
+ const firstReveal=canFile&&catchButton.hidden;
+ if(canFile){
+  const label=L(catchContinueLabel);
+  if(catchButton.getAttribute('aria-label')!==label)catchButton.setAttribute('aria-label',label);
+ }
+ catchButton.hidden=!canFile;
+ if(firstReveal)catchButton.focus({preventScroll:true});
  $('lcdUI').toggleAttribute('data-catch',landed);
  $('lcdUI').toggleAttribute('data-casting-water',[0,6,9].includes(p));
  $('act').hidden=p===1;
@@ -1106,7 +1150,7 @@ let currentSlot=0;function frame(now){let dt=Math.min(80,Math.max(0,Math.round(n
    if(now-arrivalSince>=(arrivalReduced?550:sceneryEngine.arrivalDuration()))stopArrival();
    elapsed+=dt;draw();requestAnimationFrame(frame);return;
  }
- if(powered&&!document.hidden&&!menu.open){if([0,6,9].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();g.place(placeId,currentSlot);}if([0,6,9].includes(g.state()))applyWeather();elapsed+=dt;let step=heldTurn(dt);dialAngle+=step*360;let old=g.state();if([0,6,9].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(audio?.state!=='running'&&!resumeAudio)g.clearFishingSound();if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);showReelCue(pulse);
+ if(powered&&!document.hidden&&!menu.open){if([0,6,9].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();g.place(placeId,currentSlot);}if([0,6,9].includes(g.state()))applyWeather();elapsed+=dt;let step=heldTurn(dt);dialAngle+=step*360;let old=g.state();if([0,6,9].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.fishHintsEnabled(fishHintsAllowed());g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(audio?.state!=='running'&&!resumeAudio)g.clearFishingSound();if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);showReelCue(pulse);
  if(typeof navigator.vibrate!=='function'&&audio?.state==='running'&&[4,5,6].includes(pulse))previewRhythm(pulse,false);}gestureCast=gestureLift=false;if(old!==5&&g.state()===5){pendingDay=enteredCup;pendingCapture=captureLanding();save();}
  action=false;turns=0;draw()}else if(powered&&!document.hidden&&menu.open){elapsed+=dt;draw()}requestAnimationFrame(frame)}
 Promise.all([WebAssembly.instantiate(bytes,{env:{memset:(p,v,n)=>{new Uint8Array(g.memory.buffer,p,n).fill(v);return p},acosf:Math.acos,atan2f:Math.atan2,sinf:Math.sin,lroundf:x=>Math.sign(x)*Math.round(Math.abs(x))}}),sceneryModule,fishSheet.decode(),baitSheet.decode(),salvageSheet.decode()]).then(([mod,visual])=>{sceneryEngine=visual.instance.exports;g=mod.instance.exports;loadFieldBank(g);g.initialize(Date.now()>>>0);restore();currentSlot=slot();g.place(placeId,currentSlot);applyWeather();refresh();settings();$('act').disabled=false;prev=performance.now();requestAnimationFrame(frame)}).catch(e=>{setUi($('message'),'Could not start Thai Waters: '+e.message)});

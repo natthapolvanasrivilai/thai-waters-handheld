@@ -54,7 +54,17 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   await pg.locator('#catchContinue').click();await pg.waitForFunction(()=>g.state()===0&&!document.querySelector('#menu').open);
   assert.equal(await pg.evaluate(()=>g.caught(40)),1,'Transfer must not count the catch twice');
   await menu('rod');await showControl(pg,'#finish');await pg.selectOption('#finish','Copper');await showControl(pg,'#technique');await pg.selectOption('#technique',{label:'Vertical jig'});await showControl(pg,'#builds button');await pg.locator('#builds button').nth(1).click();assert.equal(await pg.evaluate(()=>g.rank(1)),1);await pg.locator('#resume').click();
-  await pg.reload();await pg.waitForFunction(()=>!document.querySelector('#act').disabled);assert.equal(await pg.evaluate(()=>g.caught(40)),1);assert.equal(await pg.evaluate(()=>finish),1);
+  const journalSnapshot=()=>pg.evaluate(()=>{
+   const b=JSON.parse(localStorage.getItem('thai-atlas-v2'));
+   return {book:b?.book?.[40],best:g.best(40),ram:g.caught(40),storedFinish:b?.finish,notice:$('summarySave').textContent};
+  });
+  const beforeReload=await journalSnapshot();
+  assert.deepEqual(beforeReload.book,[1,beforeReload.best],'Catch must be stored before reload: '+JSON.stringify(beforeReload));
+  await pg.reload();await pg.waitForFunction(()=>!document.querySelector('#act').disabled);
+  const afterReload=await journalSnapshot(), evidence=JSON.stringify({beforeReload,afterReload});
+  assert.deepEqual(afterReload.book,beforeReload.book,'Reload must retain the exact saved catch: '+evidence);
+  assert.equal(afterReload.ram,1,'The replayed journal must contain exactly one catch: '+evidence);
+  assert.equal(await pg.evaluate(()=>finish),1);
   assert.equal(await pg.evaluate(()=>g.technique()),2,'Remember the selected presentation');
   await menu('book');assert.equal(await pg.locator('.record').count(),8);await pg.locator('#bookFilter').selectOption({label:'Mythic'});assert.equal(await pg.locator('.record').count(),5);await pg.locator('#resume').click();
   await pg.setViewportSize({width:390,height:844});await menu('sensors');
@@ -120,10 +130,17 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   const card=await pg.evaluate(async()=>{
    await document.fonts.ready;
    const drawText=ctx.fillText,drawSprite=ctx.drawImage,problems=[],positions=new Set();
+   const footer=L(catchContinueLabel);
+   let footerCount=0;
    let leftmost=480,rightmost=0,lowest=0;
    try{
     ctx.fillText=function(text,x,y){
-     if(text==='Tap to continue'){if(x!==240||y!==310)problems.push([text,x,y]);return;}
+     if(text===footer){
+      footerCount++;
+      const half=ctx.measureText(text).width/2;
+      if(ctx.textAlign!=='center'||x!==240||y!==310||x-half<12||x+half>468)problems.push([text,x,y,x-half,x+half]);
+      return;
+     }
      const right=x+ctx.measureText(text).width;
      leftmost=Math.min(leftmost,x);rightmost=Math.max(rightmost,right);lowest=Math.max(lowest,y);
      if(x<200 || right>468 || y>286 || y<72)problems.push([text,x,y,right]);
@@ -136,9 +153,10 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
    }finally{ctx.fillText=drawText;ctx.drawImage=drawSprite;placeId=0;}
    g.restoreEntry(41,3,240);g.restoreCatch(41,240);draw();
    return {problems:problems.slice(0,5),positions:[...positions],
-    layouts:atlas.fish.length*atlas.locations.length,leftmost,rightmost,lowest,legacy:[g.best(41),g.grams(),$('metrics').textContent]};
+    layouts:atlas.fish.length*atlas.locations.length,footerCount,leftmost,rightmost,lowest,legacy:[g.best(41),g.grams(),$('metrics').textContent]};
   });
-  assert.deepEqual(card.problems,[],'All species and water names fit the catch card');
+  assert.deepEqual(card.problems,[],'All species and water names and the centered action fit the catch card');
+  assert.equal(card.footerCount,card.layouts,'Every catch layout draws its action once');
   assert.deepEqual(card.positions,['[11,112,178,93]'],'All fish retain their full size in the left column');
   assert.equal(card.legacy[0],240);assert.equal(card.legacy[1],0);assert.match(card.legacy[2],/Recorded size.*Unweighed/);
   console.log('PASS '+card.layouts+' catch card layouts; right edge '+card.rightmost.toFixed(1)+' px, last baseline '+card.lowest+' px.');

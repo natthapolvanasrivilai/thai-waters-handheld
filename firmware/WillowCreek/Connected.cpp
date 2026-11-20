@@ -14,17 +14,53 @@ WebServer portal(80);
 struct Network {char ssid[33],pass[65];} saved{},candidate{};
 char apName[25]{},apPass[20]{},instructions[85]{},clockText[32]="Clock needs sync";
 String nonce,command;
-bool radio=false,pairing=false,trying=false,clockValid=false;
+enum class Join { Idle, LeavePrevious, Connecting };
+enum class SaveNote { None, Session, Failed, KeptPrevious, RadioPreferenceFailed };
+Join joinStage=Join::Idle;
+SaveNote saveNote=SaveNote::None;
+bool radio=false,pairing=false,clockValid=false;
+bool priorRadio=false,portalChangedStation=false,remember=false,joiningSaved=false;
 bool dropping=false,streaming=false;
-uint32_t pairStart=0,attemptStart=0,lastSample=0,lastClock=0;
+uint32_t pairStart=0,attemptStart=0,savedStart=0,lastSample=0,lastClock=0;
 std::atomic<bool> synced{false};
 const char* clockSource="RTC";
 const char* hint="Offline";
 int period=0;
+void clearBytes(void* value,size_t length){
+ auto* p=static_cast<volatile char*>(value);
+ while(length--)*p++=0;
+}
+void clearAttempt(){
+ joinStage=Join::Idle;remember=false;clearBytes(&candidate,sizeof(candidate));
+}
+void closePortal(){
+ portal.stop();WiFi.softAPdisconnect(false);pairing=false;clearAttempt();nonce="";
+ clearBytes(apPass,sizeof(apPass));clearBytes(instructions,sizeof(instructions));
+}
 void connectSaved(){
  if(!radio)return;
- WiFi.mode(WIFI_STA);WiFi.setSleep(true);
- if(saved.ssid[0]){WiFi.begin(saved.ssid,saved.pass);hint="Joining saved network";}else hint="Open Phone setup to join Wi-Fi";
+ saveNote=SaveNote::None;joiningSaved=false;
+ if(!WiFi.mode(WIFI_STA)){hint="Could not start Wi-Fi";return;}
+ WiFi.setSleep(true);
+ if(saved.ssid[0]){
+  WiFi.begin(saved.ssid,saved.pass);savedStart=millis();joiningSaved=true;hint="Joining saved network";
+ }else hint="Open Phone setup to join Wi-Fi";
+}
+void rememberConnected(){
+ if(!remember){saveNote=SaveNote::Session;return;}
+ // One existing network slot. Don't silently replace another saved setup.
+ if(saved.ssid[0]){
+  if(strcmp(saved.ssid,candidate.ssid)||strcmp(saved.pass,candidate.pass)){
+   saveNote=SaveNote::KeptPrevious;return;
+  }
+ }else{
+  if(settings.putBytes("network",&candidate,sizeof(candidate))!=sizeof(candidate)){
+   saveNote=SaveNote::Failed;return;
+  }
+  saved=candidate;
+ }
+ if(!settings.getBool("radio",false)&&!settings.putBool("radio",true))
+  saveNote=SaveNote::RadioPreferenceFailed;
 }
 bool rtcIO(uint8_t* b,bool write){
  Wire.beginTransmission(0x51);Wire.write(4);
@@ -57,17 +93,22 @@ void refreshClock(){
 }
 bool localPhone(){return pairing&&portal.client().localIP()==WiFi.softAPIP()&&portal.hostHeader()==WiFi.softAPIP().toString();}
 void form(){
- if(!localPhone()){portal.send(403);return;}
  portal.sendHeader("Cache-Control","no-store");
- String html=F("<!doctype html><meta name=viewport content='width=device-width,initial-scale=1'><title>Thai Waters Wi-Fi</title><style>body{font:18px system-ui;max-width:26em;margin:3em auto;padding:1em;background:#edf1e5;color:#193f36}label,input,button{display:block;margin:12px 0;padding:6px}</style><h1>Join Wi-Fi</h1><form method=post action=/join><label>2.4 GHz network name<input name=s maxlength=32 required></label><label>Network password<input name=p type=password maxlength=63></label><input type=hidden name=t value='");
- html+=nonce;html+=F("'><button>Connect device</button></form>");portal.send(200,"text/html",html);
+ if(!localPhone()){portal.send(403);return;}
+ String html=F("<!doctype html><meta name=viewport content='width=device-width,initial-scale=1'><title>Thai Waters Wi-Fi</title><style>body{font:18px system-ui;max-width:26em;margin:3em auto;padding:1em;background:#edf1e5;color:#193f36}label,input,button{display:block;margin:12px 0;padding:6px}</style><h1>Join Wi-Fi</h1><form method=post action=/join><label>2.4 GHz network name<input name=s maxlength=32 required></label><label>Network password<input name=p type=password maxlength=63 autocomplete=off></label><input type=hidden name=t value='");
+ html+=nonce;html+=F("'><label><input type=checkbox name=r value=1> Remember on this device</label><p>Unchecked: this connection is used only until Wi-Fi is turned off or the device restarts. A saved network is not replaced.</p><button>Connect device</button></form>");portal.send(200,"text/html",html);
 }
 void join(){
+ portal.sendHeader("Cache-Control","no-store");
  if(!localPhone()||portal.arg("t")!=nonce){portal.send(403);return;}
+ if(joinStage!=Join::Idle){portal.send(409,"text/plain","A connection attempt is already in progress.");return;}
  String s=portal.arg("s"),p=portal.arg("p");
  if(s.isEmpty()||s.length()>32||p.length()>63||(p.length()&&p.length()<8)){portal.send(400,"text/plain","Check network name and password length.");return;}
- candidate={};s.toCharArray(candidate.ssid,sizeof(candidate.ssid));p.toCharArray(candidate.pass,sizeof(candidate.pass));
- portal.send(200,"text/plain","Joining. Check the handheld for the result.");WiFi.disconnect(false,false);WiFi.begin(candidate.ssid,candidate.pass);trying=true;attemptStart=millis();hint="Testing network credentials";
+ clearAttempt();s.toCharArray(candidate.ssid,sizeof(candidate.ssid));p.toCharArray(candidate.pass,sizeof(candidate.pass));
+ remember=portal.arg("r")=="1";portalChangedStation=true;joiningSaved=false;saveNote=SaveNote::None;
+ // Start only after the previous association is down, including same-SSID retries.
+ WiFi.disconnect(false,false);joinStage=Join::LeavePrevious;attemptStart=millis();
+ hint="Joining Wi-Fi";portal.send(200,"text/plain","Joining. Check the handheld for the result.");
 }
 void sampleUSB(){
  auto s=hardware::sample();
@@ -89,13 +130,15 @@ void usb(String line){
  else if(line=="api1 stream on"||line=="api1 stream off"){streaming=line.endsWith(" on");ok=true;}
  else if(line.startsWith("api1 trust ")&&!updateBusy()){String k=line.substring(11);ok=releaseKeyValid(k)&&settings.putString("release-key",k)>0;}
  else if(line.startsWith("api1 feed https://")&&!updateBusy()){String url=line.substring(10);ok=url.length()<=240&&url.indexOf(' ')==-1&&settings.putString("release-feed",url)>0;}
- else if(line=="api1 forget"&&!updateBusy()){stopPairing();saved={};settings.remove("network");WiFi.disconnect(true,false);radio=false;settings.putBool("radio",false);ok=true;}
+ else if(line=="api1 forget"&&!updateBusy()){stopPairing();saved={};settings.remove("network");WiFi.disconnect(true,false);radio=false;joiningSaved=false;saveNote=SaveNote::None;settings.putBool("radio",false);ok=true;}
  Serial.println(ok?"{\"ok\":true}":"{\"ok\":false}");
 }
 }
 void beginConnected(){
  settings.begin("tw-connect",false);setenv("TZ","UTC0",1);tzset();loadClock();refreshClock();
- settings.getBytes("network",&saved,sizeof(saved));saved.ssid[32]=0;saved.pass[64]=0;
+ if(settings.getBytes("network",&saved,sizeof(saved))!=sizeof(saved))clearBytes(&saved,sizeof(saved));
+ saved.ssid[32]=0;saved.pass[64]=0;
+ // The Arduino 3.3.10 low-level init selects WIFI_STORAGE_RAM before any mode or begin.
  WiFi.persistent(false);radio=settings.getBool("radio",false);
  esp_sntp_set_time_sync_notification_cb([](timeval*){synced.store(true);});
  portal.on("/",HTTP_GET,form);portal.on("/join",HTTP_POST,join);
@@ -103,27 +146,43 @@ void beginConnected(){
 }
 void startPairing(){
  if(pairing||updateBusy())return;
- radio=true;WiFi.mode(WIFI_AP_STA);
+ priorRadio=radio;portalChangedStation=false;clearAttempt();
+ if(!WiFi.mode(WIFI_AP_STA)){hint="Could not start phone setup";return;}
+ radio=true;
  snprintf(apName,sizeof(apName),"ThaiWaters-%04X",unsigned(ESP.getEfuseMac()&65535));
  snprintf(apPass,sizeof(apPass),"%08lX%04lX",(unsigned long)esp_random(),(unsigned long)(esp_random()&65535));
  nonce=String(esp_random(),HEX)+String(esp_random(),HEX);
- if(!WiFi.softAP(apName,apPass)){hint="Could not start phone setup";WiFi.mode(WIFI_STA);return;}
+ if(!WiFi.softAP(apName,apPass)){
+  nonce="";clearBytes(apPass,sizeof(apPass));radio=priorRadio;
+  WiFi.mode(radio?WIFI_STA:WIFI_OFF);hint="Could not start phone setup";return;
+ }
  pairing=true;pairStart=millis();portal.begin();hint="Join this network on your phone";
  snprintf(instructions,sizeof(instructions),"Password %s   Open http://192.168.4.1",apPass);
 }
 void stopPairing(){
  if(!pairing)return;
- portal.stop();WiFi.softAPdisconnect(false);pairing=trying=false;candidate={};nonce="";apPass[0]=instructions[0]=0;
- if(!settings.getBool("radio",false)){WiFi.mode(WIFI_OFF);radio=false;}
- else connectSaved();
+ if(portalChangedStation)WiFi.disconnect(false,false);
+ closePortal();radio=priorRadio;
+ if(!radio){WiFi.mode(WIFI_OFF);hint="Wi-Fi disconnected";}
+ else if(portalChangedStation)connectSaved();
+ else{WiFi.mode(WIFI_STA);hint="Wi-Fi disconnected";}
 }
 bool radioEnabled(){return radio;}
 void toggleRadio(){
  if(updateBusy())return;
  bool next=!radio;stopPairing();radio=next;settings.putBool("radio",radio);
- if(radio)connectSaved();else {WiFi.disconnect(true,false);WiFi.mode(WIFI_OFF);hint="Offline";}
+ if(radio)connectSaved();else {WiFi.disconnect(true,false);WiFi.mode(WIFI_OFF);joiningSaved=false;hint="Wi-Fi disconnected";}
 }
-const char* networkStatus(){if(!pairing&&radio&&WiFi.status()==WL_CONNECTED&&!clockValid)return "Connected - waiting for time sync";return pairing?hint:!radio?"Radio off":WiFi.status()==WL_CONNECTED?"Connected to Wi-Fi":hint;}
+const char* networkStatus(){
+ if(pairing)return hint;
+ if(!radio)return "Radio off";
+ if(WiFi.status()!=WL_CONNECTED)return hint;
+ if(saveNote==SaveNote::Session)return "Wi-Fi connected for this session";
+ if(saveNote==SaveNote::Failed)return "Wi-Fi connected; not saved";
+ if(saveNote==SaveNote::KeptPrevious)return "Wi-Fi connected; prior network kept";
+ if(saveNote==SaveNote::RadioPreferenceFailed)return "Wi-Fi connected; auto-join not saved";
+ return "Wi-Fi connected";
+}
 const char* setupName(){return pairing?apName:clockValid?clockSource:"Clock awaiting network sync";}
 const char* setupCode(){return pairing?instructions:"Pond time zone: Asia/Bangkok (UTC+7)";}
 const char* pondClock(){return clockText;}
@@ -140,10 +199,23 @@ void checkUpdate(){
 void tickConnected(){
  static bool ntp=false;
  if(pairing){
-  portal.handleClient();
-  if(trying&&WiFi.status()==WL_CONNECTED&&WiFi.SSID()==candidate.ssid){if(settings.putBytes("network",&candidate,sizeof(candidate))==sizeof(candidate)){saved=candidate;settings.putBool("radio",true);stopPairing();}else {trying=false;hint="Could not save Wi-Fi";}}
-  else if(trying&&millis()-attemptStart>18000){trying=false;hint="Join failed. Retry on your phone";}
-  if(pairing&&millis()-pairStart>300000)stopPairing();
+  if(millis()-pairStart>=300000)stopPairing();
+  else{
+   portal.handleClient();
+   if(joinStage!=Join::Idle&&millis()-attemptStart>=18000){
+    WiFi.disconnect(false,false);clearAttempt();hint="Wi-Fi join failed. Retry on phone";
+   }else if(joinStage==Join::LeavePrevious&&WiFi.status()!=WL_CONNECTED){
+    WiFi.begin(candidate.ssid,candidate.pass);joinStage=Join::Connecting;
+   }else if(joinStage==Join::Connecting&&WiFi.status()==WL_CONNECTED&&WiFi.SSID()==candidate.ssid){
+    rememberConnected();
+    closePortal();WiFi.mode(WIFI_STA);WiFi.setSleep(true);
+    // Keep the confirmed session. Do not restart STA using saved credentials.
+    hint="Wi-Fi disconnected";
+   }
+  }
+ }else if(joiningSaved){
+  if(WiFi.status()==WL_CONNECTED){joiningSaved=false;hint="Wi-Fi disconnected";}
+  else if(millis()-savedStart>=18000){joiningSaved=false;hint="Could not join saved Wi-Fi";}
  }
  if(radio&&WiFi.status()==WL_CONNECTED&&!ntp){configTime(0,0,"time.cloudflare.com","pool.ntp.org");ntp=true;}
  if(synced.exchange(false)){clockValid=true;clockSource="Network time";storeClock(time(nullptr));refreshClock();}

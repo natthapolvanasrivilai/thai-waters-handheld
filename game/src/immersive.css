@@ -47,7 +47,18 @@ html.immersive #dialAutoRow{color:#f2e7c9}
 .dial[data-auto=on] .dial-hub{border-color:#e6b477}
 #dialHint{font:600 11px/1.3 var(--game-font);color:#415b50;text-align:center;white-space:nowrap}
 html.immersive #dialHint{color:#e2ddbd}
-@media(pointer:coarse) and (orientation:portrait){#dial{width:104px;height:104px;--hub:48px}#flatReel{margin-right:4px}}
+/* Enlarge the visible ring, not just its hit target. Leave room for the hint
+   and Auto reel row inside the existing safe-area grid. */
+html[data-view="screen"][data-mobile] #flatReel{padding:4px 6px}
+html[data-view="screen"][data-mobile] #dial{
+ --dial-size:clamp(120px,min(42dvw,28dvh),184px);
+ width:var(--dial-size);height:var(--dial-size);
+ --hub:clamp(58px,calc(var(--dial-size) * .46),86px)
+}
+@media(min-aspect-ratio:1/1){
+ html[data-view="screen"][data-mobile] #dial{--dial-size:clamp(118px,min(25dvw,47dvh),196px)}
+}
+#scene,#act,#catchContinue,#product canvas{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 @media(prefers-reduced-motion:reduce){.dial-spool{transition:none}}
 
 /* The right-hand drawer leaves the rod and the bank in view at every depth. */

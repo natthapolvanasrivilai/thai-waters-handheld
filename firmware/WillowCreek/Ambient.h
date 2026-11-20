@@ -30,35 +30,62 @@ inline int periodAtUtc(unsigned utcMsOfDay){
   unsigned hour=((utcMsOfDay/3600000)+7)%24;
   return hour<5||hour>=20?3:hour<8?0:hour<17?1:2;
 }
+inline int periodAtDeparture(const Layout& s,uint32_t ms,unsigned progress,unsigned utcDayPlusOne){
+  // Use elapsed ticks within this journey, not a visibility band sampled
+  // mid-crossing. Bangkok clock boundaries do not make a boat disappear.
+  if(!utcDayPlusOne)return s.period;
+  const unsigned journeyMs=progress*64+(ms&63);
+  return periodAtUtc((utcDayPlusOne-1+86400000-journeyMs)%86400000);
+}
+inline Voyage passiveDrift(const Layout& s,uint32_t ms,unsigned utcDayPlusOne){
+  // Preserve the original paper/basket drift, including offset and bobbing.
+  const Feature f=s.recipe.feature;
+  const uint32_t t=(ms>>6)+(s.seed&511);
+  constexpr unsigned cycle=2048,passage=1488;
+  const unsigned run=t/cycle,progress=t&(cycle-1);
+  if(progress>=passage)return {};
+  if(periodAtDeparture(s,ms,progress,utcDayPlusOne)==3&&s.place!=1)return {};
+  const int dir=(((s.seed>>11)^(f==Paper?0:run))&1)?-1:1;
+  const int x=-42+int(324*progress/passage);
+  const int bob=triangle(t+(s.seed>>18),16)>12?1:0;
+  return {true,dir>0?x:width-1-x,s.horizon+28+int((s.seed>>3)&3)+bob,dir};
+}
 inline Voyage voyage(const Layout& s,uint32_t ms,unsigned utcDayPlusOne=0){
   const Feature f=s.recipe.feature;
   if(!navigates(f))return {};
-  // One tick is 64 ms. Power-of-two recurrence keeps a 32-bit millis rollover
-  // continuous. Paper follows the current. Crewed vessels make return runs.
-  const uint32_t t=(ms>>6)+(s.seed&511);
-  bool slow=f==Raft||f==Paper||f==Basket||f==Sail;
-  unsigned cycle=slow?2048:1024,run=t/cycle,progress=t&(cycle-1);
-  unsigned passage=slow?1488:832;
-  if(progress>=passage)return {};
-  // Make a service decision at departure. At an ICT lighting boundary a
-  // vessel already on the water continues into the next band until it exits.
-  int servicePeriod=s.period;
-  if(utcDayPlusOne){
-    unsigned journeyMs=progress*64+(ms&63);
-    unsigned leftAt=(utcDayPlusOne-1+86400000-journeyMs)%86400000;
-    servicePeriod=periodAtUtc(leftAt);
-  }
-  bool service=true;
-  if(servicePeriod==3){
-    if(f==Lamps||s.place==1)service=true;
-    else if(f==Raft||f==Ferry||f==Boat)service=(run&3)==0;
-    else service=false;
-  }else if(f==Lamps&&servicePeriod==1)service=(run&3)==0;
-  if(!service)return {};
-  int dir=(((s.seed>>11)^(f==Paper?0:run))&1)?-1:1;
-  int x=-42+int(324*progress/passage);
-  int bob=(f!=Raft&&triangle(t+(s.seed>>18),16)>12)?1:0;
+  if(f==Paper||f==Basket)return passiveDrift(s,ms,utcDayPlusOne);
+  // One potential trip per ~4.4-minute slot. This visual-only hash does not
+  // touch casting/encounter RNG and varies both departure offset and speed.
+  // 26-bit tick wrap is continuous across rollover of the 32-bit ms clock.
+  const uint32_t t=((ms>>6)+(s.seed&4095))&0x03ffffffu;
+  const unsigned run=t>>12,phase=t&4095;
+  const auto trip=hash(s.seed^0x8ca84a17u^run*0x9e3779b9u);
+  const unsigned departure=192+(trip&1023);
+  const unsigned passage=(f==Raft||f==Sail?704:512)+((trip>>12)&127);
+  if(phase<departure||phase>=departure+passage)return {};
+  const unsigned progress=phase-departure;
+  const auto period=periodAtDeparture(s,ms,progress,utcDayPlusOne);
+  if(period==3){
+    if(f==Sail)return {};
+    if(f!=Lamps&&s.place!=1&&((trip>>23)&3))return {};
+  }else if(f==Lamps&&period==1&&((trip>>23)&3))return {};
+  // Fixed local direction leaves by the opposite bank; no visible turn.
+  const int dir=(s.seed&2048)?-1:1;
+  const int x=-42+int(324*progress/passage);
+  const int bob=f!=Raft&&triangle(t+(s.seed>>18),16)>12?1:0;
   return {true,dir>0?x:width-1-x,s.horizon+28+int((s.seed>>3)&3)+bob,dir};
+}
+
+inline uint16_t boatSound(const Layout& s,Voyage v){
+  // A vessel must actually have reached the visible waterline. Sound fades
+  // with proximity; waves and engine are separate, and passive props silent.
+  const auto f=s.recipe.feature;
+  if(!v.visible||!navigates(f)||f==Paper||f==Basket||unsigned(v.x)>=width)return 0;
+  const int gap=v.x>width/2?v.x-width/2:width/2-v.x;
+  const unsigned near=width/2-gap;
+  const unsigned prox=near*near*184/(width/2)/(width/2);
+  const bool motor=f==Ferry||f==Boat||f==Lamps;
+  return uint16_t((prox/(motor?3:2))<<8)|(motor?uint16_t(prox):0);
 }
 
 // Sink.span clips to the framebuffer. Sink.water samples the undisturbed base
@@ -117,7 +144,7 @@ template<class Sink> void drawVessel(Sink& out,const Layout& s,Voyage v,uint32_t
     int glint=1+triangle(t>>1,4);foam(-6,5,glint,WaterLight+1);foam(-4,7,1,Wake);
   }
 }
-template<class Sink> void paintAmbient(Sink& out,const Layout& s,uint32_t ms,unsigned utcDayPlusOne=0){
+template<class Sink> void paintAmbient(Sink& out,const Layout& s,uint32_t ms,unsigned utcDayPlusOne=0,uint16_t* sound=nullptr){
   uint32_t t=ms>>6;
   Water w=s.recipe.water;
   bool sea=s.place>=96,river=w==Bend||w==Stream||w==Wide||w==Gorge||w==Estuary;
@@ -204,6 +231,8 @@ template<class Sink> void paintAmbient(Sink& out,const Layout& s,uint32_t ms,uns
       }
     }
   }
-  drawVessel(out,s,voyage(s,ms,utcDayPlusOne),t);
+  const auto v=voyage(s,ms,utcDayPlusOne);
+  drawVessel(out,s,v,t);
+  if(sound)*sound=boatSound(s,v);
 }
 }

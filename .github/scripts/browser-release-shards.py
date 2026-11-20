@@ -11,10 +11,10 @@ import time
 
 SHARDS = {
     "arrival": ("arrival",),
-    "gameplay": ("gameplay", "detents", "rumble", "bait", "cast-water", "handheld-input", "recovered-items"),
+    "gameplay": ("gameplay", "detents", "rumble", "bait", "cast-water", "fish-hints", "handheld-input", "recovered-items"),
     "device": ("device", "lcd", "career-flow", "career-storage", "mobile-input", "aim-input", "finger-targets", "tackle-hud", "menu-pages", "mobile-display-unit", "screen-layout"),
     "world": ("scenery", "ambient", "mobile-audio", "landing-audio", "hosted-startup", "tournament",
-              "thai-catch", "gallery-history", "specimen-art"),
+              "thai-catch", "thai-species-names", "gallery-history", "specimen-art"),
 }
 SITE = ("game/sites/test.mjs", "game/sites/cup-test.mjs")
 

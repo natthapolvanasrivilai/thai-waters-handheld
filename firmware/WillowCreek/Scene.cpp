@@ -48,7 +48,9 @@ void landscapeMotion(const View& v){
   }
   auto frame=screen.getFramebuffer();
   scenery::LcdSpans spans{frame,background?background:frame,lcd};
-  scenery::paintAmbient(spans,scenicLayout,ms,utcDayPlusOne);
+  uint16_t boat=0;
+  scenery::paintAmbient(spans,scenicLayout,ms,utcDayPlusOne,&boat);
+  setBoatAmbience(boat,v.page==Page::Play);
 }
 const lcdtype::Face& fontFace(int size){
   return size>=3?lcdtype::title:size==2?lcdtype::body:lcdtype::caption;
@@ -264,6 +266,25 @@ void collectionMark(bool arriving){
   screen.drawRect(x-9,y-7,9,11,edge);screen.drawRect(x,y-7,9,11,edge);
   label(x-21,y+6,"Journal",edge,1);
 }
+// Paint the two anonymous shapes into the existing water, not on top of the HUD.
+void paintFishHint(const creek::FishHint& h){
+ if(!h.visible())return;
+ const int cx=int(h.x*480),cy=int(h.y*320),scale=h.large?2:1;
+ const unsigned shade=unsigned(76*std::min(1.f,5.f*std::min(h.phase,1.f-h.phase)));
+ if(!shade)return;
+ auto* fb=screen.getFramebuffer();
+ for(int y=-3*scale;y<=3*scale;y++)
+  for(int x=-11*scale;x<=7*scale;x++){
+   const bool body=x*x*9+y*y*49<=441*scale*scale;
+   const bool tail=x<=-6*scale&&x>=-11*scale&&std::abs(y)<=(-x-6*scale)*3/5;
+   if(!body&&!tail)continue;
+   auto& px=fb[(cx+x)*320+319-cy-y];
+   const unsigned r=((px>>11)&31)*(256-shade)>>8;
+   const unsigned g=((px>>5)&63)*(256-shade/2)>>8;
+   const unsigned b=(px&31)*(256-shade/3)>>8;
+   px=uint16_t((r<<11)|(g<<5)|b);
+  }
+}
 void play(const View& v){
   const int light=v.timeMode==4?pondPeriod():v.game.timeSlot;
   if(cachedSite!=v.destination||cachedTime!=light||cachedWeather!=int(v.game.weather)||!background){
@@ -295,6 +316,8 @@ void play(const View& v){
     }
     if(age<arrival::raiseRod)return;
   }
+  if(v.page==Page::Play && (v.practice||(v.motion&&v.field==Field::Good)) && !eventActive())
+    paintFishHint(g.fishHint());
   if(v.page==Page::Play)top(v);
   const int ax=int(g.aimX*480),ay=int(g.aimY*320);
   if(v.page!=Page::Arrival && (g.phase==Phase::Ready || g.phase==Phase::Flight)){
@@ -638,6 +661,7 @@ void touchCheck(const View& v){
 }
 void paint(const View& v){
  if(!screenOK)return;
+ if(v.page!=Page::Play&&!menuui::overlay(v.page)&&v.page!=Page::Arrival)setBoatAmbience(0,false);
  if(menuui::overlay(v.page))play(v);
  switch(v.page){
  case Page::Arrival:case Page::Play:play(v);break;case Page::Hub:hub(v);break;case Page::Waters:waters(v);break;

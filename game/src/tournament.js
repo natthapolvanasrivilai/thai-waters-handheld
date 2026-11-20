@@ -2,8 +2,10 @@ const cupKey='thai-waters-cup-v1';
 let cupState={}, enteredCup=0, requestInFlight=false, cupNotice='';
 try{cupState=JSON.parse(localStorage.getItem(cupKey))||{};enteredCup=cupState.joined||0;}catch{}
 function rememberCup(){try{localStorage.setItem(cupKey,JSON.stringify(cupState));}catch{}}
+function currentCupDay(){return Math.floor((Date.now()+7*3600000)/86400000);}
+function cupIsJoined(){return enteredCup===currentCupDay();}
 function tournamentGoal(){
- const day=Math.floor((Date.now()+7*3600000)/86400000),spot=day*37%atlas.locations.length;
+ const day=currentCupDay(),spot=day*37%atlas.locations.length;
  const stock=atlas.fish.slice(0,52).filter(f=>f.site===atlas.locations[spot].pool);
  const f=stock[(Math.floor(day/atlas.locations.length)+day*7)%stock.length];
  return {day,spot,species:atlas.fish.indexOf(f),name:f.name,location:atlas.locations[spot].name,minimum:Math.ceil(f.low+(f.high-f.low)*.45)};

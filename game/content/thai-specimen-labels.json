@@ -1,0 +1,135 @@
+{
+  "species": {
+    "77": {
+      "key": 5209210,
+      "scientific": "Acanthurus leucosternon",
+      "name": "ปลาขี้ตังเบ็ดฟ้าอกขาว",
+      "aliases": [
+        "ปลาขี้ตังเบ็ดฟ้า"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/269"
+    },
+    "2152": {
+      "key": 2391358,
+      "scientific": "Uraspis uraspis",
+      "name": "ปลาจุ้ยจินบั้ง",
+      "aliases": [
+        "Caranx uraspis",
+        "ปลาจุยจินบั้ง"
+      ],
+      "source": "https://mdc.library.mju.ac.th/ebook/352336.pdf",
+      "reference": "Department of Fisheries, ชนิดปลาบริเวณอ่าวไทยตอนในจากเรือสำรวจประมง 2"
+    },
+    "2354": {
+      "key": 7916021,
+      "scientific": "Kryptopterus vitreolus",
+      "name": "ปลาก้างพระร่วง",
+      "aliases": [
+        "ก้างพระร่วง"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/22338"
+    },
+    "151": {
+      "key": 5212081,
+      "scientific": "Amphiprion clarkii",
+      "name": "ปลาการ์ตูนลายปล้อง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
+    },
+    "152": {
+      "key": 5212057,
+      "scientific": "Amphiprion ephippium",
+      "name": "ปลาการ์ตูนแดงดำ",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
+    },
+    "153": {
+      "key": 5212106,
+      "scientific": "Amphiprion ocellaris",
+      "name": "ปลาการ์ตูนส้มขาว",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
+    },
+    "155": {
+      "key": 5212118,
+      "scientific": "Amphiprion sebae",
+      "name": "ปลาการ์ตูนลายปล้องหางเหลือง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
+    },
+    "827": {
+      "key": 2393172,
+      "scientific": "Lates calcarifer",
+      "name": "ปลากะพงขาว",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20191028104026_1_file.pdf"
+    },
+    "1565": {
+      "key": 5212094,
+      "scientific": "Amphiprion percula",
+      "name": "ปลาการ์ตูนเพอร์คูลาร์",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
+    },
+    "1566": {
+      "key": 5212096,
+      "scientific": "Amphiprion polymnus",
+      "name": "ปลาการ์ตูนอานม้า",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
+    },
+    "1731": {
+      "key": 2360397,
+      "scientific": "Epalzeorhynchos bicolor",
+      "name": "ปลาทรงเครื่อง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Epalzeorhynchos%20bicolor"
+    }
+  },
+  "families": {
+    "Carangidae": {
+      "label": "วงศ์ปลาหางแข็ง",
+      "source": "https://newweb.dmcr.go.th/detailAll/83493/nws/262"
+    },
+    "Pomacentridae": {
+      "label": "วงศ์ปลาสลิดหิน",
+      "source": "https://newweb.dmcr.go.th/detailAll/83493/nws/262"
+    },
+    "Labridae": {
+      "label": "วงศ์ปลานกขุนทอง",
+      "source": "https://newweb.dmcr.go.th/detailAll/83493/nws/262"
+    },
+    "Caesionidae": {
+      "label": "วงศ์ปลากล้วย",
+      "source": "https://newweb.dmcr.go.th/detailAll/83493/nws/262"
+    },
+    "Sphyraenidae": {
+      "label": "วงศ์ปลาสาก",
+      "source": "https://newweb.dmcr.go.th/detailAll/83493/nws/262"
+    },
+    "Lutjanidae": {
+      "label": "วงศ์ปลากะพงแดง",
+      "source": "https://newweb.dmcr.go.th/detailAll/83493/nws/262"
+    },
+    "Bagridae": {
+      "label": "วงศ์ปลากด",
+      "source": "https://km.dmcr.go.th/c_1/s_432"
+    },
+    "Mullidae": {
+      "label": "วงศ์ปลาแพะ",
+      "source": "https://www4.fisheries.go.th/local/file_document/20210517120158_1_file.pdf"
+    },
+    "Siganidae": {
+      "label": "วงศ์ปลาใบขนุน",
+      "source": "https://www4.fisheries.go.th/local/pic_activities/202004161636111_pic.pdf"
+    },
+    "Monodactylidae": {
+      "label": "วงศ์ปลาเฉี่ยวหิน",
+      "source": "https://www4.fisheries.go.th/local/pic_activities/202004161636111_pic.pdf"
+    },
+    "Toxotidae": {
+      "label": "วงศ์ปลาเสือพ่นน้ำ",
+      "source": "https://www4.fisheries.go.th/local/pic_activities/202004161636111_pic.pdf"
+    }
+  }
+}
