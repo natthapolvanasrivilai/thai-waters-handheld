@@ -1,8 +1,34 @@
-const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict');
 const path=require('node:path');
 const {pathToFileURL}=require('node:url');
 const {chromium,webkit}=require('playwright-core');
+
+// Exercise the real focusable menu controls without waiting for WebGL frame
+// stability, which is unrelated to this HID keyboard regression.
+async function setPairedRod(page,enable,wantChecked){
+ const indices=()=>enable.evaluate(el=>{
+  const sheet=el.closest('.menu-sheet');
+  const panel=sheet?.parentElement;
+  if(!panel||panel.hidden)return [-1,-1];
+  const sheets=[...panel.querySelectorAll(':scope > .menu-sheet')];
+  return [sheets.indexOf(sheet),sheets.findIndex(s=>!s.hidden)];
+ });
+ let [target,active]=await indices();
+ assert(target>=0&&active>=0,'Sensors menu has a real active sheet and Paired rod target');
+ while(active!==target){
+  const step=Math.sign(target-active);
+  const arrow=page.locator(step<0?'#sheetPrev':'#sheetNext');
+  assert(await arrow.isVisible()&&await arrow.isEnabled(),'The visible player navigation arrow is enabled');
+  await arrow.press('Enter');
+  const actual=await indices();
+  assert.deepEqual(actual,[target,active+step],'Native arrow activation advances exactly one sheet');
+  active=actual[1];
+ }
+ assert(await enable.isVisible()&&await enable.isEnabled(),'The Paired rod checkbox is accessible');
+ assert.equal(await enable.isChecked(),!wantChecked,'The checkbox starts in the opposite state');
+ await enable.press('Space');
+ assert.equal(await enable.isChecked(),wantChecked,'Native checkbox activation updates its checked state');
+}
 
 async function verify(browser,mobile){
  const page=await browser.newPage({viewport:mobile?{width:390,height:844}:{width:1180,height:780},isMobile:mobile,hasTouch:mobile});
@@ -18,7 +44,7 @@ async function verify(browser,mobile){
   assert.equal(await page.evaluate(()=>g.state()),0,'No game events before opt-in');
   await page.locator('#openMenu').click();await page.locator('[data-to=sensors]').click();
   const enable=page.locator('#handheldEnable'),status=page.locator('#handheldStatus');
-  await showControl(page,'#handheldEnable');await enable.check();assert.match(await status.textContent(),/Waiting/);
+  await setPairedRod(page,enable,true);assert.match(await status.textContent(),/Waiting/);
   await press('o');assert.equal(await page.evaluate(()=>dialAngle),0,'No rewind or turns before heartbeat');
   await press('v');assert.match(await status.textContent(),/Receiving/);
   await press('c');await press('h');await press('9');await press('o');
@@ -93,7 +119,7 @@ async function verify(browser,mobile){
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),1);
   await page.locator('#openMenu').click();assert.equal(await page.evaluate(()=>g.rodUp()),0);
   await page.locator('[data-language=th]').click();await page.locator('[data-to=sensors]').click();
-  assert.match(await status.textContent(),/[ก-๙]/);await showControl(page,'#handheldEnable');await enable.uncheck();
+  assert.match(await status.textContent(),/[ก-๙]/);await setPairedRod(page,enable,false);
   assert.match(await status.textContent(),/ปิด/);await page.locator('#resume').click();
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),0);
   assert.deepEqual(errors,[]);console.log('PASS '+(mobile?'mobile':'desktop')+' HID input, exact signed detents, physical cast/hook, rock payout, pitch hysteresis, neutral, menu safety and Thai labels');
