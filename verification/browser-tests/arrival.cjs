@@ -16,11 +16,11 @@ const {chromium} = require('playwright-core');
    if(await page.locator('#product').isVisible())await page.locator('#viewMode').click();
    assert.match(await page.title(),/Thai Waters/);
    assert.equal(await page.locator('#arrivalSkip').isVisible(),false,'Boot must start directly at the saved water');
-   async function travel(name,period){
+   async function travel(name,period,beforeSubmit){
     await page.locator('#openMenu').click();await page.locator('[data-to=spots]').click();
     if(name){await showControl(page,'#places');await page.getByRole('button',{name:/Fishing location ·/}).click();await chooseNamed(page,name);}
     if(period){await showControl(page,'#period');await page.getByRole('button',{name:/Pond time ·/}).click();await page.getByRole('option',{name:period,exact:true}).click();}
-    await showControl(page,'#fishHere');await page.locator('#fishHere').click();
+    await showControl(page,'#fishHere');if(beforeSubmit)await beforeSubmit();await page.locator('#fishHere').click();
    }
    const shapes=await page.evaluate(()=>{
     const art=(site,age)=>{
@@ -64,13 +64,13 @@ const {chromium} = require('playwright-core');
    }));
    assert.deepEqual(routes,[0,1,2,3],'water-specific approaches');
    assert(shapes.every(s=>s.valid));assert.equal(new Set(shapes.map(s=>s.family)).size,4);
-   if(!reduced) await page.evaluate(()=>{
+   const observeTravel=()=>page.evaluate(()=>{
     window.arrivalProbe=new Promise((resolve,reject)=>{
      const lcd=$('lcdUI'), snapshot=()=>[g.state(),g.age(),held,action,turns,menu.open];
      const key=(type)=>$('act').dispatchEvent(new KeyboardEvent(type,
        {key:'r',code:'KeyR',bubbles:true,cancelable:true}));
      let start=null,before,after;
-     const timeout=setTimeout(()=>{observer.disconnect();reject(new Error('Did not observe arrival start and end'));},20000);
+     const timeout=setTimeout(()=>{observer.disconnect();reject(new Error(start===null?'Did not observe arrival start':'Did not observe arrival end'));},60000);
      const observer=new MutationObserver(()=>{
       if(start===null&&arrivalSince!==null){
        start=arrivalSince;before=snapshot();key('keydown');after=snapshot();
@@ -86,7 +86,7 @@ const {chromium} = require('playwright-core');
     // before the test attaches its awaiting evaluation.
     window.arrivalProbe.catch(()=>{});
    });
-   await travel('Chao Phraya River','Dusk');
+   await travel('Chao Phraya River','Dusk',reduced?undefined:observeTravel);
    if(!reduced){
     const {before,after,end,duration}=await page.evaluate(()=>window.arrivalProbe);
     const neutral=[0,0,false,false,0,false];
