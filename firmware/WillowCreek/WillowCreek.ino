@@ -131,7 +131,7 @@ void restore(){
   view.game.setBait(store.getUChar("bait",0));
   view.game.setRig(store.getUChar("rig",0)%3);
   view.game.timeSlot=view.timeMode<4?view.timeMode:0;
-  view.destination=store.getUChar("spot",store.getUChar("water",0)%4)%destinationCount;view.game.site=destinations[view.destination].pool;view.sound.arrangement=view.destination;
+  view.destination=store.getUChar("spot",store.getUChar("water",0)%4)%destinationCount;view.game.site=destinations[view.destination].pool;
   view.game.destination=view.destination;
   HeldFish pending{};
   const size_t txSize=store.getBytesLength("catch-tx1");
@@ -153,7 +153,8 @@ void restore(){
   view.sound.cue=store.getUChar("cue",0);view.sound.cueVolume=store.getUChar("cuevol",2);
   view.sound.reelVolume=store.getUChar("reel-vol",1)%4;
   view.sound.reverse=store.getBool("reverse",false);
-  if(!view.sound.valid())view.sound=SoundSettings{};view.sound.site=view.game.site%4;
+  if(!view.sound.valid())view.sound=SoundSettings{};
+  view.sound.site=view.game.site%4;view.sound.arrangement=view.destination;
 }
 void playPage(){
   view.page=(view.practice||view.calibrated)?Page::Play:Page::Rest;
