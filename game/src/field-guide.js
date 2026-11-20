@@ -12,7 +12,7 @@ function bookMatches(){
   if(mode===1 && !(i<52?f.site===locationId:f.spot===placeId))continue;
   if(mode===5&&f.site===4||mode===6&&f.site!==4)continue;
   if(mode===2&&!g.caught(i)||mode===3&&!f.fiction||mode===4&&f.tier!==5)continue;
-  const identity=g.caught(i)?[f.name,originalAtlas.fish[i].name,f.family]:[];
+  const identity=g.caught(i)?[f.name,originalAtlas.fish[i].name,f.family,...(f.thaiSearchAliases??[])]:[];
   if(q && ![...identity,f.spot!=null?atlas.locations[f.spot]?.name:'',atlas.ranks[f.tier]].some(v=>v&&v.toLowerCase().includes(q)))continue;
   matches.push(i);
  }
@@ -65,8 +65,13 @@ function renderBook(){
  bookOffset=Math.max(0,Math.min(bookOffset,pages-1));const fragment=document.createDocumentFragment();
  for(const id of matches.slice(bookOffset*bookSize,(bookOffset+1)*bookSize)){
   const f=atlas.fish[id],n=g.caught(id),tile=document.createElement('button');tile.type='button';tile.id='species-'+id;tile.className='record '+(n?'found':'unseen');
-  tile.style.borderColor=tierFrames[f.tier];tile.style.borderStyle='solid';tile.title=(n?f.name:L('Undiscovered'))+' · '+atlas.ranks[f.tier];tile.setAttribute('aria-label',tile.title);
-  tile.append(fishPortrait(id,72,38));if(n){tile.append(bookText('b',f.name));const mark=bookText('span','✓');mark.className='caught-mark';tile.append(mark);}
+  const knownName=f.scientificName ? f.name+' · '+f.scientificName : f.name;
+  tile.style.borderColor=tierFrames[f.tier];tile.style.borderStyle='solid';tile.title=(n?knownName:L('Undiscovered'))+' · '+atlas.ranks[f.tier];tile.setAttribute('aria-label',tile.title);
+  tile.append(fishPortrait(id,72,38));if(n){
+   tile.append(bookText('b',f.name));
+   if(f.scientificName && f.thaiNameKind!=='species')tile.append(bookText('small',f.scientificName));
+   const mark=bookText('span','✓');mark.className='caught-mark';tile.append(mark);
+  }
   tile.onclick=()=>{bookSpecies=id;historyPage=0;renderBook();$('bookDetail').focus({preventScroll:true});};fragment.append(tile);
  }
  $('records').replaceChildren(fragment);
@@ -79,6 +84,7 @@ function renderBookDetail(id){
  const picture=fishPortrait(id,144,75);picture.style.borderColor=tierFrames[f.tier];const title=bookText('div','');
  const tier=bookText('small',atlas.ranks[f.tier]+(f.fiction?' · '+L('Fictional'):''));tier.style.color=tierFrames[f.tier];
  title.append(tier,bookText('h2',n?f.name:L('Undiscovered')));
+ if(n&&f.scientificName)title.append(bookText('small',f.scientificName));
  if(n&&f.family)title.append(bookText('small',f.family));
  if(n&&!g.hasPortrait(id))title.append(bookText('small',language==='th'?'อยู่ระหว่างวาดภาพประจำชนิด':'Species illustration pending'));
  const water=f.spot!=null?atlas.locations[f.spot].name:atlas.sites[f.site][0],habitat=document.createElement('div');habitat.className='book-facts';

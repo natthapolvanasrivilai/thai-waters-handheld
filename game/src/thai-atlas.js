@@ -134,7 +134,16 @@ const thaiMeasures = {
   'Carapace length': 'ความยาวกระดอง',
 };
 
+import thaiSpecimenLabels from '../content/thai-specimen-labels.json' with { type: 'json' };
+
 export function thaiAtlas(atlas) {
+  const verifiedSpecies = thaiSpecimenLabels.species;
+  for (const [id, label] of Object.entries(verifiedSpecies)) {
+    const fish = atlas.fish[Number(id)];
+    if (!fish || fish.key !== label.key || fish.name !== label.scientific) {
+      throw Error('Thai specimen label does not match catalog ID ' + id);
+    }
+  }
   for (const place of atlas.locations) {
     const row = thaiPlaces[place.id];
     if (row) [place.name, place.story] = row;
@@ -148,6 +157,14 @@ export function thaiAtlas(atlas) {
   for (const [id, fish] of atlas.fish.entries()) {
     const row = thaiFish[id];
     if (row && !fish.key) [fish.name, fish.lore] = row;
+    if (fish.key) {
+      const species = verifiedSpecies[id];
+      const family = thaiSpecimenLabels.families[fish.family];
+      fish.scientificName = fish.name;
+      fish.thaiNameKind = species ? 'species' : family ? 'family' : 'unconfirmed';
+      fish.name = species?.name ?? family?.label ?? 'ยังไม่มีชื่อไทยที่ยืนยัน';
+      fish.thaiSearchAliases = species?.aliases ?? [];
+    }
     if (Object.hasOwn(thaiMeasures, fish.measure)) fish.measure = thaiMeasures[fish.measure];
   }
   return atlas;
