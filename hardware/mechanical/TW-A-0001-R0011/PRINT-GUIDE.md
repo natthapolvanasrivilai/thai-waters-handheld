@@ -1,12 +1,14 @@
 # R0011 fit print and service
 
-## Start with the native X1C project
+## Published R0011 X1C baseline
 
 Download [Pocket-Reel-R0011-X1C.3mf](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-receiver-toolpaths-2/Pocket-Reel-R0011-X1C.3mf) from the [private R0011 fit-print release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-receiver-toolpaths-2). Verify SHA-256:
 
 ```text
 510fe8e2f1930c18298fb90d9a3b1edf74ac57c71bcb89fc985bed1fc49af50f
 ```
+
+**Scope:** This is the already-published R0011 baseline, not the next fit test with the newest geometry. It does not include later design revisions; use a separately versioned project after those replacement meshes and their toolpaths have been verified.
 
 Open it as a project in **Bambu Studio 02.08.02.61**, not as separately imported geometry. The saved profile is **Bambu Lab X1 Carbon, 0.4 mm hardened-steel nozzle, 0.20 mm Standard @BBL X1C**. The six plates have **19 objects: 17 device positions and two optional inert gauges**. Keep the saved positions, scale and orientations.
 
