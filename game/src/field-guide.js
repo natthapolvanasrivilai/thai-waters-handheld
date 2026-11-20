@@ -81,7 +81,7 @@ function renderBook(){
 function renderBookDetail(id){
  const f=atlas.fish[id],detail=$('bookDetail'),n=g.caught(id);detail.tabIndex=-1;
  const info=document.createElement('div');info.className='book-profile';
- const picture=fishPortrait(id,144,75);picture.style.borderColor=tierFrames[f.tier];const title=bookText('div','');
+ const picture=fishPortrait(id,144,75);if(n)enhanceCollectedPortrait(picture,id);picture.style.borderColor=tierFrames[f.tier];const title=bookText('div','');
  const tier=bookText('small',atlas.ranks[f.tier]+(f.fiction?' · '+L('Fictional'):''));tier.style.color=tierFrames[f.tier];
  title.append(tier,bookText('h2',n?f.name:L('Undiscovered')));
  if(n&&f.scientificName)title.append(bookText('small',f.scientificName));
