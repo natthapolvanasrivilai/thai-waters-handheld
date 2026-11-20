@@ -1,7 +1,10 @@
 const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path'),{pathToFileURL}=require('node:url'),{chromium}=require('playwright-core');
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
- try{const p=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:844,height:390}});await p.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);await p.waitForFunction(()=>g&&!$('act').disabled);
+ try{const p=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:844,height:390}});
+ // This test asserts an English journal title; Thai names have their own default-locale integration test.
+ await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
+ await p.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);await p.waitForFunction(()=>g&&!$('act').disabled);
  const result=await p.evaluate(async()=>{
   const seen=new Map(),shapes=new Set(),dupes=[],missing=[];
   const c=document.createElement('canvas');c.width=96;c.height=50;const ctx=c.getContext('2d',{willReadFrequently:true});

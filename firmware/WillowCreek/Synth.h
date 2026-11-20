@@ -3,6 +3,7 @@
 #include "LocationAudio.h"
 #include "FishingPcm.h"
 #include "BoatAmbience.h"
+#include "ReelAudio.h"
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
@@ -13,7 +14,7 @@ class CreekSynth {
   bool wasHeld=false;
   unsigned cueAge=10000;
   uint32_t cuePhase=0;
-  unsigned toothAge=144,toothNoise=1,toothPhase=0,toothStep=0;
+  reelAudio::Pawl pawl;
   creek::LandingCue landing{};
   unsigned landingNote=0,noteAge=0,noteLength=0;
   uint32_t landingPhase=0,landingStep=0;
@@ -63,6 +64,7 @@ class CreekSynth {
     return sample*int(level)/2;
   }
 public:
+  void clearReelClick(){pawl.clear();}
   void clearFoley(){for(auto &v:foley)v={};}
   void clearCatchAudio(){
     cueAge=10000;cuePhase=0;landing={};
@@ -72,7 +74,7 @@ public:
   locationaudio::MusicKind musicKind() const {return score.musicKind();}
   void begin(){
     score.reset();boatAmbience={};wasHeld=false;landing={};clearFoley();
-    cueAge=10000;cuePhase=0;toothAge=144;toothNoise=1;toothPhase=toothStep=0;
+    cueAge=10000;cuePhase=0;pawl={};
     for(int i=0;i<256;i++)sineTable[i]=std::lround(std::sin(i*6.2831853f/256)*32760);
   }
   void render(int16_t* buffer,size_t frames,const SoundSettings& s,bool chase,bool trigger,int reelClick=0,creek::LandingCue reveal={},uint8_t fishingSounds=0,bool held=false,bool surge=false,bool lost=false,uint16_t boat=0,bool boatOn=true){
@@ -83,25 +85,16 @@ public:
     if(!cueEnabled || (wasHeld && !held) || rewardMusic)landing={};
     else if(reveal.active()){landing=reveal;landingNote=0;nextLandingNote();}
     wasHeld=held;
-    if(reelClick && !trigger && s.reelVolume){
-      toothAge=0;toothPhase=0;
-      toothStep=reelClick>0?584115552u:507342336u;
-    }
+    if(trigger||reveal.active()||!s.reelVolume)pawl.clear();
+    else if(reelClick)pawl.strike(reelClick);
     if(trigger){cueAge=0;cuePhase=0;}
     for(size_t i=0;i<frames;i++){
       int pcm=score.sample(s.arrangement,sineTable,s.music,s.volume,chase,cueAge<6200||landing.active(),surge,lost);
       pcm+=foleySample(s);
       pcm+=boatAmbience.sample(boat,boatOn?s.cueVolume:0);
       if(landing.active())pcm+=landingSample(s.cueVolume);
-      if(toothAge<144){
-        // A dry pawl impact excites a short metallic ring at 16 kHz.
-        toothNoise=1664525u*toothNoise+1013904223u;
-        int age=int(toothAge++), decay=144-age;
-        int attack=age<28?(int(toothNoise>>24)-128)*(28-age):0;
-        int ring=(sineTable[toothPhase>>24]/16)*decay/144;
-        toothPhase+=toothStep;
-        pcm+=(attack+ring)*decay/144*s.reelVolume/(cueAge<5300?8:2);
-      }
+      if(cueAge<5300||landing.active())pawl.clear();
+      else pcm+=pawl.sample(sineTable,s.reelVolume);
       bool first=cueAge<1600,second=cueAge>=2300 && cueAge<5300;
       if((first||second) && s.cue!=1){
         int t=first?int(cueAge):int(cueAge)-2300, len=first?1600:3000;

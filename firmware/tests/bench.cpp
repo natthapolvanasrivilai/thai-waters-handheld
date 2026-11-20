@@ -15,13 +15,14 @@ static uint8_t waterSounds=0;
 static LandingCue landingPending;
 static RumblePlan tactile;
 static ReelDetents detents;
+static reelAudio::Meter reelSound;
 static int crossedTeeth=0,clickPending=0;
 #define EXPORT __attribute__((visibility("default")))
 static uint8_t portrait[50][96];
 static int portraitFrame=0;
 static void clearTransientSound(){
  cuePending=false;clickPending=0;landingPending={};waterSounds=0;
- synth.clearFoley();synth.clearCatchAudio();
+ reelSound.clearInput();synth.clearReelClick();synth.clearFoley();synth.clearCatchAudio();
 }
 extern "C" {
 EXPORT uint8_t* fieldBank(){return specimen::browserPixels;}
@@ -35,7 +36,7 @@ EXPORT uint8_t* speciesPixels(int id){
  return &portrait[0][0];
 }
 EXPORT const uint16_t* speciesInk(){return specimen::frames[portraitFrame].ink;}
-EXPORT void initialize(unsigned seed){waterSounds=0;g=Game{};g.beginSession(seed);s.site=g.site%4;s.arrangement=g.destination;synth.begin();detents=ReelDetents{};tactile=RumblePlan{};cuePending=false;landingPending={};crossedTeeth=clickPending=0;}
+EXPORT void initialize(unsigned seed){waterSounds=0;g=Game{};g.beginSession(seed);s.site=g.site%4;s.arrangement=g.destination;synth.begin();detents=ReelDetents{};reelSound={};tactile=RumblePlan{};cuePending=false;landingPending={};crossedTeeth=clickPending=0;}
 EXPORT void advance(unsigned dt,int cast,int lift,float turns){
  auto before=g.phase;g.tick(dt,cast,lift,turns);waterSounds|=g.soundEdges;
  if(g.phase!=Phase::Bite)cuePending=false;
@@ -115,7 +116,7 @@ EXPORT int strokes(){return g.strokes;}
 EXPORT int strokesNeeded(){return g.strokesNeeded;}
 EXPORT float lureTravel(){return g.lureTurns;}
 EXPORT void config(int mode,int volume,int cue,int fx){s.music=mode;s.volume=volume;s.cue=cue;s.cueVolume=fx;}
-EXPORT void reelVolume(int level){if(level>=0&&level<=3)s.reelVolume=level;}
+EXPORT void reelVolume(int level){if(level>=0&&level<=3){s.reelVolume=level;if(!level){clickPending=0;reelSound.clearInput();synth.clearReelClick();}}}
 EXPORT int16_t* samples(){
  const bool held=g.phase==Phase::Landed && !g.filed;
  synth.render(stereo,256,s,g.phase==Phase::Bite || g.phase==Phase::Fight,cuePending && g.phase==Phase::Bite,
@@ -149,21 +150,29 @@ EXPORT void handheldRodHigh(int high){g.rodHeldHigh=high!=0;}
 EXPORT void resetGesture(){motion=Gesture{};g.rodHeldHigh=false;}
 EXPORT void travel(int i){if(i>=0 && i<siteCount){g.site=i;s.site=i;g.enter(Phase::Ready);cuePending=false;}}
 static Wheel phoneDial;
-EXPORT void resetDetents(){detents=ReelDetents{};crossedTeeth=clickPending=0;}
+EXPORT void resetDetents(){detents=ReelDetents{};reelSound={};crossedTeeth=clickPending=0;synth.clearReelClick();}
 EXPORT float dialSample(int raw,unsigned now){
  bool good=raw>=0 && raw<=4095;
- float turns=phoneDial.read(raw,good,now,false);
- if(good)crossedTeeth+=detents.measure(turns);else resetDetents();
+ uint32_t validWheelMs=0;
+ float turns=phoneDial.read(raw,good,now,false,&validWheelMs);
+ if(good){
+  const int crossings=detents.measure(turns);
+  crossedTeeth+=crossings;
+  reelSound.observe(turns,validWheelMs,crossings);
+  if(!validWheelMs)clickPending=0;
+ }else resetDetents();
  return turns;
 }
-EXPORT void dialReset(){phoneDial=Wheel{};}
+EXPORT void dialReset(){phoneDial=Wheel{};reelSound.clearInput();clickPending=0;}
 EXPORT int teasing(){return g.teasing();}
 EXPORT int rumbleEvent(unsigned now,int active){
  Pulse fish=tactile.tick(g,now,active);
  if(!active){resetDetents();return int(Pulse::None);}
  int click=detents.feedback(crossedTeeth,fish,now);crossedTeeth=0;
- if(fish!=Pulse::None)clickPending=0;
- if(click){clickPending=click;return int(Pulse::Detent);}
+ const int audio=reelSound.take(now,detents.quiet||!s.reelVolume);
+ if(detents.quiet||!s.reelVolume)clickPending=0;
+ else if(audio)clickPending=audio;
+ if(click)return int(Pulse::Detent);
  return int(fish);
 }
 EXPORT int award(){return g.pointsAwarded;}
