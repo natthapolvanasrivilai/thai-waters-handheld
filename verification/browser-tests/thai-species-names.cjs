@@ -30,6 +30,7 @@ const {chromium}=require('playwright-core');
   await page.evaluate(()=>showBookEntry(1433));
   assert.equal(await page.locator('#bookDetail h2').textContent(),'ปลากระเบนทอง');
   assert.match(await page.locator('#bookDetail').textContent(),/Taeniura lymma/u);
+  await page.evaluate(()=>closeBookDetail());
   assert.equal(initial.target,'ปลาจุ้ยจินบั้ง');
   assert.equal(initial.a,'ปลาขี้ตังเบ็ดฟ้าอกขาว');
   assert.equal(initial.b,'ปลาก้างพระร่วง');
