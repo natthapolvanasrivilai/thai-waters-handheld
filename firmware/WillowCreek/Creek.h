@@ -63,6 +63,12 @@ enum class FightStyle : uint8_t { Standard, Picker, Anchor, Sprinter };
 constexpr const char* techniques[]={"Float drift","Stop-and-go spoon","Vertical jig"};
 constexpr uint32_t castWindupMs=180,castDurationMs=900;
 enum FishingSound : uint8_t { CastAir=1, SpoolRelease=2, WaterImpact=4, RetrieveSplash=8, BrokenLine=16 };
+struct FishHint {
+  int species=-1;
+  float x=0,y=0,phase=0;
+  bool large=false;
+  bool visible() const {return species>=0;}
+};
 struct Game {
   uint8_t soundEdges=0;
   uint32_t sprayAge=1000;
@@ -120,11 +126,23 @@ struct Game {
   bool sessionStarted=false;
   int visitDestination=-1;
   unsigned waterSeason=0;
+  FishHint currentFishHint;
+  uint32_t hintCountdown=0,hintSerial=0,hintAge=0,hintLayout=0;
+  int hintSite=-1,hintPeriod=-1,hintBait=-1,hintRig=-1;
+  bool hintsEnabled=true;
+
+  void resetFishHints(){
+    currentFishHint={};hintCountdown=hintSerial=hintAge=0;
+  }
+  void setFishHints(bool enabled){
+    hintsEnabled=enabled;
+    if(!enabled)currentFishHint={};
+  }
   void beginSession(uint32_t initialSeed){
-    seed=sessionSeed=initialSeed;sessionStarted=true;visitNumber=0;visitDestination=-1;
+    seed=sessionSeed=initialSeed;sessionStarted=true;visitNumber=0;visitDestination=-1;resetFishHints();
   }
   void arriveAt(int place){
-    if(visitDestination>=0 && place!=visitDestination)++visitNumber;
+    if(visitDestination>=0 && place!=visitDestination){++visitNumber;resetFishHints();}
     visitDestination=destination=place;
   }
   Weather weather=Weather::Clear;
@@ -279,19 +297,82 @@ struct Game {
       }
     }
   }
-  int drawOrdinary(bool expanded){
+  static constexpr uint32_t fishHintDurationMs=2000;
+  FishHint fishHint() const {
+    if(!hintsEnabled || !currentFishHint.visible() || phase!=Phase::Ready || hintAge>=fishHintDurationMs ||
+       site!=hintSite || timeSlot!=hintPeriod || bait!=hintBait || int(rig)!=hintRig || waterLayout()!=hintLayout ||
+       drawWeight(currentFishHint.species)<2)return {};
+    auto h=currentFishHint;h.phase=float(hintAge)/fishHintDurationMs;return h;
+  }
+  int hintTargetAtAim() const {
+    const auto h=fishHint();
+    if(!h.visible())return -1;
+    const float dx=(aimX-h.x)/.0625f,dy=(aimY-h.y)/.055f;
+    return dx*dx+dy*dy<=1.f && featureAt(aimX,aimY)==ClearWater?h.species:-1;
+  }
+  void advanceFishHint(uint32_t ms,bool casting){
+    if(!hintsEnabled || phase!=Phase::Ready || !sessionStarted ||
+       destination<0 || destination>=destinationCount || site!=destinations[destination].pool ||
+       timeSlot<0 || timeSlot>3)return;
+    if(currentFishHint.visible()){
+      hintAge+=std::min(ms,fishHintDurationMs);
+      if(!fishHint().visible())currentFishHint={};
+    }
+    const uint32_t layout=waterLayout();
+    const uint32_t key=waterHash(layout^0xa31538e1u^hintSerial*0x9e3779b9u);
+    if(!hintCountdown)hintCountdown=48000u+key%22000u;
+    if(ms<hintCountdown){hintCountdown-=ms;return;}
+    if(casting){hintCountdown=1;return;} // Never boost a cast from a shadow it cannot have seen.
+    ++hintSerial;
+    const uint32_t next=waterHash(layout^0xa31538e1u^hintSerial*0x9e3779b9u);
+    hintCountdown=48000u+next%22000u;
+    int candidates[2]={-1,-1};
+    uint32_t priority[2]={UINT32_MAX,UINT32_MAX};
+    const auto consider=[&](int id){
+      if(catalog[id].tier==5 || drawWeight(id)<2)return;
+      const int size=catalog[id].high>=47;
+      const uint32_t rank=waterHash(key^uint32_t(id)*0x4771faedu);
+      if(candidates[size]<0 || rank<priority[size]){candidates[size]=id;priority[size]=rank;}
+    };
+    for(bool expanded:{false,true}){
+      int first=-1;bool hasAlternative=false;
+      visitCandidates(expanded,[&](int id){
+        if(catalog[id].tier==5 || drawWeight(id)<=0)return;
+        if(first<0)first=id;
+        else if(first!=id)hasAlternative=true;
+      });
+      if(hasAlternative)visitCandidates(expanded,consider);
+    }
+    const int preferred=int((key>>24)&1u);
+    const int size=candidates[preferred]<0?1-preferred:preferred;
+    if(candidates[size]<0)return;
+    for(unsigned attempt=0;attempt<12;attempt++){
+      const auto position=waterHash(key+attempt*0x75f0371bu);
+      const float x=.13f+float(position%740u)*.001f;
+      const float y=.60f+float((position>>16)%211u)*.001f;
+      if(featureAt(x,y)!=ClearWater)continue;
+      currentFishHint={candidates[size],x,y,0.f,size!=0};
+      hintAge=0;hintLayout=layout;hintSite=site;hintPeriod=timeSlot;hintBait=bait;hintRig=int(rig);
+      return;
+    }
+  }
+  int drawOrdinary(bool expanded,int hintId=-1){
+    const auto weight=[&](int id){
+      const int w=drawWeight(id);
+      return id==hintId?w+w/2:w;
+    };
     int total=0;
-    visitCandidates(expanded,[&](int id){if(catalog[id].tier!=5)total+=drawWeight(id);});
+    visitCandidates(expanded,[&](int id){if(catalog[id].tier!=5)total+=weight(id);});
     if(!total)return -1;
     int ticket=randomInt(total),selected=-1;
     visitCandidates(expanded,[&](int id){
       if(selected<0 && catalog[id].tier!=5){
-        ticket-=drawWeight(id);if(ticket<0)selected=id;
+        ticket-=weight(id);if(ticket<0)selected=id;
       }
     });
     return selected;
   }
-  int drawFish(){
+  int drawFish(int hintId=-1){
     // The five authored mythics each have a different location/time window.
     // Their extra gate is independent of the normal site and rig selection.
     const uint32_t roll=waterHash(seed^0x9d2c5680u);
@@ -301,8 +382,8 @@ struct Game {
       if(mythic>=0)return mythic;
     }
     const bool expanded=roll%3==0;
-    const int first=drawOrdinary(expanded);
-    return first>=0?first:drawOrdinary(!expanded);
+    const int first=drawOrdinary(expanded,hintId);
+    return first>=0?first:drawOrdinary(!expanded,hintId);
   }
   void setRig(int id){
     if(id<0||id>2||rig==Technique(id))return;
@@ -356,6 +437,7 @@ struct Game {
     const uint32_t previousAge=age;
     const float previousLine=line;
     const bool runningBefore=before==Phase::Fight && surge();
+    advanceFishHint(ms,cast);
     updatePhase(ms,cast,rise,turns);
     soundEdges=0;
     sprayAge=std::min<uint32_t>(1000,sprayAge+std::min<uint32_t>(ms,1000));
@@ -384,7 +466,9 @@ struct Game {
         if(!sessionStarted)beginSession(seed);
         arriveAt(destination);
         waterTicket=nextWaterTicket();
-        const int selected=drawFish();
+        const int hintId=hintTargetAtAim();
+        currentFishHint={};
+        const int selected=drawFish(hintId);
         emptyCast=selected<0;
         if(!emptyCast)fish=selected;
         const auto& species=catalog[fish];
