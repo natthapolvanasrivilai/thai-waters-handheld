@@ -3,7 +3,7 @@ on:
   schedule:
     - cron: '17 18 * * *' # 01:17 Asia/Bangkok
   push:
-    branches: [ci/verified-release-builds]
+    branches: [main, ci/verified-release-builds]
   workflow_dispatch:
     inputs:
       source_sha:
