@@ -866,9 +866,10 @@ function canvasTypeface(size,display){
  const base='"Atkinson Hyperlegible Next",sans-serif';
  return '600 '+size+'px '+(language==='th'&&display?'"'+display+'",':'')+base;
 }
-function caption(text,x,y,align='left',color='#fff4d8',size=12,display=''){
+function caption(text,x,y,align='left',color='#fff4d8',size=12,display='',translate=true){
  ctx.save();ctx.textAlign=align;ctx.font=canvasTypeface(size,display);ctx.lineJoin='round';ctx.lineWidth=3;
- ctx.strokeStyle='#183830';ctx.strokeText(L(text),x,y);ctx.fillStyle=color;ctx.fillText(L(text),x,y);ctx.restore();
+ const label=translate?L(text):text;
+ ctx.strokeStyle='#183830';ctx.strokeText(label,x,y);ctx.fillStyle=color;ctx.fillText(label,x,y);ctx.restore();
 }
 const rewardText=['Catch landed','Personal best','New species','New species +1 tackle point'];
 const rarityInk=['#e3eee4','#b6e3bc','#baddff','#e4c9ff','#ffda8c','#a9ffdf'];
@@ -911,7 +912,8 @@ function landedCatch(age){
  const x=202;
  caption(atlas.ranks[f.tier]+'  ·  '+L(reward),x,82,'left',rarityInk[f.tier],13);
  const afterName=catchLines(f.name,110,language==='th'?24:23,'#fff7df',26,286,'Syy Flowey');
- const stats=afterName+10;
+ if(f.scientificName)caption(f.scientificName,x,afterName,'left','#d2e9e1',13,'',false);
+ const stats=afterName+(f.scientificName?20:10);
  caption('EST. WEIGHT',x,stats,'left','#d2e9e1',12);
  caption(size.toUpperCase(),x+136,stats,'left','#d2e9e1',12);
  caption(weight,x,stats+23,'left','#fff7df',22);
