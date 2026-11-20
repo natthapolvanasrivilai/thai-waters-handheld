@@ -44,43 +44,50 @@ const {webkit,chromium}=require('playwright-core');
   if(!touch){await button.tap();return;}
   await button.scrollIntoViewIfNeeded();
   const b=await button.boundingBox();assert(b,selector);
-  const x=b.x+b.width/2,y=b.y+b.height/2;
+  const x=Math.round(b.x+b.width/2),y=Math.round(b.y+b.height/2);
   assert.equal(await page.evaluate(({x,y})=>document.elementFromPoint(x,y)?.closest('button')?.id,{x,y}),selector.slice(1),
    'Physical button center must be hittable: '+selector);
-  // Use the same touch session before and after a swipe so the browser synthesizes
-  // the release click from one consistent native input stream.
   await touch.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+  // Give Chromium one ordinary contact interval rather than a zero-duration tap.
+  await new Promise(resolve=>setTimeout(resolve,65));
   await touch.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
  }
+ async function expectBackAfter(label){
+  await page.evaluate(()=>{window.galleryBackTrace=[];});
+  assert.deepEqual(await page.evaluate(()=>[menuPage,bookSpecies]),['book',0]);
+  await tapBookButton('#back');
+  await page.waitForFunction(()=>menuPage==='book'&&bookSpecies===null&&$('bookDetail').hidden,undefined,{timeout:2500}).catch(()=>{});
+  const result=await page.evaluate(()=>({menuPage,bookSpecies,detailHidden:$('bookDetail').hidden,
+   touchAction:getComputedStyle($('back')).touchAction,viewportScale:window.visualViewport?.scale,backTrace:galleryBackTrace}));
+  assert(result.menuPage==='book'&&result.bookSpecies===null&&result.detailHidden,
+   `Back must close only the detail (${label}): `+JSON.stringify(result));
+ }
+ await page.evaluate(()=>{
+  window.galleryBackTrace=[];
+  for(const t of ['touchstart','touchend','touchcancel','pointerdown','pointerup','pointercancel','mousedown','mouseup','click']){
+   window.addEventListener(t,e=>{
+    const point=e.changedTouches?.[0]??e;
+    const x=point.clientX,y=point.clientY,target=e.target.closest?.('button,article,[data-section]')?.id||e.target.nodeName;
+    const hit=Number.isFinite(x)&&Number.isFinite(y)?document.elementFromPoint(x,y)?.closest('button,article,[data-section]')?.id:null;
+    if(target!=='back'&&hit!=='back')return;
+    const record={t,target,hit,pointerType:e.pointerType,primary:e.isPrimary,trusted:e.isTrusted,x,y};
+    galleryBackTrace.push(record);
+    queueMicrotask(()=>{record.prevented=e.defaultPrevented;record.after=[menuPage,bookSpecies];});
+   },{capture:true});
+  }
+ });
+ await tapBookButton('#species-0');await page.waitForFunction(()=>bookSpecies===0);
+ await expectBackAfter('before any swipe');
  await swipe('#records',-82);await page.waitForFunction(()=>bookOffset===1&&bookSpecies===null);
  await swipe('#records',82);await page.waitForFunction(()=>bookOffset===0&&bookSpecies===null);
  await swipe('#records',82);assert.equal(await page.evaluate(()=>bookOffset),0); // no wrap; no tile activation
  await swipe('#records',7,54);assert.deepEqual(await page.evaluate(()=>[bookOffset,bookSpecies]),[0,null]);
  const unknown=page.locator('#species-0');
  assert.equal(await unknown.locator('b').count(),0);assert.equal((await unknown.innerText()).trim(),'');
- await unknown.tap();assert(!await page.locator('#bookDetail').innerText().then(s=>s.includes('Climbing perch')||s.includes('ปลาหมอไทย')));
+ await tapBookButton('#species-0');await page.waitForFunction(()=>bookSpecies===0);assert(!await page.locator('#bookDetail').innerText().then(s=>s.includes('Climbing perch')||s.includes('ปลาหมอไทย')));
  await swipe('#bookDetail',-82);await page.waitForFunction(()=>bookSpecies===1);
  await swipe('#bookDetail',82);await page.waitForFunction(()=>bookSpecies===0);
- // Diagnose the first real Back tap after swiping; never replace it with JS activation.
- await page.evaluate(()=>{
-  window.galleryBackTrace=[];
-  for(const t of ['pointerdown','pointerup','pointercancel','click']){
-   window.addEventListener(t,e=>{
-    const x=e.clientX,y=e.clientY,target=e.target.closest?.('button,article,[data-section]')?.id||e.target.nodeName;
-    const point=document.elementFromPoint(x||0,y||0)?.closest('button,article,[data-section]')?.id;
-    const record={t,target,point,menuPage,bookSpecies,pointerId:e.pointerId,primary:e.isPrimary,x,y};
-    galleryBackTrace.push(record);
-    queueMicrotask(()=>{record.prevented=e.defaultPrevented;record.after=[menuPage,bookSpecies];});
-   },{capture:true,once:true});
-  }
- });
- assert.deepEqual(await page.evaluate(()=>[menuPage,bookSpecies]),['book',0]);
- await tapBookButton('#back');
- await page.waitForFunction(()=>menuPage==='book'&&bookSpecies===null&&$('bookDetail').hidden,undefined,{timeout:1500}).catch(()=>{});
- const afterBack=await page.evaluate(()=>({menuPage,bookSpecies,detailHidden:$('bookDetail').hidden,
-  listClass:$('records').parentElement.className,backTrace:galleryBackTrace}));
- assert(afterBack.menuPage==='book'&&afterBack.bookSpecies===null&&afterBack.detailHidden,
-  'Back must close only the detail: '+JSON.stringify(afterBack));
+ await expectBackAfter('immediately after two detail swipes');
  assert(await unknown.locator('canvas').evaluate(c=>{const b=c.getContext('2d').getImageData(0,0,c.width,c.height).data,colors=new Set();for(let i=0;i<b.length;i+=4)if(b[i+3]===255)colors.add(b.slice(i,i+3).join(','));return colors.size===1;}));
  for(let i=0;i<Math.floor(40/8);i++){
   assert(await page.locator('#bookNext').isVisible(),'Next missing before page '+(i+2)+': '+JSON.stringify(await page.evaluate(()=>({menuPage,bookSpecies,bookOffset}))));
