@@ -1,4 +1,5 @@
 #include "../../firmware/WillowCreek/Ambient.h"
+#include "../../firmware/WillowCreek/BoatAmbience.h"
 #include "../../firmware/WillowCreek/ArrivalPixels.h"
 
 namespace {
@@ -8,6 +9,9 @@ scenery::Layout layout{};
 struct Span {uint8_t x,y,length,ink;};
 constexpr int capacity=256;
 Span spans[capacity];
+uint16_t boatMix;
+scenery::BoatAmbience boatVoice;
+int16_t boatSamples[256];
 struct WebSpans {
   int count=0;
   void span(int x,int y,int n,int ink){
@@ -46,7 +50,18 @@ uint32_t* placePalette(){return palette;}
 uint8_t* ambientSpans(){return reinterpret_cast<uint8_t*>(spans);}
 int sampleAmbient(uint32_t ms,unsigned utcDayPlusOne){
   WebSpans out;
-  scenery::paintAmbient(out,layout,ms,utcDayPlusOne);
+  scenery::paintAmbient(out,layout,ms,utcDayPlusOne,&boatMix);
   return out.count<=capacity?out.count:-1;
+}
+#if defined(__wasm__)
+__attribute__((export_name("ambientBoatMix")))
+#endif
+unsigned ambientBoatMix(){return boatMix;}
+#if defined(__wasm__)
+__attribute__((export_name("ambientBoatPcm")))
+#endif
+const int16_t* ambientBoatPcm(unsigned mix,unsigned volume){
+  for(auto& v:boatSamples)v=boatVoice.sample(uint16_t(mix),volume);
+  return boatSamples;
 }
 }

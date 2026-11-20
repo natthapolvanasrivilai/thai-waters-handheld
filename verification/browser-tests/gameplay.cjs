@@ -54,7 +54,17 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   await pg.locator('#catchContinue').click();await pg.waitForFunction(()=>g.state()===0&&!document.querySelector('#menu').open);
   assert.equal(await pg.evaluate(()=>g.caught(40)),1,'Transfer must not count the catch twice');
   await menu('rod');await showControl(pg,'#finish');await pg.selectOption('#finish','Copper');await showControl(pg,'#technique');await pg.selectOption('#technique',{label:'Vertical jig'});await showControl(pg,'#builds button');await pg.locator('#builds button').nth(1).click();assert.equal(await pg.evaluate(()=>g.rank(1)),1);await pg.locator('#resume').click();
-  await pg.reload();await pg.waitForFunction(()=>!document.querySelector('#act').disabled);assert.equal(await pg.evaluate(()=>g.caught(40)),1);assert.equal(await pg.evaluate(()=>finish),1);
+  const journalSnapshot=()=>pg.evaluate(()=>{
+   const b=JSON.parse(localStorage.getItem('thai-atlas-v2'));
+   return {book:b?.book?.[40],best:g.best(40),ram:g.caught(40),storedFinish:b?.finish,notice:$('summarySave').textContent};
+  });
+  const beforeReload=await journalSnapshot();
+  assert.deepEqual(beforeReload.book,[1,beforeReload.best],'Catch must be stored before reload: '+JSON.stringify(beforeReload));
+  await pg.reload();await pg.waitForFunction(()=>!document.querySelector('#act').disabled);
+  const afterReload=await journalSnapshot(), evidence=JSON.stringify({beforeReload,afterReload});
+  assert.deepEqual(afterReload.book,beforeReload.book,'Reload must retain the exact saved catch: '+evidence);
+  assert.equal(afterReload.ram,1,'The replayed journal must contain exactly one catch: '+evidence);
+  assert.equal(await pg.evaluate(()=>finish),1);
   assert.equal(await pg.evaluate(()=>g.technique()),2,'Remember the selected presentation');
   await menu('book');assert.equal(await pg.locator('.record').count(),8);await pg.locator('#bookFilter').selectOption({label:'Mythic'});assert.equal(await pg.locator('.record').count(),5);await pg.locator('#resume').click();
   await pg.setViewportSize({width:390,height:844});await menu('sensors');
