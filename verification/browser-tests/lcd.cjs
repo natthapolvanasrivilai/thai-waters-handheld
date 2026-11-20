@@ -32,7 +32,8 @@ async function raster(page) {
   const url=pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href;
   const p=await browser.newPage({viewport:{width:1050,height:780}});
   await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await p.goto(url);await p.waitForFunction(()=>g&&physicalView);
+  await p.goto(url);await p.waitForFunction(()=>g&&document.documentElement.dataset.view==='screen');
+  await p.locator('#viewMode').click();await p.waitForFunction(()=>physicalView&&document.documentElement.dataset.view==='device');
   const main=await raster(p);
   assert.deepEqual(main.size,[480,320]);assert.equal(main.hitOpacity,'0');
   assert.equal(main.transparent,0,'sky visible between HUD labels');
@@ -84,9 +85,11 @@ async function raster(page) {
   await phone.waitForFunction(()=>document.documentElement.classList.contains('immersive'));
   const dims=await phone.evaluate(()=>{
    const stage=$('flatStage').getBoundingClientRect(),dial=$('dial').getBoundingClientRect();
-   return {height:stage.height,overlap:Math.max(0,stage.right-dial.left),scroll:document.documentElement.scrollHeight-innerHeight};
+   const tools=document.querySelector('.viewtools').getBoundingClientRect();
+   return {height:stage.height,aspect:stage.width/stage.height,overlap:Math.max(0,stage.right-dial.left),
+           toolsOverlap:Math.max(0,stage.bottom-tools.top),scroll:document.documentElement.scrollHeight-innerHeight};
   });
-  assert(dims.height>=380&&dims.overlap<1&&dims.scroll<2,JSON.stringify(dims));
+  assert(dims.height>=330&&Math.abs(dims.aspect-1.5)<.02&&dims.overlap<1&&dims.toolsOverlap<1&&dims.scroll<2,JSON.stringify(dims));
   if(process.env.PHONE_OVERLAY_PNG)await phone.evaluate(()=>{chooseSpot(0,0);g.restoreEntry(0,1,21);refresh();});
   assert((await raster(phone)).action===0,'phone water is clear for direct casting');
   await phone.locator('#openMenu').tap();
@@ -95,7 +98,8 @@ async function raster(page) {
   assert(await phone.locator('#records').isVisible());
   if(process.env.PHONE_OVERLAY_PNG)await phone.locator('#flatStage').screenshot({path:process.env.PHONE_OVERLAY_PNG});await phone.locator('#resume').tap();
   await phone.setViewportSize({width:390,height:844});
-  await phone.waitForFunction(()=>!document.documentElement.classList.contains('immersive'));
+  await phone.waitForFunction(()=>document.documentElement.classList.contains('immersive')&&innerHeight>innerWidth);
+  assert(await phone.locator('#mobileFullscreen').isVisible(),'portrait retains explicit fullscreen control');
   console.log('PASS 480x320 framebuffer, transparent HUD, direct casting, all six menu rasters, journal pages, picker controls, projected hits and phone rotation.');
  }finally{await browser.close();}
 })().catch(err=>{console.error(err);process.exitCode=1;});

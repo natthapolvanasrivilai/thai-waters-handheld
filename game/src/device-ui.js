@@ -13,7 +13,7 @@ function samplePointerWheel(a){
  wheelSampleTime+=dt;wheelInputTime=now;wheelInputAngle=a;return movement;
 }
 const product=$('product'),flat=$('flatStage'),vm=$('viewMode'),foldButton=$('foldButton');
-let physicalView=null,wantsDevice=true;
+let physicalView=null,wantsDevice=false;
 const lcdUI=$('lcdUI');
 function lcdMatrix(a,b,c,d,x,y){
  lcdUI.style.transform='matrix('+[a,b,c,d,x,y].join(',')+')';
@@ -67,8 +67,7 @@ makeThaiHandheld(product,JSON.parse($('deviceParts').textContent),{
  wind:(a,d)=>{if(!powered||!g||menu.open||arrivalSince!==null)return;dialAngle+=d*180/Math.PI;turns+=samplePointerWheel(a);}
 }).then(v=>{physicalView=v;vm.disabled=false;showDevice(true);document.documentElement.dataset.device='ready';}).catch(()=>{showDevice(false);vm.hidden=true;setUi($('viewHint'),'Screen mode · 3D rendering is unavailable in this browser.');document.documentElement.dataset.device='fallback';});
 }
-if(matchMedia('(pointer: coarse) and (max-width: 1000px)').matches){
-  showDevice(false);vm.disabled=false;document.documentElement.dataset.device='deferred';
-}else loadDevice();
+// Flat LCD is the readable default. Keep 3D available as an explicit opt-in.
+showDevice(false);vm.disabled=false;document.documentElement.dataset.device='deferred';
 
 

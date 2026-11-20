@@ -1,20 +1,44 @@
-html.immersive,html.immersive body{margin:0;overflow:hidden;background:#14241f;overscroll-behavior:none}
-html.immersive main{
- --safe-w:calc(100dvw - env(safe-area-inset-left) - env(safe-area-inset-right));
- --safe-h:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
- position:fixed;inset:0;max-width:none;width:100%;height:100dvh;margin:0;
- padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
- display:grid;place-items:center;isolation:isolate;
+/* Fit the 3:2 LCD to the actual space left by the controls, without cropping. */
+html[data-view] main{
+ display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;
+ --shell-pad:clamp(8px,2dvw,18px);gap:8px;height:100dvh;min-height:320px;
+ padding:max(var(--shell-pad),env(safe-area-inset-top)) max(var(--shell-pad),env(safe-area-inset-right)) max(var(--shell-pad),env(safe-area-inset-bottom)) max(var(--shell-pad),env(safe-area-inset-left));
 }
-html.immersive main>header,html.immersive .viewtools,html.immersive #viewHint{display:none}
-html.immersive #product{position:relative;grid-area:1/1;width:100%;height:100%;max-width:none;max-height:none;aspect-ratio:auto;margin:0;border:0;border-radius:0}
-html.immersive #flatStage{grid-area:1/1;width:min(var(--safe-w),calc(var(--safe-h)*1.5));height:auto;max-height:none;max-width:none;aspect-ratio:3/2;margin:0;padding:0;border:0;border-radius:0}
-html.immersive[data-view="screen"] main{--dial-size:clamp(86px,min(17dvw,31dvh),144px);--reel-rail:calc(var(--dial-size) + 24px);grid-template-columns:minmax(0,1fr) var(--reel-rail);grid-template-rows:minmax(0,1fr)}
-html.immersive[data-view="screen"] #flatStage{max-width:100%}
-html.immersive #scene{width:100%;height:auto;max-height:none;aspect-ratio:3/2}
+html[data-view] .page-heading{grid-area:1/1;margin:0}
+html[data-view] .page-heading h1{font-size:clamp(1.5rem,4dvw,2.5rem)}
+.display-frame{grid-area:2/1;min-width:0;min-height:0;container-type:size;display:grid;place-items:center}
+html[data-view] #flatStage{width:min(100%,150cqh);height:auto;aspect-ratio:3/2;margin:0}
+html[data-view] #scene{width:100%;height:auto;max-height:none;aspect-ratio:3/2}
+html[data-view] #product{width:100%;height:100%;aspect-ratio:auto;margin:0}
+html[data-view] .viewtools{grid-area:3/1;margin:0;justify-content:center;gap:5px}
+html[data-view] .viewtools small{min-width:0}
+html[data-view] .viewtools button{min-height:36px}
+html:not([data-mobile]) .mobile-control{display:none}
+html[data-mobile] .viewtools button{min-height:44px;min-width:44px}
+#displayModeNote{flex:1 0 100%;font:600 12px/1.2 var(--game-font);text-align:center}
+html.immersive #displayModeNote{color:#e2ddbd}
+html[data-view] #flatReel{grid-area:4/1;justify-self:center;margin:0}
+html[data-view="screen"] main{grid-template-rows:auto minmax(0,1fr) auto auto}
+@media(min-aspect-ratio:1/1){
+ html[data-view="screen"] main{grid-template-columns:minmax(0,1fr) minmax(100px,auto);grid-template-rows:auto minmax(0,1fr) auto}
+ html[data-view="screen"] #flatReel{grid-area:2/2;align-self:center}
+ html[data-view="screen"] .viewtools{grid-column:1/-1}
+}
+@media(pointer:coarse){
+ html[data-view] .viewtools button{min-height:44px}
+}
+html.immersive,html.immersive body{margin:0;overflow:hidden;background:#14241f;overscroll-behavior:none}
+html.immersive[data-view] main{
+ position:fixed;inset:0;max-width:none;width:100%;height:100dvh;min-height:0;margin:0;
+ padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+ gap:0;isolation:isolate;
+}
+html.immersive[data-view] main>header,html.immersive[data-view]:not([data-device="fallback"]) #viewHint{display:none}
+html.immersive[data-view] #product,html.immersive[data-view] #flatStage{border:0;border-radius:0}
+html.immersive[data-view] .viewtools{padding:2px 4px}
+html.immersive[data-view] #dial{--dial-size:clamp(86px,min(17dvw,31dvh),144px);width:var(--dial-size);height:var(--dial-size);--hub:clamp(44px,min(14dvh,calc(var(--dial-size) - 36px)),62px);margin:0}
 html.immersive .tools{position:absolute;right:max(4px,env(safe-area-inset-right));bottom:max(4px,env(safe-area-inset-bottom));margin:0;pointer-events:none}
 html.immersive .tools>span{display:none}
-html.immersive[data-view="screen"] #flatReel{grid-area:1/2;align-self:end;justify-self:center;margin:0 0 clamp(8px,12dvh,56px);z-index:3}
 html.immersive[data-view="device"] .tools,html.immersive.lcd-menu-open .tools{display:none}
 #flatReel{flex-direction:column;flex-wrap:nowrap;align-items:center;width:max-content;margin:8px 0 0 auto;gap:5px}
 #dialAutoRow{display:flex;align-items:center;justify-content:center;gap:5px;min-height:44px;line-height:1.1;font-size:12px;cursor:pointer;touch-action:manipulation;color:#365143}
@@ -23,7 +47,6 @@ html.immersive #dialAutoRow{color:#f2e7c9}
 .dial[data-auto=on] .dial-hub{border-color:#e6b477}
 #dialHint{font:600 11px/1.3 var(--game-font);color:#415b50;text-align:center;white-space:nowrap}
 html.immersive #dialHint{color:#e2ddbd}
-html.immersive #dial{width:var(--dial-size);height:var(--dial-size);--hub:clamp(44px,14dvh,62px);margin:0}
 @media(pointer:coarse) and (orientation:portrait){#dial{width:104px;height:104px;--hub:48px}#flatReel{margin-right:4px}}
 @media(prefers-reduced-motion:reduce){.dial-spool{transition:none}}
 
