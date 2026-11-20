@@ -141,7 +141,7 @@ html:lang(th) #menu section[data-section="crew"] h2{font:normal 16px/23px 'Syy F
 #menu button[data-navicon][hidden]{display:none}
 #menu[data-page=book]{inset:0;width:480px;height:320px;box-sizing:border-box;border:0;border-radius:0;background:#152f2a}
 #menu[data-page=book]>.menubar{background:#203d34;padding:2px 8px}
-#menu [data-section=book]{padding:4px 9px}
+#menu [data-section=book]{padding:3px 9px}
 #menu [data-section=book]:not([hidden],.detail-open){display:grid;grid-template-rows:var(--touch) minmax(0,1fr) 14px;row-gap:1px}
 #menu [data-section=book]>.book-totals{display:flex;align-items:center;min-width:0;height:auto;margin:0;padding:0;border:0;gap:5px}
 #menu [data-section=book]>.book-totals span{display:none}
@@ -156,9 +156,9 @@ html:lang(th) #menu section[data-section="crew"] h2{font:normal 16px/23px 'Syy F
 #bookTools .lcd-choice>[data-choice-caption]{display:none}
 #menu #records{display:grid;min-height:0;grid-template:repeat(2,minmax(0,1fr))/repeat(4,minmax(0,1fr));gap:2px}
 #menu #records .record{box-sizing:border-box;position:relative;margin:0;border:2px solid;border-radius:5px;background:#29463e;display:flex;flex-direction:column;align-items:center;justify-content:center;height:auto;min-width:0;padding:1px 3px;gap:0}
-#menu #records .fish-thumb{float:none;margin:0;width:66px;height:33px;flex:none}
-#menu #records .record b{width:100%;font:600 13px/15px var(--game-font);overflow:hidden;max-height:30px;flex:none;text-align:center;overflow-wrap:anywhere}
-#menu #records .record small{max-width:100%;line-height:11px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
+#menu #records .fish-thumb{float:none;margin:0;width:56px;height:29px;flex:none}
+#menu #records .record b{width:100%;font:600 13px/14px var(--game-font);overflow:hidden;max-height:28px;flex:none;text-align:center;overflow-wrap:anywhere}
+#menu #records .record small{flex:none;max-width:100%;line-height:11px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 #menu #records .caught-mark{position:absolute;right:4px;top:2px;color:#ffdf92}
 #bookPager,.history-nav{display:flex;justify-content:center;align-items:center;gap:8px}
 #menu #bookPager button{width:34px;min-height:26px;padding:2px;display:grid;place-items:center;background:transparent;border:0}

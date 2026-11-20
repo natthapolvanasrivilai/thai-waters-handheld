@@ -32,11 +32,11 @@ const {webkit,chromium}=require('playwright-core');
    return {touch:parseInt(getComputedStyle($('lcdUI')).getPropertyValue('--touch')),count:tiles.length,
     noOverflow:$('records').scrollHeight<=$('records').clientHeight,
     fitted:targets.every(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top>=rect.top-1&&r.bottom<=rect.bottom+1&&r.left>=rect.left-1&&r.right<=rect.right+1;}),
-    labelFit:tiles.every(e=>{const label=e.querySelector('b');if(!label)return true;const b=label.getBoundingClientRect(),r=e.getBoundingClientRect();return b.height>0&&b.top>=r.top&&b.bottom<=r.bottom;})};
+    labelFit:tiles.every(e=>[...e.querySelectorAll('b,small')].every(label=>{const b=label.getBoundingClientRect(),r=e.getBoundingClientRect();return b.height>0&&b.top>=r.top&&b.bottom<=r.bottom;}))};
   });
+  if(process.env.COLLECTION_PREVIEW)await portrait.locator('#flatStage').screenshot({path:process.env.COLLECTION_PREVIEW});
   assert.equal(fit.touch,74,'Small portrait activates the largest LCD touch targets');
   assert.deepEqual(fit,{touch:74,count:8,noOverflow:true,fitted:true,labelFit:true},'Eight readable touch cards and controls fit the narrow phone');
-  if(process.env.COLLECTION_PREVIEW)await portrait.locator('#flatStage').screenshot({path:process.env.COLLECTION_PREVIEW});
  }
  await portrait.close();
  await page.emulateMedia({reducedMotion:'reduce'});await page.reload();await page.waitForFunction(()=>g?.state()===5);assert.equal(await page.evaluate(()=>catchPromptOpacity(900)),1);await page.emulateMedia({reducedMotion:'no-preference'});await page.reload();await page.waitForFunction(()=>g?.state()===5);assert(await page.evaluate(()=>catchPromptOpacity(900)<0.5));
@@ -98,7 +98,7 @@ const {webkit,chromium}=require('playwright-core');
  await expectBackAfter('before any swipe');
  await page.evaluate(()=>{
   window.galleryPageCues=[];
-  window.gallerySoundBefore={audio,pluck,fx:$('fx').selectedIndex};
+  window.gallerySoundBefore={audio,pluck,fx:$('fx').selectedIndex,cue:$('cue').selectedIndex};
   clearInterval(audioTimer);audio={state:'running',currentTime:1};
   pluck=(freq,when,duration,gain)=>galleryPageCues.push({freq,duration,gain});
   $('fx').selectedIndex=2;
@@ -125,7 +125,7 @@ const {webkit,chromium}=require('playwright-core');
  await tapBookButton('#bookPrev');await page.waitForFunction(()=>bookOffset===0);
  assert.equal(await page.evaluate(()=>galleryPageCues.filter(n=>n.gain<.062).length),2,'Navigation sounds on both arrows and respects Low even in bite-only Light mode');
  await page.evaluate(()=>{
-  audio=gallerySoundBefore.audio;pluck=gallerySoundBefore.pluck;$('fx').selectedIndex=gallerySoundBefore.fx;$('cue').selectedIndex=0;
+  audio=gallerySoundBefore.audio;pluck=gallerySoundBefore.pluck;$('fx').selectedIndex=gallerySoundBefore.fx;$('cue').selectedIndex=gallerySoundBefore.cue;
   if(audio)audioTimer=setInterval(pump,20);
  });
 
