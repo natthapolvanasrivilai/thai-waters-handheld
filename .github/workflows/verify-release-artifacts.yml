@@ -13,7 +13,7 @@ permissions:
 env:
   SOURCE_SHA: ${{ inputs.source_sha || github.sha }}
 jobs:
-  browser:
+  browser_build:
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
@@ -47,30 +47,106 @@ jobs:
           if [ "$SOURCE_SHA" = a8137e41a91c608630ff21bf9d7b775fe688fb0e ]; then
             test -n "$(git diff --name-only -- game/assets/atlas.wasm)"
           fi
+      - name: Stage exact browser build for testing
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir browser-input
+          cp game/Thai-Waters-play.html game/assets/atlas.wasm browser-input/
+          cp "$RUNNER_TEMP/browser-build.txt" browser-input/BUILD.txt
+          (cd browser-input && sha256sum Thai-Waters-play.html atlas.wasm BUILD.txt > SHA256SUMS)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: browser-input-${{ env.SOURCE_SHA }}
+          path: browser-input/
+          if-no-files-found: error
+          retention-days: 3
+  browser_tests:
+    needs: browser_build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [arrival, gameplay, device, world]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: workflow-source
+          sparse-checkout: .github/scripts
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: browser-input-${{ env.SOURCE_SHA }}
+          path: ${{ runner.temp }}/browser-input
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22.16.0'
-      - name: Browser and server regression checks
+      - name: Test exact browser artifact
         shell: bash
+        env:
+          SHARD: ${{ matrix.shard }}
         run: |
           set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/browser-logs"
+          exec > >(tee -a "$RUNNER_TEMP/browser-logs/setup.log") 2>&1
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          bundle="$RUNNER_TEMP/browser-input"
+          (cd "$bundle" && sha256sum -c --strict SHA256SUMS)
+          cp "$bundle/Thai-Waters-play.html" game/Thai-Waters-play.html
+          cp "$bundle/atlas.wasm" game/assets/atlas.wasm
           npm ci --prefix game/lan
           npm ci --prefix verification/browser-tests
-          pushd verification/browser-tests
-          ./node_modules/.bin/playwright-core install --with-deps chromium
-          export BROWSER_PATH="$(node -p 'require("playwright-core").chromium.executablePath()')"
-          npm test 2>&1 | tee -a "$RUNNER_TEMP/browser-build.txt"
-          popd
-          node game/sites/test.mjs
-          node game/sites/cup-test.mjs
-      - name: Package verified preview
+          (
+            cd verification/browser-tests
+            ./node_modules/.bin/playwright-core install --with-deps chromium
+          )
+          export BROWSER_PATH="$(node -p 'require("./verification/browser-tests/node_modules/playwright-core").chromium.executablePath()')"
+          python3 workflow-source/.github/scripts/browser-release-shards.py run --shard "$SHARD" \
+            --bundle "$bundle" --diagnostics "$RUNNER_TEMP/browser-logs"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: browser-report-${{ env.SOURCE_SHA }}-${{ matrix.shard }}
+          path: ${{ runner.temp }}/browser-logs/
+          if-no-files-found: warn
+          retention-days: 5
+  browser_release:
+    needs: [browser_build, browser_tests, controller]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: workflow-source
+          sparse-checkout: .github/scripts
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: browser-input-${{ env.SOURCE_SHA }}
+          path: release-browser
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: browser-report-${{ env.SOURCE_SHA }}-*
+          path: browser-reports
+      - name: Verify exact-source test coverage and hashes
         shell: bash
         run: |
           set -euo pipefail
-          mkdir release-browser
-          cp game/Thai-Waters-play.html game/assets/atlas.wasm release-browser/
-          cp "$RUNNER_TEMP/browser-build.txt" release-browser/BUILD.txt
-          (cd release-browser && sha256sum Thai-Waters-play.html atlas.wasm BUILD.txt > SHA256SUMS)
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          (cd release-browser && sha256sum -c --strict SHA256SUMS)
+          python3 workflow-source/.github/scripts/browser-release-shards.py verify \
+            --bundle release-browser --diagnostics browser-reports
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: browser-${{ env.SOURCE_SHA }}
