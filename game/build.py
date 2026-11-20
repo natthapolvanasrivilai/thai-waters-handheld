@@ -16,13 +16,19 @@ for token,filename in [('@@HANDHELD_INPUT@@','handheld-input.js'),('@@FIELD_GUID
 values['@@LOCALIZATION@@']=(root/'src/localization.js').read_text(encoding='utf8').replace('@@DICTIONARY@@',json.dumps({**json.loads((root/'src/thai-menu.json').read_text(encoding='utf8')),**json.loads((root/'src/thai-play.json').read_text(encoding='utf8'))},ensure_ascii=False))
 for token,file in [('@@LANGUAGE_CONTROL@@','language-control.js'),('@@THAI_ATLAS@@','thai-atlas.js')]:
  values[token]=(root/'src'/file).read_text(encoding='utf8')
+thai_names=json.loads((root/'content/thai-specimen-labels.json').read_text(encoding='utf8'))
+thai_name_import="import thaiSpecimenLabels from '../content/thai-specimen-labels.json' with { type: 'json' };"
+assert values['@@THAI_ATLAS@@'].count(thai_name_import)==1
+thai_names_literal=json.dumps(thai_names,ensure_ascii=False)
+assert '</script' not in thai_names_literal.lower()
+values['@@THAI_ATLAS@@']=values['@@THAI_ATLAS@@'].replace(thai_name_import,'const thaiSpecimenLabels = '+thai_names_literal+';')
 # The standalone page embeds the atlas module in its classic game script.
 values['@@THAI_ATLAS@@']=values['@@THAI_ATLAS@@'].replace('export function thaiAtlas(', 'function thaiAtlas(')
 template=template.replace('</html>', '<!-- Noto Sans Thai: '+(root/'assets/fonts/NotoSansThai-OFL.txt').read_text(encoding='utf8')+' -->\n</html>')
 for face in ('SyyUDT-Regular','SyyUDS-Regular','SyyFlowey-Bold'):
  values['@@'+face+'@@']=base64.b64encode((root/'assets/fonts'/(face+'.woff2')).read_bytes()).decode()
 template=template.replace('</html>', '<!-- '+(root/'assets/fonts/Syy-OFL.txt').read_text(encoding='utf8')+' -->\n</html>')
-credits=['field-evidence.md','thai-field-datasets.csv','thai-field-evidence.csv','specimen-image-credits.csv']
+credits=['thai-specimen-labels.md','field-evidence.md','thai-field-datasets.csv','thai-field-evidence.csv','specimen-image-credits.csv']
 field_bank=(root/'assets/TW-FISH.BIN').read_bytes()
 values['@@FIELD_BANK@@']=base64.b64encode(field_bank).decode()
 values['@@BANK_SHA@@']=hashlib.sha256(field_bank).hexdigest()
