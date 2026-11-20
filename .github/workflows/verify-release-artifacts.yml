@@ -12,7 +12,7 @@ on:
 permissions:
   contents: read
 env:
-  SOURCE_SHA: ${{ inputs.source_sha || 'a8137e41a91c608630ff21bf9d7b775fe688fb0e' }}
+  SOURCE_SHA: ${{ inputs.source_sha || github.sha }}
 jobs:
   browser:
     runs-on: ubuntu-24.04
