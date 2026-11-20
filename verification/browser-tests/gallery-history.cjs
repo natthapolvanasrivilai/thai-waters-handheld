@@ -48,9 +48,31 @@ const {webkit,chromium}=require('playwright-core');
  await unknown.tap();assert(!await page.locator('#bookDetail').innerText().then(s=>s.includes('Climbing perch')||s.includes('ปลาหมอไทย')));
  await swipe('#bookDetail',-82);await page.waitForFunction(()=>bookSpecies===1);
  await swipe('#bookDetail',82);await page.waitForFunction(()=>bookSpecies===0);
+ // Diagnose the first real Back tap after swiping; never replace it with JS activation.
+ await page.evaluate(()=>{
+  window.galleryBackTrace=[];
+  for(const t of ['pointerdown','pointerup','pointercancel','click']){
+   window.addEventListener(t,e=>{
+    const x=e.clientX,y=e.clientY,target=e.target.closest?.('button,article,[data-section]')?.id||e.target.nodeName;
+    const point=document.elementFromPoint(x||0,y||0)?.closest('button,article,[data-section]')?.id;
+    const record={t,target,point,menuPage,bookSpecies,pointerId:e.pointerId,primary:e.isPrimary,x,y};
+    galleryBackTrace.push(record);
+    queueMicrotask(()=>{record.prevented=e.defaultPrevented;record.after=[menuPage,bookSpecies];});
+   },{capture:true,once:true});
+  }
+ });
+ assert.deepEqual(await page.evaluate(()=>[menuPage,bookSpecies]),['book',0]);
  await page.locator('#back').tap();
+ const afterBack=await page.evaluate(()=>({menuPage,bookSpecies,detailHidden:$('bookDetail').hidden,
+  listClass:$('records').parentElement.className,backTrace:galleryBackTrace}));
+ assert(afterBack.menuPage==='book'&&afterBack.bookSpecies===null&&afterBack.detailHidden,
+  'Back must close only the detail: '+JSON.stringify(afterBack));
  assert(await unknown.locator('canvas').evaluate(c=>{const b=c.getContext('2d').getImageData(0,0,c.width,c.height).data,colors=new Set();for(let i=0;i<b.length;i+=4)if(b[i+3]===255)colors.add(b.slice(i,i+3).join(','));return colors.size===1;}));
- for(let i=0;i<Math.floor(40/8);i++)await page.locator('#bookNext').tap();
+ for(let i=0;i<Math.floor(40/8);i++){
+  assert(await page.locator('#bookNext').isVisible(),'Next missing before page '+(i+2)+': '+JSON.stringify(await page.evaluate(()=>({menuPage,bookSpecies,bookOffset}))));
+  await page.locator('#bookNext').tap();
+  assert.deepEqual(await page.evaluate(()=>[menuPage,bookSpecies,bookOffset]),['book',null,i+1],'Next tap did not advance page '+(i+2));
+ }
  assert(await page.locator('#species-40 b').isVisible());assert.equal(await page.locator('#species-41 b').count(),0);
  await shot('Thai-Waters-collection');await page.locator('#bookSearch').fill('prawn');await page.locator('#species-40').tap();
  const row=page.locator('.catch-log');assert.equal(await row.count(),1);assert.equal(await row.locator('svg').count(),8);assert.match(await row.innerText(),/18/);
