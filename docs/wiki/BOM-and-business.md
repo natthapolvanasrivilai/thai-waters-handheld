@@ -2,17 +2,11 @@
 
 [Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 
-## Pricing scope
+## Current engineering BOM: mechanical R0011, electrical R0004
 
-The last covered-housing estimate was $112.06 in allocated materials and $146.65 assembled for R0010. R0011 changes the housing toolpath and material use. The R0004 electrical changes require a revised parts allocation and assembly cost once the fitted circuit is established. Use the historical figures for budgeting only. [R0010 cost model](../../sourcing/production-intent/R0010-budget.json) · [Hardware gate](../../quality/hardware-gate.md)
+[Read the R0011/R0004 build and procurement basis](../../sourcing/production-intent/R0011-R0004-BOM.md) · [Download the one-unit engineering BOM (CSV)](../../sourcing/production-intent/R0011-R0004-engineering-BOM.csv) · [Thailand-first current quotes (CSV)](../../sourcing/production-intent/R0011-R0004-market-snapshot.csv).
 
-The proposed haptic connector uses one Würth header ($1.15), one housing ($0.18), and four factory-crimped leads ($2.50 each), totaling **$11.33** before freight and tax. This is a replacement subassembly. The whole-unit delta also depends on removed wiring, assembly labor and electronics still under review. Distributor availability needs confirmation at checkout. [Exact part numbers, quantities and US prices](../../sourcing/production-intent/R0004-haptic-terminal-candidate.csv)
-
-The R0011 housing consumes 4.70 g more PETG than R0010, adding $0.1175 at $25/kg. The five superseded W4 loose-wire allocations totaled $0.0585. Substituting the $11.33 connector set gives a partial materials estimate of **$123.45** for the historical configuration with those two substitutions. The PCB redesign, 1 mm shop-made FR-4 spacer, short underside strap, identification and assembly rework still need pricing. [Housing slice](../../hardware/mechanical/TW-A-0001-R0011/QA/print-audit.json) · [R0010 line items](../../sourcing/production-intent/R0010-prototype-budget.csv)
-
-## Electrical procurement candidates
-
-[Exact part-number sourcing index](../../sourcing/production-intent/R0004-candidate-part-links.csv) · [Candidate quantities, installation and engineering sources](../../hardware/electronics/integration-r0004/bom-delta.csv). Selection and layout of the remaining controller logic are open. A production unit quote depends on the completed board.
+The known fully optioned materials allocation is **$123.29 before unpriced electrical ECO, labor, freight, duties and VAT**. Not a landed total. R0011/X1C is an inert fit print; R0004 powered build and procurement release remain on hold. R0010 and earlier figures below are historical.
 
 ## One fully equipped R0009 unit
 

@@ -1,0 +1,10 @@
+ref,vendor,vendor_sku,identical_mpn,url,currency,unit_price,price_as_of,stock,qualification
+A1,RobotShop,31137,31137,https://www.robotshop.com/products/waveshare-esp32-s3-35-ips-touch-display-development-board-type-b-320480-camera-interface-wi-fi-bluetooth-5-no-case,USD,32.56,2026-11-19,Thailand stock / delivery unverified,Exact standard no-case/no-camera SKU; verify actual board revision and checkout
+A2,Adafruit direct,6357,6357,https://www.adafruit.com/product/6357,USD,5.95,2026-11-19,Reconfirm stock and Thai freight,Independent channel; exact MPN; catalog fallback not qualified
+SP1,Adafruit direct,3923,3923,https://www.adafruit.com/product/3923,USD,1.95,2026-11-19,Out of stock,Exact fallback but unavailable; no qualified in-stock alternate
+B1,Mouser Thailand,485-258,258,https://th.mouser.com/th/ProductDetail/Adafruit/258?qs=GURawfaeGuBs6bjHSLOmpg%3D%3D,,,,Restricted to Thailand,Exact product but seller blocks Thai sale; cannot use as fallback
+MG1,Radial Magnets direct,8995,8995,https://radialmagnet.com/our-magnets/disk-sensor-n35-nicuni-d6mma-x-2-5mm/,USD,0.80,2026-11-20,In stock shown; Thai delivery not verified,Independent channel; exact part; Thai freight/acceptance pending
+M1,SparkFun direct,ROB-08449,ROB-08449,https://www.sparkfun.com/vibration-motor.html,USD,2.95,2026-11-19,Reconfirm stock and Thai freight,Independent channel; exact MPN; catalog fallback not qualified
+W4-PCB,Mouser,710-61900519521,61900519521,https://eu.mouser.com/en/ProductDetail/Wurth-Elektronik/61900519521?qs=ZtY9WdtwX56xVGNGrJKg2g%3D%3D,,,,Thai price and dispatch unverified,Exact same Würth SKU; confirm regional stock MOQ and freight
+W4-PLUG,Mouser,710-61900511621,61900511621,https://www.mouser.de/en/ProductDetail/Wurth-Elektronik/61900511621?qs=W%252B2sBeLta1Yg9sQFWoYzHQ%3D%3D,,,,Thai price and dispatch unverified,Exact same Würth SKU; confirm regional stock MOQ and freight
+W4-LEAD,Mouser,710-619100126015,619100126015,https://www.mouser.ca/en/ProductDetail/Wurth-Elektronik/619100126015?qs=E2PpAYvlWVsv%2FiZnh3SCfg%3D%3D,,,,Thai price and dispatch unverified,Exact same Würth SKU; confirm regional stock MOQ and freight
