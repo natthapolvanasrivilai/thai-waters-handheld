@@ -23,6 +23,10 @@ const menuSheets=(()=>{
  add('rod','Journey','เส้นทางนักตกปลา',rod.querySelector('.book-totals'),$('chapter'),$('letter'),$('goal'));
  add('rod','Upgrades','อัปเกรด',$('builds'));
  add('rod','Tackle points','แต้มอุปกรณ์',$('refund'),rod.querySelector('.note'));
+ add('rod','Career & backups','บันทึกนักตกปลา',$('careerOpen'));
+ add('career','Local career','บันทึกในเครื่อง',$('careerSummary'),$('careerPrivacy'),$('careerExport'));
+ add('career','Restore backup','กู้คืนไฟล์สำรอง',$('careerFile').closest('label'),$('careerStatus'),$('careerRestore'));
+
  const sound=panel('sound'),rumble=sound.querySelector('.rumble-box');
  add('sound','Music','ดนตรี',row(field('music'),field('volume')),sound.querySelector('.audio-check'));
  add('sound','Fishing sounds','เสียงตกปลา',row(field('cue'),field('fx')),row(field('reelClick'),$('iosSwitchRow')));
@@ -54,5 +58,5 @@ const menuSheets=(()=>{
  }
  function step(by){const pagesHere=pages.get(menuPage);if(!pagesHere)return;positions.set(menuPage,Math.max(0,Math.min(pagesHere.length-1,(positions.get(menuPage)||0)+by)));open(menuPage);}
  prev.onclick=()=>step(-1);next.onclick=()=>step(1);
- return {open};
+ return {open,reset:name=>positions.delete(name)};
 })();

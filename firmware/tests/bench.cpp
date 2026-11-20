@@ -70,6 +70,15 @@ EXPORT int windupMs(){return castWindupMs;}
 EXPORT int flightMs(){return castDurationMs;}
 EXPORT void clearFishingSound(){clearTransientSound();}
 EXPORT int state(){return int(g.phase);}
+EXPORT void fishHintsEnabled(int enabled){g.setFishHints(enabled!=0);}
+static FishHint renderedFishHint;
+EXPORT int sampleFishHint(){
+  renderedFishHint=g.fishHint();
+  return renderedFishHint.visible()?(renderedFishHint.large?2:1):0;
+}
+EXPORT float fishHintX(){return renderedFishHint.x;}
+EXPORT float fishHintY(){return renderedFishHint.y;}
+EXPORT float fishHintPhase(){return renderedFishHint.phase;}
 EXPORT void setAim(float x,float y){g.setAim(x,y);}
 EXPORT float aimX(){return g.aimX;}
 EXPORT float aimY(){return g.aimY;}

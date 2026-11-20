@@ -89,7 +89,14 @@ inline int material(int kind,int x,int z,unsigned seed){
     default:return fleck?62:Post;
   }
 }
+// A fixed 8x8 threshold pattern hands the view to the destination already
+// behind this layer, without storing a second LCD image or temporal noise.
+inline unsigned revealRank(int x,int y){
+  constexpr unsigned b[]={0,2,3,1};
+  return b[(x&1)+2*(y&1)]*16+b[(x>>1&1)+2*(y>>1&1)]*4+b[(x>>2&1)+2*(y>>2&1)];
+}
 template<class Output> inline void raster(const Frame& f,Output output){
+  if(!f.count||f.reveal>=64)return;
   uint8_t row[scenery::width];
   for(int y=0;y<scenery::height;y++){
     for(auto& px:row)px=255;
@@ -102,7 +109,7 @@ template<class Output> inline void raster(const Frame& f,Output output){
     int earthX=int(((-f.center*depth/175)-f.bend*depth*depth*.002f)*32*256);
     int earthZ=int((depth+f.distance)*32);
     for(int x=0;x<scenery::width;x++,earthX+=step){
-      int k=row[x];if(k==255)continue;
+      int k=row[x];if(k==255||(f.reveal&&revealRank(x,y)<f.reveal))continue;
       if(k>=Grass){
         if(k==Gunwale||k==Dashboard)k=material(k,x-int(f.boatShift/2),y-int(f.boatDrop/2),f.seed);
         else k=material(k,earthX>>8,earthZ,f.seed);
