@@ -64,20 +64,39 @@ const {chromium} = require('playwright-core');
    }));
    assert.deepEqual(routes,[0,1,2,3],'water-specific approaches');
    assert(shapes.every(s=>s.valid));assert.equal(new Set(shapes.map(s=>s.family)).size,4);
+   if(!reduced) await page.evaluate(()=>{
+    window.arrivalProbe=new Promise((resolve,reject)=>{
+     const lcd=$('lcdUI'), snapshot=()=>[g.state(),g.age(),held,action,turns,menu.open];
+     const key=(type)=>$('act').dispatchEvent(new KeyboardEvent(type,
+       {key:'r',code:'KeyR',bubbles:true,cancelable:true}));
+     let start=null,before,after;
+     const timeout=setTimeout(()=>{observer.disconnect();reject(new Error('Did not observe arrival start and end'));},20000);
+     const observer=new MutationObserver(()=>{
+      if(start===null&&arrivalSince!==null){
+       start=arrivalSince;before=snapshot();key('keydown');after=snapshot();
+      }else if(start!==null&&arrivalSince===null){
+       const end=snapshot(),duration=performance.now()-start;
+       observer.disconnect();clearTimeout(timeout);key('keyup');
+       resolve({before,after,end,duration});
+      }
+     });
+     observer.observe(lcd,{attributes:true,attributeFilter:['data-arriving']});
+    });
+    // Keep an observation timeout from producing an unhandled page error
+    // before the test attaches its awaiting evaluation.
+    window.arrivalProbe.catch(()=>{});
+   });
    await travel('Chao Phraya River','Dusk');
-   await page.locator('#arrivalSkip').waitFor({state:'visible'});
-   assert.equal(await page.evaluate(()=>g.state()),0);
    if(!reduced){
-    await page.keyboard.down('r');
-    await page.waitForTimeout(130);await page.keyboard.up('r');
-    assert.equal(await page.evaluate(()=>held||action||!!turns||!!g.age()),false,'Travel must quarantine all fishing input');
-    const measured=await page.evaluate(()=>new Promise(resolve=>{
-     const start=arrivalSince;const observer=new MutationObserver(()=>{
-      if(arrivalSince===null){observer.disconnect();resolve(performance.now()-start);}
-     });observer.observe($('lcdUI'),{attributes:true,attributeFilter:['data-arriving']});
-    }));
-    assert(measured>=4180&&measured<5300,'4.2 second arrival, measured '+measured);
+    const {before,after,end,duration}=await page.evaluate(()=>window.arrivalProbe);
+    const neutral=[0,0,false,false,0,false];
+    assert.deepEqual(before,neutral,'Start the trip with neutral fishing inputs');
+    assert.deepEqual(after,neutral,'Travel must quarantine the dispatched reel key');
+    assert.deepEqual(end,neutral,'Fishing remains neutral until travel naturally ends');
+    assert(duration>=4180&&duration<5300,'4.2 second arrival, measured '+duration);
    }else{
+    await page.locator('#arrivalSkip').waitFor({state:'visible'});
+    assert.equal(await page.evaluate(()=>g.state()),0);
     const same=await page.evaluate(async()=>{
       draw();const first=canvas.toDataURL();await new Promise(r=>setTimeout(r,90));draw();return first===canvas.toDataURL();
     });
