@@ -41,6 +41,7 @@ const menuAudio=(()=>{
   const el=target(e),button=el?.closest('button,summary');
   if(el?.closest(excluded)||button?.disabled||button?.closest('[inert],[aria-disabled="true"]'))return;
   if(button?.matches('#act')){if(!menu.open)play('tap',true);}
+  else if(menu.open&&button?.matches('#sheetPrev,#sheetNext,#bookPrev,#bookNext'))play('scroll',true);
   else if(button?.matches('#openMenu,#rigHud,#catchContinue')||button&&menu.open&&menu.contains(button))play('menu',true);
  },true);
  document.addEventListener('change',e=>{

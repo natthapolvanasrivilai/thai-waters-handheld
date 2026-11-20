@@ -95,10 +95,19 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
    assert.deepEqual(await frames(),[432],'programmatic menu clicks stay silent');
    await p.locator('#openMenu').press('Enter');
    assert.deepEqual(await frames(),[432,432],'keyboard activation has exactly one menu cue');
-   // Product pages paginate. Give the actual menu one real scrolling region
+   // Standard product menu paging deserves the same short detent as scrolling.
+   await p.locator('[data-to=spots]').press('Enter');
+   assert.equal(await p.locator('#sheetNumber').textContent(),'1/2');
+   assert.deepEqual(await frames(),[432,432,432],'opening the destination menu uses a menu cue');
+   await p.locator('#sheetNext').press('Enter');
+   assert.equal(await p.locator('#sheetNumber').textContent(),'2/2');
+   assert.deepEqual(await frames(),[432,432,432,192],'one detent for an actual menu page change');
+   assert(await p.locator('#sheetNext').isDisabled(),'the final page cannot emit another detent');
+   await p.evaluate(()=>uiPcm.length=0);
+   // Give the actual menu one real scrolling region
    // for this test so scrolling can be driven by the browser, not dispatchEvent.
    await p.evaluate(()=>{
-    const area=document.createElement('section');area.id='uiAudioScrollFixture';
+    const area=document.createElement('section');area.id='uiAudioScrollFixture';area.tabIndex=0;
     area.style.cssText='position:absolute;inset:70px 16px auto;width:230px;height:110px;overflow:auto;pointer-events:auto;z-index:12';
     const inner=document.createElement('div');inner.style.height='600px';area.append(inner);
     $('menu').append(area);
@@ -106,15 +115,14 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
    });
    await p.waitForTimeout(140);
    assert(await p.locator('#uiAudioScrollFixture').evaluate(el=>el.scrollTop>0),'scroll fixture moved');
-   assert.deepEqual(await frames(),[432,432],'programmatic scrolling stays silent');
-   const area=p.locator('#uiAudioScrollFixture'),box=await area.boundingBox();
-   await p.mouse.move(box.x+box.width/2,box.y+box.height/2);
-   await p.mouse.wheel(0,180);
-   await p.waitForFunction(()=>$('uiAudioScrollFixture').scrollTop>0&&uiPcm.some(x=>x.frames===192));
-   assert.deepEqual(await frames(),[432,432,192],'one cue for an actual scroll');
+   assert.deepEqual(await frames(),[],'programmatic scrolling stays silent');
+   const area=p.locator('#uiAudioScrollFixture'),startTop=await area.evaluate(el=>el.scrollTop);
+   await area.press('PageDown');
+   await p.waitForFunction(top=>$('uiAudioScrollFixture').scrollTop>top,startTop);
+   assert.deepEqual(await frames(),[192],'one cue for an actual keyboard scroll');
    await p.evaluate(()=>{$('uiAudioScrollFixture').remove();window.priorFx=$('fx').selectedIndex;$('fx').selectedIndex=0;$('fx').dispatchEvent(new Event('change',{bubbles:true}));});
    await p.locator('#resume').tap();await p.locator('#openMenu').tap();
-   assert.deepEqual(await frames(),[432,432,192],'FX mute also suppresses trusted menu interactions');
+   assert.deepEqual(await frames(),[192],'FX mute also suppresses trusted menu interactions');
    await p.evaluate(()=>{$('fx').selectedIndex=priorFx;$('fx').dispatchEvent(new Event('change',{bubbles:true}));});
    await p.locator('#resume').tap();
    await p.evaluate(()=>uiPcm.length=0);
