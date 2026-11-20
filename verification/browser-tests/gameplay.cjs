@@ -1,4 +1,5 @@
 const {showControl}=require('./menu-controls.cjs');
+const {readCheckpoint,probeReload,traceText}=require('./reload-trace.cjs');
 const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=require('path'),assert=require('node:assert/strict');
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.BROWSER_PATH || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
@@ -47,10 +48,12 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   assert.equal(await pg.evaluate(()=>g.caught(40)),0);
   const widths=await pg.evaluate(()=>window.specimenFrames.map(f=>f.w));
   assert(widths.length>1 && widths.every(w=>w===widths[0]),'Specimen stays full size until filed');
-  const heldWeight=await pg.evaluate(()=>g.grams());
-  await pg.reload();await pg.waitForFunction(()=>g?.state()===5 && !$('catchContinue').hidden);
-  assert.equal(await pg.evaluate(()=>g.caught(40)),0);
-  assert.equal(await pg.evaluate(()=>g.grams()),heldWeight,'Pending catch retains its individual weight after reload');
+  const {observed:heldWeight,trace:beforePendingRestore}=await pg.evaluate(readCheckpoint,{species:40,observe:'weight'});
+  try{
+   await pg.reload();await pg.waitForFunction(()=>g?.state()===5 && !$('catchContinue').hidden);
+   assert.equal(await pg.evaluate(()=>g.caught(40)),0);
+   assert.equal(await pg.evaluate(()=>g.grams()),heldWeight,'Pending catch retains its individual weight after reload');
+  }catch(error){console.error(traceText(beforePendingRestore,await probeReload(pg,{species:40}),errors.length));throw error;}
   await pg.locator('#catchContinue').click();await pg.waitForFunction(()=>g.state()===0&&!document.querySelector('#menu').open);
   assert.equal(await pg.evaluate(()=>g.caught(40)),1,'Transfer must not count the catch twice');
   await menu('rod');await showControl(pg,'#finish');await pg.selectOption('#finish','Copper');await showControl(pg,'#technique');await pg.selectOption('#technique',{label:'Vertical jig'});await showControl(pg,'#builds button');await pg.locator('#builds button').nth(1).click();assert.equal(await pg.evaluate(()=>g.rank(1)),1);await pg.locator('#resume').click();

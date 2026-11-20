@@ -1,4 +1,5 @@
 const {showControl,chooseNamed}=require('./menu-controls.cjs');
+const {readCheckpoint,probeReload,traceText}=require('./reload-trace.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const {pathToFileURL} = require('node:url');
@@ -154,10 +155,14 @@ const {chromium} = require('playwright-core');
     window.castProbe.catch(()=>{});
    });
    await page.locator('#act').click();
-   assert([1,2].includes(await page.evaluate(()=>window.castProbe)),'The tap after Skip starts fishing');
-   await page.reload();await page.waitForFunction(()=>!document.getElementById('act').disabled);
-   assert.equal(await page.locator('#arrivalSkip').isVisible(),false);
-   assert.equal(await page.locator('#spot').textContent(),'Kwan Phayao');
+   const placeName='Kwan Phayao';
+   const {observed:castPhase,trace:beforeRestore}=await page.evaluate(readCheckpoint,{placeName,observe:'cast'});
+   assert([1,2].includes(castPhase),'The tap after Skip starts fishing');
+   try{
+    await page.reload();await page.waitForFunction(()=>!document.getElementById('act').disabled);
+    assert.equal(await page.locator('#arrivalSkip').isVisible(),false);
+    assert.equal(await page.locator('#spot').textContent(),'Kwan Phayao');
+   }catch(error){console.error(traceText(beforeRestore,await probeReload(page,{placeName}),errors.length));throw error;}
    await travel('Krabi coastal waters','Dawn',()=>probeTrip('skip'));
    const krabi=await checkTrip();
    assert.equal(krabi.family,3,'Krabi uses the longtail-boat approach');
