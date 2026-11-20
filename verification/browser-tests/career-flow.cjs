@@ -15,7 +15,9 @@ const {chromium,webkit}=require('playwright-core');
   await page.reload();await page.waitForFunction(()=>g?.caught(40)===2);
   assert.equal(await page.evaluate(()=>g.best(40)),18);
   const career=async()=>{
-   await page.locator('#openMenu').tap();await page.locator('[data-to=career]').tap();
+   await page.locator('#openMenu').tap();await page.locator('[data-to=rod]').tap();
+   while(await page.locator('#sheetNext').isEnabled())await page.locator('#sheetNext').tap();
+   await page.locator('[data-to=career]').tap();
    await page.locator('#careerExport').waitFor();
   };
   await career();const saved=page.waitForEvent('download');await page.locator('#careerExport').tap();
@@ -23,6 +25,7 @@ const {chromium,webkit}=require('playwright-core');
   const backup=await fs.readFile(await file.path());
   const wrap=JSON.parse(backup);assert.equal(wrap.version,1);assert.deepEqual(wrap.career.book[40],[2,18]);
   const before=await page.evaluate(k=>localStorage.getItem(k),key);
+  await page.locator('#sheetNext').tap();
   const input=page.locator('#careerFile');
   await input.setInputFiles({name:'broken.json',mimeType:'application/json',buffer:Buffer.from('{}')});
   await page.waitForFunction(()=>$('careerStatus').textContent.length>0);
