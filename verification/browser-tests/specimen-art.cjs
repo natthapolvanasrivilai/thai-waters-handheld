@@ -55,6 +55,42 @@ const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=requ
  });
  assert.equal(journal.name,'Labeo dyocheilus');assert.equal(journal.pixels,true);assert.equal(journal.source,labeo);
  console.log('PASS restored Labeo dyocheilus catch, same full-color source on reveal and saved journal after reload.');
+ // Opt-in branch, two DPRs and unchanged active localization.
+ for(const dpr of [1,2]){
+  const pilot=await browser.newPage({isMobile:true,hasTouch:true,deviceScaleFactor:dpr,viewport:{width:844,height:390}});
+  await pilot.addInitScript(()=>localStorage.setItem('thai-waters-language','th'));
+  await pilot.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href+'?fishArt=hq');
+  await pilot.waitForFunction(()=>g&&!$('act').disabled);
+  const state=await pilot.evaluate(async()=>{
+   const ids=[1822,2158,2160,2190,2192],id=1822,unknown=1821;
+   const ready=await Promise.all(ids.map(i=>loadDetailArt(i)?.done));
+   menu.show();section('book');showBookEntry(id);
+   const unseen=document.querySelector('#bookDetail .fish-thumb').dataset.fishArt;
+   g.restoreEntry(id,1,Math.round((atlas.fish[id].low+atlas.fish[id].high)/2));
+   showBookEntry(id);await loadDetailArt(id).done;await Promise.resolve();
+   const tile=document.querySelector('#bookDetail .fish-thumb');
+   const box=tile.getBoundingClientRect(),name=document.querySelector('#bookDetail h2').textContent;
+   const scientific=originalAtlas.fish[id].name;
+   const labels=[...document.querySelectorAll('#bookDetail small')].map(n=>n.textContent);
+   g.restoreCatch(id,Math.round((atlas.fish[id].low+atlas.fish[id].high)/2));
+   if(g.state()!==5||g.species()!==id)throw Error('Not the requested catch');
+   const hit=[],original=CanvasRenderingContext2D.prototype.drawImage;
+   try{
+    CanvasRenderingContext2D.prototype.drawImage=function(img,...args){if(this===ctx&&img===loadDetailArt(id).img)hit.push(args);return original.call(this,img,...args);};
+    landedCatch(0);
+   }finally{CanvasRenderingContext2D.prototype.drawImage=original;}
+   const unmatched=originalAtlas.fish[id].name;originalAtlas.fish[id].name='test wrong species';
+   let rejected;try{rejected=loadDetailArt(id)===null;}finally{originalAtlas.fish[id].name=unmatched;}
+   return {ready,unseen:unseen||null,hq:tile.dataset.fishArt,px:[tile.width,tile.height],css:[box.width,box.height],name,expected:atlas.fish[id].name,labels,scientific,hit,unknown:loadDetailArt(unknown)===null,rejected,dpr:devicePixelRatio};
+  });
+  assert.equal(state.dpr,dpr);assert.deepEqual(state.ready,[true,true,true,true,true]);
+  assert.equal(state.unseen,null);assert.equal(state.hq,'hq');assert.deepEqual(state.px,[288,150]);
+  assert(state.css[0]>0&&state.css[0]<=145&&state.css[1]>0&&state.css[1]<=79);
+  assert.equal(state.name,state.expected);assert(state.name===state.scientific||state.labels.includes(state.scientific));
+  assert.equal(state.hit.length,1,'Catch paints the matching source-resolution image');
+  assert.equal(state.unknown,true);assert.equal(state.rejected,true);
+  await pilot.close();
+ }
  if(process.env.ART_PREVIEW)fs.writeFileSync(process.env.ART_PREVIEW,Buffer.from(result.sheet.split(',')[1],'base64'));
  console.log(result.count+' unique full-color portraits, '+result.shapes+' distinct alpha silhouettes; '+result.missing.length+' awaiting an illustration');
  }finally{await browser.close();}

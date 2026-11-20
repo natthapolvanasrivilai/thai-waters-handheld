@@ -274,6 +274,7 @@ $('refund').onclick=()=>{if(confirmRefund){g.refund();save()}confirmRefund=!conf
 const fishSheet=new Image();fishSheet.src="@@FISH@@";
 // Only the current journal spread and reveal need decoded portraits.
 const portraitCache=new Map();
+@@HQ_PORTRAITS@@
 function drawSpecimen(c,id,x,y,w,h){
  if(id<60){c.drawImage(fishSheet,id%10*96,Math.floor(id/10)*50,96,50,x,y,w,h);return;}
  if(!g.hasPortrait(id)){
@@ -931,7 +932,7 @@ function landedCatch(age){
  const weight=displayMass(g.grams()),reward=rewardText[g.landingReward()];
  const t=Math.max(0,Math.min(1,g.filed()?age/800:0)),ease=t*t*(3-2*t);
  const k=3.7-3.4*ease,cx=100+347*ease,cy=158-99*ease-46*4*t*(1-t);
- if(t<1)drawSpecimen(ctx,id,
+ if(t<1)drawLandedPortrait(ctx,id,
   Math.round(cx-24*k),Math.round(cy-12.5*k),Math.round(48*k),Math.round(25*k));
  if(g.filed())return;
  ctx.save();ctx.globalAlpha=catchPromptOpacity(age);caption(catchContinueLabel,240,310,'center','#fff4d8',13);ctx.restore();
