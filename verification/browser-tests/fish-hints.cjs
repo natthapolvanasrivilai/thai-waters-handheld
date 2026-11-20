@@ -30,3 +30,14 @@ for(let p=0;p<117;p++){
 }
 assert.deepEqual([...found].sort(),[1,2]);
 console.log('PASS actual WASM has both silhouette sizes, clear water band, Cup disable/restore, and no leaked species ID');
+
+// Both competitive modes gate the actual packaged renderer and cast path.
+const html=fs.readFileSync(path.join(__dirname,'../../game/Thai-Waters-play.html'),'utf8');
+const guard=html.match(/^function fishHintsAllowed\(\)\{[^\n]+\}$/m);
+assert(guard,'Missing shared competitive guard in packaged HTML');
+const hintsAllowed=new Function('crewOn','cupIsJoined',guard[0]+'\nreturn fishHintsAllowed();');
+assert(hintsAllowed(false,()=>false));
+for(const [crew,cup] of [[true,false],[false,true],[true,true]])assert(!hintsAllowed(crew,()=>cup));
+assert.match(html,/function paintFishHint\(\)\{\s+if\(menu.open\|\|!fishHintsAllowed\(\)\)return;/);
+assert.match(html,/g\.fishHintsEnabled\(fishHintsAllowed\(\)\);g\.advance\(/);
+console.log('PASS both Daily Cup and Crew challenge disable the browser cue and cast bonus');

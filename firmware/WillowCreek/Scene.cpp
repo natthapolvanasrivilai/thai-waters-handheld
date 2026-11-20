@@ -48,7 +48,9 @@ void landscapeMotion(const View& v){
   }
   auto frame=screen.getFramebuffer();
   scenery::LcdSpans spans{frame,background?background:frame,lcd};
-  scenery::paintAmbient(spans,scenicLayout,ms,utcDayPlusOne);
+  uint16_t boat=0;
+  scenery::paintAmbient(spans,scenicLayout,ms,utcDayPlusOne,&boat);
+  setBoatAmbience(boat,v.page==Page::Play);
 }
 const lcdtype::Face& fontFace(int size){
   return size>=3?lcdtype::title:size==2?lcdtype::body:lcdtype::caption;
@@ -659,6 +661,7 @@ void touchCheck(const View& v){
 }
 void paint(const View& v){
  if(!screenOK)return;
+ if(v.page!=Page::Play&&!menuui::overlay(v.page)&&v.page!=Page::Arrival)setBoatAmbience(0,false);
  if(menuui::overlay(v.page))play(v);
  switch(v.page){
  case Page::Arrival:case Page::Play:play(v);break;case Page::Hub:hub(v);break;case Page::Waters:waters(v);break;
