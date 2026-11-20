@@ -4,6 +4,7 @@
 #include "CatchLog.h"
 #include "Rumble.h"
 #include "ReelDetents.h"
+#include "ReelAudio.h"
 #include "Connected.h"
 #include "RodController.h"
 #include <Preferences.h>
@@ -42,6 +43,7 @@ void updateLocalWeather(){
 Page returnTo=Page::Play;
 RumblePlan haptics;
 ReelDetents detents;
+reelAudio::Meter reelSound;
 uint32_t audition=0,lastDirection=0;
 bool auditioning=false, wasHapticPlay=false;
 template<int N> struct OriginalBook {Entry entries[N];uint8_t rank[3],reserved;};
@@ -409,7 +411,8 @@ void loop(){
   const bool wasArriving=view.page==Page::Arrival;
   sampleRod(now,dt);
   int angle=0;view.field=readWheel(angle);
-  float turns=wheel.read(angle,view.field==Field::Good,now,view.sound.reverse);
+  uint32_t validWheelMs=0;
+  float turns=wheel.read(angle,view.field==Field::Good,now,view.sound.reverse,&validWheelMs);
   if(view.page==Page::Bench){
     view.raw=view.field==Field::Good?angle:-1;view.turns+=turns;
     if(std::abs(turns)>.0009f){view.direction=turns>0?1:-1;lastDirection=now;}
@@ -448,14 +451,18 @@ void loop(){
   Pulse pulse=haptics.tick(view.game,now,active);
   // Only measured rotation produces clicks, including in practice mode.
   bool reelActive=(active || view.page==Page::Bench || (controller&&rodControllerStreaming())) && view.field==Field::Good;
-  int click=0;
-  if(reelActive)click=detents.feedback(detents.measure(turns),pulse,now);
-  else detents=ReelDetents{};
+  int click=0,audibleClick=0;
+  if(reelActive){
+    const int crossings=detents.measure(turns);
+    click=detents.feedback(crossings,pulse,now);
+    reelSound.observe(turns,validWheelMs,crossings);
+    audibleClick=reelSound.take(now,detents.quiet||!view.sound.reelVolume);
+  }else{detents=ReelDetents{};reelSound={};}
   if(pulse!=Pulse::None)view.driver=driveRumble(pulse,view.rumble,view.game.heat);
   else if(click)view.driver=driveRumble(Pulse::Detent,view.rumble,0);
   if(auditioning && now-audition>=420)auditioning=false;
   SoundSettings mix=view.sound;if(controller)mix.music=3;if(auditioning)mix.cue=0;
-  setSound(mix,active && (view.game.phase==Phase::Bite || view.game.phase==Phase::Fight),view.game.phase!=before&&view.game.phase==Phase::Bite,click,landing,view.game.soundEdges,view.game.phase==Phase::Landed && !view.game.filed,active && view.game.surge(),view.game.phase==Phase::Lost);
+  setSound(mix,active && (view.game.phase==Phase::Bite || view.game.phase==Phase::Fight),view.game.phase!=before&&view.game.phase==Phase::Bite,audibleClick,landing,view.game.soundEdges,view.game.phase==Phase::Landed && !view.game.filed,active && view.game.surge(),view.game.phase==Phase::Lost,!reelActive||!validWheelMs||detents.quiet);
   if(!everDrawn||now-lastDraw>=(controller?320u:55u)){lastDraw=now;everDrawn=true;paint(view);}
 }
 

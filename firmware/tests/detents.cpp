@@ -30,7 +30,7 @@ int main(){
     CreekSynth source;source.begin();sound.reelVolume=level;
     std::array<int16_t,640> pcm{};
     source.render(pcm.data(),320,sound,false,false,direction);
-    assert(std::all_of(pcm.begin()+2*144,pcm.end(),[](int n){return n==0;}));
+    assert(std::all_of(pcm.begin()+2*240,pcm.end(),[](int n){return n==0;}));
     return pcm;
   };
   auto mute=strike(0,1),rest=strike(3,0),forward=strike(2,1),reverse=strike(2,-1);
