@@ -120,10 +120,17 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   const card=await pg.evaluate(async()=>{
    await document.fonts.ready;
    const drawText=ctx.fillText,drawSprite=ctx.drawImage,problems=[],positions=new Set();
+   const footer=L(catchContinueLabel);
+   let footerCount=0;
    let leftmost=480,rightmost=0,lowest=0;
    try{
     ctx.fillText=function(text,x,y){
-     if(text==='Tap to continue'){if(x!==240||y!==310)problems.push([text,x,y]);return;}
+     if(text===footer){
+      footerCount++;
+      const half=ctx.measureText(text).width/2;
+      if(ctx.textAlign!=='center'||x!==240||y!==310||x-half<12||x+half>468)problems.push([text,x,y,x-half,x+half]);
+      return;
+     }
      const right=x+ctx.measureText(text).width;
      leftmost=Math.min(leftmost,x);rightmost=Math.max(rightmost,right);lowest=Math.max(lowest,y);
      if(x<200 || right>468 || y>286 || y<72)problems.push([text,x,y,right]);
@@ -136,9 +143,10 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
    }finally{ctx.fillText=drawText;ctx.drawImage=drawSprite;placeId=0;}
    g.restoreEntry(41,3,240);g.restoreCatch(41,240);draw();
    return {problems:problems.slice(0,5),positions:[...positions],
-    layouts:atlas.fish.length*atlas.locations.length,leftmost,rightmost,lowest,legacy:[g.best(41),g.grams(),$('metrics').textContent]};
+    layouts:atlas.fish.length*atlas.locations.length,footerCount,leftmost,rightmost,lowest,legacy:[g.best(41),g.grams(),$('metrics').textContent]};
   });
-  assert.deepEqual(card.problems,[],'All species and water names fit the catch card');
+  assert.deepEqual(card.problems,[],'All species and water names and the centered action fit the catch card');
+  assert.equal(card.footerCount,card.layouts,'Every catch layout draws its action once');
   assert.deepEqual(card.positions,['[11,112,178,93]'],'All fish retain their full size in the left column');
   assert.equal(card.legacy[0],240);assert.equal(card.legacy[1],0);assert.match(card.legacy[2],/Recorded size.*Unweighed/);
   console.log('PASS '+card.layouts+' catch card layouts; right edge '+card.rightmost.toFixed(1)+' px, last baseline '+card.lowest+' px.');
