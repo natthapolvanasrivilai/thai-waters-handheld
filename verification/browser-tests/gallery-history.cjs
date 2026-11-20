@@ -96,11 +96,15 @@ const {webkit,chromium}=require('playwright-core');
  });
  await tapBookButton('#species-0');await page.waitForFunction(()=>bookSpecies===0);
  await expectBackAfter('before any swipe');
+ // The trusted menu taps unlock the real mixer. Keep it running while observing only page cues.
+ await page.waitForFunction(()=>audio?.state==='running',undefined,{timeout:5000});
  await page.evaluate(()=>{
   window.galleryPageCues=[];
-  window.gallerySoundBefore={audio,pluck,fx:$('fx').selectedIndex,cue:$('cue').selectedIndex};
-  clearInterval(audioTimer);audio={state:'running',currentTime:1};
-  pluck=(freq,when,duration,gain)=>galleryPageCues.push({freq,duration,gain});
+  window.gallerySoundBefore={pluck,fx:$('fx').selectedIndex,cue:$('cue').selectedIndex};
+  pluck=(freq,when,duration,gain)=>{
+   if(freq===340&&duration===.068)galleryPageCues.push({freq,duration,gain});
+   return gallerySoundBefore.pluck(freq,when,duration,gain);
+  };
   $('fx').selectedIndex=2;
  });
  await swipe('#records',-82);await page.waitForFunction(()=>bookOffset===1&&bookSpecies===null);
@@ -115,7 +119,8 @@ const {webkit,chromium}=require('playwright-core');
  await expectBackAfter('immediately after two detail swipes');
  const sounds=await page.evaluate(()=>galleryPageCues.slice());
  assert.equal(sounds.length,2,'Only actual list flips sound; boundaries, pans, details and Back remain silent');
- assert(sounds.every(s=>s.duration>0&&s.duration<=.12&&s.gain>0),'Effects use a short, nonzero game SFX');
+ assert.deepEqual(sounds,[{freq:340,duration:.068,gain:.062},{freq:340,duration:.068,gain:.062}],
+  'Both actual swipes use the exact short SFX at Normal effects volume');
  await page.evaluate(()=>$('fx').selectedIndex=0);
  await swipe('#records',-82);await page.waitForFunction(()=>bookOffset===1&&bookSpecies===null);
  await swipe('#records',82);await page.waitForFunction(()=>bookOffset===0&&bookSpecies===null);
@@ -140,13 +145,14 @@ const {webkit,chromium}=require('playwright-core');
   assert.equal(trace.page,target,'Immediate native touch on '+selector+' must turn one page: '+JSON.stringify(trace));
  }
  await expectPager('#bookNext',1);await expectPager('#bookPrev',0);
- assert.equal(await page.evaluate(()=>galleryPageCues.filter(n=>n.gain<.062).length),2,'Navigation sounds on both arrows and respects Low even in bite-only Light mode');
+ assert.deepEqual(await page.evaluate(()=>galleryPageCues.slice(2).map(n=>n.gain)),[.033,.033],
+  'Both arrow taps use Low effects volume even in bite-only Light mode');
  await page.locator('#bookNext').click();await page.waitForFunction(()=>bookOffset===1);
  await page.locator('#bookPrev').press('Enter');await page.waitForFunction(()=>bookOffset===0);
- assert.equal(await page.evaluate(()=>galleryPageCues.length),6,'Ordinary mouse and keyboard actions still move one page and sound once');
+ assert.deepEqual(await page.evaluate(()=>galleryPageCues.slice(4).map(n=>n.gain)),[.033,.033],
+  'Ordinary mouse and keyboard actions still move one page and sound once');
  await page.evaluate(()=>{
-  audio=gallerySoundBefore.audio;pluck=gallerySoundBefore.pluck;$('fx').selectedIndex=gallerySoundBefore.fx;$('cue').selectedIndex=gallerySoundBefore.cue;
-  if(audio)audioTimer=setInterval(pump,20);
+  pluck=gallerySoundBefore.pluck;$('fx').selectedIndex=gallerySoundBefore.fx;$('cue').selectedIndex=gallerySoundBefore.cue;
  });
 
 
