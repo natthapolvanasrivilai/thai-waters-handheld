@@ -39,6 +39,19 @@ const {webkit,chromium}=require('playwright-core');
    await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+dx,y+dy,{steps:5});await page.mouse.up();
   }
  }
+ async function tapBookButton(selector){
+  const button=page.locator(selector);
+  if(!touch){await button.tap();return;}
+  await button.scrollIntoViewIfNeeded();
+  const b=await button.boundingBox();assert(b,selector);
+  const x=b.x+b.width/2,y=b.y+b.height/2;
+  assert.equal(await page.evaluate(({x,y})=>document.elementFromPoint(x,y)?.closest('button')?.id,{x,y}),selector.slice(1),
+   'Physical button center must be hittable: '+selector);
+  // Use the same touch session before and after a swipe so the browser synthesizes
+  // the release click from one consistent native input stream.
+  await touch.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+  await touch.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+ }
  await swipe('#records',-82);await page.waitForFunction(()=>bookOffset===1&&bookSpecies===null);
  await swipe('#records',82);await page.waitForFunction(()=>bookOffset===0&&bookSpecies===null);
  await swipe('#records',82);assert.equal(await page.evaluate(()=>bookOffset),0); // no wrap; no tile activation
@@ -62,7 +75,8 @@ const {webkit,chromium}=require('playwright-core');
   }
  });
  assert.deepEqual(await page.evaluate(()=>[menuPage,bookSpecies]),['book',0]);
- await page.locator('#back').tap();
+ await tapBookButton('#back');
+ await page.waitForFunction(()=>menuPage==='book'&&bookSpecies===null&&$('bookDetail').hidden,undefined,{timeout:1500}).catch(()=>{});
  const afterBack=await page.evaluate(()=>({menuPage,bookSpecies,detailHidden:$('bookDetail').hidden,
   listClass:$('records').parentElement.className,backTrace:galleryBackTrace}));
  assert(afterBack.menuPage==='book'&&afterBack.bookSpecies===null&&afterBack.detailHidden,
@@ -70,7 +84,8 @@ const {webkit,chromium}=require('playwright-core');
  assert(await unknown.locator('canvas').evaluate(c=>{const b=c.getContext('2d').getImageData(0,0,c.width,c.height).data,colors=new Set();for(let i=0;i<b.length;i+=4)if(b[i+3]===255)colors.add(b.slice(i,i+3).join(','));return colors.size===1;}));
  for(let i=0;i<Math.floor(40/8);i++){
   assert(await page.locator('#bookNext').isVisible(),'Next missing before page '+(i+2)+': '+JSON.stringify(await page.evaluate(()=>({menuPage,bookSpecies,bookOffset}))));
-  await page.locator('#bookNext').tap();
+  await tapBookButton('#bookNext');
+  await page.waitForFunction(i=>menuPage==='book'&&bookSpecies===null&&bookOffset===i,i+1,{timeout:1500}).catch(()=>{});
   assert.deepEqual(await page.evaluate(()=>[menuPage,bookSpecies,bookOffset]),['book',null,i+1],'Next tap did not advance page '+(i+2));
  }
  assert(await page.locator('#species-40 b').isVisible());assert.equal(await page.locator('#species-41 b').count(),0);
