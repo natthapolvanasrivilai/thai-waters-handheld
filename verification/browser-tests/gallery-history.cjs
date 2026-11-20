@@ -21,6 +21,24 @@ const {webkit,chromium}=require('playwright-core');
  await page.reload();await page.waitForFunction(()=>g?.state()===5&&!$('catchContinue').hidden);
  const pos=await page.evaluate(()=>{const ui=$('lcdUI'),before=ui.style.transform;ui.style.transform='none';const gap=ui.getBoundingClientRect().right-$('lcdPower').getBoundingClientRect().right;ui.style.transform=before;return gap;});assert(pos>=0&&pos<10);
  await shot('Thai-Waters-catch-screen');
+ const portrait=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:320,height:700}});
+ if(!process.env.PRIVATE_SITE_CHECK){
+  await portrait.goto(target);await portrait.waitForFunction(()=>g&&!$('act').disabled);
+  await portrait.evaluate(()=>{for(let i=0;i<8;i++)g.restoreEntry(i,1,atlas.fish[i].low);});
+  await portrait.locator('#openMenu').tap();await portrait.locator('[data-to=book]').tap();
+  const fit=await portrait.evaluate(()=>{
+   const rect=$('menu').getBoundingClientRect();
+   const tiles=[...$('records').children],targets=[...tiles,$('bookSearch'),$('bookNext'),$('fishCredits')];
+   return {touch:parseInt(getComputedStyle($('lcdUI')).getPropertyValue('--touch')),count:tiles.length,
+    noOverflow:$('records').scrollHeight<=$('records').clientHeight,
+    fitted:targets.every(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top>=rect.top-1&&r.bottom<=rect.bottom+1&&r.left>=rect.left-1&&r.right<=rect.right+1;}),
+    labelFit:tiles.every(e=>{const label=e.querySelector('b');if(!label)return true;const b=label.getBoundingClientRect(),r=e.getBoundingClientRect();return b.height>0&&b.top>=r.top&&b.bottom<=r.bottom;})};
+  });
+  assert.equal(fit.touch,74,'Small portrait activates the largest LCD touch targets');
+  assert.deepEqual(fit,{touch:74,count:8,noOverflow:true,fitted:true,labelFit:true},'Eight readable touch cards and controls fit the narrow phone');
+  if(process.env.COLLECTION_PREVIEW)await portrait.locator('#flatStage').screenshot({path:process.env.COLLECTION_PREVIEW});
+ }
+ await portrait.close();
  await page.emulateMedia({reducedMotion:'reduce'});await page.reload();await page.waitForFunction(()=>g?.state()===5);assert.equal(await page.evaluate(()=>catchPromptOpacity(900)),1);await page.emulateMedia({reducedMotion:'no-preference'});await page.reload();await page.waitForFunction(()=>g?.state()===5);assert(await page.evaluate(()=>catchPromptOpacity(900)<0.5));
  await page.locator('#catchContinue').tap();await page.waitForFunction(()=>g.state()===0);
  await page.reload();await page.waitForFunction(()=>g&&!$('act').disabled);
@@ -78,6 +96,13 @@ const {webkit,chromium}=require('playwright-core');
  });
  await tapBookButton('#species-0');await page.waitForFunction(()=>bookSpecies===0);
  await expectBackAfter('before any swipe');
+ await page.evaluate(()=>{
+  window.galleryPageCues=[];
+  window.gallerySoundBefore={audio,pluck,fx:$('fx').selectedIndex};
+  clearInterval(audioTimer);audio={state:'running',currentTime:1};
+  pluck=(freq,when,duration,gain)=>galleryPageCues.push({freq,duration,gain});
+  $('fx').selectedIndex=2;
+ });
  await swipe('#records',-82);await page.waitForFunction(()=>bookOffset===1&&bookSpecies===null);
  await swipe('#records',82);await page.waitForFunction(()=>bookOffset===0&&bookSpecies===null);
  await swipe('#records',82);assert.equal(await page.evaluate(()=>bookOffset),0); // no wrap; no tile activation
@@ -88,6 +113,23 @@ const {webkit,chromium}=require('playwright-core');
  await swipe('#bookDetail',-82);await page.waitForFunction(()=>bookSpecies===1);
  await swipe('#bookDetail',82);await page.waitForFunction(()=>bookSpecies===0);
  await expectBackAfter('immediately after two detail swipes');
+ const sounds=await page.evaluate(()=>galleryPageCues.slice());
+ assert.equal(sounds.length,2,'Only actual list flips sound; boundaries, pans, details and Back remain silent');
+ assert(sounds.every(s=>s.duration>0&&s.duration<=.12&&s.gain>0),'Effects use a short, nonzero game SFX');
+ await page.evaluate(()=>$('fx').selectedIndex=0);
+ await swipe('#records',-82);await page.waitForFunction(()=>bookOffset===1&&bookSpecies===null);
+ await swipe('#records',82);await page.waitForFunction(()=>bookOffset===0&&bookSpecies===null);
+ assert.equal(await page.evaluate(()=>galleryPageCues.length),2,'Muted page changes must stay silent');
+ await page.evaluate(()=>{$('fx').selectedIndex=1;$('cue').selectedIndex=1;});
+ await tapBookButton('#bookNext');await page.waitForFunction(()=>bookOffset===1);
+ await tapBookButton('#bookPrev');await page.waitForFunction(()=>bookOffset===0);
+ assert.equal(await page.evaluate(()=>galleryPageCues.filter(n=>n.gain<.062).length),2,'Navigation sounds on both arrows and respects Low even in bite-only Light mode');
+ await page.evaluate(()=>{
+  audio=gallerySoundBefore.audio;pluck=gallerySoundBefore.pluck;$('fx').selectedIndex=gallerySoundBefore.fx;$('cue').selectedIndex=0;
+  if(audio)audioTimer=setInterval(pump,20);
+ });
+
+
  assert(await unknown.locator('canvas').evaluate(c=>{const b=c.getContext('2d').getImageData(0,0,c.width,c.height).data,colors=new Set();for(let i=0;i<b.length;i+=4)if(b[i+3]===255)colors.add(b.slice(i,i+3).join(','));return colors.size===1;}));
  for(let i=0;i<Math.floor(40/8);i++){
   assert(await page.locator('#bookNext').isVisible(),'Next missing before page '+(i+2)+': '+JSON.stringify(await page.evaluate(()=>({menuPage,bookSpecies,bookOffset}))));

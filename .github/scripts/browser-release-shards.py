@@ -65,8 +65,11 @@ def run(root, shard, bundle, diagnostics):
         started = time.monotonic()
         log = diagnostics / (path.name + ".log")
         print(f"Run {name}", flush=True)
+        test_env = None
+        if path.name == "gallery-history.cjs":
+            test_env = dict(os.environ, COLLECTION_PREVIEW=str((diagnostics / "collection-eight-portrait.png").resolve()))
         with log.open("wb") as output:
-            code = subprocess.run(["node", path.name if name.endswith(".cjs") else name],
+            code = subprocess.run(["node", path.name if name.endswith(".cjs") else name], env=test_env,
                                   cwd=path.parent if name.endswith(".cjs") else root,
                                   stdout=output, stderr=subprocess.STDOUT).returncode
         print(f"{name}: exit {code}, {time.monotonic() - started:.1f}s", flush=True)

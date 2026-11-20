@@ -1,10 +1,5 @@
 let bookOffset=0;
-let bookSize=8;
-function sizeBook(){
- const next=parseInt(getComputedStyle($('lcdUI')).getPropertyValue('--touch'))>=60?4:8;
- if(next!==bookSize){const first=bookOffset*bookSize;bookSize=next;bookOffset=Math.floor(first/next);}
-}
-window.addEventListener('resize',()=>{if(g)renderBook();});
+const bookSize=8;
 function bookMatches(){
  const mode=$('bookFilter').selectedIndex,q=$('bookSearch').value.trim().toLowerCase(),matches=[];
  for(let i=0;i<atlas.fish.length;i++){
@@ -58,7 +53,6 @@ function iconInfo(parent,icon,label,value){
 const periodIcons=['dawn','day','dusk','night'],weatherIcons=['clear','rain','heavy','storm'],weatherLabels=['Clear','Light rain','Heavy rain','Storm'];
 function collectionTotal(found){const count=found.toLocaleString(language)+' / '+atlas.fish.length.toLocaleString(language);return (language==='th'?'ทั่วไทย':'Thailand')+' · '+count;}
 function renderBook(){
- sizeBook();
  const detail=$('bookDetail');detail.hidden=bookSpecies===null;journalPanel.classList.toggle('detail-open',!detail.hidden);
  if(bookSpecies!==null){renderBookDetail(bookSpecies);return;}
  const matches=bookMatches(),pages=Math.max(1,Math.ceil(matches.length/bookSize));
@@ -114,16 +108,20 @@ function closeBookDetail(){const id=bookSpecies;bookSpecies=null;renderBook();$(
 function showBookEntry(id){$('bookSearch').value='';$('bookFilter').selectedIndex=0;bookOffset=Math.floor(id/bookSize);bookSpecies=id;historyPage=0;renderBook();}
 function resetBook(){bookOffset=0;bookSpecies=null;renderBook();}
 $('bookFilter').onchange=$('bookSearch').oninput=resetBook;
-$('bookPrev').onclick=()=>{bookOffset--;renderBook();};
-$('bookNext').onclick=()=>{bookOffset++;renderBook();};
+// Page arrows and swipes share one bounded action; re-rendering never plays a cue.
+function changeBookPage(direction){
+ if(!activeBook()||bookSpecies!==null||!(direction===-1||direction===1))return false;
+ const next=bookOffset+direction,pages=Math.ceil(bookMatches().length/bookSize);
+ if(next<0||next>=pages)return false;
+ bookOffset=next;renderBook();playBookPageSound();
+ return true;
+}
+$('bookPrev').onclick=()=>changeBookPage(-1);
+$('bookNext').onclick=()=>changeBookPage(1);
 
 // Turn the list by page or the open profile by species, keeping active filters.
 function turnBook(direction){
- if(bookSpecies===null){
-  const button=$(direction<0?'bookPrev':'bookNext');
-  if(!button.disabled)button.click();
-  return;
- }
+ if(bookSpecies===null){changeBookPage(direction);return;}
  const matches=bookMatches(),index=matches.indexOf(bookSpecies),next=index+direction;
  if(index<0||next<0||next>=matches.length)return;
  bookOffset=Math.floor(next/bookSize);bookSpecies=matches[next];historyPage=0;
