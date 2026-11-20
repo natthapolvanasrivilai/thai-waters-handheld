@@ -58,7 +58,7 @@ html[data-view="screen"][data-mobile] #dial{
 @media(min-aspect-ratio:1/1){
  html[data-view="screen"][data-mobile] #dial{--dial-size:clamp(118px,min(25dvw,47dvh),196px)}
 }
-#scene,#product canvas{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+#scene,#act,#catchContinue,#product canvas{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 @media(prefers-reduced-motion:reduce){.dial-spool{transition:none}}
 
 /* The right-hand drawer leaves the rod and the bank in view at every depth. */
