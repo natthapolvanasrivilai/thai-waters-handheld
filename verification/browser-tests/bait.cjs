@@ -39,10 +39,34 @@ const {chromium}=require('playwright-core');
   await equip('Raw shrimp','Bottom');await p.reload();await ready();
   await open('rod');assert.equal(await p.locator('#hookBait').inputValue(),'Raw shrimp');assert.equal(await p.locator('#baitDepth').inputValue(),'Bottom');
   assert.equal(await p.evaluate(()=>JSON.parse(localStorage.getItem('thai-atlas-v2')).bait),13);
-  await p.locator('#resume').click();await p.locator('#act').click();
-  await p.waitForFunction(()=>g.state()===2);
-  assert.deepEqual(await p.evaluate(()=>[g.noStock(),g.species(),g.baitChoice()]),[0,40,13]);
-  await p.waitForFunction(()=>g.state()===3);await p.locator('#act').click();await p.waitForFunction(()=>g.state()===4);
+  await p.locator('#resume').click();
+  await p.evaluate(()=>{
+   window.prawnHook=new Promise((resolve,reject)=>{
+    let waiting,bite,done=false,timeout;
+    const step=()=>{
+     if(done)return;
+     const phase=g.state();
+     if(phase===2&&!waiting)waiting=[g.noStock(),g.species(),g.baitChoice()];
+     if(phase===3&&bite===undefined){bite=g.age();$('act').click();}
+     if(phase===4||phase===6){
+      done=true;clearTimeout(timeout);resolve({waiting,bite,phase,reason:g.reason()});return;
+     }
+     requestAnimationFrame(step);
+    };
+    // Strike in the live game's render loop rather than making a driver
+    // round trip during the prawn's short bite window.
+    $('act').addEventListener('click',()=>{
+     timeout=setTimeout(()=>{done=true;reject(new Error('Prawn did not hook; state='+g.state()+', reason='+g.reason()));},30000);
+     requestAnimationFrame(step);
+    },{once:true});
+   });
+   window.prawnHook.catch(()=>{});
+  });
+  await p.locator('#act').click();
+  const hooked=await p.evaluate(()=>window.prawnHook);
+  assert.deepEqual(hooked.waiting,[0,40,13]);
+  assert(Number.isInteger(hooked.bite)&&hooked.bite>=0&&hooked.bite<=820,JSON.stringify(hooked));
+  assert.equal(hooked.phase,4,JSON.stringify(hooked));
   assert.equal(await p.evaluate(()=>g.caught(40)),0);assert.deepEqual(errors,[]);
   console.log('PASS workshop bait and depth, journal clue, reload persistence, incompatible empty cast with no cue or credit, bottom shrimp hooks a dusk prawn.');
  }finally{await browser.close();}
