@@ -1,0 +1,92 @@
+name: Diagnostic Pocket Reel Solo V43 (no publication)
+on:
+  push:
+    branches: [diagnostic/solo-v43-62]
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  solo_exact_v43:
+    if: >-
+      github.repository == 'natthapolvanasrivilai/thai-waters-handheld' &&
+      github.event_name == 'push' && github.ref == 'refs/heads/diagnostic/solo-v43-62' &&
+      github.run_attempt == 1 && github.event.forced == false && github.event.deleted == false &&
+      (github.event.created == true || github.event.before == '09b184fefaa3639dd1438975a070d874372c31d0')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: bash
+    env:
+      PIN_BASE: 09b184fefaa3639dd1438975a070d874372c31d0
+      DIAG: verification/diagnostics/solo-v43
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Require one child and only reviewed diagnostic files
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-list --parents -n1 HEAD)" = "$GITHUB_SHA $PIN_BASE"
+          actual="$(git diff --name-status "$PIN_BASE" HEAD)"
+          expected="$(printf 'A\t%s\n' \
+            .github/workflows/diagnostic-solo-v43.yml \
+            "$DIAG/Start-Pocket-Reel-Solo-upgrade-reject.mjs" \
+            "$DIAG/exact-browser-probe.mjs" "$DIAG/exact-http.test.mjs" \
+            "$DIAG/exact-pack.mjs" "$DIAG/pack.py" "$DIAG/verify-origin.py")"
+          test "$actual" = "$expected"
+          echo "Diagnostic scope verified."
+      - name: Retrieve and verify only the successful immutable V43 archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          umask 077
+          mkdir "$RUNNER_TEMP/solo-v43"
+          stage="$RUNNER_TEMP/solo-v43"
+          api='https://api.github.com/repos/natthapolvanasrivilai/thai-waters-handheld/actions'
+          get() {
+            # Standard curl redirect behavior strips Authorization on a different host.
+            curl --fail --silent --show-error --location --proto '=https' --proto-redir '=https' \
+              --max-redirs 3 --max-time 90 --header "Authorization: Bearer $GH_TOKEN" \
+              --header 'Accept: application/vnd.github+json' --header 'X-GitHub-Api-Version: 2022-11-28' \
+              --output "$2" "$api/$1"
+          }
+          get artifacts/14723860188 "$stage/artifact.json"
+          get runs/44944834035 "$stage/run.json"
+          get artifacts/14723860188/zip "$stage/browser.zip"
+          python3 "$DIAG/verify-origin.py" "$stage/artifact.json" "$stage/run.json" "$stage/browser.zip"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - name: Use pinned canonical Playwright and Chromium
+        run: |
+          set -euo pipefail
+          log="$RUNNER_TEMP/solo-v43/browser-setup.log"
+          { npm ci --prefix verification/browser-tests --ignore-scripts &&
+            (cd verification/browser-tests && ./node_modules/.bin/playwright-core install --with-deps chromium);
+          } >"$log" 2>&1 || { echo "FAIL pinned browser setup"; exit 1; }
+          echo "Pinned browser setup completed."
+      - name: Test exact archive, loopback, genuine restart and manual backup transfer
+        run: |
+          set -euo pipefail
+          umask 077
+          stage="$RUNNER_TEMP/solo-v43"
+          export POCKET_REEL_SOLO_BROWSER_ZIP="$stage/browser.zip"
+          export POCKET_REEL_SOLO_WRAPPER_ZIP="$stage/wrapper.zip"
+          export NODE_PATH="$GITHUB_WORKSPACE/verification/browser-tests/node_modules"
+          # Scope logs to concise success/failure labels. Never emit snapshots, paths, or setup tokens.
+          args=(--source 0ba72cf4c55f141fbd0f692a7e2bf8cfb83ba984 \
+            --browser "$POCKET_REEL_SOLO_BROWSER_ZIP" \
+            --browser-sha256 a01b2f7d2cd7a5bacacd08ba8ed2d0fb2f0a14e11cd4458bcd8ac868c7681344 \
+            --launcher "$DIAG/Start-Pocket-Reel-Solo-upgrade-reject.mjs" --output "$POCKET_REEL_SOLO_WRAPPER_ZIP")
+          python3 "$DIAG/pack.py" build "${args[@]}" >"$stage/pack.log" 2>&1 || { echo 'FAIL exact package build'; exit 1; }
+          python3 "$DIAG/pack.py" verify "${args[@]}" >"$stage/readback.log" 2>&1 || { echo 'FAIL exact package readback'; exit 1; }
+          node --test "$DIAG/exact-http.test.mjs" >"$stage/http.log" 2>&1 || { echo 'FAIL exact HTTP witness'; exit 1; }
+          echo 'PASS exact wrapper bytes and HTTP negative cases across two launcher starts.'
+          POCKET_REEL_DISPOSABLE_RUNNER=1 node "$DIAG/exact-browser-probe.mjs"
