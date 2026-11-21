@@ -14,9 +14,11 @@ const menuSheets=(()=>{
  }
  const field=id=>$(id).closest('.lcd-choice'),box=id=>$(id).closest('.bindings');
  function row(...nodes){const d=document.createElement('div');d.className='sheet-row';d.append(...nodes);return d;}
- const spots=panel('spots'),tip=spots.querySelector('small');
- add('spots','Destination','หมายตกปลา',box('searchSpot'),row(field('places'),$('fishHere')));
+ const spots=panel('spots'),tip=spots.querySelector(':scope > small');
+ add('spots','Destination','หมายตกปลา',row(box('searchSpot'),$('locationMapOpen')),row(field('places'),$('fishHere')));
  add('spots','Conditions','สภาพหมาย',box('period'),$('travelStory'),tip);
+ add('spots','Map pilot','แผนที่ทดลอง',$('mapGraphic'),$('mapAccess'));
+ pages.get('spots')[2].el.id='waterbodyMapSheet';
  const rod=panel('rod');
  add('rod','Tackle','ชุดตกปลา',row(field('technique'),field('finish')),box('hookBait'));
  add('rod','Bait notes','วิธีใช้เหยื่อ',rod.querySelector('.bait-preview'),$('techniqueNote'));
@@ -53,10 +55,11 @@ const menuSheets=(()=>{
   if(!list.length)return;
   list.forEach((page,i)=>page.el.hidden=i!==at);
   title.textContent=language==='th'?list[at].th:list[at].en;
+  if(name==='spots'&&at===2)list[at].el.dispatchEvent(new Event('spots-map-visible'));
   counter.textContent=(at+1)+'/'+list.length;prev.disabled=at===0;next.disabled=at===list.length-1;
   prev.title=L('Previous');next.title=L('Next');prev.setAttribute('aria-label',prev.title);next.setAttribute('aria-label',next.title);
  }
  function step(by){const pagesHere=pages.get(menuPage);if(!pagesHere)return;positions.set(menuPage,Math.max(0,Math.min(pagesHere.length-1,(positions.get(menuPage)||0)+by)));open(menuPage);}
  prev.onclick=()=>step(-1);next.onclick=()=>step(1);
- return {open,reset:name=>positions.delete(name)};
+ return {open,go(name,at){if(menuPage!==name||!pages.get(name)?.[at])return false;positions.set(name,at);open(name);return true;},reset:name=>positions.delete(name)};
 })();

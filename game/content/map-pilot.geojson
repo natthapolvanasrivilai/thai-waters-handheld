@@ -1,0 +1,203 @@
+{
+  "type": "FeatureCollection",
+  "schemaVersion": 1,
+  "atlasCommit": "e7deb91593db5ee12a5b2a30b834da28cca0a8b8",
+  "label": {
+    "en": "Representative waterbody area; not a fishing-access point",
+    "th": "ตำแหน่งโดยประมาณของแหล่งน้ำ ไม่ใช่จุดเข้าตกปลา"
+  },
+  "sources": {
+    "msea-res-s1": {
+      "title": "Mahto, Fatichi & Galelli (2025), MSEA-Res, supplement Table S1",
+      "url": "https://essd.copernicus.org/articles/17/2693/2025/essd-17-2693-2025-supplement.pdf",
+      "licenseEvidence": "https://essd.copernicus.org/articles/17/2693/2025/",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "mae-ngat-rid": {
+      "title": "Royal Irrigation Department project, via Government Public Relations Department",
+      "url": "https://radiochiangmai.prd.go.th/th/content/category/detail/id/57/iid/544955",
+      "role": "identity-only"
+    },
+    "rajja-egat": {
+      "title": "EGAT: Rajjaprabha Dam (Background; former Cheow Lan Dam)",
+      "url": "https://www.egat.co.th/home/en/ratchaprapha-dm-about/",
+      "role": "identity-only"
+    },
+    "fleet-egat": {
+      "title": "EGAT: Reservoir Operation",
+      "url": "https://www.egat.co.th/home/en/statistics-reservoir-latest/",
+      "role": "identity-only"
+    },
+    "nga-gns-kwan-phayao": {
+      "title": "NGA Geographic Names Server: Kwan Phayao (540205)",
+      "url": "https://geonames.nga.mil/geon-ags/rest/services/RESEARCH/GIS_OUTPUT/MapServer/0/540205",
+      "thaiVariant": "https://geonames.nga.mil/geon-ags/rest/services/RESEARCH/GIS_OUTPUT/MapServer/0/540204",
+      "licenseEvidence": "https://geonames.nga.mil/geonames/GNSHome/index.html",
+      "dataUse": "GNS reports no licensing restrictions; source citation recommended.",
+      "datum": "WGS84",
+      "featureUfi": -3250171
+    },
+    "onep-kwan-phayao": {
+      "title": "ONEP Northern Wetlands, Kwan Phayao, printed p.46",
+      "url": "https://chm-thai.onep.go.th/wp-content/uploads/2023/03/03-wetland-%E0%B9%80%E0%B8%AB%E0%B8%99%E0%B8%B7%E0%B8%ADResize.pdf",
+      "profile": "https://naturalsite.onep.go.th/site/detail/1121",
+      "role": "identity-and-extent"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": 0,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.038,
+          19.169
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Mae_Ngat",
+        "identitySource": "mae-ngat-rid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.766,
+          9.004
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Rajjaprabha",
+        "identitySource": "rajja-egat"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.875,
+          19.171
+        ]
+      },
+      "properties": {
+        "kind": "representative-waterbody-area",
+        "coordinateSource": "nga-gns-kwan-phayao",
+        "sourceRow": "540205",
+        "identitySource": "onep-kwan-phayao"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 31,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.587,
+          16.758
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Ubol_Ratana",
+        "identitySource": "fleet-egat"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 46,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.389,
+          15.133
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Sirindhorn",
+        "identitySource": "fleet-egat"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 56,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.902,
+          17.257
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Bhumibol",
+        "identitySource": "fleet-egat"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.529,
+          17.808
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Sirikit",
+        "identitySource": "fleet-egat"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 86,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.065,
+          14.512
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Srinagarind",
+        "identitySource": "fleet-egat"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 95,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.271,
+          6.146
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Bang_Lang",
+        "identitySource": "fleet-egat"
+      }
+    }
+  ]
+}
