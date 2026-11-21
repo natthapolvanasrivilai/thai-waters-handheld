@@ -13,7 +13,7 @@ function bookMatches(){
  }
  return matches;
 }
-let bookSpecies=null,bookFindOpen=false;
+let bookSpecies=null,bookFindOpen=false,bookDetailView='profile';
 const tierFrames=['#849a96','#6abd91','#ad87ef','#e494d3','#f3a366','#f6ce56'];
 const journalPanel=document.querySelector('[data-section="book"]');
 function bookFindLabels(){
@@ -100,22 +100,50 @@ function catchHistoryValues(c){
   nonnegativeInt(c.weather)&&weatherLabels[c.weather]?L(weatherLabels[c.weather]):null
  ];
 }
+function bindCatchDrag(scroll){
+ let drag=null;
+ const clamp=(n,max)=>Math.max(0,Math.min(Math.max(0,max),n));
+ scroll.addEventListener('pointerdown',e=>{
+  if(e.pointerType!=='mouse'||e.button!==0||drag)return;
+  const box=scroll.getBoundingClientRect();
+  drag={id:e.pointerId,x:e.clientX,y:e.clientY,left:scroll.scrollLeft,top:scroll.scrollTop,
+   scaleX:box.width/scroll.offsetWidth||1,scaleY:box.height/scroll.offsetHeight||1,moved:false};
+  scroll.focus({preventScroll:true});
+  scroll.setPointerCapture(e.pointerId);
+  e.preventDefault();
+ });
+ const end=e=>{
+  if(drag?.id!==e.pointerId)return;
+  drag=null;scroll.classList.remove('is-dragging');
+ };
+ scroll.addEventListener('pointermove',e=>{
+  if(drag?.id!==e.pointerId)return;
+  if(!(e.buttons&1)){end(e);return;}
+  const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+  if(!drag.moved&&Math.hypot(dx,dy)<4)return;
+  if(!drag.moved){drag.moved=true;scroll.classList.toggle('is-dragging',true);}
+  scroll.scrollLeft=clamp(drag.left-dx/drag.scaleX,scroll.scrollWidth-scroll.clientWidth);
+  scroll.scrollTop=clamp(drag.top-dy/drag.scaleY,scroll.scrollHeight-scroll.clientHeight);
+ });
+ for(const name of ['pointerup','pointercancel','lostpointercapture'])scroll.addEventListener(name,end);
+}
 function addCatchTable(panel,overview,id,rows,th){
- const help=bookText('p',th?'ปัดขึ้นลงดูรายการ ปัดซ้ายขวาดูคอลัมน์':'Swipe up/down for catches and left/right for columns.');
+ const help=bookText('p',th?'ลากเพื่อเลื่อน':'Drag to scroll');
  help.className='catch-help';help.id='catchHistoryHelp';overview.append(help);
  const scroll=document.createElement('div');scroll.className='catch-scroll';scroll.tabIndex=0;
  scroll.setAttribute('role','region');scroll.setAttribute('aria-labelledby','catchHistoryTitle');scroll.setAttribute('aria-describedby',help.id);
  const table=document.createElement('table');table.className='catch-table';table.setAttribute('aria-labelledby','catchHistoryTitle');
  const head=document.createElement('thead'),h=document.createElement('tr');
- for(const [icon,label,key] of [
-  ['length',L(readEngineText(g.measurement(id,rows[0].cm))),'length'],['mass',th?'น้ำหนักโดยประมาณ':'Est. weight','weight'],
-  ['bait',th?'เหยื่อที่ใช้':'Bait used','bait'],['pin',th?'จุดที่จับ':'Catch location','place'],
-  ['date',th?'วันที่ · เวลาไทย':'Date & time (ICT)','date'],['day',th?'ช่วงเวลาในเกม':'In-game time','period'],
-  ['depth',L('Fishing depth'),'depth'],['clear',th?'สภาพอากาศ':'Weather','weather']
+ for(const [label,key,meaning] of [
+  [th?'ขนาด':'Size','length',L(readEngineText(g.measurement(id,rows[0].cm)))],
+  [th?'≈ น้ำหนัก':'≈ Weight','weight',th?'น้ำหนักโดยประมาณ':'Estimated weight'],
+  [th?'เหยื่อ':'Bait','bait'],[th?'จุดจับ':'Location','place'],
+  [th?'วัน–เวลา':'Date & time','date',th?'วันและเวลาประเทศไทย':'Date and time (ICT)'],
+  [th?'เวลาในเกม':'Game time','period'],[th?'ระดับ':'Depth','depth'],[th?'อากาศ':'Weather','weather']
  ]){
-  const cell=document.createElement('th'),labelEl=document.createElement('span');
-  cell.dataset.field=key;cell.setAttribute('scope','col');labelEl.className='catch-heading';
-  labelEl.append(journalIcon(icon),bookText('span',label));cell.append(labelEl);h.append(cell);
+  const cell=bookText('th',label);cell.dataset.field=key;cell.setAttribute('scope','col');
+  if(meaning){cell.title=meaning;cell.setAttribute('aria-label',meaning);}
+  h.append(cell);
  }
  head.append(h);const body=document.createElement('tbody');
  for(const record of rows){
@@ -126,12 +154,22 @@ function addCatchTable(panel,overview,id,rows,th){
   }
   body.append(row);
  }
- table.append(head,body);scroll.append(table);panel.append(scroll);return scroll;
+ table.append(head,body);scroll.append(table);panel.append(scroll);bindCatchDrag(scroll);return scroll;
 }
+function setBookDetail(view){
+ bookDetailView=view;renderBook();
+ const focus=view==='history'?$('bookDetail').querySelector('.catch-scroll')||$('bookDetail'):
+  view==='profile'?$('bookHistory'):$('bookDetail');
+ focus?.focus({preventScroll:true});
+}
+$('bookDetail').addEventListener('wheel',e=>{
+ if(bookDetailView==='history')e.preventDefault();
+},{passive:false});
 function collectionTotal(found){const count=found.toLocaleString(language)+' / '+atlas.fish.length.toLocaleString(language);return (language==='th'?'ทั่วไทย':'Thailand')+' · '+count;}
 function renderBook(){
  syncBookFind();const detail=$('bookDetail');detail.hidden=bookSpecies===null;journalPanel.classList.toggle('detail-open',!detail.hidden);
  if(bookSpecies!==null){renderBookDetail(bookSpecies);return;}
+ bookDetailView='profile';
  const matches=bookMatches(),pages=Math.max(1,Math.ceil(matches.length/bookSize));
  bookOffset=Math.max(0,Math.min(bookOffset,pages-1));const fragment=document.createDocumentFragment();
  for(const id of matches.slice(bookOffset*bookSize,(bookOffset+1)*bookSize)){
@@ -144,68 +182,89 @@ function renderBook(){
    if(note)tile.append(bookText('small','ถอดเสียง'));
    const mark=bookText('span','✓');mark.className='caught-mark';tile.append(mark);
   }
-  tile.onclick=()=>{bookSpecies=id;renderBook();$('bookDetail').focus({preventScroll:true});};fragment.append(tile);
+  tile.onclick=()=>{bookSpecies=id;bookDetailView='profile';renderBook();$('bookDetail').focus({preventScroll:true});};fragment.append(tile);
  }
  $('records').replaceChildren(fragment);
  setUi($('bookPage'),matches.length?(bookOffset+1)+' / '+pages+' · '+matches.length.toLocaleString(language)+' '+L('species'):'No matching species');
  $('bookPrev').disabled=!bookOffset;$('bookNext').disabled=bookOffset+1>=pages;
 }
 function renderBookDetail(id){
- const f=atlas.fish[id],detail=$('bookDetail'),n=g.caught(id);detail.tabIndex=-1;
- const info=document.createElement('div');info.className='book-profile';
- const picture=fishPortrait(id,144,75);if(n)enhanceCollectedPortrait(picture,id);picture.style.borderColor=tierFrames[f.tier];const title=bookText('div','');
- const tier=bookText('small',atlas.ranks[f.tier]+(f.fiction?' · '+L('Fictional'):''));tier.style.color=tierFrames[f.tier];
- title.append(tier,bookText('h2',n?f.name:L('Undiscovered')));
- const nameNote=n?thaiNameNote(f):'';
- if(n&&f.scientificName){
-  if(nameNote)title.append(bookText('small',nameNote),bookText('small',' · '));
-  title.append(bookText('small',f.scientificName));
- }
- if(n&&f.family)title.append(bookText('small',nameNote?(f.thaiFamilyName??f.family):f.family));
- if(n&&!g.hasPortrait(id))title.append(bookText('small',language==='th'?'อยู่ระหว่างวาดภาพประจำชนิด':'Species illustration pending'));
- const th=language==='th';
- const previous=detail.dataset.species===String(id)?detail.querySelector('.catch-scroll'):null;
+ const f=atlas.fish[id],detail=$('bookDetail'),n=g.caught(id),th=language==='th';
+ const rows=catchHistory.filter(c=>c.id===id).reverse(),name=n?f.name:L('Undiscovered');
+ const count=n.toLocaleString(language),same=detail.dataset.species===String(id)&&detail.dataset.view===bookDetailView;
+ const previous=same?detail.querySelector('.catch-scroll'):null;
  const top=previous?.scrollTop??0,left=previous?.scrollLeft??0,restoreFocus=previous===document.activeElement;
- detail.dataset.species=id;
- const intro=document.createElement('div');intro.className='book-intro';
- info.append(picture,title);intro.append(info);
- const facts=document.createElement('div');facts.className='book-facts';
- const water=f.spot!=null?atlas.locations[f.spot].name:atlas.sites[f.site][0];
- facts.append(bookFact('pin',th?'แหล่งที่พบ':'Habitat',water),bookFact('bait',th?'เหยื่อแนะนำ':'Bait tip',baitTip(id)));
- intro.append(facts);
- const periods=document.createElement('div');periods.className='book-periods';
- periods.append(bookText('b',th?'ช่วงที่มักพบ':'Active periods'));
- const mask=f.mask??(id===40?12:id===41?9:15);
- periodIcons.forEach((icon,i)=>{
-  if(!(mask&(1<<i)))return;
-  const tag=document.createElement('span'),label=L(times[i]);tag.className='book-period';
-  tag.setAttribute('role','img');tag.setAttribute('aria-label',label);
-  tag.append(journalIcon(icon),bookText('span',label));periods.append(tag);
- });
- intro.append(periods);
- if(n&&f.lore){const lore=bookText('p',f.lore);lore.className='book-lore';intro.append(lore);}
+ detail.tabIndex=-1;detail.dataset.species=id;detail.dataset.view=bookDetailView;
+ const note=n?thaiNameNote(f):'';
+ if(bookDetailView==='profile'){
+  const profile=document.createElement('div');profile.className='book-profile';
+  const picture=fishPortrait(id,144,75);if(n)enhanceCollectedPortrait(picture,id);
+  const title=bookText('h2',name);title.title=name;
+  profile.append(picture,title);
+  if(n&&f.scientificName){
+   const science=document.createElement('div');science.className='book-science';
+   if(note)science.append(bookText('small',note),document.createTextNode(' · '));
+   science.append(bookText('small',f.scientificName));science.title=science.textContent;
+   profile.append(science);
+  }
+  const mass=rows[0]?.grams,label=th?count+' ครั้ง':count+(n===1?' catch':' catches');
+  const summary=bookText('p',Number.isSafeInteger(mass)&&mass>0?label+' · '+(th?'ล่าสุด ≈ ':'Latest ≈ ')+L(displayMass(mass)):label);
+  summary.className='book-summary';profile.append(summary);
+  const nav=document.createElement('div');nav.className='book-profile-actions';
+  const historyButton=bookText('button',th?'ประวัติการจับ':'Catch history');historyButton.id='bookHistory';
+  const tips=bookText('button',th?'ข้อมูลการตก':'Fishing tips');tips.id='bookTips';
+  historyButton.type=tips.type='button';
+  historyButton.onclick=()=>setBookDetail('history');tips.onclick=()=>setBookDetail('tips');
+  nav.append(historyButton,tips);profile.append(nav);detail.replaceChildren(profile);return;
+ }
+ if(bookDetailView==='tips'){
+  const info=document.createElement('div');info.className='book-tips';
+  info.append(bookText('h3',name));
+  const facts=document.createElement('div');facts.className='book-facts';
+  const water=f.spot!=null?atlas.locations[f.spot].name:atlas.sites[f.site][0];
+  facts.append(bookFact('pin',th?'แหล่งที่พบ':'Habitat',water),bookFact('bait',th?'เหยื่อแนะนำ':'Bait tip',baitTip(id)));info.append(facts);
+  const periods=document.createElement('div');periods.className='book-periods';
+  periods.append(bookText('b',th?'ช่วงที่มักพบ':'Active periods'));
+  const mask=f.mask??(id===40?12:id===41?9:15);
+  periodIcons.forEach((icon,i)=>{
+   if(!(mask&(1<<i)))return;
+   const tag=document.createElement('span'),label=L(times[i]);tag.className='book-period';
+   tag.setAttribute('role','img');tag.setAttribute('aria-label',label);
+   tag.append(journalIcon(icon),bookText('span',label));periods.append(tag);
+  });
+  info.append(periods);
+  if(n&&f.family)info.append(bookText('p',note?(f.thaiFamilyName??f.family):f.family));
+  if(n&&f.lore)info.append(bookText('p',f.lore));
+  if(n&&!g.hasPortrait(id))info.append(bookText('p',th?'อยู่ระหว่างวาดภาพประจำชนิด':'Species illustration pending'));
+  detail.replaceChildren(info);return;
+ }
  const history=document.createElement('div');history.className='catch-history';
  const overview=document.createElement('div');overview.className='catch-overview';history.append(overview);
- const heading=bookText('h3',(th?'ประวัติการจับ':'Catch history')+' · '+n.toLocaleString(language));
+ const heading=bookText('h3',(th?'ประวัติการจับ':'Catch history')+' · '+name);heading.title=heading.textContent;
  heading.id='catchHistoryTitle';overview.append(heading);
- const rows=catchHistory.filter(c=>c.id===id).reverse();
  if(!n&&!rows.length)history.append(bookText('p',th?'ยังไม่เคยจับได้':'No catches yet.'));
  if(n>rows.length){
-  const count=(n-rows.length).toLocaleString(language),best=g.best(id);
-  const legacy=bookText('p',th?'บันทึกเดิม '+count+' ครั้ง ไม่มีรายละเอียดรายครั้ง':'Legacy catches: '+count+' with no individual details.');
+  const old=(n-rows.length).toLocaleString(language),best=g.best(id);
+  const legacy=bookText('p',th?'บันทึกเดิม '+old+' ครั้ง ไม่มีรายละเอียดรายครั้ง':'Legacy catches: '+old+' with no individual details.');
   legacy.className='catch-legacy';history.append(legacy);
   if(!rows.length&&best>0)history.append(bookText('p',th?'สถิติขนาดที่บันทึก: '+L(best+' cm'):'Recorded best: '+L(best+' cm')));
  }
  const scroll=rows.length?addCatchTable(history,overview,id,rows,th):null;
- detail.replaceChildren(intro,history);
- if(scroll){
-  scroll.scrollTop=top;scroll.scrollLeft=left;
-  if(restoreFocus)scroll.focus({preventScroll:true});
- }
+ detail.replaceChildren(history);
+ if(scroll){scroll.scrollTop=top;scroll.scrollLeft=left;if(restoreFocus)scroll.focus({preventScroll:true});}
 }
-function closeBookDetail(){const id=bookSpecies;bookSpecies=null;renderBook();$('species-'+id)?.focus({preventScroll:true});}
-function showBookEntry(id){closeBookFind(false);$('bookSearch').value='';$('bookFilter').selectedIndex=0;bookOffset=Math.floor(id/bookSize);bookSpecies=id;renderBook();}
-function resetBook(){bookOffset=0;bookSpecies=null;renderBook();}
+function closeBookDetail(){
+ if(bookDetailView!=='profile'){
+  const from=bookDetailView;bookDetailView='profile';renderBook();
+  $(from==='tips'?'bookTips':'bookHistory')?.focus({preventScroll:true});return;
+ }
+ const id=bookSpecies;bookSpecies=null;renderBook();$('species-'+id)?.focus({preventScroll:true});
+}
+function showBookEntry(id){
+ closeBookFind(false);$('bookSearch').value='';$('bookFilter').selectedIndex=0;bookOffset=Math.floor(id/bookSize);
+ bookSpecies=id;bookDetailView='profile';renderBook();
+}
+function resetBook(){bookOffset=0;bookSpecies=null;bookDetailView='profile';renderBook();}
 $('bookFilter').onchange=$('bookSearch').oninput=resetBook;
 // Page arrows and swipes share one bounded action; re-rendering never plays a cue.
 function changeBookPage(direction){
@@ -237,7 +296,7 @@ window.addEventListener('pointerdown',e=>{
 for(const surface of [$('records'),$('bookDetail')]){
  surface.style.touchAction='pan-y pinch-zoom';
  surface.addEventListener('pointerdown',e=>{
-  if(!activeBook()||bookFindOpen||!e.isPrimary||e.button!==0||
+  if(!activeBook()||bookFindOpen||bookSpecies!==null&&bookDetailView!=='profile'||!e.isPrimary||e.button!==0||
     e.target.closest('input,select,textarea,a,[contenteditable],#bookDetail button,.catch-scroll'))return;
   bookSwipe={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies};
  });
@@ -247,7 +306,7 @@ window.addEventListener('pointerup',e=>{
  if(bookSwipe?.id!==e.pointerId)return;
  const start=bookSwipe;bookSwipe=null;
  const dx=e.clientX-start.x,dy=e.clientY-start.y;
- if(!activeBook()||start.entry!==bookSpecies||Math.abs(dx)<44||Math.abs(dx)<1.5*Math.abs(dy))return;
+ if(!activeBook()||start.entry!==bookSpecies||bookSpecies!==null&&bookDetailView!=='profile'||Math.abs(dx)<44||Math.abs(dx)<1.5*Math.abs(dy))return;
  // Replacing tiles can retarget a synthesized click; capture it at window level.
  bookSwipeClick={id:e.pointerId,x:e.clientX,y:e.clientY,until:performance.now()+450};
  e.preventDefault();
