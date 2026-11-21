@@ -4,6 +4,58 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const {pathToFileURL}=require('node:url');
 const {openPersistenceEntry}=require('./persistence-entry.cjs');
 const {webkit,chromium}=require('playwright-core');
+
+// Keep the deterministic local fixture out of authenticated external playtests.
+async function assertRayongLanding(browser,target){
+ const page=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:844,height:390},reducedMotion:'reduce',serviceWorkers:'block'});
+ try{
+  await page.route('**/*',route=>{
+   const url=route.request().url();
+   return url===target||url.startsWith('data:')||url.startsWith('blob:')?route.continue():route.abort();
+  });
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const tap=s=>page.locator(s).tap(), ready=()=>page.waitForFunction(()=>g?.state()===0&&!$('act').disabled,undefined,{timeout:10000});
+  await page.goto(target);await (await requireBootHome(page)).tap();await ready();
+  assert.equal(await page.locator('html').getAttribute('lang'),'th');
+  assert.deepEqual(await page.evaluate(()=>{const x=atlas.fish[1433];return [x.art,x.key,x.name,x.scientificName,x.thaiNameKind,x.thaiSearchAliases,x.measure];}),[1433,5215810,'ปลากระเบนทอง','Taeniura lymma','species',['ปลากระเบนหางพัดจุดฟ้า'],'ความกว้างลำตัว']);
+  assert.equal(await page.evaluate(()=>{$('bookSearch').value='ปลากระเบนหางพัดจุดฟ้า';const found=bookMatches().includes(1433);$('bookSearch').value='';return found;}),false);
+  // Seed the normal Rayong cast, bite and bottom-holding fight; do not restore
+  // a catch or write a receipt. The real frame performs the landing transition.
+  const trace=await page.evaluate(()=>{
+   chooseSpot(98,1,1);stopArrival();g.initialize(25);g.place(98,1);g.conditions(1,11,20779);g.setTechnique(0);if(!g.setBait(17))throw Error('bait');g.setAim(.5,.67);
+   g.advance(16,1,0,0);const encounter=[g.state(),g.species(),g.lengthCm()];g.advance(900,0,0,0);
+   for(let i=0;i<1000&&g.state()===2;i++)g.advance(16,0,0,0);
+   if(g.state()!==3)throw Error('no seeded bite');g.advance(16,0,1,0);const style=g.fightStyle();let planted=0;
+   for(let i=0;i<472;i++){if(g.state()!==4)throw Error('fight ended early');const bottom=!!g.holdingBottom();if(bottom)planted+=16;g.advance(16,0,bottom?1:0,g.fightBeat()===1||bottom?0:.014);}
+   if(g.state()!==4||g.holdingBottom()||g.fightBeat()===1)throw Error('final seed step changed');
+   const request=window.requestAnimationFrame;try{window.requestAnimationFrame=()=>0;turns=.014;frame(prev+16);}finally{window.requestAnimationFrame=request;}
+   return {encounter,style,planted,state:g.state(),capture:pendingCapture};
+  });
+  assert.deepEqual(trace.encounter,[1,1433,27]);assert.equal(trace.style,2);assert.equal(trace.planted,960);assert.equal(trace.state,5);
+  const cap=trace.capture;assert.equal(cap.id,1433);assert.equal(cap.cm,27);assert.equal(cap.place,98);assert.match(cap.uid,/^[a-f0-9]{32}$/i);
+  assert.equal(cap.bait,17);assert(Number.isSafeInteger(cap.grams)&&cap.grams>=0);
+  const measurement=await page.evaluate(()=>readEngineText(g.measurement(g.species(),g.lengthCm())));
+  assert.equal(measurement,'Disc width');
+  await page.locator('#catchContinue').waitFor({state:'visible'});assert.equal(await page.locator('#message').textContent(),'ปลากระเบนทอง');
+  const saved=()=>page.evaluate(()=>{const s=JSON.parse(localStorage.getItem('thai-atlas-v2'));return {stored:s?.book?.[1433],pending:s?.pendingCapture,history:s?.history,active:g.caught(1433),place:placeId};});
+  assert.deepEqual(await saved(),{stored:[0,0],pending:cap,history:[],active:0,place:98});
+  await page.evaluate(()=>{$('catchContinue').addEventListener('click',e=>document.body.dataset.rayongTrusted=String(e.isTrusted),{once:true});});
+  await tap('#catchContinue');assert.equal(await page.locator('body').getAttribute('data-rayong-trusted'),'true');await ready();assert.deepEqual(await saved(),{stored:[1,27],pending:null,history:[cap],active:1,place:98});
+  const verifyCollection=async()=>{
+   await tap('#openMenu');await tap('[data-section=home] [data-to=book]');
+   for(const q of ['ปลากระเบนทอง','ปลากระเบนหางพัดจุดฟ้า','Taeniura lymma']){
+    await tap('#bookFind');await page.locator('#bookSearch').fill(q);await tap('#bookFindDone');await page.locator('#species-1433').waitFor({state:'visible'});
+    assert.deepEqual(await page.evaluate(()=>bookMatches()),[1433],q);
+   }
+   await tap('#species-1433');assert.equal(await page.locator('#bookDetail h2').textContent(),'ปลากระเบนทอง');assert.match(await page.locator('#bookDetail').textContent(),/Taeniura lymma/u);
+  };
+  await verifyCollection();await page.reload();const resume=await requireBootHome(page);
+  assert.deepEqual(await saved(),{stored:[1,27],pending:null,history:[cap],active:1,place:98});
+  await resume.tap();await ready();await verifyCollection();assert.deepEqual(errors,[]);
+  console.log('PASS seeded Rayong disc-width landing, one trusted Continue, and exact catch UID across Thai Collection and reload');
+ }finally{await page.close();}
+}
+
 (async()=>{
  const html=path.resolve(__dirname,'../../game/Thai-Waters-play.html');
  const directPortrait=process.env.PLAYTEST_URL||pathToFileURL(html).href;
@@ -246,6 +298,7 @@ const {webkit,chromium}=require('playwright-core');
  assert(await page.locator('#bookHistory').isVisible());await tapBookButton('#back');await page.waitForFunction(()=>bookSpecies===null);
  assert(await page.locator('#species-40').isVisible());
  await page.locator('#back').tap();await page.locator('[data-section=home] [data-to=sensors]').tap();await showControl(page,'#handheldEnable');await page.locator('#handheldEnable').check();await page.keyboard.press('v');await page.locator('#resume').tap();await page.keyboard.press('c');await page.waitForFunction(()=>g.state()===1||g.state()===2);
+ if(!process.env.PLAYTEST_URL&&!process.env.PRIVATE_SITE_CHECK)await assertRayongLanding(browser,target);
  assert.deepEqual(errors,[]);console.log('PASS three Thai location typefaces, 480×320 gallery, confirmed catch across reload, eight history fields and two-axis scroll, full-width HUD, reduced-motion prompt, and controller cast.');
  }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});
