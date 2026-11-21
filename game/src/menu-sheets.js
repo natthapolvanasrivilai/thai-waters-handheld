@@ -43,7 +43,7 @@ const menuSheets=(()=>{
  add('sensors','Bench inputs','ทดสอบอินพุต',row(field('simBattery'),$('tilt').closest('label')),notes[1]);
  add('sensors','Paired rod','คันเบ็ดที่จับคู่',$('handheldEnable').closest('fieldset'));
  const crew=panel('crew'),standingsNote=$('cupScope').nextElementSibling,crewHeading=$('crewHelp').previousElementSibling;
- add('crew','Daily cup','แข่งประจำวัน',$('cupGoal'),$('cupLocation'),box('cupJoin'),$('cupMine'));
+ add('crew','Daily cup','แข่งประจำวัน',$('cupTarget'),$('cupLocation'),$('cupLoadout'),box('cupTravel'),$('cupTravelNote'),$('cupMine'));
  crew.querySelector(':scope > h2').remove();
  add('crew','Standings','อันดับ',$('cupScope'),standingsNote,$('cupLeaders'),$('cupEmpty'));
  add('crew','Crew challenge','ทีมตกปลา',$('crewHelp'),$('joinCrew'),$('crewStatus'));crewHeading.remove();
