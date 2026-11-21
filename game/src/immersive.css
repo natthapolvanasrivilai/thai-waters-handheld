@@ -220,6 +220,8 @@ html:lang(th) #menu section[data-section="crew"] h2{font:normal 16px/23px 'Syy F
 
 #fishCredits{order:1;display:grid;place-items:center;min-width:var(--touch);min-height:var(--touch);color:#d6cfaa;touch-action:manipulation}
 
+/* Boot Home is a full native frame, unlike the in-game Pause overlays. */
+#menu[data-page=boot-home]{inset:0;width:480px;height:320px;box-sizing:border-box;border:0;border-radius:0}
 /* Pages occupy a fixed portion of the 480 × 320 glass. */
 #menu:not([data-page=book]):not([data-page=boot-home]){inset:2px 3px 2px auto;width:380px;height:316px;box-sizing:border-box}
 #menu section,#menu #lcdPicker .choice-list{overflow:hidden;overscroll-behavior:none}
