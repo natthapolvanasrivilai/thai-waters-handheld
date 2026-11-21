@@ -956,9 +956,10 @@ function canvasTypeface(size,display){
  const base='"Atkinson Hyperlegible Next",sans-serif';
  return '600 '+size+'px '+(language==='th'&&display?'"'+display+'",':'')+base;
 }
-function caption(text,x,y,align='left',color='#fff4d8',size=12,display='',translate=true){
+function caption(text,x,y,align='left',color='#fff4d8',size=12,display='',translate=true,maxWidth=0){
  ctx.save();ctx.textAlign=align;ctx.font=canvasTypeface(size,display);ctx.lineJoin='round';ctx.lineWidth=3;
  const label=translate?L(text):text;
+ if(maxWidth>0)while(size>1&&ctx.measureText(label).width>maxWidth)ctx.font=canvasTypeface(size=Math.max(1,size-.5),display);
  ctx.strokeStyle='#183830';ctx.strokeText(label,x,y);ctx.fillStyle=color;ctx.fillText(label,x,y);ctx.restore();
 }
 const catchContinueLabel='Save catch & keep fishing';
@@ -1002,7 +1003,7 @@ function landedCatch(age){
  ctx.save();ctx.globalAlpha=catchPromptOpacity(age);caption(catchContinueLabel,240,310,'center','#fff4d8',13);ctx.restore();
  const x=202;
  const nameNote=thaiNameNote(f);
- caption(atlas.ranks[f.tier]+'  ·  '+L(reward)+(nameNote?'  ·  ถอดเสียง':''),x,82,'left',rarityInk[f.tier],13);
+ caption(atlas.ranks[f.tier]+'  ·  '+L(reward)+(nameNote?'  ·  ถอดเสียง':''),x,82,'left',rarityInk[f.tier],13,'',true,264);
  const afterName=nameNote?catchLines(f.name,110,21,'#fff7df',23,156,'Syy Flowey'):
   catchLines(f.name,110,language==='th'?24:23,'#fff7df',26,286,'Syy Flowey');
  if(f.scientificName)caption(f.scientificName,x,afterName,'left','#d2e9e1',13,'',false);

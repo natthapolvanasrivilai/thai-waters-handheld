@@ -194,8 +194,14 @@ const {chromium}=require('playwright-core');
   await land(805,fallback[3]);
   assert.equal(await page.locator('#message').textContent(),fallback[0]);
   assert.match(await page.locator('#metrics').textContent(),/ชื่อวิทยาศาสตร์ถอดเสียง · Kryptopterus bicirrhis/u);
+  const rewardHeader=await page.evaluate(()=>({reward:g.landingReward(),
+   label:atlas.ranks[atlas.fish[805].tier]+'  ·  '+L(rewardText[3])+'  ·  ถอดเสียง'}));
+  assert.equal(rewardHeader.reward,3,'seventh discovery exercises the tackle-point caption');
   const roman=await nativeCatchText();
   assert.deepEqual(roman.lcd,[480,320]);
+  const heading=roman.labels.find(r=>r.y===82);
+  assert.equal(heading?.text,rewardHeader.label,'native caption preserves the full rank, reward and transcription marker');
+  assert(fits([heading])&&heading.x+heading.width<=466,'long native caption fits its 264px column');
   const catchArea=roman.labels.filter(r=>r.y===82&&r.text.includes('ถอดเสียง')||r.text===fallback[1]||r.y>=110&&r.y<=156&&fallback[0].includes(r.text));
   assert(fits(catchArea)&&catchArea.some(r=>r.text.includes('ถอดเสียง'))&&catchArea.some(r=>r.text===fallback[1]));
   assert(catchArea.some(r=>r.y>=110&&r.y<=156&&fallback[0].includes(r.text)));
