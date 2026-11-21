@@ -21,6 +21,7 @@ NON_MODEL = frozenset({
     "Brim", "Custom", "Flush", "Prime tower", "Skirt", "Skirt/Brim", "Wipe tower",
     "Support", "Support interface", "Support transition",
 })
+TOOL = re.compile(r"^T(\d+)\s*$", re.I)
 COMMAND = re.compile(r"^([GM])(\d+)\s*(.*)$", re.I)
 LETTER = re.compile(r"([XYEIJR])\s*([-+]?(?:\d+(?:\.\d*)?|\.\d+))", re.I)
 LAYER_TOLERANCE_MM = 0.0005
@@ -216,7 +217,12 @@ def scan(stream, objects, features):
     by_instance = defaultdict(list)
     for f in features:
         by_instance[f.instance].append(f)
-    x = y = e = 0.0
+    x = y = 0.0
+    tool = "implicit"
+    e_position = defaultdict(float)
+    retract_debt = defaultdict(float)
+    model_job_started = False
+    unsupported_control = None
     z = height = None
     instance = role = ""
     xy_relative = False
@@ -226,6 +232,7 @@ def scan(stream, objects, features):
         line = raw.strip()
         if line in ("; CHANGE_LAYER", "; LAYER_CHANGE"):
             instance, z, height = "", None, None
+            model_job_started = True
         elif line.startswith("; Z_HEIGHT:"):
             z, instance = float(line.split(":", 1)[1]), ""
         elif line.startswith("; LAYER_HEIGHT:"):
@@ -239,14 +246,23 @@ def scan(stream, objects, features):
             stopped = line.split(":", 1)[1].strip()
             if stopped == instance:
                 instance = ""
-        if not (m := COMMAND.match(line.split(";", 1)[0].rstrip())):
+        command = line.split(";", 1)[0].rstrip()
+        if (selector := TOOL.fullmatch(command)):
+            selected = selector.group(1)
+            if model_job_started and selected != tool:
+                unsupported_control = "mid-job tool change"
+            tool = selected
+            continue
+        if not (m := COMMAND.match(command)):
             continue
         family, num, args = m.group(1).upper(), int(m.group(2)), m.group(3)
         if family == "M":
             if num in {82, 83}:
                 relative_e = num == 83
             continue
-        if num in {17, 18, 19}:
+        if num in {10, 11}:
+            unsupported_control = "firmware retract/recover (G10/G11)"
+        elif num in {17, 18, 19}:
             xy_plane = num == 17
         elif num == 20:
             raise Unverified("inch-mode G-code is unsupported")
@@ -255,20 +271,46 @@ def scan(stream, objects, features):
         elif num in {0, 1, 2, 3, 92}:
             p = {k.upper(): float(v) for k, v in LETTER.findall(args)}
             if num == 92:
-                x, y, e = p.get("X", x), p.get("Y", y), p.get("E", e)
+                x, y = p.get("X", x), p.get("Y", y)
+                if "E" in p:
+                    e_position[tool] = p["E"]
                 continue
             a = (x, y)
             x = p.get("X", 0) + x if xy_relative else p.get("X", x)
             y = p.get("Y", 0) + y if xy_relative else p.get("Y", y)
             b = (x, y)
-            extrusion = p.get("E", 0)
-            if "E" in p and relative_e is False:
-                extrusion, e = extrusion - e, extrusion
-            if (instance not in objects or extrusion <= EPS
-                    or (a == b and num not in {2, 3}) or role in NON_MODEL):
+            if "E" not in p:
                 continue
-            if relative_e is None or role not in MODEL:
-                raise Unverified(f"unknown deposition mode/role for instance {instance}: {role!r}")
+            if relative_e is None:
+                if instance in objects and role not in NON_MODEL and (a != b or num in {2, 3}):
+                    raise Unverified(f"extrusion mode undefined for instance {instance}")
+                if model_job_started:
+                    unsupported_control = "extruder move without explicit M82/M83"
+                continue
+            if relative_e:
+                extrusion = p["E"]
+                e_position[tool] += extrusion
+            else:
+                extrusion = p["E"] - e_position[tool]
+                e_position[tool] = p["E"]
+            if extrusion < -EPS:
+                retract_debt[tool] -= extrusion
+                continue
+            if extrusion <= EPS:
+                continue
+            # Feed-only and non-model moves also pay down outstanding retractions.
+            paid = min(extrusion, retract_debt[tool])
+            retract_debt[tool] -= paid
+            if (instance not in objects or (a == b and num not in {2, 3})
+                    or role in NON_MODEL):
+                continue
+            if unsupported_control:
+                raise Unverified(f"unsupported extrusion control: {unsupported_control}")
+            if role not in MODEL:
+                raise Unverified(f"unknown deposition role for instance {instance}: {role!r}")
+            if extrusion - paid <= EPS:
+                continue
+            recovery_ratio = paid / extrusion
             if z is None or height is None or not all(math.isfinite(n) and n > 0 for n in (z, height)):
                 raise Unverified(f"invalid layer markers for instance {instance}")
             arc = None
@@ -278,6 +320,10 @@ def scan(stream, objects, features):
                 arc = arc_from(a, b, p, num == 2)
                 if arc.sweep <= EPS:
                     continue
+                arc = Arc(arc.center, arc.radius, arc.theta + arc.sign * arc.sweep * recovery_ratio,
+                          arc.sign, arc.sweep * (1 - recovery_ratio))
+            elif recovery_ratio:
+                a = tuple(x + (y - x) * recovery_ratio for x, y in zip(a, b))
             # Native adaptive features can use several thicknesses at one Z.
             hmin, hmax = layers[instance].get(z, (height, height))
             layers[instance][z] = min(hmin, height), max(hmax, height)
