@@ -147,6 +147,42 @@ class ExtrusionGuardTests(unittest.TestCase):
         self.assertEqual(rc, 0)
         self.assertEqual(report["objects"][0]["model_top_mm"], 1.2)
 
+    def test_retract_recovery_motion_cannot_impersonate_a_local_feature(self):
+        gcode = "G90\nM83\n" + layer(.2) + layer(1.0,local=True) + layer(1.2, model=False)
+        gcode += "G0 X8 Y1\nG1 E-1\nG1 X12 E1\n"
+        rc, result = self.audit(gcode, spec=[FEATURE])
+        self.assertEqual(rc, 1)
+        self.assertEqual(result["features"][0]["layers"][-1]["path_mm"], 0.0)
+        self.assertEqual(result["objects"][0]["model_top_mm"], 1.0)
+
+    def test_partial_recovery_counts_only_motion_after_extrusion_resumes(self):
+        f = {**FEATURE, "xy_mm": [[9.8, 10.4], [0.9, 1.1]],
+             "required_layers_z_mm": [1.2], "minimum_path_mm": .5}
+        gcode = "G90\nM83\n" + layer(.2) + layer(1.2, model=False)
+        gcode += "G0 X8 Y1\nG1 E-0.5\nG1 X12 E1\n"
+        rc, result = self.audit(gcode, spec=[f])
+        self.assertEqual(rc, 1)
+        self.assertAlmostEqual(result["features"][0]["layers"][0]["path_mm"], 0.4)
+
+    def test_g92_and_role_switch_do_not_clear_retract_debt(self):
+        gcode = "G90\nM82\nG92 E0\n" + layer(.2)
+        gcode += layer(1.2, "Support", model=False)
+        gcode += "G1 E-0.8\nG92 E0\nG1 E0.4\n; FEATURE: Outer wall\nG0 X8 Y1\nG1 X12 E1.0\n"
+        rc, result = self.audit(gcode, spec=[{**FEATURE, "required_layers_z_mm": [1.2]}])
+        self.assertEqual(rc, 1)
+        self.assertEqual(result["features"][0]["layers"][0]["path_mm"], 0.0)
+
+    def test_tool_or_firmware_retract_change_in_model_job_is_unverified(self):
+        for control in ("G10", "G11", "T1"):
+            with self.subTest(control=control):
+                gcode = "G90\nM83\nT0\n" + layer(.2) + control + "\n" + layer(1.2)
+                self.assertEqual(self.audit(gcode)[0], 2)
+
+    def test_model_motion_without_explicit_extrusion_mode_is_unverified(self):
+        rc, result = self.audit("G90\n" + layer(.2) + layer(1.2))
+        self.assertEqual(rc, 2)
+        self.assertIn("mode", result["reason"])
+
     def test_warned_plate_not_accepted_by_geometry_only(self):
         gcode = "G90\nM83\n" + layer(.2) + layer(1.2)
         rc, report = self.audit(gcode, native_warning="out of bounds")
