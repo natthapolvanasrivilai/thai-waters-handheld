@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const {chromium}=require('playwright-core');
@@ -10,6 +11,7 @@ const {chromium}=require('playwright-core');
   const page=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:844,height:390}});
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto('http://127.0.0.1:'+server.address().port);
+  await (await requireBootHome(page)).tap();
   await page.waitForFunction(()=>typeof g!=='undefined'&&g&&!document.querySelector('#act').disabled);
   const initial=await page.evaluate(()=>({
    size:atlas.fish.length, art:atlas.fish[2152].art,key:atlas.fish[2152].key, original:originalAtlas.fish[2152].name,
@@ -209,7 +211,7 @@ const {chromium}=require('playwright-core');
   assert(await match(fallback[0],805));assert(await match(fallback[1],805));
   assert(!await match('ปลาก้างพระร่วง',805));
   await page.locator('#openMenu').tap();
-  await page.locator('[data-to=book]').tap();
+  await page.locator('[data-section=home] [data-to=book]').tap();
   assert(await match(fallback[0],805));
   await page.evaluate(()=>renderBook());
   assert.match(await page.locator('#species-805').getAttribute('aria-label'),/ชื่อวิทยาศาสตร์ถอดเสียง · Kryptopterus bicirrhis/u);
@@ -230,7 +232,11 @@ const {chromium}=require('playwright-core');
   }), 'Thai name, exact Latin and transcription marker fit the visible native detail');
   await page.evaluate(()=>{cupBoard={goal:{day:0,species:805,spot:113,minimum:30}};drawCup();});
   assert.match(await page.locator('#cupGoal').textContent(),/ชื่อวิทยาศาสตร์ถอดเสียง/u);
-  await page.reload();await page.waitForFunction(()=>typeof g!=='undefined'&&g&&!$('act').disabled);
+  await page.reload();
+  const resume=await requireBootHome(page);
+  assert.deepEqual(await page.evaluate(()=>[2152,1433,1164,2448,805,1120].map(id=>g.caught(id))),[1,1,1,1,1,1]);
+  await resume.tap();
+  await page.waitForFunction(()=>typeof g!=='undefined'&&g&&!$('act').disabled);
   assert.equal(await page.evaluate(()=>g.caught(2152)),1);
   assert.equal(await page.evaluate(()=>g.caught(1433)),1);
   assert.equal(await page.evaluate(()=>g.caught(1164)),1);

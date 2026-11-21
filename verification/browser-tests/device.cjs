@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=require('path'),assert=require('assert/strict');
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.BROWSER_PATH || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
@@ -5,7 +6,41 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   const page=await browser.newPage({viewport:{width:1080,height:830},deviceScaleFactor:1});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await page.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);await page.waitForFunction(()=>document.documentElement.dataset.device&&g);
+  await page.addInitScript(()=>{
+   const decode=HTMLImageElement.prototype.decode,held=[];
+   let released=0;
+   window.__coldBootProbe={held,settled:0};
+   HTMLImageElement.prototype.decode=function(...args){
+    if(++released>3)return decode.apply(this,args);
+    return new Promise(resolve=>held.push(resolve)).then(()=>decode.apply(this,args))
+     .finally(()=>window.__coldBootProbe.settled++);
+   };
+  });
+  await page.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
+  await page.waitForFunction(()=>window.__coldBootProbe.held.length===3);
+  const power=page.locator('#simPower'),coldStatus=page.locator('#startupPowerStatus');
+  assert(await coldStatus.isVisible());assert.match(await coldStatus.textContent(),/Starting Pocket Reel/);
+  assert(await page.locator('#act').isDisabled());
+  const saveBefore=await page.evaluate(()=>localStorage.getItem('thai-atlas-v2'));
+  await power.click();assert.equal(await power.textContent(),'Power on');
+  assert.match(await coldStatus.textContent(),/Simulator off/);
+  assert(await page.evaluate(()=>!g&&!powered&&startupOff));
+  assert(await page.locator('#act').isDisabled());
+  await power.click();
+  const play=await requireBootHome(page);
+  await page.evaluate(()=>{
+   window.__coldBootProbe.liveEngine=g;
+   for(const release of window.__coldBootProbe.held)release();
+  });
+  await page.waitForFunction(()=>window.__coldBootProbe.settled===3);
+  assert(await page.evaluate(()=>g===window.__coldBootProbe.liveEngine&&bootHome&&powered&&!startupOff));
+  assert(await play.isVisible());assert(await page.locator('#startupRecovery').isHidden());
+  assert.equal(await page.evaluate(()=>localStorage.getItem('thai-atlas-v2')),saveBefore);
+  console.log('PASS visible cold PWR cancellation and independent restart held stale decodes without replacing the engine or save.');
+  assert.equal(await page.evaluate(()=>audio?.state??null),null);
+  await page.keyboard.press('Escape');
+  assert(await play.isVisible());assert(await page.locator('#act').isDisabled());
+  await play.click();await page.waitForFunction(()=>document.documentElement.dataset.device&&g);
   assert.equal(await page.locator('html').getAttribute('data-view'),'screen');
   await page.locator('#viewMode').click();
   await page.waitForFunction(()=>['ready','fallback'].includes(document.documentElement.dataset.device));
@@ -47,7 +82,12 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   assert(await page.locator('#act').isDisabled());
   const pausedAge=await page.evaluate(()=>g.age());
   await page.waitForTimeout(160);assert.equal(await page.evaluate(()=>g.age()),pausedAge);
-  await page.locator('#simPower').click();assert(!await page.locator('#act').isDisabled());
+  await page.locator('#simPower').click();
+  const warm=await requireBootHome(page);
+  assert.equal(await page.evaluate(()=>g.age()),pausedAge);
+  assert(await page.locator('#product').isVisible(),'Warm Home is projected on the device LCD');
+  assert(await page.locator('#act').isDisabled());
+  await warm.click();assert(!await page.locator('#act').isDisabled());
   const labels=await page.evaluate(()=>{
     const labels=[];
     for(const value of ['72','12','42+','USB','--']){$('simBattery').value=value;draw();labels.push($('lcdPower').textContent);}

@@ -1,9 +1,9 @@
 const cupKey='thai-waters-cup-v1';
 let cupState={}, enteredCup=0, requestInFlight=false, cupNotice='';
 try{cupState=JSON.parse(localStorage.getItem(cupKey))||{};enteredCup=cupState.joined||0;}catch{}
-function rememberCup(){try{localStorage.setItem(cupKey,JSON.stringify(cupState));}catch{}}
+function rememberCup(){if(sessionOnly)return;try{localStorage.setItem(cupKey,JSON.stringify(cupState));}catch{}}
 function currentCupDay(){return Math.floor((Date.now()+7*3600000)/86400000);}
-function cupIsJoined(){return enteredCup===currentCupDay();}
+function cupIsJoined(){return !sessionOnly&&enteredCup===currentCupDay();}
 function tournamentGoal(){
  const day=currentCupDay(),spot=day*37%atlas.locations.length;
  const stock=atlas.fish.slice(0,52).filter(f=>f.site===atlas.locations[spot].pool);
@@ -21,9 +21,9 @@ function cupKit(species){
  // midwater stop-and-go, surface drift; the engine supplies bait/depth.
  return {bait,rig:[0,1,2][Math.floor(bait/6)]};
 }
-function cupTravelReady(){return !!g&&powered&&arrivalSince===null&&[0,6,9].includes(g.state());}
+function cupTravelReady(){return !!g&&powered&&!bootHome&&arrivalSince===null&&[0,6,9].includes(g.state());}
 function drawCup(){
- const goal=cupBoard?.goal||tournamentGoal(), joined=enteredCup===goal.day;
+ const goal=cupBoard?.goal||tournamentGoal(), joined=!sessionOnly&&enteredCup===goal.day;
  const fish=atlas.fish[goal.species],kit=cupKit(goal.species),ready=!!kit&&cupTravelReady();
  const timing=goal.species===40?cupWords(' Fish at dusk or night.',' ตกช่วงพลบค่ำหรือกลางคืน'):goal.species===41?cupWords(' Fish at dawn or night.',' ตกช่วงรุ่งเช้าหรือกลางคืน'):'';
  const units=cupWords('cm','ซม.'),metric=g?L(readEngineText(g.measurement(goal.species,goal.minimum))):'';
@@ -57,12 +57,12 @@ function drawCup(){
  cupText('cupLoadout',kit?cupWords('Tackle: ','ชุดตกปลา: ')+$('technique').options[kit.rig].text+' · '+baitTip(goal.species):'');
  cupText('cupTravel',placeId===goal.spot?cupWords('Equip recommended tackle','ใส่ชุดที่แนะนำ'):cupWords('Equip and travel','ใส่ชุดแล้วเดินทาง'));
  cupText('cupJoin',joined?'Fishing this cup':'Enter daily cup');
- $('cupJoin').disabled=joined||requestInFlight||location.protocol==='file:';
+ $('cupJoin').disabled=sessionOnly||bootHome||joined||requestInFlight||location.protocol==='file:';
  $('cupTravel').disabled=!ready;
  $('cupTravelNote').hidden=ready;
- cupText('cupTravelNote',ready?'':cupWords('Finish this cast or file your catch first.','จบรอบตกปลาหรือบันทึกปลาที่ได้ก่อน'));
+ cupText('cupTravelNote',ready?'':bootHome?cupWords('Resume fishing before changing tackle or traveling.','เล่นต่อก่อนเปลี่ยนชุดหรือลงหมาย'):cupWords('Finish this cast or file your catch first.','จบรอบตกปลาหรือบันทึกปลาที่ได้ก่อน'));
  cupText('cupScope',location.hostname.endsWith('.chatgpt.site')?'Private playtest standings':'Local host standings');
- cupText('cupMine',cupNotice||(cupBoard?.rank?cupBoard.angler+' · rank #'+cupBoard.rank+' · '+cupBoard.best+' cm':joined?(cupBoard?.angler||'Entered')+' · file a qualifying catch.':'Enter before landing your catch.'));
+ cupText('cupMine',sessionOnly?cupWords('Daily Cup is unavailable in a temporary career.','งดแข่งขันถ้วยรายวันในโหมดเล่นชั่วคราว'):cupNotice||(cupBoard?.rank?cupBoard.angler+' · rank #'+cupBoard.rank+' · '+cupBoard.best+' cm':joined?(cupBoard?.angler||'Entered')+' · file a qualifying catch.':'Enter before landing your catch.'));
  const list=$('cupLeaders'),rows=cupBoard?.leaders||[];
  const per=4,pages=Math.max(1,Math.ceil(rows.length/per));rankPage=Math.min(rankPage,pages-1);
  const key=language+rankPage+JSON.stringify(rows);
@@ -82,6 +82,7 @@ function drawCup(){
  cupText('cupEmpty',!rows.length?(location.protocol==='file:'?'Open the hosted or LAN game to compete.':cupNotice?'Waiting for the event host.':cupBoard?'No qualifying catches yet.':'Connecting to the standings…'):'');
 }
 async function syncCup(action='view'){
+ if(sessionOnly||bootHome){drawCup();return;}
  if(requestInFlight||location.protocol==='file:'){drawCup();return;}
  requestInFlight=true;
  try{
@@ -98,6 +99,7 @@ async function syncCup(action='view'){
  finally{requestInFlight=false;drawCup();}
 }
 function submitTournamentCatch(){
+ if(sessionOnly)return;
  const goal=cupBoard?.goal||tournamentGoal();
  if(!pendingDay||pendingDay!==goal.day||placeId!==goal.spot||g.species()!==goal.species||g.lengthCm()<goal.minimum)return;
  const best=cupState.pending?.day===goal.day?cupState.pending.cm:0;
@@ -115,4 +117,4 @@ $('cupTravel').onclick=()=>{
  else chooseSpot(goal.spot,goal.species===40?2:goal.species===41?3:timeMode);
  closeMenu();
 };
-setInterval(()=>{if(powered&&!document.hidden&&(menu.open&&menuPage==='crew'||cupState.pending))syncCup();},10000);
+setInterval(()=>{if(!sessionOnly&&powered&&!document.hidden&&(menu.open&&menuPage==='crew'||cupState.pending))syncCup();},10000);

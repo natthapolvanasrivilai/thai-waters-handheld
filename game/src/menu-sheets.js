@@ -49,7 +49,7 @@ const menuSheets=(()=>{
  add('crew','Crew challenge','ทีมตกปลา',$('crewHelp'),$('joinCrew'),$('crewStatus'));crewHeading.remove();
  function open(name){
   const list=pages.get(name)||[],at=positions.get(name)||0;
-  homeLanguage.hidden=name!=='home';prev.hidden=next.hidden=counter.hidden=!list.length;
+  homeLanguage.hidden=name!=='home'&&name!=='boot-home';prev.hidden=next.hidden=counter.hidden=!list.length;
   if(!list.length)return;
   list.forEach((page,i)=>page.el.hidden=i!==at);
   title.textContent=language==='th'?list[at].th:list[at].en;

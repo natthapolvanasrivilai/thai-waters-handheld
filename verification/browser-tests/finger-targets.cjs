@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict'),path=require('node:path'),{pathToFileURL}=require('node:url');
 const {chromium,webkit}=require('playwright-core');
@@ -6,6 +7,8 @@ const {chromium,webkit}=require('playwright-core');
  try{for(const [width,height] of [[844,390],[667,375],[390,844],[320,568]]){
  const p=await browser.newPage({viewport:{width,height},isMobile:true,hasTouch:true});
  await p.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
+  await (await requireBootHome(p)).tap();
+  
  await p.waitForFunction(()=>g&&!$('act').disabled);let smallest=Infinity;
  async function hit(selector){
   await showControl(p,selector);const item=p.locator(selector).first();if(['#fullscreen','#testPhoneMotor'].includes(selector)&&!await item.isVisible())return;

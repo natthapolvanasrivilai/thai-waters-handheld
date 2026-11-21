@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl}=require('./menu-controls.cjs');
 const {chromium}=require('playwright-core');
 const {openPersistenceEntry}=require('./persistence-entry.cjs');
@@ -18,11 +19,14 @@ const assert=require('node:assert/strict');
       Object.defineProperty(navigator,'vibrate',{configurable:true,value:pattern=>{pulses.push(pattern);return true;}});
     });
     await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await page.goto(entry.url);
+    await page.goto(entry.url);
+    const play=await requireBootHome(page);
+    assert.equal(await page.evaluate(()=>g.state()),0);
+    await play.tap();
     await page.waitForFunction(()=>!document.querySelector('#act').disabled);
     async function openMix(){
       await page.locator('#openMenu').tap();
-      await page.locator('[data-to=sound]').tap();
+      await page.locator('[data-section=home] [data-to=sound]').tap();
     }
     await openMix();
     const sample=async type=>{const el=await showControl(page,'[data-pulse="'+type+'"]');await el.tap();};
@@ -35,7 +39,13 @@ const assert=require('node:assert/strict');
     const heard=await page.evaluate(()=>pulses);
     assert.deepEqual(heard,[[20,340,20,340,20],[195],[32,34,27,31,22]]);
     await page.locator('#back').tap();assert.equal(await page.evaluate(()=>pulses.at(-1)),0);
-    await page.reload();await page.waitForFunction(()=>!document.querySelector('#act').disabled);
+    await page.reload();
+    const resume=await requireBootHome(page);
+    assert.deepEqual(await page.evaluate(()=>[
+      g.state(),$('rumbleLevel').value,localStorage.getItem('thai-waters-rumble')
+    ]),[0,'Medium','2'],'Rumble preference is restored while Home still locks play');
+    await resume.tap();
+    await page.waitForFunction(()=>!document.querySelector('#act').disabled);
     await openMix();assert.equal(await page.locator('#rumbleLevel').inputValue(),'Medium');
     await page.locator('#resume').tap();
     await page.evaluate(()=>{

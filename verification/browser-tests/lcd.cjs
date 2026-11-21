@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict');
 const {chromium}=require('playwright-core');
@@ -32,7 +33,9 @@ async function raster(page) {
   const url=pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href;
   const p=await browser.newPage({viewport:{width:1050,height:780}});
   await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await p.goto(url);await p.waitForFunction(()=>g&&document.documentElement.dataset.view==='screen');
+  await p.goto(url);
+  await (await requireBootHome(p)).click();
+  await p.waitForFunction(()=>g&&document.documentElement.dataset.view==='screen');
   await p.locator('#viewMode').click();await p.waitForFunction(()=>physicalView&&document.documentElement.dataset.view==='device');
   const main=await raster(p);
   assert.deepEqual(main.size,[480,320]);assert.equal(main.hitOpacity,'0');
@@ -54,7 +57,7 @@ async function raster(page) {
   const rasterPages=new Set();
   await p.locator('#openMenu').click();
   for(const route of ['book','spots','rod','sound','sensors','crew']){
-   await p.locator('[data-to="'+route+'"]').click();
+   await p.locator('[data-section=home] [data-to="'+route+'"]').click();
    assert(await p.evaluate(()=>{
     const shell=$('lcdUI').getBoundingClientRect(),dialog=$('menu').getBoundingClientRect();
     return $('menu').closest('#product')&&dialog.top>=shell.top&&dialog.right<=shell.right+1
@@ -80,7 +83,9 @@ async function raster(page) {
   await p.locator('#resume').click();assert.equal(await p.locator('#menu').isVisible(),false);
   const phone=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:390,height:844}});
   await phone.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await phone.goto(url);await phone.waitForFunction(()=>g);
+  await phone.goto(url);
+  await (await requireBootHome(phone)).tap();
+  await phone.waitForFunction(()=>g);
   await phone.setViewportSize({width:844,height:390});
   await phone.waitForFunction(()=>document.documentElement.classList.contains('immersive'));
   const dims=await phone.evaluate(()=>{
@@ -94,7 +99,7 @@ async function raster(page) {
   assert((await raster(phone)).action===0,'phone water is clear for direct casting');
   await phone.locator('#openMenu').tap();
   if(process.env.PHONE_MENU_PNG)await phone.locator('#flatStage').screenshot({path:process.env.PHONE_MENU_PNG});
-  await phone.locator('[data-to="book"]').tap();
+  await phone.locator('[data-section=home] [data-to="book"]').tap();
   assert(await phone.locator('#records').isVisible());
   if(process.env.PHONE_OVERLAY_PNG)await phone.locator('#flatStage').screenshot({path:process.env.PHONE_OVERLAY_PNG});await phone.locator('#resume').tap();
   await phone.setViewportSize({width:390,height:844});

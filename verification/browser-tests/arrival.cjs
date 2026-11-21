@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl,chooseNamed}=require('./menu-controls.cjs');
 const {captureReloadStartup,readCheckpoint,reloadFailureText}=require('./reload-trace.cjs');
 const assert = require('node:assert/strict');
@@ -15,12 +16,16 @@ const {chromium} = require('playwright-core');
    const page=await browser.newPage({viewport:reduced?{width:390,height:844}:{width:960,height:760},hasTouch:reduced,isMobile:reduced,reducedMotion:reduced?'reduce':'no-preference'});
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.addInitScript(captureReloadStartup);
-  await page.goto(url);await page.waitForFunction(()=>!document.getElementById('act').disabled);
+   await page.goto(url);
+   const play=await requireBootHome(page);
+   assert.equal(await page.evaluate(()=>g.state()),0);
+   if(reduced)await play.tap();else await play.click();
+   await page.waitForFunction(()=>!document.getElementById('act').disabled);
    if(await page.locator('#product').isVisible())await page.locator('#viewMode').click();
    assert.match(await page.title(),/Thai Waters/);
    assert.equal(await page.locator('#arrivalSkip').isVisible(),false,'Boot must start directly at the saved water');
    async function travel(name,period,beforeSubmit){
-    await page.locator('#openMenu').click();await page.locator('[data-to=spots]').click();
+    await page.locator('#openMenu').click();await page.locator('[data-section=home] [data-to=spots]').click();
     if(name){await showControl(page,'#places');await page.getByRole('button',{name:/Fishing location ·/}).click();await chooseNamed(page,name);}
     if(period){await showControl(page,'#period');await page.getByRole('button',{name:/Pond time ·/}).click();await page.getByRole('option',{name:period,exact:true}).click();}
     await showControl(page,'#fishHere');if(beforeSubmit)await beforeSubmit();await page.locator('#fishHere').click();
@@ -161,7 +166,18 @@ const {chromium} = require('playwright-core');
    const {observed:castPhase,trace:beforeRestore,startup:beforeStartup}=await page.evaluate(readCheckpoint,{placeName,observe:'cast'});
    assert([1,2].includes(castPhase),'The tap after Skip starts fishing');
    try{
-    await page.reload();await page.waitForFunction(()=>!document.getElementById('act').disabled);
+    await page.reload();
+    const resume=await requireBootHome(page);
+    assert.equal(await page.locator('#spot').textContent(),'Kwan Phayao');
+    const restored=await page.evaluate(()=>{
+     const raw=JSON.parse(localStorage.getItem('thai-atlas-v2')),kwan=atlas.locations.find(l=>l.name==='Kwan Phayao').id;
+     return {saved:[raw.place===kwan,raw.time,raw.weather],
+      active:[placeId===kwan,timeMode,weatherMode,currentSlot],phase:g.state(),arriving:arrivalSince!==null};
+    });
+    assert.deepEqual(restored,{saved:[true,1,0],active:[true,1,0,1],phase:0,arriving:false},
+     'Destination and conditions must already match while Home still gates fishing');
+    if(reduced)await resume.tap();else await resume.click();
+    await page.waitForFunction(()=>!document.getElementById('act').disabled);
     assert.equal(await page.locator('#arrivalSkip').isVisible(),false);
     assert.equal(await page.locator('#spot').textContent(),'Kwan Phayao');
    }catch(error){console.error(await reloadFailureText(page,{stage:reduced?'arrival-mobile':'arrival-desktop',before:beforeRestore,beforeStartup,expected:{placeName},pageErrors:errors.length}));throw error;}

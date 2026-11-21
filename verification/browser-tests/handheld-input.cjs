@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const assert=require('node:assert/strict');
 const path=require('node:path');
 const {pathToFileURL}=require('node:url');
@@ -45,18 +46,25 @@ async function verify(browser,mobile){
   await page.clock.setFixedTime(new Date('2026-01-12T23:00:00Z'));
   await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   const target=process.env.PLAYTEST_URL||pathToFileURL(process.env.PLAYTEST_HTML||path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href;
-  await page.goto(target);await page.waitForFunction(()=>g&&typeof g.handheldRodHigh==='function');
+  await page.goto(target);
+  const play=await requireBootHome(page);
   const press=code=>page.keyboard.press(code);
+  for(const key of ['v','c','9','o'])await press(key);
+  assert.deepEqual(await page.evaluate(()=>[g.state(),g.rodUp(),dialAngle]),[0,0,0],
+   'Controller packets cannot cast, lift or wind while Home gates play');
+  assert(await play.isVisible());assert(await page.locator('#act').isDisabled());
+  await pressButton(play);
+  await page.waitForFunction(()=>g&&typeof g.handheldRodHigh==='function'&&!$('act').disabled);
   await press('v');await press('c');await press('9');
   assert.equal(await page.evaluate(()=>g.state()),0,'No game events before opt-in');
-  await pressButton(page.locator('#openMenu'));await pressButton(page.locator('[data-to=sensors]'));
+  await pressButton(page.locator('#openMenu'));await pressButton(page.locator('[data-section=home] [data-to=sensors]'));
   const enable=page.locator('#handheldEnable'),status=page.locator('#handheldStatus');
   await setPairedRod(page,enable,true);assert.match(await status.textContent(),/Waiting/);
   await press('o');assert.equal(await page.evaluate(()=>dialAngle),0,'No rewind or turns before heartbeat');
   await press('v');assert.match(await status.textContent(),/Receiving/);
   await press('c');await press('h');await press('9');await press('o');
   assert.deepEqual(await page.evaluate(()=>[g.state(),g.rodUp(),dialAngle]),[0,0,0],'Motion bench consumes packets without playing');
-  await pressButton(page.locator('#back'));await pressButton(page.locator('[data-to=spots]'));
+  await pressButton(page.locator('#back'));await pressButton(page.locator('[data-section=home] [data-to=spots]'));
   await page.locator('#searchSpot').focus();await press('v');await press('c');await press('h');await press('o');await press('9');
   assert.equal(await page.locator('#searchSpot').inputValue(),'','Controller packets cannot type into the location search');
   await page.keyboard.type('xyz');assert.equal(await page.locator('#searchSpot').inputValue(),'xyz');
@@ -135,7 +143,7 @@ async function verify(browser,mobile){
   await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),1);
   await pressButton(page.locator('#openMenu'));assert.equal(await page.evaluate(()=>g.rodUp()),0);
-  await pressButton(page.locator('[data-language=th]'));await pressButton(page.locator('[data-to=sensors]'));
+  await pressButton(page.locator('[data-language=th]'));await pressButton(page.locator('[data-section=home] [data-to=sensors]'));
   assert.match(await status.textContent(),/[ก-๙]/);await setPairedRod(page,enable,false);
   assert.match(await status.textContent(),/ปิด/);await pressButton(page.locator('#resume'));
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),0);

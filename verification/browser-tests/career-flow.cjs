@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=require('node:path');
 const {openPersistenceEntry}=require('./persistence-entry.cjs');
 const {chromium,webkit}=require('playwright-core');
@@ -9,17 +10,23 @@ const {chromium,webkit}=require('playwright-core');
   const page=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:844,height:390},acceptDownloads:true});
   const key='thai-atlas-v2',target=entry.url;
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(target);await page.waitForFunction(()=>g&&!$('act').disabled);
-  await page.evaluate(key=>{
+  await page.goto(target);
+  const play=await requireBootHome(page);assert.equal(await page.evaluate(()=>g.state()),0);
+  await play.tap();await page.waitForFunction(()=>g&&!$('act').disabled);
+  const legacyBytes=await page.evaluate(key=>{
    const b=careerSnapshot();b.schema=3;b.book[40]=[2,18];
-   b.history=[{id:40,cm:18,grams:47}];localStorage.setItem(key,JSON.stringify(b));
+   b.history=[{id:40,cm:18,grams:47}];const raw=JSON.stringify(b);localStorage.setItem(key,raw);return raw;
   },key);
-  await page.reload();await page.waitForFunction(()=>g?.caught(40)===2);
+  await page.reload();
+  const resumeLegacy=await requireBootHome(page);
+  assert.deepEqual(await page.evaluate(()=>[g.caught(40),g.best(40),g.state()]),[2,18,0]);
+  assert.equal(await page.evaluate(k=>localStorage.getItem(k),key),legacyBytes);
+  await resumeLegacy.tap();await page.waitForFunction(()=>g?.caught(40)===2);
   assert.equal(await page.evaluate(()=>g.best(40)),18);
   const career=async()=>{
-   await page.locator('#openMenu').tap();await page.locator('[data-to=rod]').tap();
+   await page.locator('#openMenu').tap();await page.locator('[data-section=home] [data-to=rod]').tap();
    while(await page.locator('#sheetNext').isEnabled())await page.locator('#sheetNext').tap();
-   await page.locator('[data-to=career]').tap();
+   await page.locator('[data-section=home] [data-to=career]').tap();
    await page.locator('#careerExport').waitFor();
   };
   await career();const saved=page.waitForEvent('download');await page.locator('#careerExport').tap();
@@ -36,6 +43,12 @@ const {chromium,webkit}=require('playwright-core');
   await page.locator('#careerRestore').waitFor();
   assert.equal(await page.evaluate(k=>localStorage.getItem(k),key),before);
   await Promise.all([page.waitForEvent('domcontentloaded'),page.locator('#careerRestore').tap()]);
+  const resumeBackup=await requireBootHome(page);
+  assert.deepEqual(await page.evaluate(k=>{
+   const s=JSON.parse(localStorage.getItem(k));
+   return {native:[g.caught(40),g.best(40),g.state()],schema:s.schema,history:s.history,pending:s.pending,appliedHistory:catchHistory};
+  },key),{native:[2,18,0],schema:4,history:[{id:40,cm:18,grams:47}],pending:null,appliedHistory:[{id:40,cm:18,grams:47}]});
+  await resumeBackup.tap();
   await page.waitForFunction(()=>g?.caught(40)===2);
   assert.equal(await page.evaluate(()=>g.best(40)),18);
   assert.equal(JSON.parse(await page.evaluate(k=>localStorage.getItem(k),key)).schema,4);

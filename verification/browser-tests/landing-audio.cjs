@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {chromium,devices}=require('playwright-core');
 const assert=require('node:assert/strict');
 const path=require('node:path');
@@ -39,6 +40,10 @@ const {openPersistenceEntry}=require('./persistence-entry.cjs');
   await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   entry=await openPersistenceEntry(path.resolve(html));
   await page.goto(entry.url);
+  const play=await requireBootHome(page);
+  assert.equal(await page.evaluate(()=>audio===null&&g.state()===0),true);
+  await play.tap();
+  assert.equal(await page.evaluate(()=>audio===null&&g.state()===0),true,'Play remains quiet until a real fishing action');
   await page.waitForFunction(()=>!!g && !$('act').disabled);
   await page.evaluate(()=>{
    // Select an uncommon fish, then start the same cast again with the real controls.
@@ -80,6 +85,13 @@ const {openPersistenceEntry}=require('./persistence-entry.cjs');
   assert(capture.heard.length>0 && capture.heard.every(t=>t<1450));
   assert(capture.heard[0]<450,'Fanfare begins as the catch card opens');
   await page.reload();
+  const resume=await requireBootHome(page);
+  const quietHeldCatch=()=>page.evaluate(()=>({phase:g.state(),filed:!!g.filed(),count:g.caught(g.species()),
+   noAudio:audio===null,heard:landingProbe.heard,buffers:landingProbe.buffers}));
+  const silent={phase:5,filed:false,count:0,noAudio:true,heard:[],buffers:[]};
+  assert.deepEqual(await quietHeldCatch(),silent,'A restored pending catch is held and quiet at Home');
+  await resume.tap();
+  assert.deepEqual(await quietHeldCatch(),silent,'Resume does not file the catch or replay the fanfare');
   await page.waitForFunction(()=>g?.state()===5);
   await page.locator('#dial').tap();
   await page.waitForFunction(()=>audio?.state==='running' && g.age()>1400);

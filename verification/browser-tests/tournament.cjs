@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {chromium}=require('playwright-core');
 const {spawn}=require('node:child_process');
 const {once}=require('node:events');
@@ -9,7 +10,7 @@ const assert=require('node:assert/strict');
 async function openCup(page,touch){
  const click=selector=>touch?page.locator(selector).tap():page.locator(selector).click();
  await click('#openMenu');
- await click('[data-to=crew]');
+ await click('[data-section=home] [data-to=crew]');
  return click;
 }
 // Poll from Node so startup checks remain live while the test's animation clock is paused.
@@ -31,7 +32,25 @@ async function checkTarget(page,url,touch,language){
  const errors=[];
  page.on('pageerror',error=>errors.push(error.message));
  const ready=()=>!$('act').disabled;
- await page.goto(url);await waitForTargetState(page,ready,'game init');
+ await page.goto(url);
+ const play=await requireBootHome(page);
+ const clickHome=selector=>touch?page.locator(selector).tap():page.locator(selector).click();
+ const before=()=>page.evaluate(()=>[placeId,g.technique(),g.baitChoice(),g.state(),g.pts(),g.caught(45),enteredCup,audio===null]);
+ const fresh=await before();
+ assert.deepEqual(fresh.slice(3),[0,0,0,0,true],'Fresh Home does not cast, score, join or start audio');
+ assert.deepEqual(reports,[]);
+ await clickHome('#bootRoutes [data-to=crew]');
+ assert.equal(await page.locator('#cupJoin').isDisabled(),true);
+ assert.equal(await page.locator('#joinCrew').isDisabled(),true);
+ assert.equal(await page.locator('#cupTravel').isDisabled(),true);
+ assert.deepEqual(await before(),fresh,'Home Events retains destination, tackle and inactive game');
+ assert.deepEqual(reports,[],'Home Events cannot send a Cup action or standings request');
+ await clickHome('#back');
+ await requireBootHome(page);
+ if(touch)await play.tap();else await play.click();
+ assert.deepEqual(await before(),fresh,'Play cannot cast, equip, join or start audio');
+ assert.deepEqual(reports,[],'Play does not send a Cup action or standings request');
+ await waitForTargetState(page,ready,'game init');
  const click=await openCup(page,touch);
  await waitForTargetState(page,()=>cupBoard?.goal?.species===45,'fixed cup board');
  await page.evaluate(()=>document.fonts.ready);
@@ -97,7 +116,11 @@ async function checkTarget(page,url,touch,language){
  // Check actual storage before reload, then let a new page restore the same tackle.
  assert.deepEqual(await page.evaluate(()=>{const save=careerVault().load();return [save.place,save.rig,save.bait,save.pending];}),[96,2,17,null]);
  await page.clock.resume();
- await page.reload();await waitForTargetState(page,ready,'post-reload game init');
+ await page.reload();
+ const resume=await requireBootHome(page);
+ assert.deepEqual((await safeState()).slice(0,7),equipped.slice(0,7),'Home retains the selected Cup tackle without entering the Cup');
+ if(touch)await resume.tap();else await resume.click();
+ await waitForTargetState(page,ready,'post-reload game init');
  assert.deepEqual(await safeState(),equipped);
  await page.evaluate(()=>g.advance(16,true,false,0));
  await openCup(page,touch);assert.equal(await page.locator('#cupTravel').isDisabled(),true);
@@ -130,8 +153,13 @@ async function checkTarget(page,url,touch,language){
    const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
    const page=await context.newPage();players.push(page);
    await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await page.goto(invitation);await page.waitForFunction(()=>!$('act').disabled);
-   await page.locator('#openMenu').tap();await page.locator('[data-to=crew]').tap();
+   await page.goto(invitation);
+   const play=await requireBootHome(page);
+   assert.deepEqual(await page.evaluate(()=>[g.state(),enteredCup,audio===null]),[0,0,true]);
+   await play.tap();
+   assert.deepEqual(await page.evaluate(()=>[g.state(),enteredCup,audio===null]),[0,0,true],'Each LAN player enters only via the real Join control');
+   await page.waitForFunction(()=>!$('act').disabled);
+   await page.locator('#openMenu').tap();await page.locator('[data-section=home] [data-to=crew]').tap();
    await page.waitForFunction(()=>!!cupBoard);
    await page.locator('#cupJoin').tap();await page.waitForFunction(()=>enteredCup===cupBoard.goal.day);
    await page.locator('#cupTravel').tap();
@@ -143,7 +171,7 @@ async function checkTarget(page,url,touch,language){
    await page.locator('#catchContinue').tap();await page.waitForFunction(()=>cupBoard.best>0&&g.state()===0);
    assert.equal(await page.evaluate(()=>g.caught(g.species())),1);
   }
-  const first=players[0];await first.locator('#openMenu').tap();await first.locator('[data-to=crew]').tap();
+  const first=players[0];await first.locator('#openMenu').tap();await first.locator('[data-section=home] [data-to=crew]').tap();
   await first.waitForFunction(()=>cupBoard.rank===2 && cupBoard.leaders.length===2);
   assert.match(await first.locator('#cupMine').textContent(),/rank #2/);
   assert.equal(await first.locator('#cupLeaders div').count(),2);

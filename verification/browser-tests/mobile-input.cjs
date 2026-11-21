@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl}=require('./menu-controls.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
@@ -18,8 +19,10 @@ const T = require('three');
   });
   await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await page.goto(pathToFileURL(process.env.PLAYTEST_HTML||path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
+  await (await requireBootHome(page)).tap();
+  
   await page.waitForFunction(()=>g);
-  await page.locator('#openMenu').tap();await page.locator('[data-to=sensors]').tap();
+  await page.locator('#openMenu').tap();await page.locator('[data-section=home] [data-to=sensors]').tap();
   await page.locator('#enableMotion').tap();
   await page.waitForFunction(()=>$('motionStatus').textContent.includes('declined'));
   await page.evaluate(()=>window.testPermission='granted');await page.locator('#enableMotion').tap();
@@ -40,7 +43,7 @@ const T = require('three');
   await page.evaluate(()=>{g.travel(0);recenterOnRotation();});
   await orientation(0,0,25);await orientation(-30,0,18);await orientation(0,0,19);
   assert(await page.evaluate(()=>g.state()===1||g.state()===2),'After rotation the new axis must cast without opening settings.');
-  await page.locator('#openMenu').tap();await page.locator('[data-to=sensors]').tap();
+  await page.locator('#openMenu').tap();await page.locator('[data-section=home] [data-to=sensors]').tap();
   await showControl(page,'#wristReel');await page.locator('#wristReel').check();await page.locator('#resume').tap();
   await page.evaluate(()=>{g.travel(0);g.setTechnique(1);g.advance(16,1,0,0);g.advance(g.flightMs(),0,0,0);});
   await orientation(0,0,15);await orientation(-32,0,18);await orientation(0,0,16);
