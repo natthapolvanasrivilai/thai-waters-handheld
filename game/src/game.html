@@ -196,17 +196,28 @@ let catchHistory=[],pendingCapture=null;
 function newCatchId(){return Array.from(crypto.getRandomValues(new Uint32Array(4)),v=>v.toString(16).padStart(8,'0')).join('');}
 function captureLanding(){return {uid:newCatchId(),id:g.species(),cm:g.lengthCm(),grams:g.grams(),at:Date.now(),place:placeId,period:currentSlot,weather:g.weather(),bait:g.baitChoice()};}
 @@CAREER_STORAGE@@
-const careerVault=()=>makeCareerStorage(localStorage,{fish:atlas.fish.length,places:atlas.locations.length,validSize:(i,cm)=>cm>=atlas.fish[i].low&&cm<=(i===41?240:atlas.fish[i].high)});
+const fileCareer=location.protocol==='file:',fileCareerGuard=makeFileCareerGuard(fileCareer,history);
+let fileCareerSessionChanged=false;
+const careerCodec=storage=>makeCareerStorage(storage,{fish:atlas.fish.length,places:atlas.locations.length,
+ validSize:(i,cm)=>cm>=atlas.fish[i].low&&cm<=(i===41?240:atlas.fish[i].high),beforeWrite:fileCareer?fileCareerGuard.beforeWrite:null});
+const careerVault=()=>careerCodec(localStorage);
+function reportCareerStorageFailure(){
+ if(fileCareer){
+  fileCareerGuard.lock();
+  if(menu.open&&menuPage==='career'){resetCareerFile();drawCareer();}
+  $('summarySave').textContent=careerWords('Browser save unavailable. See Career & backups.','เข้าถึงบันทึกในเบราว์เซอร์ไม่ได้ ดูเมนูบันทึกและไฟล์สำรอง');
+ }else setUi($('summarySave'),'Progress is available for this session only.');
+}
 function careerSnapshot(){return {schema:4,history:catchHistory,pendingCapture:g.state()===5&&!g.filed()?pendingCapture:null,site:locationId,bait:g.baitChoice(),place:placeId,time:timeMode,weather:weatherMode,finish,rig:g.technique(),pending:g.state()===5&&!g.filed()?[g.species(),g.lengthCm(),pendingDay]:null,book:atlas.fish.map((_,i)=>[g.caught(i),g.best(i)]),rank:pathNames.map((_,i)=>g.rank(i))}}
-function save(){try{careerVault().commit(careerSnapshot());}catch{setUi($('summarySave'),'Progress is available for this session only.');}}
-function restore(){try{const b=careerVault().load();if(!b)return;
+function save(){try{careerVault().commit(careerSnapshot());fileCareerGuard.markKnown();}catch{if(fileCareer)fileCareerSessionChanged=true;reportCareerStorageFailure();}}
+function restore(){try{const b=careerVault().load();if(!b){fileCareerGuard.beforeWrite(null);return;}fileCareerGuard.markKnown();
  catchHistory=Array.isArray(b.history)?b.history.filter(c=>c&&Number.isInteger(c.id)&&atlas.fish[c.id]):[];pendingCapture=b.pendingCapture||null;
  for(let i=0;i<atlas.fish.length;i++){const e=b.book?.[i];if(Array.isArray(e))g.restoreEntry(i,e[0],e[1])}
  for(let i=0;i<3;i++)for(let k=0;k<Math.min(3,b.rank?.[i]||0);k++)g.purchase(i);
  placeId=Number.isInteger(b.place)&&atlas.locations[b.place]?b.place:(Number.isInteger(b.site)&&b.site>=0&&b.site<4?b.site:0);
  weatherMode=Number.isInteger(b.weather)&&b.weather>=0&&b.weather<=4?b.weather:0;
  timeMode=Number.isInteger(b.time)&&b.time>=0&&b.time<=4?b.time:4;finish=Number.isInteger(b.finish)&&b.finish>=0&&b.finish<3?b.finish:0;
- g.setBait(Number.isInteger(b.bait)?b.bait:0);g.setTechnique(Number.isInteger(b.rig)?b.rig:0);locationId=atlas.locations[placeId].pool;g.place(placeId,slot());if(Array.isArray(b.pending)){g.restoreCatch(b.pending[0],b.pending[1]);pendingDay=Number(b.pending[2])||0;}}catch{setUi($('summarySave'),'Progress is available for this session only.');}}
+ g.setBait(Number.isInteger(b.bait)?b.bait:0);g.setTechnique(Number.isInteger(b.rig)?b.rig:0);locationId=atlas.locations[placeId].pool;g.place(placeId,slot());if(Array.isArray(b.pending)){g.restoreCatch(b.pending[0],b.pending[1]);pendingDay=Number(b.pending[2])||0;}}catch{reportCareerStorageFailure();}}
 const rigNotes=['Wait through the shallow nibbles. Lift when the float dives.','Wind about three quarters of a turn, then stop and let the spoon flutter. Predators favor this moving lure.','Lift, lower, and give the jig time to fall. Repeat to tempt bottom feeders.'];
 const baitSheet=new Image();baitSheet.src='@@BAIT_ART@@';
 function drawBait(target,index){
@@ -376,13 +387,20 @@ document.addEventListener('keydown',e=>{
 });
 // Only the chosen local file enters this flow; there is no account or upload.
 const careerWords=(en,th)=>language==='th'?th:en;
+const careerUnavailable=()=>careerWords('This file cannot safely use browser save storage. Nothing was replaced. Open the hosted or localhost version to import a backup.','ไฟล์นี้ใช้พื้นที่บันทึกของเบราว์เซอร์อย่างปลอดภัยไม่ได้ ไม่มีการเขียนทับ เปิดเวอร์ชันเว็บหรือ localhost เพื่อนำเข้าไฟล์สำรอง');
 let careerRestoreFile=null,careerFileEpoch=0;
 function drawCareer(){
  let species=0,total=0;
  atlas.fish.forEach((_,i)=>{const n=g.caught(i);species+=n>0?1:0;total+=n;});
  $('careerSummary').textContent=careerWords('Local angler · '+species+' species · '+total+' landed','นักตกปลาในเครื่อง · '+species+' ชนิด · จับได้ '+total+' ตัว');
- $('careerPrivacy').textContent=careerWords('Saved in this browser only. Export before changing devices.','ข้อมูลอยู่ในเบราว์เซอร์นี้เท่านั้น สำรองก่อนเปลี่ยนเครื่อง');
- $('careerExport').textContent=careerWords('Export backup','ดาวน์โหลดไฟล์สำรอง');
+ const blocked=fileCareerGuard.recovering;
+ $('careerPrivacy').textContent=blocked?careerUnavailable():fileCareer
+  ?careerWords('Browser saves may not follow this file after reloading, moving or renaming it. Export a backup before closing. Use the hosted or localhost version for browser saves.','บันทึกในเบราว์เซอร์อาจไม่ตามไฟล์นี้เมื่อโหลดใหม่ ย้าย หรือเปลี่ยนชื่อ กรุณาสำรองก่อนปิด ใช้เวอร์ชันเว็บหรือ localhost สำหรับบันทึกในเบราว์เซอร์')
+  :careerWords('Saved in this browser only. Export before changing devices.','ข้อมูลอยู่ในเบราว์เซอร์นี้เท่านั้น สำรองก่อนเปลี่ยนเครื่อง');
+ $('careerExport').textContent=blocked?careerWords('Export this session only','ส่งออกเฉพาะรอบนี้'):careerWords('Export backup','ดาวน์โหลดไฟล์สำรอง');
+ $('careerFile').disabled=blocked;
+ if(blocked)$('careerRestore').hidden=true;
+ $('careerExport').disabled=blocked&&!fileCareerSessionChanged;
  $('careerChoose').textContent=careerWords('Choose backup file','เลือกไฟล์สำรอง');
  $('careerRestore').textContent=careerWords('Replace career from backup','แทนที่บันทึกด้วยไฟล์สำรอง');
 }
@@ -391,30 +409,38 @@ function resetCareerFile(){
  $('careerFile').value='';$('careerStatus').textContent='';$('careerRestore').hidden=true;
 }
 $('careerExport').onclick=()=>{
+ if(fileCareerGuard.recovering&&!fileCareerSessionChanged)return;
  try{
-  const text=careerVault().exportBackup(careerSnapshot());
+  const text=careerCodec(null).exportBackup(careerSnapshot());
   const url=URL.createObjectURL(new Blob([text],{type:'application/json'}));
-  const a=document.createElement('a');a.href=url;a.download='Pocket-Reel-career-'+new Date().toISOString().slice(0,10)+'.json';
+  const a=document.createElement('a');a.href=url;a.download=(fileCareerGuard.recovering?'Pocket-Reel-session-':'Pocket-Reel-career-')+new Date().toISOString().slice(0,10)+'.json';
   document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);
  }catch{$('careerStatus').textContent=careerWords('Could not export this career.','ดาวน์โหลดไฟล์สำรองไม่สำเร็จ');}
 };
 $('careerFile').onchange=async()=>{
+ if(fileCareerGuard.recovering)return;
  const epoch=++careerFileEpoch,file=$('careerFile').files[0];
  careerRestoreFile=null;$('careerRestore').hidden=true;$('careerStatus').textContent='';
  if(!file)return;
  try{
   if(file.size>8*1024*1024)throw Error('Backup too large');
-  const backup=careerVault().parseBackup(await file.text());
-  if(epoch!==careerFileEpoch||!menu.open||menuPage!=='career')return;
+  const backup=careerCodec(null).parseBackup(await file.text());
+  if(epoch!==careerFileEpoch||!menu.open||menuPage!=='career'||fileCareerGuard.recovering)return;
   const species=backup.book.filter(([n])=>n>0).length;
   careerRestoreFile=backup;$('careerRestore').hidden=false;
   $('careerStatus').textContent=careerWords('Backup: '+species+' species. Restore replaces the current save.','ไฟล์สำรอง '+species+' ชนิด การกู้คืนจะแทนที่บันทึกเดิม');
  }catch{if(epoch===careerFileEpoch)$('careerStatus').textContent=careerWords('Invalid or incompatible backup. Nothing changed.','ไฟล์สำรองไม่ถูกต้องหรือไม่รองรับ ยังไม่ได้แก้ไขข้อมูล');}
 };
 $('careerRestore').onclick=()=>{
+ if(!menu.open||menuPage!=='career')return;
+ if(fileCareerGuard.recovering){$('careerStatus').textContent=careerUnavailable();return;}
  if(!careerRestoreFile)return;
- try{careerVault().commit(careerRestoreFile,{replace:true});}
- catch{$('careerStatus').textContent=careerWords('Could not save the backup. The original career is unchanged.','บันทึกไฟล์สำรองไม่สำเร็จ ข้อมูลเดิมยังอยู่');return;}
+ try{careerVault().commit(careerRestoreFile,{replace:true});fileCareerGuard.markKnown();}
+ catch{
+  reportCareerStorageFailure();
+  $('careerStatus').textContent=careerWords('Could not save the backup. Nothing was replaced.','บันทึกไฟล์สำรองไม่สำเร็จ ไม่มีการเขียนทับ');
+  return;
+ }
  location.reload();
 };
 function closeMenu(){
