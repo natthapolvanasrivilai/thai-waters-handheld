@@ -69,6 +69,14 @@
       "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/02/File_vertebrate_Fish_03_070266.pdf",
       "reference": "Earlier ONEP exact taxon and specific compound confirm 2025 ONEP label. DoF generic ข้างใส / ใบมีดโกน were not copied. Exact record, DoF Aqualib row 494: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 2716: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
+    "111": {
+      "key": 2340904,
+      "scientific": "Akysis pulvinatus",
+      "name": "ปลาขยุยระนอง",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/02/File_vertebrate_Fish_03_070266.pdf",
+      "reference": "ONEP 2025 Fish workbook ALL row 311; ONEP Fish register Fishes / 26 exact"
+    },
     "113": {
       "key": 2340892,
       "scientific": "Akysis varius",
@@ -231,6 +239,14 @@
       "aliases": [],
       "source": "https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx",
       "reference": "ONEP workbook ALL row 20. Independent DoF annual report, exact species and label (https://www4.fisheries.go.th/local/file_document/20220311151202_new.pdf)"
+    },
+    "243": {
+      "key": 2394008,
+      "scientific": "Betta pi",
+      "name": "ปลากัดน้ำแดง",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2021/10/ONEP_V12.pdf",
+      "reference": "ONEP 2025 Fish workbook ALL row 208; ONEP exact illustrated account; do not use alternate ปลากัดช้าง"
     },
     "244": {
       "key": 2394052,
@@ -526,6 +542,14 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-20; not a game size rule."
     },
+    "631": {
+      "key": 2341307,
+      "scientific": "Glyptothorax buchanani",
+      "name": "แค้ติดหินเหนือ",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/02/File_vertebrate_Fish_03_070266.pdf",
+      "reference": "ONEP 2025 Fish workbook ALL row 456; ONEP Fish register Fishes / 36 exact; TH-BIF agrees, omit generic แค้ติดหิน"
+    },
     "634": {
       "key": 2341419,
       "scientific": "Glyptothorax dorsalis",
@@ -576,6 +600,14 @@
       "source": "https://thbif.onep.go.th/taxons/detail/19758",
       "reference": "Exact national species spelling and explanation; omit broad alternate สายยู. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q5647710"
     },
+    "727": {
+      "key": 9261997,
+      "scientific": "Hemitrygon laosensis",
+      "name": "ปลากระเบนลาว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/19780",
+      "reference": "ONEP 2025 Fish workbook ALL row 140; TH-BIF ชื่อไทย exact full form; omit alternate กระเบนแม่น้ำโขง and ฝาไล"
+    },
     "735": {
       "key": 2413479,
       "scientific": "Hilsa kelee",
@@ -583,6 +615,14 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-54; not a game size rule."
+    },
+    "737": {
+      "key": 5215903,
+      "scientific": "Himantura leoparda",
+      "name": "ปลากระเบนลายเสือดาว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/20138",
+      "reference": "ONEP 2025 Fish workbook ALL row 141; TH-BIF exact full form; DMCR numbered row 49 short form; omit shared กระเบนลายเสือ"
     },
     "742": {
       "key": 5201147,
@@ -811,6 +851,22 @@
       "source": "https://thbif.onep.go.th/minisite/hkk/taxons/detail/21912",
       "reference": "Exact ONEP pilot record corroborates workbook. ONEP 2025 ALL row 178: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
+    "946": {
+      "key": 2417758,
+      "scientific": "Narcine timlei",
+      "name": "ปลากระเบนไฟฟ้าสีน้ำตาล",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/27268",
+      "reference": "ONEP 2025 Fish workbook ALL row 364; TH-BIF exact full form; DMCR Appendix 1 row 22 (N. timlei under Narcine), omit generic กระเบนไฟฟ้า"
+    },
+    "947": {
+      "key": 2419760,
+      "scientific": "Narke dipterygia",
+      "name": "ปลากระเบนไฟฟ้าหางจุด",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/27278",
+      "reference": "ONEP 2025 Fish workbook ALL row 365; TH-BIF exact full form; DMCR Appendix 1 row 23; omit generic กระเบนไฟฟ้า and เสียว"
+    },
     "962": {
       "key": 2379975,
       "scientific": "Nemipterus hexodon",
@@ -921,6 +977,14 @@
       "source": "https://www4.fisheries.go.th/local/file_document/20170320163221_file.pdf",
       "reference": "DoF field report gives this diagnostic vernacular for P. bocourti; omit Wikidata shared ปลาเผาะ และชื่อร่วม ปลาโมง. National TH-BIF supplies the shorter exact label ปลายาง. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q139576"
     },
+    "1061": {
+      "key": 5202451,
+      "scientific": "Pangasius macronema",
+      "name": "สังกะวาดท้องเหลือง",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/07/File_vertebrate_Fish_03_270766.pdf",
+      "reference": "ONEP 2025 Fish workbook ALL row 1868; ONEP Fishes / 59 exact; DoF older source uses สังกะวาดเหลือง; no alias"
+    },
     "1065": {
       "key": 5202478,
       "scientific": "Pangasius sanitwongsei",
@@ -930,6 +994,22 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/taxon_detail/Pangasius%20sanitwongsei",
       "reference": "National TH-BIF provides display and alias; Department of Fisheries survey also corroborates exact name. ONEP 2025 ALL row 74: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "1073": {
+      "key": 8243292,
+      "scientific": "Pao baileyi",
+      "name": "ปลาปักเป้าขน",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20250123181504_1_file.pdf",
+      "reference": "ONEP 2025 Fish workbook ALL row 196; DoF exact puffer table; TH-BIF exact accepted species with old name Tetraodon baileyi only in provenance"
+    },
+    "1078": {
+      "key": 8413659,
+      "scientific": "Pao palembangensis",
+      "name": "ปลาปักเป้าท้องตาข่าย",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20250123181504_1_file.pdf",
+      "reference": "ONEP 2025 Fish workbook ALL row 360; DoF exact puffer table; TH-BIF exact profile; older Tetraodon palembangensis only in provenance"
     },
     "1100": {
       "key": 2378916,
@@ -1044,6 +1124,14 @@
       "aliases": [],
       "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
       "reference": "ONEP Ranong line 187, 466"
+    },
+    "1227": {
+      "key": 2340952,
+      "scientific": "Pseudobagarius leucorhynchus",
+      "name": "ขยุยปากขาว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/34037",
+      "reference": "ONEP 2025 Fish workbook ALL row 317; TH-BIF exact species-specific form; omit shared ขยุย"
     },
     "1235": {
       "key": 2375911,
@@ -1197,6 +1285,14 @@
       "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/427",
       "reference": "Thai Department of Fisheries coastal-resource survey, https://www4.fisheries.go.th/local/file_document/20210426102505_1_file.pdf"
     },
+    "1434": {
+      "key": 7193839,
+      "scientific": "Taeniurops meyeni",
+      "name": "ปลากระเบนตกกระ",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/39618",
+      "reference": "ONEP 2025 Fish workbook ALL row 155; TH-BIF exact full form; DMCR numbered row 72 short form; omit shared ลายหินอ่อน"
+    },
     "1441": {
       "key": 2413397,
       "scientific": "Tenualosa toli",
@@ -1313,6 +1409,14 @@
       "source": "https://thbif.onep.go.th/taxons/taxon_detail/Aaptosyax%20grypus",
       "reference": "Exact name independently listed as สะนากยักษ์; do not import other identities from provincial list (https://chm-thai.onep.go.th/wp-content/uploads/2021/10/ONEP_V16.pdf); Index points to the species account on printed p. 39 (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
     },
+    "1544": {
+      "key": 2419252,
+      "scientific": "Aetomylaeus vespertilio",
+      "name": "ปลากระเบนนกรางกระแส",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/986",
+      "reference": "ONEP 2025 Fish workbook ALL row 55; TH-BIF directly gives exact full form beside spelling variant; DMCR row 83 short form"
+    },
     "1549": {
       "key": 2420813,
       "scientific": "Alopias superciliosus",
@@ -1322,6 +1426,14 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/taxon_detail/Alopias%20superciliosus",
       "reference": "Exact national label + specific alternate; omit broad ฉลามตาโต. Wikidata discovery only: https://www.wikidata.org/entity/Q508067"
+    },
+    "1550": {
+      "key": 2420797,
+      "scientific": "Alopias vulpinus",
+      "name": "ปลาฉลามหางยาวตาเล็ก",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/1456",
+      "reference": "ONEP 2025 Fish workbook ALL row 130; TH-BIF exact species-specific full form; omit shared ฉลามหางยาว"
     },
     "1557": {
       "key": 7734965,
@@ -1408,6 +1520,14 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/5618",
       "reference": "Exact national and earlier Peat Swamp Fishes case; no generic ซิวแคระ alias to avoid identity bleed. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 265): https://data.go.th/dataset/aquatic-animal"
+    },
+    "1632": {
+      "key": 2418052,
+      "scientific": "Carcharhinus longimanus",
+      "name": "ปลาฉลามครีบยาว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Carcharhinus%20longimanus",
+      "reference": "ONEP 2025 Fish workbook ALL row 22; TH-BIF exact full form; ONEP red-data table 5 short form"
     },
     "1649": {
       "key": 2383313,
