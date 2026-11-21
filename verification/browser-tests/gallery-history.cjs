@@ -17,7 +17,7 @@ async function assertRayongLanding(browser,target){
   const tap=s=>page.locator(s).tap(), ready=()=>page.waitForFunction(()=>g?.state()===0&&!$('act').disabled,undefined,{timeout:10000});
   await page.goto(target);await (await requireBootHome(page)).tap();await ready();
   assert.equal(await page.locator('html').getAttribute('lang'),'th');
-  assert.deepEqual(await page.evaluate(()=>{const x=atlas.fish[1433];return [x.art,x.key,x.name,x.scientificName,x.thaiNameKind,x.thaiSearchAliases,x.measure];}),[1433,5215810,'ปลากระเบนทอง','Taeniura lymma','species',['ปลากระเบนหางพัดจุดฟ้า'],'Disc width']);
+  assert.deepEqual(await page.evaluate(()=>{const x=atlas.fish[1433];return [x.art,x.key,x.name,x.scientificName,x.thaiNameKind,x.thaiSearchAliases,x.measure];}),[1433,5215810,'ปลากระเบนทอง','Taeniura lymma','species',['ปลากระเบนหางพัดจุดฟ้า'],'ความกว้างลำตัว']);
   assert.equal(await page.evaluate(()=>{$('bookSearch').value='ปลากระเบนหางพัดจุดฟ้า';const found=bookMatches().includes(1433);$('bookSearch').value='';return found;}),false);
   // Seed the normal Rayong cast, bite and bottom-holding fight; do not restore
   // a catch or write a receipt. The real frame performs the landing transition.
