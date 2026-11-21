@@ -9,4 +9,6 @@ Keep fishing visible behind menus. The collection is the full-screen exception. 
 
 Tap water to aim and cast. Place tackle icons in the transparent HUD and line tension at the moving end of the line. During a fight, show line movement and splashes. Reveal the fish on landing, place fish at left and data at right, and let the player tap to continue before filing. Preserve anonymous silhouettes until discovery.
 
+For Daily Cup, lead with the existing target portrait and the qualifying minimum for its actual measurement type, separate from the recorded catch or personal best. Render the calibrated scale on the native LCD and keep “equip and travel” separate from competition entry. Verify touch fit, same-water equip without travel, skip, persistent tackle and the active-cast and unfiled-catch guards in the [tournament check](../../../verification/browser-tests/tournament.cjs).
+
 Exercise changes in the flat LCD and projected device view. Start from the existing [browser checks](../../../verification/browser-tests/package.json) and the [game handbook](../../../docs/wiki/Game-and-demo.md).

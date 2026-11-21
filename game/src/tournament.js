@@ -11,16 +11,56 @@ function tournamentGoal(){
  return {day,spot,species:atlas.fish.indexOf(f),name:f.name,location:atlas.locations[spot].name,minimum:Math.ceil(f.low+(f.high-f.low)*.45)};
 }
 let cupBoard=null,rankPage=0;
+const cupWords=(en,th)=>language==='th'?th:en;
 function cupText(id,value){if($(id).textContent!==value)setUi($(id),value);}
+function cupKit(species){
+ if(!g)return null;
+ const bait=g.recommendedBait(species);
+ if(!Number.isInteger(bait)||bait<0||bait>=18)return null;
+ // Recommend by feeding depth (not portrait body shape). Bottom jig,
+ // midwater stop-and-go, surface drift; the engine supplies bait/depth.
+ return {bait,rig:[0,1,2][Math.floor(bait/6)]};
+}
+function cupTravelReady(){return !!g&&powered&&arrivalSince===null&&[0,6,9].includes(g.state());}
 function drawCup(){
  const goal=cupBoard?.goal||tournamentGoal(), joined=enteredCup===goal.day;
- const timing=goal.species===40?' Fish at dusk or night.':goal.species===41?' Fish at dawn or night.':'';
- if(language==='th')cupText('cupGoal',atlas.fish[goal.species].name+' · '+(g?L(readEngineText(g.measurement(goal.species,goal.minimum))):'ความยาว')+' อย่างน้อย '+goal.minimum+' ซม.'+(g?' · '+baitTip(goal.species):''));
- else cupText('cupGoal',atlas.fish[goal.species].name+' · '+goal.minimum+' cm minimum '+(g?readEngineText(g.measurement(goal.species,goal.minimum)).toLowerCase():'length')+(g?' · '+baitTip(goal.species):''));
- cupText('cupLocation',atlas.locations[goal.spot].name+' · closes at midnight, Bangkok time.'+timing);
+ const fish=atlas.fish[goal.species],kit=cupKit(goal.species),ready=!!kit&&cupTravelReady();
+ const timing=goal.species===40?cupWords(' Fish at dusk or night.',' ตกช่วงพลบค่ำหรือกลางคืน'):goal.species===41?cupWords(' Fish at dawn or night.',' ตกช่วงรุ่งเช้าหรือกลางคืน'):'';
+ const units=cupWords('cm','ซม.'),metric=g?L(readEngineText(g.measurement(goal.species,goal.minimum))):'';
+ cupText('cupGoal',fish.name);
+ cupText('cupTargetSize',cupWords('Qualifying minimum: ','ขั้นต่ำที่เข้าเกณฑ์: ')+goal.minimum+' '+units+(metric?' · '+metric:''));
+ const step=[1,2,5,10,20,25,50,100,250].find(n=>4*n>goal.minimum),limit=4*step;
+ const mark=$('cupRulerMark'),position=(100*goal.minimum/limit)+'%';
+ if(mark.style.left!==position)mark.style.left=position;
+ const ticks=$('cupRulerTicks');
+ // A canvas survives the projected LCD painter, which doesn't render CSS gradients.
+ if(!ticks.dataset.drawn){
+  const brush=ticks.getContext('2d');
+  for(let i=0;i<=20;i++){
+   const major=i%5===0,x=Math.min(ticks.width-1,Math.round(i*ticks.width/20));
+   brush.fillStyle=major?'#694925':'#9a763f';
+   brush.fillRect(x,major?1:6,1,major?10:5);
+  }
+  ticks.dataset.drawn='true';
+ }
+ const labels=$('cupRulerLabels');
+ for(let i=0;i<5;i++){
+  const label=labels.children[i],text=String(i*step)+(i===4?' '+units:'');
+  if(label.textContent!==text){label.style.setProperty('--tick',i);label.textContent=text;}
+ }
+ const plot=$('cupPortrait');
+ if(g&&plot.dataset.species!==String(goal.species)){
+  const brush=plot.getContext('2d');brush.clearRect(0,0,plot.width,plot.height);brush.imageSmoothingEnabled=false;
+  drawSpecimen(brush,goal.species,0,0,plot.width,plot.height);plot.dataset.species=String(goal.species);
+ }
+ cupText('cupLocation',atlas.locations[goal.spot].name+cupWords(' · closes at midnight, Bangkok time.',' · ปิดรับผลตอนเที่ยงคืน เวลาไทย')+timing);
+ cupText('cupLoadout',kit?cupWords('Tackle: ','ชุดตกปลา: ')+$('technique').options[kit.rig].text+' · '+baitTip(goal.species):'');
+ cupText('cupTravel',placeId===goal.spot?cupWords('Equip recommended tackle','ใส่ชุดที่แนะนำ'):cupWords('Equip and travel','ใส่ชุดแล้วเดินทาง'));
  cupText('cupJoin',joined?'Fishing this cup':'Enter daily cup');
  $('cupJoin').disabled=joined||requestInFlight||location.protocol==='file:';
- $('cupTravel').disabled=!g||g.state()===5;
+ $('cupTravel').disabled=!ready;
+ $('cupTravelNote').hidden=ready;
+ cupText('cupTravelNote',ready?'':cupWords('Finish this cast or file your catch first.','จบรอบตกปลาหรือบันทึกปลาที่ได้ก่อน'));
  cupText('cupScope',location.hostname.endsWith('.chatgpt.site')?'Private playtest standings':'Local host standings');
  cupText('cupMine',cupNotice||(cupBoard?.rank?cupBoard.angler+' · rank #'+cupBoard.rank+' · '+cupBoard.best+' cm':joined?(cupBoard?.angler||'Entered')+' · file a qualifying catch.':'Enter before landing your catch.'));
  const list=$('cupLeaders'),rows=cupBoard?.leaders||[];
@@ -65,5 +105,14 @@ function submitTournamentCatch(){
  rememberCup();void syncCup();
 }
 $('cupJoin').onclick=()=>syncCup('join');
-$('cupTravel').onclick=()=>{const goal=cupBoard?.goal||tournamentGoal();if(g.state()===5)return;chooseSpot(goal.spot,goal.species===40?2:goal.species===41?3:timeMode);closeMenu();};
+$('cupTravel').onclick=()=>{
+ if(!cupTravelReady())return;
+ const goal=cupBoard?.goal||tournamentGoal(),kit=cupKit(goal.species);
+ if(!kit||!atlas.locations[goal.spot])return;
+ unlock();
+ g.setTechnique(kit.rig);g.setBait(kit.bait);
+ if(goal.spot===placeId){save();showRig();}
+ else chooseSpot(goal.spot,goal.species===40?2:goal.species===41?3:timeMode);
+ closeMenu();
+};
 setInterval(()=>{if(powered&&!document.hidden&&(menu.open&&menuPage==='crew'||cupState.pending))syncCup();},10000);

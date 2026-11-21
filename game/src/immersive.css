@@ -244,6 +244,22 @@ html:lang(th) #menu section[data-section="crew"] h2{font:normal 16px/23px 'Syy F
 #menu .book-profile{margin:0}
 #menu #bookDetail h3{margin:1px 0;padding-top:2px}
 #menu .catch-log{padding:3px;margin:0}
+#cupTarget{padding:4px 8px 3px;border:1px solid #5a806f;border-radius:7px;background:#24483c}
+.cup-specimen{display:grid;grid-template-columns:122px minmax(0,1fr);align-items:center;gap:8px}
+.cup-specimen canvas{display:block;width:120px;height:62.5px;image-rendering:pixelated;border-radius:4px;background:#173830}
+#cupGoal{display:block;font-size:17px;line-height:1.25;color:#fff4da;overflow-wrap:anywhere}
+#cupTargetSize{margin:2px 0 0;line-height:1.25;color:#f9dca1}
+.cup-tape{margin:3px 5px 0}
+.cup-ruler{position:relative;height:11px;border:1px solid #c9a56b;border-radius:2px;background:#f4d68c}
+#cupRulerTicks{display:block;width:100%;height:11px;image-rendering:pixelated}
+#cupRulerMark{position:absolute;top:-2px;bottom:-2px;width:3px;transform:translateX(-50%);border-radius:2px;background:#783d23;box-shadow:0 0 0 1px #fff0ba}
+#cupRulerLabels{position:relative;height:14px;font-size:11px;color:#e9d4a5}
+#cupRulerLabels span{position:absolute;left:calc(var(--tick) * 25%);transform:translateX(-50%);white-space:nowrap}
+#cupRulerLabels span:first-child{transform:none}
+#cupRulerLabels span:last-child{transform:translateX(-100%)}
+#menu .menu-sheet .cup-controls{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:stretch}
+#menu .cup-controls button{line-height:1.2;padding:3px 5px;touch-action:manipulation}
+#cupTravelNote,#cupMine{font-size:12px;line-height:1.2}
 #menu .menu-sheet:has(#cupLeaders) h2{margin:0}
 #menu .menu-sheet:has(#cupLeaders) small{display:block}
 #menu .menu-sheet:has(#cupLeaders) .history-nav{justify-content:flex-end}
