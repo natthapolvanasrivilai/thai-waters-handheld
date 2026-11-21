@@ -36,9 +36,19 @@ const main=async()=>{
  };
  const snap=p=>p.evaluate(()=>({raw:localStorage.getItem('thai-atlas-v2'),catchCount:g.caught(1433),epoch:performance.timeOrigin,initial:window.__initialRouteCareer}));
  const career=async(p,restore=false)=>{
-  phase=restore?'destination-career-menu':'source-career-menu';
+  const side=restore?'destination':'source';
+  phase=side+'-open-hud-menu';
   await p.locator('#openMenu').tap();
-  await p.locator('[data-section=home] [data-to=career]').tap();
+  phase=side+'-open-rod-workshop';
+  await p.locator('[data-section=home] [data-to=rod]').tap();
+  // Direct Career Mode exists only at startup Home; the live HUD uses Rod workshop.
+  phase=side+'-rod-career-sheet';
+  const next=p.locator('#sheetNext');
+  await next.waitFor({state:'visible'});
+  for(let n=0;n<5&&await next.isEnabled();n++)await next.tap();
+  check(await p.locator('#sheetNumber').textContent()==='6/6','rod-career-sheet-not-active');
+  phase=side+'-open-career';
+  await p.locator('#careerOpen').tap();
   await p.locator('#careerExport').waitFor({state:'visible'});
   if(restore){
    // V43 places restore in Career sheet 2/2. Exercise its real touch arrow.
