@@ -198,9 +198,35 @@ const {webkit,chromium}=require('playwright-core');
  await page.locator('#bookFind').tap();assert.equal(await page.locator('#bookSearch').inputValue(),'prawn');
  await page.keyboard.press('Escape');assert(await page.locator('#species-40').isVisible(),'Escape returns to the still-filtered fish grid');
  await page.locator('#species-40').tap();
- const row=page.locator('.catch-log');assert.equal(await row.count(),1);assert.equal(await row.locator('svg').count(),8);assert.match(await row.innerText(),/18/);
+ const row=page.locator('.catch-log'),table=page.locator('.catch-table');
+ assert.equal(await row.count(),1);
+ assert.equal(await table.locator('thead th[scope=col] svg').count(),8);
+ assert.equal(await row.locator('td').count(),8);
+ assert.deepEqual(await row.locator('td').allTextContents(),await page.evaluate(r=>catchHistoryValues(r),captured));
+ // Exercise a mixed retained receipt, incomplete receipt and legacy aggregate.
+ const partial={id:40,cm:18};
+ await page.evaluate(({partial,captured})=>{
+  g.restoreEntry(40,15,18);
+  catchHistory=[...Array.from({length:12},()=>({...captured})),partial];
+  renderBook();
+ },{partial,captured});
+ assert.equal(await row.count(),13);
+ assert.equal(await row.first().locator('.catch-unknown').count(),7);
+ assert.match(await page.locator('.catch-legacy').innerText(),/2/);
+ assert.equal(await page.locator('.catch-scroll').getAttribute('tabindex'),'0');
+ const scroll=page.locator('.catch-scroll');
+ const before=await scroll.evaluate(e=>({top:e.scrollTop,head:e.querySelector('thead').getBoundingClientRect().top}));
+ if(touch)await swipe('.catch-scroll',0,-78);
+ else await scroll.evaluate(e=>e.scrollTop=65);
+ await page.waitForFunction(()=>document.querySelector('.catch-scroll').scrollTop>0);
+ const after=await scroll.evaluate(e=>({top:e.scrollTop,head:e.querySelector('thead').getBoundingClientRect().top}));
+ assert(after.top>before.top&&Math.abs(before.head-after.head)<1,'Header remains pinned as receipts pan vertically');
+ if(touch)await swipe('.catch-scroll',-85);
+ else await scroll.evaluate(e=>e.scrollLeft=65);
+ await page.waitForFunction(()=>document.querySelector('.catch-scroll').scrollLeft>0);
+ assert.equal(await page.evaluate(()=>bookSpecies),40,'Swiping inside catch table never changes species');
  await shot('Thai-Waters-catch-history');await page.locator('#back').tap();assert(await page.locator('#species-40').isVisible());
  await page.locator('#back').tap();await page.locator('[data-section=home] [data-to=sensors]').tap();await showControl(page,'#handheldEnable');await page.locator('#handheldEnable').check();await page.keyboard.press('v');await page.locator('#resume').tap();await page.keyboard.press('c');await page.waitForFunction(()=>g.state()===1||g.state()===2);
- assert.deepEqual(errors,[]);console.log('PASS three Thai location typefaces, 480×320 gallery, confirmed catch across reload, eight history fields, full-width HUD, reduced-motion prompt, and controller cast.');
+ assert.deepEqual(errors,[]);console.log('PASS three Thai location typefaces, 480×320 gallery, confirmed catch across reload, eight history fields and two-axis scroll, full-width HUD, reduced-motion prompt, and controller cast.');
  }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});

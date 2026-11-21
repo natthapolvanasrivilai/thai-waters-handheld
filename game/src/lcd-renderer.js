@@ -184,13 +184,21 @@ const paintLcdInterface = (() => {
    pen.lineWidth=Number(el.getAttribute('stroke-width'))||1.65;pen.lineCap='round';pen.lineJoin='round';
    for(const path of el.querySelectorAll('path'))pen.stroke(new Path2D(path.getAttribute('d')));
   } else {
-   for(const child of el.childNodes) {
+   // The native LCD painter has no CSS stacking contexts. Keep the
+   // sticky receipt header above rows that scroll behind it.
+   const flow=el.matches('.catch-table')?[...el.tBodies,el.tHead]:el.childNodes;
+   for(const child of flow) {
     if(child.nodeType===Node.TEXT_NODE && child.textContent.trim()) textNode(child,style,outline);
     else if(child.nodeType===Node.ELEMENT_NODE)paintElement(child,clip,outline);
    }
    const marker=el.matches('.routes button')?'›':el.matches('.lcd-select-wrap > button')?'▾':el.matches('[role=option][aria-selected=true]')?'✓':'';
    if(marker)centered(marker,{x:b.x+b.w-18,y:b.y,w:13,h:b.h},'#decaab',14);
    if(scroll)scrollbar(el,b);
+   if(el.matches('.catch-scroll')&&el.scrollWidth>el.clientWidth+1){
+    const available=b.w-8,thumb=Math.max(12,available*el.clientWidth/el.scrollWidth);
+    const left=(available-thumb)*el.scrollLeft/(el.scrollWidth-el.clientWidth);
+    roundedBox(b.x+4+left,b.y+b.h-4,thumb,2,1,'#8a9e8d');
+   }
   }
   pen.restore();
  }
