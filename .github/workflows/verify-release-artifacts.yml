@@ -235,3 +235,57 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 .github/scripts/nightly-release.py publish nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
+  arrival_reload_boundary_diagnostic:
+    needs: browser_build
+    if: github.event_name == 'workflow_dispatch' && github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.ref == 'refs/heads/diagnostic/arrival-reload-boundary-62'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        transport: [file, http]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: workflow-source
+          fetch-depth: 0
+          sparse-checkout: .github/scripts
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: browser-input-${{ env.SOURCE_SHA }}
+          path: ${{ runner.temp }}/arrival-reload-source
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - name: Compare the original Arrival sequence across reload
+        shell: bash
+        env:
+          ARRIVAL_RELOAD_TRANSPORT: ${{ matrix.transport }}
+        run: |
+          set -euo pipefail
+          expected=ec3fca6f2ed19a7035e69d2a5034ca35b4d9eb57
+          test "$SOURCE_SHA" = "$expected"
+          test "$(git rev-parse HEAD)" = "$expected"
+          test "$(git -C workflow-source rev-parse HEAD)" = "$GITHUB_WORKFLOW_SHA"
+          git -C workflow-source merge-base --is-ancestor "$expected" "$GITHUB_WORKFLOW_SHA"
+          input="$RUNNER_TEMP/arrival-reload-source"
+          (cd "$input" && sha256sum -c --strict SHA256SUMS && test "$(head -1 BUILD.txt)" = "SOURCE_COMMIT=$expected")
+          cp "$input/Thai-Waters-play.html" game/Thai-Waters-play.html
+          test "$(git hash-object verification/browser-tests/arrival.cjs)" = "$(git rev-parse HEAD:verification/browser-tests/arrival.cjs)"
+          cp workflow-source/.github/scripts/{arrival-traced,reload-trace-arrival,reload-document-start,reload-document-start.test}.cjs verification/browser-tests/
+          node --test verification/browser-tests/reload-document-start.test.cjs
+          npm ci --prefix verification/browser-tests
+          (
+            cd verification/browser-tests
+            ./node_modules/.bin/playwright-core install --with-deps chromium
+          )
+          export BROWSER_PATH="$(node -p 'require("./verification/browser-tests/node_modules/playwright-core").chromium.executablePath()')"
+          export EXPECT_BROWSER_VERSION="$(node -p 'require("./verification/browser-tests/node_modules/playwright-core/browsers.json").browsers.find(b=>b.name==="chromium").browserVersion')"
+          export EXACT_HTML_SHA256="$(sha256sum "$input/Thai-Waters-play.html" | cut -d' ' -f1)"
+          node verification/browser-tests/arrival-traced.cjs
