@@ -183,6 +183,20 @@ class ExtrusionGuardTests(unittest.TestCase):
         self.assertEqual(rc, 2)
         self.assertIn("mode", result["reason"])
 
+    def test_unsupported_extrusion_spline_is_not_silently_ignored(self):
+        gcode = "M83\nG28\nG90\nG4 P50\n" + layer(.2) + layer(1.2, local=True)
+        gcode += "G5 X2 Y1 I1 J0 P-1 Q0 E1\n"
+        rc, result = self.audit(gcode)
+        self.assertEqual(rc, 2)
+        self.assertIn("G5", result["reason"])
+
+    def test_unsupported_absolute_arc_center_mode_fails_closed(self):
+        gcode = "G90\nM83\n" + layer(.2) + layer(1.2, model=False)
+        gcode += "G90.1\nG0 X11 Y1\nG2 I-1 J0 E0.4\n"
+        rc, result = self.audit(gcode)
+        self.assertEqual(rc, 2)
+        self.assertIn("G90.1", result["reason"])
+
     def test_warned_plate_not_accepted_by_geometry_only(self):
         gcode = "G90\nM83\n" + layer(.2) + layer(1.2)
         rc, report = self.audit(gcode, native_warning="out of bounds")
