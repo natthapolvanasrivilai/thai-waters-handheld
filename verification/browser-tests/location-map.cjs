@@ -24,12 +24,19 @@ assert.equal(orderedIds[1],unmapped);
    p.setDefaultNavigationTimeout(12000);
    p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(/^https?:/.test(r.url()))outside.push(r.url());});
    const press=async s=>touch?p.locator(s).tap():p.locator(s).press('Enter');
+   // A true standalone reload may temporarily expose a missing binding.
+   // Never seed it from an init hook: that would hide Recovery and fabricate place 0.
    await p.addInitScript(fileUrl=>{
-    if(location.href!==fileUrl||localStorage.getItem('thai-atlas-v2')!==null)return;
-    localStorage.setItem('thai-atlas-v2',JSON.stringify({
-     schema:4,book:[],site:0,place:0,bait:0,time:4,weather:0,finish:0,rig:0,rank:[0,0,0],
-     history:[],pending:null,pendingCapture:null
-    }));
+    if(location.href!==fileUrl)return;
+    const read=()=>{
+     const entry={origin:location.origin,protocol:location.protocol,ready:document.readyState,
+      epoch:performance.timeOrigin,known:history.state?.pocketReelCareerKnown===true,raw:null,error:null};
+     try{entry.raw=localStorage.getItem('thai-atlas-v2');}
+     catch(e){entry.error=e.name||'StorageError';}
+     return entry;
+    };
+    window.__mapFileStorageRead=read;
+    window.__mapFileAtStart=read();
    },url);
    await p.goto(url);
    await requireBootHome(p);
@@ -144,9 +151,19 @@ assert.equal(orderedIds[1],unmapped);
    const snapshot=()=>p.evaluate(()=>({
     live:placeId,pending:pendingSpot,engine:g.state(),raw:localStorage.getItem('thai-atlas-v2')
    }));
+   function assertSnapshot(actual,expected,message){
+    const visible=x=>({live:x.live,pending:x.pending,engine:x.engine,
+     hasRaw:x.raw!==null,rawSha256:x.raw===null?null:crypto.createHash('sha256').update(x.raw).digest('hex')});
+    assert.deepEqual(visible(actual),visible(expected),message);
+    assert(actual.raw===expected.raw,message+' (exact bytes)');
+   }
    const beforeState=await snapshot();
    assert.equal(beforeState.live,0);
-   assert.equal(JSON.parse(beforeState.raw).place,0);
+   assert(beforeState.raw===null,'fresh file profile must not fabricate a career before Travel');
+   const initialStorage=await p.evaluate(()=>__mapFileAtStart);
+   assert.equal(initialStorage.error,null);
+   assert(initialStorage.raw===null,'fresh document unexpectedly contained a stored career');
+   assert.equal(initialStorage.known,false);
    const before=await p.locator('#spot').textContent(), prior=await p.locator('#places').inputValue();
    const b=await p.locator('#waterbodyMap').boundingBox();
    const x=b.x+b.width*(115+(99.875-101.1)*10.2)/230,y=b.y+b.height*(93+(13.1-19.171)*10.6)/186;
@@ -168,18 +185,18 @@ assert.equal(orderedIds[1],unmapped);
    assert.equal(await p.locator('#places').inputValue(),prior);
    assert.equal(await p.locator('#spot').textContent(),before);
    assert(await p.locator('#arrivalSkip').isHidden());
-   assert.deepEqual(await snapshot(),beforeState,'selection/pan must not change live, pending, engine or saved bytes');
+   assertSnapshot(await snapshot(),beforeState,'selection/pan must not change live, pending, engine or saved bytes');
    assert.equal(await p.locator('#mapWaterbody').inputValue(),picked);
    if(touchSession){
     const point=await touchCenter('#mapTravel');
     await touchSession.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
     await touchSession.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});
-    assert.deepEqual(await snapshot(),beforeState,'cancelled touch on Travel cannot relocate or save');
+    assertSnapshot(await snapshot(),beforeState,'cancelled touch on Travel cannot relocate or save');
     await touchSession.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
     await touchSession.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:point.x+22,y:point.y}]});
     await touchSession.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[point]});
     await touchSession.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
-    assert.deepEqual(await snapshot(),beforeState,'drag out and back on Travel cannot relocate or save');
+    assertSnapshot(await snapshot(),beforeState,'drag out and back on Travel cannot relocate or save');
    }
    await activateTravel('#mapTravel',16);
    await p.locator('#arrivalSkip').waitFor();
@@ -213,14 +230,49 @@ assert.equal(orderedIds[1],unmapped);
     assert.equal(await p.locator('#mapWaterbody').inputValue(),picked);
     assert(await p.locator('#mapTravel').isDisabled(),'unfiled native catch forbids travel even from an open map');
     await p.locator('#mapTravel').evaluate(b=>b.click());
-    assert.deepEqual(await snapshot(),pending,'disabled map cannot discard or relocate an active catch');
+    assertSnapshot(await snapshot(),pending,'disabled map cannot discard or relocate an active catch');
    }
-   const final=await snapshot();
+   const final=await snapshot(), beforeReload=await p.evaluate(()=>__mapFileStorageRead());
+   function summary(entry){
+    if(!entry)return null;
+    const {raw,...meta}=entry;
+    let v=null;try{v=raw===null?null:JSON.parse(raw);}catch{}
+    return {...meta,present:raw!==null,sha256:raw===null?null:crypto.createHash('sha256').update(raw).digest('hex'),
+     schema:v?.schema??null,place:v?.place??null,pending:v?.pending?.[0]??null,hasPendingCapture:!!v?.pendingCapture};
+   }
+   assert.equal(final.live,1,'genuine list Travel left native ID1 before reload');
+   assert.equal(beforeReload.error,null,'stored file career readable immediately before reload');
+   assert(beforeReload.raw===final.raw,'two pre-reload reads must agree');
+   assert.equal(summary(beforeReload).place,1,'original standalone binding holds ID1 before reload');
+   assert.equal(beforeReload.known,true,'real save marks same history entry as known');
+   if(!touch){
+    assert.equal(final.engine,5);
+    assert.equal(summary(beforeReload).pending,41,'unfiled catch remains in the real saved career');
+   }
    await p.reload();
-   await requireBootHome(p);
-   assert.equal(await p.evaluate(()=>placeId),1,name+' retains selected ID after real reload');
-   assert.equal(await p.evaluate(()=>localStorage.getItem('thai-atlas-v2')),final.raw,
-    name+' restores the exact saved file without rewriting it');
+   let startupError=null;
+   try{await requireBootHome(p);}catch(e){startupError=e;}
+   const observed=await p.evaluate(()=>({sameFile:location.protocol==='file:',atStart:__mapFileAtStart,
+    afterBoot:__mapFileStorageRead(),recovery:!$('startupRecovery').hidden,
+    lock:fileCareerGuard.recovering,powered,place:g?placeId:null,phase:g?.state()??null,
+    pending:pendingCapture?.id??null}));
+   const evidence={lane:name,beforeReload:summary(beforeReload),sameFile:observed.sameFile,
+    atStart:summary(observed.atStart),afterBoot:summary(observed.afterBoot),recovery:observed.recovery,
+    lock:observed.lock,powered:observed.powered,place:observed.place,phase:observed.phase,
+    pending:observed.pending,startupError:startupError?.message??null,errors};
+   const diagnostic=JSON.stringify(evidence);
+   console.log('Map standalone reload '+diagnostic);
+   assert(observed.sameFile&&observed.atStart.ready==='loading'&&observed.atStart.epoch!==beforeReload.epoch,
+    'must reload the real standalone file in a new document: '+diagnostic);
+   assert.equal(observed.atStart.known,true,'same history entry must retain the guard marker: '+diagnostic);
+   if(startupError)throw startupError;
+   assert(observed.atStart.raw===final.raw,'exact file bytes must be visible before app startup: '+diagnostic);
+   assert.equal(observed.place,1,name+' retains selected ID after real reload: '+diagnostic);
+   assert(observed.afterBoot.raw===final.raw,name+' restores the exact saved file without rewriting it');
+   if(!touch){
+    assert.equal(observed.phase,5,'real unfiled catch phase restores: '+diagnostic);
+    assert.equal(observed.pending,41,'stored catch identity restores without filing: '+diagnostic);
+   }
    assert.deepEqual(errors,[]);assert.deepEqual(outside,[]);
    if(touchSession)await touchSession.detach();
    await c.close();
