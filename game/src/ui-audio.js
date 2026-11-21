@@ -2,7 +2,8 @@ const menuAudio=(()=>{
  const shapes={tap:[288,570,.031],menu:[432,440,.045],scroll:[192,780,.021]},levels=[0,.42,.68,1];
  const selector='#menu section:not([hidden]),#lcdPicker:not([hidden]) .choice-list';
  const keys=new Set(['ArrowUp','ArrowDown','PageUp','PageDown','Home','End']);
- const excluded='#startSound,#testSound,[data-pulse],#testPhoneMotor';
+ // Collection arrows use the same single confirmed-page cue as swipes.
+ const excluded='#startSound,#testSound,[data-pulse],#testPhoneMotor,#bookPrev,#bookNext';
  let cache=new Map(),context=null,lastScroll=-Infinity,intent=null,serial=0;
  const ready=()=>powered&&g&&!document.hidden&&levels[$('fx').selectedIndex]>0;
  function clip(ctx,kind){
@@ -41,7 +42,7 @@ const menuAudio=(()=>{
   const el=target(e),button=el?.closest('button,summary');
   if(el?.closest(excluded)||button?.disabled||button?.closest('[inert],[aria-disabled="true"]'))return;
   if(button?.matches('#act')){if(!menu.open)play('tap',true);}
-  else if(menu.open&&button?.matches('#sheetPrev,#sheetNext,#bookPrev,#bookNext'))play('scroll',true);
+  else if(menu.open&&button?.matches('#sheetPrev,#sheetNext'))play('scroll',true);
   else if(button?.matches('#openMenu,#rigHud,#catchContinue')||button&&menu.open&&menu.contains(button))play('menu',true);
  },true);
  document.addEventListener('change',e=>{
