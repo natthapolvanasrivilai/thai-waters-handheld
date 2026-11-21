@@ -13,7 +13,7 @@ function bookMatches(){
  }
  return matches;
 }
-let bookSpecies=null,historyPage=0,bookFindOpen=false;
+let bookSpecies=null,bookFindOpen=false;
 const tierFrames=['#849a96','#6abd91','#ad87ef','#e494d3','#f3a366','#f6ce56'];
 const journalPanel=document.querySelector('[data-section="book"]');
 function bookFindLabels(){
@@ -77,11 +77,57 @@ function fishPortrait(id,width,height){
  return icon;
 }
 function bookText(tag,txt){const el=document.createElement(tag);el.textContent=txt;return el;}
-function iconInfo(parent,icon,label,value){
- const el=document.createElement('span');el.className='book-info';el.title=label+(value?' · '+value:'');
- el.append(journalIcon(icon,label));if(value)el.append(bookText('span',value));parent.append(el);
+function bookFact(icon,label,value){
+ const el=document.createElement('div'),text=document.createElement('div');
+ el.className='book-info';
+ text.append(bookText('b',label),bookText('span',value));
+ el.append(journalIcon(icon),text);return el;
 }
-const periodIcons=['dawn','day','dusk','night'],weatherIcons=['clear','rain','heavy','storm'],weatherLabels=['Clear','Light rain','Heavy rain','Storm'];
+const periodIcons=['dawn','day','dusk','night'],weatherLabels=['Clear','Light rain','Heavy rain','Storm'];
+const bookDateOptions={timeZone:'Asia/Bangkok',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'};
+const bookDate={th:new Intl.DateTimeFormat('th-TH',bookDateOptions),en:new Intl.DateTimeFormat('en-GB',bookDateOptions)};
+function catchHistoryValues(c){
+ const bait=Number.isInteger(c.bait)&&c.bait>=0&&c.bait<18;
+ const nonnegativeInt=v=>Number.isSafeInteger(v)&&v>=0;
+ return [
+  Number.isSafeInteger(c.cm)&&c.cm>0?L(c.cm+' cm'):null,
+  nonnegativeInt(c.grams)?L(displayMass(c.grams)):null,
+  bait?$('hookBait').options[c.bait%6]?.text??null:null,
+  nonnegativeInt(c.place)?atlas.locations[c.place]?.name??null:null,
+  nonnegativeInt(c.at)&&c.at<=8640000000000000?bookDate[language==='th'?'th':'en'].format(c.at):null,
+  nonnegativeInt(c.period)&&periodIcons[c.period]?L(times[c.period]):null,
+  bait?$('baitDepth').options[Math.floor(c.bait/6)]?.text??null:null,
+  nonnegativeInt(c.weather)&&weatherLabels[c.weather]?L(weatherLabels[c.weather]):null
+ ];
+}
+function addCatchTable(panel,overview,id,rows,th){
+ const help=bookText('p',th?'ปัดขึ้นลงดูรายการ ปัดซ้ายขวาดูคอลัมน์':'Swipe up/down for catches and left/right for columns.');
+ help.className='catch-help';help.id='catchHistoryHelp';overview.append(help);
+ const scroll=document.createElement('div');scroll.className='catch-scroll';scroll.tabIndex=0;
+ scroll.setAttribute('role','region');scroll.setAttribute('aria-labelledby','catchHistoryTitle');scroll.setAttribute('aria-describedby',help.id);
+ const table=document.createElement('table');table.className='catch-table';table.setAttribute('aria-labelledby','catchHistoryTitle');
+ const head=document.createElement('thead'),h=document.createElement('tr');
+ for(const [icon,label,key] of [
+  ['length',L(readEngineText(g.measurement(id,rows[0].cm))),'length'],['mass',th?'น้ำหนักโดยประมาณ':'Est. weight','weight'],
+  ['bait',th?'เหยื่อที่ใช้':'Bait used','bait'],['pin',th?'จุดที่จับ':'Catch location','place'],
+  ['date',th?'วันที่ · เวลาไทย':'Date & time (ICT)','date'],['day',th?'ช่วงเวลาในเกม':'In-game time','period'],
+  ['depth',L('Fishing depth'),'depth'],['clear',th?'สภาพอากาศ':'Weather','weather']
+ ]){
+  const cell=document.createElement('th'),labelEl=document.createElement('span');
+  cell.dataset.field=key;cell.setAttribute('scope','col');labelEl.className='catch-heading';
+  labelEl.append(journalIcon(icon),bookText('span',label));cell.append(labelEl);h.append(cell);
+ }
+ head.append(h);const body=document.createElement('tbody');
+ for(const record of rows){
+  const row=document.createElement('tr');row.className='catch-log';
+  for(const value of catchHistoryValues(record)){
+   const cell=bookText('td',value??(th?'ไม่ได้บันทึก':'Not recorded'));
+   if(value===null)cell.className='catch-unknown';row.append(cell);
+  }
+  body.append(row);
+ }
+ table.append(head,body);scroll.append(table);panel.append(scroll);return scroll;
+}
 function collectionTotal(found){const count=found.toLocaleString(language)+' / '+atlas.fish.length.toLocaleString(language);return (language==='th'?'ทั่วไทย':'Thailand')+' · '+count;}
 function renderBook(){
  syncBookFind();const detail=$('bookDetail');detail.hidden=bookSpecies===null;journalPanel.classList.toggle('detail-open',!detail.hidden);
@@ -98,7 +144,7 @@ function renderBook(){
    if(note)tile.append(bookText('small','ถอดเสียง'));
    const mark=bookText('span','✓');mark.className='caught-mark';tile.append(mark);
   }
-  tile.onclick=()=>{bookSpecies=id;historyPage=0;renderBook();$('bookDetail').focus({preventScroll:true});};fragment.append(tile);
+  tile.onclick=()=>{bookSpecies=id;renderBook();$('bookDetail').focus({preventScroll:true});};fragment.append(tile);
  }
  $('records').replaceChildren(fragment);
  setUi($('bookPage'),matches.length?(bookOffset+1)+' / '+pages+' · '+matches.length.toLocaleString(language)+' '+L('species'):'No matching species');
@@ -117,31 +163,47 @@ function renderBookDetail(id){
  }
  if(n&&f.family)title.append(bookText('small',nameNote?(f.thaiFamilyName??f.family):f.family));
  if(n&&!g.hasPortrait(id))title.append(bookText('small',language==='th'?'อยู่ระหว่างวาดภาพประจำชนิด':'Species illustration pending'));
- const water=f.spot!=null?atlas.locations[f.spot].name:atlas.sites[f.site][0],habitat=document.createElement('div');habitat.className='book-facts';
- iconInfo(habitat,'pin',L('Origin'),water);iconInfo(habitat,'bait',L('Hook bait'),baitTip(id));
- const mask=f.mask??(id===40?12:id===41?9:15);periodIcons.forEach((icon,i)=>{if(mask&(1<<i))iconInfo(habitat,icon,L(times[i]));});
- title.append(habitat);info.append(picture,title);
- const heading=bookText('h3',(language==='th'?'ประวัติการจับ':'Catch history')+' · '+n);
- detail.replaceChildren(info);if(n&&f.lore)detail.append(bookText('p',f.lore));detail.append(heading);
- const rows=catchHistory.filter(c=>c.id===id).reverse(),per=1;
- for(const c of rows.slice(historyPage*per,(historyPage+1)*per)){
-  const row=document.createElement('div');row.className='catch-log';
-  if(Number.isFinite(c.at))iconInfo(row,'date',language==='th'?'เวลาประเทศไทย':'Bangkok time',new Intl.DateTimeFormat(language==='th'?'th-TH':'en-GB',{timeZone:'Asia/Bangkok',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false}).format(c.at));
-  if(atlas.locations[c.place])iconInfo(row,'pin',L('Origin'),atlas.locations[c.place].name);
-  if(periodIcons[c.period])iconInfo(row,periodIcons[c.period],L(times[c.period]));
-  if(weatherIcons[c.weather])iconInfo(row,weatherIcons[c.weather],L(weatherLabels[c.weather]));
-  iconInfo(row,'length',L(readEngineText(g.measurement(id,c.cm))),L(c.cm+' cm'));iconInfo(row,'mass',L('EST. WEIGHT'),L(displayMass(c.grams)));
-  if(Number.isInteger(c.bait)&&c.bait>=0&&c.bait<18){iconInfo(row,'bait',L('Hook bait'),$('hookBait').options[c.bait%6].text);iconInfo(row,'depth',L('Fishing depth'),$('baitDepth').options[Math.floor(c.bait/6)].text);}
-  detail.append(row);
+ const th=language==='th';
+ const previous=detail.dataset.species===String(id)?detail.querySelector('.catch-scroll'):null;
+ const top=previous?.scrollTop??0,left=previous?.scrollLeft??0,restoreFocus=previous===document.activeElement;
+ detail.dataset.species=id;
+ const intro=document.createElement('div');intro.className='book-intro';
+ info.append(picture,title);intro.append(info);
+ const facts=document.createElement('div');facts.className='book-facts';
+ const water=f.spot!=null?atlas.locations[f.spot].name:atlas.sites[f.site][0];
+ facts.append(bookFact('pin',th?'แหล่งที่พบ':'Habitat',water),bookFact('bait',th?'เหยื่อแนะนำ':'Bait tip',baitTip(id)));
+ intro.append(facts);
+ const periods=document.createElement('div');periods.className='book-periods';
+ periods.append(bookText('b',th?'ช่วงที่มักพบ':'Active periods'));
+ const mask=f.mask??(id===40?12:id===41?9:15);
+ periodIcons.forEach((icon,i)=>{
+  if(!(mask&(1<<i)))return;
+  const tag=document.createElement('span');tag.className='book-period';
+  tag.append(journalIcon(icon),bookText('span',L(times[i])));periods.append(tag);
+ });
+ intro.append(periods);
+ if(n&&f.lore){const lore=bookText('p',f.lore);lore.className='book-lore';intro.append(lore);}
+ const history=document.createElement('div');history.className='catch-history';
+ const overview=document.createElement('div');overview.className='catch-overview';history.append(overview);
+ const heading=bookText('h3',(th?'ประวัติการจับ':'Catch history')+' · '+n.toLocaleString(language));
+ heading.id='catchHistoryTitle';overview.append(heading);
+ const rows=catchHistory.filter(c=>c.id===id).reverse();
+ if(!n&&!rows.length)history.append(bookText('p',th?'ยังไม่เคยจับได้':'No catches yet.'));
+ if(n>rows.length){
+  const count=(n-rows.length).toLocaleString(language),best=g.best(id);
+  const legacy=bookText('p',th?'บันทึกเดิม '+count+' ครั้ง ไม่มีรายละเอียดรายครั้ง':'Legacy catches: '+count+' with no individual details.');
+  legacy.className='catch-legacy';history.append(legacy);
+  if(!rows.length&&best>0)history.append(bookText('p',th?'สถิติขนาดที่บันทึก: '+L(best+' cm'):'Recorded best: '+L(best+' cm')));
  }
- if(!n)detail.append(bookText('p',language==='th'?'ยังไม่เคยจับได้':'No catches yet.'));
- if(n>rows.length)detail.append(bookText('p',language==='th'?'บันทึกเดิม '+(n-rows.length)+' ครั้ง · ยาวที่สุด '+g.best(id)+' ซม.':'Earlier catches without trip details: '+(n-rows.length)+' · Best '+g.best(id)+' cm'));
- if(rows.length>per){const nav=document.createElement('div');nav.className='history-nav';for(const [dir,label] of [[-1,'Previous'],[1,'Next']]){
-  const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',L(label));b.append(journalIcon(dir<0?'back':'next'));b.disabled=historyPage+dir<0||(historyPage+dir)*per>=rows.length;b.onclick=()=>{historyPage+=dir;renderBookDetail(id);};nav.append(b);
- }detail.append(nav);}
+ const scroll=rows.length?addCatchTable(history,overview,id,rows,th):null;
+ detail.replaceChildren(intro,history);
+ if(scroll){
+  scroll.scrollTop=top;scroll.scrollLeft=left;
+  if(restoreFocus)scroll.focus({preventScroll:true});
+ }
 }
 function closeBookDetail(){const id=bookSpecies;bookSpecies=null;renderBook();$('species-'+id)?.focus({preventScroll:true});}
-function showBookEntry(id){closeBookFind(false);$('bookSearch').value='';$('bookFilter').selectedIndex=0;bookOffset=Math.floor(id/bookSize);bookSpecies=id;historyPage=0;renderBook();}
+function showBookEntry(id){closeBookFind(false);$('bookSearch').value='';$('bookFilter').selectedIndex=0;bookOffset=Math.floor(id/bookSize);bookSpecies=id;renderBook();}
 function resetBook(){bookOffset=0;bookSpecies=null;renderBook();}
 $('bookFilter').onchange=$('bookSearch').oninput=resetBook;
 // Page arrows and swipes share one bounded action; re-rendering never plays a cue.
@@ -160,7 +222,7 @@ function turnBook(direction){
  if(bookSpecies===null){changeBookPage(direction);return;}
  const matches=bookMatches(),index=matches.indexOf(bookSpecies),next=index+direction;
  if(index<0||next<0||next>=matches.length)return;
- bookOffset=Math.floor(next/bookSize);bookSpecies=matches[next];historyPage=0;
+ bookOffset=Math.floor(next/bookSize);bookSpecies=matches[next];
  renderBook();$('bookDetail').focus({preventScroll:true});
 }
 
@@ -175,7 +237,7 @@ for(const surface of [$('records'),$('bookDetail')]){
  surface.style.touchAction='pan-y pinch-zoom';
  surface.addEventListener('pointerdown',e=>{
   if(!activeBook()||bookFindOpen||!e.isPrimary||e.button!==0||
-    e.target.closest('input,select,textarea,a,[contenteditable],#bookDetail button'))return;
+    e.target.closest('input,select,textarea,a,[contenteditable],#bookDetail button,.catch-scroll'))return;
   bookSwipe={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies};
  });
 }
