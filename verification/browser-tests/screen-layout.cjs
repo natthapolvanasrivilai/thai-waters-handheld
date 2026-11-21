@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const assert = require('node:assert/strict');
 const {pathToFileURL} = require('node:url');
 const path = require('node:path');
@@ -26,6 +27,9 @@ async function verify(browser, width, height, touch, {testDevice = false, noWebG
     assert.equal(await page.locator('html').getAttribute('data-view'),'screen');
     assert.equal(await page.locator('#product canvas').count(),0,'3D has not started before opt-in');
     await page.waitForFunction(() => g && typeof g.state === 'function');
+  const home=await requireBootHome(page);
+    if(touch)await home.tap();else await home.click();
+  
     const contained = async id => {
       const b = await page.locator(id).boundingBox();
       assert.ok(b && b.width > 0 && b.height > 0, id+' is visible');
@@ -78,7 +82,7 @@ async function verify(browser, width, height, touch, {testDevice = false, noWebG
     assert.equal(await page.locator('#menu').getAttribute('open'),'');
     assert.match(await page.locator('#menuTitle').textContent(),/[ก-๙]/);
     await contained('#menu');
-    await page.locator('[data-to=spots]').click();
+    await page.locator('[data-section=home] [data-to=spots]').click();
     assert.equal(await context('#searchSpot',{button:2,pointerType:'mouse'}),false,'search keeps the native edit menu');
     await page.locator('#searchSpot').fill('Rayong');
     assert.equal(await page.locator('#searchSpot').inputValue(),'Rayong');

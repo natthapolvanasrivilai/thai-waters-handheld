@@ -25,16 +25,18 @@ function fitFlat(){
 }
 new ResizeObserver(fitFlat).observe(canvas);
 function setPower(on){
- if(!g)return;
- if(!on&&menu.open)closeMenu();
+ if(!g){toggleStartupPower();return;}
+ const atBootHome=bootHome;
+ if(!on&&menu.open)closeMenu(true);
  if(!on&&arrivalSince!==null)stopArrival();
  powered=on;lcdUI.hidden=!on;release();gestureCast=gestureLift=false;g.resetGesture();prev=performance.now();
  for(const id of ['act','dial','openMenu','catchContinue'])$(id).disabled=!on;
  setUi($('simPower'),on?'Power off':'Power on');
  $('powerPin').setAttribute('aria-label',L('Turn simulator power '+(on?'off':'on')+' at the top-left PWR key'));
- if(on){lastLabel='';draw();unlock();}
+ if(on){lastLabel='';openBootHome();draw();}
  else{
-  save();audio?.suspend().catch(()=>{});ctx.fillStyle='#0e1715';ctx.fillRect(0,0,480,320);
+  if(!atBootHome)save();
+  audio?.suspend().catch(()=>{});ctx.fillStyle='#0e1715';ctx.fillRect(0,0,480,320);
   setUi($('message'),'Power off');setUi($('sub'),'Use PWR to wake the simulator.');
   for(const id of ['metrics','origin'])setUi($(id),'');$('catchContinue').hidden=true;$('tension').hidden=true;
  }
@@ -62,7 +64,7 @@ makeThaiHandheld(product,JSON.parse($('deviceParts').textContent),{
  wheel:()=>shownWheel*Math.PI/180,paint:paintLCD,
  lcdTransform:(...m)=>{if(lcdUI.parentElement===product)lcdMatrix(...m);},
  screen:(x,y)=>{if(!powered)return;if(arrivalSince!==null){stopArrival();return;}if(g?.state()===5)scenePress(x,y);else if(x>.82&&y<.125)$('openMenu').click();else if(!menu.open)scenePress(x,y);},
- beginWheel:a=>{if(!powered||arrivalSince!==null)return;unlock();if(!g)return;startPointerWheel(a);},
+ beginWheel:a=>{if(!powered||bootHome||arrivalSince!==null)return;unlock();if(!g)return;startPointerWheel(a);},
  power:()=>setPower(!powered),
  wind:(a,d)=>{if(!powered||!g||menu.open||arrivalSince!==null)return;dialAngle+=d*180/Math.PI;turns+=samplePointerWheel(a);}
 }).then(v=>{physicalView=v;vm.disabled=false;showDevice(true);document.documentElement.dataset.device='ready';}).catch(()=>{showDevice(false);vm.hidden=true;setUi($('viewHint'),'Screen mode · 3D rendering is unavailable in this browser.');document.documentElement.dataset.device='fallback';});

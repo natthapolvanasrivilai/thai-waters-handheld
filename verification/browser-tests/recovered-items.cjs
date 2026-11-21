@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const assert=require('node:assert/strict');
 const path=require('node:path');
 const {pathToFileURL}=require('node:url');
@@ -6,7 +7,12 @@ const {chromium,webkit}=require('playwright-core');
  const browser=process.env.TEST_WEBKIT?await webkit.launch():await chromium.launch({executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
  try {
   const page=await browser.newPage({viewport:{width:844,height:390},hasTouch:true});
-  await page.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
+  const file=pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href;
+  await page.goto(file);
+  const play=await requireBootHome(page);
+  assert.equal(page.url(),file);
+  assert.equal(await page.evaluate(()=>g.state()),0);
+  await play.tap();
   await page.waitForFunction(()=>g&&!$('act').disabled);
   const result=await page.evaluate(()=>{
    const seen=new Set(),images=new Set(),captures=[];

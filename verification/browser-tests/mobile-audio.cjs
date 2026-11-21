@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl}=require('./menu-controls.cjs');
 const {chromium,webkit,devices}=require('playwright-core');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
@@ -44,6 +45,11 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
   });
   await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await p.goto('http://127.0.0.1:'+server.address().port);
+  const play=await requireBootHome(p);
+  const quietBeforeSpeaker=()=>p.evaluate(()=>({noAudio:audio===null,phase:g.state(),sources:window.probe?.sources||0}));
+  assert.deepEqual(await quietBeforeSpeaker(),{noAudio:true,phase:0,sources:0},'Cold Home is quiet and cannot start a cast');
+  await play.tap();
+  assert.deepEqual(await quietBeforeSpeaker(),{noAudio:true,phase:0,sources:0},'Play itself must not opt in to sound or cast');
   await p.waitForFunction(()=>typeof g!=='undefined'&&g);
   const graph=await p.evaluate(()=>Boolean(window.AudioContext||window.webkitAudioContext));
   const dial=p.locator('#dial'),rail=await dial.boundingBox(),field=await p.locator('#flatStage').boundingBox();
@@ -70,7 +76,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
    const bytes=await (await fetch(speakerCheck.src)).arrayBuffer();
    return new DataView(bytes).getUint32(0)===0x52494646&&new Int16Array(bytes,44).some(n=>n>5000);
   }));
-  await p.locator('#openMenu').tap();await p.locator('[data-to=sound]').tap();
+  await p.locator('#openMenu').tap();await p.locator('[data-section=home] [data-to=sound]').tap();
   const resumeMode=await p.evaluate(()=>navigator.audioSession?.type);
   if(graph&&resumeMode)assert.equal(resumeMode,'playback');
   await showControl(p,'#testSound');await p.locator('#testSound').tap();
@@ -96,7 +102,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
    await p.locator('#openMenu').press('Enter');
    assert.deepEqual(await frames(),[432,432],'keyboard activation has exactly one menu cue');
    // Standard product menu paging deserves the same short detent as scrolling.
-   await p.locator('[data-to=spots]').press('Enter');
+   await p.locator('[data-section=home] [data-to=spots]').press('Enter');
    assert.equal(await p.locator('#sheetNumber').textContent(),'1/2');
    assert.deepEqual(await frames(),[432,432,432],'opening the destination menu uses a menu cue');
    await p.locator('#sheetNext').press('Enter');

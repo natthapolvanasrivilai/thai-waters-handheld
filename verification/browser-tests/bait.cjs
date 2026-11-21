@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict');
 const path=require('node:path');
@@ -18,7 +19,7 @@ const {chromium}=require('playwright-core');
   entry=await openPersistenceEntry(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html')));
   const {url}=entry;
   const ready=()=>p.waitForFunction(()=>document.querySelector('#act')?.disabled===false);
-  const open=async section=>{await p.locator('#openMenu').click();await p.locator('[data-to='+section+']').click();};
+  const open=async section=>{await p.locator('#openMenu').click();await p.locator('[data-section=home] [data-to='+section+']').click();};
   const travel=async(index,time)=>{
    await open('spots');await showControl(p,'#places');await p.selectOption('#places',{index});
    const destination=Number(await p.locator('#places').inputValue());
@@ -76,7 +77,10 @@ const {chromium}=require('playwright-core');
    return p.evaluate(()=>window.baitProbe);
   }
   await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await p.goto(url);await ready();
+  await p.goto(url);
+  const play=await requireBootHome(p);
+  assert.equal(await p.evaluate(()=>g.state()),0);
+  await play.click();await ready();
   await travel(0,'Dawn');await equip('Live baitfish','Surface');
   const empty=await replayCast(true);
   assert.deepEqual(empty.waiting,[1,0,0]);
@@ -92,7 +96,11 @@ const {chromium}=require('playwright-core');
   await p.locator('#resume').click();
   await equip('Raw shrimp','Surface');
   assert.deepEqual(await p.evaluate(()=>[g.baitChoice(),g.baitScore(40,g.baitChoice())]),[1,0]);
-  await equip('Raw shrimp','Bottom');await p.reload();await ready();
+  await equip('Raw shrimp','Bottom');await p.reload();
+  const resumeBait=await requireBootHome(p);
+  assert.deepEqual(await p.evaluate(()=>[g.state(),g.baitChoice(),JSON.parse(localStorage.getItem('thai-atlas-v2')).bait]),
+   [0,13,13],'Saved bait must already be applied while Home gates casting');
+  await resumeBait.click();await ready();
   await open('rod');assert.equal(await p.locator('#hookBait').inputValue(),'Raw shrimp');assert.equal(await p.locator('#baitDepth').inputValue(),'Bottom');
   assert.equal(await p.evaluate(()=>JSON.parse(localStorage.getItem('thai-atlas-v2')).bait),13);
   await p.locator('#resume').click();

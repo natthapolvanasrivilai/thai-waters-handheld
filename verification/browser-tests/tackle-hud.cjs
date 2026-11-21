@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const assert=require('node:assert/strict'),path=require('node:path'),{pathToFileURL}=require('node:url');
 const {chromium,webkit}=require('playwright-core');
 (async()=>{
@@ -6,6 +7,8 @@ const {chromium,webkit}=require('playwright-core');
  const page=await browser.newPage({viewport:{width:844,height:390},isMobile:true,hasTouch:true});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
+  await (await requireBootHome(page)).tap();
+  
  await page.waitForFunction(()=>g&&$('rigHud').dataset.kit&&$('lcdUI').hasAttribute('data-casting-water'));
  const getHud=()=>page.locator('#rigIcons').evaluate(el=>el.toDataURL());
  const snap=async name=>{if(process.env.HUD_PREVIEW)await page.locator('#flatStage').screenshot({path:path.join(process.env.HUD_PREVIEW,name+'.png')});};
@@ -46,7 +49,7 @@ const {chromium,webkit}=require('playwright-core');
  assert(gauge.every(b=>b.left>=0&&b.right<480&&b.bottom-b.top===9));
  assert(gauge[0].right<50&&gauge[1].left>225&&gauge[1].right<275&&gauge[2].left>430);
  await page.evaluate(()=>{g.initialize(10);g.place(placeId,currentSlot);refresh();});
- await page.locator('#openMenu').tap();await page.locator('[data-to=book]').tap();
+ await page.locator('#openMenu').tap();await page.locator('[data-section=home] [data-to=book]').tap();
  assert(await page.locator('#discovered').innerText().then(t=>t.includes('ทั่วไทย')));
  const national=await page.evaluate(()=>bookMatches().length);assert(national>2100);
  for(const [label,mode] of [['Inland',5],['Sea',6]]){

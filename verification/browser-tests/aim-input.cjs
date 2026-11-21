@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl}=require('./menu-controls.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
@@ -15,6 +16,8 @@ const {chromium} = require('playwright-core');
     const page = await browser.newPage({viewport: {width: 960, height: 850}});
     await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
   await page.goto(entry.url);
+  await (await requireBootHome(page)).click();
+  
     await page.waitForFunction(() => window.document.documentElement.dataset.device && !document.querySelector('#act').disabled);
     if (await page.locator('#product').isVisible()) await page.locator('#viewMode').click();
     const hidden=await page.evaluate(()=>{
@@ -58,12 +61,14 @@ const {chromium} = require('playwright-core');
     assert(await page.evaluate(() => $('message').textContent.includes(salvageItems[g.junkId()].name)));
     assert.deepEqual(await ledger(),before);
     await page.locator('#openMenu').click();
-    await page.locator('[data-to="spots"]').click();
+    await page.locator('[data-section=home] [data-to="spots"]').click();
     await showControl(page,'#weatherChoice');await page.getByRole('button',{name:/Weather ·/}).click();
     await page.getByRole('option',{name:'Storm',exact:true}).click();
     await showControl(page,'#fishHere');await page.locator('#fishHere').click();
     assert.equal(await page.evaluate(()=>g.weather()),3);
     await page.reload();
+  await (await requireBootHome(page)).click();
+  
     await page.waitForFunction(()=>typeof g?.weather==='function' && !$('act').disabled);
     assert.equal(await page.evaluate(()=>g.weather()),3);
     console.log('PASS concealed cast layouts, storm selection and weather preference restore.');

@@ -65,7 +65,7 @@ const handheldInput=(()=>{
   }
  }
  toggle.onchange=()=>{
-  try{localStorage.setItem(preference,toggle.checked?'on':'off');}catch{}
+  if(!sessionOnly)try{localStorage.setItem(preference,toggle.checked?'on':'off');}catch{}
   lost();
  };
  window.addEventListener('keydown',receive,true);

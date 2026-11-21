@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 /* Export game pixels, not a screenshot of the browser stage. Synthetic fixture only. */
 const assert=require('node:assert/strict'), fs=require('node:fs'), path=require('node:path');
 const {createHash}=require('node:crypto'),{pathToFileURL}=require('node:url');
@@ -36,6 +37,7 @@ async function main(){
     const page=await context.newPage(),errors=[];
     page.on('pageerror',error=>errors.push(error.message));
     await page.goto(pathToFileURL(input).href);
+    await (await requireBootHome(page)).click();
     await page.waitForFunction(()=>typeof g!=='undefined'&&g&&!$('act').disabled);
     await page.locator('#openMenu').click();
     await page.locator('[data-language='+lang+']').click();
@@ -66,7 +68,7 @@ async function main(){
      return {menuPalette,cardPalette,png:canvas.toDataURL('image/png').split(',')[1]};
     });
     await page.locator('#openMenu').click();
-    await page.locator('[data-to=book]').click();
+    await page.locator('[data-section=home] [data-to=book]').click();
 
     async function capture(name,kind,expectedIds){
      const frame=await page.evaluate(async kind=>{

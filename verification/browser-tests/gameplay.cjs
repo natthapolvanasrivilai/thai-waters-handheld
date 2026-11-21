@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl}=require('./menu-controls.cjs');
 const {captureReloadStartup,readCheckpoint,reloadFailureText}=require('./reload-trace.cjs');
 const {openPersistenceEntry}=require('./persistence-entry.cjs');
@@ -20,9 +21,11 @@ const {chromium}=require('playwright-core'),path=require('path'),assert=require(
   });
   await pg.addInitScript(captureReloadStartup);
   await pg.goto(entry.url);
+  const play=await requireBootHome(pg);assert.equal(await pg.evaluate(()=>g.state()),0);
+  await play.click();
   await pg.waitForFunction(()=>!document.querySelector('#act').disabled,null,{timeout:12000});
   await pg.waitForFunction(()=>document.documentElement.dataset.device);if(await pg.locator('#product').isVisible())await pg.locator('#viewMode').click();
-  const menu=async n=>{await pg.locator('#openMenu').click();await pg.locator('[data-to='+n+']').click();};
+  const menu=async n=>{await pg.locator('#openMenu').click();await pg.locator('[data-section=home] [data-to='+n+']').click();};
   await menu('spots');assert.equal(await pg.locator('#places option').count(),117);
   await showControl(pg,'#waterType');await pg.selectOption('#waterType','salt');assert.equal(await pg.locator('#places option').count(),21);
   await showControl(pg,'#places');await pg.selectOption('#places',{label:'Phuket coastal waters'});await showControl(pg,'#period');await pg.selectOption('#period',{label:'Dusk'});await showControl(pg,'#fishHere');await pg.locator('#fishHere').click();await pg.waitForFunction(()=>arrivalSince===null);
@@ -49,16 +52,37 @@ const {chromium}=require('playwright-core'),path=require('path'),assert=require(
   assert.match(await pg.locator('#metrics').innerText(),/Rare.*Body length \d+ cm.*Estimated weight \d+ g/i);assert.match(await pg.locator('#origin').innerText(),/claws/);
   await pg.waitForFunction(()=>g.age()>=2600);
   assert.equal(await pg.evaluate(()=>g.caught(40)),0);
-  const widths=await pg.evaluate(()=>window.specimenFrames.map(f=>f.w));
+  const {widths,pending}=await pg.evaluate(()=>{
+   const p=JSON.parse(localStorage.getItem('thai-atlas-v2'))?.pendingCapture;
+   return {widths:window.specimenFrames.map(f=>f.w),pending:p?{id:p.id,cm:p.cm,grams:p.grams,uid:p.uid}:null};
+  });
   assert(widths.length>1 && widths.every(w=>w===widths[0]),'Specimen stays full size until filed');
   const {observed:heldWeight,trace:beforePendingRestore,startup:beforePendingStartup}=await pg.evaluate(readCheckpoint,{species:40,observe:'weight'});
   try{
-   await pg.reload();await pg.waitForFunction(()=>g?.state()===5 && !$('catchContinue').hidden);
+   assert.equal(pending?.id,40);assert.equal(pending.grams,heldWeight);
+   assert(/^[0-9a-f]{32}$/i.test(pending.uid));
+   await pg.reload();
+   const resume=await requireBootHome(pg);
+   assert(await pg.locator('#catchContinue').isDisabled());
+   assert(await pg.evaluate(p=>{
+    const s=JSON.parse(localStorage.getItem('thai-atlas-v2')),stored=s.pendingCapture,active=pendingCapture;
+    const same=r=>r?.id===p.id&&r.cm===p.cm&&r.grams===p.grams&&r.uid===p.uid;
+    return g.state()===5&&!g.filed()&&g.caught(40)===0&&g.lengthCm()===p.cm&&g.grams()===p.grams
+      &&s.pending?.[0]===p.id&&s.pending?.[1]===p.cm&&same(stored)&&same(active);
+   },pending),'Exact pending identity and weight are restored before Resume');
+   await resume.click();await pg.waitForFunction(()=>g?.state()===5 && !$('catchContinue').hidden);
    assert.equal(await pg.evaluate(()=>g.caught(40)),0);
    assert.equal(await pg.evaluate(()=>g.grams()),heldWeight,'Pending catch retains its individual weight after reload');
+   assert((await pg.locator('#metrics').textContent()).includes('Estimated weight '+await pg.evaluate(()=>displayMass(g.grams()))));
   }catch(error){console.error(await reloadFailureText(pg,{stage:'gameplay-pending',before:beforePendingRestore,beforeStartup:beforePendingStartup,expected:{species:40},pageErrors:errors.length}));throw error;}
   await pg.locator('#catchContinue').click();await pg.waitForFunction(()=>g.state()===0&&!document.querySelector('#menu').open);
   assert.equal(await pg.evaluate(()=>g.caught(40)),1,'Transfer must not count the catch twice');
+  const filedExactlyOnce=p=>pg.evaluate(p=>{
+   const s=JSON.parse(localStorage.getItem('thai-atlas-v2'));
+   const filed=s.history.filter(r=>r.uid===p.uid);
+   return s.pending===null&&s.pendingCapture===null&&filed.length===1&&filed[0].id===p.id&&filed[0].cm===p.cm&&filed[0].grams===p.grams;
+  },p);
+  assert(await filedExactlyOnce(pending),'The exact pending catch must be filed once with original mass');
   await menu('rod');await showControl(pg,'#finish');await pg.selectOption('#finish','Copper');await showControl(pg,'#technique');await pg.selectOption('#technique',{label:'Vertical jig'});await showControl(pg,'#builds button');await pg.locator('#builds button').nth(1).click();assert.equal(await pg.evaluate(()=>g.rank(1)),1);await pg.locator('#resume').click();
   const journalSnapshot=(withStartup=false)=>pg.evaluate(withStartup=>{
    const b=JSON.parse(localStorage.getItem('thai-atlas-v2'));
@@ -67,7 +91,13 @@ const {chromium}=require('playwright-core'),path=require('path'),assert=require(
   const {startup:beforeFiledStartup,...beforeReload}=await journalSnapshot(true);
   assert.deepEqual(beforeReload.book,[1,beforeReload.best],'Catch must be stored before reload: '+JSON.stringify(beforeReload));
   try{
-   await pg.reload();await pg.waitForFunction(()=>!document.querySelector('#act').disabled);
+   await pg.reload();
+   const resume=await requireBootHome(pg);
+   const atHome=await journalSnapshot();
+   assert.deepEqual(atHome.book,beforeReload.book,'The exact filed catch is restored before Resume');
+   assert.equal(atHome.ram,1);assert(await filedExactlyOnce(pending));
+   assert.deepEqual(await pg.evaluate(()=>[finish,g.technique(),g.rank(1),g.state()]),[1,2,1,0]);
+   await resume.click();await pg.waitForFunction(()=>!document.querySelector('#act').disabled);
    const afterReload=await journalSnapshot(), evidence=JSON.stringify({beforeReload,afterReload});
    assert.deepEqual(afterReload.book,beforeReload.book,'Reload must retain the exact saved catch: '+evidence);
    assert.equal(afterReload.ram,1,'The replayed journal must contain exactly one catch: '+evidence);

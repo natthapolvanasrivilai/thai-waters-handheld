@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {pathToFileURL}=require('node:url');
@@ -17,20 +18,30 @@ const {webkit,chromium}=require('playwright-core');
   const res=await page.context().request.fetch(route.request(),{headers:{...route.request().headers(),'OAI-Sites-Authorization':'Bearer '+secret},maxRedirects:0});await route.fulfill({response:res});
  });}
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto(target);await page.waitForFunction(()=>g&&!$('act').disabled);
+ await page.goto(target);
+ await (await requireBootHome(page)).tap();
+ await page.waitForFunction(()=>g&&!$('act').disabled);
  await page.evaluate(async()=>{await Promise.all(['Syy UDT','Syy UDS','Syy Flowey'].map(f=>document.fonts.load('16px "'+f+'"','ปูน้ำจืด')));});
  const shot=async name=>{if(process.env.GALLERY_PREVIEW)await page.locator('#flatStage').screenshot({path:path.join(process.env.GALLERY_PREVIEW,name+'.png')});};
  const routes=await page.evaluate(()=>[0,1,4].map(pool=>{chooseSpot(atlas.locations.findIndex(p=>p.pool===pool),1);stopArrival();return getComputedStyle($('spot')).fontFamily;}));assert.equal(new Set(routes).size,3);
  await page.evaluate(()=>{chooseSpot(1,2,2);stopArrival();g.setBait(13);g.restoreCatch(40,18);pendingCapture=captureLanding();save();draw();});
  const captured=await page.evaluate(()=>pendingCapture);
- await page.reload();await page.waitForFunction(()=>g?.state()===5&&!$('catchContinue').hidden);
+ const resumeHeld=async()=>{
+  const resume=await requireBootHome(page);
+  assert.deepEqual(await page.evaluate(()=>({phase:g.state(),filed:!!g.filed(),pending:pendingCapture})),
+   {phase:5,filed:false,pending:captured},'No catch or exact capture metadata may be lost or filed at Home');
+  await resume.tap();
+ };
+ await page.reload();await resumeHeld();await page.waitForFunction(()=>g?.state()===5&&!$('catchContinue').hidden);
  const pos=await page.evaluate(()=>{const ui=$('lcdUI'),before=ui.style.transform;ui.style.transform='none';const gap=ui.getBoundingClientRect().right-$('lcdPower').getBoundingClientRect().right;ui.style.transform=before;return gap;});assert(pos>=0&&pos<10);
  await shot('Thai-Waters-catch-screen');
  const portrait=await browser.newPage({isMobile:true,hasTouch:true,deviceScaleFactor:1,viewport:{width:320,height:700}});
  if(!process.env.PRIVATE_SITE_CHECK){
-  await portrait.goto(directPortrait);await portrait.waitForFunction(()=>g&&!$('act').disabled);
+  await portrait.goto(directPortrait);
+  await (await requireBootHome(portrait)).tap();
+  await portrait.waitForFunction(()=>g&&!$('act').disabled);
   await portrait.evaluate(()=>{for(let i=0;i<8;i++)g.restoreEntry(i,1,atlas.fish[i].low);});
-  await portrait.locator('#openMenu').tap();await portrait.locator('[data-to=book]').tap();
+  await portrait.locator('#openMenu').tap();await portrait.locator('[data-section=home] [data-to=book]').tap();
   const fit=await portrait.evaluate(()=>{
    const rect=$('menu').getBoundingClientRect();
    const tiles=[...$('records').children],targets=[...tiles,$('bookFind'),$('bookNext'),$('fishCredits')];
@@ -48,11 +59,15 @@ const {webkit,chromium}=require('playwright-core');
   assert.deepEqual(fit,{touch:74,count:8,noOverflow:true,fitted:true,labelFit:true},'Eight readable touch cards and controls fit the narrow phone');
  }
  await portrait.close();
- await page.emulateMedia({reducedMotion:'reduce'});await page.reload();await page.waitForFunction(()=>g?.state()===5);assert.equal(await page.evaluate(()=>catchPromptOpacity(900)),1);await page.emulateMedia({reducedMotion:'no-preference'});await page.reload();await page.waitForFunction(()=>g?.state()===5);assert(await page.evaluate(()=>catchPromptOpacity(900)<0.5));
+ await page.emulateMedia({reducedMotion:'reduce'});await page.reload();await resumeHeld();await page.waitForFunction(()=>g?.state()===5);assert.equal(await page.evaluate(()=>catchPromptOpacity(900)),1);await page.emulateMedia({reducedMotion:'no-preference'});await page.reload();await resumeHeld();await page.waitForFunction(()=>g?.state()===5);assert(await page.evaluate(()=>catchPromptOpacity(900)<0.5));
  await page.locator('#catchContinue').tap();await page.waitForFunction(()=>g.state()===0);
- await page.reload();await page.waitForFunction(()=>g&&!$('act').disabled);
+ await page.reload();
+ const resumeFiled=await requireBootHome(page);
+ assert.deepEqual(await page.evaluate(()=>catchHistory),[captured],'Filed record must be restored before Resume');
+ await resumeFiled.tap();
+ await page.waitForFunction(()=>g&&!$('act').disabled);
  assert.deepEqual(await page.evaluate(()=>catchHistory),[captured]);
- await page.locator('#openMenu').tap();await page.locator('[data-to=book]').tap();await page.waitForFunction(()=>$('records').children.length===8);
+ await page.locator('#openMenu').tap();await page.locator('[data-section=home] [data-to=book]').tap();await page.waitForFunction(()=>$('records').children.length===8);
  assert.equal(await page.locator('#menu').evaluate(m=>m.offsetWidth),480);assert.equal(await page.locator('#menu').evaluate(m=>m.offsetHeight),320);
  const touch=process.env.TEST_WEBKIT?null:await page.context().newCDPSession(page);
  async function swipe(selector,dx,dy=0){
@@ -185,7 +200,7 @@ const {webkit,chromium}=require('playwright-core');
  await page.locator('#species-40').tap();
  const row=page.locator('.catch-log');assert.equal(await row.count(),1);assert.equal(await row.locator('svg').count(),8);assert.match(await row.innerText(),/18/);
  await shot('Thai-Waters-catch-history');await page.locator('#back').tap();assert(await page.locator('#species-40').isVisible());
- await page.locator('#back').tap();await page.locator('[data-to=sensors]').tap();await showControl(page,'#handheldEnable');await page.locator('#handheldEnable').check();await page.keyboard.press('v');await page.locator('#resume').tap();await page.keyboard.press('c');await page.waitForFunction(()=>g.state()===1||g.state()===2);
+ await page.locator('#back').tap();await page.locator('[data-section=home] [data-to=sensors]').tap();await showControl(page,'#handheldEnable');await page.locator('#handheldEnable').check();await page.keyboard.press('v');await page.locator('#resume').tap();await page.keyboard.press('c');await page.waitForFunction(()=>g.state()===1||g.state()===2);
  assert.deepEqual(errors,[]);console.log('PASS three Thai location typefaces, 480×320 gallery, confirmed catch across reload, eight history fields, full-width HUD, reduced-motion prompt, and controller cast.');
  }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});

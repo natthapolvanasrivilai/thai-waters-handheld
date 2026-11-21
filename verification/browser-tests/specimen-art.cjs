@@ -1,3 +1,4 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path'),{pathToFileURL}=require('node:url'),{chromium}=require('playwright-core');
 const {openPersistenceEntry}=require('./persistence-entry.cjs');
 (async()=>{
@@ -7,7 +8,9 @@ const {openPersistenceEntry}=require('./persistence-entry.cjs');
  const p=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:844,height:390}});
  // This test asserts an English journal title; Thai names have their own default-locale integration test.
  await p.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
- await p.goto(entry.url);await p.waitForFunction(()=>g&&!$('act').disabled);
+ await p.goto(entry.url);
+ await (await requireBootHome(p)).tap();
+ await p.waitForFunction(()=>g&&!$('act').disabled);
  const result=await p.evaluate(async()=>{
   const seen=new Map(),shapes=new Set(),dupes=[],missing=[];
   const c=document.createElement('canvas');c.width=96;c.height=50;const ctx=c.getContext('2d',{willReadFrequently:true});
@@ -47,7 +50,11 @@ const {openPersistenceEntry}=require('./persistence-entry.cjs');
  });
  if(process.env.LABEO_PREVIEW)await p.locator('#flatStage').screenshot({path:process.env.LABEO_PREVIEW});
  await p.locator('#catchContinue').click();await p.waitForFunction(()=>g.caught(1822)===1);
- await p.reload();await p.waitForFunction(()=>g&&!$('act').disabled);
+ await p.reload();
+ const resume=await requireBootHome(p);
+ assert.deepEqual(await p.evaluate(()=>[g.state(),g.caught(1822)]),[0,1]);
+ await resume.tap();
+ await p.waitForFunction(()=>g&&!$('act').disabled);
  const journal=await p.evaluate(()=>{
   showBookEntry(1822);
   const entry=document.querySelector('.book-profile');
@@ -63,6 +70,7 @@ const {openPersistenceEntry}=require('./persistence-entry.cjs');
   const pilot=await browser.newPage({isMobile:true,hasTouch:true,deviceScaleFactor:dpr,viewport:{width:844,height:390}});
   await pilot.addInitScript(()=>localStorage.setItem('thai-waters-language','th'));
   await pilot.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href+'?fishArt=hq');
+  await (await requireBootHome(pilot)).tap();
   await pilot.waitForFunction(()=>g&&!$('act').disabled);
   const state=await pilot.evaluate(async()=>{
    const ids=[1822,2158,2160,2190,2192],id=1822,unknown=1821;

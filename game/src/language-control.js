@@ -8,10 +8,11 @@ function applyLanguage(next){
   if(updates.has(el))setUi(el,updates.get(el));
  }
  for(const b of document.querySelectorAll('[data-language]'))b.setAttribute('aria-pressed',String(b.dataset.language===next));
+ if(sessionOnly)$('sessionCareerNotice').textContent=sessionCareerWords();
  document.dispatchEvent(new Event('game-language'));
  if(g){lastLabel='';refresh();if(menu.open)section(menuPage);draw();}
 }
 for(const button of document.querySelectorAll('[data-language]')){
- button.onclick=()=>{try{localStorage.setItem(languageKey,button.dataset.language);}catch{}applyLanguage(button.dataset.language);};
+ button.onclick=()=>{if(!sessionOnly)try{localStorage.setItem(languageKey,button.dataset.language);}catch{}applyLanguage(button.dataset.language);};
 }
 applyLanguage(language);

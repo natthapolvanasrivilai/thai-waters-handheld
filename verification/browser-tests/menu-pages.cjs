@@ -1,10 +1,13 @@
+const {requireBootHome}=require('./boot-home-check.cjs');
 const assert=require('node:assert/strict'),path=require('node:path'),{pathToFileURL}=require('node:url');
 const {chromium,webkit}=require('playwright-core');
 (async()=>{
  const engine=process.env.TEST_WEBKIT?webkit:chromium,browser=await engine.launch(engine===webkit?{}:{executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
  try{for(const width of [844,390,320]){
   const p=await browser.newPage({viewport:{width,height:width===844?390:800},isMobile:true,hasTouch:true});
-  p.on('pageerror',e=>console.error(e.message));await p.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);await p.waitForFunction(()=>g&&!$('act').disabled);
+  p.on('pageerror',e=>console.error(e.message));await p.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
+  await (await requireBootHome(p)).tap();
+  await p.waitForFunction(()=>g&&!$('act').disabled);
   for(const lang of ['th','en']){
    await p.locator('#openMenu').tap();await p.locator('[data-language='+lang+']').tap();
    async function fits(){
@@ -16,7 +19,7 @@ const {chromium,webkit}=require('playwright-core');
    }
    await fits();
    for(const route of ['spots','rod','sound','sensors','crew','book']){
-    await p.locator('[data-to='+route+']').tap();
+    await p.locator('[data-section=home] [data-to='+route+']').tap();
     while(await p.locator('#sheetPrev').isVisible()&&await p.locator('#sheetPrev').isEnabled())await p.locator('#sheetPrev').tap();
     for(;;){await fits();
      if(route==='crew'&&await p.locator('#cupScope').isVisible()){
