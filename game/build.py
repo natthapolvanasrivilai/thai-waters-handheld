@@ -1,5 +1,6 @@
 from pathlib import Path
 import base64,hashlib,json,re,unicodedata
+from location_map_data import pack as pack_location_map, credits as location_map_credits
 root=Path(__file__).resolve().parent
 def image(path):return 'data:image/png;base64,'+base64.b64encode(path.read_bytes()).decode()
 catalog=json.loads((root/'content/catalog.json').read_text(encoding='utf-8'))
@@ -50,6 +51,9 @@ template=template.replace('</style>',(root/'src/immersive.css').read_text(encodi
 values={'@@SALVAGE_DATA@@':(root/'content/salvage.json').read_text(encoding='utf8'),'@@SALVAGE_ART@@':image(root/'assets/salvage.png'),'@@BAIT_ART@@':image(root/'assets/bait.png'),'@@THAI_FONT@@':base64.b64encode((root/'assets/fonts/NotoSansThai.woff2').read_bytes()).decode(),'@@WATER_ART@@':(root/'assets/water-props.json').read_text(encoding='utf-8'),'@@SOUND_CHECK@@':'data:audio/wav;base64,'+base64.b64encode((root/'assets/speaker-check.wav').read_bytes()).decode(),'@@FONT@@':base64.b64encode((root/'assets/fonts/AtkinsonHyperlegibleNext.ttf').read_bytes()).decode(),'@@CAD@@':(root/'assets/device-parts.json').read_text(encoding='utf-8-sig'),'@@THREE@@':(root/'assets/device-renderer.min.js').read_text(encoding='utf-8'),'@@SCENES@@':base64.b64encode((root/'assets/landscape.wasm').read_bytes()).decode(),'@@CATALOG@@':json.dumps(catalog),'@@FISH@@':image(root/'assets/fish.png'),'@@WASM@@':base64.b64encode((root/'assets/atlas.wasm').read_bytes()).decode(),'@@DEVICE_UI@@':(root/'src/device-ui.js').read_text(encoding='utf-8').strip()}
 for token,filename in [('@@BOOT_ENGINE@@','boot-engine.js'),('@@HANDHELD_INPUT@@','handheld-input.js'),('@@CAREER_STORAGE@@','career-storage.js'),('@@STARTUP_CAREER@@','startup-career.js'),('@@STARTUP_RECOVERY@@','startup-recovery.js'),('@@FIELD_GUIDE@@','field-guide.js'),('@@CUP@@','tournament.js'),('@@LCD_PICKER@@','lcd-picker.js'),('@@MENU_SHEETS@@','menu-sheets.js'),('@@LCD_RENDERER@@','lcd-renderer.js'),('@@MOBILE_DISPLAY@@','mobile-display.js')]:
  values[token]=(root/'src'/filename).read_text(encoding='utf-8')
+values['@@LOCATION_MAP@@']=pack_location_map(root,catalog['locations'])
+values['@@LOCATION_MAP_CREDITS@@']=location_map_credits(root)
+values['@@LOCATION_MAP_CSS@@']=(root/'src/location-map.css').read_text(encoding='utf-8')
 values['@@LOCALIZATION@@']=(root/'src/localization.js').read_text(encoding='utf8').replace('@@DICTIONARY@@',json.dumps({**json.loads((root/'src/thai-menu.json').read_text(encoding='utf8')),**json.loads((root/'src/thai-play.json').read_text(encoding='utf8'))},ensure_ascii=False))
 for token,file in [('@@LANGUAGE_CONTROL@@','language-control.js'),('@@THAI_ATLAS@@','thai-atlas.js')]:
  values[token]=(root/'src'/file).read_text(encoding='utf8')

@@ -12,7 +12,7 @@ import time
 SHARDS = {
     "arrival": ("arrival",),
     "gameplay": ("gameplay", "detents", "rumble", "bait", "cast-water", "fish-hints", "handheld-input", "recovered-items"),
-    "device": ("device", "lcd", "career-flow", "career-storage", "file-career-offline", "reload-trace-unit", "mobile-input", "aim-input", "finger-targets", "tackle-hud", "menu-pages", "mobile-display-unit", "screen-layout"),
+    "device": ("device", "lcd", "career-flow", "career-storage", "file-career-offline", "reload-trace-unit", "mobile-input", "aim-input", "finger-targets", "tackle-hud", "menu-pages", "location-map-unit", "location-map", "mobile-display-unit", "screen-layout"),
     "world": ("scenery", "ambient", "mobile-audio", "landing-audio", "hosted-startup", "tournament",
               "thai-catch", "thai-species-names", "gallery-history", "collection-native", "specimen-art"),
 }
@@ -23,6 +23,7 @@ PERSISTENCE_LANES = {
         "bait", "gallery-history", "specimen-art",
     )},
     "verification/browser-tests/file-career-offline.cjs": "file",
+    "verification/browser-tests/location-map.cjs": "file",
 }
 
 
