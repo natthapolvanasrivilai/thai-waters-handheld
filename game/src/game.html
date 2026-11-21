@@ -1001,8 +1001,10 @@ function landedCatch(age){
  if(g.filed())return;
  ctx.save();ctx.globalAlpha=catchPromptOpacity(age);caption(catchContinueLabel,240,310,'center','#fff4d8',13);ctx.restore();
  const x=202;
- caption(atlas.ranks[f.tier]+'  ·  '+L(reward),x,82,'left',rarityInk[f.tier],13);
- const afterName=catchLines(f.name,110,language==='th'?24:23,'#fff7df',26,286,'Syy Flowey');
+ const nameNote=thaiNameNote(f);
+ caption(atlas.ranks[f.tier]+'  ·  '+L(reward)+(nameNote?'  ·  ถอดเสียง':''),x,82,'left',rarityInk[f.tier],13);
+ const afterName=nameNote?catchLines(f.name,110,21,'#fff7df',23,156,'Syy Flowey'):
+  catchLines(f.name,110,language==='th'?24:23,'#fff7df',26,286,'Syy Flowey');
  if(f.scientificName)caption(f.scientificName,x,afterName,'left','#d2e9e1',13,'',false);
  const stats=afterName+(f.scientificName?20:10);
  caption('EST. WEIGHT',x,stats,'left','#d2e9e1',12);
@@ -1011,7 +1013,7 @@ function landedCatch(age){
  caption(g.lengthCm()+' cm',x+136,stats+23,'left','#fff7df',22);
  const originEnd=catchLines('Origin · '+atlas.locations[placeId].name,stats+53,15,'#ffda98',18);
  catchLines(f.fiction?'Fictional · '+f.lore:(f.lore||f.family),originEnd+3,14,'#f2f5e5',17);
- const metrics=atlas.ranks[f.tier]+' · '+reward+' · '+size+' '+g.lengthCm()+' cm · Estimated weight '+weight;
+ const metrics=(nameNote?nameNote+' · '+f.scientificName+' · ':'')+atlas.ranks[f.tier]+' · '+reward+' · '+size+' '+g.lengthCm()+' cm · Estimated weight '+weight;
  const origin='Origin · '+atlas.locations[placeId].name+'. '+(f.lore||f.family||'');
  if($('metrics').textContent!==metrics)setUi($('metrics'),metrics);
  if($('origin').textContent!==origin)setUi($('origin'),origin);
