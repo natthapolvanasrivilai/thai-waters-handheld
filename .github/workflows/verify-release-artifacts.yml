@@ -1,237 +1,64 @@
-name: Verify release artifacts
+name: Verify release artifacts (one-off #62 diagnosis only)
 on:
-  schedule:
-    - cron: '17 18 * * *' # 01:17 Asia/Bangkok
-  push:
-    branches: [main, ci/verified-release-builds]
   workflow_dispatch:
     inputs:
       source_sha:
-        description: Full release commit SHA
+        description: Exact historical browser artifact commit (259accc… only)
         required: true
         type: string
 permissions:
   contents: read
-env:
-  SOURCE_SHA: ${{ inputs.source_sha || github.sha }}
+  actions: read
 jobs:
-  browser_build:
+  reload_boundary:
+    if: github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.ref == 'refs/heads/diagnostic/reload-62-exact-once' && inputs.source_sha == '259acccfeefd0523a40f33ff60d33f8131eefe0e'
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 15
+    env:
+      EXPECT_BROWSER_VERSION: '151.0.7922.34'
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
-          ref: ${{ env.SOURCE_SHA }}
-          persist-credentials: false
-      - name: Rebuild browser assets
-        shell: bash
-        run: |
-          set -euo pipefail
-          [[ "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
-          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          echo "SOURCE_COMMIT=$SOURCE_SHA" > "$RUNNER_TEMP/browser-build.txt"
-          cd "$RUNNER_TEMP"
-          curl --fail --location --silent --show-error --retry 2 https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz -o zig.tar.xz
-          echo 'd45312e61ebcc48032b77bc4cf7fd6915c11fa16e4aad116b66c9468211230ea  zig.tar.xz' | sha256sum -c
-          tar -xf zig.tar.xz
-          cd "$GITHUB_WORKSPACE"
-          ZIG="$RUNNER_TEMP/zig-linux-x86_64-0.13.0/zig"
-          "$ZIG" version >> "$RUNNER_TEMP/browser-build.txt"
-          python3 game/build-engine.py --zig "$ZIG"
-          python3 game/build.py
-          python3 - <<'PY'
-          import base64
-          from pathlib import Path
-          wasm = Path("game/assets/atlas.wasm").read_bytes()
-          assert wasm[:4] == b"\0asm"
-          assert Path("game/Thai-Waters-play.html").read_bytes().count(base64.b64encode(wasm)) == 1
-          PY
-          if [ "$SOURCE_SHA" = a8137e41a91c608630ff21bf9d7b775fe688fb0e ]; then
-            test -n "$(git diff --name-only -- game/assets/atlas.wasm)"
-          fi
-      - name: Stage exact browser build for testing
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir browser-input
-          cp game/Thai-Waters-play.html game/assets/atlas.wasm browser-input/
-          cp "$RUNNER_TEMP/browser-build.txt" browser-input/BUILD.txt
-          (cd browser-input && sha256sum Thai-Waters-play.html atlas.wasm BUILD.txt > SHA256SUMS)
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: browser-input-${{ env.SOURCE_SHA }}
-          path: browser-input/
-          if-no-files-found: error
-          retention-days: 3
-  browser_tests:
-    needs: browser_build
-    runs-on: ubuntu-24.04
-    timeout-minutes: 35
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: [arrival, gameplay, device, world]
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ env.SOURCE_SHA }}
-          persist-credentials: false
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ github.workflow_sha }}
-          path: workflow-source
-          sparse-checkout: .github/scripts
+          ref: ${{ github.sha }}
+          fetch-depth: 2
           persist-credentials: false
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: browser-input-${{ env.SOURCE_SHA }}
-          path: ${{ runner.temp }}/browser-input
+          github-token: ${{ github.token }}
+          run-id: '44859468101'
+          artifact-ids: "14688961699"
+          merge-multiple: true
+          path: ${{ runner.temp }}/exact-browser-input
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22.16.0'
-      - name: Test exact browser artifact
+      - name: Verify immutable input and run four paired cohorts
         shell: bash
-        env:
-          SHARD: ${{ matrix.shard }}
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/browser-logs"
-          exec > >(tee -a "$RUNNER_TEMP/browser-logs/setup.log") 2>&1
-          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          bundle="$RUNNER_TEMP/browser-input"
-          (cd "$bundle" && sha256sum -c --strict SHA256SUMS)
-          cp "$bundle/Thai-Waters-play.html" game/Thai-Waters-play.html
-          cp "$bundle/atlas.wasm" game/assets/atlas.wasm
-          npm ci --prefix game/lan
+          printf 'Runner image: %s %s\n' "$ImageOS" "$ImageVersion"
+          test "$(git rev-parse 'HEAD^1')" = 259acccfeefd0523a40f33ff60d33f8131eefe0e
+          test "$(git rev-parse 'HEAD^1^{tree}')" = 31e017cfead6e9c9a85e631731af835ccdb512b4
+          bundle="$RUNNER_TEMP/exact-browser-input"
+          (
+            cd "$bundle"
+            sha256sum -c --strict SHA256SUMS
+            grep -Fx 'SOURCE_COMMIT=259acccfeefd0523a40f33ff60d33f8131eefe0e' BUILD.txt
+            printf '%s\n' \
+              '4f14cde0e2ca8b480032f24f4fd5734b0284992a2b3175ff747d3ac94bca3676  Thai-Waters-play.html' \
+              'a6323da4983b12797f080bebe8c5eec5c7bc4a855327f7c995cb66ad78e5f270  atlas.wasm' | sha256sum -c --strict
+          )
           npm ci --prefix verification/browser-tests
           (
             cd verification/browser-tests
             ./node_modules/.bin/playwright-core install --with-deps chromium
           )
-          export BROWSER_PATH="$(node -p 'require("./verification/browser-tests/node_modules/playwright-core").chromium.executablePath()')"
-          python3 workflow-source/.github/scripts/browser-release-shards.py run --shard "$SHARD" \
-            --bundle "$bundle" --diagnostics "$RUNNER_TEMP/browser-logs"
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: browser-report-${{ env.SOURCE_SHA }}-${{ matrix.shard }}
-          path: ${{ runner.temp }}/browser-logs/
-          if-no-files-found: warn
-          retention-days: 5
-  browser_release:
-    needs: [browser_build, browser_tests, controller]
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ env.SOURCE_SHA }}
-          persist-credentials: false
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ github.workflow_sha }}
-          path: workflow-source
-          sparse-checkout: .github/scripts
-          persist-credentials: false
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: browser-input-${{ env.SOURCE_SHA }}
-          path: release-browser
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          pattern: browser-report-${{ env.SOURCE_SHA }}-*
-          path: browser-reports
-      - name: Verify exact-source test coverage and hashes
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          (cd release-browser && sha256sum -c --strict SHA256SUMS)
-          python3 workflow-source/.github/scripts/browser-release-shards.py verify \
-            --bundle release-browser --diagnostics browser-reports
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: browser-${{ env.SOURCE_SHA }}
-          path: release-browser/
-          if-no-files-found: error
-          retention-days: 5
-  controller:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ env.SOURCE_SHA }}
-          persist-credentials: false
-      - name: Verify audio and compile exact controller sources
-        shell: bash
-        run: |
-          set -euo pipefail
-          [[ "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
-          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          mkdir -p "$RUNNER_TEMP/ard-bin" "$RUNNER_TEMP/ard-user" verify release-controller
-          printf 'SOURCE_COMMIT=%s\n' "$SOURCE_SHA" > verify/source.txt
-          for probe in location_audio catch_music catch_music_adapter fight_music_v2 fight_transitions fish-hints; do
-            c++ -std=c++17 -O2 "firmware/tests/$probe.cpp" -o "$RUNNER_TEMP/$probe"
-            "$RUNNER_TEMP/$probe" | tee "verify/$probe.txt"
-          done
-          curl --fail --location --silent --show-error --retry 2 https://github.com/arduino/arduino-cli/releases/download/v1.3.1/arduino-cli_1.3.1_Linux_64bit.tar.gz -o "$RUNNER_TEMP/ard.tgz"
-          echo "376428d7d45be640c00812a71612e1742edc2f5f9ee3742a2d6da7870e079588  $RUNNER_TEMP/ard.tgz" | sha256sum -c
-          tar -xzf "$RUNNER_TEMP/ard.tgz" -C "$RUNNER_TEMP/ard-bin" arduino-cli
-          export PATH="$RUNNER_TEMP/ard-bin:$PATH"
-          export ARDUINO_DIRECTORIES_USER="$RUNNER_TEMP/ard-user"
-          export ARDUINO_DIRECTORIES_DATA="$RUNNER_TEMP/ard-data"
-          export ARDUINO_DIRECTORIES_DOWNLOADS="$RUNNER_TEMP/ard-downloads"
-          deps=releases/prototypes/Thai-Waters-controller-0.9.4.zip
-          unzip -q "$deps" 'libraries/*' -d "$ARDUINO_DIRECTORIES_USER"
-          index=https://espressif.github.io/arduino-esp32/package_esp32_index.json
-          arduino-cli core update-index --additional-urls "$index"
-          arduino-cli core install esp32:esp32@3.3.10 --additional-urls "$index"
-          arduino-cli compile --fqbn 'esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi,FlashMode=qio,PartitionScheme=app3M_fat9M_16MB,USBMode=hwcdc,CDCOnBoot=cdc' --build-path "$RUNNER_TEMP/ard-build" firmware/WillowCreek 2>&1 | tee verify/target-build.txt
-          test "$(stat -c%s "$RUNNER_TEMP/ard-build/WillowCreek.ino.bin")" -le 3145728
-          boot="$ARDUINO_DIRECTORIES_DATA/packages/esp32/hardware/esp32/3.3.10/tools/partitions/boot_app0.bin"
-          out="Thai-Waters-controller-${SOURCE_SHA:0:7}.zip"
-          python3 firmware/tools/package-controller-preview.py --build "$RUNNER_TEMP/ard-build" --boot-app0 "$boot" --dependencies "$deps" --verification verify --output "release-controller/$out"
-          unzip -q "release-controller/$out" -d "$RUNNER_TEMP/ard-package"
-          python3 "$RUNNER_TEMP/ard-package/flash-controller-preview.py" --check
-          (cd release-controller && sha256sum "$out" > SHA256SUMS)
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: controller-${{ env.SOURCE_SHA }}
-          path: |
-            release-controller/
-            verify/
-          if-no-files-found: error
-          retention-days: 5
-  nightly_release:
-    needs: [browser_release, controller]
-    if: github.event_name == 'schedule' && github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    permissions:
-      contents: write
-    concurrency:
-      group: verified-pocket-reel-nightly-release
-      cancel-in-progress: false
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ github.workflow_sha }}
-          sparse-checkout: .github/scripts
-          persist-credentials: false
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: browser-${{ env.SOURCE_SHA }}
-          path: nightly/browser
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: controller-${{ env.SOURCE_SHA }}
-          path: nightly/controller
-      - name: Test nightly packaging and publication guards
-        run: python3 .github/scripts/test_nightly_release.py
-      - name: Verify and package the testable build
-        run: python3 .github/scripts/nightly-release.py prepare nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
-      - name: Publish a private prerelease with verified assets
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python3 .github/scripts/nightly-release.py publish nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
+          export NODE_PATH="$PWD/verification/browser-tests/node_modules"
+          export BROWSER_PATH="$(node -p 'require("playwright-core").chromium.executablePath()')"
+          lab=verification/diagnostics/reload-62
+          node --test "$lab/observer.test.cjs"
+          python3 "$lab/prepare.py" "$bundle/Thai-Waters-play.html"
+          status=0
+          node "$lab/bare-storage.cjs" 1 || status=1
+          node "$lab/exact-matrix.cjs" 1 || status=1
+          exit "$status"
