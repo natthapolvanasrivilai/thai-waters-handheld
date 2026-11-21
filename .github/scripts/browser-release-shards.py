@@ -12,11 +12,19 @@ import time
 SHARDS = {
     "arrival": ("arrival",),
     "gameplay": ("gameplay", "detents", "rumble", "bait", "cast-water", "fish-hints", "handheld-input", "recovered-items"),
-    "device": ("device", "lcd", "career-flow", "career-storage", "reload-trace-unit", "mobile-input", "aim-input", "finger-targets", "tackle-hud", "menu-pages", "mobile-display-unit", "screen-layout"),
+    "device": ("device", "lcd", "career-flow", "career-storage", "file-career-offline", "reload-trace-unit", "mobile-input", "aim-input", "finger-targets", "tackle-hud", "menu-pages", "mobile-display-unit", "screen-layout"),
     "world": ("scenery", "ambient", "mobile-audio", "landing-audio", "hosted-startup", "tournament",
               "thai-catch", "thai-species-names", "gallery-history", "collection-native", "specimen-art"),
 }
 SITE = ("game/sites/test.mjs", "game/sites/cup-test.mjs")
+PERSISTENCE_LANES = {
+    **{f"verification/browser-tests/{name}.cjs": "loopback" for name in (
+        "arrival", "gameplay", "career-flow", "rumble", "aim-input", "landing-audio",
+        "bait", "gallery-history", "specimen-art",
+    )},
+    "verification/browser-tests/file-career-offline.cjs": "file",
+}
+
 
 
 def require(condition, message):
@@ -35,6 +43,8 @@ def partition(root):
     parts = {s: tuple("verification/browser-tests/" + n + ".cjs" for n in tests)
              for s, tests in SHARDS.items()}
     parts["world"] += SITE
+    require(PERSISTENCE_LANES.keys() <= {name for tests in parts.values() for name in tests},
+            "A required persistence lane is not assigned to a shard")
     for tests in parts.values():
         for name in tests:
             require((root / name).is_file(), f"Missing script {name}")
@@ -51,6 +61,13 @@ def identity(bundle):
     require((bundle / "BUILD.txt").read_text().splitlines()[0] == "SOURCE_COMMIT=" + src,
             "Artifact source mismatch")
     return {"source": src, "html": digest(bundle / "Thai-Waters-play.html"), "wasm": digest(bundle / "atlas.wasm")}
+
+
+def lane_evidence(log, name, html):
+    lane = PERSISTENCE_LANES.get(name)
+    exact = [f"TW_LANE {lane} {html}"] if lane else []
+    found = [line for line in log.splitlines() if line.startswith("TW_LANE ")]
+    return found == exact
 
 
 def run(root, shard, bundle, diagnostics):
@@ -75,10 +92,20 @@ def run(root, shard, bundle, diagnostics):
             code = subprocess.run(["node", path.name if name.endswith(".cjs") else name], env=test_env,
                                   cwd=path.parent if name.endswith(".cjs") else root,
                                   stdout=output, stderr=subprocess.STDOUT).returncode
+        output = log.read_text(errors="replace")
+        lane = PERSISTENCE_LANES.get(name)
+        observed = lane_evidence(output, name, expected["html"])
+        if not observed:
+            print(f"{name}: missing, duplicate, or incorrect browser lane proof", flush=True)
+            if code == 0:
+                code = 1
         print(f"{name}: exit {code}, {time.monotonic() - started:.1f}s", flush=True)
         if code:
-            print(log.read_text(errors="replace")[-4000:], flush=True)
-        results.append({"test": name, "exit": code, "seconds": round(time.monotonic() - started, 2)})
+            print(output[-4000:], flush=True)
+        result = {"test": name, "exit": code, "seconds": round(time.monotonic() - started, 2)}
+        if lane and observed:
+            result["lane"] = lane
+        results.append(result)
         report = dict(expected, shard=shard, results=results)
         (diagnostics / "report.json").write_text(json.dumps(report, indent=2) + "\n")
     require(all(r["exit"] == 0 for r in results), "At least one test failed")
@@ -97,6 +124,8 @@ def verify(root, bundle, diagnostics):
         require(tuple(r.get("test") for r in results) == tests, f"Incomplete or duplicate results for {shard}")
         require(all(type(r.get("exit")) is int and r["exit"] == 0 for r in results),
                 f"Failed tests for {shard}")
+        require(all(r.get("lane") == PERSISTENCE_LANES.get(r["test"]) for r in results),
+                f"Missing or incorrect persistence lane for {shard}")
     print(f"Verified {sum(map(len, parts.values()))} exact-source tests across {len(parts)} shards")
 
 

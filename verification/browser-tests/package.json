@@ -2,7 +2,7 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "test": "node detents.cjs && node scenery.cjs && node arrival.cjs && node gameplay.cjs && node device.cjs && node career-flow.cjs && node career-storage.cjs && node reload-trace-unit.cjs && node rumble.cjs && node bait.cjs && node mobile-input.cjs && node lcd.cjs && node mobile-audio.cjs && node landing-audio.cjs && node cast-water.cjs && node fish-hints.cjs && node ambient.cjs && node aim-input.cjs && node hosted-startup.cjs && node tournament.cjs && node thai-catch.cjs && node thai-species-names.cjs && node gallery-history.cjs && node collection-native.cjs && node handheld-input.cjs && node finger-targets.cjs && node tackle-hud.cjs && node menu-pages.cjs && node specimen-art.cjs && node recovered-items.cjs && node mobile-display-unit.cjs && node screen-layout.cjs"
+    "test": "node detents.cjs && node scenery.cjs && node arrival.cjs && node gameplay.cjs && node device.cjs && node career-flow.cjs && node career-storage.cjs && node file-career-offline.cjs && node reload-trace-unit.cjs && node rumble.cjs && node bait.cjs && node mobile-input.cjs && node lcd.cjs && node mobile-audio.cjs && node landing-audio.cjs && node cast-water.cjs && node fish-hints.cjs && node ambient.cjs && node aim-input.cjs && node hosted-startup.cjs && node tournament.cjs && node thai-catch.cjs && node thai-species-names.cjs && node gallery-history.cjs && node collection-native.cjs && node handheld-input.cjs && node finger-targets.cjs && node tackle-hud.cjs && node menu-pages.cjs && node specimen-art.cjs && node recovered-items.cjs && node mobile-display-unit.cjs && node screen-layout.cjs"
   },
   "devDependencies": {
     "playwright-core": "1.62.1",

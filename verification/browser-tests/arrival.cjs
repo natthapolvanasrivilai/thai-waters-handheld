@@ -2,13 +2,15 @@ const {showControl,chooseNamed}=require('./menu-controls.cjs');
 const {captureReloadStartup,readCheckpoint,reloadFailureText}=require('./reload-trace.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
-const {pathToFileURL} = require('node:url');
+const {openPersistenceEntry}=require('./persistence-entry.cjs');
 const {chromium} = require('playwright-core');
 
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
- const url=pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href;
+ let entry;
  try {
+  entry=await openPersistenceEntry(path.resolve(__dirname,'../../game/Thai-Waters-play.html'));
+  const {url}=entry;
   for(const reduced of [false,true]){
    const page=await browser.newPage({viewport:reduced?{width:390,height:844}:{width:960,height:760},hasTouch:reduced,isMobile:reduced,reducedMotion:reduced?'reduce':'no-preference'});
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -172,5 +174,5 @@ const {chromium} = require('playwright-core');
    await page.close();
   }
   console.log('PASS desktop and phone destination travel, first-person walking, hiking, driving and boating, natural 4.2 s completion, reduced motion, skip, controls, time-only changes and saved spot restore.');
- }finally{await browser.close();}
+ }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});

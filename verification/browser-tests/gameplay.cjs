@@ -1,9 +1,12 @@
 const {showControl}=require('./menu-controls.cjs');
 const {captureReloadStartup,readCheckpoint,reloadFailureText}=require('./reload-trace.cjs');
-const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=require('path'),assert=require('node:assert/strict');
+const {openPersistenceEntry}=require('./persistence-entry.cjs');
+const {chromium}=require('playwright-core'),path=require('path'),assert=require('node:assert/strict');
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.BROWSER_PATH || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
+ let entry;
  try{
+  entry=await openPersistenceEntry(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html')));
   const pg=await browser.newPage({viewport:{width:850,height:900}}),errors=[];pg.on('pageerror',e=>errors.push(e.message));
   await pg.addInitScript(()=>{
    const draw=CanvasRenderingContext2D.prototype.drawImage;
@@ -16,7 +19,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
    };
   });
   await pg.addInitScript(captureReloadStartup);
-  await pg.goto(pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href);
+  await pg.goto(entry.url);
   await pg.waitForFunction(()=>!document.querySelector('#act').disabled,null,{timeout:12000});
   await pg.waitForFunction(()=>document.documentElement.dataset.device);if(await pg.locator('#product').isVisible())await pg.locator('#viewMode').click();
   const menu=async n=>{await pg.locator('#openMenu').click();await pg.locator('[data-to='+n+']').click();};
@@ -169,7 +172,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   assert.equal(card.legacy[0],240);assert.equal(card.legacy[1],0);assert.match(card.legacy[2],/Recorded size.*Unweighed/);
   console.log('PASS '+card.layouts+' catch card layouts; right edge '+card.rightmost.toFixed(1)+' px, last baseline '+card.lowest+' px.');
   assert.equal(errors.length,0,errors.join(';'));console.log('PASS location, catch, collection, mobile motion and distinct loaded-rod visuals for prawn, ray and runner.');
- }finally{await browser.close();}
+ }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});
 
 

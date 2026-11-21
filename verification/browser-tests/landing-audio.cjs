@@ -1,10 +1,11 @@
 const {chromium,devices}=require('playwright-core');
 const assert=require('node:assert/strict');
 const path=require('node:path');
-const {pathToFileURL}=require('node:url');
+const {openPersistenceEntry}=require('./persistence-entry.cjs');
 
 (async()=>{
  const browser=await chromium.launch({headless:true,executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
+ let entry;
  try{
   const page=await browser.newPage({...devices['iPhone 13'],viewport:{width:844,height:390}});
   const errors=[];
@@ -36,7 +37,8 @@ const {pathToFileURL}=require('node:url');
   });
   const html=process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html');
   await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await page.goto(pathToFileURL(path.resolve(html)).href);
+  entry=await openPersistenceEntry(path.resolve(html));
+  await page.goto(entry.url);
   await page.waitForFunction(()=>!!g && !$('act').disabled);
   await page.evaluate(()=>{
    // Select an uncommon fish, then start the same cast again with the real controls.
@@ -101,5 +103,5 @@ const {pathToFileURL}=require('node:url');
   assert.equal(peakAfterResume,false,'An unconsumed cue expires when a catch is filed during audio interruption');
   assert.deepEqual(errors,[]);
   console.log('PASS trusted cast/lift/reel, live landing PCM before filing, silent held/restored card and double filing; first audible sample by '+capture.heard[0]+' ms.');
- }finally{await browser.close();}
+ }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});

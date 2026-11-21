@@ -1,11 +1,13 @@
 const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=require('node:path');
-const {pathToFileURL}=require('node:url');
+const {openPersistenceEntry}=require('./persistence-entry.cjs');
 const {chromium,webkit}=require('playwright-core');
 (async()=>{
  const browser=process.env.TEST_WEBKIT?await webkit.launch():await chromium.launch({executablePath:process.env.BROWSER_PATH});
+ let entry;
  try{
+  entry=await openPersistenceEntry(path.resolve(__dirname,'../../game/Thai-Waters-play.html'),process.env.PLAYTEST_URL);
   const page=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:844,height:390},acceptDownloads:true});
-  const key='thai-atlas-v2',target=process.env.PLAYTEST_URL||pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href;
+  const key='thai-atlas-v2',target=entry.url;
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(target);await page.waitForFunction(()=>g&&!$('act').disabled);
   await page.evaluate(key=>{
@@ -39,5 +41,5 @@ const {chromium,webkit}=require('playwright-core');
   assert.equal(JSON.parse(await page.evaluate(k=>localStorage.getItem(k),key)).schema,4);
   await page.locator('#act').tap();await page.waitForFunction(()=>g.state()===1||g.state()===2);
   assert.deepEqual(errors,[]);console.log('PASS real browser offline backup UI, schema-3 migration, PB restore and immediate cast.');
- }finally{await browser.close();}
+ }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});
