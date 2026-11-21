@@ -44,3 +44,54 @@ test('separates wrong saved selection, normalization rejection and native/Contin
  assert.equal(rejected.normalized,'rejected');assert.equal(rejected.storedPendingMatched,true);
  assert(!traceText(rejected,null,0).includes('SHOULD_NOT_LOG'));
 });
+
+const {captureReloadStartup,reloadFailureText}=require('./reload-trace.cjs');
+// Fresh isolated document over a synthetic store. Observe the actual init function,
+// then inject loss at a specific boundary; no reliance on timing or browser storage.
+function fixture({epoch,career,language='en',deny=false,topLevel=true}){
+ const bucket=new Map();if(career!==null)bucket.set('thai-atlas-v2',career);
+ if(language!==null)bucket.set('thai-waters-language',language);
+ const writes=[];
+ const scope={document:{readyState:'loading',querySelector:()=>null},
+  window:{},location:{protocol:'file:',href:'file:///SHOULD_NOT_LOG'},performance:{timeOrigin:epoch},
+  localStorage:{getItem(k){if(deny&&k==='thai-atlas-v2')throw Error('SHOULD_NOT_LOG');return bucket.get(k)??null;},
+    setItem(k,v){writes.push([k,v]);bucket.set(k,v);}}};
+ scope.top=scope;scope.self=topLevel?scope:{};
+ const page={evaluate:(f,args)=>vm.runInNewContext('('+f.toString()+')(args)',{...scope,args})};
+ return {scope,bucket,writes,page,
+  init:()=>page.evaluate(captureReloadStartup),
+  ready(){scope.document.readyState='complete';scope.document.querySelector=id=>id==='#act'?{disabled:false}:null;}};
+}
+const rendered=async(f,old)=>JSON.parse((await reloadFailureText(f.page,{
+ stage:'arrival-mobile',before:{storage:'present'},beforeStartup:old,expected:{place:14},pageErrors:0
+})).slice('reload trace '.length));
+test('different results for lost before app and lost after document-start',async()=>{
+ const old=fixture({epoch:100,career:synthetic});await old.init();
+ const beforeStartup=old.scope.window.__twReloadStartup62;
+ const filePartition=fixture({epoch:200,career:null,language:null});await filePartition.init();filePartition.ready();
+ const bootMutation=fixture({epoch:200,career:synthetic});await bootMutation.init();
+ bootMutation.bucket.delete('thai-atlas-v2');bootMutation.ready();
+ const a=await rendered(filePartition,beforeStartup),b=await rendered(bootMutation,beforeStartup);
+ assert.equal(a.after.storage,'missing');assert.equal(b.after.storage,'missing');
+ assert.deepEqual(a.boundary,{newDocument:true,documentReady:'loading',career:'missing',language:'missing',classification:'missing-before-app'});
+ assert.deepEqual(b.boundary,{newDocument:true,documentReady:'loading',career:'present',language:'present',classification:'lost-after-document-start'});
+ assert.deepEqual(filePartition.writes,[['thai-waters-language','en']]);assert.deepEqual(bootMutation.writes,filePartition.writes);
+ assert.equal(a.stage,'arrival-mobile');assert(!JSON.stringify({a,b}).includes('SHOULD_NOT_LOG'));
+ assert(!Object.hasOwn(b.boundary,'epoch'));
+});
+test('does not mistake an old document or incomplete boot for a storage loss',async()=>{
+ const f=fixture({epoch:200,career:synthetic});await f.init();
+ const before=f.scope.window.__twReloadStartup62;
+ assert.equal((await rendered(f,before)).boundary.classification,'reload-did-not-replace-document');
+ assert.equal((await rendered(f,{epoch:100})).boundary.classification,'present-before-app-post-ready-unavailable');
+ const unreadable={page:{evaluate(){throw Error('SHOULD_NOT_LOG');}}};const a=await rendered(unreadable,before);
+ assert.equal(a.boundary.classification,'document-start-unavailable');assert.deepEqual(a.after,{unavailable:true});
+ assert(!JSON.stringify(a).includes('SHOULD_NOT_LOG'));
+});
+test('read denial is distinct and cross-frame init preserves only the original language write',async()=>{
+ const f=fixture({epoch:200,career:synthetic,deny:true});await f.init();f.ready();
+ assert.equal((await rendered(f,{epoch:100})).boundary.classification,'blocked-before-app');
+ const sub=fixture({epoch:200,career:synthetic,topLevel:false});await sub.init();
+ assert.equal(sub.scope.window.__twReloadStartup62,undefined);
+ assert.deepEqual(sub.writes,[['thai-waters-language','en']]);
+});

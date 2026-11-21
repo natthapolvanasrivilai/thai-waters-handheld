@@ -1,5 +1,5 @@
 const {showControl,chooseNamed}=require('./menu-controls.cjs');
-const {readCheckpoint,probeReload,traceText}=require('./reload-trace.cjs');
+const {captureReloadStartup,readCheckpoint,reloadFailureText}=require('./reload-trace.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const {pathToFileURL} = require('node:url');
@@ -12,7 +12,7 @@ const {chromium} = require('playwright-core');
   for(const reduced of [false,true]){
    const page=await browser.newPage({viewport:reduced?{width:390,height:844}:{width:960,height:760},hasTouch:reduced,isMobile:reduced,reducedMotion:reduced?'reduce':'no-preference'});
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
-   await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
+   await page.addInitScript(captureReloadStartup);
   await page.goto(url);await page.waitForFunction(()=>!document.getElementById('act').disabled);
    if(await page.locator('#product').isVisible())await page.locator('#viewMode').click();
    assert.match(await page.title(),/Thai Waters/);
@@ -156,13 +156,13 @@ const {chromium} = require('playwright-core');
    });
    await page.locator('#act').click();
    const placeName='Kwan Phayao';
-   const {observed:castPhase,trace:beforeRestore}=await page.evaluate(readCheckpoint,{placeName,observe:'cast'});
+   const {observed:castPhase,trace:beforeRestore,startup:beforeStartup}=await page.evaluate(readCheckpoint,{placeName,observe:'cast'});
    assert([1,2].includes(castPhase),'The tap after Skip starts fishing');
    try{
     await page.reload();await page.waitForFunction(()=>!document.getElementById('act').disabled);
     assert.equal(await page.locator('#arrivalSkip').isVisible(),false);
     assert.equal(await page.locator('#spot').textContent(),'Kwan Phayao');
-   }catch(error){console.error(traceText(beforeRestore,await probeReload(page,{placeName}),errors.length));throw error;}
+   }catch(error){console.error(await reloadFailureText(page,{stage:reduced?'arrival-mobile':'arrival-desktop',before:beforeRestore,beforeStartup,expected:{placeName},pageErrors:errors.length}));throw error;}
    await travel('Krabi coastal waters','Dawn',()=>probeTrip('skip'));
    const krabi=await checkTrip();
    assert.equal(krabi.family,3,'Krabi uses the longtail-boat approach');
