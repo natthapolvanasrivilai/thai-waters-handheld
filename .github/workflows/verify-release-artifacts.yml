@@ -64,6 +64,7 @@ jobs:
           if-no-files-found: error
           retention-days: 3
   browser_tests:
+    if: ${{ !(github.event_name == 'workflow_dispatch' && github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.ref == 'refs/heads/diagnostic/arrival-reload-boundary-62') }}
     needs: browser_build
     runs-on: ubuntu-24.04
     timeout-minutes: 35
@@ -156,6 +157,7 @@ jobs:
           if-no-files-found: error
           retention-days: 5
   controller:
+    if: ${{ !(github.event_name == 'workflow_dispatch' && github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.ref == 'refs/heads/diagnostic/arrival-reload-boundary-62') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
@@ -244,6 +246,7 @@ jobs:
       fail-fast: false
       matrix:
         transport: [file, http]
+        replica: [1, 2, 3, 4]
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
