@@ -101,13 +101,20 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
    assert.deepEqual(await frames(),[432],'programmatic menu clicks stay silent');
    await p.locator('#openMenu').press('Enter');
    assert.deepEqual(await frames(),[432,432],'keyboard activation has exactly one menu cue');
-   // Standard product menu paging deserves the same short detent as scrolling.
+   // Both existing destination sheets keep their order; the map is optional page 3.
    await p.locator('[data-section=home] [data-to=spots]').press('Enter');
-   assert.equal(await p.locator('#sheetNumber').textContent(),'1/2');
+   assert.equal(await p.locator('#sheetNumber').textContent(),'1/3');
+   assert(await p.locator('#locationMapOpen').isVisible(),'the destination list remains page one');
+   assert(await p.locator('#sheetPrev').isDisabled(),'the list starts the pager');
    assert.deepEqual(await frames(),[432,432,432],'opening the destination menu uses a menu cue');
    await p.locator('#sheetNext').press('Enter');
-   assert.equal(await p.locator('#sheetNumber').textContent(),'2/2');
-   assert.deepEqual(await frames(),[432,432,432,192],'one detent for an actual menu page change');
+   assert.equal(await p.locator('#sheetNumber').textContent(),'2/3');
+   assert(await p.locator('#period + button').isVisible(),'conditions remain page two');
+   assert.deepEqual(await frames(),[432,432,432,192],'one detent for a real conditions page change');
+   await p.locator('#sheetNext').press('Enter');
+   assert.equal(await p.locator('#sheetNumber').textContent(),'3/3');
+   assert(await p.locator('#waterbodyMapSheet').isVisible()&&await p.locator('#waterbodyMap').isVisible(),'optional map is the final page');
+   assert.deepEqual(await frames(),[432,432,432,192,192],'the map page emits the same single detent');
    assert(await p.locator('#sheetNext').isDisabled(),'the final page cannot emit another detent');
    await p.evaluate(()=>uiPcm.length=0);
    // Give the actual menu one real scrolling region

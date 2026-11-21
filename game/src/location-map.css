@@ -1,3 +1,4 @@
+#menu[data-page=spots]:has(#waterbodyMapSheet:not([hidden])){grid-template-columns:minmax(0,1fr)}
 #menu #waterbodyMapSheet:not([hidden]){display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:9px;align-items:start}
 #menu #waterbodyMap{width:100%;height:166px;display:block;border-radius:5px;touch-action:none;cursor:grab}
 #menu #waterbodyMap[data-dragging]{cursor:grabbing}
@@ -6,7 +7,8 @@
 #menu #waterbodyMapSheet .waterbody-map-access button{min-height:54px;padding:2px 5px;line-height:1.1;white-space:nowrap}
 #menu .waterbody-map-access .lcd-choice{min-width:0}
 #menu .waterbody-map-access .lcd-choice button{overflow:hidden;text-overflow:ellipsis}
-#menu .waterbody-map-actions{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+#menu .waterbody-map-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+#lcdUI #menu #waterbodyMapSheet .waterbody-map-actions button{min-height:54px;min-width:0;width:100%;white-space:normal;overflow-wrap:anywhere}
 #menu #mapStage{font-size:12px;line-height:1.1;color:#c1e9da;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0}
 #menu #mapGraphic{display:grid;gap:2px;min-width:0}
 #menu #mapGraphic small,#menu .waterbody-map-access small{margin:0;font-size:10px;line-height:1.12}

@@ -41,6 +41,23 @@ assert.equal(orderedIds[1],unmapped);
    assert.equal(msea.identifier,'https://doi.org/10.5194/essd-17-2693-2025');
    assert.match(msea.changes,/rounded/);
    assert.equal(credits.featureSources.length,9);
+   const chooseKwanByKeyboard=async()=>{
+    const trigger=p.locator('#mapWaterbody + button'),overlay=p.locator('#lcdPicker');
+    await trigger.press('ArrowDown');
+    await overlay.waitFor();
+    assert.equal(await overlay.getAttribute('data-field'),'mapWaterbody');
+    assert.equal(await trigger.getAttribute('aria-expanded'),'true');
+    const index=await p.locator('#mapWaterbody').evaluate(s=>[...s.options].findIndex(o=>o.value==='16'));
+    assert(index>0&&index<6,'Kwan Phayao appears on the first picker page');
+    const focused=p.locator('#lcdPicker [role=option]:focus');
+    await p.keyboard.press('Home');
+    for(let i=0;i<index;i++)await p.keyboard.press('ArrowDown');
+    assert.equal(await focused.getAttribute('data-index'),String(index));
+    assert.match(await focused.textContent(),/^Kwan Phayao$/i);
+    await p.keyboard.press('Enter');
+    assert(await overlay.isHidden());
+    assert.equal(await trigger.getAttribute('aria-expanded'),'false');
+   };
    const assertList=async()=>assert.deepEqual(await p.locator('#places option').evaluateAll(xs=>xs.map(x=>x.value)),orderedIds);
 
    for(const lang of ['th','en']){
@@ -93,8 +110,7 @@ assert.equal(orderedIds[1],unmapped);
     assert.equal(await p.locator('#waterbodyMap').getAttribute('data-dragging'),'', 'mouse move reached map pan');
     await p.mouse.up();
     await p.locator('#waterbodyMap').press('Home');
-    await p.locator('#mapWaterbody + button').press('ArrowDown');
-    await p.getByRole('option',{name:'Kwan Phayao',exact:true}).press('Enter');
+    await chooseKwanByKeyboard();
    }
    assert.equal(await p.locator('#mapWaterbody').inputValue(),picked);
    assert.equal(await p.locator('#places').inputValue(),prior);
@@ -104,12 +120,12 @@ assert.equal(orderedIds[1],unmapped);
    await press('#mapTravel');
    await p.waitForFunction(()=>placeId===16);
    await p.locator('#arrivalSkip').waitFor();
-   assert.match(await p.locator('#spot').textContent(),/Kwan Phayao/);
+   assert.match(await p.locator('#spot').textContent(),/Kwan Phayao/i);
    const after=await snapshot();
    assert.equal(after.live,16);
    assert.equal(JSON.parse(after.raw).place,16,'confirmed travel updates the existing stable saved ID');
    // Reuse the normal list (no map pin) to prove list-only travel still works.
-   await press('#arrivalSkip');
+   if(await p.locator('#arrivalSkip').isVisible())await press('#arrivalSkip');
    await press('#openMenu');
    await press('[data-section=home] [data-to=spots]');
    await assertList();
@@ -119,7 +135,7 @@ assert.equal(orderedIds[1],unmapped);
    await p.waitForFunction(()=>placeId===1);
    assert.equal(JSON.parse((await snapshot()).raw).place,1);
    await p.locator('#arrivalSkip').waitFor();
-   await press('#arrivalSkip');
+   if(await p.locator('#arrivalSkip').isVisible())await press('#arrivalSkip');
 
    if(!touch){
     // Same exact native catch restore used by the existing file-career tests.
@@ -131,8 +147,7 @@ assert.equal(orderedIds[1],unmapped);
     assert.equal(pending.engine,5);
     assert.equal(JSON.parse(pending.raw).pending[0],41);
     await press('#locationMapOpen');
-    await p.locator('#mapWaterbody + button').press('ArrowDown');
-    await p.getByRole('option',{name:'Kwan Phayao',exact:true}).press('Enter');
+    await chooseKwanByKeyboard();
     assert.equal(await p.locator('#mapWaterbody').inputValue(),picked);
     assert(await p.locator('#mapTravel').isDisabled(),'unfiled native catch forbids travel even from an open map');
     await p.locator('#mapTravel').evaluate(b=>b.click());
