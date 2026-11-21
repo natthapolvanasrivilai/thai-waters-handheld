@@ -25,7 +25,7 @@ assert.equal(orderedIds[1],unmapped);
    p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(/^https?:/.test(r.url()))outside.push(r.url());});
    const press=async s=>touch?p.locator(s).tap():p.locator(s).press('Enter');
    await p.addInitScript(fileUrl=>{
-    if(location.href!==fileUrl)return;
+    if(location.href!==fileUrl||localStorage.getItem('thai-atlas-v2')!==null)return;
     localStorage.setItem('thai-atlas-v2',JSON.stringify({
      schema:4,book:[],site:0,place:0,bait:0,time:4,weather:0,finish:0,rig:0,rank:[0,0,0],
      history:[],pending:null,pendingCapture:null
@@ -34,6 +34,49 @@ assert.equal(orderedIds[1],unmapped);
    await p.goto(url);
    await requireBootHome(p);
    assert.equal(p.url(),url);
+   const name=touch?'mobile touch':'desktop keyboard';
+   console.log('Map run · '+name);
+   const touchSession=touch?await c.newCDPSession(p):null;
+   await p.evaluate(()=>{
+    window.mapTravelTrace=[];
+    for(const type of ['pointerdown','pointerup','pointercancel','touchend','click']){
+     window.addEventListener(type,e=>{
+      const id=e.target.closest?.('button')?.id;
+      if(id!=='mapTravel'&&id!=='fishHere')return;
+      const row={type,id,pointer:e.pointerType??null,trusted:e.isTrusted};
+      mapTravelTrace.push(row);
+      queueMicrotask(()=>{row.prevented=e.defaultPrevented;});
+     },{capture:true});
+    }
+   });
+   async function activateTravel(selector,id){
+    const button=p.locator(selector),key=selector.slice(1);
+    assert(await button.isVisible()&&await button.isEnabled(),name+' '+key+' must be visible and enabled');
+    const gate=await p.evaluate(()=>({allowed:spotTravelAllowed(),temporary:sessionOnly,menu:menu.open,page:menuPage}));
+    assert.deepEqual(gate,{allowed:true,temporary:false,menu:true,page:'spots'});
+    const trace=()=>p.evaluate(()=>mapTravelTrace);
+    await p.evaluate(()=>{mapTravelTrace.length=0;});
+    if(touchSession){
+     await button.scrollIntoViewIfNeeded();
+     const b=await button.boundingBox();assert(b,name+' '+key);
+     const x=Math.round(b.x+b.width/2),y=Math.round(b.y+b.height/2);
+     assert.equal(await p.evaluate(({x,y})=>document.elementFromPoint(x,y)?.closest('button')?.id,{x,y}),key,
+      'Physical button center must be hittable: '+selector);
+     await touchSession.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+     // Same real contact interval as gallery-history, rather than a zero-duration tap.
+     await new Promise(resolve=>setTimeout(resolve,65));
+     await touchSession.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    }else await button.press('Enter');
+    await p.waitForFunction(key=>mapTravelTrace.some(e=>e.type==='click'&&e.trusted&&e.id===key),
+     key,{timeout:2500}).catch(()=>{});
+    const events=await trace();
+    const context=()=>name+' '+selector+' events='+JSON.stringify(events)+' errors='+JSON.stringify(errors);
+    assert.equal(events.filter(e=>e.type==='click'&&e.trusted&&e.id===key).length,1,context());
+    // chooseSpot updates synchronously in the click handler. A longer arrival wait
+    // would obscure the difference between missing input and an application error.
+    assert.equal(await p.evaluate(()=>placeId),id,context());
+    assert(!await p.evaluate(()=>menu.open),context());
+   }
    const credits=JSON.parse(await p.locator('#mapSources').textContent());
    const msea=credits.mapSources['msea-res-s1'];
    assert.equal(msea.creator.length,3);
@@ -99,12 +142,10 @@ assert.equal(orderedIds[1],unmapped);
    if(touch)await p.touchscreen.tap(x,y);else await p.mouse.click(x,y);
    assert.equal(await p.locator('#mapWaterbody').inputValue(),picked);
    if(touch){
-    const session=await c.newCDPSession(p);
-    await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
-    await session.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+40,y:y+20}]});
+    await touchSession.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+    await touchSession.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+40,y:y+20}]});
     assert.equal(await p.locator('#waterbodyMap').getAttribute('data-dragging'),'', 'touch move reached map pan');
-    await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
-    await session.detach();
+    await touchSession.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
    }else{
     await p.mouse.move(x,y);await p.mouse.down();await p.mouse.move(x+40,y+20,{steps:5});
     assert.equal(await p.locator('#waterbodyMap').getAttribute('data-dragging'),'', 'mouse move reached map pan');
@@ -117,8 +158,8 @@ assert.equal(orderedIds[1],unmapped);
    assert.equal(await p.locator('#spot').textContent(),before);
    assert(await p.locator('#arrivalSkip').isHidden());
    assert.deepEqual(await snapshot(),beforeState,'selection/pan must not change live, pending, engine or saved bytes');
-   await press('#mapTravel');
-   await p.waitForFunction(()=>placeId===16);
+   assert.equal(await p.locator('#mapWaterbody').inputValue(),picked);
+   await activateTravel('#mapTravel',16);
    await p.locator('#arrivalSkip').waitFor();
    assert.match(await p.locator('#spot').textContent(),/Kwan Phayao/i);
    const after=await snapshot();
@@ -131,8 +172,7 @@ assert.equal(orderedIds[1],unmapped);
    await assertList();
    await p.locator('#searchSpot').fill('Chao Phraya River');
    assert.equal(await p.locator('#places').inputValue(),unmapped);
-   await press('#fishHere');
-   await p.waitForFunction(()=>placeId===1);
+   await activateTravel('#fishHere',1);
    assert.equal(JSON.parse((await snapshot()).raw).place,1);
    await p.locator('#arrivalSkip').waitFor();
    if(await p.locator('#arrivalSkip').isVisible())await press('#arrivalSkip');
@@ -153,7 +193,14 @@ assert.equal(orderedIds[1],unmapped);
     await p.locator('#mapTravel').evaluate(b=>b.click());
     assert.deepEqual(await snapshot(),pending,'disabled map cannot discard or relocate an active catch');
    }
+   const final=await snapshot();
+   await p.reload();
+   await requireBootHome(p);
+   assert.equal(await p.evaluate(()=>placeId),1,name+' retains selected ID after real reload');
+   assert.equal(await p.evaluate(()=>localStorage.getItem('thai-atlas-v2')),final.raw,
+    name+' restores the exact saved file without rewriting it');
    assert.deepEqual(errors,[]);assert.deepEqual(outside,[]);
+   if(touchSession)await touchSession.detach();
    await c.close();
   }
   console.log('TW_LANE file '+crypto.createHash('sha256').update(fs.readFileSync(wanted)).digest('hex'));
