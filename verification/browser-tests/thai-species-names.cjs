@@ -31,12 +31,34 @@ const {chromium}=require('playwright-core');
   assert.equal(await page.locator('#bookDetail h2').textContent(),'ปลากระเบนทอง');
   assert.match(await page.locator('#bookDetail').textContent(),/Taeniura lymma/u);
   await page.evaluate(()=>closeBookDetail());
+  const sweet=await page.evaluate(()=>{
+   const f=atlas.fish[1164],o=originalAtlas.fish[1164];
+   return {name:f.name,kind:f.thaiNameKind,scientific:f.scientificName,base:o.name,key:f.key,
+    art:f.art,aliases:f.thaiSearchAliases,fishData:['low','high','tier','weight','form','site','spot'].map(k=>[f[k],o[k]]),
+    size:f.low};
+  });
+  assert.deepEqual([sweet.name,sweet.kind,sweet.scientific,sweet.base,sweet.key,sweet.art,sweet.aliases],
+   ['ปลาสร้อยนกเขาทะเล','species','Plectorhinchus pictus','Plectorhinchus pictus',9713196,1164,[]]);
+  assert.ok(sweet.fishData.every(([a,b])=>a===b),'species gameplay data unchanged');
+  await page.evaluate(name=>{$('bookSearch').value=name;},sweet.name);
+  assert(!await page.evaluate(()=>bookMatches().includes(1164)));
+  await page.evaluate(size=>{g.restoreCatch(1164,size);pendingDay=0;save();draw();},sweet.size);
+  await page.waitForFunction(()=>$('message').textContent==='ปลาสร้อยนกเขาทะเล'&&!$('catchContinue').hidden);
+  await page.evaluate(()=>$('catchContinue').click());
+  await page.waitForFunction(()=>g.caught(1164)===1&&g.state()===0);
+  assert.deepEqual(await page.evaluate(()=>['ปลาสร้อยนกเขาทะเล','Plectorhinchus pictus','Diagramma pictum'].map(q=>{
+   $('bookSearch').value=q;return bookMatches().includes(1164);
+  })),[true,true,false]);
+  await page.evaluate(()=>showBookEntry(1164));
+  assert.equal(await page.locator('#bookDetail h2').textContent(),'ปลาสร้อยนกเขาทะเล');
+  assert.match(await page.locator('#bookDetail').textContent(),/Plectorhinchus pictus/u);
+  await page.evaluate(()=>closeBookDetail());
   assert.equal(initial.target,'ปลาจุ้ยจินบั้ง');
   assert.equal(initial.a,'ปลาขี้ตังเบ็ดฟ้าอกขาว');
   assert.equal(initial.b,'ปลาก้างพระร่วง');
   assert.deepEqual(await page.evaluate(()=>[151,152,153,155,827,1565,1566,1731].map(id=>atlas.fish[id].name)),['ปลาการ์ตูนลายปล้อง','ปลาการ์ตูนแดงดำ','ปลาการ์ตูนส้มขาว','ปลาการ์ตูนลายปล้องหางเหลือง','ปลากะพงขาว','ปลาการ์ตูนเพอร์คูลาร์','ปลาการ์ตูนอานม้า','ปลาทรงเครื่อง']);
   assert.equal(initial.unconfirmed,'ยังไม่มีชื่อไทยที่ยืนยัน');
-  assert.deepEqual(initial.kinds,{species:12,family:345,unconfirmed:2128});
+  assert.deepEqual(initial.kinds,{species:13,family:345,unconfirmed:2127});
   assert.deepEqual([initial.size,initial.art,initial.key,initial.original],[2545,2152,2391358,'Uraspis uraspis']);
   await page.evaluate(()=>{$('bookSearch').value='ปลาจุ้ยจินบั้ง';});
   assert.equal(await page.evaluate(()=>bookMatches().includes(2152)),false);
@@ -55,8 +77,19 @@ const {chromium}=require('playwright-core');
   await page.reload();await page.waitForFunction(()=>typeof g!=='undefined'&&g&&!$('act').disabled);
   assert.equal(await page.evaluate(()=>g.caught(2152)),1);
   assert.equal(await page.evaluate(()=>g.caught(1433)),1);
+  assert.equal(await page.evaluate(()=>g.caught(1164)),1);
+  assert.equal(await page.evaluate(()=>{
+   $('bookSearch').value='ปลาสร้อยนกเขาทะเล';
+   return bookMatches().includes(1164);
+  }),true,'Thai search matches the same caught species after reload');
+  await page.evaluate(()=>showBookEntry(1164));
+  assert.equal(await page.locator('#bookDetail h2').textContent(),'ปลาสร้อยนกเขาทะเล');
+  assert.match(await page.locator('#bookDetail').textContent(),/Plectorhinchus pictus/u);
+  await page.evaluate(()=>closeBookDetail());
   await page.evaluate(()=>{language='en';chooseAtlas();showBookEntry(2152);});
   assert.equal(await page.locator('#bookDetail h2').textContent(),'Uraspis uraspis');
+  await page.evaluate(()=>showBookEntry(1164));
+  assert.equal(await page.locator('#bookDetail h2').textContent(),'Plectorhinchus pictus');
   assert.deepEqual(errors,[]);
   console.log('PASS Thai exact/family/unconfirmed coverage; stable ID, taxon key, art and save; caught-only Thai/Latin/synonym search; catch, journal and Cup; English unchanged.');
  }finally{await browser.close();server.close();}

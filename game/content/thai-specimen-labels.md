@@ -3,7 +3,7 @@
 The Thai overlay is additive and browser-only. Stable IDs, art, English original, scientific identifiers, saves, and fictional labels are unchanged. No firmware change.
 
 ## Coverage
-Of 2,545 catalog entries: **60 existing Thai labels** (not an independent audit of all 60), **12 source-backed additions** (3 phase 1 + 8 phase 2 + 1 Rayong pilot), **345 family labels** (not species names), and **2,128 explicitly unconfirmed**. Adding 8 replaces six family labels and two missing entries. Runtime tests check the 8 expected row changes and rejection on a conflicting key or binomial. The pilot promotes one previously unconfirmed ray to a sourced species label. No simulated test establishes real device Thai font fit.
+Of 2,545 catalog entries: **60 existing Thai labels** (not an independent audit of all 60), **13 source-backed additions** (3 phase 1 + 8 phase 2 + 1 Rayong pilot + 1 trout sweetlips), **345 family labels** (not species names), and **2,127 explicitly unconfirmed**. Adding 8 replaces six family labels and two missing entries. Runtime tests check the 8 expected row changes and rejection on a conflicting key or binomial. The pilot promotes one previously unconfirmed ray to a sourced species label. No simulated test establishes real device Thai font fit.
 
 ## DOF source and join
 - Thai Department of Fisheries, [Thai Aquatic Animals Data](https://data.go.th/en/dataset/item_cb5d392d-2824-4ac4-a171-2c4796ce81c2), resource ce7f4a78-71db-4754-9084-edca971903bd, DGA metadata says Creative Commons Attributions (version not shown). Original CSV bytes not reliably reachable. [ThaiGovData article](https://thaigovdata.com/en/datasets/item-cb5d392d-2824-4ac4-a171-2c4796ce81c2) links its archived exact-source copy [DOF_fishbase.csv](https://thaigovdata.com/dl/9306): 323,717 bytes, 162 rows, UTF-8 BOM, SHA256 c3a6ba99d9724fd2608bf20d9833c1cbc7e561c6a804208feee28a5a6771284b. Checking mirrored attribution and structure is not proof of byte parity with original.
@@ -15,6 +15,10 @@ Of 2,545 catalog entries: **60 existing Thai labels** (not an independent audit 
 
 - **#1433 / GBIF key 5215810 / Taeniura lymma:** [ONEP TH-BIF](https://thbif.onep.go.th/minisite/lagoon/taxons/detail/427) and the [Thai Department of Fisheries coastal-resource survey](https://www4.fisheries.go.th/local/file_document/20210426102505_1_file.pdf) corroborate **ปลากระเบนทอง**. TH-BIF explicitly records **ปลากระเบนหางพัดจุดฟ้า**, kept as a caught-only search alias. Keep the scientific name in the journal; do not infer occurrence near the gameplay spot from these sources.
 - Preserve the authored display for the other pilot fish: #42 **ปลาลัง** and #47 **ปลาสละ**. The [TH-BIF list](https://thbif.onep.go.th/minisite/lagoon/onepage) also uses **ปลาสละเกล็ดเหลี่ยม** for #47; the [Department of Fisheries species guide](https://www4.fisheries.go.th/local/file_document/20210818122354_1_file.pdf) attests the existing short name. No display/search change to either fish in this slice.
+
+## Trout sweetlips
+
+- **#1164 / [GBIF key 9713196](https://www.gbif.org/species/9713196) / *Plectorhinchus pictus* (Tortonese, 1936):** [Thai Department of Fisheries inspection manual](https://www4.fisheries.go.th/file_area/202504241356561_file.pdf), Appendix A, row SS-44, lists **ปลาสร้อยนกเขาทะเล**. Adjacent row SS-43 is *Diagramma pictum*, a different species. The [WoRMS name records](https://www.marinespecies.org/aphia.php?p=taxlist&tName=Plectorhinchus+pictus) distinguish the older same-spelling name (Thunberg, 1792), treated as a *Diagramma pictum* synonym, from the Tortonese record used here. This update adds no aliases and does not import the manual's size thresholds into the game.
 
 ## Holds, not fixes
 - Kryptopterus vitreolus is not K. bicirrhis: the primary [species description](https://mapress.com/zt/article/view/zootaxa.3630.2.6) documents the old misidentification. Keep ปลาก้างพระร่วง on #2354, not #805; don't propagate it from historical lists.

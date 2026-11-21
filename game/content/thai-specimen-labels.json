@@ -29,6 +29,14 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/22338"
     },
+    "1164": {
+      "key": 9713196,
+      "scientific": "Plectorhinchus pictus",
+      "name": "ปลาสร้อยนกเขาทะเล",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai Department of Fisheries inspection manual, Appendix A row SS-44; GBIF 9713196 is Plectorhinchus pictus (Tortonese, 1936), not the Thunberg name associated with Diagramma pictum in SS-43"
+    },
     "1433": {
       "key": 5215810,
       "scientific": "Taeniura lymma",
