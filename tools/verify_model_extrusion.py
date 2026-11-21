@@ -22,7 +22,7 @@ NON_MODEL = frozenset({
     "Support", "Support interface", "Support transition",
 })
 TOOL = re.compile(r"^T(\d+)\s*$", re.I)
-COMMAND = re.compile(r"^([GM])(\d+)\s*(.*)$", re.I)
+COMMAND = re.compile(r"^([GM])(\d+(?:\.\d+)?)\s*(.*)$", re.I)
 LETTER = re.compile(r"([XYEIJR])\s*([-+]?(?:\d+(?:\.\d*)?|\.\d+))", re.I)
 LAYER_TOLERANCE_MM = 0.0005
 EPS = 1e-9
@@ -227,7 +227,7 @@ def scan(stream, objects, features):
     instance = role = ""
     xy_relative = False
     relative_e = None
-    xy_plane = True
+    xy_plane, relative_arc_center = True, True
     for raw in stream:
         line = raw.strip()
         if line in ("; CHANGE_LAYER", "; LAYER_CHANGE"):
@@ -255,12 +255,17 @@ def scan(stream, objects, features):
             continue
         if not (m := COMMAND.match(command)):
             continue
-        family, num, args = m.group(1).upper(), int(m.group(2)), m.group(3)
+        family, opcode, args = m.group(1).upper(), m.group(2), m.group(3)
+        num = int(opcode) if "." not in opcode else None
         if family == "M":
+            if model_job_started and num in {6, 600}:
+                unsupported_control = f"tool/filament change (M{opcode})"
             if num in {82, 83}:
                 relative_e = num == 83
             continue
-        if num in {10, 11}:
+        if opcode in {"90.1", "91.1"}:
+            relative_arc_center = opcode == "91.1"
+        elif num in {10, 11}:
             unsupported_control = "firmware retract/recover (G10/G11)"
         elif num in {17, 18, 19}:
             xy_plane = num == 17
@@ -317,6 +322,8 @@ def scan(stream, objects, features):
             if num in {2, 3}:
                 if not xy_plane:
                     raise Unverified("non-XY model arc")
+                if not relative_arc_center:
+                    raise Unverified("absolute model arc center mode (G90.1) is unsupported")
                 arc = arc_from(a, b, p, num == 2)
                 if arc.sweep <= EPS:
                     continue
@@ -332,6 +339,15 @@ def scan(stream, objects, features):
                     if abs(z - target) <= LAYER_TOLERANCE_MM:
                         length = arc.inside(f.rectangle) if arc else line_inside(a, b, f.rectangle)
                         lengths[(f.name, instance, target)] += length
+        elif model_job_started:
+            fields = {field.upper() for field, _ in LETTER.findall(args)}
+            if fields & {"E", "X", "Y"} or num in {5, 28, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 68, 69}:
+                # Standalone dwell and ordinary startup positioning are safe. If
+                # an unknown in-job move might carry deposition, do not even
+                # accept earlier measurements as complete.
+                if instance in objects and "E" in fields and role not in NON_MODEL:
+                    raise Unverified(f"unsupported model motion G{opcode}")
+                unsupported_control = f"unsupported coordinate or extrusion motion G{opcode}"
     return layers, lengths
 
 
