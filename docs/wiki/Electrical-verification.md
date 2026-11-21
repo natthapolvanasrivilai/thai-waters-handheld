@@ -4,7 +4,19 @@
 
 ## Current R0004 engineering review
 
-R0004 ran 85 candidate and control cases with 170 numerical results. The report retains historical out-of-range cases, input-current faults and the load behavior when a cell is missing or host power is revoked. The proposed power circuitry and recovery path need a placed PCB, a populated sample and measured verification. [Circuit changes, limits and reproduction](../../hardware/electronics/integration-r0004/README.md) · [All measurement rows](../../hardware/electronics/integration-r0004/results.csv) · [Original exceptions](../../hardware/electronics/integration-r0004/exceptions.csv) · [First-article matrix](../../hardware/electronics/integration-r0004/first-article.csv) · [Private electrical issue](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/4)
+**Engineering hold.** R0004 is a proposed revision, not an installed or released controller. The reference route is a revision-controlled supplier spin of the A1 USB/power controller PCB. Consider an interposer only if the identified incoming board allows interception of raw USB power, both USB data lines and hardware load controls, with verified isolation, service access and fit. A cable harness, audio bench coupon or status-light PCB does not implement those functions. The controller schematic and layout are not released for fabrication.
+
+### Evidence reproduced
+
+An independent offline replay of all **85 candidate and control cases** with ngspice 44.2 reproduced all **170** numerical results at the logged precision of the archived ngspice-33 run: **140 within limits, 25 characterization only and five intentionally out of range**. The latter are three unsupported no-cell loads below the 3.9 V input floor, a superseded USB-plus-lamp case above 500 mA, and a superseded data-termination case above 20 ns. The expected failures remain in the regression suite. The separate historical decks were checked against their recorded hashes, not re-simulated in that independent pass. Simulated recovery and charge/load behavior do not demonstrate boot, flashing, safe charging or thermal protection on an actual device.
+
+- [Circuit design, measured quantities and canonical replay command](../../hardware/electronics/integration-r0004/README.md)
+- [Candidate deck generator](../../hardware/electronics/integration-r0004/corners.py), [exact-archive replay tool](../../hardware/electronics/integration-r0004/verify.py), and [archived engine, deck and evidence hashes](../../hardware/electronics/integration-r0004/verification.json)
+- [All numerical results](../../hardware/electronics/integration-r0004/results.csv), [solver decks and logs](../../hardware/electronics/integration-r0004/solver-evidence.zip), and [historical exceptions](../../hardware/electronics/integration-r0004/exceptions.csv)
+
+### Remaining electrical gates
+
+First identify the received A1 and battery lot, reconcile their revision and populated parts, and record the unpowered connector/polarity and continuity checks in the [controller implementation gate](../../hardware/electronics/integration-r0004/implementation-gate.md). Then finish the editable schematic, PCB layout and electrical-rule/design-rule checks for that exact design. Close all eleven [first-article gates](../../hardware/electronics/integration-r0004/first-article.csv) on an identified article, including both USB orientations and grants, rail stability, protected power-off charging and actual cell-temperature sensing, and no-cell recovery. No simulation or this page authorizes powering a prototype, building boards, or substituting a battery.
 
 ## Historical circuit baseline
 
