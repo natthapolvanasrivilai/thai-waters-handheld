@@ -1,10 +1,5 @@
 let bookOffset=0;
-let bookSize=8;
-function sizeBook(){
- const next=parseInt(getComputedStyle($('lcdUI')).getPropertyValue('--touch'))>=60?4:8;
- if(next!==bookSize){const first=bookOffset*bookSize;bookSize=next;bookOffset=Math.floor(first/next);}
-}
-window.addEventListener('resize',()=>{if(g)renderBook();});
+const bookSize=8;
 function bookMatches(){
  const mode=$('bookFilter').selectedIndex,q=$('bookSearch').value.trim().toLowerCase(),matches=[];
  for(let i=0;i<atlas.fish.length;i++){
@@ -18,9 +13,40 @@ function bookMatches(){
  }
  return matches;
 }
-let bookSpecies=null,historyPage=0;
+let bookSpecies=null,historyPage=0,bookFindOpen=false;
 const tierFrames=['#849a96','#6abd91','#ad87ef','#e494d3','#f3a366','#f6ce56'];
 const journalPanel=document.querySelector('[data-section="book"]');
+function bookFindLabels(){
+ const th=language==='th';
+ $('bookFind').textContent=th?'ค้นหา':'Find';
+ $('bookFind').setAttribute('aria-label',th?'ค้นหาและกรองชนิดปลา':'Find and filter species');
+ $('bookFindHeading').textContent=th?'ค้นหาและกรองชนิดปลา':'Find and filter species';
+ $('bookSearchLabel').textContent=th?'ชื่อปลา':'Species name';
+ $('bookFindDone').textContent=th?'แสดงผล':'Show results';
+}
+function syncBookFind(){
+ $('bookTools').hidden=!bookFindOpen;
+ journalPanel.classList.toggle('find-open',bookFindOpen);
+ $('bookFind').hidden=bookSpecies!==null||bookFindOpen;
+ $('bookFind').setAttribute('aria-expanded',String(bookFindOpen));
+}
+function openBookFind(){
+ if(!activeBook()||bookSpecies!==null||bookFindOpen)return;
+ bookFindOpen=true;bookFindLabels();syncBookFind();
+ $('bookFindHeading').focus({preventScroll:true});
+}
+function closeBookFind(focus=true){
+ if(!bookFindOpen)return;
+ bookFindOpen=false;syncBookFind();
+ if(focus)$('bookFind').focus({preventScroll:true});
+}
+$('bookFind').onclick=openBookFind;
+$('bookFindDone').onclick=()=>closeBookFind();
+$('bookSearch').addEventListener('keydown',e=>{
+ if(e.key==='Enter'&&!e.isComposing){e.preventDefault();closeBookFind();}
+});
+document.addEventListener('game-language',bookFindLabels);
+bookFindLabels();
 const iconShapes={
  back:'M14.5 5L7 12l7.5 7',next:'M9 5l7.5 7L9 19',
  dawn:'M2 17h20M5 21h14M7 17a5 5 0 0 1 10 0M12 12V3m-3 3 3-3 3 3',day:'M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M20 4l-2 2M6 18l-2 2',
@@ -58,8 +84,7 @@ function iconInfo(parent,icon,label,value){
 const periodIcons=['dawn','day','dusk','night'],weatherIcons=['clear','rain','heavy','storm'],weatherLabels=['Clear','Light rain','Heavy rain','Storm'];
 function collectionTotal(found){const count=found.toLocaleString(language)+' / '+atlas.fish.length.toLocaleString(language);return (language==='th'?'ทั่วไทย':'Thailand')+' · '+count;}
 function renderBook(){
- sizeBook();
- const detail=$('bookDetail');detail.hidden=bookSpecies===null;journalPanel.classList.toggle('detail-open',!detail.hidden);
+ syncBookFind();const detail=$('bookDetail');detail.hidden=bookSpecies===null;journalPanel.classList.toggle('detail-open',!detail.hidden);
  if(bookSpecies!==null){renderBookDetail(bookSpecies);return;}
  const matches=bookMatches(),pages=Math.max(1,Math.ceil(matches.length/bookSize));
  bookOffset=Math.max(0,Math.min(bookOffset,pages-1));const fragment=document.createDocumentFragment();
@@ -67,7 +92,7 @@ function renderBook(){
   const f=atlas.fish[id],n=g.caught(id),tile=document.createElement('button');tile.type='button';tile.id='species-'+id;tile.className='record '+(n?'found':'unseen');
   const knownName=f.scientificName ? f.name+' · '+f.scientificName : f.name;
   tile.style.borderColor=tierFrames[f.tier];tile.style.borderStyle='solid';tile.title=(n?knownName:L('Undiscovered'))+' · '+atlas.ranks[f.tier];tile.setAttribute('aria-label',tile.title);
-  tile.append(fishPortrait(id,72,38));if(n){
+  tile.append(fishPortrait(id,96,50));if(n){
    tile.append(bookText('b',f.name));
    if(f.scientificName && f.thaiNameKind!=='species')tile.append(bookText('small',f.scientificName));
    const mark=bookText('span','✓');mark.className='caught-mark';tile.append(mark);
@@ -111,19 +136,23 @@ function renderBookDetail(id){
  }detail.append(nav);}
 }
 function closeBookDetail(){const id=bookSpecies;bookSpecies=null;renderBook();$('species-'+id)?.focus({preventScroll:true});}
-function showBookEntry(id){$('bookSearch').value='';$('bookFilter').selectedIndex=0;bookOffset=Math.floor(id/bookSize);bookSpecies=id;historyPage=0;renderBook();}
+function showBookEntry(id){closeBookFind(false);$('bookSearch').value='';$('bookFilter').selectedIndex=0;bookOffset=Math.floor(id/bookSize);bookSpecies=id;historyPage=0;renderBook();}
 function resetBook(){bookOffset=0;bookSpecies=null;renderBook();}
 $('bookFilter').onchange=$('bookSearch').oninput=resetBook;
-$('bookPrev').onclick=()=>{bookOffset--;renderBook();};
-$('bookNext').onclick=()=>{bookOffset++;renderBook();};
+// Page arrows and swipes share one bounded action; re-rendering never plays a cue.
+function changeBookPage(direction){
+ if(!activeBook()||bookFindOpen||bookSpecies!==null||!(direction===-1||direction===1))return false;
+ const next=bookOffset+direction,pages=Math.ceil(bookMatches().length/bookSize);
+ if(next<0||next>=pages)return false;
+ bookOffset=next;renderBook();playBookPageSound();
+ return true;
+}
+$('bookPrev').onclick=()=>changeBookPage(-1);
+$('bookNext').onclick=()=>changeBookPage(1);
 
 // Turn the list by page or the open profile by species, keeping active filters.
 function turnBook(direction){
- if(bookSpecies===null){
-  const button=$(direction<0?'bookPrev':'bookNext');
-  if(!button.disabled)button.click();
-  return;
- }
+ if(bookSpecies===null){changeBookPage(direction);return;}
  const matches=bookMatches(),index=matches.indexOf(bookSpecies),next=index+direction;
  if(index<0||next<0||next>=matches.length)return;
  bookOffset=Math.floor(next/bookSize);bookSpecies=matches[next];historyPage=0;
@@ -140,7 +169,7 @@ window.addEventListener('pointerdown',e=>{
 for(const surface of [$('records'),$('bookDetail')]){
  surface.style.touchAction='pan-y pinch-zoom';
  surface.addEventListener('pointerdown',e=>{
-  if(!activeBook()||!e.isPrimary||e.button!==0||
+  if(!activeBook()||bookFindOpen||!e.isPrimary||e.button!==0||
     e.target.closest('input,select,textarea,a,[contenteditable],#bookDetail button'))return;
   bookSwipe={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies};
  });
@@ -165,20 +194,20 @@ window.addEventListener('click',e=>{
  bookSwipeClick=null;e.preventDefault();e.stopImmediatePropagation();
 },true);
 
-// Chromium can deliver the complete first Back touch after a profile swipe
-// without synthesizing a click. Recognize just that native button tap; retain
-// the normal click path for mouse, keyboard and accessibility activation.
+// Some touch engines deliver the first tap after a swipe without a click.
+// Match only a genuine same-button touch; retain mouse, keyboard and AT clicks.
 {
- const back=$('back'),radius=12;
+ const back=$('back'),arrows=new Map([[$('bookPrev'),-1],[$('bookNext'),1]]),radius=12;
  let contact=null,completed=null;
  const within=(e,start)=>Math.hypot(e.clientX-start.x,e.clientY-start.y)<=radius;
- const hitsBack=e=>document.elementFromPoint(e.clientX,e.clientY)?.closest('button')===back;
+ const hit=e=>document.elementFromPoint(e.clientX,e.clientY)?.closest('button');
+ const eligible=b=>Boolean(b&&!b.disabled&&(bookSpecies!==null||bookFindOpen?b===back:arrows.has(b)));
  window.addEventListener('pointerdown',e=>{
   if(e.isPrimary)completed=null;
   if(contact){contact=null;return;}
-  if(e.isTrusted&&e.pointerType==='touch'&&e.isPrimary&&e.button===0&&activeBook()&&
-    bookSpecies!==null&&!back.disabled&&e.target.closest?.('button')===back&&hitsBack(e))
-   contact={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies};
+  const target=e.target.closest?.('button');
+  if(e.isTrusted&&e.pointerType==='touch'&&e.isPrimary&&e.button===0&&activeBook()&&eligible(target)&&hit(e)===target)
+   contact={id:e.pointerId,x:e.clientX,y:e.clientY,entry:bookSpecies,page:bookOffset,find:bookFindOpen,target};
  },true);
  window.addEventListener('pointermove',e=>{
   if(contact?.id===e.pointerId&&!within(e,contact))contact=null;
@@ -190,15 +219,15 @@ window.addEventListener('click',e=>{
   if(contact?.id!==e.pointerId)return;
   const start=contact;contact=null;
   if(!e.isTrusted||e.pointerType!=='touch'||!e.isPrimary||!activeBook()||
-    start.entry!==bookSpecies||back.disabled||!within(e,start)||!hitsBack(e))return;
-  completed={id:e.pointerId,x:e.clientX,y:e.clientY,until:performance.now()+500};
-  closeBookDetail();
+    start.entry!==bookSpecies||start.page!==bookOffset||start.find!==bookFindOpen||!eligible(start.target)||!within(e,start)||hit(e)!==start.target)return;
+  completed={id:e.pointerId,x:e.clientX,y:e.clientY,target:start.target,until:performance.now()+500};
+  if(start.target===back){if(bookFindOpen)closeBookFind();else closeBookDetail();}
+  else changeBookPage(arrows.get(start.target));
  },true);
- back.addEventListener('click',e=>{
+ for(const b of [back,...arrows.keys()])b.addEventListener('click',e=>{
   const tap=completed;
-  if(!tap||!e.isTrusted||!e.detail||performance.now()>tap.until||!within(e,tap))return;
-  if(e.pointerType==='touch'?e.pointerId!==tap.id:
-    Boolean(e.pointerType)||!e.sourceCapabilities?.firesTouchEvents)return;
+  if(!tap||tap.target!==b||!e.isTrusted||!e.detail||performance.now()>tap.until||!within(e,tap))return;
+  if(e.pointerType==='touch'?e.pointerId!==tap.id:!e.sourceCapabilities?.firesTouchEvents)return;
   completed=null;e.preventDefault();e.stopImmediatePropagation();
  },true);
 }

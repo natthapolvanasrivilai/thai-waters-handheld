@@ -1,5 +1,13 @@
 // Draw the interface onto the same 480 × 320 framebuffer as the scene.
 // The browser still owns layout, hit testing, inputs, focus, and scrolling.
+// Collection names can wrap within a long scientific word. Keep the
+// existing word-oriented rendering for every other LCD surface.
+function* lcdPaintSegments(text, softWrap) {
+ if(!softWrap){yield* layoutSegments(text);return;}
+ if(thaiChars){
+  for(const s of thaiChars.segment(text))if(s.segment.trim())yield {0:s.segment,index:s.index};
+ }else yield* text.matchAll(/\S\p{Mark}*/gu);
+}
 const paintLcdInterface = (() => {
  const layer = document.createElement('canvas');
  layer.width = 480;
@@ -76,7 +84,8 @@ const paintLcdInterface = (() => {
    const rect=range.getBoundingClientRect();
    lettering(content.slice(lineStart,lineEnd).replace(/\s+/g,' '),rect.left-origin.left,baseline(rect),outline);
   }
-  for (const match of layoutSegments(content)) {
+  const softWrap=node.parentElement?.matches('#records .record > b');
+  for (const match of lcdPaintSegments(content,softWrap)) {
    range.setStart(node,match.index);range.setEnd(node,match.index+match[0].length);
    const top=range.getBoundingClientRect().top;
    if (lineStart<0 || Math.abs(top-lineTop)>1) {

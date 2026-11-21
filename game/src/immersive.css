@@ -140,24 +140,36 @@ html:lang(th) #menu section[data-section="crew"] h2{font:normal 16px/23px 'Syy F
 #menu .menubar button[data-navicon]{width:34px;min-height:30px;display:grid;place-items:center}
 #menu button[data-navicon][hidden]{display:none}
 #menu[data-page=book]{inset:0;width:480px;height:320px;box-sizing:border-box;border:0;border-radius:0;background:#152f2a}
-#menu[data-page=book]>.menubar{background:#203d34;padding:2px 8px}
-#menu [data-section=book]{padding:4px 9px}
-#menu [data-section=book]>.book-totals{float:right;display:flex;align-items:center;height:30px;margin:0;border:0;gap:5px}
+#menu[data-page=book]>.menubar{background:#203d34;padding:0 6px;border-bottom:1px solid #46675a}
+#menu[data-page=book]>.menubar>h2{flex:1;margin:0}
+#menu .menubar #bookFind:not([hidden]){width:auto;padding:0 10px;font:600 13px/18px var(--game-font);color:#f5ca8a}
+#menu [data-section=book]{padding:3px 6px}
+#menu [data-section=book]:not([hidden],.detail-open,.find-open){display:grid;grid-template-rows:minmax(0,1fr) var(--touch);row-gap:2px}
+#menu [data-section=book]>.book-totals{display:grid;grid-template-columns:1fr auto auto;align-items:center;min-width:0;margin:0;padding:0;border:0;gap:4px}
 #menu [data-section=book]>.book-totals span{display:none}
-#bookTools{display:flex;align-items:center;gap:5px;height:31px}
-#bookTools>label{margin:0;width:114px}
-#menu #bookSearch,#bookTools .lcd-select-wrap>button{height:26px;min-height:26px;margin:0;font-size:12px;padding:2px 5px}
-#bookTools .lcd-choice{display:block;width:104px;margin:0}
-#bookTools .lcd-choice>[data-choice-caption]{display:none}
-#menu #records{display:grid;clear:both;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
-#menu #records .record{box-sizing:border-box;position:relative;margin:0;border:2px solid;border-radius:5px;background:#29463e;display:flex;flex-direction:column;align-items:center;justify-content:center;height:68px;min-width:0;padding:1px 3px;gap:0}
-#menu #records .fish-thumb{float:none;margin:0;width:70px;height:36px}
-#menu #records .record b{width:100%;font:550 12px/15px var(--game-font);overflow:hidden;max-height:30px;text-align:center;overflow-wrap:anywhere}
+#menu #bookTools:not([hidden]){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 10px;align-items:end;margin:0 auto;width:min(100%,340px);padding-top:4px}
+#bookFindHeading{grid-column:1/-1;margin:0;color:#fff2ce;font:600 16px/22px var(--game-font)}
+#menu #bookTools label,#menu #bookTools .lcd-choice{margin:0;min-width:0;width:100%}
+#menu #bookTools :is(input,.lcd-select-wrap>button){margin:0;width:100%}
+#menu #bookTools .lcd-select-wrap>button{white-space:normal}
+#menu #bookFindDone{grid-column:1/-1;justify-self:end;width:auto;padding:2px 14px;background:#ebbc83;color:#203b30}
+#bookPage{min-width:0;max-width:185px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
+#menu #records{display:grid;min-height:0;grid-template:repeat(2,minmax(0,1fr))/repeat(4,minmax(0,1fr));gap:4px}
+#menu #records .record{box-sizing:border-box;position:relative;margin:0;border:2px solid;border-radius:5px;background:#29463e;display:flex;flex-direction:column;align-items:center;justify-content:center;height:auto;min-width:0;padding:1px 3px;gap:0}
+#menu #records .fish-thumb{float:none;margin:0;width:84px;height:42px;flex:none}
+/* Preserve the 44 CSS-pixel phone hit targets while reserving ink padding. */
+@media(pointer:coarse) and (max-width:365px){
+ #menu #records .record{padding-block:0}
+ #menu #records .fish-thumb{width:68px;height:33px}
+}
+#menu #records .record b{box-sizing:content-box;width:100%;padding-block:2px;font:600 13px/14px var(--game-font);overflow:hidden;max-height:28px;flex:none;text-align:center;overflow-wrap:anywhere}
+#menu #records .record small{flex:none;max-width:100%;line-height:11px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 #menu #records .caught-mark{position:absolute;right:4px;top:2px;color:#ffdf92}
 #bookPager,.history-nav{display:flex;justify-content:center;align-items:center;gap:8px}
 #menu #bookPager button{width:34px;min-height:26px;padding:2px;display:grid;place-items:center;background:transparent;border:0}
-#bookPager small{min-width:48px;text-align:center}
-#menu [data-section=book].detail-open>:not(#bookDetail){display:none}
+
+#menu [data-section=book].detail-open>:not(#bookDetail),
+#menu [data-section=book].find-open>:not(#bookTools){display:none}
 #bookDetail:focus{outline:none}
 .book-profile{display:grid;grid-template-columns:135px 1fr;gap:12px;align-items:center;margin:5px 0}
 #menu .book-profile .fish-thumb{float:none;width:135px;height:75px;margin:0;border:2px solid;border-radius:5px;background:#28463c}
@@ -189,13 +201,9 @@ html:lang(th) #menu section[data-section="crew"] h2{font:normal 16px/23px 'Syy F
 #menu .bindings,#menu .opts,#languageRow{gap:var(--touch-gap)}
 #menu label:has(input[type=checkbox]){min-height:var(--touch);align-content:center;cursor:pointer}
 #menu .choice-list button{margin-top:var(--touch-gap)}
-#menu #bookTools{height:auto;min-height:var(--touch);gap:var(--touch-gap);margin:2px 0 4px}
-#menu #bookPager{gap:var(--touch-gap);margin-top:3px}
+#menu #bookPager{gap:var(--touch-gap);margin-left:auto;flex:none}
 #menu #bookPager button,#menu button[data-navicon]{width:var(--touch)}
-#menu [data-section=book]>.book-totals{height:var(--touch)}
 #menu #bookDetail .history-nav{gap:var(--touch-gap)}
-#menu #records{gap:var(--touch-gap)}
-#menu #records .record{height:72px}
 #menu #lcdPicker[data-field=hookBait] .choice-list{gap:var(--touch-gap);grid-template-rows:repeat(3,minmax(var(--touch),1fr))}
 
 .hud-water{position:relative;min-width:0;height:100%;display:flex;align-items:start;flex-direction:column;justify-content:center;padding-bottom:21px;box-sizing:border-box}

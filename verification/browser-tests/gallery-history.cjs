@@ -21,6 +21,28 @@ const {webkit,chromium}=require('playwright-core');
  await page.reload();await page.waitForFunction(()=>g?.state()===5&&!$('catchContinue').hidden);
  const pos=await page.evaluate(()=>{const ui=$('lcdUI'),before=ui.style.transform;ui.style.transform='none';const gap=ui.getBoundingClientRect().right-$('lcdPower').getBoundingClientRect().right;ui.style.transform=before;return gap;});assert(pos>=0&&pos<10);
  await shot('Thai-Waters-catch-screen');
+ const portrait=await browser.newPage({isMobile:true,hasTouch:true,deviceScaleFactor:1,viewport:{width:320,height:700}});
+ if(!process.env.PRIVATE_SITE_CHECK){
+  await portrait.goto(target);await portrait.waitForFunction(()=>g&&!$('act').disabled);
+  await portrait.evaluate(()=>{for(let i=0;i<8;i++)g.restoreEntry(i,1,atlas.fish[i].low);});
+  await portrait.locator('#openMenu').tap();await portrait.locator('[data-to=book]').tap();
+  const fit=await portrait.evaluate(()=>{
+   const rect=$('menu').getBoundingClientRect();
+   const tiles=[...$('records').children],targets=[...tiles,$('bookFind'),$('bookNext'),$('fishCredits')];
+   return {touch:parseInt(getComputedStyle($('lcdUI')).getPropertyValue('--touch')),count:tiles.length,
+    noOverflow:$('records').scrollHeight<=$('records').clientHeight,
+    fitted:targets.every(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top>=rect.top-1&&r.bottom<=rect.bottom+1&&r.left>=rect.left-1&&r.right<=rect.right+1;}),
+    labelFit:tiles.every(e=>[...e.querySelectorAll('b,small')].every(label=>{const b=label.getBoundingClientRect(),r=e.getBoundingClientRect();return b.height>0&&b.top>=r.top&&b.bottom<=r.bottom;}))};
+  });
+  if(process.env.COLLECTION_PREVIEW)await portrait.locator('#flatStage').screenshot({path:process.env.COLLECTION_PREVIEW});
+  await portrait.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const native=Buffer.from(await portrait.locator('#scene').evaluate(c=>c.toDataURL('image/png').split(',')[1]),'base64');
+  assert.equal(native.readUInt32BE(16),480);assert.equal(native.readUInt32BE(20),320);
+  if(process.env.COLLECTION_PREVIEW)fs.writeFileSync(path.join(path.dirname(process.env.COLLECTION_PREVIEW),'collection-native-480x320.png'),native);
+  assert.equal(fit.touch,74,'Small portrait activates the largest LCD touch targets');
+  assert.deepEqual(fit,{touch:74,count:8,noOverflow:true,fitted:true,labelFit:true},'Eight readable touch cards and controls fit the narrow phone');
+ }
+ await portrait.close();
  await page.emulateMedia({reducedMotion:'reduce'});await page.reload();await page.waitForFunction(()=>g?.state()===5);assert.equal(await page.evaluate(()=>catchPromptOpacity(900)),1);await page.emulateMedia({reducedMotion:'no-preference'});await page.reload();await page.waitForFunction(()=>g?.state()===5);assert(await page.evaluate(()=>catchPromptOpacity(900)<0.5));
  await page.locator('#catchContinue').tap();await page.waitForFunction(()=>g.state()===0);
  await page.reload();await page.waitForFunction(()=>g&&!$('act').disabled);
@@ -78,6 +100,17 @@ const {webkit,chromium}=require('playwright-core');
  });
  await tapBookButton('#species-0');await page.waitForFunction(()=>bookSpecies===0);
  await expectBackAfter('before any swipe');
+ // The trusted menu taps unlock the real mixer. Keep it running while observing only page cues.
+ await page.waitForFunction(()=>audio?.state==='running',undefined,{timeout:5000});
+ await page.evaluate(()=>{
+  window.galleryPageCues=[];
+  window.gallerySoundBefore={pluck,fx:$('fx').selectedIndex,cue:$('cue').selectedIndex};
+  pluck=(freq,when,duration,gain)=>{
+   if(freq===340&&duration===.068)galleryPageCues.push({freq,duration,gain});
+   return gallerySoundBefore.pluck(freq,when,duration,gain);
+  };
+  $('fx').selectedIndex=2;
+ });
  await swipe('#records',-82);await page.waitForFunction(()=>bookOffset===1&&bookSpecies===null);
  await swipe('#records',82);await page.waitForFunction(()=>bookOffset===0&&bookSpecies===null);
  await swipe('#records',82);assert.equal(await page.evaluate(()=>bookOffset),0); // no wrap; no tile activation
@@ -88,6 +121,45 @@ const {webkit,chromium}=require('playwright-core');
  await swipe('#bookDetail',-82);await page.waitForFunction(()=>bookSpecies===1);
  await swipe('#bookDetail',82);await page.waitForFunction(()=>bookSpecies===0);
  await expectBackAfter('immediately after two detail swipes');
+ const sounds=await page.evaluate(()=>galleryPageCues.slice());
+ assert.equal(sounds.length,2,'Only actual list flips sound; boundaries, pans, details and Back remain silent');
+ assert.deepEqual(sounds,[{freq:340,duration:.068,gain:.062},{freq:340,duration:.068,gain:.062}],
+  'Both actual swipes use the exact short SFX at Normal effects volume');
+ await page.evaluate(()=>$('fx').selectedIndex=0);
+ await swipe('#records',-82);await page.waitForFunction(()=>bookOffset===1&&bookSpecies===null);
+ await swipe('#records',82);await page.waitForFunction(()=>bookOffset===0&&bookSpecies===null);
+ assert.equal(await page.evaluate(()=>galleryPageCues.length),2,'Muted page changes must stay silent');
+ await page.evaluate(()=>{$('fx').selectedIndex=1;$('cue').selectedIndex=1;});
+ await page.evaluate(()=>{
+  window.galleryPagerTrace=[];
+  for(const kind of ['pointerdown','pointerup','pointercancel','lostpointercapture','touchend','click']){
+   window.addEventListener(kind,e=>{
+    const target=e.target.closest?.('button')?.id;
+    if(!['bookPrev','bookNext'].includes(target)||galleryPagerTrace.length>=24)return;
+    const row={kind,target,phase:e.pointerType||null,trust:e.isTrusted,page:bookOffset};
+    galleryPagerTrace.push(row);
+    queueMicrotask(()=>{row.prevented=e.defaultPrevented;row.next=bookOffset;});
+   },true);
+  }
+ });
+ async function expectPager(selector,target){
+  await tapBookButton(selector);
+  await page.waitForFunction(n=>bookOffset===n,target,{timeout:2500}).catch(()=>{});
+  const trace=await page.evaluate(()=>({page:bookOffset,events:galleryPagerTrace.slice()}));
+  assert.equal(trace.page,target,'Immediate native touch on '+selector+' must turn one page: '+JSON.stringify(trace));
+ }
+ await expectPager('#bookNext',1);await expectPager('#bookPrev',0);
+ assert.deepEqual(await page.evaluate(()=>galleryPageCues.slice(2).map(n=>n.gain)),[.033,.033],
+  'Both arrow taps use Low effects volume even in bite-only Light mode');
+ await page.locator('#bookNext').click();await page.waitForFunction(()=>bookOffset===1);
+ await page.locator('#bookPrev').press('Enter');await page.waitForFunction(()=>bookOffset===0);
+ assert.deepEqual(await page.evaluate(()=>galleryPageCues.slice(4).map(n=>n.gain)),[.033,.033],
+  'Ordinary mouse and keyboard actions still move one page and sound once');
+ await page.evaluate(()=>{
+  pluck=gallerySoundBefore.pluck;$('fx').selectedIndex=gallerySoundBefore.fx;$('cue').selectedIndex=gallerySoundBefore.cue;
+ });
+
+
  assert(await unknown.locator('canvas').evaluate(c=>{const b=c.getContext('2d').getImageData(0,0,c.width,c.height).data,colors=new Set();for(let i=0;i<b.length;i+=4)if(b[i+3]===255)colors.add(b.slice(i,i+3).join(','));return colors.size===1;}));
  for(let i=0;i<Math.floor(40/8);i++){
   assert(await page.locator('#bookNext').isVisible(),'Next missing before page '+(i+2)+': '+JSON.stringify(await page.evaluate(()=>({menuPage,bookSpecies,bookOffset}))));
@@ -96,7 +168,16 @@ const {webkit,chromium}=require('playwright-core');
   assert.deepEqual(await page.evaluate(()=>[menuPage,bookSpecies,bookOffset]),['book',null,i+1],'Next tap did not advance page '+(i+2));
  }
  assert(await page.locator('#species-40 b').isVisible());assert.equal(await page.locator('#species-41 b').count(),0);
- await shot('Thai-Waters-collection');await page.locator('#bookSearch').fill('prawn');await page.locator('#species-40').tap();
+ await shot('Thai-Waters-collection');
+ assert(await page.locator('#bookSearch').isHidden(),'Search does not occupy the fish grid');
+ await page.locator('#bookFind').tap();await page.waitForFunction(()=>document.activeElement.id==='bookFindHeading');
+ assert(await page.locator('#records').isHidden(),'Search sheet does not overlay fish controls');
+ await page.locator('#bookSearch').fill('prawn');await page.locator('#bookFindDone').tap();
+ assert(await page.locator('#bookFind').evaluate(el=>document.activeElement===el),'Done restores focus');
+ assert(await page.locator('#species-40').isVisible());
+ await page.locator('#bookFind').tap();assert.equal(await page.locator('#bookSearch').inputValue(),'prawn');
+ await page.keyboard.press('Escape');assert(await page.locator('#species-40').isVisible(),'Escape returns to the still-filtered fish grid');
+ await page.locator('#species-40').tap();
  const row=page.locator('.catch-log');assert.equal(await row.count(),1);assert.equal(await row.locator('svg').count(),8);assert.match(await row.innerText(),/18/);
  await shot('Thai-Waters-catch-history');await page.locator('#back').tap();assert(await page.locator('#species-40').isVisible());
  await page.locator('#back').tap();await page.locator('[data-to=sensors]').tap();await showControl(page,'#handheldEnable');await page.locator('#handheldEnable').check();await page.keyboard.press('v');await page.locator('#resume').tap();await page.keyboard.press('c');await page.waitForFunction(()=>g.state()===1||g.state()===2);

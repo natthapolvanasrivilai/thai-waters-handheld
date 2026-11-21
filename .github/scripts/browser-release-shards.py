@@ -14,7 +14,7 @@ SHARDS = {
     "gameplay": ("gameplay", "detents", "rumble", "bait", "cast-water", "fish-hints", "handheld-input", "recovered-items"),
     "device": ("device", "lcd", "career-flow", "career-storage", "reload-trace-unit", "mobile-input", "aim-input", "finger-targets", "tackle-hud", "menu-pages", "mobile-display-unit", "screen-layout"),
     "world": ("scenery", "ambient", "mobile-audio", "landing-audio", "hosted-startup", "tournament",
-              "thai-catch", "thai-species-names", "gallery-history", "specimen-art"),
+              "thai-catch", "thai-species-names", "gallery-history", "collection-native", "specimen-art"),
 }
 SITE = ("game/sites/test.mjs", "game/sites/cup-test.mjs")
 
@@ -65,8 +65,14 @@ def run(root, shard, bundle, diagnostics):
         started = time.monotonic()
         log = diagnostics / (path.name + ".log")
         print(f"Run {name}", flush=True)
+        test_env = None
+        if path.name == "gallery-history.cjs":
+            test_env = dict(os.environ, COLLECTION_PREVIEW=str((diagnostics / "collection-eight-portrait.png").resolve()))
+        if path.name == "collection-native.cjs":
+            test_env = dict(os.environ, NATIVE_HTML_SHA256=expected["html"],
+                            NATIVE_OUT=str((diagnostics / "collection-native").resolve()))
         with log.open("wb") as output:
-            code = subprocess.run(["node", path.name if name.endswith(".cjs") else name],
+            code = subprocess.run(["node", path.name if name.endswith(".cjs") else name], env=test_env,
                                   cwd=path.parent if name.endswith(".cjs") else root,
                                   stdout=output, stderr=subprocess.STDOUT).returncode
         print(f"{name}: exit {code}, {time.monotonic() - started:.1f}s", flush=True)
