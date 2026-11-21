@@ -178,8 +178,9 @@ function renderBookDetail(id){
  const mask=f.mask??(id===40?12:id===41?9:15);
  periodIcons.forEach((icon,i)=>{
   if(!(mask&(1<<i)))return;
-  const tag=document.createElement('span');tag.className='book-period';
-  tag.append(journalIcon(icon),bookText('span',L(times[i])));periods.append(tag);
+  const tag=document.createElement('span'),label=L(times[i]);tag.className='book-period';
+  tag.setAttribute('role','img');tag.setAttribute('aria-label',label);
+  tag.append(journalIcon(icon),bookText('span',label));periods.append(tag);
  });
  intro.append(periods);
  if(n&&f.lore){const lore=bookText('p',f.lore);lore.className='book-lore';intro.append(lore);}
