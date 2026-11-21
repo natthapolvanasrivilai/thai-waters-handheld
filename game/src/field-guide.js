@@ -111,7 +111,10 @@ function renderBookDetail(id){
  const tier=bookText('small',atlas.ranks[f.tier]+(f.fiction?' · '+L('Fictional'):''));tier.style.color=tierFrames[f.tier];
  title.append(tier,bookText('h2',n?f.name:L('Undiscovered')));
  const nameNote=n?thaiNameNote(f):'';
- if(n&&f.scientificName)title.append(bookText('small',[nameNote,f.scientificName].filter(Boolean).join(' · ')));
+ if(n&&f.scientificName){
+  if(nameNote)title.append(bookText('small',nameNote),bookText('small',' · '));
+  title.append(bookText('small',f.scientificName));
+ }
  if(n&&f.family)title.append(bookText('small',nameNote?(f.thaiFamilyName??f.family):f.family));
  if(n&&!g.hasPortrait(id))title.append(bookText('small',language==='th'?'อยู่ระหว่างวาดภาพประจำชนิด':'Species illustration pending'));
  const water=f.spot!=null?atlas.locations[f.spot].name:atlas.sites[f.site][0],habitat=document.createElement('div');habitat.className='book-facts';
