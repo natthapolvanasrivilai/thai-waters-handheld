@@ -202,7 +202,9 @@ function renderBookDetail(id){
   const title=bookText('h2',name);title.title=name;
   profile.append(picture,title);
   if(n&&f.scientificName){
-   const science=bookText('small',[note,f.scientificName].filter(Boolean).join(' · '));science.className='book-science';science.title=science.textContent;
+   const science=document.createElement('div');science.className='book-science';
+   if(note)science.append(bookText('small',note),document.createTextNode(' · '));
+   science.append(bookText('small',f.scientificName));science.title=science.textContent;
    profile.append(science);
   }
   const mass=rows[0]?.grams,label=th?count+' ครั้ง':count+(n===1?' catch':' catches');

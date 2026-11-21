@@ -47,16 +47,26 @@ const {chromium,webkit}=require('playwright-core');
      await p.locator('#bookHistory').tap();await fits();
      const history=p.locator('#bookDetail .catch-scroll'),receipts=history.locator('tbody tr');
      assert.equal(await receipts.count(),12,'All twelve receipts are reachable in one table');
-     const before=await history.evaluate(e=>({head:e.querySelector('thead').getBoundingClientRect().top,top:e.scrollTop,canScroll:e.scrollHeight>e.clientHeight}));
-     assert.equal(before.top,0);assert(before.canScroll,'The table scrolls inside the full LCD without overflowing it');
+     const geometry=e=>{
+      const frame=e.getBoundingClientRect(),header=e.querySelector('thead').getBoundingClientRect(),
+        last=e.querySelector('tbody tr:last-child').getBoundingClientRect();
+      return {headOffset:header.top-frame.top,headBottom:header.bottom,frameBottom:frame.bottom,
+       scale:frame.height/e.offsetHeight,top:e.scrollTop,room:e.scrollHeight-e.clientHeight,
+       lastTop:last.top,lastBottom:last.bottom,lastHeight:last.height};
+     };
+     const before=await history.evaluate(geometry);
+     assert.equal(before.top,0);assert(before.room>0,'The table scrolls inside the full LCD without overflowing it');
      await history.press('End');
      await p.waitForFunction(()=>{
       const e=document.querySelector('#bookDetail .catch-scroll');
       return e.scrollTop>0&&Math.abs(e.scrollTop+e.clientHeight-e.scrollHeight)<=1;
      });
-     const after=await history.evaluate(e=>({head:e.querySelector('thead').getBoundingClientRect().top,
-      last:e.querySelector('tbody tr:last-child').getBoundingClientRect().bottom,bottom:e.getBoundingClientRect().bottom}));
-     assert(Math.abs(after.head-before.head)<1&&after.last<=after.bottom+1,'Last receipt is visible and the header stays pinned');
+     const after=await history.evaluate(geometry),detail=JSON.stringify({width,lang,before,after});
+     const rounding=1+after.scale; // scrollHeight/clientHeight are rounded native LCD pixels.
+     assert(Math.abs(after.headOffset)<=rounding,'Header is pinned to its viewport: '+detail);
+     assert(Math.abs(after.headOffset-before.headOffset)<=rounding,'Header stays pinned while scrolling: '+detail);
+     const visible=Math.min(after.lastBottom,after.frameBottom)-Math.max(after.lastTop,after.headBottom);
+     assert(visible>=after.lastHeight-rounding,'Last receipt is visible below the sticky heading: '+detail);
      await fits();
      await p.locator('#back').tap();assert(await p.locator('#bookHistory').isVisible());await p.locator('#back').tap();await p.locator('#bookNext').tap();const id=await p.locator('.record').first().getAttribute('id');await p.locator('#'+id).tap();await fits();await p.locator('#back').tap();assert(await p.locator('#'+id).isVisible());}
     await p.locator('#back').tap();
