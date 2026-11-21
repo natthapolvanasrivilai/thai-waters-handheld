@@ -1604,6 +1604,14 @@
       "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/02/File_vertebrate_Fish_03_070266.pdf",
       "reference": "Earlier ONEP species table exact taxon and spelling มงกุฎ, distinguishes short crown from short spines. Current ONEP uses มงกุฏ; DoF and DMCR also use ม้าน้ำดำ. Alternate display names not emitted. Exact record, DoF Aqualib row 323: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 192: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
+    "1864": {
+      "key": 2365904,
+      "scientific": "Macrochirichthys macrochirus",
+      "name": "ฝักพร้า",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/24676",
+      "reference": "ONEP 2025 Fish register, ALL sheet row 125 (spreadsheet row, not No.): https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "1869": {
       "key": 2367766,
       "scientific": "Mekongina erythrospila",
@@ -1659,6 +1667,14 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/33759",
       "reference": "Exact TH-BIF gives the diagnostic form and specific alternate; omit broad ปลาเอิน. Wikidata discovery only: https://www.wikidata.org/entity/Q2248157"
+    },
+    "2001": {
+      "key": 2363814,
+      "scientific": "Probarbus labeaminor",
+      "name": "ปลาเอินฝ้าย",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/33760",
+      "reference": "ONEP 2025 Fish register, ALL sheet row 39 (spreadsheet row, not No.): https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
     "2026": {
       "key": 2359523,
@@ -1848,6 +1864,22 @@
       "source": "https://www4.fisheries.go.th/local/file_document/20200408153605_1_file.pdf",
       "reference": "DoF diagnostic table distinguishes D. pulcher from several Datnioides; omit broad เสือตอ. Wikidata discovery only: https://www.wikidata.org/entity/Q5641741"
     },
+    "2268": {
+      "key": 2358837,
+      "scientific": "Ellopostoma mystax",
+      "name": "ค้อหน้าหัก",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/15059",
+      "reference": "ONEP 2025 Fish register, ALL sheet row 266 (spreadsheet row, not No.): https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "2273": {
+      "key": 2360406,
+      "scientific": "Epalzeorhynchos munense",
+      "name": "กาแดงแม่น้ำมูล",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/15358",
+      "reference": "ONEP 2025 Fish register, ALL sheet row 392 (spreadsheet row, not No.): https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "2279": {
       "key": 2364604,
       "scientific": "Esomus metallicus",
@@ -1858,6 +1890,14 @@
       "source": "https://digital.car.chula.ac.th/chulaetd/48734/",
       "reference": "Exact Chulalongkorn University thesis title corroborates DoF. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 56): https://data.go.th/dataset/aquatic-animal"
     },
+    "2292": {
+      "key": 8194739,
+      "scientific": "Exostoma effrenum",
+      "name": "ค้างคาวหัวเหลี่ยมแม่ปิง",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/07/File_vertebrate_Fish_03_270766.pdf",
+      "reference": "ONEP 2025 Fish register, ALL sheet row 79 (spreadsheet row, not No.): https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx; ONEP threatened fish checklist exact binomial, numbered item 47."
+    },
     "2347": {
       "key": 2356565,
       "scientific": "Indostomus crocodilus",
@@ -1865,6 +1905,14 @@
       "aliases": [],
       "source": "https://chm-thai.onep.go.th/wp-content/uploads/2021/10/ONEP_V16.pdf",
       "reference": "Exact ONEP species table diagnosis; omit ambiguous Wikidata ปลาเหล็กใน. Wikidata discovery only: https://www.wikidata.org/entity/Q1431618"
+    },
+    "2353": {
+      "key": 2337902,
+      "scientific": "Kryptopterus hesperius",
+      "name": "ปีกไก่แม่กลอง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/22329",
+      "reference": "ONEP 2025 Fish register, ALL sheet row 76 (spreadsheet row, not No.): https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
     "2354": {
       "key": 7916021,
@@ -1875,6 +1923,14 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/22338"
     },
+    "2392": {
+      "key": 2362821,
+      "scientific": "Neolissochilus soroides",
+      "name": "พลวงทอง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/27587",
+      "reference": "ONEP 2025 Fish register, ALL sheet row 397 (spreadsheet row, not No.): https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "2416": {
       "key": 5202442,
       "scientific": "Pangasius krempfi",
@@ -1884,6 +1940,14 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/taxon_detail/Pangasius%20krempfi",
       "reference": "Exact taxon; omit generic ปลายาว or สวาย. Wikidata discovery only: https://www.wikidata.org/entity/Q139593"
+    },
+    "2419": {
+      "key": 9535329,
+      "scientific": "Paracanthocobitis phuketensis",
+      "name": "ค้อทรายภูเก็ต",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/29904",
+      "reference": "ONEP 2025 Fish register, ALL sheet row 1121 (spreadsheet row, not No.): https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
     "2448": {
       "key": 2382902,
