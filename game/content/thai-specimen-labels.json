@@ -1,5 +1,21 @@
 {
   "species": {
+    "63": {
+      "key": 2398657,
+      "scientific": "Abudefduf bengalensis",
+      "name": "ปลาตะกรับเจ็ดแถบ",
+      "aliases": [],
+      "source": "https://elibrary.tsri.or.th/fullP/RDG5950078/RDG5950078V05/RDG5950078V05_full.pdf",
+      "reference": "Exact TSRI coastal field guide; DMCR separately uses ปลาสลิดหินบั้งหางมน. Kept only the matched display. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 334): https://data.go.th/dataset/aquatic-animal"
+    },
+    "69": {
+      "key": 2398634,
+      "scientific": "Abudefduf vaigiensis",
+      "name": "ปลาสลิดหินบั้งเขียวเหลือง",
+      "aliases": [],
+      "source": "https://km.dmcr.go.th/c_3/d_1740",
+      "reference": "Exact DMCR species-specific label; DoF alternative ปลาตะกรับห้าแถว retained only in provenance due to broad variation in this group. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 317): https://data.go.th/dataset/aquatic-animal"
+    },
     "72": {
       "key": 2368117,
       "scientific": "Acanthopsoides delphax",
@@ -35,6 +51,24 @@
       "source": "https://thbif.onep.go.th/taxons/detail/300",
       "reference": "Index for printed p. 13 has a different short label; use exact TH-BIF spelling (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
     },
+    "97": {
+      "key": 2376422,
+      "scientific": "Acentrogobius viridipunctatus",
+      "name": "ปลาบู่จุดเขียว",
+      "aliases": [
+        "บู่จุดเขียว"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/ranong/taxons/detail/12351",
+      "reference": "Exact Ranong TH-BIF and DoF survey row 172 agree. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 430): https://data.go.th/dataset/aquatic-animal"
+    },
+    "101": {
+      "key": 2333562,
+      "scientific": "Aeoliscus strigatus",
+      "name": "ข้างใสแถบดำ",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/02/File_vertebrate_Fish_03_070266.pdf",
+      "reference": "Earlier ONEP exact taxon and specific compound confirm 2025 ONEP label. DoF generic ข้างใส / ใบมีดโกน were not copied. Exact record, DoF Aqualib row 494: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 2716: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "113": {
       "key": 2340892,
       "scientific": "Akysis varius",
@@ -42,6 +76,26 @@
       "aliases": [],
       "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/07/File_vertebrate_Fish_03_270766.pdf",
       "reference": "Field survey identifies ขยุย as exact Akysis varius (https://doi1.nrct.go.th/ListDoi/Download/403692?Resolve_DOI=10.14457%2FBRU.res.2010.3); Printed p. 67; guide extraction distorts compound names, not imported (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
+    "116": {
+      "key": 2390581,
+      "scientific": "Alepes djedaba",
+      "name": "ปลาสีกุนแก้มดำ",
+      "aliases": [
+        "สีกุนแก้มดำ"
+      ],
+      "source": "https://research.ku.ac.th/forest/Publish.aspx?PublishID=49797",
+      "reference": "Exact KU primary study uses this display; national TH-BIF corroborates. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 448): https://data.go.th/dataset/aquatic-animal"
+    },
+    "118": {
+      "key": 2390613,
+      "scientific": "Alepes vari",
+      "name": "ปลาสีกุนรากชาย",
+      "aliases": [
+        "สีกุนรากชาย"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/1354",
+      "reference": "TH-BIF endorses both matched forms; do not add broad cross-taxon variants. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 451): https://data.go.th/dataset/aquatic-animal"
     },
     "130": {
       "key": 7489256,
@@ -89,6 +143,24 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
     },
+    "167": {
+      "key": 5201409,
+      "scientific": "Apistus carinatus",
+      "name": "ปลากะรังหัวโขนหูดำ",
+      "aliases": [
+        "กะรังหัวโขนหูดำ"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/2874",
+      "reference": "Exact TH-BIF, related source DoF coastal research. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 532): https://data.go.th/dataset/aquatic-animal"
+    },
+    "168": {
+      "key": 2347811,
+      "scientific": "Aplocheilus panchax",
+      "name": "ปลาหัวตะกั่ว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/2878",
+      "reference": "Exact TH-BIF plus Kasetsart primary field research. Retain only the attested label; do not propagate to other taxa. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q2200326"
+    },
     "204": {
       "key": 2390522,
       "scientific": "Atule mate",
@@ -99,6 +171,16 @@
       ],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-05; not a game size rule. Also attested regional/field names: https://www4.fisheries.go.th/local/file_announce/202402291111431_announce.pdf; DoF field report vs ONEP alternative; one taxon; further exact source(s): https://thbif.onep.go.th/minisite/lagoon/onepage"
+    },
+    "209": {
+      "key": 8031079,
+      "scientific": "Aurigequula fasciata",
+      "name": "ปลาแป้นแถบ",
+      "aliases": [
+        "แป้นแถบ"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/64822",
+      "reference": "Exact TH-BIF; keep species-specific modifier. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 517): https://data.go.th/dataset/aquatic-animal"
     },
     "211": {
       "key": 2407793,
@@ -118,6 +200,14 @@
       "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
       "reference": "Exact; do not transfer the generic English Bullet tuna from ONEP to a Thai alias; further exact source(s): https://thbif.onep.go.th/taxons/taxon_detail/Auxis%20thazard"
     },
+    "215": {
+      "key": 2341214,
+      "scientific": "Bagarius suchus",
+      "name": "แค้งู",
+      "aliases": [],
+      "source": "https://dric.nrct.go.th/direct_download.php?bibid=296516&doc_id=729855&name_dw=%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%88%E0%B8%B7%E0%B8%94%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%AA%E0%B8%A7%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%A1.pdf",
+      "reference": "Exact field/ornamental fisheries research PDF corroborates workbook. ONEP 2025 ALL row 453: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "220": {
       "key": 2338051,
       "scientific": "Bagrichthys majusculus",
@@ -126,6 +216,14 @@
       "source": "https://thbif.onep.go.th/taxons/detail/4589",
       "reference": "Index points to the species account on printed p. 82; correct genus in account/TH-BIF, not extracted index (https://www.nagaofoundation.or.jp/documents/Thailand_FGB_2023.pdf)"
     },
+    "241": {
+      "key": 2394193,
+      "scientific": "Belontia hasselti",
+      "name": "หมอจำปา",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/5079",
+      "reference": "DoF and ONEP agree on the base label. TH-BIF exact account also records regional หมอจำปะ, not emitted. Exact record, DoF Aqualib row 167: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 204: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "242": {
       "key": 7193203,
       "scientific": "Betta mahachaiensis",
@@ -133,6 +231,54 @@
       "aliases": [],
       "source": "https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx",
       "reference": "ONEP workbook ALL row 20. Independent DoF annual report, exact species and label (https://www4.fisheries.go.th/local/file_document/20220311151202_new.pdf)"
+    },
+    "244": {
+      "key": 2394052,
+      "scientific": "Betta prima",
+      "name": "ปลากัดภูเขาตะวันออก",
+      "aliases": [
+        "กัดภูเขาตะวันออก"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/5140",
+      "reference": "Use explicitly attested full TH-BIF name; exclude generic variants. ONEP 2025 ALL row 209: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "246": {
+      "key": 2394055,
+      "scientific": "Betta smaragdina",
+      "name": "กัดอีสาน",
+      "aliases": [
+        "ปลากัดเขียวอีสาน"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/5144",
+      "reference": "Exact national taxon page provides both; not the older contextual Betta smaragdina complex entry. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 131): https://data.go.th/dataset/aquatic-animal"
+    },
+    "247": {
+      "key": 2393998,
+      "scientific": "Betta splendens",
+      "name": "ปลากัดไทย",
+      "aliases": [
+        "กัดไทย"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Betta%20splendens",
+      "reference": "Exact species record, not the 2020 red list’s qualified Betta splendens complex. ONEP 2025 ALL row 211: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "262": {
+      "key": 2368029,
+      "scientific": "Botia histrionica",
+      "name": "ปลาหมูพม่า",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/07/File_vertebrate_Fish_03_270766.pdf",
+      "reference": "Exact earlier ONEP table, supported by TH-BIF shortened หมูพม่า. ONEP 2025 ALL row 118: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "263": {
+      "key": 2368030,
+      "scientific": "Botia kubotai",
+      "name": "ปลาหมูลายเมฆ",
+      "aliases": [
+        "หมูลายเมฆ"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/5672",
+      "reference": "Exact national species name; corroborates Thai entity label. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q1766655"
     },
     "270": {
       "key": 2377133,
@@ -143,6 +289,34 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/5777"
     },
+    "286": {
+      "key": 2374789,
+      "scientific": "Caesio cuning",
+      "name": "ปลากล้วยหางเหลือง",
+      "aliases": [
+        "ปลาเหลืองปล้องหม้อ"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Caesio%20cuning",
+      "reference": "Exact TH-BIF corroborates selected DoF row 304; generic alternative CSV labels omitted. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 304, 485): https://data.go.th/dataset/aquatic-animal"
+    },
+    "330": {
+      "key": 2407809,
+      "scientific": "Carinotetraodon lorteti",
+      "name": "ปลาปักเป้าสมพงษ์",
+      "aliases": [
+        "ปักเป้าสมพงษ์"
+      ],
+      "source": "https://www4.fisheries.go.th/local/file_document/20250123181504_1_file.pdf",
+      "reference": "DoF field survey gives exact unqualified taxon next to separate genus-only entry. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 142): https://data.go.th/dataset/aquatic-animal"
+    },
+    "353": {
+      "key": 2385381,
+      "scientific": "Chaetodon octofasciatus",
+      "name": "ปลาผีเสื้อแปดขีด",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/?page_id=2611",
+      "reference": "Exact ONEP reef profile; no unverified alternate extracted from a compound CSV cell. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 566): https://data.go.th/dataset/aquatic-animal"
+    },
     "366": {
       "key": 2406374,
       "scientific": "Chanos chanos",
@@ -150,6 +324,53 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-51; not a game size rule."
+    },
+    "385": {
+      "key": 2417603,
+      "scientific": "Chiloscyllium hasseltii",
+      "name": "ปลาฉลามลายตุ๊กแก",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/8830",
+      "reference": "Exact national taxon account and ONEP 2025 attestation. The only shared DoF term ฉลามกบ collides with #384/#386/#387 and is not emitted. Exact record, DoF Aqualib row 398: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 169: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "416": {
+      "key": 5202765,
+      "scientific": "Clarias nieuhofii",
+      "name": "ปลาดุกลำพัน",
+      "aliases": [
+        "ดุกลำพัน",
+        "ลำพัน"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/9565",
+      "reference": "Exact forms attested in TH-BIF; workbook ลำพัน. ONEP 2025 ALL row 327: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "446": {
+      "key": 2387947,
+      "scientific": "Cromileptes altivelis",
+      "name": "ปลากะรังหน้างอน",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/11163",
+      "reference": "DoF row 315 and exact TH-BIF give the full form; ONEP has the equivalent spelling without ปลา. Ignore unsegmented multi-name DoF row 578. Exact record, DoF Aqualib row 315, 578: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 59: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "457": {
+      "key": 2358138,
+      "scientific": "Cryptotora thamicola",
+      "name": "ปลาผีเสื้อถ้ำ",
+      "aliases": [
+        "ปลาจิ้งจกถ้ำ"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/11463",
+      "reference": "Two explicitly attested names for this exact Thai cave fish; not a fantasy label. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q3314215"
+    },
+    "490": {
+      "key": 5210837,
+      "scientific": "Datnioides undecimradiatus",
+      "name": "ปลาเสือตอลายเล็ก",
+      "aliases": [
+        "เสือตอลายเล็ก"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/12696",
+      "reference": "Exact TH-BIF and multiple university study titles; do not share identity alias with other Datnioides. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 149): https://data.go.th/dataset/aquatic-animal"
     },
     "491": {
       "key": 2391036,
@@ -168,6 +389,14 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-43; not a game size rule."
+    },
+    "511": {
+      "key": 2332724,
+      "scientific": "Doryichthys boaja",
+      "name": "ปลาจิ้มฟันจระเข้ยักษ์",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/14395",
+      "reference": "Exact national record; omit genus-wide short form. Wikidata discovery only: https://www.wikidata.org/entity/Q3752908"
     },
     "527": {
       "key": 5210446,
@@ -193,6 +422,14 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-27; not a game size rule."
     },
+    "551": {
+      "key": 2388337,
+      "scientific": "Epinephelus bleekeri",
+      "name": "ปลากะรังจุดเหลือง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/15415",
+      "reference": "Specific national TH-BIF name corroborated by regional inventory. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 511): https://data.go.th/dataset/aquatic-animal"
+    },
     "553": {
       "key": 2388213,
       "scientific": "Epinephelus coioides",
@@ -200,6 +437,34 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-28; not a game size rule."
+    },
+    "558": {
+      "key": 2388440,
+      "scientific": "Epinephelus fuscoguttatus",
+      "name": "ปลากะรังลายหินอ่อน",
+      "aliases": [
+        "กะรังลายหินอ่อน"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Epinephelus%20fuscoguttatus",
+      "reference": "Exact TH-BIF species; no broad generic alias. ONEP 2025 ALL row 1565: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "562": {
+      "key": 2388587,
+      "scientific": "Epinephelus lanceolatus",
+      "name": "ปลาหมอทะเล",
+      "aliases": [
+        "หมอทะเล"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/15436",
+      "reference": "Exact TH-BIF species corroborates workbook. ONEP 2025 ALL row 301: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "567": {
+      "key": 2388148,
+      "scientific": "Epinephelus quoyanus",
+      "name": "กะรังดอกน้ำตาล",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/658",
+      "reference": "Exact species and display in ONEP taxon account. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 513): https://data.go.th/dataset/aquatic-animal"
     },
     "568": {
       "key": 2388602,
@@ -224,6 +489,16 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-13; not a game size rule."
+    },
+    "582": {
+      "key": 2418825,
+      "scientific": "Eusphyra blochii",
+      "name": "ปลาฉลามหัวค้อนยาว",
+      "aliases": [
+        "ฉลามหัวค้อนยาว"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/16411",
+      "reference": "Exact national and Thai agency identity; do not import status or occurrence from the name record. Wikidata discovery only: https://www.wikidata.org/entity/Q890336"
     },
     "583": {
       "key": 5208561,
@@ -251,6 +526,14 @@
       "source": "https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx",
       "reference": "ONEP workbook ALL row 457. Exact TH-BIF species page, same institution and research provenance (https://thbif.onep.go.th/taxons/detail/18148)"
     },
+    "643": {
+      "key": 2341413,
+      "scientific": "Glyptothorax trilineatus",
+      "name": "ปลาแค้ติดหินสามแถบ",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20250123181504_1_file.pdf",
+      "reference": "Exact Department of Fisheries survey row 235. Wikidata discovery only: https://www.wikidata.org/entity/Q1041812"
+    },
     "644": {
       "key": 2391331,
       "scientific": "Gnathanodon speciosus",
@@ -259,6 +542,32 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-49; not a game size rule."
     },
+    "680": {
+      "key": 2368346,
+      "scientific": "Gyrinocheilus aymonieri",
+      "name": "ลูกผึ้ง",
+      "aliases": [],
+      "source": "https://www.waghor.go.th/v1/elearning/nature/aquariam2-2.php",
+      "reference": "Waghor public aquarium species profile attests ลูกผึ้ง; choose only the shared exact name rather than importing the variety-specific English name. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 135): https://data.go.th/dataset/aquatic-animal"
+    },
+    "721": {
+      "key": 2358777,
+      "scientific": "Hemimyzon nanensis",
+      "name": "ปลาผีเสื้อติดหินน่าน",
+      "aliases": [
+        "ผีเสื้อติดหินน่าน"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/19696",
+      "reference": "Exact TH-BIF attestation; do not import the compound cell or generic ผีเสื้อ. ONEP 2025 ALL row 227: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "725": {
+      "key": 2337584,
+      "scientific": "Hemisilurus mekongensis",
+      "name": "ปลาดังแดง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/19758",
+      "reference": "Exact national species spelling and explanation; omit broad alternate สายยู. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q5647710"
+    },
     "735": {
       "key": 2413479,
       "scientific": "Hilsa kelee",
@@ -266,6 +575,26 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-54; not a game size rule."
+    },
+    "742": {
+      "key": 5201147,
+      "scientific": "Hippocampus spinosissimus",
+      "name": "ม้าน้ำหนามสั้น",
+      "aliases": [
+        "ม้าน้ำหนาม"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Hippocampus%2Bspinosissimus",
+      "reference": "Exact TH-BIF gives diagnostic short-spined display; DoF aquaculture report corroborates alias and identity. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 491): https://data.go.th/dataset/aquatic-animal"
+    },
+    "743": {
+      "key": 5201089,
+      "scientific": "Hippocampus trimaculatus",
+      "name": "ปลาม้าน้ำสามจุด",
+      "aliases": [
+        "ม้าน้ำสามจุด"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/20167",
+      "reference": "TH-BIF exact species; separate from other seahorses. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 322): https://data.go.th/dataset/aquatic-animal"
     },
     "793": {
       "key": 2399528,
@@ -282,6 +611,14 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
       "reference": "Exact DoF and ONEP pair; further exact source(s): https://thbif.onep.go.th/taxons/detail/22189"
+    },
+    "817": {
+      "key": 2383731,
+      "scientific": "Labroides dimidiatus",
+      "name": "ปลาพยาบาล",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Labroides%20dimidiatus",
+      "reference": "Exact national TH-BIF; skip generic wrasse alias. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 331): https://data.go.th/dataset/aquatic-animal"
     },
     "818": {
       "key": 5210442,
@@ -316,6 +653,14 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Real common display, alias verified by ONEP; further exact source(s): https://thbif.onep.go.th/taxons/detail/23353"
     },
+    "852": {
+      "key": 2394150,
+      "scientific": "Luciocephalus pulcher",
+      "name": "ช่อนเข็ม",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Luciocephalus%20pulcher",
+      "reference": "DoF and ONEP 2025 agree for same unqualified binomial. This is the attested species label, not assigned merely by family; omit larger-looking synonym. Exact record, DoF Aqualib row 157: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 212: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "854": {
       "key": 2385069,
       "scientific": "Lutjanus argentimaculatus",
@@ -323,6 +668,14 @@
       "aliases": [],
       "source": "https://www3.rdi.ku.ac.th/?p=95527",
       "reference": "Kasetsart primary research project; ONEP Ranong line 494"
+    },
+    "856": {
+      "key": 2384758,
+      "scientific": "Lutjanus bohar",
+      "name": "กะพงแดงเขี้ยว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Lutjanus%20bohar",
+      "reference": "TH-BIF directly corroborates exact workbook name. ONEP 2025 ALL row 442: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
     "866": {
       "key": 2384741,
@@ -356,6 +709,16 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-41; not a game size rule."
     },
+    "891": {
+      "key": 2351804,
+      "scientific": "Mastacembelus erythrotaenia",
+      "name": "ปลากระทิงไฟ",
+      "aliases": [
+        "กระทิงไฟ"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/onepage",
+      "reference": "ONEP regional exact label plus the 2020 Fish sheet and DOF. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 146): https://data.go.th/dataset/aquatic-animal"
+    },
     "895": {
       "key": 5210642,
       "scientific": "Megalaspis cordyla",
@@ -374,6 +737,16 @@
       "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
       "reference": "ONEP Ranong line 487"
     },
+    "917": {
+      "key": 2376853,
+      "scientific": "Mugilogobius rambaiae",
+      "name": "ปลาบู่รำไพ",
+      "aliases": [
+        "บู่รำไพ"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/26739",
+      "reference": "Exact national record; preserve Thai NFC with ำ, not duplicated character sequences. Wikidata discovery only: https://www.wikidata.org/entity/Q2131353"
+    },
     "932": {
       "key": 5201896,
       "scientific": "Mystus gulio",
@@ -381,6 +754,14 @@
       "aliases": [],
       "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
       "reference": "ONEP Ranong line 485"
+    },
+    "935": {
+      "key": 5201848,
+      "scientific": "Mystus rhegma",
+      "name": "แขยงหนู",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/hkk/taxons/detail/21912",
+      "reference": "Exact ONEP pilot record corroborates workbook. ONEP 2025 ALL row 178: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
     "962": {
       "key": 2379975,
@@ -397,6 +778,58 @@
       "aliases": [],
       "source": "https://thbif.onep.go.th/taxons/detail/27560",
       "reference": "ONEP iconic species, row 122 (checkpoint cited) (https://chm-thai.onep.go.th/wp-content/uploads/2025/07/Book_UN_IconicSpecies020768.pdf)"
+    },
+    "1008": {
+      "key": 2337635,
+      "scientific": "Ompok fumidus",
+      "name": "ปลาชะโอนพรุ",
+      "aliases": [
+        "ชะโอนพรุ"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/28514",
+      "reference": "Exact ONEP; do not include alternate inconsistent พรู spelling. ONEP 2025 ALL row 338: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "1026": {
+      "key": 5961229,
+      "scientific": "Oreoglanis nakasathiani",
+      "name": "ปลาค้างคาวคุณสืบ",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/28948",
+      "reference": "Exact national species record independently punctuates preferred display; do not auto-split combined workbook string. ONEP 2025 ALL row 182: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "1027": {
+      "key": 2341198,
+      "scientific": "Oreoglanis siamensis",
+      "name": "ค้างคาวดอยอินทนนท์",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/28952",
+      "reference": "Exact ONEP species record; exclude broad generic names. ONEP 2025 ALL row 183: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "1029": {
+      "key": 2368403,
+      "scientific": "Oryzias javanicus",
+      "name": "ปลาซิวข้าวสารชวา",
+      "aliases": [],
+      "source": "https://www.prc.up.ac.th/pdf/133/Proceedings-PRC13-28-2-67v2.pdf",
+      "reference": "Primary University of Phayao research exact binomial and label; do not combine with #1030/#1031. Wikidata discovery only: https://www.wikidata.org/entity/Q1922600"
+    },
+    "1030": {
+      "key": 2368385,
+      "scientific": "Oryzias mekongensis",
+      "name": "ปลาซิวข้าวสารแม่น้ำโขง",
+      "aliases": [
+        "ซิวข้าวสารแม่น้ำโขง"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/29111",
+      "reference": "Wikidata offered English name only; independently sourced exact Thai label, distinct from #1031. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q6415200"
+    },
+    "1031": {
+      "key": 2368416,
+      "scientific": "Oryzias minutillus",
+      "name": "ปลาซิวข้าวสารแคระ",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/29113",
+      "reference": "Exact national TH-BIF; workbook only gives shared generic ricefish name, omitted as alias. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 50): https://data.go.th/dataset/aquatic-animal"
     },
     "1043": {
       "key": 5213766,
@@ -432,6 +865,24 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-19; not a game size rule."
     },
+    "1058": {
+      "key": 5202457,
+      "scientific": "Pangasius bocourti",
+      "name": "ปลายางหางดอก",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20170320163221_file.pdf",
+      "reference": "DoF field report gives this diagnostic vernacular for P. bocourti; omit Wikidata shared ปลาเผาะ และชื่อร่วม ปลาโมง. National TH-BIF supplies the shorter exact label ปลายาง. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q139576"
+    },
+    "1065": {
+      "key": 5202478,
+      "scientific": "Pangasius sanitwongsei",
+      "name": "ปลาเทพา",
+      "aliases": [
+        "เลิม"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Pangasius%20sanitwongsei",
+      "reference": "National TH-BIF provides display and alias; Department of Fisheries survey also corroborates exact name. ONEP 2025 ALL row 74: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "1105": {
       "key": 2391217,
       "scientific": "Parastromateus niger",
@@ -439,6 +890,24 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-17; not a game size rule."
+    },
+    "1120": {
+      "key": 2356584,
+      "scientific": "Pegasus laternarius",
+      "name": "ปลาผีเสื้อกลางคืนสั้น",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/30640",
+      "reference": "Exact national TH-BIF account records both datasets’ forms; chose the diagnostic short-tailed label to distinguish #1121. No generic alias. Exact record, DoF Aqualib row 487: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 355: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "1121": {
+      "key": 2356573,
+      "scientific": "Pegasus volitans",
+      "name": "ผีเสื้อกลางคืนหางยาว",
+      "aliases": [
+        "ผีเสื้อทะเลยาว"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/604",
+      "reference": "Exact national pilot record explicitly gives both forms; keep distinction from short form. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 488): https://data.go.th/dataset/aquatic-animal"
     },
     "1122": {
       "key": 5208652,
@@ -480,6 +949,14 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai Department of Fisheries inspection manual, Appendix A row SS-44; GBIF 9713196 is Plectorhinchus pictus (Tortonese, 1936), not the Thunberg name associated with Diagramma pictum in SS-43"
     },
+    "1170": {
+      "key": 5210114,
+      "scientific": "Plectropomus leopardus",
+      "name": "ปลากะรังลายเสือ",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20200612132742_1_file.PDF",
+      "reference": "Exact official aquatics list row 699 and independent trade list row 291 corroborate full form; TH-BIF also attests the source alternatives. Do not conflate with P. melanoleucus or carry trade restrictions into game. Exact record, DoF Aqualib row 515: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 440: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "1175": {
       "key": 2341920,
       "scientific": "Plotosus canius",
@@ -519,6 +996,16 @@
       "aliases": [],
       "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
       "reference": "ONEP Ranong line 185, 464"
+    },
+    "1257": {
+      "key": 2337803,
+      "scientific": "Pterocryptis buccata",
+      "name": "ปลาชะโอนถ้ำ",
+      "aliases": [
+        "ชะโอนถ้ำวังบาดาล"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Pterocryptis%20buccata",
+      "reference": "Exact TH-BIF forms; do not show OR-delimited workbook cell. ONEP 2025 ALL row 77: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
     "1264": {
       "key": 2374336,
@@ -688,6 +1175,16 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-46; not a game size rule."
     },
+    "1474": {
+      "key": 5211204,
+      "scientific": "Trichopsis pumila",
+      "name": "ปลากริมสี",
+      "aliases": [
+        "กริมสี"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/41267",
+      "reference": "Exact TH-BIF; omit generic กริม. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 162): https://data.go.th/dataset/aquatic-animal"
+    },
     "1515": {
       "key": 2367787,
       "scientific": "Yasuhikotakia caudipunctata",
@@ -728,6 +1225,26 @@
       "source": "https://thbif.onep.go.th/taxons/taxon_detail/Aaptosyax%20grypus",
       "reference": "Exact name independently listed as สะนากยักษ์; do not import other identities from provincial list (https://chm-thai.onep.go.th/wp-content/uploads/2021/10/ONEP_V16.pdf); Index points to the species account on printed p. 39 (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
     },
+    "1549": {
+      "key": 2420813,
+      "scientific": "Alopias superciliosus",
+      "name": "ปลาฉลามหางยาวหน้าหนู",
+      "aliases": [
+        "ปลาฉลามหางดาบตาโต"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Alopias%20superciliosus",
+      "reference": "Exact national label + specific alternate; omit broad ฉลามตาโต. Wikidata discovery only: https://www.wikidata.org/entity/Q508067"
+    },
+    "1557": {
+      "key": 7734965,
+      "scientific": "Ambastaia sidthimunki",
+      "name": "ปลาหมูอารีย์",
+      "aliases": [
+        "หมูอารีย์"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/1806",
+      "reference": "Exact national record and HKK checklist; distinct from #130. Wikidata discovery only: https://www.wikidata.org/entity/Q28656882"
+    },
     "1561": {
       "key": 2361126,
       "scientific": "Amblypharyngodon chulabhornae",
@@ -760,6 +1277,32 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-42; not a game size rule."
     },
+    "1586": {
+      "key": 2418652,
+      "scientific": "Atelomycterus marmoratus",
+      "name": "ฉลามลายหินอ่อน",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/4255",
+      "reference": "DoF and ONEP 2025 agree; exact national record cross-check, broad ฉลามแมว withheld. Exact record, DoF Aqualib row 399: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 380: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "1604": {
+      "key": 5202922,
+      "scientific": "Batrachocephalus mino",
+      "name": "ปลากดหัวกบ",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Batrachocephalus%20mino",
+      "reference": "Exact national and regional sources; no generic catfish alias. Wikidata discovery only: https://www.wikidata.org/entity/Q1815258"
+    },
+    "1611": {
+      "key": 2366590,
+      "scientific": "Boraras maculatus",
+      "name": "ปลาซิวเพชรน้อย",
+      "aliases": [
+        "ซิวเพชรน้อย"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/5615",
+      "reference": "Specific exact label; avoid three-spotted variant confusion with #1612. ONEP 2025 ALL row 406: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "1612": {
       "key": 2366586,
       "scientific": "Boraras micros",
@@ -768,6 +1311,34 @@
       "source": "https://thbif.onep.go.th/taxons/detail/5616",
       "reference": "Kasetsart journal (checkpoint cited) (https://tferj.forest.ku.ac.th/jn_file/3924062020TFERJV3N2_P5.pdf)"
     },
+    "1613": {
+      "key": 2366593,
+      "scientific": "Boraras urophthalmoides",
+      "name": "ปลาซิวหนู",
+      "aliases": [
+        "ซิวหนู"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/5618",
+      "reference": "Exact national and earlier Peat Swamp Fishes case; no generic ซิวแคระ alias to avoid identity bleed. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 265): https://data.go.th/dataset/aquatic-animal"
+    },
+    "1649": {
+      "key": 2383313,
+      "scientific": "Cheilinus undulatus",
+      "name": "ปลานกขุนทองหัวโหนก",
+      "aliases": [
+        "ปลานโปเลียน"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Cheilinus%20undulatus",
+      "reference": "National primary label plus sourced Wikidata spelling as search-only alias. Wikidata discovery only: https://www.wikidata.org/entity/Q179377"
+    },
+    "1653": {
+      "key": 2402266,
+      "scientific": "Chitala blanci",
+      "name": "ปลาตองลาย",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Chitala%20blanci",
+      "reference": "Exact national species record; keep useful distinction from thin-hatched related fish. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q2248198"
+    },
     "1676": {
       "key": 2381939,
       "scientific": "Coryphaena hippurus",
@@ -775,6 +1346,14 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-53; not a game size rule."
+    },
+    "1699": {
+      "key": 2362695,
+      "scientific": "Danio albolineatus",
+      "name": "ซิวใบไผ่เล็กแถบขาว",
+      "aliases": [],
+      "source": "https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf",
+      "reference": "2023 publisher field guide exact binomial, p.54; do not rely on alternative genus TH-BIF. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 52): https://data.go.th/dataset/aquatic-animal"
     },
     "1718": {
       "key": 2412967,
@@ -791,6 +1370,60 @@
       "aliases": [],
       "source": "https://thbif.onep.go.th/taxons/taxon_detail/Epalzeorhynchos%20bicolor"
     },
+    "1743": {
+      "key": 2396346,
+      "scientific": "Equulites leuciscus",
+      "name": "ปลาแป้นกระโดงยาว",
+      "aliases": [
+        "แป้นกระโดงยาว"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/544",
+      "reference": "Exact national regional record; CSV short label. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 519): https://data.go.th/dataset/aquatic-animal"
+    },
+    "1781": {
+      "key": 2367426,
+      "scientific": "Hampala salweenensis",
+      "name": "ปลากระสูบสาละวิน",
+      "aliases": [],
+      "source": "https://www.nagaofoundation.or.jp/publication/documents/Northern_Thai_Fishes.pdf",
+      "reference": "Exact species account and separate Maejo watershed research report. Wikidata discovery only: https://www.wikidata.org/entity/Q5578792"
+    },
+    "1796": {
+      "key": 5201037,
+      "scientific": "Hippocampus kuda",
+      "name": "ม้าน้ำมงกุฎสั้น",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/02/File_vertebrate_Fish_03_070266.pdf",
+      "reference": "Earlier ONEP species table exact taxon and spelling มงกุฎ, distinguishes short crown from short spines. Current ONEP uses มงกุฏ; DoF and DMCR also use ม้าน้ำดำ. Alternate display names not emitted. Exact record, DoF Aqualib row 323: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 192: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "1869": {
+      "key": 2367766,
+      "scientific": "Mekongina erythrospila",
+      "name": "ปลาสะอี",
+      "aliases": [
+        "ปลาสะอีแม่น้ำโขง"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/25581",
+      "reference": "Exact national record attests both. Wikidata discovery only: https://www.wikidata.org/entity/Q6410369"
+    },
+    "1895": {
+      "key": 5205272,
+      "scientific": "Nemacheilus troglocataractus",
+      "name": "ค้อถ้ำวังบาดาล",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/27444",
+      "reference": "Exact species-specific TH-BIF attestation; omit broad cave-loach aliases. ONEP 2025 ALL row 43: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "1933": {
+      "key": 2406917,
+      "scientific": "Oxymonacanthus longirostris",
+      "name": "ปลาวัวจมูกยาว",
+      "aliases": [
+        "วัวจมูกยาว"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/29324",
+      "reference": "Exact TH-BIF species. ONEP 2025 ALL row 195: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
     "1972": {
       "key": 9558403,
       "scientific": "Planiliza subviridis",
@@ -798,6 +1431,78 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-08; not a game size rule."
+    },
+    "1995": {
+      "key": 2366158,
+      "scientific": "Poropuntius speleops",
+      "name": "ปลาจาดถ้ำ",
+      "aliases": [
+        "จาดถ้ำ"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/33441",
+      "reference": "Exact ONEP taxon and two documented name forms. Wikidata discovery only: https://www.wikidata.org/entity/Q3763718"
+    },
+    "2000": {
+      "key": 2363813,
+      "scientific": "Probarbus labeamajor",
+      "name": "เอินตาขาว",
+      "aliases": [
+        "ปลาเอินคางมุม"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/33759",
+      "reference": "Exact TH-BIF gives the diagnostic form and specific alternate; omit broad ปลาเอิน. Wikidata discovery only: https://www.wikidata.org/entity/Q2248157"
+    },
+    "2026": {
+      "key": 2359523,
+      "scientific": "Rasbora myersi",
+      "name": "ปลาซิวควาย",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/pic_activities/202004161636111_pic.pdf",
+      "reference": "Exact DoF survey table row 42 and narrative; TH-BIF verified exact label. Adjacent row ซิวควายแถบดำ is not this species and is not promoted. Generic ONEP ซิว omitted. Exact record, DoF Aqualib row 126: https://data.go.th/dataset/aquatic-animal; ONEP 2025 ALL row 1099: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "2029": {
+      "key": 2359627,
+      "scientific": "Rasbora trilineata",
+      "name": "ปลาซิวหางกรรไกร",
+      "aliases": [
+        "ซิวหางกรรไกร"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/onepage",
+      "reference": "Official ONEP exact table and peat-swamp guide corroborate. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 127): https://data.go.th/dataset/aquatic-animal"
+    },
+    "2038": {
+      "key": 2377591,
+      "scientific": "Rhinogobius chiengmaiensis",
+      "name": "บู่น้ำตกเชียงใหม่",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/35559",
+      "reference": "Exact national species record + earlier ONEP table. ONEP 2025 ALL row 412: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "2048": {
+      "key": 2365804,
+      "scientific": "Scaphiodonichthys burmanicus",
+      "name": "ม่อมสาละวิน",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/36671",
+      "reference": "Exact TH-BIF species; only specific vernacular. ONEP 2025 ALL row 401: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "2070": {
+      "key": 5205129,
+      "scientific": "Schistura menanensis",
+      "name": "ปลาค้อแม่น่าน",
+      "aliases": [
+        "ค้อแม่น่าน"
+      ],
+      "source": "https://doi.nrct.go.th/admin/doc/doc_602013.pdf",
+      "reference": "Primary field survey from Khon Kaen Agriculture Journal author report; matches ONEP body. ONEP 2025 ALL row 411: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "2085": {
+      "key": 2402231,
+      "scientific": "Scleropages formosus",
+      "name": "ปลาตะพัด",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/37028",
+      "reference": "Exact national record and DNP usage; avoid ornamental breed/colour names. Wikidata discovery only: https://www.wikidata.org/entity/Q728584"
     },
     "2112": {
       "key": 2394208,
@@ -822,6 +1527,16 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
       "reference": "DoF technical list and separate fishery species research; further exact source(s): https://www4.fisheries.go.th/local/file_document/20170306135453_file.pdf"
+    },
+    "2146": {
+      "key": 2367619,
+      "scientific": "Trigonostigma somphongsi",
+      "name": "ปลาซิวสมพงษ์",
+      "aliases": [
+        "ซิวสมพงษ์"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/41452",
+      "reference": "Exact name confirmed also in PSU original research announcement. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 216): https://data.go.th/dataset/aquatic-animal"
     },
     "2152": {
       "key": 2391358,
@@ -854,6 +1569,25 @@
       "source": "https://thbif.onep.go.th/taxons/detail/43047",
       "reference": "DoF printed p. 154 (checkpoint cited) (https://www4.fisheries.go.th/local/pic_activities/202310191858261_pic.pdf)"
     },
+    "2197": {
+      "key": 2389465,
+      "scientific": "Badis khwae",
+      "name": "ปลาหมอแคระแม่น้ำแคว",
+      "aliases": [
+        "หมอแคระแม่น้ำแคว",
+        "ปลาหมอแคระแม่กลอง"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/4570",
+      "reference": "Thai DoF uses river-specific form; species TH-BIF confirms both geographic name variants. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 215): https://data.go.th/dataset/aquatic-animal"
+    },
+    "2198": {
+      "key": 2389474,
+      "scientific": "Badis siamensis",
+      "name": "หมอแคระขี้เซา",
+      "aliases": [],
+      "source": "https://dric.nrct.go.th/direct_download.php?bibid=296516&doc_id=729855&name_dw=%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%88%E0%B8%B7%E0%B8%94%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%AA%E0%B8%A7%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%A1.pdf",
+      "reference": "National research archive freshwater fish management report pairs exact species with this spelling; do not import arbitrary trade aliases. Wikidata discovery only: https://www.wikidata.org/entity/Q6422324"
+    },
     "2200": {
       "key": 2407129,
       "scientific": "Balistoides conspicillum",
@@ -872,6 +1606,50 @@
       "source": "https://thbif.onep.go.th/taxons/detail/4723",
       "reference": "Index for printed p. 39 corroborates ตะเพียนน้ำตก (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
     },
+    "2209": {
+      "key": 2393990,
+      "scientific": "Betta ferox",
+      "name": "ปลากัดสงขลา",
+      "aliases": [
+        "กัดภูเขาสงขลา"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Betta%20ferox",
+      "reference": "Exact TH-BIF forms; omit Wikidata-only compound and broad กัดอมไข่. Wikidata discovery only: https://www.wikidata.org/entity/Q5738635"
+    },
+    "2214": {
+      "key": 6166887,
+      "scientific": "Boraras naevus",
+      "name": "ซิวเพชรน้อยจุดเล็ก",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/07/File_vertebrate_Fish_03_270766.pdf",
+      "reference": "Earlier ONEP table explicitly pairs name with Boraras naevus; keep suffix to distinguish #1611. ONEP 2025 ALL row 255: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "2257": {
+      "key": 5210836,
+      "scientific": "Datnioides pulcher",
+      "name": "เสือตอลายใหญ่",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20200408153605_1_file.pdf",
+      "reference": "DoF diagnostic table distinguishes D. pulcher from several Datnioides; omit broad เสือตอ. Wikidata discovery only: https://www.wikidata.org/entity/Q5641741"
+    },
+    "2279": {
+      "key": 2364604,
+      "scientific": "Esomus metallicus",
+      "name": "ปลาซิวหนวดยาว",
+      "aliases": [
+        "ซิวหนวดยาว"
+      ],
+      "source": "https://digital.car.chula.ac.th/chulaetd/48734/",
+      "reference": "Exact Chulalongkorn University thesis title corroborates DoF. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 56): https://data.go.th/dataset/aquatic-animal"
+    },
+    "2347": {
+      "key": 2356565,
+      "scientific": "Indostomus crocodilus",
+      "name": "จิ้มฟันจระเข้แคระพรุ",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2021/10/ONEP_V16.pdf",
+      "reference": "Exact ONEP species table diagnosis; omit ambiguous Wikidata ปลาเหล็กใน. Wikidata discovery only: https://www.wikidata.org/entity/Q1431618"
+    },
     "2354": {
       "key": 7916021,
       "scientific": "Kryptopterus vitreolus",
@@ -880,6 +1658,16 @@
         "ก้างพระร่วง"
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/22338"
+    },
+    "2416": {
+      "key": 5202442,
+      "scientific": "Pangasius krempfi",
+      "name": "ปลาซวยเสาะ",
+      "aliases": [
+        "ซวยเสาะ"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Pangasius%20krempfi",
+      "reference": "Exact taxon; omit generic ปลายาว or สวาย. Wikidata discovery only: https://www.wikidata.org/entity/Q139593"
     },
     "2448": {
       "key": 2382902,

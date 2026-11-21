@@ -68,6 +68,19 @@ const {chromium}=require('playwright-core');
   assert.notEqual(initial.unconfirmed,'ยังไม่มีชื่อไทยที่ยืนยัน');
   assert.deepEqual(initial.kinds,{species:initial.sourceCount,transliteration:2485-initial.sourceCount});
   assert(initial.sourceCount>=84,'all three source-reviewed batches present');
+  const curatedNext=[
+   [215,2341214,'Bagarius suchus','แค้งู'],
+   [63,2398657,'Abudefduf bengalensis','ปลาตะกรับเจ็ดแถบ'],
+   [1058,5202457,'Pangasius bocourti','ปลายางหางดอก'],
+   [1557,7734965,'Ambastaia sidthimunki','ปลาหมูอารีย์'],
+   [1120,2356584,'Pegasus laternarius','ปลาผีเสื้อกลางคืนสั้น']
+  ];
+  assert.deepEqual(await page.evaluate(ids=>ids.map(id=>{
+   const f=atlas.fish[id];
+   return [id,f.key,f.scientificName,f.name,f.thaiNameKind];
+  }),curatedNext.map(([id])=>id)),curatedNext.map(row=>[...row,'species']),
+  'representative newly attested Thai names from each cited review tranche');
+  assert(initial.sourceCount>=194,'verified catalog overlay contains at least the 194 attested names');
   assert.deepEqual([initial.size,initial.art,initial.key,initial.original],[2545,2152,2391358,'Uraspis uraspis']);
   await page.evaluate(()=>{$('bookSearch').value='ปลาจุ้ยจินบั้ง';});
   assert.equal(await page.evaluate(()=>bookMatches().includes(2152)),false);
@@ -111,6 +124,30 @@ const {chromium}=require('playwright-core');
    });
   }
   function fits(rows){return rows.length>0&&rows.every(r=>r.y>0&&r.y<=310&&r.align==='left'&&r.x>=0&&r.x+r.width<=480);}
+  const seamoth=await page.evaluate(()=>{
+   const short=atlas.fish[1120],long=atlas.fish[1121];
+   return {low:short.low,short:short.name,long:long.name,aliases:short.thaiSearchAliases};
+  });
+  assert.deepEqual([seamoth.short,seamoth.long,seamoth.aliases],
+   ['ปลาผีเสื้อกลางคืนสั้น','ผีเสื้อกลางคืนหางยาว',[]]);
+  for(const q of [seamoth.short,'Pegasus laternarius'])assert(!await match(q,1120));
+  await land(1120,seamoth.low);
+  assert.equal(await page.locator('#message').textContent(),seamoth.short);
+  assert(!/ถอดเสียง/u.test(await page.locator('#metrics').textContent()));
+  const seamothNative=await nativeCatchText();
+  assert.deepEqual(seamothNative.lcd,[480,320]);
+  const seamothLatin=seamothNative.labels.find(r=>r.text==='Pegasus laternarius');
+  assert(seamothLatin&&fits([seamothLatin]),'exact Latin identification fits the catch card');
+  const seamothTitle=seamothNative.labels.filter(r=>r.y>=110&&r.y<seamothLatin.y);
+  assert(fits(seamothTitle),'every Thai title line fits the catch card');
+  assert.equal(seamothTitle.map(r=>r.text).join(''),seamoth.short,'joined native Thai title is complete');
+  await file(1120);
+  for(const q of [seamoth.short,'Pegasus laternarius'])assert(await match(q,1120));
+  assert(!await match(seamoth.long,1120),'distinct long-finned seamoth does not become a short-finned alias');
+  await page.evaluate(()=>showBookEntry(1120));
+  assert.equal(await page.locator('#bookDetail h2').textContent(),seamoth.short);
+  assert.match(await page.locator('#bookDetail').textContent(),/Pegasus laternarius/u);
+  await page.evaluate(()=>closeBookDetail());
   await land(2448,grunter[5]);
   assert.equal(await page.locator('#message').textContent(),'ปลาครืดคราด');
   assert(!/ถอดเสียง/u.test(await page.locator('#metrics').textContent()));
@@ -166,6 +203,7 @@ const {chromium}=require('playwright-core');
   assert.equal(await page.evaluate(()=>g.caught(1433)),1);
   assert.equal(await page.evaluate(()=>g.caught(1164)),1);
   assert.deepEqual(await page.evaluate(()=>[2448,805].map(id=>g.caught(id))),[1,1]);
+  assert.equal(await page.evaluate(()=>g.caught(1120)),1,'new Thai label preserves the same filed specimen after reload');
   assert.equal(await page.evaluate(()=>{
    $('bookSearch').value='ปลาสร้อยนกเขาทะเล';
    return bookMatches().includes(1164);
