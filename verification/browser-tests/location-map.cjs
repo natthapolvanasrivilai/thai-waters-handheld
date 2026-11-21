@@ -49,6 +49,15 @@ assert.equal(orderedIds[1],unmapped);
      },{capture:true});
     }
    });
+   async function touchCenter(selector){
+    const button=p.locator(selector);
+    await button.scrollIntoViewIfNeeded();
+    const b=await button.boundingBox();assert(b,name+' '+selector);
+    const x=Math.round(b.x+b.width/2),y=Math.round(b.y+b.height/2);
+    assert.equal(await p.evaluate(({x,y})=>document.elementFromPoint(x,y)?.closest('button')?.id,{x,y}),selector.slice(1),
+     'Physical button center must be hittable: '+selector);
+    return {x,y};
+   }
    async function activateTravel(selector,id){
     const button=p.locator(selector),key=selector.slice(1);
     assert(await button.isVisible()&&await button.isEnabled(),name+' '+key+' must be visible and enabled');
@@ -57,21 +66,23 @@ assert.equal(orderedIds[1],unmapped);
     const trace=()=>p.evaluate(()=>mapTravelTrace);
     await p.evaluate(()=>{mapTravelTrace.length=0;});
     if(touchSession){
-     await button.scrollIntoViewIfNeeded();
-     const b=await button.boundingBox();assert(b,name+' '+key);
-     const x=Math.round(b.x+b.width/2),y=Math.round(b.y+b.height/2);
-     assert.equal(await p.evaluate(({x,y})=>document.elementFromPoint(x,y)?.closest('button')?.id,{x,y}),key,
-      'Physical button center must be hittable: '+selector);
-     await touchSession.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+     const point=await touchCenter(selector);
+     await touchSession.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
      // Same real contact interval as gallery-history, rather than a zero-duration tap.
      await new Promise(resolve=>setTimeout(resolve,65));
      await touchSession.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
     }else await button.press('Enter');
-    await p.waitForFunction(key=>mapTravelTrace.some(e=>e.type==='click'&&e.trusted&&e.id===key),
-     key,{timeout:2500}).catch(()=>{});
+    const mapTouch=Boolean(touchSession&&key==='mapTravel'),eventType=mapTouch?'pointerup':'click';
+    await p.waitForFunction(({key,eventType})=>mapTravelTrace.some(e=>e.type===eventType&&e.trusted&&e.id===key),
+     {key,eventType},{timeout:2500}).catch(()=>{});
     const events=await trace();
     const context=()=>name+' '+selector+' events='+JSON.stringify(events)+' errors='+JSON.stringify(errors);
-    assert.equal(events.filter(e=>e.type==='click'&&e.trusted&&e.id===key).length,1,context());
+    const trusted=kind=>events.filter(e=>e.type===kind&&e.trusted&&e.id===key);
+    if(mapTouch){
+     assert.deepEqual(trusted('pointerdown').map(e=>e.pointer),['touch'],context());
+     assert.deepEqual(trusted('pointerup').map(e=>e.pointer),['touch'],context());
+     assert.equal(trusted('click').length,0,'map touch needs no downstream compatibility click: '+context());
+    }else assert.equal(trusted('click').length,1,context());
     // chooseSpot updates synchronously in the click handler. A longer arrival wait
     // would obscure the difference between missing input and an application error.
     assert.equal(await p.evaluate(()=>placeId),id,context());
@@ -159,6 +170,17 @@ assert.equal(orderedIds[1],unmapped);
    assert(await p.locator('#arrivalSkip').isHidden());
    assert.deepEqual(await snapshot(),beforeState,'selection/pan must not change live, pending, engine or saved bytes');
    assert.equal(await p.locator('#mapWaterbody').inputValue(),picked);
+   if(touchSession){
+    const point=await touchCenter('#mapTravel');
+    await touchSession.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
+    await touchSession.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});
+    assert.deepEqual(await snapshot(),beforeState,'cancelled touch on Travel cannot relocate or save');
+    await touchSession.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
+    await touchSession.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:point.x+22,y:point.y}]});
+    await touchSession.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[point]});
+    await touchSession.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    assert.deepEqual(await snapshot(),beforeState,'drag out and back on Travel cannot relocate or save');
+   }
    await activateTravel('#mapTravel',16);
    await p.locator('#arrivalSkip').waitFor();
    assert.match(await p.locator('#spot').textContent(),/Kwan Phayao/i);

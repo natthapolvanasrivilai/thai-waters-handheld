@@ -80,7 +80,28 @@ const locationMap=(()=>{
  for(const event of ['focus','blur'])canvas.addEventListener(event,draw);
  picker.onchange=()=>{model.choose(picker.value===''?null:Number(picker.value));update(true);};
  $('mapReset').onclick=()=>{model.resetPan();draw();canvas.focus({preventScroll:true});};
- travel.onclick=()=>model.confirm(allowed(),travelToSpot);
+ // A touch pointerup is authoritative for Map Travel only. The same gesture
+ // may yield no click after map pan, or a delayed one after the menu closes.
+ const activation=waterbodyMapModel.createTouchActivation();
+ const confirm=()=>model.confirm(allowed(),travelToSpot);
+ const hit=e=>document.elementFromPoint(e.clientX,e.clientY)?.closest('button')===travel;
+ const scope=e=>allowed()&&!travel.disabled&&hit(e)?model.selected():null;
+ window.addEventListener('pointerdown',e=>{
+  activation.down(e,e.target.closest?.('button')===travel?scope(e):null);
+ },true);
+ window.addEventListener('pointermove',activation.move,true);
+ for(const type of ['pointercancel','lostpointercapture'])window.addEventListener(type,activation.cancel,true);
+ window.addEventListener('pointerup',e=>activation.up(e,scope(e),confirm),true);
+ window.addEventListener('click',e=>{
+  if(activation.consume(e)){e.preventDefault();e.stopImmediatePropagation();}
+ },true);
+ travel.onclick=e=>{
+  // Do not revive a rejected drag via compatibility click. Keep real mouse,
+  // keyboard/assistive activation and older browsers without Pointer Events.
+  if(window.PointerEvent&&e.isTrusted&&e.detail&&
+     (e.pointerType==='touch'||e.sourceCapabilities?.firesTouchEvents))return;
+  confirm();
+ };
  $('mapToList').onclick=()=>{menuSheets.go('spots',0);$('locationMapOpen').focus({preventScroll:true});};
  function open(){
   if(menuSheets.go('spots',2)){labels();canvas.focus({preventScroll:true});}

@@ -39,5 +39,38 @@ const waterbodyMapModel=(()=>{
    position:id=>point(rows.find(r=>r[0]===id)),
    confirm:(allowed,go)=>allowed&&selected!==null?go(selected):false};
  }
- return {create};
+ // A browser can omit the compatibility click for the first touch after a pan.
+ // Compare native event facts only; do not synthesize clicks or touch global state.
+ function createTouchActivation(){
+  const radius=12, maxAge=500;
+  let contact=null,completed=null;
+  const close=(e,start)=>Math.hypot(e.clientX-start.x,e.clientY-start.y)<=radius;
+  const primaryTouch=e=>e.isTrusted&&e.pointerType==='touch'&&e.isPrimary;
+  const at=e=>({id:e.pointerId,x:e.clientX,y:e.clientY});
+  function down(e,scope){
+   if(e.isTrusted&&e.isPrimary)completed=null;
+   const wasActive=contact!==null;contact=null;
+   if(wasActive||scope===null||!primaryTouch(e)||e.button!==0)return false;
+   contact={...at(e),scope};return true;
+  }
+  function move(e){if(contact?.id===e.pointerId&&!close(e,contact))contact=null;}
+  function cancel(e){if(contact?.id===e.pointerId)contact=null;}
+  function up(e,scope,activate){
+   const start=contact;
+   if(start?.id!==e.pointerId)return false;
+   contact=null;
+   if(!primaryTouch(e)||scope===null||scope!==start.scope||!close(e,start)||!activate(scope))return false;
+   completed={...at(e),until:e.timeStamp+maxAge};return true;
+  }
+  function consume(e){
+   const end=completed;
+   if(!end||!e.isTrusted||!e.detail||e.timeStamp>end.until||!close(e,end))return false;
+   if(e.pointerType==='touch'){
+    if(e.pointerId!==end.id)return false;
+   }else if(!e.sourceCapabilities?.firesTouchEvents&&e.pointerType)return false;
+   completed=null;return true;
+  }
+  return {down,move,cancel,up,consume};
+ }
+ return {create,createTouchActivation};
 })();
