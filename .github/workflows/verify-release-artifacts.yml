@@ -235,3 +235,48 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 .github/scripts/nightly-release.py publish nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
+  reload_boundary_diagnostic:
+    needs: browser_build
+    if: github.event_name == 'workflow_dispatch' && github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.ref == 'refs/heads/diagnostic/reload-boundary-62'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: workflow-source
+          sparse-checkout: .github/scripts
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: browser-input-${{ env.SOURCE_SHA }}
+          path: ${{ runner.temp }}/synthetic-reload-input
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - name: Compare exact synthetic saves on file and local HTTP
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          test "$(git -C workflow-source rev-parse HEAD)" = "$GITHUB_WORKFLOW_SHA"
+          input="$RUNNER_TEMP/synthetic-reload-input"
+          (
+            cd "$input"
+            test "$(head -1 BUILD.txt)" = "SOURCE_COMMIT=$SOURCE_SHA"
+            sha256sum -c --strict SHA256SUMS
+          )
+          cp "$input/Thai-Waters-play.html" game/Thai-Waters-play.html
+          npm ci --prefix verification/browser-tests
+          pw="$GITHUB_WORKSPACE/verification/browser-tests/node_modules/playwright-core"
+          (cd verification/browser-tests && ./node_modules/.bin/playwright-core install --with-deps chromium)
+          export NODE_PATH="$GITHUB_WORKSPACE/verification/browser-tests/node_modules"
+          export BROWSER_PATH="$(node -p 'require("playwright-core").chromium.executablePath()')"
+          export EXPECT_BROWSER_VERSION="$(node -p 'require(process.argv[1]+"/browsers.json").browsers.find(b=>b.name==="chromium").browserVersion' "$pw")"
+          export EXACT_HTML_SHA256="$(sha256sum "$input/Thai-Waters-play.html" | cut -d' ' -f1)"
+          node --test workflow-source/.github/scripts/reload-boundary.test.cjs
+          node workflow-source/.github/scripts/reload-boundary.cjs game/Thai-Waters-play.html 4
