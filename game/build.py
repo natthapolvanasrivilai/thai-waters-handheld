@@ -1,5 +1,5 @@
 from pathlib import Path
-import base64,hashlib,json
+import base64,hashlib,json,re,unicodedata
 root=Path(__file__).resolve().parent
 def image(path):return 'data:image/png;base64,'+base64.b64encode(path.read_bytes()).decode()
 catalog=json.loads((root/'content/catalog.json').read_text(encoding='utf-8'))
@@ -59,6 +59,18 @@ assert values['@@THAI_ATLAS@@'].count(thai_name_import)==1
 thai_names_literal=json.dumps(thai_names,ensure_ascii=False)
 assert '</script' not in thai_names_literal.lower()
 values['@@THAI_ATLAS@@']=values['@@THAI_ATLAS@@'].replace(thai_name_import,'const thaiSpecimenLabels = '+thai_names_literal+';')
+transcriptions=json.loads((root/'content/thai-scientific-transcriptions.json').read_text(encoding='utf8'))
+assert transcriptions['format']=='pocket-reel-thai-scientific-transcriptions/v1'
+keyed=[f['name'] for f in catalog['fish'] if f.get('key')]
+assert len(keyed)==len(set(keyed)), 'duplicate keyed Latin identity'
+assert set(transcriptions['names'])==set(keyed), 'scientific transcription keys must exactly cover the keyed catalog'
+for exact, label in transcriptions['names'].items():
+ assert label==unicodedata.normalize('NFC',label) and re.fullmatch(r'[ก-๙]+(?:[ -][ก-๙]+)*',label), exact
+transcript_import="import thaiSpecimenTranscriptions from '../content/thai-scientific-transcriptions.json' with { type: 'json' };"
+assert values['@@THAI_ATLAS@@'].count(transcript_import)==1
+transcript_literal=json.dumps(transcriptions,ensure_ascii=False,separators=(',',':'))
+assert '</script' not in transcript_literal.lower()
+values['@@THAI_ATLAS@@']=values['@@THAI_ATLAS@@'].replace(transcript_import,'const thaiSpecimenTranscriptions = '+transcript_literal+';')
 # The standalone page embeds the atlas module in its classic game script.
 values['@@THAI_ATLAS@@']=values['@@THAI_ATLAS@@'].replace('export function thaiAtlas(', 'function thaiAtlas(')
 template=template.replace('</html>', '<!-- Noto Sans Thai: '+(root/'assets/fonts/NotoSansThai-OFL.txt').read_text(encoding='utf8')+' -->\n</html>')

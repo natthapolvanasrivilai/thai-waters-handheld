@@ -2,8 +2,13 @@
 
 The Thai overlay is additive and browser-only. Stable IDs, art, English original, scientific identifiers, saves, and fictional labels are unchanged. No firmware change.
 
-## Coverage
-Of 2,545 catalog entries: **60 existing Thai labels** (not an independent audit of all 60), **13 source-backed additions** (3 phase 1 + 8 phase 2 + 1 Rayong pilot + 1 trout sweetlips), **345 family labels** (not species names), and **2,127 explicitly unconfirmed**. Adding 8 replaces six family labels and two missing entries. Runtime tests check the 8 expected row changes and rejection on a conflicting key or binomial. The pilot promotes one previously unconfirmed ray to a sourced species label. No simulated test establishes real device Thai font fit.
+## Coverage and naming hierarchy
+
+All 2,545 catalog entries have Thai-script display in Thai mode. The 60 existing, unkeyed labels (including fictional fish) are unchanged. Among 2,485 keyed scientific entries, 84 have exact-name vernacular evidence (13 prior + 71 in this audit); the remaining 2,401 use a clearly marked approximate **ชื่อวิทยาศาสตร์ถอดเสียง**, not a verified Thai common name. Attested regional names can be shared by multiple taxa. A family label is kept as family information and caught-only search, never promoted to a species label. The exact Latin and stable ID remain the identity authority. Runtime does not rename an uncaught silhouette or expose an undiscovered identity in name search.
+
+The 71 new rows combine ONEP regional taxon/checklist records, Department of Fisheries species-manual Appendix A, and a separate marine source pass. Each shipped row in [the overlay](thai-specimen-labels.json) records stable ID, GBIF key, exact binomial, name and cited source(s). Regional batches overlapped at IDs 1046 and 1290: paired same-taxon labels retained at 1046; the more specific Department of Fisheries name preferred at 1290, without promoting a generic group name. Appendix A overlaps at IDs 204 and 583 use the appendix display and keep attested same-taxon field/ONEP aliases. Provenance verifies a name, not where the game fish was caught. Source collection is still open and no simulated test establishes real device Thai font fit.
+
+[The reading-aid generator](build-thai-scientific-transcriptions.py) deterministically applies project grapheme and syllable rules to the exact catalog binomial. It is an approximate phonetic aid, not an official standard or a guarantee of scientific pronunciation. Regenerate it from repository source with `python game/content/build-thai-scientific-transcriptions.py`. The browser build requires exact keyed-catalog coverage and NFC Thai script. Preserve English, exact binomial, stable art, save and caught-only search across future source-backed promotions.
 
 ## DOF source and join
 - Thai Department of Fisheries, [Thai Aquatic Animals Data](https://data.go.th/en/dataset/item_cb5d392d-2824-4ac4-a171-2c4796ce81c2), resource ce7f4a78-71db-4754-9084-edca971903bd, DGA metadata says Creative Commons Attributions (version not shown). Original CSV bytes not reliably reachable. [ThaiGovData article](https://thaigovdata.com/en/datasets/item-cb5d392d-2824-4ac4-a171-2c4796ce81c2) links its archived exact-source copy [DOF_fishbase.csv](https://thaigovdata.com/dl/9306): 323,717 bytes, 162 rows, UTF-8 BOM, SHA256 c3a6ba99d9724fd2608bf20d9833c1cbc7e561c6a804208feee28a5a6771284b. Checking mirrored attribution and structure is not proof of byte parity with original.
@@ -19,6 +24,10 @@ Of 2,545 catalog entries: **60 existing Thai labels** (not an independent audit 
 ## Trout sweetlips
 
 - **#1164 / [GBIF key 9713196](https://www.gbif.org/species/9713196) / *Plectorhinchus pictus* (Tortonese, 1936):** [Thai Department of Fisheries inspection manual](https://www4.fisheries.go.th/file_area/202504241356561_file.pdf), Appendix A, row SS-44, lists **ปลาสร้อยนกเขาทะเล**. Adjacent row SS-43 is *Diagramma pictum*, a different species. The [WoRMS name records](https://www.marinespecies.org/aphia.php?p=taxlist&tName=Plectorhinchus+pictus) distinguish the older same-spelling name (Thunberg, 1792), treated as a *Diagramma pictum* synonym, from the Tortonese record used here. This update adds no aliases and does not import the manual's size thresholds into the game.
+
+## Javelin grunter
+
+- **#2448 / [GBIF key 2382902](https://www.gbif.org/species/2382902) / *Pomadasys kaakan* (Cuvier, 1830):** the [Kasetsart University Library species entry](https://ebook.lib.ku.ac.th/ebook27/ebook/20140141/files/basic-html/page148.html), printed p.143, and the [ONEP TH-BIF Ranong species record](https://thbif.onep.go.th/minisite/ranong/taxons/detail/12261) attest **ปลาครืดคราด**. The [ONEP national species record](https://thbif.onep.go.th/taxons/detail/33286) also gives **ปลาออดแอดขาว**, retained only as a caught-species search alias. Do not import reference measurements or infer a gameplay capture location from these sources.
 
 ## Holds, not fixes
 - Kryptopterus vitreolus is not K. bicirrhis: the primary [species description](https://mapress.com/zt/article/view/zootaxa.3630.2.6) documents the old misidentification. Keep ปลาก้างพระร่วง on #2354, not #805; don't propagate it from historical lists.

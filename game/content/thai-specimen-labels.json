@@ -102,6 +102,597 @@
       "name": "ปลาทรงเครื่อง",
       "aliases": [],
       "source": "https://thbif.onep.go.th/taxons/taxon_detail/Epalzeorhynchos%20bicolor"
+    },
+    "204": {
+      "key": 2390522,
+      "scientific": "Atule mate",
+      "name": "ปลาสีกุนบั้ง",
+      "aliases": [
+        "ปลาสีกุนน้ำ",
+        "ปลาสีกุนกบ"
+      ],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-05; not a game size rule. Also attested regional/field names: https://www4.fisheries.go.th/local/file_announce/202402291111431_announce.pdf; DoF field report vs ONEP alternative; one taxon; further exact source(s): https://thbif.onep.go.th/minisite/lagoon/onepage"
+    },
+    "212": {
+      "key": 4286082,
+      "scientific": "Auxis thazard",
+      "name": "ปลาโอขาว",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
+      "reference": "Exact; do not transfer the generic English Bullet tuna from ONEP to a Thai alias; further exact source(s): https://thbif.onep.go.th/taxons/taxon_detail/Auxis%20thazard"
+    },
+    "366": {
+      "key": 2406374,
+      "scientific": "Chanos chanos",
+      "name": "ปลานวลจันทร์ทะเล",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-51; not a game size rule."
+    },
+    "491": {
+      "key": 2391036,
+      "scientific": "Decapterus maruadsi",
+      "name": "ปลาทูแขกครีบยาว",
+      "aliases": [
+        "ปลาทูแขกครีบหูยาว"
+      ],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Specific official usage; do not enter family label as name; further exact source(s): https://thbif.onep.go.th/taxons/detail/12763"
+    },
+    "497": {
+      "key": 5209594,
+      "scientific": "Diagramma pictum",
+      "name": "ปลาสร้อยนกเขาจุดทอง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-43; not a game size rule."
+    },
+    "527": {
+      "key": 5210446,
+      "scientific": "Elagatis bipinnulata",
+      "name": "ปลาเหลืองโพรง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-38; not a game size rule."
+    },
+    "529": {
+      "key": 2393382,
+      "scientific": "Eleutheronema tetradactylum",
+      "name": "ปลากุเรา",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-14; not a game size rule."
+    },
+    "550": {
+      "key": 2388152,
+      "scientific": "Epinephelus areolatus",
+      "name": "ปลากะรังลายหางตัด",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-27; not a game size rule."
+    },
+    "553": {
+      "key": 2388213,
+      "scientific": "Epinephelus coioides",
+      "name": "ปลากะรังดอกแดง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-28; not a game size rule."
+    },
+    "568": {
+      "key": 2388602,
+      "scientific": "Epinephelus sexfasciatus",
+      "name": "ปลากะรังหกแถบ",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-26; not a game size rule."
+    },
+    "569": {
+      "key": 2388137,
+      "scientific": "Epinephelus tauvina",
+      "name": "ปลากะรังปากแม่น้ำ",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-29; not a game size rule."
+    },
+    "573": {
+      "key": 2412568,
+      "scientific": "Escualosa thoracata",
+      "name": "ปลาเกล็ดขาว",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-13; not a game size rule."
+    },
+    "583": {
+      "key": 5208561,
+      "scientific": "Euthynnus affinis",
+      "name": "ปลาโอลาย",
+      "aliases": [
+        "ปลาโอสาย"
+      ],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-37; not a game size rule. Also attested regional/field names: https://www4.fisheries.go.th/local/file_document/20200918105348_1_file.pdf; Primary report and identifiable ONEP alternative; further exact source(s): https://thbif.onep.go.th/taxons/detail/16477"
+    },
+    "616": {
+      "key": 2369436,
+      "scientific": "Gerres filamentosus",
+      "name": "ปลาดอกหมากกระโดง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-20; not a game size rule."
+    },
+    "644": {
+      "key": 2391331,
+      "scientific": "Gnathanodon speciosus",
+      "name": "ปลาตะคองเหลือง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-49; not a game size rule."
+    },
+    "735": {
+      "key": 2413479,
+      "scientific": "Hilsa kelee",
+      "name": "ปลามงโกรย",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-54; not a game size rule."
+    },
+    "793": {
+      "key": 2399528,
+      "scientific": "Johnius belangerii",
+      "name": "ปลาจวดหางพัด",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 501"
+    },
+    "802": {
+      "key": 2374191,
+      "scientific": "Katsuwonus pelamis",
+      "name": "ปลาทูน่าท้องแถบ",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
+      "reference": "Exact DoF and ONEP pair; further exact source(s): https://thbif.onep.go.th/taxons/detail/22189"
+    },
+    "818": {
+      "key": 5210442,
+      "scientific": "Lactarius lactarius",
+      "name": "ปลาใบขนุน",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-45; not a game size rule."
+    },
+    "821": {
+      "key": 2407773,
+      "scientific": "Lagocephalus lunaris",
+      "name": "ปักเป้าหลังเขียว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 500"
+    },
+    "846": {
+      "key": 2374823,
+      "scientific": "Lethrinus lentjan",
+      "name": "ปลาหมูสี",
+      "aliases": [
+        "หมูสีแก้มแดง"
+      ],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Real common display, alias verified by ONEP; further exact source(s): https://thbif.onep.go.th/taxons/detail/23353"
+    },
+    "854": {
+      "key": 2385069,
+      "scientific": "Lutjanus argentimaculatus",
+      "name": "ปลากะพงแดง",
+      "aliases": [],
+      "source": "https://www3.rdi.ku.ac.th/?p=95527",
+      "reference": "Kasetsart primary research project; ONEP Ranong line 494"
+    },
+    "866": {
+      "key": 2384741,
+      "scientific": "Lutjanus lutjanus",
+      "name": "ปลากะพงข้างเหลือง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 493; Rayong also attests alternate"
+    },
+    "868": {
+      "key": 2384789,
+      "scientific": "Lutjanus malabaricus",
+      "name": "ปลากะพงแดงสั้น",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-40; not a game size rule."
+    },
+    "872": {
+      "key": 2384899,
+      "scientific": "Lutjanus sebae",
+      "name": "ปลากะพงแดง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-39; not a game size rule."
+    },
+    "873": {
+      "key": 2384771,
+      "scientific": "Lutjanus vitta",
+      "name": "ปลากะพงแดงข้างแถว",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-41; not a game size rule."
+    },
+    "895": {
+      "key": 5210642,
+      "scientific": "Megalaspis cordyla",
+      "name": "ปลาแข้งไก่",
+      "aliases": [
+        "หางแข็ง"
+      ],
+      "source": "https://www4.fisheries.go.th/local/file_document/20200807140252_1_file.pdf",
+      "reference": "DoF table resolves spelling artefacts in OCR, exact species; further exact source(s): https://www4.fisheries.go.th/file_area/202504241356561_file.pdf"
+    },
+    "913": {
+      "key": 5211117,
+      "scientific": "Monodactylus argenteus",
+      "name": "ปลาเฉี่ยวหิน",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 487"
+    },
+    "932": {
+      "key": 5201896,
+      "scientific": "Mystus gulio",
+      "name": "ปลาอีกง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 485"
+    },
+    "962": {
+      "key": 2379975,
+      "scientific": "Nemipterus hexodon",
+      "name": "ปลาทรายแดงโม่ง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-22; not a game size rule."
+    },
+    "1043": {
+      "key": 5213766,
+      "scientific": "Ostracion cubicus",
+      "name": "ปลากล่อง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 229, 477; local shared common name"
+    },
+    "1046": {
+      "key": 2400242,
+      "scientific": "Otolithes ruber",
+      "name": "ปลาจวดเขี้ยวโง้ง",
+      "aliases": [
+        "ปลาจวดเตียนเขี้ยว"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/onepage",
+      "reference": "ONEP regional names differ, both exact; corroborating second institution useful; further exact source(s): https://thbif.onep.go.th/minisite/ranong/onepage; Ranong source context: ONEP Ranong line 228, 476"
+    },
+    "1055": {
+      "key": 2397682,
+      "scientific": "Pampus argenteus",
+      "name": "ปลาจะละเม็ดขาว",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-18; not a game size rule."
+    },
+    "1056": {
+      "key": 2397671,
+      "scientific": "Pampus chinensis",
+      "name": "ปลาจะละเม็ดเทา",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-19; not a game size rule."
+    },
+    "1105": {
+      "key": 2391217,
+      "scientific": "Parastromateus niger",
+      "name": "ปลาจะละเม็ดดำ",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-17; not a game size rule."
+    },
+    "1122": {
+      "key": 5208652,
+      "scientific": "Pelates quadrilineatus",
+      "name": "ปลาข้างตะเภาสี่เส้น",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 222, 473"
+    },
+    "1148": {
+      "key": 2396182,
+      "scientific": "Photopectoralis bindus",
+      "name": "ปลาแป้น",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-57; not a game size rule."
+    },
+    "1159": {
+      "key": 5201390,
+      "scientific": "Platycephalus indicus",
+      "name": "ปลาหางควาย",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-56; not a game size rule."
+    },
+    "1162": {
+      "key": 9815299,
+      "scientific": "Plectorhinchus gibbosus",
+      "name": "ปลาสร้อยนกเขาปากหมู",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 197, 471; distinct from P. pictus"
+    },
+    "1175": {
+      "key": 2341920,
+      "scientific": "Plotosus canius",
+      "name": "ปลาดุกทะเล",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-48; not a game size rule."
+    },
+    "1176": {
+      "key": 7965247,
+      "scientific": "Plotosus lineatus",
+      "name": "ปลาดุกทะเลลาย",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-47; not a game size rule."
+    },
+    "1208": {
+      "key": 2375019,
+      "scientific": "Priacanthus tayenus",
+      "name": "ปลาตาหวานจุด",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-24; not a game size rule."
+    },
+    "1221": {
+      "key": 2378083,
+      "scientific": "Psammogobius biocellatus",
+      "name": "ปลาบู่หัวแบน",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 187, 466"
+    },
+    "1235": {
+      "key": 2375911,
+      "scientific": "Pseudogobius javanicus",
+      "name": "ปลาบู่ชวา",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 185, 464"
+    },
+    "1264": {
+      "key": 2374336,
+      "scientific": "Rastrelliger brachysoma",
+      "name": "ปลาทู",
+      "aliases": [
+        "ทูสั้น"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/647",
+      "reference": "Distinguished from Rastrelliger kanagurta, existing game short name; further exact source(s): https://www4.fisheries.go.th/local/file_document/20200714160215_1_file.pdf"
+    },
+    "1286": {
+      "key": 2412822,
+      "scientific": "Sardinella albella",
+      "name": "ปลาหลังเขียว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 173, 460"
+    },
+    "1290": {
+      "key": 2412787,
+      "scientific": "Sardinella gibbosa",
+      "name": "ปลาหลังเขียวข้างจุด",
+      "aliases": [
+        "หลังเขียวแถบทอง"
+      ],
+      "source": "https://www4.fisheries.go.th/local/file_announce/202402291111431_announce.pdf",
+      "reference": "More specific DoF primary; short ปลาหลังเขียว shared by several species and not used as primary here; further exact source(s): https://thbif.onep.go.th/taxons/detail/36492; Ranong source context: ONEP Ranong line 174, 461; local shared common name"
+    },
+    "1302": {
+      "key": 2401133,
+      "scientific": "Saurida elongata",
+      "name": "ปลาปากคม",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-32; not a game size rule."
+    },
+    "1309": {
+      "key": 2401167,
+      "scientific": "Saurida undosquamis",
+      "name": "ปลาปากคมหางจุด",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-31; not a game size rule."
+    },
+    "1323": {
+      "key": 2394736,
+      "scientific": "Scatophagus argus",
+      "name": "ปลาตะกรับ",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 172, 459"
+    },
+    "1332": {
+      "key": 2380080,
+      "scientific": "Scolopsis taenioptera",
+      "name": "ปลาทรายขาวหูแดง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "DOF Appendix A row SS-21 attests regional ทรายขาวหูแดง, with standard ปลา prefix; ONEP shorter ปลาทรายขาว"
+    },
+    "1333": {
+      "key": 2380093,
+      "scientific": "Scolopsis vosmeri",
+      "name": "ปลาทรายขาว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 171, 458; local shared common name"
+    },
+    "1338": {
+      "key": 2374255,
+      "scientific": "Scomberomorus commerson",
+      "name": "ปลาอินทรีบั้ง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20200807140252_1_file.pdf",
+      "reference": "Exact spelling corroborated; do not map from distinct listing S. commersoni without a taxonomy authority; further exact source(s): https://thbif.onep.go.th/minisite/lagoon/onepage"
+    },
+    "1339": {
+      "key": 2374233,
+      "scientific": "Scomberomorus guttatus",
+      "name": "ปลาอินทรีจุด",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
+      "reference": "Exact DoF and ONEP pair; further exact source(s): https://thbif.onep.go.th/taxons/detail/37103"
+    },
+    "1351": {
+      "key": 2390233,
+      "scientific": "Siganus canaliculatus",
+      "name": "ปลาสลิดหินจุดขาว",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-52; not a game size rule."
+    },
+    "1354": {
+      "key": 2390286,
+      "scientific": "Siganus guttatus",
+      "name": "ปลาสลิดหินจุดแดง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 164, 454"
+    },
+    "1359": {
+      "key": 2390251,
+      "scientific": "Siganus vermiculatus",
+      "name": "ปลาสลิดหิน",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
+      "reference": "ONEP Ranong line 162, 453; local shared common name, Latin identity retained"
+    },
+    "1363": {
+      "key": 2391929,
+      "scientific": "Sillago sihama",
+      "name": "ปลาเห็ดโคน",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-30; not a game size rule."
+    },
+    "1441": {
+      "key": 2413397,
+      "scientific": "Tenualosa toli",
+      "name": "ปลาตะลุมพุก",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-50; not a game size rule."
+    },
+    "1442": {
+      "key": 2374521,
+      "scientific": "Terapon jarbua",
+      "name": "ปลาข้างตะเภา",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-16; not a game size rule."
+    },
+    "1456": {
+      "key": 2373933,
+      "scientific": "Thunnus tonggol",
+      "name": "ปลาโอดำ",
+      "aliases": [
+        "โอหม้อ"
+      ],
+      "source": "https://www4.fisheries.go.th/local/file_document/20210818113216_1_file.pdf",
+      "reference": "DoF illustrated species account §1.50 and standard SS-35; further exact source(s): https://www4.fisheries.go.th/file_area/202504241356561_file.pdf"
+    },
+    "1469": {
+      "key": 2389407,
+      "scientific": "Trichiurus lepturus",
+      "name": "ปลาดาบเงิน",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-46; not a game size rule."
+    },
+    "1578": {
+      "key": 2385226,
+      "scientific": "Aprion virescens",
+      "name": "ปลากะพงเขียว",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-42; not a game size rule."
+    },
+    "1676": {
+      "key": 2381939,
+      "scientific": "Coryphaena hippurus",
+      "name": "ปลาอีโต้มอญ",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-53; not a game size rule."
+    },
+    "1718": {
+      "key": 2412967,
+      "scientific": "Dussumieria acuta",
+      "name": "ปลากะแลก้วย",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_announce/202402291111431_announce.pdf",
+      "reference": "Single exact field-report row; second source useful before release"
+    },
+    "1972": {
+      "key": 9558403,
+      "scientific": "Planiliza subviridis",
+      "name": "ปลากระบอกดำ",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-08; not a game size rule."
+    },
+    "2112": {
+      "key": 2394208,
+      "scientific": "Sphyraena jello",
+      "name": "ปลาสาก",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai DOF Appendix A species-name column SS-15; not a game size rule."
+    },
+    "2134": {
+      "key": 2374013,
+      "scientific": "Thunnus albacares",
+      "name": "ปลาทูน่าครีบเหลือง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "DoF standard SS-34 and fishery management publication; further exact source(s): https://www4.fisheries.go.th/local/file_document/20171011131758_file.pdf"
+    },
+    "2135": {
+      "key": 2373996,
+      "scientific": "Thunnus obesus",
+      "name": "ปลาทูน่าตาโต",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
+      "reference": "DoF technical list and separate fishery species research; further exact source(s): https://www4.fisheries.go.th/local/file_document/20170306135453_file.pdf"
+    },
+    "2158": {
+      "key": 2397850,
+      "scientific": "Xiphias gladius",
+      "name": "ปลากระโทงดาบ",
+      "aliases": [
+        "ปลากระโทงแทงดาบ"
+      ],
+      "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
+      "reference": "DoF technical list, field key, and alternate spelling in separate DoF report; further exact source(s): https://www4.fisheries.go.th/local/file_document/20191011152547_1_file.pdf, https://www4.fisheries.go.th/local/file_document/20200810120705_new.pdf"
+    },
+    "2448": {
+      "key": 2382902,
+      "scientific": "Pomadasys kaakan",
+      "name": "ปลาครืดคราด",
+      "aliases": [
+        "ปลาออดแอดขาว"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/ranong/taxons/detail/12261",
+      "reference": "Kasetsart University Library ebook 20140141 printed p.143 matches exact taxon: https://ebook.lib.ku.ac.th/ebook27/ebook/20140141/files/basic-html/page148.html; national ONEP alias: https://thbif.onep.go.th/taxons/detail/33286"
     }
   },
   "families": {

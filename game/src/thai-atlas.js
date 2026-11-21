@@ -135,6 +135,13 @@ const thaiMeasures = {
 };
 
 import thaiSpecimenLabels from '../content/thai-specimen-labels.json' with { type: 'json' };
+import thaiSpecimenTranscriptions from '../content/thai-scientific-transcriptions.json' with { type: 'json' };
+
+// This short label makes the provenance explicit without using an extra
+// line on the 480×320 catch card. English and verified Thai are untouched.
+function thaiNameNote(fish) {
+  return fish.thaiNameKind === 'transliteration' ? 'ชื่อวิทยาศาสตร์ถอดเสียง' : '';
+}
 
 export function thaiAtlas(atlas) {
   const verifiedSpecies = thaiSpecimenLabels.species;
@@ -161,8 +168,11 @@ export function thaiAtlas(atlas) {
       const species = verifiedSpecies[id];
       const family = thaiSpecimenLabels.families[fish.family];
       fish.scientificName = fish.name;
-      fish.thaiNameKind = species ? 'species' : family ? 'family' : 'unconfirmed';
-      fish.name = species?.name ?? family?.label ?? 'ยังไม่มีชื่อไทยที่ยืนยัน';
+      fish.thaiNameKind = species ? 'species' : 'transliteration';
+      const transcription = thaiSpecimenTranscriptions.names[fish.scientificName];
+      if (!transcription) throw Error('Missing Thai scientific transcription for catalog ID ' + id);
+      fish.name = species?.name ?? transcription;
+      if (family) fish.thaiFamilyName = family.label;
       fish.thaiSearchAliases = species?.aliases ?? [];
     }
     if (Object.hasOwn(thaiMeasures, fish.measure)) fish.measure = thaiMeasures[fish.measure];

@@ -27,7 +27,7 @@ function drawCup(){
  const fish=atlas.fish[goal.species],kit=cupKit(goal.species),ready=!!kit&&cupTravelReady();
  const timing=goal.species===40?cupWords(' Fish at dusk or night.',' ตกช่วงพลบค่ำหรือกลางคืน'):goal.species===41?cupWords(' Fish at dawn or night.',' ตกช่วงรุ่งเช้าหรือกลางคืน'):'';
  const units=cupWords('cm','ซม.'),metric=g?L(readEngineText(g.measurement(goal.species,goal.minimum))):'';
- cupText('cupGoal',fish.name);
+ cupText('cupGoal',[fish.name,thaiNameNote(fish)].filter(Boolean).join(' · '));
  cupText('cupTargetSize',cupWords('Qualifying minimum: ','ขั้นต่ำที่เข้าเกณฑ์: ')+goal.minimum+' '+units+(metric?' · '+metric:''));
  const step=[1,2,5,10,20,25,50,100,250].find(n=>4*n>goal.minimum),limit=4*step;
  const mark=$('cupRulerMark'),position=(100*goal.minimum/limit)+'%';
