@@ -1,5 +1,13 @@
 {
   "species": {
+    "72": {
+      "key": 2368117,
+      "scientific": "Acanthopsoides delphax",
+      "name": "ปลารากกล้วยแคระหน้ายาว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/232",
+      "reference": "Index for printed p. 12 has alternate local phrasing; exact TH-BIF display takes precedence, not index OCR (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
     "77": {
       "key": 5209210,
       "scientific": "Acanthurus leucosternon",
@@ -9,43 +17,49 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/269"
     },
-    "2152": {
-      "key": 2391358,
-      "scientific": "Uraspis uraspis",
-      "name": "ปลาจุ้ยจินบั้ง",
+    "87": {
+      "key": 9490645,
+      "scientific": "Acantopsis dinema",
+      "name": "ปลารากกล้วยลายจุด",
       "aliases": [
-        "Caranx uraspis",
-        "ปลาจุยจินบั้ง"
+        "รากกล้วยจุด"
       ],
-      "source": "https://mdc.library.mju.ac.th/ebook/352336.pdf",
-      "reference": "Department of Fisheries, ชนิดปลาบริเวณอ่าวไทยตอนในจากเรือสำรวจประมง 2"
+      "source": "https://thbif.onep.go.th/taxons/detail/297",
+      "reference": "Index for printed p. 13 uses รากกล้วยจุด (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
     },
-    "2354": {
-      "key": 7916021,
-      "scientific": "Kryptopterus vitreolus",
-      "name": "ปลาก้างพระร่วง",
-      "aliases": [
-        "ก้างพระร่วง"
-      ],
-      "source": "https://thbif.onep.go.th/taxons/detail/22338"
-    },
-    "1164": {
-      "key": 9713196,
-      "scientific": "Plectorhinchus pictus",
-      "name": "ปลาสร้อยนกเขาทะเล",
+    "89": {
+      "key": 9468030,
+      "scientific": "Acantopsis rungthipae",
+      "name": "ปลารากกล้วยด่าง",
       "aliases": [],
-      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
-      "reference": "Thai Department of Fisheries inspection manual, Appendix A row SS-44; GBIF 9713196 is Plectorhinchus pictus (Tortonese, 1936), not the Thunberg name associated with Diagramma pictum in SS-43"
+      "source": "https://thbif.onep.go.th/taxons/detail/300",
+      "reference": "Index for printed p. 13 has a different short label; use exact TH-BIF spelling (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
     },
-    "1433": {
-      "key": 5215810,
-      "scientific": "Taeniura lymma",
-      "name": "ปลากระเบนทอง",
+    "113": {
+      "key": 2340892,
+      "scientific": "Akysis varius",
+      "name": "ขยุย",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/07/File_vertebrate_Fish_03_270766.pdf",
+      "reference": "Field survey identifies ขยุย as exact Akysis varius (https://doi1.nrct.go.th/ListDoi/Download/403692?Resolve_DOI=10.14457%2FBRU.res.2010.3); Printed p. 67; guide extraction distorts compound names, not imported (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
+    "130": {
+      "key": 7489256,
+      "scientific": "Ambastaia nigrolineata",
+      "name": "ปลาหมูน่าน",
       "aliases": [
-        "ปลากระเบนหางพัดจุดฟ้า"
+        "หมูน่าน"
       ],
-      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/427",
-      "reference": "Thai Department of Fisheries coastal-resource survey, https://www4.fisheries.go.th/local/file_document/20210426102505_1_file.pdf"
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/02/File_vertebrate_Fish_03_070266.pdf",
+      "reference": "Index points to the species account on printed p. 7 (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
+    "133": {
+      "key": 2342848,
+      "scientific": "Amblyceps variegatum",
+      "name": "ดักแม่กลอง",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx",
+      "reference": "ONEP workbook ALL row 323. Earlier ONEP, Fishes / 27; same institution (https://chm-thai.onep.go.th/wp-content/uploads/2023/07/File_vertebrate_Fish_03_270766.pdf)"
     },
     "151": {
       "key": 5212081,
@@ -75,34 +89,6 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
     },
-    "827": {
-      "key": 2393172,
-      "scientific": "Lates calcarifer",
-      "name": "ปลากะพงขาว",
-      "aliases": [],
-      "source": "https://www4.fisheries.go.th/local/file_document/20191028104026_1_file.pdf"
-    },
-    "1565": {
-      "key": 5212094,
-      "scientific": "Amphiprion percula",
-      "name": "ปลาการ์ตูนเพอร์คูลาร์",
-      "aliases": [],
-      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
-    },
-    "1566": {
-      "key": 5212096,
-      "scientific": "Amphiprion polymnus",
-      "name": "ปลาการ์ตูนอานม้า",
-      "aliases": [],
-      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
-    },
-    "1731": {
-      "key": 2360397,
-      "scientific": "Epalzeorhynchos bicolor",
-      "name": "ปลาทรงเครื่อง",
-      "aliases": [],
-      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Epalzeorhynchos%20bicolor"
-    },
     "204": {
       "key": 2390522,
       "scientific": "Atule mate",
@@ -114,6 +100,16 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-05; not a game size rule. Also attested regional/field names: https://www4.fisheries.go.th/local/file_announce/202402291111431_announce.pdf; DoF field report vs ONEP alternative; one taxon; further exact source(s): https://thbif.onep.go.th/minisite/lagoon/onepage"
     },
+    "211": {
+      "key": 2407793,
+      "scientific": "Auriglobus nefastus",
+      "name": "ปลาปักเป้าทอง",
+      "aliases": [
+        "ปลาปักเป้าน้ำจืดหลังเขียว"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/4422",
+      "reference": "Printed p. 113; exact ปักเป้าทอง (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
     "212": {
       "key": 4286082,
       "scientific": "Auxis thazard",
@@ -121,6 +117,31 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
       "reference": "Exact; do not transfer the generic English Bullet tuna from ONEP to a Thai alias; further exact source(s): https://thbif.onep.go.th/taxons/taxon_detail/Auxis%20thazard"
+    },
+    "220": {
+      "key": 2338051,
+      "scientific": "Bagrichthys majusculus",
+      "name": "ปลาดุกมูลครีบสูง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/4589",
+      "reference": "Index points to the species account on printed p. 82; correct genus in account/TH-BIF, not extracted index (https://www.nagaofoundation.or.jp/documents/Thailand_FGB_2023.pdf)"
+    },
+    "242": {
+      "key": 7193203,
+      "scientific": "Betta mahachaiensis",
+      "name": "ปลากัดมหาชัย",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx",
+      "reference": "ONEP workbook ALL row 20. Independent DoF annual report, exact species and label (https://www4.fisheries.go.th/local/file_document/20220311151202_new.pdf)"
+    },
+    "270": {
+      "key": 2377133,
+      "scientific": "Brachygobius mekongensis",
+      "name": "ปลาบู่แคระ",
+      "aliases": [
+        "บู่น้อยแม่โขง"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/5777"
     },
     "366": {
       "key": 2406374,
@@ -222,6 +243,14 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-20; not a game size rule."
     },
+    "634": {
+      "key": 2341419,
+      "scientific": "Glyptothorax dorsalis",
+      "name": "แค้ติดหินหลังแต้ม",
+      "aliases": [],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx",
+      "reference": "ONEP workbook ALL row 457. Exact TH-BIF species page, same institution and research provenance (https://thbif.onep.go.th/taxons/detail/18148)"
+    },
     "644": {
       "key": 2391331,
       "scientific": "Gnathanodon speciosus",
@@ -269,6 +298,13 @@
       "aliases": [],
       "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
       "reference": "ONEP Ranong line 500"
+    },
+    "827": {
+      "key": 2393172,
+      "scientific": "Lates calcarifer",
+      "name": "ปลากะพงขาว",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20191028104026_1_file.pdf"
     },
     "846": {
       "key": 2374823,
@@ -354,6 +390,14 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-22; not a game size rule."
     },
+    "974": {
+      "key": 2390061,
+      "scientific": "Neodontobutis aurarmus",
+      "name": "ปลาบู่กุดทิง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/27560",
+      "reference": "ONEP iconic species, row 122 (checkpoint cited) (https://chm-thai.onep.go.th/wp-content/uploads/2025/07/Book_UN_IconicSpecies020768.pdf)"
+    },
     "1043": {
       "key": 5213766,
       "scientific": "Ostracion cubicus",
@@ -427,6 +471,14 @@
       "aliases": [],
       "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
       "reference": "ONEP Ranong line 197, 471; distinct from P. pictus"
+    },
+    "1164": {
+      "key": 9713196,
+      "scientific": "Plectorhinchus pictus",
+      "name": "ปลาสร้อยนกเขาทะเล",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
+      "reference": "Thai Department of Fisheries inspection manual, Appendix A row SS-44; GBIF 9713196 is Plectorhinchus pictus (Tortonese, 1936), not the Thunberg name associated with Diagramma pictum in SS-43"
     },
     "1175": {
       "key": 2341920,
@@ -584,6 +636,24 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-30; not a game size rule."
     },
+    "1422": {
+      "key": 2368166,
+      "scientific": "Syncrossus helodes",
+      "name": "ปลาหมูข้างลาย",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/39366",
+      "reference": "DoF row 89; shared label is not identity and aliases not imported (https://www4.fisheries.go.th/local/file_document/20250123181504_1_file.pdf)"
+    },
+    "1433": {
+      "key": 5215810,
+      "scientific": "Taeniura lymma",
+      "name": "ปลากระเบนทอง",
+      "aliases": [
+        "ปลากระเบนหางพัดจุดฟ้า"
+      ],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/427",
+      "reference": "Thai Department of Fisheries coastal-resource survey, https://www4.fisheries.go.th/local/file_document/20210426102505_1_file.pdf"
+    },
     "1441": {
       "key": 2413397,
       "scientific": "Tenualosa toli",
@@ -618,6 +688,70 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-46; not a game size rule."
     },
+    "1515": {
+      "key": 2367787,
+      "scientific": "Yasuhikotakia caudipunctata",
+      "name": "ปลาหมูหางจุด",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20250123181504_1_file.pdf",
+      "reference": "Index points to the species account on printed p. 8; DoF row 254 (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
+    "1516": {
+      "key": 2367773,
+      "scientific": "Yasuhikotakia eos",
+      "name": "หมูครีบแดง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/43045",
+      "reference": "Index points to the species account on printed p. 8; do not add less specific alias หมูหางแดง (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
+    "1517": {
+      "key": 2367790,
+      "scientific": "Yasuhikotakia lecontei",
+      "name": "หมูสัก",
+      "aliases": [],
+      "source": "https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf",
+      "reference": "ONEP survey agrees; guide index points to printed p. 9 (https://chm-thai.onep.go.th/wp-content/uploads/2023/03/14-%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AB%E0%B8%A5%E0%B8%B2%E0%B8%81%E0%B8%AB%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%8A%E0%B8%B5%E0%B8%A7%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B9%83%E0%B8%99%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%A5%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%AA%E0%B8%87%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%87Resize.pdf)"
+    },
+    "1518": {
+      "key": 2367782,
+      "scientific": "Yasuhikotakia morleti",
+      "name": "หมูคอก",
+      "aliases": [],
+      "source": "https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf",
+      "reference": "DoF row 49, guide index points to printed p. 11 (https://www4.fisheries.go.th/local/file_document/20250123181504_1_file.pdf)"
+    },
+    "1526": {
+      "key": 2363806,
+      "scientific": "Aaptosyax grypus",
+      "name": "ปลาสะนากยักษ์",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Aaptosyax%20grypus",
+      "reference": "Exact name independently listed as สะนากยักษ์; do not import other identities from provincial list (https://chm-thai.onep.go.th/wp-content/uploads/2021/10/ONEP_V16.pdf); Index points to the species account on printed p. 39 (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
+    "1561": {
+      "key": 2361126,
+      "scientific": "Amblypharyngodon chulabhornae",
+      "name": "ปลาซิวเจ้าฟ้า",
+      "aliases": [
+        "ซิวเจ้าฟ้าจุฬาภรณ์"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/1852",
+      "reference": "Index for printed p. 54 corroborates ซิวเจ้าฟ้า (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
+    "1565": {
+      "key": 5212094,
+      "scientific": "Amphiprion percula",
+      "name": "ปลาการ์ตูนเพอร์คูลาร์",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
+    },
+    "1566": {
+      "key": 5212096,
+      "scientific": "Amphiprion polymnus",
+      "name": "ปลาการ์ตูนอานม้า",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
+    },
     "1578": {
       "key": 2385226,
       "scientific": "Aprion virescens",
@@ -625,6 +759,14 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-42; not a game size rule."
+    },
+    "1612": {
+      "key": 2366586,
+      "scientific": "Boraras micros",
+      "name": "ปลาซิวแคระสามจุด",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/5616",
+      "reference": "Kasetsart journal (checkpoint cited) (https://tferj.forest.ku.ac.th/jn_file/3924062020TFERJV3N2_P5.pdf)"
     },
     "1676": {
       "key": 2381939,
@@ -641,6 +783,13 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/local/file_announce/202402291111431_announce.pdf",
       "reference": "Single exact field-report row; second source useful before release"
+    },
+    "1731": {
+      "key": 2360397,
+      "scientific": "Epalzeorhynchos bicolor",
+      "name": "ปลาทรงเครื่อง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/taxon_detail/Epalzeorhynchos%20bicolor"
     },
     "1972": {
       "key": 9558403,
@@ -674,6 +823,17 @@
       "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
       "reference": "DoF technical list and separate fishery species research; further exact source(s): https://www4.fisheries.go.th/local/file_document/20170306135453_file.pdf"
     },
+    "2152": {
+      "key": 2391358,
+      "scientific": "Uraspis uraspis",
+      "name": "ปลาจุ้ยจินบั้ง",
+      "aliases": [
+        "Caranx uraspis",
+        "ปลาจุยจินบั้ง"
+      ],
+      "source": "https://mdc.library.mju.ac.th/ebook/352336.pdf",
+      "reference": "Department of Fisheries, ชนิดปลาบริเวณอ่าวไทยตอนในจากเรือสำรวจประมง 2"
+    },
     "2158": {
       "key": 2397850,
       "scientific": "Xiphias gladius",
@@ -683,6 +843,43 @@
       ],
       "source": "https://www4.fisheries.go.th/local/file_document/20170502105133_file.pdf",
       "reference": "DoF technical list, field key, and alternate spelling in separate DoF report; further exact source(s): https://www4.fisheries.go.th/local/file_document/20191011152547_1_file.pdf, https://www4.fisheries.go.th/local/file_document/20200810120705_new.pdf"
+    },
+    "2159": {
+      "key": 2367778,
+      "scientific": "Yasuhikotakia longidorsalis",
+      "name": "หมูหลังยาว",
+      "aliases": [
+        "ปลาหมูครีบหลังยาว"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/43047",
+      "reference": "DoF printed p. 154 (checkpoint cited) (https://www4.fisheries.go.th/local/pic_activities/202310191858261_pic.pdf)"
+    },
+    "2200": {
+      "key": 2407129,
+      "scientific": "Balistoides conspicillum",
+      "name": "วัวตัวตลก",
+      "aliases": [
+        "ปลาวัวตัวตลก"
+      ],
+      "source": "https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx",
+      "reference": "ONEP workbook ALL row 466. Exact TH-BIF species page attests both forms, same institution (https://thbif.onep.go.th/taxons/detail/4632)"
+    },
+    "2202": {
+      "key": 9308968,
+      "scientific": "Barbodes rhombeus",
+      "name": "ปลาตะเพียนน้ำตก",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/4723",
+      "reference": "Index for printed p. 39 corroborates ตะเพียนน้ำตก (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
+    },
+    "2354": {
+      "key": 7916021,
+      "scientific": "Kryptopterus vitreolus",
+      "name": "ปลาก้างพระร่วง",
+      "aliases": [
+        "ก้างพระร่วง"
+      ],
+      "source": "https://thbif.onep.go.th/taxons/detail/22338"
     },
     "2448": {
       "key": 2382902,
