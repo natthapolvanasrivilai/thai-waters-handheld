@@ -1,9 +1,39 @@
 const {requireBootHome}=require('./boot-home-check.cjs');
 const assert=require('node:assert/strict'),path=require('node:path'),{pathToFileURL}=require('node:url');
 const {chromium,webkit}=require('playwright-core');
+// Park a real mouse on one mode, then operate a different row by keyboard.
+async function mixedInputFocus(browser){
+ const p=await browser.newPage({viewport:{width:900,height:650},reducedMotion:'reduce'});
+ try{
+  await p.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
+  const start=p.locator('#bootStart');await start.waitFor({state:'visible'});await start.click();
+  const rod=p.locator('#bootRoutes [data-to=rod]');
+  // Right-click parks and focuses without activating the game's route.
+  await rod.click({button:'right'});
+  assert(await rod.evaluate(el=>el.matches(':hover')&&document.activeElement===el),'Trusted mouse is parked over Rods & Lures');
+  await p.keyboard.press('Tab');
+  const witness=await p.evaluate(()=>{
+   const dock=$('arcadeDock'),parked=dock.querySelector('[data-to=rod]'),focused=dock.querySelector('[data-to=book]');
+   const marked=b=>getComputedStyle(b.querySelector('.arcade-selector')).visibility==='visible';
+   return {focus:document.activeElement===focused,focusVisible:focused.matches(':focus-visible'),hover:parked.matches(':hover'),
+    marks:[...dock.querySelectorAll('button')].filter(marked).map(b=>b.dataset.to||b.id),
+    focusedFill:getComputedStyle(focused).backgroundColor,parkedFill:getComputedStyle(parked).backgroundColor};
+  });
+  assert(witness.focus&&witness.focusVisible&&witness.hover,'Keyboard focus changes while the mouse remains parked');
+  assert.deepEqual(witness.marks,['book'],'Only the keyboard-focused row is marked');
+  assert.equal(witness.parkedFill,'rgba(0, 0, 0, 0)','Parked row has no highlight');
+  assert.match(witness.focusedFill,/^rgba\(35, 103, 95, /,'Keyboard row remains visibly filled');
+  await p.keyboard.press('Enter');
+  assert.equal(await p.locator('#menu').getAttribute('data-page'),'book');
+  assert(await p.locator('#records').isVisible(),'The visibly highlighted Fish Collection actually opens');
+  assert(await p.locator('#act').isDisabled(),'Boot lock still prevents play');
+ }finally{await p.close();}
+}
 (async()=>{
  const engine=process.env.TEST_WEBKIT?webkit:chromium,browser=await engine.launch(engine===webkit?{}:{executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
- try{for(const width of [844,390,320]){
+ try{
+  await mixedInputFocus(browser);
+  for(const width of [844,390,320]){
   const p=await browser.newPage({viewport:{width,height:width===844?390:800},isMobile:true,hasTouch:true});
   p.on('pageerror',e=>console.error(e.message));await p.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
   await (await requireBootHome(p)).tap();
