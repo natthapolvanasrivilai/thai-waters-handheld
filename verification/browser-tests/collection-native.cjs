@@ -109,7 +109,7 @@ async function main(){
         heading.push({left:r.left-mark.actualBoundingBoxLeft,right:r.left+mark.actualBoundingBoxRight,
                       top:y-mark.actualBoundingBoxAscent,bottom:y+mark.actualBoundingBoxDescent});
        }
-       for(const part of layoutSegments(content)){
+       for(const part of lcdPaintSegments(content,true)){
         range.setStart(node,part.index);range.setEnd(node,part.index+part[0].length);
         const y=range.getBoundingClientRect().top;
         if(start<0||Math.abs(y-top)>1){line();start=part.index;top=y;}
@@ -117,7 +117,7 @@ async function main(){
        }
        line();
        const aa=1; // Fractional Canvas antialias rounding, not an extra text row.
-       return heading.length>0&&heading.every(q=>q.left>=box.left-aa&&q.right<=box.right+aa&&q.top>=box.top-aa&&q.bottom<=box.bottom+aa);
+       return {lines:heading.length, fits:heading.length>0&&heading.every(q=>q.left>=box.left-aa&&q.right<=box.right+aa&&q.top>=box.top-aa&&q.bottom<=box.bottom+aa)};
       };
       const overflowingLabels=[],labelsPainted=[];
       let clippingProbeRejected=false;
@@ -130,7 +130,8 @@ async function main(){
         for(const tile of tiles){
          const label=tile.querySelector('b'),sample={label:label?.textContent||'',pixels:0};
          if(label){
-          if(!labelFits(label))overflowingLabels.push(label.textContent);
+          const geometry=labelFits(label);sample.lines=geometry.lines;
+          if(!geometry.fits)overflowingLabels.push(label.textContent);
           const range=document.createRange();range.selectNodeContents(label);
           const box=label.getBoundingClientRect();
           for(const r of range.getClientRects()){
@@ -151,7 +152,7 @@ async function main(){
         const probe=tiles[0]?.querySelector('b');
         if(probe){
          const previous=probe.style.maxHeight;
-         try{probe.style.maxHeight='2px';clippingProbeRejected=!labelFits(probe);}
+         try{probe.style.maxHeight='2px';clippingProbeRejected=!labelFits(probe).fits;}
          finally{probe.style.maxHeight=previous;}
         }
        }finally{ui.style.transform=projection;}
@@ -201,6 +202,9 @@ async function main(){
     }else{
      const name=images.find(img=>img.filename==='en-middle-480x320.png');
      assert(name.labelsPainted.some(entry=>/[a-z]/i.test(entry.label)),'English fixture must include Latin glyphs');
+     const long=images.find(img=>img.filename==='en-last-480x320.png').labelsPainted
+      .find(entry=>entry.label==='Trypauchenichthys sumatrensis');
+     assert(long?.lines===2&&long.pixels>=150,'Long scientific name must draw both full lines of ink');
     }
     await page.locator('#species-'+ids[23]).click();
     await capture('detail','detail');

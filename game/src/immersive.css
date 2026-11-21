@@ -156,9 +156,13 @@ html:lang(th) #menu section[data-section="crew"] h2{font:normal 16px/23px 'Syy F
 #bookPage{min-width:0;max-width:185px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
 #menu #records{display:grid;min-height:0;grid-template:repeat(2,minmax(0,1fr))/repeat(4,minmax(0,1fr));gap:4px}
 #menu #records .record{box-sizing:border-box;position:relative;margin:0;border:2px solid;border-radius:5px;background:#29463e;display:flex;flex-direction:column;align-items:center;justify-content:center;height:auto;min-width:0;padding:1px 3px;gap:0}
-#menu #records .fish-thumb{float:none;margin:0;width:84px;height:44px;flex:none}
-@media(pointer:coarse) and (max-width:365px){#menu #records .fish-thumb{width:68px;height:35px}}
-#menu #records .record b{width:100%;font:600 13px/14px var(--game-font);overflow:hidden;max-height:28px;flex:none;text-align:center;overflow-wrap:anywhere}
+#menu #records .fish-thumb{float:none;margin:0;width:84px;height:42px;flex:none}
+/* Preserve the 44 CSS-pixel phone hit targets while reserving ink padding. */
+@media(pointer:coarse) and (max-width:365px){
+ #menu #records .record{padding-block:0}
+ #menu #records .fish-thumb{width:68px;height:33px}
+}
+#menu #records .record b{box-sizing:content-box;width:100%;padding-block:2px;font:600 13px/14px var(--game-font);overflow:hidden;max-height:28px;flex:none;text-align:center;overflow-wrap:anywhere}
 #menu #records .record small{flex:none;max-width:100%;line-height:11px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 #menu #records .caught-mark{position:absolute;right:4px;top:2px;color:#ffdf92}
 #bookPager,.history-nav{display:flex;justify-content:center;align-items:center;gap:8px}

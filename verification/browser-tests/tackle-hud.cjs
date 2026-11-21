@@ -50,7 +50,10 @@ const {chromium,webkit}=require('playwright-core');
  assert(await page.locator('#discovered').innerText().then(t=>t.includes('ทั่วไทย')));
  const national=await page.evaluate(()=>bookMatches().length);assert(national>2100);
  for(const [label,mode] of [['Inland',5],['Sea',6]]){
-  await page.locator('#bookFilter + button').tap();if(mode>=6)await page.locator('#lcdPicker .menubar button').last().tap();await page.locator('#lcdPicker [data-index="'+mode+'"]').tap();
+  await page.locator('#bookFind').tap();await page.locator('#bookFilter + button').tap();
+  if(mode>=6)await page.locator('#lcdPicker .menubar button').last().tap();
+  await page.locator('#lcdPicker [data-index="'+mode+'"]').tap();
+  await page.locator('#bookFindDone').tap();assert(await page.locator('#records').isVisible(),label+' filter returns to visible results');
   assert(await page.evaluate(()=>bookMatches().length>100));
  }
  assert.deepEqual(errors,[]);console.log('PASS Thai tackle icons and workshop, aimed water tap, tension tracks moving line, and nationwide/sea/inland collection ('+national+').');
