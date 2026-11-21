@@ -289,6 +289,14 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/5777"
     },
+    "282": {
+      "key": 2386080,
+      "scientific": "Butis butis",
+      "name": "ปลาบู่เกล็ดแข็งหางแดง",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/235",
+      "reference": "TH-BIF Songkhla exact species account gives the complete form. The LDD appendix has บู่เกล็ดแข็งหางแดง; avoid the shared shortened names บู่เกล็ดแข็ง and บู่จาก. LDD Laem Son wetlands plan, appendix 2, Butis butis row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf."
+    },
     "286": {
       "key": 2374789,
       "scientific": "Caesio cuning",
@@ -604,6 +612,14 @@
       "source": "https://thbif.onep.go.th/minisite/ranong/onepage",
       "reference": "ONEP Ranong line 501"
     },
+    "797": {
+      "key": 2399465,
+      "scientific": "Johnius dussumieri",
+      "name": "ปลาจวดหน้ามอม",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/637",
+      "reference": "Exact Songkhla taxon account, title and Thai name field; the LDD appendix independently has จวดหน้ามอม. Generic ปลาจวด omitted. LDD Laem Son wetlands plan, appendix 2, Johnius dussumieri row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf."
+    },
     "802": {
       "key": 2374191,
       "scientific": "Katsuwonus pelamis",
@@ -677,6 +693,14 @@
       "source": "https://thbif.onep.go.th/taxons/taxon_detail/Lutjanus%20bohar",
       "reference": "TH-BIF directly corroborates exact workbook name. ONEP 2025 ALL row 442: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
     },
+    "861": {
+      "key": 2384777,
+      "scientific": "Lutjanus fulviflamma",
+      "name": "ปลากะพงเหลืองข้างปาน",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/file_document/20210818113216_1_file.pdf",
+      "reference": "DoF species profile §1.10 exact name and binomial; LDD appendix corroborates. Do not conflate with #871 กะพงข้างปาน. LDD Laem Son wetlands plan, appendix 2, Lutjanus fulviflamma row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf."
+    },
     "866": {
       "key": 2384741,
       "scientific": "Lutjanus lutjanus",
@@ -692,6 +716,14 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-40; not a game size rule."
+    },
+    "871": {
+      "key": 2385118,
+      "scientific": "Lutjanus russellii",
+      "name": "ปลากะพงข้างปาน",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/onepage",
+      "reference": "Exact TH-BIF Songkhla row and LDD appendix; KMITL independently uses same vernacular in a field study. DMCR's similarly named old table is not used for an identity inference. LDD Laem Son wetlands plan, appendix 2, Lutjanus russellii row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf. Additional independent exact evidence: https://www.agri.kmitl.ac.th/kmac/assets/file/Book%20of%20Abstracts-KMAC2025-14Feb2025.pdf."
     },
     "872": {
       "key": 2384899,
@@ -728,6 +760,22 @@
       ],
       "source": "https://www4.fisheries.go.th/local/file_document/20200807140252_1_file.pdf",
       "reference": "DoF table resolves spelling artefacts in OCR, exact species; further exact source(s): https://www4.fisheries.go.th/file_area/202504241356561_file.pdf"
+    },
+    "896": {
+      "key": 5203127,
+      "scientific": "Megalops cyprinoides",
+      "name": "ปลาตาเหลือกสั้น",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/minisite/lagoon/taxons/detail/269",
+      "reference": "LDD appendix exact ตาเหลือกสั้น, precise full Thai form in TH-BIF Songkhla species description. Independent exact pictured KU Andaman guide p.133 uses ตาเหลือกสั้น. Generic ปลาตาเหลือก omitted. LDD Laem Son wetlands plan, appendix 2, Megalops cyprinoides row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf. Additional independent exact evidence: https://www3.rdi.ku.ac.th/wp-contents/uploads/2017/06/Book_Kurdi_%E0%B8%AD%E0%B8%B1%E0%B8%99%E0%B8%94%E0%B8%B2%E0%B8%A1%E0%B8%B1%E0%B8%99.pdf."
+    },
+    "912": {
+      "key": 2406878,
+      "scientific": "Monacanthus chinensis",
+      "name": "ปลาวัวหางพัด",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/26475",
+      "reference": "Exact national TH-BIF species and full Thai name; independently exact DoF Aqualib row 553 and LDD appendix use วัวหางพัด. LDD Laem Son wetlands plan, appendix 2, Monacanthus chinensis row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf. DoF Aqualib: https://data.go.th/dataset/aquatic-animal."
     },
     "913": {
       "key": 5211117,
@@ -882,6 +930,14 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/taxon_detail/Pangasius%20sanitwongsei",
       "reference": "National TH-BIF provides display and alias; Department of Fisheries survey also corroborates exact name. ONEP 2025 ALL row 74: https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx"
+    },
+    "1100": {
+      "key": 2378916,
+      "scientific": "Parapocryptes serperaster",
+      "name": "ปลาท่องเที่ยวเกล็ดใหญ่",
+      "aliases": [],
+      "source": "https://www.dmcr.go.th/detailLib/371",
+      "reference": "Exact DMCR primary Songkhla reproduction study, full Thai title and taxonomic identification. LDD independently has ท่องเที่ยวเกล็ดใหญ่. Omit shared names เขือ and ท่องเที่ยว. LDD Laem Son wetlands plan, appendix 2, Parapocryptes serperaster row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf."
     },
     "1105": {
       "key": 2391217,
@@ -1157,6 +1213,14 @@
       "source": "https://www4.fisheries.go.th/file_area/202504241356561_file.pdf",
       "reference": "Thai DOF Appendix A species-name column SS-16; not a game size rule."
     },
+    "1444": {
+      "key": 2374535,
+      "scientific": "Terapon theraps",
+      "name": "ปลาข้างลายเกล็ดใหญ่",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/40048",
+      "reference": "Exact national TH-BIF species profile and LDD appendix independently agree. DoF generic ข้างลาย also applies to other species; do not emit. LDD Laem Son wetlands plan, appendix 2, Terapon theraps row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf."
+    },
     "1456": {
       "key": 2373933,
       "scientific": "Thunnus tonggol",
@@ -1166,6 +1230,14 @@
       ],
       "source": "https://www4.fisheries.go.th/local/file_document/20210818113216_1_file.pdf",
       "reference": "DoF illustrated species account §1.50 and standard SS-35; further exact source(s): https://www4.fisheries.go.th/file_area/202504241356561_file.pdf"
+    },
+    "1468": {
+      "key": 5213397,
+      "scientific": "Triacanthus biaculeatus",
+      "name": "ปลาวัวจมูกสั้น",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/pic_activities/202004161636111_pic.pdf",
+      "reference": "DoF Songkhla species table row 240, independently corroborated by Maejo–Chumphon field survey and exact TH-BIF Songkhla #300. Avoid broad ปลาวัว and alternate spelling จมูกสัน. Additional independent exact evidence: https://kb.mju.ac.th/assets/img/articleFile/256404302ebc76415dc843d2a86f5d325edec319.pdf. TH-BIF https://thbif.onep.go.th/minisite/lagoon/taxons/detail/300."
     },
     "1469": {
       "key": 2389407,
@@ -1184,6 +1256,22 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/41267",
       "reference": "Exact TH-BIF; omit generic กริม. DoF Aqualib resource 28b042fd-0804-4020-9f99-343d97bb3b87 (CSV row ordinals 162): https://data.go.th/dataset/aquatic-animal"
+    },
+    "1476": {
+      "key": 5211201,
+      "scientific": "Trichopsis vittata",
+      "name": "ปลากริมควาย",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/41271",
+      "reference": "Exact national TH-BIF lists the full form; exact DoF Aqualib row 163 and LDD appendix independently agree on กริมควาย. Omit generic ปลากริม. LDD Laem Son wetlands plan, appendix 2, Trichopsis vittata row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf. DoF Aqualib: https://data.go.th/dataset/aquatic-animal."
+    },
+    "1494": {
+      "key": 2396798,
+      "scientific": "Upeneus sulphureus",
+      "name": "ปลาแพะเหลือง",
+      "aliases": [],
+      "source": "https://www4.fisheries.go.th/local/pic_activities/201802211428091_pic.pdf",
+      "reference": "DoF Ranong identification manual exact photographed species profile; DMCR mangrove, DoF Aqualib row 367, and LDD appendix corroborate. Generic หนวดฤๅษี omitted. LDD Laem Son wetlands plan, appendix 2, Upeneus sulphureus row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf. DMCR mangroves fish table row Upeneus sulphureus: https://dmcrth.dmcr.go.th/manpro/detail/11687/ ; DoF Aqualib: https://data.go.th/dataset/aquatic-animal."
     },
     "1515": {
       "key": 2367787,
@@ -1568,6 +1656,14 @@
       ],
       "source": "https://thbif.onep.go.th/taxons/detail/43047",
       "reference": "DoF printed p. 154 (checkpoint cited) (https://www4.fisheries.go.th/local/pic_activities/202310191858261_pic.pdf)"
+    },
+    "2193": {
+      "key": 2407356,
+      "scientific": "Arothron reticularis",
+      "name": "ปลาปักเป้าท้องลาย",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/3759",
+      "reference": "Exact national TH-BIF species record and LDD appendix independently agree on the label; other published synonyms not emitted. LDD Laem Son wetlands plan, appendix 2, Arothron reticularis row: https://webapp.ldd.go.th/lpd/node_modules/img/WetlandsInformation/2564/%E0%B9%81%E0%B8%9C%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8A%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B8%AD%E0%B8%8A%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%A1%E0%B8%AA%E0%B8%99.pdf."
     },
     "2197": {
       "key": 2389465,
