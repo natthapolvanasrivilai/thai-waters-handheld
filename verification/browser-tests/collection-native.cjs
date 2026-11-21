@@ -41,18 +41,17 @@ async function main(){
     await page.locator('[data-language='+lang+']').click();
     await page.waitForFunction(value=>document.documentElement.lang===value,lang);
     if(!ids)ids=await page.evaluate(()=>{
-     // Three fixed catalog ranges. Ensure a longest Thai display label with a diacritic is on the middle page.
-     const n=atlas.fish.length;
-     const midCandidates=atlas.fish.map((f,i)=>({f,i})).slice(Math.floor(n/3),Math.floor(2*n/3));
-     const long=midCandidates.filter(({f})=>/[\u0e31\u0e34-\u0e3a\u0e47-\u0e4e]/.test(f.name))
-      .sort((a,b)=>b.f.name.length-a.f.name.length||a.i-b.i)[0].i;
-     const middle=Math.min(Math.max(8,long-3),n-16);
-     return [...Array.from({length:8},(_,i)=>i),...Array.from({length:8},(_,i)=>i+middle),...Array.from({length:8},(_,i)=>n-8+i)];
+     // First, middle and last of the fixture. The middle eight are verified
+     // Thai species labels, including the longest authored name (ID 155).
+     const n=atlas.fish.length,middle=[151,152,153,155,827,1433,1565,1566];
+     if(!middle.every(i=>atlas.fish[i].thaiNameKind==='species'))throw Error('Verified middle-fixture species labels changed');
+     return [...Array.from({length:8},(_,i)=>i),...middle,...Array.from({length:8},(_,i)=>n-8+i)];
     });
     await page.evaluate(fish=>{
      assertSyntheticPage(fish);
      function assertSyntheticPage(list){if(list.some(i=>g.caught(i)))throw Error('Fixture requires a fresh collection');}
      for(const i of fish)g.restoreEntry(i,1,atlas.fish[i].low);
+     refresh();
     },ids);
     await page.locator('#resume').click();
     const closed=await page.evaluate(async()=>{
@@ -90,14 +89,40 @@ async function main(){
       }
       const records=document.getElementById('records'),tiles=[...records.children];
       const tileIds=tiles.map(el=>+el.id.slice('species-'.length));
+      // A DOM Range bounds the font's line box, not painted ink. Fit the
+      // same visual segments, face and baseline used by the LCD renderer.
+      const measure=document.createElement('canvas').getContext('2d');
       const labelFits=el=>{
-       const range=document.createRange();range.selectNodeContents(el);
-       const text=range.getBoundingClientRect(),box=el.getBoundingClientRect();
-       return text.width>0&&text.height>0&&text.bottom<=box.bottom+1&&text.left>=box.left-1&&text.right<=box.right+1;
+       const node=el.firstChild,content=node?.textContent||'',range=document.createRange();
+       const style=getComputedStyle(el),box=el.getBoundingClientRect(),heading=[];
+       if(!content||node.nodeType!==Node.TEXT_NODE)return false;
+       measure.font=style.fontStyle+' '+style.fontWeight+' '+style.fontSize+' '+style.fontFamily;
+       measure.textAlign='left';measure.textBaseline='alphabetic';
+       const font=measure.measureText('Ag');
+       let start=-1,end=0,top=0;
+       function line(){
+        if(start<0)return;
+        range.setStart(node,start);range.setEnd(node,end);
+        const r=range.getBoundingClientRect();
+        const mark=measure.measureText(content.slice(start,end).replace(/\s+/g,' '));
+        const y=r.top+(r.height+font.fontBoundingBoxAscent-font.fontBoundingBoxDescent)/2;
+        heading.push({left:r.left-mark.actualBoundingBoxLeft,right:r.left+mark.actualBoundingBoxRight,
+                      top:y-mark.actualBoundingBoxAscent,bottom:y+mark.actualBoundingBoxDescent});
+       }
+       for(const part of layoutSegments(content)){
+        range.setStart(node,part.index);range.setEnd(node,part.index+part[0].length);
+        const y=range.getBoundingClientRect().top;
+        if(start<0||Math.abs(y-top)>1){line();start=part.index;top=y;}
+        end=part.index+part[0].length;
+       }
+       line();
+       const aa=1; // Fractional Canvas antialias rounding, not an extra text row.
+       return heading.length>0&&heading.every(q=>q.left>=box.left-aa&&q.right<=box.right+aa&&q.top>=box.top-aa&&q.bottom<=box.bottom+aa);
       };
+      const overflowingLabels=[],labelsPainted=[];
+      let clippingProbeRejected=false;
       // Measure actual light glyph pixels inside each primary-name range,
       // in the same unprojected coordinate system as paintLcdInterface.
-      const labelsPainted=[];
       if(kind==='grid'){
        const ui=$('lcdUI'),projection=ui.style.transform;
        try{
@@ -105,6 +130,7 @@ async function main(){
         for(const tile of tiles){
          const label=tile.querySelector('b'),sample={label:label?.textContent||'',pixels:0};
          if(label){
+          if(!labelFits(label))overflowingLabels.push(label.textContent);
           const range=document.createRange();range.selectNodeContents(label);
           const box=label.getBoundingClientRect();
           for(const r of range.getClientRects()){
@@ -120,6 +146,14 @@ async function main(){
          }
          labelsPainted.push(sample);
         }
+        // Negative control after reading the real bitmap. Never persist or
+        // capture the probe, and restore the same markup immediately.
+        const probe=tiles[0]?.querySelector('b');
+        if(probe){
+         const previous=probe.style.maxHeight;
+         try{probe.style.maxHeight='2px';clippingProbeRejected=!labelFits(probe);}
+         finally{probe.style.maxHeight=previous;}
+        }
        }finally{ui.style.transform=projection;}
       }
       return {lang:document.documentElement.lang,dpr:devicePixelRatio,dimensions:[canvas.width,canvas.height],fontStatus:document.fonts.status,
@@ -128,7 +162,7 @@ async function main(){
        findVisible:visible(document.getElementById('bookTools')),
        detailVisible:visible(document.getElementById('bookDetail')),active:document.activeElement?.id,
        paintedMenu,paintedCards,labelsPainted,tileIds,labels:tiles.map(el=>[el.id,el.querySelector('b')?.textContent||'']),
-       overflowingLabels:kind==='grid'?tiles.flatMap(el=>[...el.querySelectorAll('b')]).filter(el=>!labelFits(el)).map(el=>el.textContent):[],
+       overflowingLabels,clippingProbeRejected,
        png:canvas.toDataURL('image/png').split(',')[1]};
      },kind);
      assert.deepEqual([frame.lang,frame.dpr,frame.dimensions,frame.fontStatus,frame.menu,frame.uiOpacity],
@@ -137,6 +171,7 @@ async function main(){
      assert(frame.paintedMenu>Math.max(1500,closed.menuPalette+1000),'Expected final canvas LCD menu pixels, not a blank/scenery-only image');
      if(kind==='grid'){
       assert(frame.recordsVisible&&!frame.findVisible&&!frame.detailVisible);
+      assert(frame.clippingProbeRejected,'Native ink bounds failed to reject a deliberately clipped label');
       assert.deepEqual(frame.tileIds,expectedIds,'Wrong fixture page');
       assert(frame.paintedCards>Math.max(12000,closed.cardPalette+10000),'Fish card fills absent from final LCD canvas');
       assert(frame.labelsPainted.every(g=>g.label&&g.pixels>=6),'A primary label has no visible glyph pixels in final LCD: '+JSON.stringify(frame.labelsPainted));
@@ -161,7 +196,7 @@ async function main(){
     }
     if(lang==='th'){
      const name=images.find(img=>img.filename==='th-middle-480x320.png');
-     assert(name.labelsPainted.some(entry=>entry.label.length>=16&&/[\u0e31\u0e34-\u0e3a\u0e47-\u0e4e]/.test(entry.label)),
+     assert(name.labelsPainted.some(entry=>entry.label==='ปลาการ์ตูนลายปล้องหางเหลือง'&&/[\u0e31\u0e34-\u0e3a\u0e47-\u0e4e]/.test(entry.label)),
       'Middle Thai fixture must include a long label with a combining mark');
     }else{
      const name=images.find(img=>img.filename==='en-middle-480x320.png');

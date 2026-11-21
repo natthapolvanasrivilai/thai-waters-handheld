@@ -69,7 +69,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   assert.equal(afterReload.ram,1,'The replayed journal must contain exactly one catch: '+evidence);
   assert.equal(await pg.evaluate(()=>finish),1);
   assert.equal(await pg.evaluate(()=>g.technique()),2,'Remember the selected presentation');
-  await menu('book');assert.equal(await pg.locator('.record').count(),8);await pg.locator('#bookFilter').selectOption({label:'Mythic'});assert.equal(await pg.locator('.record').count(),5);await pg.locator('#resume').click();
+  await menu('book');assert.equal(await pg.locator('.record').count(),8);await pg.locator('#bookFind').click();await pg.locator('#bookFilter + button').click();await pg.locator('#lcdPicker').getByRole('option',{name:'Mythic',exact:true}).click();await pg.locator('#bookFindDone').click();assert.equal(await pg.locator('.record').count(),5);await pg.locator('#resume').click();
   await pg.setViewportSize({width:390,height:844});await menu('sensors');
    // Replay the same physical rest/lift samples in page time, so locator
    // actionability cannot age out the final sample before either button.
