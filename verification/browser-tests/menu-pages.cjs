@@ -44,6 +44,7 @@ const {chromium,webkit}=require('playwright-core');
     if(route==='book'){
      await p.evaluate(()=>{g.restoreEntry(40,12,25);catchHistory=Array.from({length:12},(_,i)=>({id:40,at:Date.UTC(2026,10,18-i),place:106,period:3,weather:2,bait:14,cm:25,grams:130}));showBookEntry(40);});
      await fits();
+     await p.locator('#bookHistory').tap();await fits();
      const history=p.locator('#bookDetail .catch-scroll'),receipts=history.locator('tbody tr');
      assert.equal(await receipts.count(),12,'All twelve receipts are reachable in one table');
      const before=await history.evaluate(e=>({head:e.querySelector('thead').getBoundingClientRect().top,top:e.scrollTop,canScroll:e.scrollHeight>e.clientHeight}));
@@ -57,7 +58,7 @@ const {chromium,webkit}=require('playwright-core');
       last:e.querySelector('tbody tr:last-child').getBoundingClientRect().bottom,bottom:e.getBoundingClientRect().bottom}));
      assert(Math.abs(after.head-before.head)<1&&after.last<=after.bottom+1,'Last receipt is visible and the header stays pinned');
      await fits();
-     await p.locator('#back').tap();await p.locator('#bookNext').tap();const id=await p.locator('.record').first().getAttribute('id');await p.locator('#'+id).tap();await fits();await p.locator('#back').tap();assert(await p.locator('#'+id).isVisible());}
+     await p.locator('#back').tap();assert(await p.locator('#bookHistory').isVisible());await p.locator('#back').tap();await p.locator('#bookNext').tap();const id=await p.locator('.record').first().getAttribute('id');await p.locator('#'+id).tap();await fits();await p.locator('#back').tap();assert(await p.locator('#'+id).isVisible());}
     await p.locator('#back').tap();
    }
    await p.locator('#resume').tap();

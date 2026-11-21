@@ -2,6 +2,7 @@
 <html lang="th">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Thai Waters • Play</title>
 <style>*{box-sizing:border-box}
 @font-face{font-family:'Atkinson Hyperlegible Next';font-style:normal;font-weight:200 800;font-display:swap;src:url(data:font/ttf;base64,@@FONT@@) format('truetype')}
@@ -163,6 +164,11 @@ main:has(#menu[open]) #flatReel{visibility:hidden}
   <small id="viewHint">Drag the knob or hold R to reel.</small><button id="viewMode" disabled>Device view</button><button hidden id="foldButton">Fold reel</button><button hidden id="gripButton" aria-pressed="false">Attach rod grip</button><button type="button" id="simPower">Power off</button><small id="startupPowerStatus" role="status" hidden></small><button type="button" class="mobile-control" id="mobileFullscreen">Enter fullscreen</button><button type="button" class="mobile-control" id="motionShortcut" aria-haspopup="dialog" aria-controls="menu">Motion bench</button><span id="displayModeNote" role="status" hidden></span>
  </div>
  <div class="knob" id="flatReel"><button type="button" id="dial" class="dial" aria-label="Reel knob. Drag in a circle or press R."><span class="dial-spool" aria-hidden="true"></span><span class="dial-hub" aria-hidden="true"></span><span class="dial-cue" aria-hidden="true"></span></button><span id="dialHint" aria-hidden="true"></span><label id="dialAutoRow" hidden><input type="checkbox" switch id="dialAuto"><span></span></label></div>
+ <dialog id="displayHelp" aria-labelledby="displayHelpTitle" aria-describedby="displayHelpText">
+  <h2 id="displayHelpTitle">Play from your Home Screen</h2>
+  <p id="displayHelpText">Safari can fill the game area but may keep its own bars. In Safari, tap Share → Add to Home Screen. If shown, turn on Open as Web App, then tap Add. Start the game from the new icon.</p>
+  <div class="display-help-actions"><button type="button" id="displayHelpClose" autofocus>Back to game</button><button type="button" id="displayHelpWindow">Use windowed layout</button></div>
+ </dialog>
 </main>
 <script type="application/json" id="deviceParts">@@CAD@@</script><script>@@THREE@@</script><script>
 const $=k=>document.getElementById(k),canvas=$('scene'),ctx=canvas.getContext('2d'); 
@@ -998,7 +1004,8 @@ function rimSample(e){
  lastAngle=a;turns+=samplePointerWheel(a);dialAngle+=delta*180/Math.PI;
 }
 dial.onpointerdown=e=>{
- if(!dialReady()||dialPointer!==null||e.button!==0)return;
+ if(!dialReady()||dialPointer!==null||e.button!==0||(e.pointerType==='touch'&&!e.isPrimary))return;
+ if(e.cancelable)e.preventDefault();
  stopAutoReel();
  const b=dial.getBoundingClientRect(),hub=dial.querySelector('.dial-hub').getBoundingClientRect();
  dialCenter={x:b.left+b.width/2,y:b.top+b.height/2,hub:hub.width/2};
@@ -1026,7 +1033,7 @@ dial.onkeydown=e=>{
  }
 };
 dial.onclick=e=>{if(e.detail===0)dialKeyStep(.25);};
-window.addEventListener('resize',()=>{endDial();stopAutoReel();});
+for(const event of ['resize','blur','pagehide'])window.addEventListener(event,()=>{endDial();stopAutoReel();});
 function heldTurn(dt){
  if(autoReel.checked&&!$('flatReel').offsetWidth)stopAutoReel();
  const automatic=autoReel.checked&&phoneAutoReel;

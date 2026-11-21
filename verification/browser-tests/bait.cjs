@@ -91,6 +91,7 @@ const {chromium}=require('playwright-core');
   assert.deepEqual(empty.lost,[6,0,0,0,false]);
   await travel(1,'Dusk');await open('book');await p.evaluate(()=>{bookOffset=Math.floor(40/bookSize);renderBook();});
   await p.locator('#species-40').click();
+  await p.locator('#bookTips').click();
   assert.match(await p.locator('#bookDetail').innerText(),/Raw shrimp.*Bottom/i);
   assert.equal(await p.locator('#bookDetail [aria-label=Dusk]').count(),1);
   await p.locator('#resume').click();
