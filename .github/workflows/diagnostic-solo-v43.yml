@@ -13,7 +13,7 @@ jobs:
       github.repository == 'natthapolvanasrivilai/thai-waters-handheld' &&
       github.event_name == 'push' && github.ref == 'refs/heads/diagnostic/solo-v43-62' &&
       github.run_attempt == 1 && github.event.forced == false && github.event.deleted == false &&
-      (github.event.created == true || github.event.before == '09b184fefaa3639dd1438975a070d874372c31d0')
+      github.event.created == false && github.event.before == '417db7d1a1aa307cda712cad676024eb09fef816'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     defaults:
@@ -21,18 +21,24 @@ jobs:
         shell: bash
     env:
       PIN_BASE: 09b184fefaa3639dd1438975a070d874372c31d0
+      PIN_PREVIOUS: 417db7d1a1aa307cda712cad676024eb09fef816
       DIAG: verification/diagnostics/solo-v43
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 2
+          fetch-depth: 3
           persist-credentials: false
-      - name: Require one child and only reviewed diagnostic files
+      - name: Require one fast-forward child and only reviewed diagnostic files
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          test "$(git rev-list --parents -n1 HEAD)" = "$GITHUB_SHA $PIN_BASE"
+          test "$(git rev-list --parents -n1 HEAD)" = "$GITHUB_SHA $PIN_PREVIOUS"
+          test "$(git rev-list --parents -n1 "$PIN_PREVIOUS")" = "$PIN_PREVIOUS $PIN_BASE"
+          incremental="$(git diff --name-status "$PIN_PREVIOUS" HEAD)"
+          changed="$(printf 'M\t%s\n' \
+            .github/workflows/diagnostic-solo-v43.yml "$DIAG/exact-browser-probe.mjs")"
+          test "$incremental" = "$changed"
           actual="$(git diff --name-status "$PIN_BASE" HEAD)"
           expected="$(printf 'A\t%s\n' \
             .github/workflows/diagnostic-solo-v43.yml \
