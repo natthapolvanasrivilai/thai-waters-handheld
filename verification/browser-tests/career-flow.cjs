@@ -26,7 +26,7 @@ const {chromium,webkit}=require('playwright-core');
   const career=async()=>{
    await page.locator('#openMenu').tap();await page.locator('[data-section=home] [data-to=rod]').tap();
    while(await page.locator('#sheetNext').isEnabled())await page.locator('#sheetNext').tap();
-   await page.locator('[data-section=home] [data-to=career]').tap();
+   await page.locator('#careerOpen').tap();
    await page.locator('#careerExport').waitFor();
   };
   await career();const saved=page.waitForEvent('download');await page.locator('#careerExport').tap();

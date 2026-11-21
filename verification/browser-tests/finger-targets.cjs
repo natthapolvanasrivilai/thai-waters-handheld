@@ -19,7 +19,7 @@ const {chromium,webkit}=require('playwright-core');
  for(const el of ['#act','#rigHud','#fullscreen','#openMenu'])await hit(el);
  await p.locator('#openMenu').tap();await hit('[data-language=th]');
  for(const page of ['spots','book','rod','sound','sensors','crew']){
-  const route='[data-to='+page+']';await hit(route);await p.locator(route).tap();
+  const route='[data-section=home] [data-to='+page+']';await hit(route);await p.locator(route).tap();
   await hit('#back');await hit('#resume');
   if(page==='book'){await hit('#bookFind');await p.locator('#bookFind').tap();await hit('#bookSearch');await hit('#bookFilter + button');await hit('#bookFindDone');await p.locator('#bookFindDone').tap();await hit('#species-0');await hit('#bookNext');await p.locator('#species-0').tap();await hit('#back');await p.locator('#back').tap();}
   if(page==='rod'){await hit('#hookBait + button');await p.locator('#hookBait + button').tap();for(let i=0;i<6;i++)await hit('.bait-option[data-index="'+i+'"]');await hit('#lcdPicker .menubar button');await p.locator('#lcdPicker .menubar button').first().tap();}
