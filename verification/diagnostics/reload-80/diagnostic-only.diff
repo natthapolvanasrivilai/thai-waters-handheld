@@ -1,0 +1,162 @@
+--- a/verification/browser-tests/gameplay.cjs
++++ b/verification/browser-tests/gameplay.cjs
+@@ -1,5 +1,6 @@
+ const {showControl}=require('./menu-controls.cjs');
+ const {captureReloadStartup,readCheckpoint,reloadFailureText}=require('./reload-trace.cjs');
++const {attach,readWithProbe}=require('./observe-paired-reload.cjs');
+ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=require('path'),assert=require('node:assert/strict');
+ (async()=>{
+  const browser=await chromium.launch({executablePath:process.env.BROWSER_PATH || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
+@@ -15,11 +16,16 @@
+     return draw.call(this,img,...args);
+    };
+   });
+-  await pg.addInitScript(captureReloadStartup);
+-  await pg.goto(pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href);
++  const observer=await attach(pg,captureReloadStartup,readCheckpoint);
++  const report=async(stage,passed)=>{
++   try{await observer.report(stage,passed,errors.length);}
++   catch(e){console.log('paired observer failure '+JSON.stringify({stage,kind:e.name}));if(passed)throw e;}
++  };
++  await pg.goto(process.env.TW80_LOOPBACK_URL||pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href);
+   await pg.waitForFunction(()=>!document.querySelector('#act').disabled,null,{timeout:12000});
+   await pg.waitForFunction(()=>document.documentElement.dataset.device);if(await pg.locator('#product').isVisible())await pg.locator('#viewMode').click();
+   const menu=async n=>{await pg.locator('#openMenu').click();await pg.locator('[data-to='+n+']').click();};
++  let identity=await observer.identity();
+   await menu('spots');assert.equal(await pg.locator('#places option').count(),117);
+   await showControl(pg,'#waterType');await pg.selectOption('#waterType','salt');assert.equal(await pg.locator('#places option').count(),21);
+   await showControl(pg,'#places');await pg.selectOption('#places',{label:'Phuket coastal waters'});await showControl(pg,'#period');await pg.selectOption('#period',{label:'Dusk'});await showControl(pg,'#fishHere');await pg.locator('#fishHere').click();await pg.waitForFunction(()=>arrivalSince===null);
+@@ -48,21 +54,25 @@
+   assert.equal(await pg.evaluate(()=>g.caught(40)),0);
+   const widths=await pg.evaluate(()=>window.specimenFrames.map(f=>f.w));
+   assert(widths.length>1 && widths.every(w=>w===widths[0]),'Specimen stays full size until filed');
+-  const {observed:heldWeight,trace:beforePendingRestore,startup:beforePendingStartup}=await pg.evaluate(readCheckpoint,{species:40,observe:'weight'});
++  const {observed:heldWeight,trace:beforePendingRestore,startup:beforePendingStartup,probe:beforePendingProbe}=await pg.evaluate(readWithProbe,{species:40,observe:'weight'});
++  observer.remember(identity,beforePendingProbe);
+   try{
+    await pg.reload();await pg.waitForFunction(()=>g?.state()===5 && !$('catchContinue').hidden);
+    assert.equal(await pg.evaluate(()=>g.caught(40)),0);
+    assert.equal(await pg.evaluate(()=>g.grams()),heldWeight,'Pending catch retains its individual weight after reload');
+-  }catch(error){console.error(await reloadFailureText(pg,{stage:'gameplay-pending',before:beforePendingRestore,beforeStartup:beforePendingStartup,expected:{species:40},pageErrors:errors.length}));throw error;}
++  }catch(error){console.error(await reloadFailureText(pg,{stage:'gameplay-pending',before:beforePendingRestore,beforeStartup:beforePendingStartup,expected:{species:40},pageErrors:errors.length}));await report('gameplay-pending',false);throw error;}
++  await report('gameplay-pending',true);
++  identity=await observer.identity();
+   await pg.locator('#catchContinue').click();await pg.waitForFunction(()=>g.state()===0&&!document.querySelector('#menu').open);
+   assert.equal(await pg.evaluate(()=>g.caught(40)),1,'Transfer must not count the catch twice');
+   await menu('rod');await showControl(pg,'#finish');await pg.selectOption('#finish','Copper');await showControl(pg,'#technique');await pg.selectOption('#technique',{label:'Vertical jig'});await showControl(pg,'#builds button');await pg.locator('#builds button').nth(1).click();assert.equal(await pg.evaluate(()=>g.rank(1)),1);await pg.locator('#resume').click();
+   const journalSnapshot=(withStartup=false)=>pg.evaluate(withStartup=>{
+    const b=JSON.parse(localStorage.getItem('thai-atlas-v2'));
+-   return {...(withStartup?{startup:window.__twReloadStartup62}:{}),book:b?.book?.[40],best:g.best(40),ram:g.caught(40),storedFinish:b?.finish,notice:$('summarySave').textContent};
++   return {...(withStartup?{startup:window.__twReloadStartup62,probe:globalThis.__pocketReel80Probe.snapshot()}:{}),book:b?.book?.[40],best:g.best(40),ram:g.caught(40),storedFinish:b?.finish,notice:$('summarySave').textContent};
+   },withStartup);
+-  const {startup:beforeFiledStartup,...beforeReload}=await journalSnapshot(true);
++  const {startup:beforeFiledStartup,probe:beforeFiledProbe,...beforeReload}=await journalSnapshot(true);
+   assert.deepEqual(beforeReload.book,[1,beforeReload.best],'Catch must be stored before reload: '+JSON.stringify(beforeReload));
++  observer.remember(identity,beforeFiledProbe);
+   try{
+    await pg.reload();await pg.waitForFunction(()=>!document.querySelector('#act').disabled);
+    const afterReload=await journalSnapshot(), evidence=JSON.stringify({beforeReload,afterReload});
+@@ -72,8 +82,9 @@
+    assert.equal(await pg.evaluate(()=>g.technique()),2,'Remember the selected presentation');
+   }catch(error){
+    console.error(await reloadFailureText(pg,{stage:'gameplay-filed',before:{storage:'present',journalMatched:true},
+-    beforeStartup:beforeFiledStartup,expected:{species:40},pageErrors:errors.length}));throw error;
++    beforeStartup:beforeFiledStartup,expected:{species:40},pageErrors:errors.length}));await report('gameplay-filed',false);throw error;
+   }
++  await report('gameplay-filed',true);
+   await menu('book');assert.equal(await pg.locator('.record').count(),8);await pg.locator('#bookFind').click();await pg.locator('#bookFilter + button').click();await pg.locator('#lcdPicker').getByRole('option',{name:'Mythic',exact:true}).click();await pg.locator('#bookFindDone').click();assert.equal(await pg.locator('.record').count(),5);await pg.locator('#resume').click();
+   await pg.setViewportSize({width:390,height:844});await menu('sensors');
+    // Replay the same physical rest/lift samples in page time, so locator
+diff --git a/verification/browser-tests/observe-paired-reload.cjs b/verification/browser-tests/observe-paired-reload.cjs
+new file mode 100644
+--- /dev/null
++++ b/verification/browser-tests/observe-paired-reload.cjs
+@@ -0,0 +1,88 @@
++'use strict';
++// All browser-local probe data is synthetic. Raw URLs, storage values, hashes,
++// context/frame/loader identifiers, browser IDs and exceptions are never logged.
++function beforeApp(){
++ if(top!==self)return;
++ const read=(area,key)=>{
++  try{
++   const raw=window[area].getItem(key);
++   if(raw===null)return {state:'missing'};
++   let h=2166136261;
++   for(let i=0;i<raw.length;i++)h=Math.imul(h^raw.charCodeAt(i),16777619);
++   return {state:'present',size:raw.length,fingerprint:h>>>0};
++  }catch{return {state:'blocked'};}
++ };
++ const snapshot=()=>({
++  protocol:['file:','http:'].includes(location.protocol)?location.protocol:'other',
++  state:document.readyState,epoch:performance.timeOrigin,type:performance.getEntriesByType('navigation')[0]?.type??null,
++  career:read('localStorage','thai-atlas-v2'),language:read('localStorage','thai-waters-language'),
++  // The canonical test writes only its existing English preference. Do not
++  // introduce a new storage namespace by seeding a separate diagnostic canary.
++  session:read('sessionStorage','__pocket_reel_80_unused_probe')
++ });
++ Object.defineProperty(globalThis,'__pocketReel80Probe',{value:Object.freeze({entry:snapshot(),snapshot})});
++}
++const equal=(a,b)=>a?.state==='present'&&b?.state==='present'?a.size===b.size&&a.fingerprint===b.fingerprint:null;
++const scrub=x=>x?{protocol:x.protocol,documentReady:x.state,navType:x.type,
++ career:x.career.state,language:x.language.state,session:x.session.state}:null;
++function evaluateBoundary(before,entry,after,cert,liveReplayFailed){
++ if(!before||!entry||!after)return 'probe-unavailable';
++ if([cert.sameURL,cert.samePage,cert.sameContext,cert.sameTarget,cert.sameFrame,cert.changedLoader,cert.newDocument].some(x=>x!==true)
++  ||cert.topNavigationCount!==1||entry.state!=='loading'||entry.type!=='reload')return 'unexpected-navigation-identity';
++ if(cert.sameStorageKey===false)return 'storage-key-differed';
++ if(before.career.state!=='present'||before.language.state!=='present')return 'fixture-precondition-failed';
++ if(entry.career.state==='blocked'||entry.language.state==='blocked')return 'access-blocked-before-app';
++ if(entry.career.state==='missing'&&entry.language.state==='missing')return 'career-and-language-missing-before-app';
++ if(entry.career.state==='missing'&&equal(before.language,entry.language))return 'career-only-missing-before-app';
++ if(!equal(before.career,entry.career))return 'career-changed-before-app';
++ if(!equal(entry.career,after.career))return 'career-changed-after-app';
++ if(liveReplayFailed)return 'career-retained-live-assertion-failed';
++ return 'career-retained';
++}
++async function attach(page,captureReloadStartup,readCheckpoint){
++ const context=page.context(),cdp=await context.newCDPSession(page);
++ let nav=0,loader=null,frame=null,current=null;
++ await cdp.send('Page.enable');
++ cdp.on('Page.frameNavigated',e=>{
++  if(e.frame.parentId)return;nav++;loader=e.frame.loaderId;frame=e.frame.id;
++ });
++ // One init script guarantees diagnostic reads precede even the original English write.
++ await page.addInitScript({content:`(${beforeApp.toString()})();(${captureReloadStartup.toString()})();globalThis.__pocketReel80CanonicalCheckpoint=${readCheckpoint.toString()};`});
++ async function nodeIdentity(){
++  const frameId=frame,loaderId=loader,navCount=nav,url=page.url();
++  const t=(await cdp.send('Target.getTargetInfo')).targetInfo;
++  let storageKey=null;
++  try{storageKey=(await cdp.send('Storage.getStorageKeyForFrame',{frameId})).storageKey;}catch{}
++  return {frameId,loaderId,navCount,url,targetId:t.targetId,contextId:t.browserContextId,storageKey};
++ }
++ return {
++  remember(t0,sample){
++   current={t0,sample};
++  },
++  identity:nodeIdentity,
++  async report(stage,passed,pageErrors){
++   if(!current)throw Error('Missing pre-reload observer');
++   const {t0,sample}=current;
++   const t1=await nodeIdentity();
++   const {entry,after}=await page.evaluate(()=>{
++    const m=globalThis.__pocketReel80Probe;
++    return {entry:m?.entry??null,after:m?.snapshot()??null};
++   });
++   const same=(a,b)=>a==null||b==null?null:a===b;
++   const cert={sameURL:t0.url===t1.url,samePage:page.context()===context,sameContext:same(t0.contextId,t1.contextId),
++    sameTarget:same(t0.targetId,t1.targetId),sameFrame:same(t0.frameId,t1.frameId),
++    changedLoader:t0.loaderId==null||t1.loaderId==null?null:t0.loaderId!==t1.loaderId,
++    sameStorageKey:same(t0.storageKey,t1.storageKey),topNavigationCount:t1.navCount-t0.navCount,
++    newDocument:sample?.epoch!=null&&entry?.epoch!=null?sample.epoch!==entry.epoch:null};
++   console.log('paired reload '+JSON.stringify({stage,hardPassed:passed,pageErrors,certificate:cert,
++     before:scrub(sample),preboot:scrub(entry),after:scrub(after),
++     equalCareerToPreboot:equal(sample?.career,entry?.career),equalCareerToAfter:equal(entry?.career,after?.career),
++     equalLanguageToPreboot:equal(sample?.language,entry?.language),classification:evaluateBoundary(sample,entry,after,cert,!passed)}));
++  }
++ };
++}
++const readWithProbe=async arg=>{
++ const result=await globalThis.__pocketReel80CanonicalCheckpoint(arg);
++ return {...result,probe:globalThis.__pocketReel80Probe.snapshot()};
++};
++module.exports={attach,beforeApp,evaluateBoundary,readWithProbe};
