@@ -1,5 +1,5 @@
 // The original browser key remains the sole authority. No network/provider use.
-function makeCareerStorage(storage,{fish,places,validSize}){
+function makeCareerStorage(storage,{fish,places,validSize,beforeWrite}){
  const key='thai-atlas-v2',format='Pocket Reel career',version=1,schema=4,limit=8*1024*1024;
  const invalid=()=>{throw Error('Invalid or incompatible career backup');};
  const int=(n,min,max)=>Number.isSafeInteger(n)&&n>=min&&n<=max;
@@ -68,7 +68,8 @@ function makeCareerStorage(storage,{fish,places,validSize}){
   const next=JSON.stringify(valid);if(next.length>limit)invalid();
   // Automatic writes must never clobber damaged or newer saves; manual imports
   // require explicit user confirmation before callers pass replace=true.
-  if(!replace)load();
+  const previous=(!replace||beforeWrite)?load():null;
+  beforeWrite?.(previous);
   storage.setItem(key,next);
   return valid;
  }
@@ -85,4 +86,20 @@ function makeCareerStorage(storage,{fish,places,validSize}){
    return normalize(envelope.career,true);
   }
  };
+}
+
+function makeFileCareerGuard(isFile,browserHistory){
+ let known=false,recovering=false;
+ if(isFile)try{known=browserHistory.state?.pocketReelCareerKnown===true;}catch{}
+ function markKnown(){
+  if(!isFile||known||recovering)return;
+  known=true;
+  try{browserHistory.replaceState({...browserHistory.state,pocketReelCareerKnown:true},'');}catch{}
+ }
+ function lock(){if(isFile)recovering=true;}
+ function beforeWrite(previous){
+  if(!isFile)return;
+  if(recovering||(known&&previous===null)){lock();throw Error('Previous browser career unavailable for this file');}
+ }
+ return {markKnown,lock,beforeWrite,get recovering(){return recovering;}};
 }

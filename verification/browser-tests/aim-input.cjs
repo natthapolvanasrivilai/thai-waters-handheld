@@ -1,7 +1,7 @@
 const {showControl}=require('./menu-controls.cjs');
 const assert = require('node:assert/strict');
 const path = require('node:path');
-const {pathToFileURL} = require('node:url');
+const {openPersistenceEntry}=require('./persistence-entry.cjs');
 const {chromium} = require('playwright-core');
 
 (async () => {
@@ -9,10 +9,12 @@ const {chromium} = require('playwright-core');
     executablePath: process.env.BROWSER_PATH || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
     headless: true
   });
+  let entry;
   try {
+    entry=await openPersistenceEntry(process.env.GAME_HTML || path.resolve(__dirname, '../../game/Thai-Waters-play.html'));
     const page = await browser.newPage({viewport: {width: 960, height: 850}});
     await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await page.goto(pathToFileURL(process.env.GAME_HTML || path.resolve(__dirname, '../../game/Thai-Waters-play.html')).href);
+  await page.goto(entry.url);
     await page.waitForFunction(() => window.document.documentElement.dataset.device && !document.querySelector('#act').disabled);
     if (await page.locator('#product').isVisible()) await page.locator('#viewMode').click();
     const hidden=await page.evaluate(()=>{
@@ -67,6 +69,6 @@ const {chromium} = require('playwright-core');
     console.log('PASS concealed cast layouts, storm selection and weather preference restore.');
     console.log('PASS screen-targeted casts to branch, rock and debris, both on-screen release controls, localized recovery card, zero catch and event credit.');
   } finally {
-    await browser.close();
+    try{await browser.close();}finally{await entry?.close();}
   }
 })().catch(error => {console.error(error);process.exitCode=1;});

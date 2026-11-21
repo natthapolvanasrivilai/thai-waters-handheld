@@ -81,6 +81,19 @@ const {chromium}=require('playwright-core');
   }),curatedNext.map(([id])=>id)),curatedNext.map(row=>[...row,'species']),
   'representative newly attested Thai names from each cited review tranche');
   assert(initial.sourceCount>=194,'verified catalog overlay contains at least the 194 attested names');
+  const wetlandsNext=[
+   [282,2386080,'Butis butis','ปลาบู่เกล็ดแข็งหางแดง'],
+   [861,2384777,'Lutjanus fulviflamma','ปลากะพงเหลืองข้างปาน'],
+   [871,2385118,'Lutjanus russellii','ปลากะพงข้างปาน'],
+   [1100,2378916,'Parapocryptes serperaster','ปลาท่องเที่ยวเกล็ดใหญ่'],
+   [1476,5211201,'Trichopsis vittata','ปลากริมควาย'],
+  ];
+  assert.deepEqual(await page.evaluate(ids=>ids.map(id=>{
+   const f=atlas.fish[id];
+   return [f.art,f.key,f.scientificName,f.name,f.thaiNameKind];
+  }),wetlandsNext.map(([id])=>id)),wetlandsNext.map(row=>[...row,'species']),
+  'species-specific wetland vernaculars presented with the exact Latin and stable IDs');
+  assert(initial.sourceCount>=206,'verified catalog overlay contains at least 206 attested names');
   assert.deepEqual([initial.size,initial.art,initial.key,initial.original],[2545,2152,2391358,'Uraspis uraspis']);
   await page.evaluate(()=>{$('bookSearch').value='ปลาจุ้ยจินบั้ง';});
   assert.equal(await page.evaluate(()=>bookMatches().includes(2152)),false);
@@ -148,6 +161,19 @@ const {chromium}=require('playwright-core');
   assert.equal(await page.locator('#bookDetail h2').textContent(),seamoth.short);
   assert.match(await page.locator('#bookDetail').textContent(),/Pegasus laternarius/u);
   await page.evaluate(()=>closeBookDetail());
+  const [snapperId,,snapperLatin,snapperThai]=wetlandsNext[2];
+  for(const q of [snapperThai,snapperLatin])assert(!await match(q,snapperId),'uncaught snapper is not returned by Thai or Latin search');
+  const snapperLow=await page.evaluate(id=>atlas.fish[id].low,snapperId);
+  await land(snapperId,snapperLow);
+  assert.equal(await page.locator('#message').textContent(),snapperThai);
+  assert(!/ถอดเสียง/u.test(await page.locator('#metrics').textContent()));
+  await file(snapperId);
+  for(const q of [snapperThai,snapperLatin])assert(await match(q,snapperId));
+  assert(!await match(wetlandsNext[1][3],snapperId),'attested yellow snapper name does not match the other snapper');
+  await page.evaluate(id=>showBookEntry(id),snapperId);
+  assert.equal(await page.locator('#bookDetail h2').textContent(),snapperThai);
+  assert.match(await page.locator('#bookDetail').textContent(),/Lutjanus russellii/u);
+  await page.evaluate(()=>closeBookDetail());
   await land(2448,grunter[5]);
   assert.equal(await page.locator('#message').textContent(),'ปลาครืดคราด');
   assert(!/ถอดเสียง/u.test(await page.locator('#metrics').textContent()));
@@ -168,8 +194,14 @@ const {chromium}=require('playwright-core');
   await land(805,fallback[3]);
   assert.equal(await page.locator('#message').textContent(),fallback[0]);
   assert.match(await page.locator('#metrics').textContent(),/ชื่อวิทยาศาสตร์ถอดเสียง · Kryptopterus bicirrhis/u);
+  const rewardHeader=await page.evaluate(()=>({reward:g.landingReward(),
+   label:atlas.ranks[atlas.fish[805].tier]+'  ·  '+L(rewardText[3])+'  ·  ถอดเสียง'}));
+  assert.equal(rewardHeader.reward,3,'seventh discovery exercises the tackle-point caption');
   const roman=await nativeCatchText();
   assert.deepEqual(roman.lcd,[480,320]);
+  const heading=roman.labels.find(r=>r.y===82);
+  assert.equal(heading?.text,rewardHeader.label,'native caption preserves the full rank, reward and transcription marker');
+  assert(fits([heading])&&heading.x+heading.width<=466,'long native caption fits its 264px column');
   const catchArea=roman.labels.filter(r=>r.y===82&&r.text.includes('ถอดเสียง')||r.text===fallback[1]||r.y>=110&&r.y<=156&&fallback[0].includes(r.text));
   assert(fits(catchArea)&&catchArea.some(r=>r.text.includes('ถอดเสียง'))&&catchArea.some(r=>r.text===fallback[1]));
   assert(catchArea.some(r=>r.y>=110&&r.y<=156&&fallback[0].includes(r.text)));

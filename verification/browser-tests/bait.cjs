@@ -1,11 +1,12 @@
 const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict');
 const path=require('node:path');
-const {pathToFileURL}=require('node:url');
+const {openPersistenceEntry}=require('./persistence-entry.cjs');
 const {chromium}=require('playwright-core');
 
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
+ let entry;
  try{
   const p=await browser.newPage({viewport:{width:900,height:680}});
   const errors=[];p.on('pageerror',e=>errors.push(e.message));
@@ -14,7 +15,8 @@ const {chromium}=require('playwright-core');
    Date.now=()=>416*4294967296+7;
    window.motor=[];Object.defineProperty(navigator,'vibrate',{value:v=>(motor.push(v),true)});
   });
-  const url=pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href;
+  entry=await openPersistenceEntry(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html')));
+  const {url}=entry;
   const ready=()=>p.waitForFunction(()=>document.querySelector('#act')?.disabled===false);
   const open=async section=>{await p.locator('#openMenu').click();await p.locator('[data-to='+section+']').click();};
   const travel=async(index,time)=>{
@@ -100,5 +102,5 @@ const {chromium}=require('playwright-core');
   assert.equal(hooked.phase,4,JSON.stringify(hooked));
   assert.equal(hooked.caught,0);assert.deepEqual(errors,[]);
   console.log('PASS workshop bait and depth, journal clue, reload persistence, incompatible empty cast with no cue or credit, bottom shrimp hooks a dusk prawn.');
- }finally{await browser.close();}
+ }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});

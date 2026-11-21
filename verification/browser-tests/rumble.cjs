@@ -1,6 +1,6 @@
 const {showControl}=require('./menu-controls.cjs');
 const {chromium}=require('playwright-core');
-const {pathToFileURL}=require('node:url');
+const {openPersistenceEntry}=require('./persistence-entry.cjs');
 const path=require('node:path');
 const assert=require('node:assert/strict');
 
@@ -9,14 +9,16 @@ const assert=require('node:assert/strict');
     executablePath: process.env.BROWSER_PATH || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
     headless:true
   });
+  let entry;
   try{
+    entry=await openPersistenceEntry(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html')));
     const page=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:390,height:844}});
     await page.addInitScript(()=>{
       window.pulses=[];
       Object.defineProperty(navigator,'vibrate',{configurable:true,value:pattern=>{pulses.push(pattern);return true;}});
     });
     await page.addInitScript(()=>localStorage.setItem('thai-waters-language','en'));
-  await page.goto(pathToFileURL(path.resolve(process.argv[2]||path.join(__dirname,'../../game/Thai-Waters-play.html'))).href);
+  await page.goto(entry.url);
     await page.waitForFunction(()=>!document.querySelector('#act').disabled);
     async function openMix(){
       await page.locator('#openMenu').tap();
@@ -50,5 +52,5 @@ const assert=require('node:assert/strict');
     await page.evaluate(()=>{Object.defineProperty(navigator,'vibrate',{value:undefined});});
     await sample(6);assert.match(await page.locator('#rumbleStatus').textContent(),/visual preview/);
     console.log('PASS phone haptic patterns, enabled level persistence, silent Off, menu cancellation, visual fallback and live hooked ray.');
-  } finally {await browser.close();}
+  } finally {try{await browser.close();}finally{await entry?.close();}}
 })().catch(error=>{console.error(error);process.exitCode=1;});

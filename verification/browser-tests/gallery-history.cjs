@@ -1,11 +1,16 @@
 const {showControl}=require('./menu-controls.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {pathToFileURL}=require('node:url');
+const {openPersistenceEntry}=require('./persistence-entry.cjs');
 const {webkit,chromium}=require('playwright-core');
 (async()=>{
- const target=process.env.PLAYTEST_URL||pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href;
+ const html=path.resolve(__dirname,'../../game/Thai-Waters-play.html');
+ const directPortrait=process.env.PLAYTEST_URL||pathToFileURL(html).href;
  const browser=process.env.TEST_WEBKIT?await webkit.launch():await chromium.launch({executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
+ let entry;
  try{
+ entry=await openPersistenceEntry(html,process.env.PLAYTEST_URL);
+ const target=entry.url;
  const page=await browser.newPage({isMobile:true,hasTouch:true,viewport:{width:844,height:390}});
  if(process.env.PRIVATE_SITE_CHECK){const secret=fs.readFileSync(0,'utf8').trim(),origin=new URL(target).origin;await page.route('**/*',async route=>{
   if(new URL(route.request().url()).origin!==origin)return route.continue();
@@ -23,7 +28,7 @@ const {webkit,chromium}=require('playwright-core');
  await shot('Thai-Waters-catch-screen');
  const portrait=await browser.newPage({isMobile:true,hasTouch:true,deviceScaleFactor:1,viewport:{width:320,height:700}});
  if(!process.env.PRIVATE_SITE_CHECK){
-  await portrait.goto(target);await portrait.waitForFunction(()=>g&&!$('act').disabled);
+  await portrait.goto(directPortrait);await portrait.waitForFunction(()=>g&&!$('act').disabled);
   await portrait.evaluate(()=>{for(let i=0;i<8;i++)g.restoreEntry(i,1,atlas.fish[i].low);});
   await portrait.locator('#openMenu').tap();await portrait.locator('[data-to=book]').tap();
   const fit=await portrait.evaluate(()=>{
@@ -182,5 +187,5 @@ const {webkit,chromium}=require('playwright-core');
  await shot('Thai-Waters-catch-history');await page.locator('#back').tap();assert(await page.locator('#species-40').isVisible());
  await page.locator('#back').tap();await page.locator('[data-to=sensors]').tap();await showControl(page,'#handheldEnable');await page.locator('#handheldEnable').check();await page.keyboard.press('v');await page.locator('#resume').tap();await page.keyboard.press('c');await page.waitForFunction(()=>g.state()===1||g.state()===2);
  assert.deepEqual(errors,[]);console.log('PASS three Thai location typefaces, 480×320 gallery, confirmed catch across reload, eight history fields, full-width HUD, reduced-motion prompt, and controller cast.');
- }finally{await browser.close();}
+ }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});
