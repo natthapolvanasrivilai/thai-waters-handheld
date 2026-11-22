@@ -157,6 +157,8 @@ main:has(#menu[open]) #flatReel{visibility:hidden}
       <path fill="#9cebd5" fill-rule="evenodd" d="M50.77 89.40 Q51.34 83.40 58.84 83.40 L86.34 83.40 Q112.59 83.40 111.92 103.80 Q111.71 119.40 97.29 126.60 L110.50 159.00 L86.75 159.00 L75.59 131.40 L66.84 131.40 L64.25 159.00 L44.25 159.00 Z M69.76 100.20 L68.30 115.80 L82.05 115.80 Q92.05 115.80 92.84 107.40 Q93.51 100.20 83.51 100.20 Z M122.03 92.40 Q122.59 86.40 130.09 86.40 L180.09 86.40 L178.51 103.20 L141.01 103.20 L139.89 115.20 L172.39 115.20 L170.93 130.80 L138.43 130.80 L137.07 145.20 L175.82 145.20 L174.25 162.00 L115.50 162.00 Z M193.28 90.40 Q193.84 84.40 201.34 84.40 L251.34 84.40 L249.76 101.20 L212.26 101.20 L211.14 113.20 L243.64 113.20 L242.18 128.80 L209.68 128.80 L208.32 143.20 L247.07 143.20 L245.50 160.00 L186.75 160.00 Z M263.52 92.40 Q264.09 86.40 270.34 86.40 L284.09 86.40 L278.69 144.00 L317.44 144.00 L315.75 162.00 L257.00 162.00 Z"/>
      </svg>
     <button id="bootStart" type="button">Touch to start</button>
+    <button id="titleAudio" type="button" aria-label="Enable title sound" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9h4l5-4v14l-5-4H3z M16 9q4 3 0 6 M19 6q7 6 0 12"/></svg></button>
+    <button id="skipArcade" type="button" hidden>Skip intro</button>
     <div id="arcadeDock">
       <button id="bootResume" class="action" type="button">Play</button>
       <div id="bootRoutes"><button type="button" data-to="spots">Fishing Map</button><button type="button" data-to="rod">Rods &amp; Lures</button><button type="button" data-to="book">Fish Collection</button><button type="button" data-to="crew">Events</button><button type="button" data-to="career">Career Mode</button><button type="button" data-to="boot-settings">Settings</button></div>
@@ -356,7 +358,9 @@ function loadFieldBank(engine){
 const bytes=Uint8Array.from(atob('@@WASM@@'),c=>c.charCodeAt(0));
 let powered=false;
 let g=null,audio=null,nextSound=0,prev=0,held=false,dragging=false,lastAngle=0,dialAngle=0,turns=0,action=false,lastLabel='',elapsed=0;
+@@ARCADE_INTRO@@
 let bootHome=false,bootCanResume=false,bootTrail=[];
+const arcadeClock=arcadeIntro.createClock(),motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 const menu=$('menu'),pageNames={home:'Tackle box','boot-home':'Pocket Reel','boot-settings':'Settings',spots:'Fishing spots',book:'Fish collection',rod:'Rod workshop',sound:'Music & bite cues',sensors:'Motion bench',crew:'Events & rankings',career:'Career & backups'};
 const times=['Dawn','Day','Dusk','Night','Live'],finishes=['River reed','Copper','Kingfisher'];
 let placeId=0,timeMode=4,weatherMode=0,finish=0,menuPage='home',pendingSpot=0,pendingTime=4,filteredG=null,basePose=false,calibratedMobile=false,rodAngle=0,stableSince=0,lastMotion=0,motionStarted=false,gestureCast=false,gestureLift=false;
@@ -414,6 +418,7 @@ function listSpots(){
 }
 function section(name){
  if(menuPage==='sound' && name!=='sound')resetHaptics();
+ if(name!=='boot-home')stopArcadeSound();
  $('careerOpen').textContent=careerWords('Career & backups','บันทึกนักตกปลา');
  if(name==='career'){menuSheets.reset('career');drawCareer();}else if(menuPage==='career')resetCareerFile();
 
@@ -436,6 +441,9 @@ function section(name){
   if(name==='boot-settings')$('arcadeSettingsLanguage').textContent=careerWords('Language','ภาษา');
   if(name==='boot-home'){
    $('bootStart').textContent=careerWords('Touch to start','แตะเพื่อเริ่ม');
+   $('skipArcade').textContent=careerWords('Skip intro','ข้ามฉากเปิด');
+   labelArcadeSound();
+   if(arcadeOpted&&arcadeClock.phase==='modes')startArcadeSound(false,false);
    $('bootModes').setAttribute('aria-label',careerWords('Back to title','กลับหน้าเริ่มเกม'));
    text($('bootResume'),g.state()===5
     ?careerWords('Resume pending catch','กลับไปยังปลาที่ยังไม่ได้ลงสมุด')
@@ -444,16 +452,17 @@ function section(name){
  }
  if(name==='spots'){pendingSpot=placeId;pendingTime=timeMode;$('searchSpot').value='';$('waterType').value='all';$('period').selectedIndex=pendingTime;$('weatherChoice').selectedIndex=weatherMode;listSpots();menuSheets.reset('spots');locationMap.resetSelection();}
  const pane=menu.querySelector('[data-section="'+name+'"]');if(pane)menuSheets.open(name);
- if(menu.open)$(name==='boot-home'?(menu.dataset.arcadeModes?'bootResume':'bootStart'):'menuTitle').focus({preventScroll:!(name==='boot-home'&&menu.dataset.arcadeModes)});
+ if(menu.open)$(name==='boot-home'?(arcadeClock.phase==='launch'?'skipArcade':menu.dataset.arcadeModes?'bootResume':'bootStart'):'menuTitle').focus({preventScroll:!(name==='boot-home'&&menu.dataset.arcadeModes)});
 }
 function openBootHome(canResume=true){
- bootCanResume=canResume;bootHome=true;bootTrail=[];menu.dataset.bootHome='true';delete menu.dataset.arcadeModes;
+ bootCanResume=canResume;bootHome=true;bootTrail=[];menu.dataset.bootHome='true';
+ stopArcadeSound(true);setArcadePhase(arcadeClock.reset(motionPreference.matches));
  for(const id of ['act','dial','catchContinue','joinCrew'])$(id).disabled=true;
  if(!menu.open)menu.show();
  section('boot-home');
 }
 function unlockBootNavigation(){
- bootHome=false;bootTrail=[];delete menu.dataset.bootHome;
+ stopArcadeSound(true);bootHome=false;bootTrail=[];delete menu.dataset.bootHome;
  $('joinCrew').disabled=sessionOnly;
 }
 function resumeBootHome(){
@@ -477,17 +486,47 @@ function backInMenu(){
 $('back').onclick=backInMenu;
 $('resume').onclick=()=>{if(!resumeBootHome())closeMenu();};
 $('bootResume').onclick=()=>resumeBootHome();
-$('bootStart').onclick=()=>{
- if(!bootHome||menuPage!=='boot-home'||menu.dataset.arcadeModes)return;
- menu.dataset.arcadeModes='true';
- $('arcadeDock').scrollTop=0;
- $('bootResume').focus({preventScroll:true});
+function setArcadePhase(phase){
+ if(!phase)return;
+ menu.dataset.arcadePhase=phase;
+ const entering=phase==='launch';
+ $('skipArcade').hidden=!entering;
+ if(phase==='modes')menu.dataset.arcadeModes='true';
+ else delete menu.dataset.arcadeModes;
+ if(entering)$('skipArcade').focus({preventScroll:true});
+ if(phase==='modes'){
+  $('arcadeDock').scrollTop=0;
+  $('bootResume').focus({preventScroll:true});
+ }
+}
+function showArcadeModes(skipped=false){
+ if(skipped)stopArcadeSound();
+ setArcadePhase(arcadeClock.skip()||arcadeClock.phase);
+ if(arcadeOpted)startArcadeSound(false,false);
+}
+$('bootStart').onclick=e=>{
+ if(!bootHome||menuPage!=='boot-home')return;
+ const phase=arcadeClock.start(motionPreference.matches);
+ if(!phase)return;
+ setArcadePhase(phase);
+ if(e.isTrusted)startArcadeSound(phase==='launch',true);
+};
+$('skipArcade').onclick=()=>{if(arcadeClock.phase==='launch')showArcadeModes(true);};
+$('titleAudio').onclick=e=>{
+ if(!e.isTrusted||!bootHome||menuPage!=='boot-home'||arcadeClock.phase==='launch')return;
+ if(arcadeOpted){arcadeMuted=true;stopArcadeSound(true);}
+ else{arcadeMuted=false;startArcadeSound(false,true);}
 };
 $('bootModes').onclick=()=>{
- if(!bootHome||menuPage!=='boot-home'||!menu.dataset.arcadeModes)return;
- delete menu.dataset.arcadeModes;
+ if(!bootHome||menuPage!=='boot-home'||arcadeClock.phase!=='modes')return;
+ setArcadePhase(arcadeClock.reset(true));
  $('bootStart').focus({preventScroll:true});
 };
+motionPreference.addEventListener?.('change',()=>{
+ if(!bootHome||menuPage!=='boot-home'||!motionPreference.matches)return;
+ if(arcadeClock.phase==='launch')showArcadeModes(true);
+ else if(arcadeClock.phase==='reveal')setArcadePhase(arcadeClock.reset(true));
+});
 document.addEventListener('keydown',e=>{
  if(!menu.open||e.defaultPrevented)return;
  if(e.key==='Tab'&&bootHome){
@@ -500,7 +539,7 @@ document.addEventListener('keydown',e=>{
  }
  if(e.key!=='Escape')return;
  e.preventDefault();
- if(menuPage==='boot-home'){if(menu.dataset.arcadeModes)$('bootModes').click();return;} // Home cannot be bypassed with Escape.
+ if(menuPage==='boot-home'){if(arcadeClock.phase==='launch')showArcadeModes(true);else if(menu.dataset.arcadeModes)$('bootModes').click();return;} // Home cannot be bypassed with Escape.
  if(menuPage==='home')closeMenu();else backInMenu();
 });
 // Only the chosen local file enters this flow; there is no account or upload.
@@ -806,7 +845,7 @@ const keys=['music','volume','cue','fx','reelClick'];
 function settings(){const a=keys.map(k=>$(k).selectedIndex);g?.config(...a);g?.reelVolume(a[4]);if(!sessionOnly)try{localStorage.setItem('willow-v1-audio',JSON.stringify(a))}catch{}}
 try{let a=JSON.parse(localStorage.getItem('willow-v1-audio'));if(Array.isArray(a))keys.forEach((k,i)=>{if(Number.isInteger(a[i])&&a[i]>=0&&a[i]<$(k).length)$(k).selectedIndex=a[i]})}catch{}
 function syncBiteSwitch(){$('iosSwitch').checked=$('cue').selectedIndex!==1;}
-keys.forEach(k=>$(k).onchange=()=>{settings();syncBiteSwitch();});
+keys.forEach(k=>$(k).onchange=()=>{settings();syncBiteSwitch();if(arcadeOpted)arcadeAudio.mix(titleMix());});
 $('iosSwitch').onchange=()=>{$('cue').selectedIndex=$('iosSwitch').checked?0:1;$('cue').dispatchEvent(new Event('change',{bubbles:true}));};
 syncBiteSwitch();
 let boatAudioBus=null;
@@ -839,6 +878,48 @@ function pump(){
   const s=audio.createBufferSource();s.buffer=buf;s.connect(audio.destination);s.start(nextSound);nextSound+=256/16000;
  }
 }
+@@ARCADE_AUDIO@@
+let arcadeContext=null,arcadeOpted=false,arcadeMuted=false,arcadeSerial=0;
+const titleMix=()=>({master:arcadeOpted?1:0,music:$('music').selectedIndex===3?0:[0,.32,.65,1][$('volume').selectedIndex],effects:[0,.28,.6,1][$('fx').selectedIndex]});
+function labelArcadeSound(){
+ const control=$('titleAudio');
+ const label=arcadeOpted?careerWords('Mute title sound','ปิดเสียงหน้าเริ่มเกม'):careerWords('Enable title sound','เปิดเสียงหน้าเริ่มเกม');
+ control.setAttribute('aria-label',label);control.title=label;
+ control.setAttribute('aria-pressed',String(arcadeOpted));
+}
+function stopArcadeSound(disarm=false){
+ ++arcadeSerial;arcadeAudio.stop();
+ if(disarm){arcadeOpted=false;labelArcadeSound();}
+}
+function startArcadeSound(launch,trusted){
+ if(!powered||!bootHome||menuPage!=='boot-home'||!menu.open||document.hidden)return;
+ if(arcadeMuted)return;
+ if(trusted){arcadeOpted=true;labelArcadeSound();}
+ if(!arcadeOpted)return;
+ const {music,effects}=titleMix();
+ if(!music&&!effects)return;
+ const serial=++arcadeSerial;
+ try{
+  if(!arcadeContext||arcadeContext.state==='closed'){
+   if(!trusted)return;
+   const AudioEngine=window.AudioContext||window.webkitAudioContext;
+   if(!AudioEngine)return;
+   try{if(navigator.audioSession)navigator.audioSession.type='playback';}catch{}
+   arcadeContext=audio&&audio.state!=='closed'?audio:new AudioEngine();
+  }
+  const context=arcadeContext;
+  const ready=()=>{
+   if(serial!==arcadeSerial||!arcadeOpted||!powered||!bootHome||menuPage!=='boot-home'||document.hidden||context.state!=='running')return;
+   if(launch&&arcadeClock.phase!=='launch')return;
+   arcadeAudio.start({context,output:context.destination,...titleMix()});
+   if(launch)arcadeAudio.launch();
+  };
+  if(context.state==='running')ready();
+  else if(trusted)void Promise.resolve(context.resume()).then(ready,()=>{});
+ }catch{/* Motion/title remains fully playable without Web Audio. */}
+}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopArcadeSound(true);});
+window.addEventListener('pagehide',()=>stopArcadeSound(true));
 let audioTimer, resumeAudio;
 function audioState(){
  const running=audio?.state==='running';
@@ -854,7 +935,7 @@ function unlock(){
  try{
   if(!audio||audio.state==='closed'){
    const AudioEngine=window.AudioContext||window.webkitAudioContext;
-   audio=new AudioEngine();
+   audio=arcadeContext&&arcadeContext.state!=='closed'?arcadeContext:new AudioEngine();
    boatAudioBus=audio.createGain();boatAudioBus.connect(audio.destination);boatEffects();
    audio.onstatechange=audioState;
    clearInterval(audioTimer);audioTimer=setInterval(pump,20);
@@ -1233,15 +1314,7 @@ function paintFishHint(){
  ctx.lineTo(x-11*scale,y-3*scale);ctx.closePath();ctx.fill();ctx.restore();
 }
 function paintArcadeTitle(){
- // Existing game scenery only: no trip, tick, save or network action.
- ctx.save();ctx.imageSmoothingEnabled=false;
- ctx.drawImage(viewOfPlace(0,1),0,0,480,320);
- const grading=ctx.createLinearGradient(0,0,0,320);
- const modes=Boolean(menu.dataset.arcadeModes);
- grading.addColorStop(0,modes?'rgba(5,28,43,.65)':'rgba(5,30,47,.55)');
- grading.addColorStop(.50,modes?'rgba(4,33,43,.72)':'rgba(4,38,49,.36)');
- grading.addColorStop(1,modes?'rgba(4,27,40,.85)':'rgba(4,28,42,.82)');
- ctx.fillStyle=grading;ctx.fillRect(0,0,480,320);ctx.restore();
+ arcadeIntro.paint(ctx,viewOfPlace(0,1),arcadeClock,motionPreference.matches);
  paintLcdInterface(ctx);
 }
 function draw(){
@@ -1345,7 +1418,15 @@ let currentSlot=0;function frame(now){let dt=Math.min(80,Math.max(0,Math.round(n
  }
  if(powered&&!document.hidden&&!menu.open){if([0,6,9].includes(g.state())&&slot()!==currentSlot){currentSlot=slot();g.place(placeId,currentSlot);}if([0,6,9].includes(g.state()))applyWeather();elapsed+=dt;let step=heldTurn(dt);dialAngle+=step*360;let old=g.state();if([0,6,9].includes(old)&&(action||gestureCast))g.place(placeId,currentSlot);g.fishHintsEnabled(fishHintsAllowed());g.advance(dt,action||gestureCast,action||gestureLift,turns+step);if(audio?.state!=='running'&&!resumeAudio)g.clearFishingSound();if(hapticFocus){const pulse=g.rumbleEvent(now>>>0,1);if(rumbleLevel.selectedIndex)phonePulse(pulse);showReelCue(pulse);
  if(typeof navigator.vibrate!=='function'&&audio?.state==='running'&&[4,5,6].includes(pulse))previewRhythm(pulse,false);}gestureCast=gestureLift=false;if(old!==5&&g.state()===5){pendingDay=sessionOnly?0:enteredCup;pendingCapture=captureLanding();save();}
- action=false;turns=0;draw()}else if(powered&&!document.hidden&&menu.open){elapsed+=dt;draw()}requestAnimationFrame(frame)}
+ action=false;turns=0;draw()}else if(powered&&!document.hidden&&menu.open){
+  elapsed+=dt;
+  if(bootHome&&menuPage==='boot-home'){
+   const phase=arcadeClock.step(dt);
+   if(phase==='modes')showArcadeModes();
+   else setArcadePhase(phase);
+  }
+  draw();
+ }requestAnimationFrame(frame)}
 let startupPending=null;
 let startupGeneration=0,startupOff=false;
 const startupRecovery=bindStartupRecovery($,careerWords,{

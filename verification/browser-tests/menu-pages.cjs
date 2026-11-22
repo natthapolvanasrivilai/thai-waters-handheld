@@ -7,6 +7,7 @@ async function mixedInputFocus(browser){
  try{
   await p.goto(pathToFileURL(path.resolve(__dirname,'../../game/Thai-Waters-play.html')).href);
   const start=p.locator('#bootStart');await start.waitFor({state:'visible'});await start.click();
+  await p.locator('#menu[data-arcade-phase=modes]').waitFor({state:'visible'});
   const rod=p.locator('#bootRoutes [data-to=rod]');
   // Right-click parks and focuses without activating the game's route.
   await rod.click({button:'right'});
@@ -32,6 +33,10 @@ async function mixedInputFocus(browser){
 (async()=>{
  const engine=process.env.TEST_WEBKIT?webkit:chromium,browser=await engine.launch(engine===webkit?{}:{executablePath:process.env.BROWSER_PATH||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
  try{
+  if(engine===chromium){
+   require('./arcade-intro-unit.cjs');
+   await require('./arcade-intro.cjs').verifyArcadeIntro(browser);
+  }
   await mixedInputFocus(browser);
   for(const width of [844,390,320]){
   const p=await browser.newPage({viewport:{width,height:width===844?390:800},isMobile:true,hasTouch:true});

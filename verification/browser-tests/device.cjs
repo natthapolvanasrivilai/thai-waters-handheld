@@ -44,6 +44,7 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   assert(await page.locator('#act').isDisabled());
   assert.equal(await page.evaluate(()=>localStorage.getItem('thai-atlas-v2')),saveBefore);
   await start.press('Enter');
+  await page.locator('#menu[data-arcade-phase=modes]').waitFor({state:'visible'});
   assert(await play.isVisible());assert(await page.locator('#act').isDisabled());
   await play.click();await page.waitForFunction(()=>document.documentElement.dataset.device&&g);
   assert.equal(await page.locator('html').getAttribute('data-view'),'screen');
