@@ -122,7 +122,10 @@ assert.equal(orderedIds[1],unmapped);
    const assertList=async()=>assert.deepEqual(await p.locator('#places option').evaluateAll(xs=>xs.map(x=>x.value)),orderedIds);
 
    for(const lang of ['th','en']){
-    await press('[data-language="'+lang+'"]');
+    await press('[data-section=boot-home] [data-to=boot-settings]');
+    await press('[data-section=boot-settings] [data-language="'+lang+'"]');
+    assert.equal(await p.locator('html').getAttribute('lang'),lang);
+    await press('#back');
     await press('[data-section=boot-home] [data-to=spots]');
     assert(await p.locator('#waterbodyMap').isVisible());
     assert(await p.locator('#mapTravel').isDisabled(),'boot preview never travels');

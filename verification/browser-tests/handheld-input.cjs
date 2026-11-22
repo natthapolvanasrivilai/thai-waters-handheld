@@ -143,7 +143,7 @@ async function verify(browser,mobile){
   await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),1);
   await pressButton(page.locator('#openMenu'));assert.equal(await page.evaluate(()=>g.rodUp()),0);
-  await pressButton(page.locator('[data-language=th]'));await pressButton(page.locator('[data-section=home] [data-to=sensors]'));
+  await pressButton(page.locator('#languageRow [data-language=th]'));await pressButton(page.locator('[data-section=home] [data-to=sensors]'));
   assert.match(await status.textContent(),/[ก-๙]/);await setPairedRod(page,enable,false);
   assert.match(await status.textContent(),/ปิด/);await pressButton(page.locator('#resume'));
   await press('v');await press('9');assert.equal(await page.evaluate(()=>g.rodUp()),0);

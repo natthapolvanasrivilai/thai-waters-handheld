@@ -39,6 +39,11 @@ const {chromium}=require('playwright-core'),{pathToFileURL}=require('url'),path=
   console.log('PASS visible cold PWR cancellation and independent restart held stale decodes without replacing the engine or save.');
   assert.equal(await page.evaluate(()=>audio?.state??null),null);
   await page.keyboard.press('Escape');
+  const start=page.locator('#bootStart');
+  assert(await start.isVisible());assert(await play.isHidden());
+  assert(await page.locator('#act').isDisabled());
+  assert.equal(await page.evaluate(()=>localStorage.getItem('thai-atlas-v2')),saveBefore);
+  await start.press('Enter');
   assert(await play.isVisible());assert(await page.locator('#act').isDisabled());
   await play.click();await page.waitForFunction(()=>document.documentElement.dataset.device&&g);
   assert.equal(await page.locator('html').getAttribute('data-view'),'screen');

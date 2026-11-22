@@ -39,7 +39,7 @@ async function mixedInputFocus(browser){
   await (await requireBootHome(p)).tap();
   await p.waitForFunction(()=>g&&!$('act').disabled);
   for(const lang of ['th','en']){
-   await p.locator('#openMenu').tap();await p.locator('[data-language='+lang+']').tap();
+   await p.locator('#openMenu').tap();await p.locator('#languageRow [data-language='+lang+']').tap();
    async function fits(){
     const bad=await p.evaluate(()=>{
      const menu=$('menu'),picker=$('lcdPicker'),frame=picker.hidden?menu:picker,r=frame.getBoundingClientRect();
