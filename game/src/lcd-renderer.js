@@ -14,9 +14,11 @@ const paintLcdInterface = (() => {
  layer.height = 320;
  const pen = layer.getContext('2d');
  const ui = $('lcdUI');
- let dirty = true, previousState = '', origin;
+ let dirty = true, previousState = '', origin, nextArcadePaint=0;
+ const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
 
  const invalidate = () => { dirty = true; };
+ reducedMotion.addEventListener?.('change',invalidate);
  const menuChanges=new MutationObserver(invalidate);
  menuChanges.observe(menu, {attributes:true, childList:true, characterData:true, subtree:true});
  for (const event of ['scroll','focusin','focusout','pointerover','pointerout','input','change','select','keyup','pointerup'])
@@ -52,7 +54,7 @@ const paintLcdInterface = (() => {
     else pen.fillRect(x+(side==='Left'?0:w-line),y,line,h);
    }
   }
-  if (el.matches(':focus-visible') && !el.matches('h2')) {
+  if (el.matches(':focus-visible') && !el.matches('h2,#menu[data-page=boot-home] button')) {
    pen.strokeStyle='#ffc67a'; pen.lineWidth=2;
    pen.strokeRect(x+1,y+1,w-2,h-2);
   }
@@ -162,6 +164,10 @@ const paintLcdInterface = (() => {
  }
  function paintElement(el,clip,outline=false) {
   if(el.hidden || el.tagName==='SELECT' || el.classList.contains('sr-only')) return;
+  if(el.id==='bootRoutes' && menu.dataset.page==='boot-home' && getComputedStyle(el).display==='contents'){
+   for(const child of el.children)paintElement(child,clip,outline);
+   return;
+  }
   const b=box(el.getBoundingClientRect());
   if(!b.w||!b.h||b.y>=clip.bottom||b.y+b.h<=clip.top) return;
   const style=getComputedStyle(el);
@@ -180,6 +186,15 @@ const paintLcdInterface = (() => {
   else if(el.tagName==='INPUT') input(el,b,style);
   else if(el.tagName==='CANVAS') {pen.imageSmoothingEnabled=false;pen.drawImage(el,b.x,b.y,b.w,b.h);}
   else if(el.localName==='svg') {
+   if(el.classList.contains('arcade-lettering')){
+    const view=el.viewBox.baseVal;
+    pen.translate(b.x,b.y);pen.scale(b.w/view.width,b.h/view.height);
+    for(const path of el.querySelectorAll('path')){
+     pen.fillStyle=path.getAttribute('fill');
+     pen.fill(new Path2D(path.getAttribute('d')),'evenodd');
+    }
+    pen.restore();return;
+   }
    pen.translate(b.x,b.y);pen.scale(b.w/24,b.h/24);pen.strokeStyle=style.color;
    pen.lineWidth=Number(el.getAttribute('stroke-width'))||1.65;pen.lineCap='round';pen.lineJoin='round';
    for(const path of el.querySelectorAll('path'))pen.stroke(new Path2D(path.getAttribute('d')));
@@ -192,7 +207,7 @@ const paintLcdInterface = (() => {
     else if(child.nodeType===Node.ELEMENT_NODE)paintElement(child,clip,outline);
    }
    const marker=el.matches('.routes button')?'›':el.matches('.lcd-select-wrap > button')?'▾':el.matches('[role=option][aria-selected=true]')?'✓':'';
-   if(marker)centered(marker,{x:b.x+b.w-18,y:b.y,w:13,h:b.h},'#decaab',14);
+   if(marker&&menu.dataset.page!=='boot-home')centered(marker,{x:b.x+b.w-18,y:b.y,w:13,h:b.h},'#decaab',14);
    if(scroll)scrollbar(el,b);
    if(el.matches('.catch-scroll')&&el.scrollWidth>el.clientWidth+1){
     const available=b.w-8,thumb=Math.max(12,available*el.clientWidth/el.scrollWidth);
@@ -205,7 +220,10 @@ const paintLcdInterface = (() => {
  return function(context) {
   const state=[language,menu.open,$('rigHud').dataset.kit,ui.hasAttribute('data-casting-water'),$('act').hidden,$('spot').textContent,$('pondClock').textContent,$('simBattery').value,
    $('act').textContent,$('act').disabled,$('catchContinue').hidden,$('startSound').hidden,$('liveCrew').textContent].join('|');
-  if(menuChanges.takeRecords().length || dirty || state!==previousState) {
+  const now=performance.now();
+  const animateTitle=menu.open&&menu.dataset.page==='boot-home'&&!menu.hasAttribute('data-arcade-modes')&&!reducedMotion.matches&&now>=nextArcadePaint;
+  if(animateTitle)nextArcadePaint=now+32;
+  if(menuChanges.takeRecords().length || dirty || state!==previousState||animateTitle) {
    // Measure in native LCD coordinates even when the hit surface is projected
    // onto the angled 3D model. Restore its transform before the browser paints.
    const projection=ui.style.transform;

@@ -40,7 +40,7 @@ async function main(){
     await (await requireBootHome(page)).click();
     await page.waitForFunction(()=>typeof g!=='undefined'&&g&&!$('act').disabled);
     await page.locator('#openMenu').click();
-    await page.locator('[data-language='+lang+']').click();
+    await page.locator('#languageRow [data-language='+lang+']').click();
     await page.waitForFunction(value=>document.documentElement.lang===value,lang);
     if(!ids)ids=await page.evaluate(()=>{
      // First, middle and last of the fixture. The middle eight are verified

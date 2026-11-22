@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Thai Waters • Play</title>
+<title>Pocket Reel • Play</title>
 <style>*{box-sizing:border-box}
 @font-face{font-family:'Atkinson Hyperlegible Next';font-style:normal;font-weight:200 800;font-display:swap;src:url(data:font/ttf;base64,@@FONT@@) format('truetype')}
 @font-face{font-family:'Atkinson Hyperlegible Next';font-style:normal;font-weight:100 900;font-display:swap;src:url(data:font/woff2;base64,@@THAI_FONT@@) format('woff2');unicode-range:U+0E01-0E5B}
@@ -130,12 +130,12 @@ main:has(#menu[open]) #flatReel{visibility:hidden}
 @@LOCATION_MAP_CSS@@
 </style>
 <main>
- <header class="page-heading"><h1>Thai Waters</h1></header>
+ <header class="page-heading"><h1>Pocket Reel</h1></header>
  <p id="sessionCareerNotice" role="status" hidden></p>
  <div class="display-frame">
  <div hidden id="product" aria-label="Interactive Rev F handheld"><button id="powerPin" title="Power key on the top-left edge" aria-label="Turn simulator power off at the top-left PWR key" hidden>⏻ PWR</button></div>
  <div class="stage" id="flatStage">
-  <canvas id="scene" width="480" height="320" aria-label="Thai Waters fishing screen"></canvas>
+  <canvas id="scene" width="480" height="320" aria-label="Pocket Reel fishing screen"></canvas>
   <div id="lcdUI" data-casting-water>
    <button id="arrivalSkip" type="button" hidden>Skip arrival</button>
    <div class="lcd-hud">
@@ -151,11 +151,19 @@ main:has(#menu[open]) #flatReel{visibility:hidden}
     <div id="startupBackup" hidden><label><span id="startupChooseLabel"></span><input id="startupRecoveryFile" type="file" accept=".json,application/json"></label><button id="startupRecoveryCopy" type="button"></button><button id="startupRecoveryUseSession" type="button" hidden></button></div>
     <p id="startupRecoveryStatus" role="status" aria-live="polite"></p>
    </section>
-   <dialog id="menu" aria-labelledby="menuTitle"><div class="menubar"><button id="back" aria-label="Back" title="Back" data-navicon="back"></button><h2 tabindex="-1" id="menuTitle">Menu</h2><button id="bookFind" type="button" aria-controls="bookTools" aria-expanded="false" hidden>Find</button><button id="resume">Resume</button></div><section hidden data-section="home"><div id="languageRow" role="group" aria-label="Language"><span>Language</span><button type="button" data-language="th" lang="th">ไทย</button><button type="button" data-language="en" lang="en">English</button></div><div class="routes"><button data-to="spots"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.4 7-13a7 7 0 0 0-14 0c0 5.6 7 13 7 13z M14.5 8a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z"/></svg><b>Fishing spots</b></button><button data-to="book"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5q4-2 9 1q5-3 9-1v14q-4-2-9 1q-5-3-9-1z M12 6v14"/></svg><b>Fish collection</b></button><button data-to="rod"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20L18 4q4-3 3 3v4q0 4-3 4q-3 0-3-3 M4 16l4 3"/></svg><b>Rod workshop</b></button><button data-to="sound"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h4l5-5v14l-5-5H4z M16 8q4 4 0 8 M19 5q7 7 0 14"/></svg><b>Music & bite cues</b></button><button data-to="sensors"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13h4l3-8l5 15l3-9h5"/></svg><b>Motion bench</b></button><button data-to="crew"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8z M2 20q0-6 7-6q7 0 7 6 M16 5q6 0 5 5q-1 3-4 3 M18 15q4 0 4 5"/></svg><b>Events &amp; rankings</b></button></div></section><section hidden data-section="boot-home"><div id="bootRoutes" class="routes">
-    <button type="button" data-to="career">Career Mode</button><button type="button" data-to="crew">Events</button><button type="button" data-to="book">Fish Collection</button>
-    <button type="button" data-to="rod">Rods &amp; Lures</button><button type="button" data-to="boot-settings">Settings</button><button type="button" data-to="spots">Fishing Map</button>
-   </div><button id="bootResume" class="action" type="button">Play</button></section>
-   <section hidden data-section="boot-settings"><div class="routes"><button type="button" data-to="sound">Music &amp; bite cues</button><button type="button" data-to="sensors">Motion bench</button></div></section>
+   <dialog id="menu" aria-labelledby="menuTitle"><div class="menubar"><button id="back" aria-label="Back" title="Back" data-navicon="back"></button><h2 tabindex="-1" id="menuTitle">Menu</h2><button id="bookFind" type="button" aria-controls="bookTools" aria-expanded="false" hidden>Find</button><button id="resume">Resume</button></div><section hidden data-section="home"><div id="languageRow" role="group" aria-label="Language"><span>Language</span><button type="button" data-language="th" lang="th">ไทย</button><button type="button" data-language="en" lang="en">English</button></div><div class="routes"><button data-to="spots"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.4 7-13a7 7 0 0 0-14 0c0 5.6 7 13 7 13z M14.5 8a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z"/></svg><b>Fishing spots</b></button><button data-to="book"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5q4-2 9 1q5-3 9-1v14q-4-2-9 1q-5-3-9-1z M12 6v14"/></svg><b>Fish collection</b></button><button data-to="rod"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20L18 4q4-3 3 3v4q0 4-3 4q-3 0-3-3 M4 16l4 3"/></svg><b>Rod workshop</b></button><button data-to="sound"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h4l5-5v14l-5-5H4z M16 8q4 4 0 8 M19 5q7 7 0 14"/></svg><b>Music & bite cues</b></button><button data-to="sensors"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13h4l3-8l5 15l3-9h5"/></svg><b>Motion bench</b></button><button data-to="crew"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8z M2 20q0-6 7-6q7 0 7 6 M16 5q6 0 5 5q-1 3-4 3 M18 15q4 0 4 5"/></svg><b>Events &amp; rankings</b></button></div></section><section hidden data-section="boot-home">
+    <svg class="arcade-lettering" viewBox="0 0 362 164" role="img" aria-label="Pocket Reel" stroke="none">
+      <path fill="#e8fff7" fill-rule="evenodd" d="M22.22 18.42 Q22.67 13.12 28.67 13.12 L50.67 13.12 Q71.67 13.12 71.05 32.20 Q70.25 53.40 47.16 54.46 L35.16 54.46 L33.36 75.66 Q32.91 80.96 27.91 80.96 L16.91 80.96 Z M37.41 27.96 L36.33 40.68 L47.33 40.68 Q55.33 40.68 55.87 34.32 Q56.41 27.96 48.41 27.96 Z M102.76 8.06 Q130.76 8.06 127.88 41.98 Q124.91 76.96 96.91 76.96 Q69.91 76.96 72.88 41.98 Q75.76 8.06 102.76 8.06 Z M101.41 23.96 Q90.41 23.96 88.88 41.98 Q87.35 60.00 98.35 60.00 Q110.35 60.00 111.88 41.98 Q113.41 23.96 101.41 23.96 Z M184.86 21.66 L174.78 34.38 Q169.32 28.02 161.32 28.02 Q147.32 28.02 145.79 46.04 Q144.35 63.00 158.35 63.00 Q166.35 63.00 173.89 56.64 L180.81 69.36 Q169.91 79.96 155.91 79.96 Q126.91 79.96 129.79 46.04 Q132.76 11.06 161.76 11.06 Q176.76 11.06 184.86 21.66 Z M193.31 13.36 Q193.67 9.12 198.67 9.12 L209.67 9.12 L207.42 35.62 L227.67 9.12 L244.67 9.12 L222.97 40.92 L241.00 75.90 L223.00 75.90 L210.89 53.64 L205.35 60.00 L204.00 75.90 L188.00 75.90 Z M251.22 16.42 Q251.67 11.12 257.67 11.12 L297.67 11.12 L296.41 25.96 L266.41 25.96 L265.51 36.56 L291.51 36.56 L290.34 50.34 L264.34 50.34 L263.26 63.06 L294.26 63.06 L293.00 77.90 L246.00 77.90 Z M303.22 14.42 Q303.67 9.12 309.67 9.12 L357.67 9.12 L356.32 25.02 L337.32 25.02 L333.45 70.60 Q333.00 75.90 328.00 75.90 L317.00 75.90 L321.32 25.02 L302.32 25.02 Z"/>
+      <path fill="#9cebd5" fill-rule="evenodd" d="M50.77 89.40 Q51.34 83.40 58.84 83.40 L86.34 83.40 Q112.59 83.40 111.92 103.80 Q111.71 119.40 97.29 126.60 L110.50 159.00 L86.75 159.00 L75.59 131.40 L66.84 131.40 L64.25 159.00 L44.25 159.00 Z M69.76 100.20 L68.30 115.80 L82.05 115.80 Q92.05 115.80 92.84 107.40 Q93.51 100.20 83.51 100.20 Z M122.03 92.40 Q122.59 86.40 130.09 86.40 L180.09 86.40 L178.51 103.20 L141.01 103.20 L139.89 115.20 L172.39 115.20 L170.93 130.80 L138.43 130.80 L137.07 145.20 L175.82 145.20 L174.25 162.00 L115.50 162.00 Z M193.28 90.40 Q193.84 84.40 201.34 84.40 L251.34 84.40 L249.76 101.20 L212.26 101.20 L211.14 113.20 L243.64 113.20 L242.18 128.80 L209.68 128.80 L208.32 143.20 L247.07 143.20 L245.50 160.00 L186.75 160.00 Z M263.52 92.40 Q264.09 86.40 270.34 86.40 L284.09 86.40 L278.69 144.00 L317.44 144.00 L315.75 162.00 L257.00 162.00 Z"/>
+     </svg>
+    <button id="bootStart" type="button">Touch to start</button>
+    <div id="arcadeDock">
+      <button id="bootResume" class="action" type="button">Play</button>
+      <div id="bootRoutes"><button type="button" data-to="spots">Fishing Map</button><button type="button" data-to="rod">Rods &amp; Lures</button><button type="button" data-to="book">Fish Collection</button><button type="button" data-to="crew">Events</button><button type="button" data-to="career">Career Mode</button><button type="button" data-to="boot-settings">Settings</button></div>
+    </div>
+    <button id="bootModes" type="button" aria-label="Back to title"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"><path d="M15 5l-7 7 7 7"/></svg></button>
+   </section>
+   <section hidden data-section="boot-settings"><div class="arcade-settings-language" role="group" aria-labelledby="arcadeSettingsLanguage"><strong id="arcadeSettingsLanguage">Language</strong><button type="button" data-language="th" lang="th">ไทย</button><button type="button" data-language="en" lang="en">English</button></div><div class="routes"><button type="button" data-to="sound">Music &amp; bite cues</button><button type="button" data-to="sensors">Motion bench</button></div></section>
    <section hidden data-section="spots"><div class="bindings"><label>Find a location<input id="searchSpot" type="search"></label><label>Water<select id="waterType"><option value="all">All waters</option><option value="fresh">Inland</option><option value="salt">Sea</option></select></label></div><label>Fishing location<select id="places"></select></label><p id="travelStory"></p><div class="bindings"><label>Pond time<select id="period"><option>Dawn</option><option>Day</option><option>Dusk</option><option>Night</option><option>Live · Bangkok</option></select></label><label>Weather<select id="weatherChoice"><option>Seasonal</option><option>Clear</option><option>Light rain</option><option>Heavy rain</option><option>Storm</option></select></label></div><button class="action" id="fishHere">Fish here</button><button type="button" id="locationMapOpen" aria-controls="waterbodyMapSheet">Map</button><div id="mapGraphic"><canvas id="waterbodyMap" width="230" height="186" tabindex="0" role="group" aria-describedby="mapAccessNote"></canvas><small id="mapAccessNote"></small><small title="Natural Earth Admin 0, 1:110m; MSEA-Res (CC BY 4.0); NGA GNS and ONEP">Natural Earth · MSEA-Res · NGA · ONEP</small></div><div id="mapAccess" class="waterbody-map-access"><p id="mapStage" class="sr-only" role="status" aria-live="polite"></p><label>Fishing location<select id="mapWaterbody"></select></label><button type="button" id="mapTravel" class="action" disabled>Travel</button><div class="waterbody-map-actions"><button type="button" id="mapReset">Reset map</button><button type="button" id="mapToList">Full list</button></div><small id="mapBootNote"></small></div> <small>Light rain brings earlier bites. Rough water slows lures and adds drag on runs.</small></section><section hidden data-section="book"><div id="bookTools" hidden><h3 id="bookFindHeading" tabindex="-1">Find a species</h3><label><span id="bookSearchLabel">Find a species</span><input type="search" id="bookSearch" placeholder="Find a species" aria-labelledby="bookSearchLabel"></label><label>Entries<select id="bookFilter"><option>All entries</option><option>This water</option><option>Collected</option><option>Fictional</option><option>Mythic</option><option>Inland</option><option>Sea</option></select></label><button type="button" id="bookFindDone">Done</button></div><div id="records"></div><div class="book-totals book-footer"><strong id="discovered"></strong><span hidden>Landed <output id="count">0</output></span><div id="bookPager"><button type="button" id="bookPrev" data-navicon="back" aria-label="Previous" title="Previous"></button><small id="bookPage" aria-live="polite"></small><button type="button" id="bookNext" data-navicon="next" aria-label="Next" title="Next"></button></div><a id="fishCredits" aria-label="Species data credits" title="Species data credits" download="Thai-Waters-fish-sources.txt" href="data:text/plain;charset=utf-8;base64,@@FISH_CREDITS@@"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0 M12 11v6 M12 7v1"/></svg></a></div><article id="bookDetail" hidden></article></section><section hidden data-section="rod"><div class="book-totals"><strong id="balance"></strong><span id="rigAccess"></span></div><label>Fishing technique<select id="technique"><option>Float drift</option><option>Stop-and-go spoon</option><option>Vertical jig</option></select></label><div class="bindings"><label>Hook bait<select id="hookBait"><option>River worm</option><option>Raw shrimp</option><option>Fermented rice &amp; rum bran</option><option>Surface insect</option><option>Live baitfish</option><option>Squid strip</option></select></label><label>Fishing depth<select id="baitDepth"><option>Surface</option><option>Midwater</option><option>Bottom</option></select></label></div><div class="bait-preview"><canvas id="baitPortrait" aria-hidden="true" width="96" height="60"></canvas><p id="baitNote"></p></div><p id="techniqueNote" class="under"></p><label>Rod finish<select id="finish"><option>River reed</option><option>Copper</option><option>Kingfisher</option></select></label><h2 id="chapter"></h2><p id="letter" class="under"></p><p id="goal"></p><div class="builds" id="builds"></div><button id="refund">Refund tackle points</button><button id="careerOpen" type="button" data-to="career">Career &amp; backups</button><p class="note">First discovery earns a point. Earn another every three new species. Ranks cost 1, 2 and 3 points.</p></section><section hidden data-section="sound"><div class="audio-check"><button type="button" id="testSound">♪ Test sound</button><span id="soundStatus" role="status">Tap for two notes.</span></div><label id="iosSwitchRow" hidden><input type="checkbox" switch id="iosSwitch"> Sound with bite cues</label><div class="opts"><label>Music<select id="music"><option>Adaptive</option><option>Drift</option><option>Melody</option><option>Off</option></select></label><label>Music volume<select id="volume"><option>Off</option><option>Low</option><option selected>Medium</option><option>High</option></select></label><label>Bite cue<select id="cue"><option>Light + tone</option><option>Light</option><option>Tone</option></select></label><label>Effects volume<select id="fx"><option>Off</option><option>Low</option><option selected>Medium</option><option>High</option></select></label><label>Reel click<select id="reelClick"><option>Off</option><option selected>Low</option><option>Medium</option><option>High</option></select></label></div><fieldset class="rumble-box"><legend>Rod rumble</legend><div class="bindings"><button type="button" id="testPhoneMotor">Enable and test phone vibration</button><label>Level<select id="rumbleLevel"><option>Off</option><option>Low</option><option>Medium</option><option>High</option></select></label><button data-pulse="4" data-description="Prawn picking bait · three light taps before the bite">Prawn pick</button><button data-pulse="5" data-description="Bottom hold · sustained pressure">Bottom hold</button><button data-pulse="6" data-description="Fast run · three rapid pulses">Fast run</button><button data-pulse="9" data-description="Reel tooth · one short click">Reel click</button><span id="rumbleLamp" aria-hidden="true"></span></div><small id="rumbleStatus" role="status"></small></fieldset></section><section hidden data-section="sensors"><label>Simulator battery <select id="simBattery"><option value="72">72% · battery</option><option value="12">12% · low battery</option><option value="42+">42% · charging</option><option value="USB">USB only</option><option value="--">Gauge unavailable</option></select></label><div class="bindings"><button id="enableMotion">Enable motion</button><button id="restPose">Recenter</button><button id="liftPose">Set custom lift</button></div><p id="motionStatus">Hold comfortably to center. Lift, then lower to cast. Turn the reel with a finger or hold its center to wind.</p><p class="readout" id="sensorRead">Waiting for motion samples</p><label><span><input type="checkbox" id="wristReel"> Wrist reel</span></label><p id="wristRead" class="readout">Touch reel active. Wrist reel is optional.</p><p>With the rod low, twist sideways about 25° and return to wind half a turn.</p><label>Manual rod tilt<input id="tilt" type="range" min="-25" max="80" value="0"></label><p>Phone accelerometer and gyroscope readings use this browser’s axes and timing. Drag the on-screen knob to test winding. The physical bench reads the QMI8658 and the AS5600 magnetic encoder.</p></section><section hidden data-section="crew"><h2>Daily specimen cup</h2><div id="cupTarget"><div class="cup-specimen"><canvas id="cupPortrait" width="144" height="75" aria-hidden="true"></canvas><div><strong id="cupGoal"></strong><p id="cupTargetSize"></p></div></div><div class="cup-tape" aria-hidden="true"><div class="cup-ruler"><canvas id="cupRulerTicks" width="320" height="11"></canvas><span id="cupRulerMark"></span></div><div id="cupRulerLabels"><span></span><span></span><span></span><span></span><span></span></div></div></div>
 <p id="cupLocation"></p><p id="cupLoadout"></p><div class="bindings cup-controls"><button type="button" class="action" id="cupTravel" aria-describedby="cupLocation cupLoadout cupTravelNote">Equip and travel</button><button type="button" id="cupJoin">Enter daily cup</button></div><p id="cupTravelNote" role="status" hidden></p><p id="cupMine" role="status"></p><h2 id="cupScope">Standings</h2><small>Longest catch wins. Equal lengths share a rank.</small><div id="cupLeaders"></div><small id="cupEmpty"></small><h2>Crew challenge</h2><p id="crewHelp">Land eight catches together in three minutes. Join the same fishing spot on the same LAN host. Every catch stays in your personal collection.</p><button id="joinCrew">Join event</button><p id="crewStatus">Solo fishing</p></section><section hidden data-section="career"><p id="careerSummary"></p><p id="careerPrivacy"></p><button id="careerExport" type="button">Export backup</button><label><span id="careerChoose">Choose backup</span><input type="file" id="careerFile" accept=".json,application/json"></label><p id="careerStatus" role="status"></p><button id="careerRestore" type="button" hidden></button></section><p id="summarySave" role="status"></p></dialog>
   </div>
@@ -413,22 +421,33 @@ function section(name){
  $('back').hidden=name==='home'||name==='boot-home';
  $('resume').hidden=name==='boot-home';
  if(name==='boot-home'||name==='boot-settings'){
-  const text=name==='boot-home'
-   ?[['Career Mode','โหมดอาชีพ'],['Events','กิจกรรม'],['Fish Collection','สมุดปลา'],['Rods & Lures','คันเบ็ดและเหยื่อ'],['Settings','ตั้งค่า'],['Fishing Map','แผนที่ตกปลา']]
-   :[['Music & bite cues','เสียงและเพลง'],['Motion bench','คันเบ็ดและเซนเซอร์']];
+  const labels={career:['Career Mode','โหมดอาชีพ'],crew:['Events','กิจกรรม'],book:['Fish Collection','สมุดปลา'],rod:['Rods & Lures','คันเบ็ดและเหยื่อ'],'boot-settings':['Settings','ตั้งค่า'],spots:['Fishing Map','แผนที่ตกปลา'],sound:['Music & bite cues','เสียงและเพลง'],sensors:['Motion bench','คันเบ็ดและเซนเซอร์']};
   const buttons=[...menu.querySelectorAll('[data-section="'+name+'"] [data-to]')];
-  buttons.forEach((b,i)=>{b.textContent=careerWords(...text[i]);});
+  const text=(b,label)=>{
+   b.textContent=label;
+   if(name==='boot-home'){
+    const icon=document.createElementNS('http://www.w3.org/2000/svg','svg'),path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    icon.classList.add('arcade-selector');icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('aria-hidden','true');
+    path.setAttribute('d','M7 3L18 12 7 21');icon.append(path);b.prepend(icon);
+   }
+  };
+  buttons.forEach(b=>text(b,careerWords(...labels[b.dataset.to])));
   $('menuTitle').textContent=name==='boot-home'?careerWords('Pocket Reel · Main menu','Pocket Reel · เมนูหลัก'):careerWords('Settings','ตั้งค่า');
-  if(name==='boot-home')$('bootResume').textContent=g.state()===5
-   ?careerWords('Resume pending catch','กลับไปยังปลาที่ยังไม่ได้ลงสมุด')
-   :bootCanResume?careerWords('Resume fishing','ตกปลาต่อ'):careerWords('Play','เริ่มเล่น');
+  if(name==='boot-settings')$('arcadeSettingsLanguage').textContent=careerWords('Language','ภาษา');
+  if(name==='boot-home'){
+   $('bootStart').textContent=careerWords('Touch to start','แตะเพื่อเริ่ม');
+   $('bootModes').setAttribute('aria-label',careerWords('Back to title','กลับหน้าเริ่มเกม'));
+   text($('bootResume'),g.state()===5
+    ?careerWords('Resume pending catch','กลับไปยังปลาที่ยังไม่ได้ลงสมุด')
+    :bootCanResume?careerWords('Continue','ตกปลาต่อ'):careerWords('Play','เริ่มเล่น'));
+  }
  }
  if(name==='spots'){pendingSpot=placeId;pendingTime=timeMode;$('searchSpot').value='';$('waterType').value='all';$('period').selectedIndex=pendingTime;$('weatherChoice').selectedIndex=weatherMode;listSpots();menuSheets.reset('spots');locationMap.resetSelection();}
  const pane=menu.querySelector('[data-section="'+name+'"]');if(pane)menuSheets.open(name);
- if(menu.open)$('menuTitle').focus({preventScroll:true});
+ if(menu.open)$(name==='boot-home'?(menu.dataset.arcadeModes?'bootResume':'bootStart'):'menuTitle').focus({preventScroll:!(name==='boot-home'&&menu.dataset.arcadeModes)});
 }
 function openBootHome(canResume=true){
- bootCanResume=canResume;bootHome=true;bootTrail=[];menu.dataset.bootHome='true';
+ bootCanResume=canResume;bootHome=true;bootTrail=[];menu.dataset.bootHome='true';delete menu.dataset.arcadeModes;
  for(const id of ['act','dial','catchContinue','joinCrew'])$(id).disabled=true;
  if(!menu.open)menu.show();
  section('boot-home');
@@ -458,6 +477,17 @@ function backInMenu(){
 $('back').onclick=backInMenu;
 $('resume').onclick=()=>{if(!resumeBootHome())closeMenu();};
 $('bootResume').onclick=()=>resumeBootHome();
+$('bootStart').onclick=()=>{
+ if(!bootHome||menuPage!=='boot-home'||menu.dataset.arcadeModes)return;
+ menu.dataset.arcadeModes='true';
+ $('arcadeDock').scrollTop=0;
+ $('bootResume').focus({preventScroll:true});
+};
+$('bootModes').onclick=()=>{
+ if(!bootHome||menuPage!=='boot-home'||!menu.dataset.arcadeModes)return;
+ delete menu.dataset.arcadeModes;
+ $('bootStart').focus({preventScroll:true});
+};
 document.addEventListener('keydown',e=>{
  if(!menu.open||e.defaultPrevented)return;
  if(e.key==='Tab'&&bootHome){
@@ -470,7 +500,7 @@ document.addEventListener('keydown',e=>{
  }
  if(e.key!=='Escape')return;
  e.preventDefault();
- if(menuPage==='boot-home')return; // Home cannot be bypassed with Escape.
+ if(menuPage==='boot-home'){if(menu.dataset.arcadeModes)$('bootModes').click();return;} // Home cannot be bypassed with Escape.
  if(menuPage==='home')closeMenu();else backInMenu();
 });
 // Only the chosen local file enters this flow; there is no account or upload.
@@ -1202,7 +1232,20 @@ function paintFishHint(){
  ctx.moveTo(x-5*scale,y);ctx.lineTo(x-11*scale,y+3*scale);
  ctx.lineTo(x-11*scale,y-3*scale);ctx.closePath();ctx.fill();ctx.restore();
 }
+function paintArcadeTitle(){
+ // Existing game scenery only: no trip, tick, save or network action.
+ ctx.save();ctx.imageSmoothingEnabled=false;
+ ctx.drawImage(viewOfPlace(0,1),0,0,480,320);
+ const grading=ctx.createLinearGradient(0,0,0,320);
+ const modes=Boolean(menu.dataset.arcadeModes);
+ grading.addColorStop(0,modes?'rgba(5,28,43,.65)':'rgba(5,30,47,.55)');
+ grading.addColorStop(.50,modes?'rgba(4,33,43,.72)':'rgba(4,38,49,.36)');
+ grading.addColorStop(1,modes?'rgba(4,27,40,.85)':'rgba(4,28,42,.82)');
+ ctx.fillStyle=grading;ctx.fillRect(0,0,480,320);ctx.restore();
+ paintLcdInterface(ctx);
+}
 function draw(){
+ if(bootHome&&menu.open&&menuPage==='boot-home'){paintArcadeTitle();return;}
  const p=g.state(),age=g.age(),time=currentSlot;
  const img=viewOfPlace(placeId,timeMode===4?slot():time);ctx.imageSmoothingEnabled=false;ctx.drawImage(img,0,0,480,320);
  const stillArrival=arrivalSince!==null&&arrivalReduced;

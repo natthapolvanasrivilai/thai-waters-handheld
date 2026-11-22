@@ -22,7 +22,7 @@ const {chromium} = require('playwright-core');
    if(reduced)await play.tap();else await play.click();
    await page.waitForFunction(()=>!document.getElementById('act').disabled);
    if(await page.locator('#product').isVisible())await page.locator('#viewMode').click();
-   assert.match(await page.title(),/Thai Waters/);
+   assert.equal(await page.title(),'Pocket Reel • Play');
    assert.equal(await page.locator('#arrivalSkip').isVisible(),false,'Boot must start directly at the saved water');
    async function travel(name,period,beforeSubmit){
     await page.locator('#openMenu').click();await page.locator('[data-section=home] [data-to=spots]').click();
