@@ -366,10 +366,11 @@ html:lang(th) #lcdUI #menu[data-page=boot-home] #arcadeDock #bootResume{font-siz
 /* Arcade title: visible pacing, no flashing, native touch targets. */
 #lcdUI #menu[data-page=boot-home] #bootStart{font-size:27px;line-height:1.22;letter-spacing:.025em;color:#fbffef;animation:arcade-start-beat 2.65s ease-in-out infinite}
 html:lang(th) #lcdUI #menu[data-page=boot-home] #bootStart{font-size:28px;letter-spacing:0}
+/* Animate brightness without changing the controls' native touch geometry. */
 @keyframes arcade-start-beat{
- 0%,100%{opacity:.56;transform:translateY(1px) scale(.985)}
- 26%,49%{opacity:1;transform:translateY(0) scale(1.03)}
- 72%{opacity:.80;transform:translateY(0) scale(1)}
+ 0%,100%{opacity:.56}
+ 26%,49%{opacity:1}
+ 72%{opacity:.80}
 }
 #lcdUI #menu[data-page=boot-home] #bootStart:is(:hover,:focus-visible){color:#c3ffeb}
 #menu[data-page=boot-home][data-arcade-phase=reveal] .arcade-lettering{animation:arcade-title-in .84s cubic-bezier(.2,.72,.22,1) both}

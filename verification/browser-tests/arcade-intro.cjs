@@ -17,6 +17,26 @@ async function verifyArcadeIntro(browser,urlToTest=url){
   const initial=await snapshot();
   assert.equal(initial.allLocked,true);
   await desktop.locator('#menu[data-arcade-phase=title]').waitFor({state:'visible'});
+  // Witness one full real pulse before input. A moving touch target can reject
+  // a genuine tap even when the text appears visually centered throughout.
+  const hitbox=await start.evaluate(async node=>{
+   await document.fonts.ready;
+   const pulse=node.getAnimations().find(a=>a.animationName==='arcade-start-beat');
+   if(!pulse)throw Error('Expected a real Start invitation pulse');
+   const duration=pulse.effect.getComputedTiming().duration;
+   const begin=performance.now(),first=node.getBoundingClientRect();
+   let maxMove=0,minOpacity=1,maxOpacity=0,frames=0;
+   do{
+    await new Promise(requestAnimationFrame);
+    const rect=node.getBoundingClientRect(),opacity=Number(getComputedStyle(node).opacity);
+    for(const key of ['x','y','width','height'])maxMove=Math.max(maxMove,Math.abs(rect[key]-first[key]));
+    minOpacity=Math.min(minOpacity,opacity);maxOpacity=Math.max(maxOpacity,opacity);frames++;
+   }while(performance.now()-begin<duration);
+   return {duration,maxMove,minOpacity,maxOpacity,frames};
+  });
+  assert(hitbox.duration>=2500&&hitbox.frames>8,'must observe a complete rendered invitation cycle');
+  assert(hitbox.maxMove<=.1,JSON.stringify(hitbox));
+  assert(hitbox.maxOpacity-hitbox.minOpacity>=.35,'the stronger pulse must remain visually distinct');
   const first=await desktop.evaluate(()=>$('scene').getContext('2d').getImageData(60,214,360,17).data.reduce((a,x,i)=>(Math.imul(a,31)+x+i)|0,0));
   await desktop.waitForFunction(hash=>$('scene').getContext('2d').getImageData(60,214,360,17).data.reduce((a,x,i)=>(Math.imul(a,31)+x+i)|0,0)!==hash,first);
   await desktop.locator('#titleAudio').click();
