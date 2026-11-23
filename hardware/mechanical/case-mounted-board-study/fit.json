@@ -1,0 +1,155 @@
+{
+  "source_step_sha256": "fba1227c21d03e29510cf6f988221c9b4514cc4b533d410db43aa612fa52bd44",
+  "old_board_members_removed": [
+    "A4-bond",
+    "A4-integration",
+    "A4-spacers",
+    "A5-bond",
+    "A5-power",
+    "A5-spacers"
+  ],
+  "static_fit": {
+    "boss 1": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": null,
+      "nearest_member": null,
+      "search_radius_mm": 1.0,
+      "floor_root_common_mm3": 5.8088
+    },
+    "head envelope 1": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": 0.9,
+      "nearest_member": "A1-carrier",
+      "search_radius_mm": 1.0
+    },
+    "boss 2": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": 0.44182,
+      "nearest_member": "whVCC",
+      "search_radius_mm": 1.0,
+      "floor_root_common_mm3": 5.8088
+    },
+    "head envelope 2": {
+      "overlap_mm3": {
+        "A5-W3-Cu": 0.19474,
+        "A5-W3": 0.61999
+      },
+      "nearest_within_search_mm": 0.0,
+      "nearest_member": "A5-W3-Cu",
+      "search_radius_mm": 1.0
+    },
+    "third bearing": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": 0.32777,
+      "nearest_member": "whSCL",
+      "search_radius_mm": 1.0,
+      "floor_root_common_mm3": 5.8088
+    },
+    "blank PCB": {
+      "overlap_mm3": {
+        "A5-W2-Cu": 0.04058,
+        "A5-W2": 0.03248,
+        "A5-W3-Cu": 0.04058,
+        "A5-W3": 0.03306,
+        "A5-W7-Cu": 0.04059,
+        "A5-W7": 0.03251
+      },
+      "nearest_within_search_mm": 0.0,
+      "nearest_member": "A5-W2-Cu",
+      "search_radius_mm": 1.0
+    }
+  },
+  "display_rigid_18mm_lift": {
+    "boss 1": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": null,
+      "nearest_member": null,
+      "search_radius_mm": 1.0
+    },
+    "head envelope 1": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": 0.9,
+      "nearest_member": "A1-carrier",
+      "search_radius_mm": 1.0
+    },
+    "boss 2": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": null,
+      "nearest_member": null,
+      "search_radius_mm": 1.0
+    },
+    "head envelope 2": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": 0.4,
+      "nearest_member": "A1-population",
+      "search_radius_mm": 1.0
+    },
+    "third bearing": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": null,
+      "nearest_member": null,
+      "search_radius_mm": 1.0
+    },
+    "blank PCB": {
+      "overlap_mm3": {},
+      "nearest_within_search_mm": 0.5,
+      "nearest_member": "A1-population",
+      "search_radius_mm": 1.0
+    }
+  },
+  "original_foot_locations_external_intersections_mm3": {
+    "A4 foot 1": {
+      "A3-J1-plug": 30.79607,
+      "drvBoard": 13.59
+    },
+    "A4 foot 2": {},
+    "A4 foot 3": {
+      "w1VCC": 0.6343,
+      "w1GND": 1.70371
+    },
+    "A5 foot 1": {
+      "motor": 32.65274,
+      "J8plug": 2.77072,
+      "termination-W1-GND": 0.01473,
+      "termination-W1-VCC": 0.00449,
+      "w1GND": 1.51529,
+      "whVCC": 5.06213
+    },
+    "A5 foot 2": {
+      "w1GND": 0.38537
+    },
+    "A5 foot 3": {
+      "w1VCC": 1.56505,
+      "w1GND": 1.50796,
+      "w1SDA": 1.50796,
+      "w1SCL": 1.50796,
+      "whSDA": 2.0033,
+      "whGND": 2.0899,
+      "A5-W7-solder": 0.00411
+    }
+  },
+  "support_centres_xy_mm": [
+    [
+      35.0,
+      -11.5
+    ],
+    [
+      15.5,
+      10.0
+    ],
+    [
+      29.0,
+      12.8
+    ]
+  ],
+  "bare_board_area_mm2": 799.33,
+  "blank_bounds_mm": [
+    13,
+    37.5,
+    -14,
+    19,
+    17.7,
+    18.5
+  ],
+  "scope": "Static nominal board and fastener-head envelopes only. Legacy wire collisions retained. Component placement, copper, insertion, tool access, connector and flexible lead motion, print strength and bench behavior remain open."
+}

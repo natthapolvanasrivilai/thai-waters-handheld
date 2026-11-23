@@ -14,6 +14,10 @@ TW-A-0001-R0014 integrates the two A3 haptic-board supports into the housing flo
 
 [Assembly and USB evidence](../../quality/seated-connector-review.md) · [Interactive seated connector motion](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-seated-service-review-1/TW-A-0001-R0013-motion-review.html) · [Placed boards and circuit checks](../../hardware/verification/r0013/README.md) · [Revision register](../../hardware/revisions/README.md)
 
+## Next hardware layout
+
+A4 and A5 are targeted for one custom PCB supported by the rear housing. The Waveshare display uses its own mounts. An initial blank-board model clears the rigid display throughout an 18 mm lift. The nearest screw-head clearance is 0.40 mm. Existing leads interfere, and the populated PCB, detachable harness and case posts still require verification. The R0017 print and animation remain the earlier fit baseline. [Case-mounted board and cutaway CAD](../../hardware/mechanical/case-mounted-board-study/README.md) · [Mount redesign #100](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/100)
+
 ## Display gauge and A4/A5 mounting
 
 The new inert PETG display has all six test seats built in. Reuse the A4 and A5 board gauges. Step 19 highlights A5’s fixed seats. The original six loose PETG blocks belong to the plain Plate 7 display. The owner observed the spacers in the animation and has not printed them. Actual board retention, spacer stock and adhesive remain open. [One-piece display gauge for X1C](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Display-gauge-with-seats-X1C.3mf) · [R0016 guide matching the pictured housing](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/R0016-PCB-assembly.html) · [Board functions, real mount and small parts](../../hardware/mechanical/pcb-fit-display-r0002/README.md) · [Mount qualification #100](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/100)

@@ -1,5 +1,7 @@
 # Inspect the assembly and battery pocket
 
+[Next layout: one case-mounted auxiliary PCB](../../hardware/mechanical/case-mounted-board-study/README.md). The PCB envelope and two screw locations have been checked against the R0017 display. The A4/A5 spacer walkthrough below applies to the earlier mechanical fit kit.
+
 [R0017 keyed cap and cap-only fit plate](../../hardware/mechanical/TW-A-0001-R0017/README.md) follows the existing power-button opening. Use it with the R0016 housing. [Current 3D assembly guide](../models/R0017-PCB-assembly.html)
 
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Thai-Waters-handbook.html)
