@@ -1,5 +1,7 @@
 # Hardware review · 23 November 2026
 
+[Subsequent R0013 seated-display service investigation](seated-connector-review.md)
+
 **Engineering review. Powered assembly, production, and shipment remain on hold.** The two identifiers below refer to separate artifacts. The R0012 connector study uses the 147-member dressed STEP from the R0011 enclosure lineage. R19b is the X1C print that broke during support removal. It includes a revised housing, encoder carrier and single RGB diffuser. Transfer of the connector and daughterboard placements into that housing needs a matched enclosure model and a fresh clearance check.
 
 ## Inspect the connector

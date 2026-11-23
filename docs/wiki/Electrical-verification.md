@@ -2,6 +2,10 @@
 
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 
+## R0013 fitted electronics
+
+[Rerouted A3, USB entry topology and circuit checks](../../quality/seated-connector-review.md)
+
 ## Routed-board verification
 
 [Read the A3, A4 and A5 layout checks and 268 circuit cases](../../hardware/verification/r0012/README.md). The daughterboards implement the haptic, audio, key, bus and part of the USB input circuits. The untouched supplier controller still bypasses the current limiter. The complete controller integration and first powered article remain open.

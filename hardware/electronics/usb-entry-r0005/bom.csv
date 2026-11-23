@@ -1,0 +1,16 @@
+reference,quantity,manufacturer,part_number,description,source
+U1,1,Texas Instruments,TPS2553QDBVRQ1,Current-limited USB switch SOT-23-6 active-high enable,https://www.ti.com/lit/ds/symlink/tps2553-q1.pdf
+Q1 Q2,2,Nexperia,"PMV65XP,215",Common-source pair of P-channel FETs,https://assets.nexperia.com/documents/data-sheet/PMV65XP.pdf
+Q3,1,Nexperia,PMV16XNR,N-channel weak-path gate driver,https://www.nexperia.com/chemical-content/PMV16XN.html
+R1,1,Panasonic,ERJ-3EKF8872V,88.7 kOhm 1% 0603 sets ILIM,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+R2,1,Vishay,CRCW251256R0FKEG,56 Ohm 1% 1 W weak path 2512 check derating,https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R3 R4 R5,3,Panasonic,ERJ-3EKF1003V,100 kOhm 1% 0603,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+C1,1,Murata,GRM188R71C104KA01D,100 nF 16 V X7R 0603,https://ds.murata.com/simsurfing/mlcc.html?partnumbers=%5B%22GRM188R71C104KA01%22%5D
+C2,1,Murata,GRM188R71C105KA12D,1 uF 16 V X7R 0603,https://ds.murata.com/simsurfing/mlcc.html?partnumbers=%5B%22GRM188R71C105KA12%22%5D
+PCB,1,Custom,TW-A5-USB-R0005,23 x 16 mm two-layer 0.80 mm finished FR-4,usb-input-fab.zip
+FB1,1,Murata,BLM18PG121SN1D,120 ohm at 100 MHz 0603 bead 2 A nominal 50 milliohm max DCR,https://pim.murata.com/en-us/pim/details/?partNum=BLM18PG121SN1D
+D1,1,onsemi,ESD5Z6.0T1G,Raw input TVS 6 V standoff cathode land 1 SOD-523,https://www.onsemi.com/download/data-sheet/pdf/esd5z2.5-d.pdf
+USB-PCB2 R1,1,YAGEO,RC0603FR-073K6L,3.60 kohm 1 percent 0603 replaces old 2.70 kohm lamp resistor,https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_14.pdf
+A1 LRC4,0,Waveshare,OEM BTREF1608A3R121,Remove only on the verified V2 build; document both isolated lands,boundary.json
+W1 W2 and revised USB-W4A,as fitted,Jonard Tools,R30R-0100,30 AWG PVDF red insulated wire trim after verifying actual installed route,https://jonard.com/wire-wrapping-wire-30-awg
+W3,as fitted,Jonard Tools,R30BLK-0100,30 AWG PVDF black insulated wire to identified A1 ground,https://jonard.com/wire-wrapping-wire-30-awg

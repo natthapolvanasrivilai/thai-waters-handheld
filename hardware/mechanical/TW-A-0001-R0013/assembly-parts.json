@@ -1,0 +1,4865 @@
+[
+  {
+    "id": "Housing",
+    "name": "R0009 USB-baffled housing",
+    "ref": "P1",
+    "group": "Enclosure",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      0,
+      0,
+      -28
+    ],
+    "stage": 1,
+    "note": "Receiver-down housing print. Both dovetail lips and their stop start on the bed; the lower service cover fits the separate board-key opening.",
+    "color": "#91a994",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/housing-battery-bay.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -52.2202,
+      58.5087,
+      -34.5521,
+      39.702,
+      -3.2021,
+      27.8087
+    ],
+    "productEligible": true,
+    "geometrySha256": "8aec1c9df2d2b894b9316144e6fa9924b0adb6e320cf27208812d2fb1b99fc47"
+  },
+  {
+    "id": "Bezel",
+    "name": "Display bezel",
+    "ref": "P1",
+    "group": "Enclosure",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      0,
+      0,
+      113
+    ],
+    "stage": 6,
+    "note": "Print on the front bezel face. Printed front frame. Glass clearance at the rim is only 0.25 mm nominal.",
+    "color": "#293f39",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/bezel.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -49.3975,
+      57.8975,
+      -33.8975,
+      33.8975,
+      27.7625,
+      30.0375
+    ],
+    "productEligible": true,
+    "geometrySha256": "4f885c5cf1b0a4b41526aaed19138b3913bf8a4cecca15c1e78d8e6148b82d05"
+  },
+  {
+    "id": "Rotor",
+    "name": "Reel rotor",
+    "ref": "P1",
+    "group": "Reel & encoder",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      65,
+      0,
+      0
+    ],
+    "stage": 2,
+    "note": "Print on the oblique outer rim land. Right-edge reel. Shown folded in the released assembly.",
+    "color": "#52796c",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/rotor.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      43.5986,
+      57.5113,
+      -12.7601,
+      12.758,
+      2.0423,
+      27.5613
+    ],
+    "productEligible": true,
+    "geometrySha256": "85e81e6d5e6c6d8eaa2f6a0d25e455e05f509a3c19a84c44725ae5a9fbe5eb4f"
+  },
+  {
+    "id": "Stem",
+    "name": "Folding crank arm",
+    "ref": "P1",
+    "group": "Reel & encoder",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      91,
+      0,
+      0
+    ],
+    "stage": 2,
+    "note": "Print on the oblique flat on hinge eye. Right-edge reel. Shown folded in the released assembly.",
+    "color": "#b68f57",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/folding-stem.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      50.9492,
+      56.2508,
+      -8.2506,
+      10.0307,
+      12.15,
+      17.45
+    ],
+    "productEligible": true,
+    "geometrySha256": "63b894b82ea91fa0d7d9dc6303e3c2ebd7a4f4f322e9ba6e8936475fa62a6ccd"
+  },
+  {
+    "id": "Grip",
+    "name": "Reel knob",
+    "ref": "P1",
+    "group": "Reel & encoder",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      90,
+      -19,
+      0
+    ],
+    "stage": 2,
+    "note": "Print on the sleeve end. Right-edge reel. Shown folded in the released assembly.",
+    "color": "#d0a065",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/grip.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      49.8619,
+      57.3381,
+      -7.9603,
+      1.352,
+      11.0619,
+      18.5381
+    ],
+    "productEligible": true,
+    "geometrySha256": "42d96fb26aeba532d45fb26477ab232ccaaa1fb9d0330a4188dafb588647b3af"
+  },
+  {
+    "id": "Collar",
+    "name": "Axle collar",
+    "ref": "P1",
+    "group": "Reel & encoder",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      38,
+      0,
+      0
+    ],
+    "stage": 2,
+    "note": "Print on the annular thrust face. Right-edge reel. Shown folded in the released assembly.",
+    "color": "#497965",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/collar.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      44.1479,
+      46.6521,
+      -6.6021,
+      6.6021,
+      8.2,
+      21.4
+    ],
+    "productEligible": true,
+    "geometrySha256": "cd837b6c6b7e30f814f8dbc009be5522b088d310d83f6eefe3c65facb0e3d806"
+  },
+  {
+    "id": "reel0",
+    "name": "M2 × 10 black A2 pan screw",
+    "ref": "H2",
+    "group": "Reel & encoder",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      10,
+      0,
+      2
+    ],
+    "stage": 2,
+    "note": "Installed to the registered rotating mechanism datum.",
+    "color": "#414340",
+    "source": "hardware/components/reel-fasteners/placed/reel0.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      51.5914,
+      55.6086,
+      5.7921,
+      9.8079,
+      9.592,
+      21.2086
+    ],
+    "finish": "steel",
+    "mpn": "SHP-M2-10-V2-A2-BL",
+    "modelUrl": "https://www.accu.co.uk/torx-pan-head-screws/475614-SHP-M2-10-V2-A2-BL",
+    "productEligible": true,
+    "geometrySha256": "8a3b92669df269e2ab84a715bed389123e836cc9d7a669856fcae506571ddd79"
+  },
+  {
+    "id": "reel1",
+    "name": "M2 × 5 black A2 knob retainer",
+    "ref": "H4",
+    "group": "Reel & encoder",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      10,
+      0,
+      2
+    ],
+    "stage": 2,
+    "note": "Installed to the registered rotating mechanism datum.",
+    "color": "#414340",
+    "source": "hardware/components/reel-fasteners/placed/reel1.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      51.5914,
+      55.6086,
+      -10.2086,
+      -3.5998,
+      12.7921,
+      16.8079
+    ],
+    "finish": "steel",
+    "mpn": "SHP-M2-5-V2-A2-BL",
+    "modelUrl": "https://www.accu.co.uk/torx-pan-head-screws/475608-SHP-M2-5-V2-A2-BL",
+    "productEligible": true,
+    "geometrySha256": "f5e0dbd2430a5ab803f3a185f9e23693714b6a44db41adbb8babc0549d011a3a"
+  },
+  {
+    "id": "reel2",
+    "name": "Diametric N35 nickel-plated rotor magnet",
+    "ref": "MG1",
+    "group": "Reel & encoder",
+    "kind": "Supplier CAD",
+    "delta": [
+      10,
+      0,
+      2
+    ],
+    "stage": 2,
+    "note": "Installed to the registered rotating mechanism datum.",
+    "color": "#b3b3ab",
+    "source": "hardware/components/radial-8995/reel2.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      43.7491,
+      46.2509,
+      -3.0,
+      3.0,
+      11.7991,
+      17.8009
+    ],
+    "finish": "steel",
+    "mpn": "8995",
+    "modelUrl": "https://radialmagnet.com/our-magnets/disk-sensor-n35-nicuni-d6mma-x-2-5mm/",
+    "productEligible": true,
+    "geometrySha256": "ba74ba20a749b121d7c3861e311994be2e4a8a3eaf8cfed2de3c72cd7972d653"
+  },
+  {
+    "id": "Key cap",
+    "name": "Top power cap",
+    "ref": "P1",
+    "group": "Power key",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      0,
+      32,
+      0
+    ],
+    "stage": 3,
+    "note": "Print on the back flange face. Captured key and carrier. Physical free travel, insulation and trimmed leads require inspection.",
+    "color": "#d1a267",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/power-cap.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -39.85,
+      -32.15,
+      32.9988,
+      34.3209,
+      8.6488,
+      16.3512
+    ],
+    "productEligible": true,
+    "geometrySha256": "48f8cbbcc2c704fa55232a9f1734f085c6ba745f1e901e7ae52133f326045c33"
+  },
+  {
+    "id": "Retainer",
+    "name": "Key-carrier retainer",
+    "ref": "P1",
+    "group": "Power key",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      -18,
+      28,
+      19
+    ],
+    "stage": 3,
+    "note": "Print on the top bar face. West-side carrier keeper at X −43.2, Y 28.7; top-left switch and cap retain their Rev F positions.",
+    "color": "#698b78",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/key-board-retainer-west.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -46.1522,
+      -29.3498,
+      26.8498,
+      32.2001,
+      11.6799,
+      19.1522
+    ],
+    "productEligible": true,
+    "geometrySha256": "3d6e578bb745dbc7c5f8e7ec2fa7198df00ab813fc078b5bc11138ba57f80af5"
+  },
+  {
+    "id": "Key PCB",
+    "name": "Gerber-drilled power key carrier",
+    "ref": "PCB1",
+    "group": "Power key",
+    "kind": "Fabricated board CAD",
+    "delta": [
+      0,
+      12,
+      0
+    ],
+    "stage": 3,
+    "note": "Four nominal 1.00 mm plated lead holes from the released drill file. Confirm stamped-leg fit and solderability.",
+    "color": "#398062",
+    "source": "hardware/electronics/power-key-r0009/Key PCB.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -41.5,
+      -30.5,
+      27.6498,
+      28.6502,
+      7.5,
+      17.5
+    ],
+    "finish": "soldermask",
+    "productEligible": true,
+    "geometrySha256": "efa9ad2ef1f8a34abd7de82251d6d058a96c064976d84b23a132a477d5075bd7"
+  },
+  {
+    "id": "Switch case",
+    "name": "Omron B3F-1002-G switch case",
+    "ref": "SW1",
+    "group": "Power key",
+    "kind": "Supplier component CAD",
+    "delta": [
+      0,
+      12,
+      0
+    ],
+    "stage": 3,
+    "note": "Installed source geometry with the specified orientation.",
+    "color": "#393a38",
+    "source": "hardware/components/omron-b3f-1002-g/Switch case.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -39.6328,
+      -32.3672,
+      28.65,
+      32.0006,
+      9.5,
+      15.5
+    ],
+    "mpn": "B3F-1002-G",
+    "modelUrl": "https://gitlab.com/kicad/libraries/kicad-packages3D/-/blob/master/Button_Switch_THT.3dshapes/SW_TH_Tactile_Omron_B3F-100x.step",
+    "productEligible": true,
+    "geometrySha256": "8fe2c759bd9d64fd9937e095d66e626051ea08da29962648634c930c62a9ced5"
+  },
+  {
+    "id": "Switch plunger",
+    "name": "Omron B3F-1002-G plunger",
+    "ref": "SW1",
+    "group": "Power key",
+    "kind": "Supplier component CAD",
+    "delta": [
+      0,
+      12,
+      0
+    ],
+    "stage": 3,
+    "note": "Installed source geometry with the specified orientation.",
+    "color": "#77746e",
+    "source": "hardware/components/omron-b3f-1002-g/Switch plunger.brep",
+    "option": "",
+    "added": false,
+    "solids": 2,
+    "bounds_mm": [
+      -39.0,
+      -33.0,
+      31.9994,
+      32.9506,
+      9.5,
+      15.5
+    ],
+    "mpn": "B3F-1002-G",
+    "modelUrl": "https://gitlab.com/kicad/libraries/kicad-packages3D/-/blob/master/Button_Switch_THT.3dshapes/SW_TH_Tactile_Omron_B3F-100x.step",
+    "productEligible": true,
+    "geometrySha256": "076048763b886bd9dd86a6d63cb574f2582bec6e95fed6b1bca4c52645744e82"
+  },
+  {
+    "id": "Trimmed terminals",
+    "name": "Omron B3F-1002-G trimmed terminals",
+    "ref": "SW1",
+    "group": "Power key",
+    "kind": "Supplier component CAD",
+    "delta": [
+      0,
+      12,
+      0
+    ],
+    "stage": 3,
+    "note": "Installed source geometry with the specified orientation.",
+    "color": "#a6a49c",
+    "source": "hardware/components/omron-b3f-1002-g/Trimmed terminals.brep",
+    "option": "",
+    "added": false,
+    "solids": 4,
+    "bounds_mm": [
+      -39.8371,
+      -32.1629,
+      26.8499,
+      28.65,
+      9.8999,
+      15.1001
+    ],
+    "mpn": "B3F-1002-G",
+    "modelUrl": "https://gitlab.com/kicad/libraries/kicad-packages3D/-/blob/master/Button_Switch_THT.3dshapes/SW_TH_Tactile_Omron_B3F-100x.step",
+    "productEligible": true,
+    "geometrySha256": "c97832a7f0da192b8cf1fe9012995b3d96e59e0966d630de27baf0458e4b1090"
+  },
+  {
+    "id": "Keeper screw",
+    "name": "M2 × 6 ISO 14583 A2 T6 · Keeper screw",
+    "ref": "H6",
+    "group": "Power key",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      0,
+      0,
+      12
+    ],
+    "stage": 6,
+    "note": "Installed standard-based geometry.",
+    "color": "#a5a6a3",
+    "source": "hardware/components/standard-fasteners/placed/Keeper screw.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -45.2086,
+      -41.1914,
+      26.6921,
+      30.7079,
+      13.1498,
+      20.7586
+    ],
+    "finish": "steel",
+    "mpn": "SHP-M2-6-V2-A2",
+    "modelUrl": "https://github.com/gumyr/cq_warehouse/tree/a57bb7a24762d367d66369f280a24c38a64e73dd",
+    "productEligible": true,
+    "geometrySha256": "eb7b44d2e99b1fe436efc709a6052d01cb6a40f40b42d4572201237ce3977fa2"
+  },
+  {
+    "id": "Removable rod grip",
+    "name": "Detachable rod handle",
+    "ref": "G1",
+    "group": "Rod handle",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      0,
+      -48,
+      -12
+    ],
+    "stage": 7,
+    "note": "Print on the flat dovetail leading nose. Rear rail carries bending load. Screw threads and printed skin finish are idealized.",
+    "color": "#536e5e",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/rod-grip.brep",
+    "option": "rod",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      1.5,
+      32.5,
+      -125.6607,
+      5.0,
+      -34.2974,
+      0.5105
+    ],
+    "productEligible": true,
+    "geometrySha256": "2d8dbd54957acd2f9489e34aa367da5ab028b7338c0790becfe7e91040aaadb5"
+  },
+  {
+    "id": "Grip lock screw",
+    "name": "goBILDA zinc-plated M3 × 10 socket screw",
+    "ref": "H7",
+    "group": "Rod handle",
+    "kind": "Supplier component CAD",
+    "delta": [
+      0,
+      -38,
+      -12
+    ],
+    "stage": 7,
+    "note": "Installed source geometry with the specified orientation.",
+    "color": "#a9aaa5",
+    "source": "hardware/components/gobilda-2800-0003-0010/Grip lock screw.brep",
+    "option": "rod",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      14.2478,
+      19.7522,
+      -27.2522,
+      -21.7478,
+      -8.1025,
+      5.5827
+    ],
+    "mpn": "2800-0003-0010",
+    "modelUrl": "https://www.gobilda.com/content/step_files/2800-0003-0010.zip",
+    "productEligible": true,
+    "geometrySha256": "e18c02e086f69fda4495d3f0b7f4a639da1b72658f14eb95050346066b7dd065"
+  },
+  {
+    "id": "Grip screw keeper",
+    "name": "Screw keeper",
+    "ref": "G1",
+    "group": "Rod handle",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      0,
+      -48,
+      -42
+    ],
+    "stage": 7,
+    "note": "Print on the washer face. Rear rail carries bending load. Screw threads and printed skin finish are idealized.",
+    "color": "#71917c",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/grip-screw-keeper.brep",
+    "option": "rod",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      12.4886,
+      21.5114,
+      -29.01,
+      -19.99,
+      -15.0614,
+      -13.4686
+    ],
+    "productEligible": true,
+    "geometrySha256": "1dc4770f0b3114dbb60bb295e71cd9d53db5314e96c05c8041382e97a7a82b93"
+  },
+  {
+    "id": "Receiver nut",
+    "name": "M3 DIN 934 hex nut · Receiver nut",
+    "ref": "H8",
+    "group": "Rod handle",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      0,
+      0,
+      12
+    ],
+    "stage": 6,
+    "note": "Installed standard-based geometry.",
+    "color": "#a5a6a3",
+    "source": "hardware/components/standard-fasteners/placed/Receiver nut.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      13.8162,
+      20.1838,
+      -27.2594,
+      -21.7406,
+      2.1406,
+      4.5594
+    ],
+    "finish": "steel",
+    "mpn": "HPN-M3-A2",
+    "modelUrl": "https://github.com/gumyr/cq_warehouse/tree/a57bb7a24762d367d66369f280a24c38a64e73dd",
+    "productEligible": true,
+    "geometrySha256": "58b3fd2e08c45adaf9f551678f8651cedc7f0af45fce82f917ca34ec2b8e9eaa"
+  },
+  {
+    "id": "Receiver nut keeper",
+    "name": "Nut keeper",
+    "ref": "P1",
+    "group": "Rod handle",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      0,
+      0,
+      -8
+    ],
+    "stage": 1,
+    "note": "Print on the closed flat cap face. Rear rail carries bending load. Screw threads and printed skin finish are idealized.",
+    "color": "#668a71",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/receiver-nut-keeper.brep",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      13.1488,
+      20.8512,
+      -28.35,
+      -20.65,
+      5.1188,
+      5.9512
+    ],
+    "productEligible": true,
+    "geometrySha256": "f9bf4ac92c6929c46b094d032fca086849815165cc1189a0c8123dbe89816da9"
+  },
+  {
+    "id": "A1-touch",
+    "name": "Capacitive display stack",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#253a39",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -46.22,
+      46.22,
+      -30.5,
+      30.5,
+      20.1,
+      28.5
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 67,
+    "faceCount": 67
+  },
+  {
+    "id": "A1-mounts",
+    "name": "Board fixings",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#bdaf86",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 4,
+    "bounds_mm": [
+      -38.0,
+      38.0,
+      -26.25,
+      26.25,
+      17.0,
+      22.5
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 164,
+    "faceCount": 196
+  },
+  {
+    "id": "A1-carrier",
+    "name": "Main controller PCB",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#2a7561",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -39.009,
+      39.009,
+      -27.259,
+      27.259,
+      21.0,
+      22.6
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 174,
+    "faceCount": 174
+  },
+  {
+    "id": "A1-population",
+    "name": "A1 populated components",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#7e8d88",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 532,
+    "bounds_mm": [
+      -38.75,
+      38.5,
+      -29.65,
+      25.95,
+      15.1,
+      21.6
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 23834,
+    "faceCount": 24351
+  },
+  {
+    "id": "A1-J8",
+    "name": "Expansion header J8",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#393e3b",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -20.611,
+      20.589,
+      19.69,
+      26.29,
+      15.9,
+      21.0
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 842,
+    "faceCount": 1130
+  },
+  {
+    "id": "A1-usb",
+    "name": "USB-C socket",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#a4ada7",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -40.0,
+      -32.4,
+      -4.47,
+      4.47,
+      17.75,
+      21.811
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 628,
+    "faceCount": 630
+  },
+  {
+    "id": "A1-k3",
+    "name": "Onboard PWR switch K3",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#5e6b6d",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -27.276,
+      -22.726,
+      -26.85,
+      -23.2,
+      19.2,
+      21.4
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 73,
+    "faceCount": 73
+  },
+  {
+    "id": "A1-reset",
+    "name": "Onboard RESET",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#6f7977",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -18.776,
+      -14.226,
+      -26.85,
+      -23.2,
+      19.2,
+      21.4
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 73,
+    "faceCount": 73
+  },
+  {
+    "id": "A1-boot",
+    "name": "Onboard BOOT",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#6f7977",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -10.276,
+      -5.726,
+      -26.85,
+      -23.2,
+      19.2,
+      21.4
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 73,
+    "faceCount": 73
+  },
+  {
+    "id": "A1-J7",
+    "name": "Battery socket J7",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#c8c0a3",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -29.078,
+      -21.428,
+      20.75,
+      25.95,
+      17.6,
+      21.0
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 179,
+    "faceCount": 179
+  },
+  {
+    "id": "A1-J9",
+    "name": "Speaker socket J9",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#d0c9ad",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -4.515,
+      3.135,
+      -24.45,
+      -19.25,
+      17.6,
+      21.0
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 179,
+    "faceCount": 179
+  },
+  {
+    "id": "A1-backing",
+    "name": "Display backing",
+    "ref": "A1",
+    "group": "Controller",
+    "kind": "Supplier geometry",
+    "delta": [
+      0,
+      0,
+      77
+    ],
+    "stage": 5,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#879896",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -39.0,
+      39.0,
+      -27.25,
+      27.25,
+      22.6,
+      25.1
+    ],
+    "mpn": "ESP32-S3-Touch-LCD-3.5B",
+    "modelUrl": "https://docs.waveshare.com/ESP32-S3-Touch-LCD-3.5B/Resources-And-Documents",
+    "productEligible": true,
+    "styledFaces": 36,
+    "faceCount": 36
+  },
+  {
+    "id": "A2-pcb",
+    "name": "Magnetic encoder PCB",
+    "ref": "A2",
+    "group": "Reel & encoder",
+    "kind": "Supplier geometry",
+    "delta": [
+      28,
+      0,
+      24
+    ],
+    "stage": 2,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#326952",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      39.48,
+      41.05,
+      -12.7,
+      12.7,
+      5.91,
+      23.69
+    ],
+    "mpn": "Adafruit AS5600",
+    "modelUrl": "https://learn.adafruit.com/adafruit-as5600-magnetic-angle-sensor/downloads",
+    "productEligible": true,
+    "styledFaces": 41,
+    "faceCount": 41
+  },
+  {
+    "id": "A2-population",
+    "name": "A2 populated components",
+    "ref": "A2",
+    "group": "Reel & encoder",
+    "kind": "Supplier geometry",
+    "delta": [
+      28,
+      0,
+      24
+    ],
+    "stage": 2,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#7e8d88",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 21,
+    "bounds_mm": [
+      41.05,
+      42.45,
+      -9.944,
+      6.287,
+      11.006,
+      19.822
+    ],
+    "mpn": "Adafruit AS5600",
+    "modelUrl": "https://learn.adafruit.com/adafruit-as5600-magnetic-angle-sensor/downloads",
+    "productEligible": true,
+    "styledFaces": 447,
+    "faceCount": 480
+  },
+  {
+    "id": "A2-sockets",
+    "name": "STEMMA QT sockets",
+    "ref": "A2",
+    "group": "Reel & encoder",
+    "kind": "Supplier geometry",
+    "delta": [
+      28,
+      0,
+      24
+    ],
+    "stage": 2,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#cec49b",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 2,
+    "bounds_mm": [
+      41.05,
+      44.01,
+      -12.127,
+      12.127,
+      11.8,
+      17.8
+    ],
+    "mpn": "Adafruit AS5600",
+    "modelUrl": "https://learn.adafruit.com/adafruit-as5600-magnetic-angle-sensor/downloads",
+    "productEligible": true,
+    "styledFaces": 178,
+    "faceCount": 178
+  },
+  {
+    "id": "A2-chip",
+    "name": "AS5600 angle sensor",
+    "ref": "A2",
+    "group": "Reel & encoder",
+    "kind": "Supplier geometry",
+    "delta": [
+      28,
+      0,
+      24
+    ],
+    "stage": 2,
+    "note": "Exact placed supplier solids grouped for inspection. The populated board is purchased as one assembly.",
+    "color": "#424b46",
+    "source": "Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      41.3,
+      42.55,
+      -2.45,
+      2.45,
+      12.85,
+      16.75
+    ],
+    "mpn": "Adafruit AS5600",
+    "modelUrl": "https://learn.adafruit.com/adafruit-as5600-magnetic-angle-sensor/downloads",
+    "productEligible": true,
+    "styledFaces": 16,
+    "faceCount": 16
+  },
+  {
+    "id": "Cell",
+    "name": "Design cell envelope",
+    "ref": "B1",
+    "group": "Battery & audio",
+    "kind": "Nominal envelope",
+    "delta": [
+      -41,
+      6,
+      25
+    ],
+    "stage": 4,
+    "note": "Catalog envelope on the new datum. Select drawing maximum or supplier STEP to change both pack and leads.",
+    "color": "#8da4ad",
+    "source": "rev-G/geometry.py with Rev-F-top-power.step.gz",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -27.4,
+      6.6,
+      -31.65,
+      30.35,
+      3.6,
+      8.6
+    ],
+    "productEligible": false
+  },
+  {
+    "id": "Speaker",
+    "name": "SP1 molded frame",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "color": "#252826",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "option": "",
+    "added": false,
+    "solids": 1,
+    "bounds_mm": [
+      -50.4731,
+      -30.5669,
+      -14.8,
+      14.8,
+      4.9469,
+      7.9531
+    ],
+    "mpn": "3923",
+    "modelUrl": "https://github.com/adafruit/Adafruit_CAD_Parts/tree/9f2a89f3d5c3491886d58cb7fe83385417563cf4/3923%20Mini%20Oval%20Speaker",
+    "productEligible": true,
+    "geometrySha256": "2fcb296012040cc9c7ee0595798b12de332e2624e4111745d72b7e62e7e04365"
+  },
+  {
+    "id": "cellAlt",
+    "name": "Alternate supplier cell CAD",
+    "ref": "B1",
+    "group": "Battery & audio",
+    "kind": "Supplier geometry",
+    "delta": [
+      -41,
+      6,
+      25
+    ],
+    "stage": 4,
+    "note": "Compare to the catalog envelope. This model has a 37 × 60 mm body, 6 mm at the protection board and 63 mm with lead stubs. Confirm latest production lot.",
+    "color": "#c8774e",
+    "source": "rev-G/geometry.py with Adafruit-258.step",
+    "option": "alt",
+    "added": true,
+    "solids": 4,
+    "bounds_mm": [
+      -28.9,
+      8.1,
+      -30.65,
+      32.35,
+      3.6,
+      9.6
+    ],
+    "mpn": "258",
+    "modelUrl": "https://www.adafruit.com/product/258",
+    "productEligible": true,
+    "batteryVariant": "alt",
+    "styledFaces": 31,
+    "faceCount": 31
+  },
+  {
+    "id": "cellDrawing",
+    "name": "PKCELL drawing maximum",
+    "ref": "B1",
+    "group": "Battery & audio",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -41,
+      6,
+      25
+    ],
+    "stage": 4,
+    "note": "35.3 × 62.3 × 5.3 mm maximum body from QA.S.0228 edition A. Add lead dressing and supplier life-cycle allowance.",
+    "color": "#bf9959",
+    "source": "rev-G/geometry.py with PKCELL QA.S.0228 edition A, p. 5",
+    "option": "drawing",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -28.05,
+      7.25,
+      -31.8,
+      30.5,
+      3.6,
+      8.9
+    ],
+    "productEligible": false
+  },
+  {
+    "id": "H1-1",
+    "name": "M2 × 8 ISO 14583 A2 T6 · H1-1",
+    "ref": "H1",
+    "group": "Controller",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      0,
+      0,
+      12
+    ],
+    "stage": 6,
+    "note": "Installed standard-based geometry.",
+    "color": "#a5a6a3",
+    "source": "hardware/components/standard-fasteners/placed/H1-1.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -38.0086,
+      -33.9914,
+      -26.2579,
+      -22.2421,
+      9.3914,
+      19.3642
+    ],
+    "finish": "steel",
+    "mpn": "SHP-M2-8-V2-A2",
+    "modelUrl": "https://github.com/gumyr/cq_warehouse/tree/a57bb7a24762d367d66369f280a24c38a64e73dd",
+    "productEligible": true,
+    "geometrySha256": "a0cdad8e0b28cfe2de4d73e543eb70ee916a606463061f01fde6a1a0e6101f22"
+  },
+  {
+    "id": "H1-2",
+    "name": "M2 × 8 ISO 14583 A2 T6 · H1-2",
+    "ref": "H1",
+    "group": "Controller",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      0,
+      0,
+      12
+    ],
+    "stage": 6,
+    "note": "Installed standard-based geometry.",
+    "color": "#a5a6a3",
+    "source": "hardware/components/standard-fasteners/placed/H1-2.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -38.0086,
+      -33.9914,
+      22.2421,
+      26.2579,
+      9.3914,
+      19.3642
+    ],
+    "finish": "steel",
+    "mpn": "SHP-M2-8-V2-A2",
+    "modelUrl": "https://github.com/gumyr/cq_warehouse/tree/a57bb7a24762d367d66369f280a24c38a64e73dd",
+    "productEligible": true,
+    "geometrySha256": "d293abdb65294c5830932997490a8706f6655cbf457b9926e76e6e07f45ea767"
+  },
+  {
+    "id": "H1-3",
+    "name": "M2 × 8 ISO 14583 A2 T6 · H1-3",
+    "ref": "H1",
+    "group": "Controller",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      0,
+      0,
+      12
+    ],
+    "stage": 6,
+    "note": "Installed standard-based geometry.",
+    "color": "#a5a6a3",
+    "source": "hardware/components/standard-fasteners/placed/H1-3.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      33.9914,
+      38.0086,
+      -26.2579,
+      -22.2421,
+      9.3914,
+      19.3642
+    ],
+    "finish": "steel",
+    "mpn": "SHP-M2-8-V2-A2",
+    "modelUrl": "https://github.com/gumyr/cq_warehouse/tree/a57bb7a24762d367d66369f280a24c38a64e73dd",
+    "productEligible": true,
+    "geometrySha256": "e4610eb918e6ea29a9e0935e4afded72480085920fea7486fb9fb36f0cf47c87"
+  },
+  {
+    "id": "H1-4",
+    "name": "M2 × 8 ISO 14583 A2 T6 · H1-4",
+    "ref": "H1",
+    "group": "Controller",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      0,
+      0,
+      12
+    ],
+    "stage": 6,
+    "note": "Installed standard-based geometry.",
+    "color": "#a5a6a3",
+    "source": "hardware/components/standard-fasteners/placed/H1-4.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      33.9914,
+      38.0086,
+      22.2421,
+      26.2579,
+      9.3914,
+      19.3642
+    ],
+    "finish": "steel",
+    "mpn": "SHP-M2-8-V2-A2",
+    "modelUrl": "https://github.com/gumyr/cq_warehouse/tree/a57bb7a24762d367d66369f280a24c38a64e73dd",
+    "productEligible": true,
+    "geometrySha256": "c1c4b146ed483979462d2bb2e95f5db84f510a7bdc44467c674702b78766e964"
+  },
+  {
+    "id": "H3-1",
+    "name": "OPAC DIN 125 nylon M2 hinge shim 1",
+    "ref": "H3",
+    "group": "Reel & encoder",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      7,
+      0,
+      0
+    ],
+    "stage": 2,
+    "note": "2.2 mm ID, 5 mm OD, 0.30 mm thick. Keep seated against the correct hinge cheek.",
+    "color": "#e4dfc6",
+    "source": "hardware/components/reel-fasteners/placed/H3-1.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      51.0992,
+      56.1008,
+      5.3,
+      10.3,
+      12.1992,
+      12.5008
+    ],
+    "mpn": "125N-2",
+    "modelUrl": "https://www.opac.net/en/producto-581-din-34815-%28din-125%29%2A",
+    "productEligible": true,
+    "geometrySha256": "37fbf7867a7773acad4716223ba14d759116f85efd1059f01844276caba9c572"
+  },
+  {
+    "id": "H3-2",
+    "name": "OPAC DIN 125 nylon M2 hinge shim 2",
+    "ref": "H3",
+    "group": "Reel & encoder",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      7,
+      0,
+      0
+    ],
+    "stage": 2,
+    "note": "2.2 mm ID, 5 mm OD, 0.30 mm thick. Keep seated against the correct hinge cheek.",
+    "color": "#e4dfc6",
+    "source": "hardware/components/reel-fasteners/placed/H3-2.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      51.0992,
+      56.1008,
+      5.3,
+      10.3,
+      17.0992,
+      17.4008
+    ],
+    "mpn": "125N-2",
+    "modelUrl": "https://www.opac.net/en/producto-581-din-34815-%28din-125%29%2A",
+    "productEligible": true,
+    "geometrySha256": "f5137bd5bf7fb1911819da5d52616185b3305745c0cca0c92c9482a60a688405"
+  },
+  {
+    "id": "H5",
+    "name": "Stainless knob thrust washer",
+    "ref": "H5",
+    "group": "Reel & encoder",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      10,
+      0,
+      2
+    ],
+    "stage": 2,
+    "note": "Installed to the registered rotating mechanism datum.",
+    "color": "#a6a6a0",
+    "source": "hardware/components/reel-fasteners/placed/H5.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      51.0992,
+      56.1008,
+      -8.6008,
+      -8.2492,
+      12.3,
+      17.3
+    ],
+    "finish": "steel",
+    "mpn": "HPW-M2-A2",
+    "modelUrl": "https://www.accu.co.uk/metric-flat-washers/72476-HPW-M2-A2",
+    "productEligible": true,
+    "geometrySha256": "b4b69f952ebe2c8dd657e8642acce0d56a8d2a779ac196bb30d51ccb92969445"
+  },
+  {
+    "id": "motor",
+    "name": "SparkFun ROB-08449 ERM motor and wire stubs",
+    "ref": "M1",
+    "group": "Haptics",
+    "kind": "Supplier STEP",
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "stage": 4,
+    "note": "SparkFun manufacturer CAD. Two 10 mm modeled wire stubs join the fitted harness.",
+    "color": "#929794",
+    "source": "hardware/electronics/haptic-r0009/placed/motor.brep",
+    "option": "haptic",
+    "added": true,
+    "solids": 3,
+    "bounds_mm": [
+      13.9999,
+      24.0001,
+      8.9999,
+      24.0016,
+      2.9984,
+      6.5515
+    ],
+    "mpn": "ROB-08449",
+    "modelUrl": "https://github.com/sparkfun/3D_Models/tree/53d298c3b8202cf8fce9ab61885855720c84c012/products/8449",
+    "productEligible": true,
+    "geometrySha256": "93a45cc6916e19955c2bfabb1c44fd8c66b222338591fc2e4da95c6459d2f96e",
+    "styledFaces": 18,
+    "faceCount": 19
+  },
+  {
+    "id": "J8plug",
+    "name": "XKB right-angle J8 four-pin header",
+    "ref": "W1-P",
+    "group": "Wiring",
+    "kind": "Supplier STEP",
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "stage": 5,
+    "note": "3.80 mm pin engagement with the stock J8. Confirm solder-tail net order at the actual device.",
+    "color": "#404441",
+    "source": "hardware/electronics/harness-r0003/placed/W1-P.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      10.219,
+      20.2496,
+      14.7,
+      22.0402,
+      10.96,
+      19.7
+    ],
+    "mpn": "X6511WR-04H-C60D30R1",
+    "modelUrl": "https://lceda.cn/api/products/C2883842/components?version=6.4.19.5",
+    "productEligible": true,
+    "geometrySha256": "cfd309f7dd865c63e9eb826136f0eb3811e78b184432a456b68a6e7bed79b540",
+    "styledFaces": 421,
+    "faceCount": 421
+  },
+  {
+    "id": "ph",
+    "name": "W2 JST PH 2-pole header",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Supplier component CAD",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Placed using the component mating interfaces. Check polarity and retention on the actual lot.",
+    "color": "#d8cfb7",
+    "source": "hardware/electronics/harness-r0003/placed/ph.brep",
+    "option": "",
+    "added": true,
+    "solids": 14,
+    "bounds_mm": [
+      20.2,
+      29.7001,
+      -26.0,
+      -19.9985,
+      8.4,
+      13.0
+    ],
+    "mpn": "B2B-PH-K-S",
+    "modelUrl": "https://lceda.cn/api/products/C131337/components?version=6.4.19.5",
+    "productEligible": true,
+    "geometrySha256": "57fef2cd961f03380ed96d652f03706ecae5b82c4f27ee344b67aa2ed0f69a1a"
+  },
+  {
+    "id": "packplug",
+    "name": "Battery JST PH receptacle housing",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Supplier component CAD",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Placed using the component mating interfaces. Check polarity and retention on the actual lot.",
+    "color": "#e5dfc8",
+    "source": "hardware/electronics/harness-r0003/placed/packplug.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      17.475,
+      24.325,
+      -25.9,
+      -20.1,
+      8.4,
+      12.9
+    ],
+    "mpn": "PHR-2",
+    "modelUrl": "https://www.jst-mfg.com/product/detail_e.php?series=199",
+    "productEligible": true,
+    "geometrySha256": "32aa3f554e8facf741788886eabfd3b0008ed7332bdd3e43500eda3cd497f850"
+  },
+  {
+    "id": "j7plug",
+    "name": "J7 PicoBlade receptacle housing",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Supplier component CAD",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Placed using the component mating interfaces. Check polarity and retention on the actual lot.",
+    "color": "#e5dfc8",
+    "source": "hardware/electronics/harness-r0003/placed/j7plug.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -27.3784,
+      -23.1276,
+      19.7499,
+      23.7,
+      17.5999,
+      20.8004
+    ],
+    "mpn": "51021-0200",
+    "modelUrl": "https://www.molex.com/en-us/products/part-detail/510210200",
+    "productEligible": true,
+    "geometrySha256": "a453b80e9ec5e51ff63c7dd13cdc6a3dbf3e30efbca074e0a6e2fd644fca40ad"
+  },
+  {
+    "id": "j9plug",
+    "name": "J9 PicoBlade receptacle housing",
+    "ref": "W5",
+    "group": "Wiring",
+    "kind": "Supplier component CAD",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Placed using the component mating interfaces. Check polarity and retention on the actual lot.",
+    "color": "#e5dfc8",
+    "source": "hardware/electronics/harness-r0003/placed/j9plug.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -2.8154,
+      1.4354,
+      -22.2,
+      -18.2499,
+      17.5999,
+      20.8004
+    ],
+    "mpn": "51021-0200",
+    "modelUrl": "https://www.molex.com/en-us/products/part-detail/510210200",
+    "productEligible": true,
+    "geometrySha256": "13e79c1b49ec96a76ee10872b04c000df6df18575bd5d55773a4cc9927e4da1e"
+  },
+  {
+    "id": "pack0",
+    "name": "B1 positive lead",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Custom formed harness",
+    "delta": [
+      5,
+      -5,
+      -12
+    ],
+    "stage": 4,
+    "note": "Factory lead length or measured adapter route to the actual connector exit.",
+    "color": "#b4483c",
+    "source": "hardware/electronics/harness-r0003/placed/catalogTail0.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -25.1699,
+      17.9752,
+      -24.701,
+      35.2501,
+      5.3983,
+      12.2517
+    ],
+    "batteryVariant": "catalog",
+    "productEligible": false,
+    "geometrySha256": "4ce3d66f4b58ccc0d1d40f771d78174c1dc432fa1ae3945f42f36e33c49d5195"
+  },
+  {
+    "id": "batt0",
+    "name": "W2 positive lead",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Custom formed harness",
+    "delta": [
+      5,
+      -5,
+      -12
+    ],
+    "stage": 4,
+    "note": "Factory lead length or measured adapter route to the actual connector exit.",
+    "color": "#b4483c",
+    "source": "hardware/electronics/harness-r0003/placed/batt0.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -27.68,
+      32.6506,
+      -24.4506,
+      19.7501,
+      10.0893,
+      19.5006
+    ],
+    "productEligible": true,
+    "geometrySha256": "9e0724768a9be62c22454f88bd5c47d29be3e1c4d73fc084b0c38aa751f0ad3e"
+  },
+  {
+    "id": "spk0",
+    "name": "J9 speaker lead 1",
+    "ref": "W5",
+    "group": "Wiring",
+    "kind": "Routed conductor solid",
+    "delta": [
+      0,
+      -13,
+      -10
+    ],
+    "stage": 3,
+    "note": "Custom direct J9 harness; preserve terminal interface and confirm first-article solderability.",
+    "color": "#bb5950",
+    "source": "hardware/mechanical/TW-A-0001-R0009/speaker.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -43.1704,
+      -0.8646,
+      -21.5436,
+      -14.4586,
+      8.7402,
+      19.5005
+    ],
+    "productEligible": true,
+    "geometrySha256": "bfe59d326bba6ffa693599953d7b5fe3832963972d408321cf1e213d4e189726"
+  },
+  {
+    "id": "pack1",
+    "name": "B1 return lead",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Custom formed harness",
+    "delta": [
+      5,
+      -5,
+      -12
+    ],
+    "stage": 4,
+    "note": "Factory lead length or measured adapter route to the actual connector exit.",
+    "color": "#353737",
+    "source": "hardware/electronics/harness-r0003/placed/catalogTail1.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -19.8553,
+      17.9752,
+      -22.7012,
+      35.2501,
+      5.3985,
+      14.4013
+    ],
+    "batteryVariant": "catalog",
+    "productEligible": false,
+    "geometrySha256": "2ad370cf4f2340b69d5d94371f6ab5d0faa9660295dc20d4039d92b68f20239c"
+  },
+  {
+    "id": "batt1",
+    "name": "W2 return lead",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Custom formed harness",
+    "delta": [
+      5,
+      -5,
+      -12
+    ],
+    "stage": 4,
+    "note": "Factory lead length or measured adapter route to the actual connector exit.",
+    "color": "#353737",
+    "source": "hardware/electronics/harness-r0003/placed/batt1.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -28.4703,
+      31.5506,
+      -22.4506,
+      19.7501,
+      10.0893,
+      19.5007
+    ],
+    "productEligible": true,
+    "geometrySha256": "2dfd88582e8aa1b9d282fc786caa3cd55be7b500a27bc502119cb65992891122"
+  },
+  {
+    "id": "spk1",
+    "name": "J9 speaker lead 2",
+    "ref": "W5",
+    "group": "Wiring",
+    "kind": "Routed conductor solid",
+    "delta": [
+      0,
+      -13,
+      -10
+    ],
+    "stage": 3,
+    "note": "Custom direct J9 harness; preserve terminal interface and confirm first-article solderability.",
+    "color": "#555958",
+    "source": "hardware/mechanical/TW-A-0001-R0009/speaker.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -38.7704,
+      0.3855,
+      -20.3362,
+      -12.055,
+      10.2994,
+      19.5005
+    ],
+    "productEligible": true,
+    "geometrySha256": "5bf941b8d19ebdae1188757bb57ee040d9760f7824fd51189fe4ff16bba335be"
+  },
+  {
+    "id": "w30",
+    "name": "Power key signal",
+    "ref": "W3",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "SW1 to K3. Endpoints identify the switch region; continuity-locate K3 pads and confirm solder allowance and wire dressing.",
+    "color": "#d9d4bb",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -40.9,
+      -25.211,
+      -23.803,
+      27.155,
+      9.978,
+      19.364
+    ],
+    "productEligible": true
+  },
+  {
+    "id": "w31",
+    "name": "Power key return",
+    "ref": "W3",
+    "group": "Wiring",
+    "kind": "Proposed routing",
+    "delta": [
+      0,
+      0,
+      39
+    ],
+    "stage": 5,
+    "note": "SW1 to K3. Endpoints identify the switch region; continuity-locate K3 pads and confirm solder allowance and wire dressing.",
+    "color": "#4c5052",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -33.15,
+      -22.842,
+      -23.778,
+      27.081,
+      13.25,
+      19.418
+    ],
+    "productEligible": true
+  },
+  {
+    "id": "adhH",
+    "name": "DRV2605L die-cut foam strips",
+    "ref": "A3",
+    "group": "Haptics",
+    "kind": "Workshop cut and formed",
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "stage": 4,
+    "note": "Placed from the Boardoza DRV2605L production board and assigned workshop wire routes.",
+    "color": "#565550",
+    "source": "hardware/electronics/haptic-r0009/placed/adhH.brep",
+    "option": "haptic",
+    "added": true,
+    "solids": 2,
+    "bounds_mm": [
+      16.5,
+      27.5,
+      -12.0,
+      0.0,
+      2.5,
+      4.6
+    ],
+    "productEligible": true,
+    "geometrySha256": "1fea27839fce1912e6219c5487f4602f545fc0371d1a2b48b2509d9e31b5f7f8"
+  },
+  {
+    "id": "hdrPins",
+    "name": "J8 male header contacts",
+    "ref": "W1-P",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      0,
+      26,
+      43
+    ],
+    "stage": 5,
+    "note": "Four nominal 0.64 mm square contacts. Gauge the insertion depth and pin-1 orientation on the actual socket.",
+    "color": "#c39c58",
+    "source": "build_review.py",
+    "option": "",
+    "added": true,
+    "solids": 4,
+    "bounds_mm": [
+      10.67,
+      18.93,
+      21.28,
+      21.92,
+      14.75,
+      17.75
+    ],
+    "productEligible": false
+  },
+  {
+    "id": "shrink0",
+    "name": "Raychem W2 splice insulation 1",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Cut and recovered supplier stock",
+    "delta": [
+      8,
+      4,
+      -8
+    ],
+    "stage": 4,
+    "note": "6 mm recovered sleeve on a 0.9 mm wire. Verify solder bulge and coverage on the assembly.",
+    "color": "#363836",
+    "source": "hardware/components/te-rnf-100/shrink0.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      3.9997,
+      10.0003,
+      -15.6552,
+      -13.9448,
+      13.4945,
+      15.2055
+    ],
+    "finish": "rubber",
+    "mpn": "RNF-100-1/16-0-SP",
+    "modelUrl": "https://www.te.com/en/product-5052894048.html",
+    "productEligible": true,
+    "geometrySha256": "184427ae6e71c039c8dbb8a63e6f3c412720268bc205338d3869322cadd573f2"
+  },
+  {
+    "id": "shrink1",
+    "name": "Raychem W2 splice insulation 2",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Cut and recovered supplier stock",
+    "delta": [
+      8,
+      4,
+      -8
+    ],
+    "stage": 4,
+    "note": "6 mm recovered sleeve on a 0.9 mm wire. Verify solder bulge and coverage on the assembly.",
+    "color": "#363836",
+    "source": "hardware/components/te-rnf-100/shrink1.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -4.0003,
+      2.0003,
+      -17.1052,
+      -15.3948,
+      13.6745,
+      15.3855
+    ],
+    "finish": "rubber",
+    "mpn": "RNF-100-1/16-0-SP",
+    "modelUrl": "https://www.te.com/en/product-5052894048.html",
+    "productEligible": true,
+    "geometrySha256": "3cc05e8f646dcc1b806c451e7292ad16b6f782c07200affcc3dace924647ed80"
+  },
+  {
+    "id": "usbGauge",
+    "name": "USB data plug gauge",
+    "ref": "USB1",
+    "group": "Wiring",
+    "kind": "Drawing-based proxy",
+    "delta": [
+      -35,
+      0,
+      0
+    ],
+    "stage": 6,
+    "note": "External fixture modeled for plug approach only. Excluded from closed-unit mass, coverage and interference totals.",
+    "color": "#7c8986",
+    "source": "rev-E/scripts/gauges.py",
+    "option": "usb",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -63.0,
+      -40.0,
+      -6.0,
+      6.0,
+      16.45,
+      22.95
+    ],
+    "productEligible": false
+  },
+  {
+    "id": "bridge",
+    "name": "Lift-out wire bridge",
+    "ref": "P2",
+    "group": "Wiring",
+    "kind": "R0009 manufactured CAD",
+    "delta": [
+      -35,
+      0,
+      20
+    ],
+    "stage": 4,
+    "note": "Print on the flat deck underside. Lift out before installing or removing the inert gauge. Use two M2 × 4 fasteners in the outboard blind pilots. Insulating tape loops go through the four slots.",
+    "color": "#8ba69b",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/battery-wire-bridge.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -34.3129,
+      13.2052,
+      9.6856,
+      21.7826,
+      9.5495,
+      12.8802
+    ],
+    "productEligible": true,
+    "geometrySha256": "756735db61a4212987c8dd05332c1d05dd6f1699af8ad509fbff56049c5e49ea"
+  },
+  {
+    "id": "tieS1",
+    "name": "M2 × 4 ISO 14583 A2 T6 · tieS1",
+    "ref": "H9",
+    "group": "Wiring",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      0,
+      0,
+      12
+    ],
+    "stage": 6,
+    "note": "Installed standard-based geometry.",
+    "color": "#a5a6a3",
+    "source": "hardware/components/standard-fasteners/placed/tieS1.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -33.8581,
+      -29.8419,
+      16.4915,
+      20.5085,
+      6.7498,
+      12.3586
+    ],
+    "finish": "steel",
+    "mpn": "SHP-M2-4-V2-A2",
+    "modelUrl": "https://github.com/gumyr/cq_warehouse/tree/a57bb7a24762d367d66369f280a24c38a64e73dd",
+    "productEligible": true,
+    "geometrySha256": "0fe1925b04d8fd8c55c008759c5b12c4fd7cf08e7bc525e1567d76595f5f8c28"
+  },
+  {
+    "id": "tieS2",
+    "name": "M2 × 4 ISO 14583 A2 T6 · tieS2",
+    "ref": "H9",
+    "group": "Wiring",
+    "kind": "Standard fastener CAD",
+    "delta": [
+      0,
+      0,
+      12
+    ],
+    "stage": 6,
+    "note": "Installed standard-based geometry.",
+    "color": "#a5a6a3",
+    "source": "hardware/components/standard-fasteners/placed/tieS2.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      8.7341,
+      12.7504,
+      10.9597,
+      14.9768,
+      6.7498,
+      12.3586
+    ],
+    "finish": "steel",
+    "mpn": "SHP-M2-4-V2-A2",
+    "modelUrl": "https://github.com/gumyr/cq_warehouse/tree/a57bb7a24762d367d66369f280a24c38a64e73dd",
+    "productEligible": true,
+    "geometrySha256": "6ab8369a60bb42d903c99ff4cee47fdfc87f54d4d3fc2a328a9bd05b20889e61"
+  },
+  {
+    "id": "altTail0",
+    "name": "B1 positive lead",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Custom formed harness",
+    "delta": [
+      5,
+      -5,
+      -12
+    ],
+    "stage": 4,
+    "note": "Factory lead length or measured adapter route to the actual connector exit.",
+    "color": "#b4483c",
+    "source": "hardware/electronics/harness-r0003/placed/altTail0.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -21.8519,
+      17.9752,
+      -24.7013,
+      37.2501,
+      8.3983,
+      12.2517
+    ],
+    "batteryVariant": "alt",
+    "productEligible": true,
+    "geometrySha256": "35045cc5e65ee472a072627b6f47ec09400145328030b2768529f1d0bf1f60bd"
+  },
+  {
+    "id": "altTail1",
+    "name": "B1 return lead",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Custom formed harness",
+    "delta": [
+      5,
+      -5,
+      -12
+    ],
+    "stage": 4,
+    "note": "Factory lead length or measured adapter route to the actual connector exit.",
+    "color": "#353737",
+    "source": "hardware/electronics/harness-r0003/placed/altTail1.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -15.7926,
+      17.9752,
+      -22.7013,
+      37.2502,
+      8.3983,
+      14.4012
+    ],
+    "batteryVariant": "alt",
+    "productEligible": true,
+    "geometrySha256": "528510b05fb2cbe2e23764afeadd2113319e43ef06400f32fb173f1acdcaa6dd"
+  },
+  {
+    "id": "drawingTail0",
+    "name": "B1 positive lead",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Custom formed harness",
+    "delta": [
+      5,
+      -5,
+      -12
+    ],
+    "stage": 4,
+    "note": "Factory lead length or measured adapter route to the actual connector exit.",
+    "color": "#b4483c",
+    "source": "hardware/electronics/harness-r0003/placed/drawingTail0.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -25.1153,
+      17.9752,
+      -24.701,
+      35.4002,
+      5.5483,
+      12.2516
+    ],
+    "batteryVariant": "drawing",
+    "productEligible": false,
+    "geometrySha256": "3880dca16ab320c0c44ae75fd5511fafd82a7b2995d4eb0a0d453e4fdcf04046"
+  },
+  {
+    "id": "drawingTail1",
+    "name": "B1 return lead",
+    "ref": "B1",
+    "group": "Wiring",
+    "kind": "Custom formed harness",
+    "delta": [
+      5,
+      -5,
+      -12
+    ],
+    "stage": 4,
+    "note": "Factory lead length or measured adapter route to the actual connector exit.",
+    "color": "#353737",
+    "source": "hardware/electronics/harness-r0003/placed/drawingTail1.brep",
+    "option": "",
+    "added": true,
+    "solids": 1,
+    "bounds_mm": [
+      -19.7041,
+      17.9752,
+      -22.7012,
+      35.4001,
+      5.5483,
+      14.4012
+    ],
+    "batteryVariant": "drawing",
+    "productEligible": false,
+    "geometrySha256": "017c3250133cbd6d780ce8b81a013fd035dd4b25f0df4479d06dee1454a030c1"
+  },
+  {
+    "id": "usbSurround",
+    "name": "Case-colour TPU diaphragm",
+    "ref": "P13",
+    "group": "Enclosure",
+    "kind": "R0009 co-printed material region",
+    "color": "#82988e",
+    "source": "hardware/mechanical/TW-A-0001-R0009/Installed/diaphragm/usbSurround.brep",
+    "delta": [
+      -14,
+      0,
+      0
+    ],
+    "stage": 1,
+    "note": "One of two contiguous regions of the single flexible rear mask. Print both together.",
+    "option": "",
+    "finish": "rubber",
+    "productEligible": true,
+    "bounds_mm": [
+      -39.7822,
+      -39.2677,
+      -6.9423,
+      6.9423,
+      15.3227,
+      23.3373
+    ],
+    "solids": 1,
+    "geometrySha256": "d7dab9c4464383b9501496b7526c334134135f3c712c96684cad99472f2ca96e"
+  },
+  {
+    "id": "statusChgGuide",
+    "name": "Charge light guide",
+    "ref": "P14",
+    "group": "Enclosure",
+    "kind": "R0009 manufactured CAD",
+    "color": "#b4c3b1",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/status-charge-guide.brep",
+    "delta": [
+      -14,
+      0,
+      0
+    ],
+    "stage": 1,
+    "note": "Polished, separate light guide inside an opaque channel.",
+    "option": "",
+    "finish": "glass",
+    "productEligible": true,
+    "bounds_mm": [
+      -49.97,
+      -39.13,
+      -10.621,
+      -5.45,
+      12.5,
+      21.35
+    ],
+    "solids": 1,
+    "geometrySha256": "59a7efee6c5875dae70583581382ee83bd87bb6aa8fbbbe618f5326ec38e6f79"
+  },
+  {
+    "id": "statusUsbGuide",
+    "name": "USB-present light guide",
+    "ref": "P15",
+    "group": "Enclosure",
+    "kind": "R0009 manufactured CAD",
+    "color": "#aab9c7",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/status-usb-guide.brep",
+    "delta": [
+      -14,
+      0,
+      0
+    ],
+    "stage": 1,
+    "note": "Polished, separate light guide inside an opaque channel.",
+    "option": "",
+    "finish": "glass",
+    "productEligible": true,
+    "bounds_mm": [
+      -49.97,
+      -42.65,
+      -0.6,
+      0.6,
+      12.5,
+      13.7
+    ],
+    "solids": 1,
+    "geometrySha256": "53a9f22aadedfc90ca3f70283c28d2aa941b63e6c949ce5092338e26b761ea08"
+  },
+  {
+    "id": "statusPwrGuide",
+    "name": "System-power light guide",
+    "ref": "P16",
+    "group": "Enclosure",
+    "kind": "R0009 manufactured CAD",
+    "color": "#c5b0ad",
+    "source": "hardware/mechanical/TW-A-0001-R0009/CAD/status-power-guide.brep",
+    "delta": [
+      -14,
+      0,
+      0
+    ],
+    "stage": 1,
+    "note": "Polished, separate light guide inside an opaque channel.",
+    "option": "",
+    "finish": "glass",
+    "productEligible": true,
+    "bounds_mm": [
+      -49.97,
+      -39.13,
+      5.45,
+      10.579,
+      12.5,
+      21.35
+    ],
+    "solids": 1,
+    "geometrySha256": "bd4d6f4568b473098a11cc7fdb24e2ef07ccb695435c4d0dd411de3a99281236"
+  },
+  {
+    "id": "speakerRim",
+    "name": "Nickel speaker rim",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#b4b6af",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "option": "",
+    "finish": "steel",
+    "mpn": "3923",
+    "modelUrl": "https://github.com/adafruit/Adafruit_CAD_Parts/tree/9f2a89f3d5c3491886d58cb7fe83385417563cf4/3923%20Mini%20Oval%20Speaker",
+    "productEligible": true,
+    "bounds_mm": [
+      -50.4731,
+      -30.5669,
+      -14.8,
+      14.8,
+      8.4469,
+      9.3502
+    ],
+    "solids": 1,
+    "geometrySha256": "daca610e09c35a5696be2e87e0a65d426f72f4fbc62c4235d0bff10aaf4b0b86"
+  },
+  {
+    "id": "speakerPoleRing",
+    "name": "Magnet surround",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#979994",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "option": "",
+    "finish": "steel",
+    "mpn": "3923",
+    "modelUrl": "https://github.com/adafruit/Adafruit_CAD_Parts/tree/9f2a89f3d5c3491886d58cb7fe83385417563cf4/3923%20Mini%20Oval%20Speaker",
+    "productEligible": true,
+    "bounds_mm": [
+      -48.1224,
+      -32.9176,
+      -7.6,
+      7.6,
+      8.9476,
+      9.7524
+    ],
+    "solids": 1,
+    "geometrySha256": "8d581786cd4b0cc608fa08df0e636135feecec0c6654112a4d0278b0854da948"
+  },
+  {
+    "id": "speakerMagnet",
+    "name": "Rear magnet",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#797c76",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "option": "",
+    "finish": "steel",
+    "mpn": "3923",
+    "modelUrl": "https://github.com/adafruit/Adafruit_CAD_Parts/tree/9f2a89f3d5c3491886d58cb7fe83385417563cf4/3923%20Mini%20Oval%20Speaker",
+    "productEligible": true,
+    "bounds_mm": [
+      -47.1221,
+      -33.9179,
+      -6.6,
+      6.6,
+      8.9479,
+      9.7521
+    ],
+    "solids": 1,
+    "geometrySha256": "14566b9e74ec9a13ab3166b0762754b1ce138a606544d183009c24fc1230b7ec"
+  },
+  {
+    "id": "speakerDiaphragm",
+    "name": "Speaker diaphragm",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#383b38",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "option": "",
+    "mpn": "3923",
+    "modelUrl": "https://github.com/adafruit/Adafruit_CAD_Parts/tree/9f2a89f3d5c3491886d58cb7fe83385417563cf4/3923%20Mini%20Oval%20Speaker",
+    "productEligible": true,
+    "bounds_mm": [
+      -50.073,
+      -30.967,
+      -14.4,
+      14.4,
+      7.947,
+      8.453
+    ],
+    "solids": 1,
+    "geometrySha256": "2fbda35c6f031e20bee303a9712b594731e6bfebd8d152e4e33fdd9bfbda38a1"
+  },
+  {
+    "id": "speakerCloth",
+    "name": "Acoustic front cloth",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#272c29",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "option": "",
+    "finish": "fabric",
+    "mpn": "3923",
+    "modelUrl": "https://github.com/adafruit/Adafruit_CAD_Parts/tree/9f2a89f3d5c3491886d58cb7fe83385417563cf4/3923%20Mini%20Oval%20Speaker",
+    "productEligible": true,
+    "bounds_mm": [
+      -50.4731,
+      -30.5669,
+      -14.8,
+      14.8,
+      4.7469,
+      4.9531
+    ],
+    "solids": 1,
+    "geometrySha256": "a5bef51b41cfd71b09e690c76d3ac163d0f409bae840f619ab56181f7a4d764f"
+  },
+  {
+    "id": "speakerTerminal0",
+    "name": "SP1 factory terminal lead A",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#a09d93",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "option": "",
+    "finish": "steel",
+    "mpn": "3923",
+    "modelUrl": "https://github.com/adafruit/Adafruit_CAD_Parts/tree/9f2a89f3d5c3491886d58cb7fe83385417563cf4/3923%20Mini%20Oval%20Speaker",
+    "productEligible": true,
+    "bounds_mm": [
+      -43.2332,
+      -42.2068,
+      -17.7002,
+      -12.6868,
+      8.9498,
+      11.2632
+    ],
+    "solids": 1,
+    "geometrySha256": "fe5fc10ef109775f8047bb272627777c25ddc655b22fa30ce0849893646505c0"
+  },
+  {
+    "id": "speakerTerminal1",
+    "name": "SP1 factory terminal lead B",
+    "ref": "SP1",
+    "group": "Audio",
+    "kind": "Supplier STEP",
+    "color": "#948d82",
+    "source": "hardware/components/adafruit-3923/adafruit-3923.step",
+    "delta": [
+      0,
+      -15,
+      -17
+    ],
+    "stage": 3,
+    "note": "Adafruit 3923 supplier CAD. Installed front cloth faces the grille.",
+    "option": "",
+    "finish": "steel",
+    "mpn": "3923",
+    "modelUrl": "https://github.com/adafruit/Adafruit_CAD_Parts/tree/9f2a89f3d5c3491886d58cb7fe83385417563cf4/3923%20Mini%20Oval%20Speaker",
+    "productEligible": true,
+    "bounds_mm": [
+      -38.8332,
+      -37.8068,
+      -17.7002,
+      -12.6868,
+      8.9498,
+      11.2632
+    ],
+    "solids": 1,
+    "geometrySha256": "9e8c4fd380564e566db26400fb2488dfa4fbf4b3f7e701f615cef1ed56f25896"
+  },
+  {
+    "id": "speakerGasket",
+    "name": "Speaker perimeter seal",
+    "ref": "SP1-G",
+    "group": "Audio",
+    "kind": "Custom die-cut foam",
+    "color": "#363733",
+    "source": "hardware/mechanical/TW-A-0001-R0009/speaker.py",
+    "delta": [
+      0,
+      -12,
+      -11
+    ],
+    "stage": 3,
+    "note": "0.50 mm compressed design stack, continuous ring. Confirm foam compliance and PSA compatibility.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      -50.2957,
+      -30.7443,
+      -14.6207,
+      14.6207,
+      4.2493,
+      4.7507
+    ],
+    "solids": 1,
+    "geometrySha256": "da32c2755849159cdebc2343786eda09d6e49ca3427b59c889b642f7f5ed919a"
+  },
+  {
+    "id": "USB-D1",
+    "name": "Kingbright blue USB-present LED",
+    "ref": "USB-D1",
+    "group": "Status & power",
+    "kind": "Supplier STEP",
+    "color": "#afbac9",
+    "source": "hardware/electronics/usb-status-r0003/placed/USB-D1.brep",
+    "delta": [
+      -12,
+      4,
+      -8
+    ],
+    "stage": 5,
+    "note": "Dedicated USB-present channel from J8 VBUS through R1.",
+    "option": "",
+    "mpn": "APG1608QBC/D",
+    "modelUrl": "https://www.kingbrightusa.com/images/catalog/3D/STEP/APG1608.STEP",
+    "productEligible": true,
+    "bounds_mm": [
+      -42.352,
+      -42.101,
+      -0.8,
+      0.8,
+      12.7,
+      13.5012
+    ],
+    "solids": 5,
+    "geometrySha256": "aa66e31e6e961ae4a6566ed4cfd0267942435e52e2823bd62c04e45ada5347d0",
+    "styledFaces": 324,
+    "faceCount": 330
+  },
+  {
+    "id": "USB-PCB1",
+    "name": "USB light daughterboard",
+    "ref": "USB-PCB1",
+    "group": "Status & power",
+    "kind": "Assembled electrical CAD",
+    "color": "#506b57",
+    "source": "hardware/electronics/usb-status-r0003/placed/USB-PCB1.brep",
+    "delta": [
+      -12,
+      4,
+      -8
+    ],
+    "stage": 5,
+    "note": "Dedicated USB-present channel from J8 VBUS through R1.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      -42.1001,
+      -41.4999,
+      -2.4,
+      2.4,
+      11.5,
+      14.7
+    ],
+    "solids": 1,
+    "geometrySha256": "c9d8aa8f0fa70fb1db0443aa8af7d3e905251b6e7a1fffe7092c1f29f2eb9710"
+  },
+  {
+    "id": "USB-PCB2",
+    "name": "USB resistor daughterboard",
+    "ref": "USB-PCB2",
+    "group": "Status & power",
+    "kind": "Assembled electrical CAD",
+    "color": "#506b57",
+    "source": "hardware/electronics/usb-status-r0003/placed/USB-PCB2.brep",
+    "delta": [
+      -12,
+      4,
+      -8
+    ],
+    "stage": 5,
+    "note": "Dedicated USB-present channel from J8 VBUS through R1.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      -22.6,
+      -19.4,
+      17.0,
+      19.0,
+      17.5999,
+      18.2001
+    ],
+    "solids": 1,
+    "geometrySha256": "58e7e306684fb3e02f0756960d9bc4f06dccf6287df137c89cb7be3b48f0b0e1"
+  },
+  {
+    "id": "USB-R1",
+    "name": "Yageo 2.70 kΩ series resistor",
+    "ref": "USB-R1",
+    "group": "Status & power",
+    "kind": "Supplier STEP",
+    "color": "#514e4b",
+    "source": "hardware/electronics/usb-status-r0003/placed/USB-R1.brep",
+    "delta": [
+      -12,
+      4,
+      -8
+    ],
+    "stage": 5,
+    "note": "Dedicated USB-present channel from J8 VBUS through R1.",
+    "option": "",
+    "mpn": "RC0603FR-072K7L",
+    "modelUrl": "https://lceda.cn/api/products/C114612/components?version=6.4.19.5",
+    "productEligible": true,
+    "bounds_mm": [
+      -21.81,
+      -20.19,
+      17.6,
+      18.4107,
+      18.2,
+      18.65
+    ],
+    "solids": 4,
+    "geometrySha256": "53f18cc46b382ce000890e4b412d665fbd9b6c0d7d06ac693f6f29c378fb7f33",
+    "styledFaces": 262,
+    "faceCount": 264
+  },
+  {
+    "id": "USB-W4B-Cu",
+    "name": "USB-W4B-Cu exposed conductor",
+    "ref": "USB-W4B-Cu",
+    "group": "Status & power",
+    "kind": "Assembled electrical CAD",
+    "color": "#bd7851",
+    "source": "hardware/electronics/usb-status-r0003/placed/USB-W4B-Cu.brep",
+    "delta": [
+      -12,
+      4,
+      -8
+    ],
+    "stage": 5,
+    "note": "Dedicated USB-present channel from J8 VBUS through R1.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      -42.14,
+      -21.893,
+      1.573,
+      18.597,
+      12.973,
+      18.23
+    ],
+    "solids": 2,
+    "geometrySha256": "39340d4da347f1f6adcfc606697b449cf3ee769fd05e51b8c4652aa1366f6492"
+  },
+  {
+    "id": "USB-W4B",
+    "name": "USB-W4B insulated harness",
+    "ref": "USB-W4B",
+    "group": "Status & power",
+    "kind": "Assembled electrical CAD",
+    "color": "#a4403c",
+    "source": "hardware/electronics/usb-status-r0003/placed/USB-W4B.brep",
+    "delta": [
+      -12,
+      4,
+      -8
+    ],
+    "stage": 5,
+    "note": "Dedicated USB-present channel from J8 VBUS through R1.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      -41.3392,
+      -21.7003,
+      1.3346,
+      18.7846,
+      12.7695,
+      17.4583
+    ],
+    "solids": 1,
+    "geometrySha256": "116d75e648d8d45355b500fe57ec23eb6541bebe02260d31020c685e3cba534c"
+  },
+  {
+    "id": "usbEscutcheonLip",
+    "name": "Charcoal TPU socket lip",
+    "ref": "P13",
+    "group": "Enclosure",
+    "kind": "R0009 co-printed material region",
+    "color": "#292c2a",
+    "source": "hardware/mechanical/TW-A-0001-R0009/Installed/diaphragm/usbEscutcheonLip.brep",
+    "delta": [
+      -14,
+      0,
+      0
+    ],
+    "stage": 1,
+    "note": "One of two contiguous regions of the single flexible rear mask. Print both together.",
+    "option": "",
+    "finish": "rubber",
+    "productEligible": true,
+    "bounds_mm": [
+      -39.7806,
+      -39.3194,
+      -5.2206,
+      5.2206,
+      16.9994,
+      21.6606
+    ],
+    "solids": 1,
+    "geometrySha256": "2ca4b9c8eab6f8bad694fcb2b0529b7c1087552c45120ee06f6965b07f4d0ba2"
+  },
+  {
+    "id": "J7-C1",
+    "name": "J7 formed crimp contact 1",
+    "ref": "J7",
+    "group": "Wiring",
+    "kind": "Supplier STEP",
+    "color": "#a7a39c",
+    "source": "hardware/electronics/harness-r0003/placed/J7-C1.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Molex formed PicoBlade contact at its source-housing cavity.",
+    "option": "",
+    "finish": "steel",
+    "mpn": "50079-8000",
+    "modelUrl": "https://www.molex.com/en-us/products/part-detail/500798000",
+    "productEligible": true,
+    "bounds_mm": [
+      -26.3311,
+      -25.4249,
+      19.9999,
+      23.301,
+      18.33,
+      20.03
+    ],
+    "solids": 1,
+    "geometrySha256": "3b95109dd4037ad8f31dc5853ed4e89fe2d14c9bbf9fa0a45fbbd6ace53104e8"
+  },
+  {
+    "id": "J7-C2",
+    "name": "J7 formed crimp contact 2",
+    "ref": "J7",
+    "group": "Wiring",
+    "kind": "Supplier STEP",
+    "color": "#a7a39c",
+    "source": "hardware/electronics/harness-r0003/placed/J7-C2.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Molex formed PicoBlade contact at its source-housing cavity.",
+    "option": "",
+    "finish": "steel",
+    "mpn": "50079-8000",
+    "modelUrl": "https://www.molex.com/en-us/products/part-detail/500798000",
+    "productEligible": true,
+    "bounds_mm": [
+      -25.0811,
+      -24.1749,
+      19.9999,
+      23.301,
+      18.33,
+      20.03
+    ],
+    "solids": 1,
+    "geometrySha256": "1af49ef2055a37b4329bcfbbcf9de91fa907f1a94ffa1da06d4ff47582b62bce"
+  },
+  {
+    "id": "J9-C1",
+    "name": "J9 formed crimp contact 1",
+    "ref": "J9",
+    "group": "Wiring",
+    "kind": "Supplier STEP",
+    "color": "#a7a39c",
+    "source": "hardware/electronics/harness-r0003/placed/J9-C1.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Molex formed PicoBlade contact at its source-housing cavity.",
+    "option": "",
+    "finish": "steel",
+    "mpn": "50079-8000",
+    "modelUrl": "https://www.molex.com/en-us/products/part-detail/500798000",
+    "productEligible": true,
+    "bounds_mm": [
+      -0.5181,
+      0.3881,
+      -21.801,
+      -18.4999,
+      18.33,
+      20.03
+    ],
+    "solids": 1,
+    "geometrySha256": "fcc29a9568a323a9be47bbdcf26b4c845237c0d5cfa4c39c63e075fddf9b20e5"
+  },
+  {
+    "id": "J9-C2",
+    "name": "J9 formed crimp contact 2",
+    "ref": "J9",
+    "group": "Wiring",
+    "kind": "Supplier STEP",
+    "color": "#a7a39c",
+    "source": "hardware/electronics/harness-r0003/placed/J9-C2.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Molex formed PicoBlade contact at its source-housing cavity.",
+    "option": "",
+    "finish": "steel",
+    "mpn": "50079-8000",
+    "modelUrl": "https://www.molex.com/en-us/products/part-detail/500798000",
+    "productEligible": true,
+    "bounds_mm": [
+      -1.7681,
+      -0.8619,
+      -21.801,
+      -18.4999,
+      18.33,
+      20.03
+    ],
+    "solids": 1,
+    "geometrySha256": "143444d8b67b180f0847e33259d9b7b7874e475fd4a2d3e66063b72e51deb05a"
+  },
+  {
+    "id": "termination-W1-GND",
+    "name": "W1-GND stripped conductor",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Formed wire termination",
+    "color": "#af7551",
+    "source": "hardware/electronics/harness-r0003/placed/termination-W1-GND.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Bare end seated inside the crimp or soldered along its J8 header tail. Confirm crimp height and continuity on the physical loom.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      16.374,
+      16.624,
+      14.61,
+      15.3,
+      12.105,
+      12.355
+    ],
+    "solids": 1,
+    "geometrySha256": "e37623a61cccb473f292e3acdc27ae5fbe6320a7c0e19cc77c2ca7e92026669c"
+  },
+  {
+    "id": "termination-W1-SCL",
+    "name": "W1-SCL stripped conductor",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Formed wire termination",
+    "color": "#af7551",
+    "source": "hardware/electronics/harness-r0003/placed/termination-W1-SCL.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Bare end seated inside the crimp or soldered along its J8 header tail. Confirm crimp height and continuity on the physical loom.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      11.294,
+      11.544,
+      14.6901,
+      15.4099,
+      12.1703,
+      13.2097
+    ],
+    "solids": 1,
+    "geometrySha256": "94f010ab4c4018f451b24508d2fe2e8ae40fb0f9a66a184ab30619b6b3a614b6"
+  },
+  {
+    "id": "termination-W1-SDA",
+    "name": "W1-SDA stripped conductor",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Formed wire termination",
+    "color": "#af7551",
+    "source": "hardware/electronics/harness-r0003/placed/termination-W1-SDA.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Bare end seated inside the crimp or soldered along its J8 header tail. Confirm crimp height and continuity on the physical loom.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      13.834,
+      14.084,
+      14.61,
+      15.3,
+      12.105,
+      12.355
+    ],
+    "solids": 1,
+    "geometrySha256": "56978d230bf14ca436729ce090cd3f8b0b9ad6e324f7bfc9d453e0ae7223b5cc"
+  },
+  {
+    "id": "termination-W1-VCC",
+    "name": "W1-VCC stripped conductor",
+    "ref": "W1",
+    "group": "Wiring",
+    "kind": "Formed wire termination",
+    "color": "#af7551",
+    "source": "hardware/electronics/harness-r0003/placed/termination-W1-VCC.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Bare end seated inside the crimp or soldered along its J8 header tail. Confirm crimp height and continuity on the physical loom.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      18.914,
+      19.164,
+      14.61,
+      15.3,
+      12.105,
+      12.355
+    ],
+    "solids": 1,
+    "geometrySha256": "2ccd6a7f7af68366766864c7167d299e6da6e224c57ab024eb270185c026628f"
+  },
+  {
+    "id": "termination-W2-1",
+    "name": "W2-1 stripped conductor",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Formed wire termination",
+    "color": "#af7551",
+    "source": "hardware/electronics/harness-r0003/placed/termination-W2-1.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Bare end seated inside the crimp or soldered along its J8 header tail. Confirm crimp height and continuity on the physical loom.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      -26.038,
+      -25.718,
+      19.75,
+      21.55,
+      18.89,
+      19.21
+    ],
+    "solids": 1,
+    "geometrySha256": "f868dee70e64f26616fa76f24049e48ff5e7d07f93472061ed0bbcbcd54dc37b"
+  },
+  {
+    "id": "termination-W2-2",
+    "name": "W2-2 stripped conductor",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Formed wire termination",
+    "color": "#af7551",
+    "source": "hardware/electronics/harness-r0003/placed/termination-W2-2.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Bare end seated inside the crimp or soldered along its J8 header tail. Confirm crimp height and continuity on the physical loom.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      -24.788,
+      -24.468,
+      19.75,
+      21.55,
+      18.89,
+      19.21
+    ],
+    "solids": 1,
+    "geometrySha256": "7866db60de6d567757678153d7e76dd150331d1373390711d2682ba9cdca8250"
+  },
+  {
+    "id": "termination-W5-1",
+    "name": "W5-1 stripped conductor",
+    "ref": "W5",
+    "group": "Wiring",
+    "kind": "Formed wire termination",
+    "color": "#af7551",
+    "source": "hardware/electronics/harness-r0003/placed/termination-W5-1.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Bare end seated inside the crimp or soldered along its J8 header tail. Confirm crimp height and continuity on the physical loom.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      -1.475,
+      -1.155,
+      -20.05,
+      -18.25,
+      18.89,
+      19.21
+    ],
+    "solids": 1,
+    "geometrySha256": "8ed9e95f381ca0b23378e1b8f4f4710b754ce7c15d7052e66662ffc156c21a2a"
+  },
+  {
+    "id": "termination-W5-2",
+    "name": "W5-2 stripped conductor",
+    "ref": "W5",
+    "group": "Wiring",
+    "kind": "Formed wire termination",
+    "color": "#af7551",
+    "source": "hardware/electronics/harness-r0003/placed/termination-W5-2.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Bare end seated inside the crimp or soldered along its J8 header tail. Confirm crimp height and continuity on the physical loom.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      -0.225,
+      0.095,
+      -20.05,
+      -18.25,
+      18.89,
+      19.21
+    ],
+    "solids": 1,
+    "geometrySha256": "641ad403a789347c64c962719c6c2da5ea1d0c60279c3c95348e043d44e291b3"
+  },
+  {
+    "id": "PH-TAIL1",
+    "name": "Battery adapter lap conductor 1",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Formed adapter termination",
+    "color": "#b18155",
+    "source": "hardware/electronics/harness-r0003/placed/PH-TAIL1.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Insulate the two PH header joints individually before installing the adapter.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      27.8,
+      29.6,
+      -24.16,
+      -23.84,
+      10.38,
+      10.7
+    ],
+    "solids": 1,
+    "geometrySha256": "5cb2b5ada17a2a934a3a1fbdfdd48307f53d1fde0eb9c1f969bf04d4f2b033fb"
+  },
+  {
+    "id": "PH-INS1",
+    "name": "Battery adapter joint sleeve 1",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Formed adapter termination",
+    "color": "#504846",
+    "source": "hardware/electronics/harness-r0003/placed/PH-INS1.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Insulate the two PH header joints individually before installing the adapter.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      26.4498,
+      30.2502,
+      -24.79,
+      -23.21,
+      9.4898,
+      11.0702
+    ],
+    "solids": 1,
+    "geometrySha256": "737d54a0d39da5c9d05c73c69cdbf962dc1495d0b2525cb848989ea8db473bcb"
+  },
+  {
+    "id": "PH-TAIL2",
+    "name": "Battery adapter lap conductor 2",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Formed adapter termination",
+    "color": "#b18155",
+    "source": "hardware/electronics/harness-r0003/placed/PH-TAIL2.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Insulate the two PH header joints individually before installing the adapter.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      27.8,
+      29.6,
+      -22.16,
+      -21.84,
+      10.38,
+      10.7
+    ],
+    "solids": 1,
+    "geometrySha256": "224dcaba07aa131ca0138808a06f5c24131e3136cb5d9006c84b4577d3a61632"
+  },
+  {
+    "id": "PH-INS2",
+    "name": "Battery adapter joint sleeve 2",
+    "ref": "W2",
+    "group": "Wiring",
+    "kind": "Formed adapter termination",
+    "color": "#504846",
+    "source": "hardware/electronics/harness-r0003/placed/PH-INS2.brep",
+    "delta": [
+      1,
+      -6,
+      -8
+    ],
+    "stage": 5,
+    "note": "Insulate the two PH header joints individually before installing the adapter.",
+    "option": "",
+    "productEligible": true,
+    "bounds_mm": [
+      26.4498,
+      30.2502,
+      -22.79,
+      -21.21,
+      9.4898,
+      11.0702
+    ],
+    "solids": 1,
+    "geometrySha256": "f1096b7e360b4976652eb6cb48be4d272619991e0f32db1ef40b52aec2fd8584"
+  },
+  {
+    "id": "serviceCover",
+    "name": "Lower service key cover",
+    "ref": "P17",
+    "group": "Enclosure",
+    "kind": "R0010 manufactured CAD",
+    "stage": 7,
+    "delta": [
+      0,
+      -23,
+      0
+    ],
+    "note": "Opaque TPU cover. Peel the short west edge to reach the recessed PWR, RESET and BOOT switches.",
+    "color": "#91a994",
+    "finish": "rubber",
+    "source": "hardware/mechanical/TW-A-0001-R0010/CAD/service-cover.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "deebe15501c5a36abd7045e3db8d74458118974f703a5dfeb98b05361031287b",
+    "bounds_mm": [
+      -31.4048,
+      -2.5952,
+      -35.7048,
+      -31.18,
+      16.0952,
+      24.9048
+    ],
+    "solids": 1
+  },
+  {
+    "id": "A4-integration",
+    "name": "A4 populated R0004 integration PCB",
+    "ref": "A4",
+    "group": "Wiring",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Direct rigid placement of the released populated KiCad PCB STEP, including all board copper and library package solids. Component face points toward the floor.",
+    "color": "#306c45",
+    "source": "hardware/electronics/harness-r0005/placed/A4-integration.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "6b61b5a7179baeee6e1d442decb408e16edecc16aa42836b5b121a90e1758ade",
+    "solids": 62,
+    "bounds_mm": [
+      13.0,
+      36.0,
+      -12.0,
+      1.0,
+      16.505,
+      18.535
+    ]
+  },
+  {
+    "id": "A4-spacers",
+    "name": "Three A4 insulating spacers",
+    "ref": "A4",
+    "group": "Wiring",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Three 3 x 3 x 2 mm electrically insulating blocks between A4 and A1. Verify 0.50 mm nominal A1 component clearance on the received assembly.",
+    "color": "#d0caaa",
+    "source": "hardware/electronics/harness-r0005/placed/A4-spacers.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "ceee8819d0be3997fa8c29d75d91d21bf368410b92f54aa0ab778523b6997fc1",
+    "solids": 3,
+    "bounds_mm": [
+      14.0,
+      35.0,
+      -11.5,
+      0.0,
+      18.75,
+      20.75
+    ]
+  },
+  {
+    "id": "A4-bond",
+    "name": "Six A4 adhesive bondlines",
+    "ref": "A4",
+    "group": "Wiring",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Two nominal 0.25 mm insulating adhesive bondlines per support. Check assembled thickness, peel, thermal exposure and pad position on the received unit.",
+    "color": "#87806c",
+    "source": "hardware/electronics/harness-r0005/placed/A4-bond.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "5b8c10d2fcb36fc31f31ba96f109d852b5efc6bba44a1f8f8bf700b332bf3a12",
+    "solids": 6,
+    "bounds_mm": [
+      14.0,
+      35.0,
+      -11.5,
+      0.0,
+      18.5,
+      21.0
+    ]
+  },
+  {
+    "id": "A5-spacers",
+    "name": "Three A5 insulating spacers",
+    "ref": "A5",
+    "group": "Wiring",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "3 x 3 x 2.7 mm electrically insulating spacers. Qualify bonded footprint, overhang and vibration.",
+    "color": "#c5bfb1",
+    "source": "hardware/electronics/harness-r0005/placed/A5-spacers.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "c3f60c663c0ca4dd874cd97f63e9096b1c05da1239e63bfe67db3087f7f6da44",
+    "solids": 3,
+    "bounds_mm": [
+      16.0,
+      34.0,
+      12.6,
+      18.8,
+      18.05,
+      20.75
+    ]
+  },
+  {
+    "id": "wm0",
+    "name": "wm0 motor lead",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Factory motor stub continued underneath A3 to its plated output hole. Insulation remains below the pad.",
+    "color": "#9f5048",
+    "source": "hardware/electronics/harness-r0005/placed/wm0.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "45e36bea52aeadc75752175d59b43de9d08fcfbb12705d4247847630ab1a76ad",
+    "solids": 1,
+    "bounds_mm": [
+      19.2,
+      22.975,
+      1.025,
+      9.0,
+      3.5394,
+      6.315
+    ]
+  },
+  {
+    "id": "wm0-Cu",
+    "name": "wm0 exposed pad end",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Bottom entry into the source-board plated through hole. Solder and trim at the component face.",
+    "color": "#b7774a",
+    "source": "hardware/electronics/harness-r0005/placed/wm0-Cu.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "0457dd1294cf55a6dfd155761ad71de5bafb90dd2bc81b9a4585923907957570",
+    "solids": 1,
+    "bounds_mm": [
+      22.573,
+      22.827,
+      1.173,
+      1.427,
+      4.1,
+      6.24
+    ]
+  },
+  {
+    "id": "wm1",
+    "name": "wm1 motor lead",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Factory motor stub continued underneath A3 to its plated output hole. Insulation remains below the pad.",
+    "color": "#414849",
+    "source": "hardware/electronics/harness-r0005/placed/wm1.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "965a9e249b14e48d4371b9a07e2e7efbbb1173e6fc30ac79a8e8eafe21f2b98d",
+    "solids": 1,
+    "bounds_mm": [
+      16.925,
+      18.782,
+      1.025,
+      9.0,
+      3.5394,
+      6.315
+    ]
+  },
+  {
+    "id": "wm1-Cu",
+    "name": "wm1 exposed pad end",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Bottom entry into the source-board plated through hole. Solder and trim at the component face.",
+    "color": "#b7774a",
+    "source": "hardware/electronics/harness-r0005/placed/wm1-Cu.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "f819c5f6a03121ad9cb9ba6a13c6621b68daa33793fc77cfc533eb1fdbd9a4a2",
+    "solids": 1,
+    "bounds_mm": [
+      17.073,
+      17.327,
+      1.173,
+      1.427,
+      4.1,
+      6.24
+    ]
+  },
+  {
+    "id": "w1VCC",
+    "name": "W1 VCC trunk",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run.",
+    "color": "#555957",
+    "source": "hardware/electronics/harness-r0005/placed/w1VCC.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "df017dfd7e07b12da986752eee3d25f3b7504e18df5c1adb085eace3b80a5c08",
+    "solids": 2,
+    "bounds_mm": [
+      19.4,
+      39.48,
+      -6.75,
+      18.4,
+      8.05,
+      9.5
+    ]
+  },
+  {
+    "id": "w1GND",
+    "name": "W1 GND trunk",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run.",
+    "color": "#555957",
+    "source": "hardware/electronics/harness-r0005/placed/w1GND.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "82de506ee5bf9b06b0ba74160b8cb016058425f3cddacb6c29d2d55c19dd1395",
+    "solids": 2,
+    "bounds_mm": [
+      16.099,
+      39.48,
+      -1.67,
+      23.35,
+      8.05,
+      12.63
+    ]
+  },
+  {
+    "id": "w1SDA",
+    "name": "W1 SDA trunk",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run.",
+    "color": "#555957",
+    "source": "hardware/electronics/harness-r0005/placed/w1SDA.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "18100eb088b5a1d0b8ac76d3e21dab8b94eacb1b8dd467d4e0ea8c8895246b87",
+    "solids": 2,
+    "bounds_mm": [
+      13.559,
+      39.48,
+      3.41,
+      21.7,
+      8.05,
+      12.63
+    ]
+  },
+  {
+    "id": "w1SCL",
+    "name": "W1 SCL trunk",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run.",
+    "color": "#555957",
+    "source": "hardware/electronics/harness-r0005/placed/w1SCL.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "e9b172d66a699989e550e5dfc5da30c99301d8d200cfa8b593a1640159e902b6",
+    "solids": 2,
+    "bounds_mm": [
+      11.019,
+      39.48,
+      0.87,
+      20.05,
+      8.05,
+      14.05
+    ]
+  },
+  {
+    "id": "A3-J1-header",
+    "name": "CviLux right-angle header",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "CIEP05P1HK0-NH manufacturer solid, both molded lock bosses and five integral-model pins.",
+    "color": "#83b7ad",
+    "source": "hardware/electronics/harness-r0005/placed/A3-J1-header.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "a295e325478623c49ed430463fed17763fef45a4c7e4294e2821eda9e73489e6",
+    "solids": 6,
+    "bounds_mm": [
+      13.51,
+      28.41,
+      -15.55,
+      -6.0,
+      4.1325,
+      14.36
+    ]
+  },
+  {
+    "id": "A3-J1-plug",
+    "name": "CviLux five-way latch housing",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "CIEP05SL000 unmodified manufacturer solid. Supplied blind pin pockets and flat catch underside limit seating validation.",
+    "color": "#f1daae",
+    "source": "hardware/electronics/harness-r0005/placed/A3-J1-plug.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "2ef06982164edda5b862a0ba59b0a712cfe63243b837d4ae9535ded1cefa12bc",
+    "solids": 1,
+    "bounds_mm": [
+      13.76,
+      28.16,
+      -12.45,
+      -2.85,
+      7.86,
+      15.41
+    ]
+  },
+  {
+    "id": "A3-J1-TPA",
+    "name": "CviLux terminal position assurance",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "CIEP05C0010 supplier solid. Both outer slots registered to molded side ears; internal tooth pockets are absent from the supplier plug solid. Lock depth requires supplier or physical confirmation.",
+    "color": "#545c68",
+    "source": "hardware/electronics/harness-r0005/placed/A3-J1-TPA.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "0ca6c1f564a304c2b8f57dc32f20f983ea98e92910aa1c8d9b0112bb43dccb52",
+    "solids": 1,
+    "bounds_mm": [
+      13.61,
+      28.31,
+      -7.7,
+      0.0,
+      11.11,
+      13.81
+    ]
+  },
+  {
+    "id": "A3-J1-spacer",
+    "name": "1.40 mm header support",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Unclad insulating drilled shim under the rear header feet. Verify shroud support contact and final solder-tail protrusion.",
+    "color": "#aa9665",
+    "source": "hardware/electronics/harness-r0005/placed/A3-J1-spacer.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "8fc0fff40265ed230bcfc8920b8adb768d566c4b67ec9777433ee23617e83baa",
+    "solids": 1,
+    "bounds_mm": [
+      13.62,
+      28.3,
+      -15.8,
+      -13.7,
+      6.11,
+      7.51
+    ]
+  },
+  {
+    "id": "A3-J1-C1",
+    "name": "Cavity 1 VCC terminal",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement.",
+    "color": "#bf9364",
+    "source": "hardware/electronics/harness-r0005/placed/A3-J1-C1.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "e063d38d3df92018aa5c1dcb4ba15939a0acb73e7a93ddbac69c66baf9224ba6",
+    "solids": 3,
+    "bounds_mm": [
+      15.05,
+      16.87,
+      -11.75,
+      -3.75,
+      9.45,
+      12.1
+    ]
+  },
+  {
+    "id": "whVCC-Cu",
+    "name": "W4 VCC conductor",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "26 AWG nominal copper conductor in the modeled front crimp.",
+    "color": "#c58456",
+    "source": "hardware/electronics/harness-r0005/placed/whVCC-Cu.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "2e1494f17ea25af260d5e54365627512f5282f065bd0e5e70e95e6dd7adbd86a",
+    "solids": 1,
+    "bounds_mm": [
+      15.757,
+      16.163,
+      -6.95,
+      -5.35,
+      10.157,
+      10.563
+    ]
+  },
+  {
+    "id": "tee-VCC-Cu",
+    "name": "W1 VCC fixed tap-Cu",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+    "color": "#b67b52",
+    "source": "hardware/electronics/harness-r0005/placed/tee-VCC-Cu.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "bd4cc8d5d2cc6955ba341e5e204eb49fec61b0e2e451b72efb652124fbd6e67c",
+    "solids": 1,
+    "bounds_mm": [
+      20.6,
+      23.4,
+      17.8115,
+      18.413,
+      8.973,
+      11.2164
+    ]
+  },
+  {
+    "id": "tee-VCC-seal",
+    "name": "W1 VCC fixed tap-seal",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+    "color": "#4f6666",
+    "source": "hardware/electronics/harness-r0005/placed/tee-VCC-seal.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "d82f6b876dca3a6e0c964bee636c0506a7541008aa8a97e975af7fca1b0df66e",
+    "solids": 1,
+    "bounds_mm": [
+      20.6,
+      23.4,
+      17.4183,
+      18.7934,
+      8.65,
+      11.5072
+    ]
+  },
+  {
+    "id": "A3-J1-C5",
+    "name": "Cavity 5 GND terminal",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement.",
+    "color": "#bf9364",
+    "source": "hardware/electronics/harness-r0005/placed/A3-J1-C5.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "181a235b667548a8d2a23737f66b319065038b4201b5b315d3d9d09787f65174",
+    "solids": 3,
+    "bounds_mm": [
+      25.05,
+      26.87,
+      -11.75,
+      -3.75,
+      9.45,
+      12.1
+    ]
+  },
+  {
+    "id": "whGND-Cu",
+    "name": "W4 GND conductor",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "26 AWG nominal copper conductor in the modeled front crimp.",
+    "color": "#c58456",
+    "source": "hardware/electronics/harness-r0005/placed/whGND-Cu.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "413ba12cbdd8f643f03f24ad1f0c88a508fdf501367b72683da1d4e4dd3b2e10",
+    "solids": 1,
+    "bounds_mm": [
+      25.757,
+      26.163,
+      -6.95,
+      -5.35,
+      10.157,
+      10.563
+    ]
+  },
+  {
+    "id": "tee-GND-Cu",
+    "name": "W1 GND fixed tap-Cu",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+    "color": "#b67b52",
+    "source": "hardware/electronics/harness-r0005/placed/tee-GND-Cu.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "2ddca97cfca495d20e06c20f5c67cf0d5a87c11d472148c0ea1cbe49c308b325",
+    "solids": 1,
+    "bounds_mm": [
+      28.85,
+      31.65,
+      22.7615,
+      23.3628,
+      10.033,
+      12.2764
+    ]
+  },
+  {
+    "id": "tee-GND-seal",
+    "name": "W1 GND fixed tap-seal",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+    "color": "#4f6666",
+    "source": "hardware/electronics/harness-r0005/placed/tee-GND-seal.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "8cd8b90eb4d8437c274b9f1210dc885053b8ceb046d49040a10f0bbf33ed84fc",
+    "solids": 1,
+    "bounds_mm": [
+      28.85,
+      31.65,
+      22.3683,
+      23.7434,
+      9.71,
+      12.5672
+    ]
+  },
+  {
+    "id": "A3-J1-C4",
+    "name": "Cavity 4 SDA terminal",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement.",
+    "color": "#bf9364",
+    "source": "hardware/electronics/harness-r0005/placed/A3-J1-C4.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "433e769f167474fe0777364593fc1bc71514a4450885507769426fa40880a869",
+    "solids": 3,
+    "bounds_mm": [
+      22.55,
+      24.37,
+      -11.75,
+      -3.75,
+      9.45,
+      12.1
+    ]
+  },
+  {
+    "id": "whSDA-Cu",
+    "name": "W4 SDA conductor",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "26 AWG nominal copper conductor in the modeled front crimp.",
+    "color": "#c58456",
+    "source": "hardware/electronics/harness-r0005/placed/whSDA-Cu.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "c1dbf089a312ddd3404483bb327f9aca28327fb10feaa23ca2247ee29cc26341",
+    "solids": 1,
+    "bounds_mm": [
+      23.257,
+      23.663,
+      -6.95,
+      -5.35,
+      10.157,
+      10.563
+    ]
+  },
+  {
+    "id": "tee-SDA-Cu",
+    "name": "W1 SDA fixed tap-Cu",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+    "color": "#b67b52",
+    "source": "hardware/electronics/harness-r0005/placed/tee-SDA-Cu.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "b2239c4f0c46e094a8c7d7cdfe0bb88c465f0ea524739f043b060a9a440a02e0",
+    "solids": 1,
+    "bounds_mm": [
+      26.8,
+      29.6,
+      21.1115,
+      21.713,
+      11.093,
+      13.3364
+    ]
+  },
+  {
+    "id": "tee-SDA-seal",
+    "name": "W1 SDA fixed tap-seal",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+    "color": "#4f6666",
+    "source": "hardware/electronics/harness-r0005/placed/tee-SDA-seal.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "d343a16641ec5dd38fec5e124701937ab1268a9fab95b785eb92657692fa905d",
+    "solids": 1,
+    "bounds_mm": [
+      26.8,
+      29.6,
+      20.7183,
+      22.0934,
+      10.77,
+      13.6272
+    ]
+  },
+  {
+    "id": "A3-J1-C3",
+    "name": "Cavity 3 SCL terminal",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement.",
+    "color": "#bf9364",
+    "source": "hardware/electronics/harness-r0005/placed/A3-J1-C3.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "70bb281d17ff57ab7638a74469a6b146125eb95058edd5347e2f5c8a3d2f2f49",
+    "solids": 3,
+    "bounds_mm": [
+      20.05,
+      21.87,
+      -11.75,
+      -3.75,
+      9.45,
+      12.1
+    ]
+  },
+  {
+    "id": "whSCL-Cu",
+    "name": "W4 SCL conductor",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "26 AWG nominal copper conductor in the modeled front crimp.",
+    "color": "#c58456",
+    "source": "hardware/electronics/harness-r0005/placed/whSCL-Cu.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "5eaf1e49e51e46c9bb35816769505866a0dbbc594397293dbe4978e812f3b803",
+    "solids": 1,
+    "bounds_mm": [
+      20.757,
+      21.163,
+      -6.95,
+      -5.35,
+      10.157,
+      10.563
+    ]
+  },
+  {
+    "id": "tee-SCL-Cu",
+    "name": "W1 SCL fixed tap-Cu",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+    "color": "#b67b52",
+    "source": "hardware/electronics/harness-r0005/placed/tee-SCL-Cu.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "d8494df518c276905dbe526164985a2a8ae64a85fc312c803587c010a908e911",
+    "solids": 1,
+    "bounds_mm": [
+      24.8,
+      27.6,
+      19.4615,
+      20.0628,
+      12.153,
+      14.3964
+    ]
+  },
+  {
+    "id": "tee-SCL-seal",
+    "name": "W1 SCL fixed tap-seal",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0012 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      0,
+      5,
+      -9
+    ],
+    "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+    "color": "#4f6666",
+    "source": "hardware/electronics/harness-r0005/placed/tee-SCL-seal.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "949e5bdd73619f30989faede2c59fa79242282409129d0dc7290c5f74cb9dfcf",
+    "solids": 1,
+    "bounds_mm": [
+      24.8,
+      27.6,
+      19.0683,
+      20.4434,
+      11.83,
+      14.6872
+    ]
+  },
+  {
+    "id": "whVCC",
+    "name": "W4 VCC service loop",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+    "color": "#cf7651",
+    "source": "hardware/electronics/harness-r0006/placed/whVCC.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "48035d1d30edac9d234749f741e38bba3d99258022e8cd0e4d527be261310a18",
+    "solids": 1,
+    "bounds_mm": [
+      3.2153,
+      22.71,
+      -5.35,
+      19.9888,
+      9.65,
+      17.0207
+    ]
+  },
+  {
+    "id": "whSCL",
+    "name": "W4 SCL service loop",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+    "color": "#9aaa72",
+    "source": "hardware/electronics/harness-r0006/placed/whSCL.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "9a32ed2e6e755e76f3fa32586f3ab1c856b929bcbb78497faa7d7b46d896b2ea",
+    "solids": 1,
+    "bounds_mm": [
+      19.8858,
+      30.2865,
+      -5.35,
+      20.2317,
+      3.5897,
+      16.2558
+    ]
+  },
+  {
+    "id": "whSDA",
+    "name": "W4 SDA service loop",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+    "color": "#849ec0",
+    "source": "hardware/electronics/harness-r0006/placed/whSDA.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "e3bcda11ed0bd858f5175d3e0a209b3660596a596fd99252e6376bb3ae7a5485",
+    "solids": 1,
+    "bounds_mm": [
+      22.75,
+      35.5029,
+      -5.35,
+      21.8817,
+      3.851,
+      16.1165
+    ]
+  },
+  {
+    "id": "whGND",
+    "name": "W4 GND service loop",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+    "color": "#545a62",
+    "source": "hardware/electronics/harness-r0006/placed/whGND.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "bb15741bf37829af018ee96f2826d958b268299d655ef58aeeb2640c3fe8e87b",
+    "solids": 1,
+    "bounds_mm": [
+      25.25,
+      38.4668,
+      -5.35,
+      23.5317,
+      3.9977,
+      15.8393
+    ]
+  },
+  {
+    "id": "drvBoard",
+    "name": "R0002 A3 haptic substrate",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Installed from the rerouted A3 KiCad layout with the relocated electronic components.",
+    "color": "#2c7350",
+    "source": "hardware/electronics/pcb-haptic-cie-r0002/placed/drvBoard.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "446a55e409cc8e991b080ede3460595f578fba491a27a9fd02a7e91c3e1c2fa2",
+    "solids": 1,
+    "bounds_mm": [
+      10.8,
+      30.8,
+      -16.8,
+      3.2,
+      4.6,
+      6.11
+    ]
+  },
+  {
+    "id": "drvParts",
+    "name": "R0002 A3 populated electronics",
+    "ref": "A3 / W4",
+    "group": "Haptics",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Installed from the rerouted A3 KiCad layout with the relocated electronic components.",
+    "color": "#3f413e",
+    "source": "hardware/electronics/pcb-haptic-cie-r0002/placed/drvParts.brep",
+    "option": "haptic",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "0841e70b497a5407b2362148ad86a8c549e4fb64249b944d736981c7aaae0df2",
+    "solids": 14,
+    "bounds_mm": [
+      15.35,
+      26.95,
+      -5.1,
+      -1.55,
+      6.195,
+      7.295
+    ]
+  },
+  {
+    "id": "A5-power",
+    "name": "R0006 A5 input protection and current control",
+    "ref": "A5",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Revised A5 fixed at its installed location. A1 intercept wiring requires incoming-board identification.",
+    "color": "#314c6a",
+    "source": "hardware/electronics/usb-entry-r0006/A5-power.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "1e76d61bb2ac700d589846ba1460b9ffa9345a9a68765cc5820d9dfca9098a96",
+    "solids": 175,
+    "bounds_mm": [
+      13.0,
+      36.0,
+      3.0,
+      19.0,
+      15.455,
+      17.84
+    ]
+  },
+  {
+    "id": "A5-bond",
+    "name": "Six A5 adhesive bondlines",
+    "ref": "A5",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Six insulating adhesive pads. Board-side adhesive conforms to the revised back copper.",
+    "color": "#81765b",
+    "source": "hardware/mechanical/TW-A-0001-R0013/A5-bond.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "51f946cc190fee94184fe11b4e63eeadbe14f148099da74322a627ab8a69248f",
+    "solids": 6,
+    "bounds_mm": [
+      16.0,
+      34.0,
+      12.6,
+      18.8,
+      17.8,
+      21.0
+    ]
+  },
+  {
+    "id": "USB-W4C-Cu",
+    "name": "USB-W4C-Cu",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      -12,
+      4,
+      -8
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#b57547",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/USB-W4C-Cu.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "10e9d1a1b2f6235fd7914be405c5493faecc3ac98648e73598b382147a5da60c",
+    "solids": 3,
+    "bounds_mm": [
+      -42.14,
+      -16.3819,
+      -1.8874,
+      19.947,
+      12.9685,
+      20.75
+    ]
+  },
+  {
+    "id": "USB-W4C",
+    "name": "USB-W4C",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      -12,
+      4,
+      -8
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#494b50",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/USB-W4C.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "3212b7ec786bfa97eaf14b8bfaf3cdcc7dc5bb9d438f42a35cec37fe2fdeab8a",
+    "solids": 2,
+    "bounds_mm": [
+      -41.2885,
+      -16.2489,
+      -2.0203,
+      20.0475,
+      12.8355,
+      20.6258
+    ]
+  },
+  {
+    "id": "A5-W2-Cu",
+    "name": "A5-W2-Cu",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#b57547",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W2-Cu.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "5931e4c74013b631f47139bcb16678d22ecc4a70ef6ee24fc312ae1f35ac5b11",
+    "solids": 1,
+    "bounds_mm": [
+      -19.187,
+      34.577,
+      11.4609,
+      19.947,
+      16.91,
+      20.751
+    ]
+  },
+  {
+    "id": "A5-W2",
+    "name": "A5-W2",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#b9614e",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W2.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "5a1438c40e37890c0cba903dc2860cf2d28e1cc489826aef77f51c8129ff6cba",
+    "solids": 1,
+    "bounds_mm": [
+      -19.32,
+      34.71,
+      11.3279,
+      20.08,
+      17.7557,
+      20.5
+    ]
+  },
+  {
+    "id": "A5-W2-solder",
+    "name": "A5-W2-solder",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#aba99c",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W2-solder.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "aa3e99075a6ea4df80ba43043bcef9c0f056c2824ae34c47495585ce12c2852f",
+    "solids": 2,
+    "bounds_mm": [
+      -19.3,
+      34.97,
+      11.48,
+      20.06,
+      17.84,
+      20.75
+    ]
+  },
+  {
+    "id": "A5-W3-Cu",
+    "name": "A5-W3-Cu",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#b57547",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W3-Cu.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "4ebb5feec7273bf62e234464d8ce7d182623005efdadfee2800c0af53611e68e",
+    "solids": 1,
+    "bounds_mm": [
+      -17.5619,
+      34.577,
+      4.873,
+      17.8695,
+      16.229,
+      19.4101
+    ]
+  },
+  {
+    "id": "A5-W3",
+    "name": "A5-W3",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#494b50",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W3.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "1b1d5d550d19a2cb2601492ddfdbd695eb8b7ac01a3f667c87c52bf25a7a740c",
+    "solids": 1,
+    "bounds_mm": [
+      -16.1619,
+      34.71,
+      4.74,
+      18.0025,
+      16.096,
+      19.5431
+    ]
+  },
+  {
+    "id": "A5-W3-splice-cover",
+    "name": "A5-W3-splice-cover",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#494b50",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W3-splice-cover.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "c0f48b50c9205e3f41ff54453adb8adb0f5e2be41bc91e647b72a589ee2e2acd",
+    "solids": 1,
+    "bounds_mm": [
+      -18.6817,
+      -16.1619,
+      16.6519,
+      18.8394,
+      15.5297,
+      17.3426
+    ]
+  },
+  {
+    "id": "A5-W3-solder",
+    "name": "A5-W3-solder",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#aba99c",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W3-solder.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "4cd0b5074be53e259a4a3a2e04ca42336864a3bcceb4395c59a7d66fbf6c905a",
+    "solids": 2,
+    "bounds_mm": [
+      -18.5632,
+      34.97,
+      4.48,
+      18.6867,
+      15.7068,
+      18.09
+    ]
+  },
+  {
+    "id": "A5-W7-Cu",
+    "name": "A5-W7-Cu",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#b57547",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W7-Cu.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "5c4ff8e767f4f40c072c4d09dc6d72e308a04dd42303a49b6b4fa5fd530bd60e",
+    "solids": 1,
+    "bounds_mm": [
+      -20.107,
+      30.777,
+      17.173,
+      19.1833,
+      16.76,
+      19.9789
+    ]
+  },
+  {
+    "id": "A5-W7",
+    "name": "A5-W7",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#b9614e",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W7.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "b2a2261514923d1c6d7b9d2baf526c2c3d3a85c1281226cedac8acc450f59684",
+    "solids": 1,
+    "bounds_mm": [
+      -20.24,
+      30.91,
+      17.04,
+      19.3163,
+      18.3,
+      20.1119
+    ]
+  },
+  {
+    "id": "A5-W7-solder",
+    "name": "A5-W7-solder",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 4,
+    "delta": [
+      10,
+      5,
+      -14
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#aba99c",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/A5-W7-solder.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "c82d4870a2577b21a4c24ec8ab2edb015c576bb0983c3d332bbd1cfe1144ecd0",
+    "solids": 2,
+    "bounds_mm": [
+      -20.31,
+      31.17,
+      16.78,
+      18.8,
+      16.8,
+      17.6
+    ]
+  },
+  {
+    "id": "USB-BOND",
+    "name": "USB-BOND",
+    "ref": "A5 / A1 / USB status",
+    "group": "Wiring",
+    "kind": "R0013 installed integration CAD",
+    "stage": 5,
+    "delta": [
+      -12,
+      4,
+      -8
+    ],
+    "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection.",
+    "color": "#b9614e",
+    "source": "hardware/electronics/usb-entry-r0006/installed-leads/USB-BOND.brep",
+    "option": "",
+    "added": true,
+    "productEligible": true,
+    "geometrySha256": "2ed6fefa21411e6346dc1db9d60545677dbfa6ffab631fb9397d6728788bd666",
+    "solids": 1,
+    "bounds_mm": [
+      -21.9,
+      -18.47,
+      17.25,
+      20.3896,
+      16.99,
+      18.58
+    ]
+  }
+]

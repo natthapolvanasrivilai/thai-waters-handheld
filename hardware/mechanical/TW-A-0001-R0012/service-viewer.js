@@ -57,6 +57,11 @@ function svgPath(rows,transform){
 }
 function spine(points){
  const p=points.map(v=>new THREE.Vector3(...v));
+ if(data.seatedStudy){
+  const path=new THREE.CurvePath();
+  for(let i=1;i<p.length;i++)path.add(new THREE.LineCurve3(p[i-1],p[i]));
+  return path;
+ }
  return new THREE.CatmullRomCurve3(p,false,'centripetal');
 }
 function plot(){
@@ -64,7 +69,7 @@ function plot(){
  const max=Math.ceil(Math.max(...rows.map(r=>+r.rigid_W1_native_mm))+0.1);
  const px=d=>37+(+d/8.25)*288;
  const py=g=>92-(+g/max)*75;
- $('plot').innerHTML='<path class="axis" fill="none" d="M37 12V92H325"/><text x="5" y="22" font-size="10">'+max+' mm</text><text x="19" y="95" font-size="10">0</text><text x="35" y="110" font-size="10">0</text><text x="256" y="110" font-size="10">8.25 mm travel</text><path class="cv" d="'+rows.map((r,i)=>(i?'L':'M')+px(r.travel_mm)+','+py(r.rigid_W1_native_mm)).join(' ')+'"/><path fill="none" stroke="#ab7448" stroke-width="2.4" d="'+rows.map((r,i)=>(i?'L':'M')+px(r.travel_mm)+','+py(r.W4_W1_mesh_mm)).join(' ')+'"/><circle id="marker" r="4" fill="#b66e36"/>';
+ $('plot').innerHTML='<path class="axis" fill="none" d="M37 12V92H325"/><text x="5" y="22" font-size="10">'+max+' mm</text><text x="19" y="95" font-size="10">0</text><text x="35" y="110" font-size="10">0</text><text x="256" y="110" font-size="10">8.25 mm travel</text><path class="cv" d="'+rows.map((r,i)=>(i?'L':'M')+px(r.travel_mm)+','+py(r.rigid_W1_native_mm)).join(' ')+'"/><path fill="none" stroke="#ab7448" stroke-width="2.4" d="'+rows.map((r,i)=>(i?'L':'M')+px(r.travel_mm)+','+py(data.seatedStudy?r.installed_W4_mesh_mm:r.W4_W1_mesh_mm)).join(' ')+'"/><circle id="marker" r="4" fill="#b66e36"/>';
  return {px,py};
 }
 const axes=plot();
@@ -85,7 +90,7 @@ function update(value){
  const frame=d/.125,lo=Math.floor(frame+1e-8),hi=Math.min(66,lo+1),frac=Math.max(0,frame-lo);
  for(const [net,frames] of Object.entries(data.leads)){
   const p=frames[lo].map((v,i)=>v.map((n,j)=>n+frac*(frames[hi][i][j]-n)));
-  const g=new THREE.TubeGeometry(spine(p),72,.71,14,false);
+  const g=new THREE.TubeGeometry(spine(p),data.seatedStudy?160:72,.71,14,false);
   const o=leadMeshes.get(net);
   if(o){o.geometry.dispose();o.geometry=g;}else{
    const mesh=new THREE.Mesh(g,makeMaterial({VCC:'#b76e47',GND:'#6b6156',SDA:'#bd946a',SCL:'#a78b50'}[net]));
@@ -101,7 +106,7 @@ function update(value){
  $('marker').setAttribute('cx',axes.px(d));$('marker').setAttribute('cy',axes.py(gap));
  $('dist').textContent=d.toFixed(2)+' mm';
  $('state').textContent=m===0?'Seated':m<.26?'Pressing the rocker':m===.26?'Rocker held':m===1?'Fully withdrawn':'Withdrawing';
- const closed=$('display').checked;
+ const closed=data.seatedStudy||$('display').checked;
  const val=closed?row.installed_W4_mesh_mm:row.W4_mesh_mm;
  $('w4').textContent=(closed?'Display boards seated. ':'Display assembly lifted. ')+'Closest sampled W4 clearance '+Number(val).toFixed(2)+' mm, '+(closed?row.installed_W4_net:row.W4_net)+' to '+(closed?row.installed_W4_part:row.W4_part)+'.';
  document.documentElement.dataset.motion=String(value);
@@ -135,9 +140,18 @@ async function main(){
  const min=qa.rigid_W1_minimum_sample;
  $('minimum').textContent='Lowest sampled gap '+min.gap_mm.toFixed(3)+' mm at '+min.travel_mm.toFixed(3)+' mm ('+min.part+'). Continuous nominal lower bound '+qa.continuous_rigid_W1_lower_bound_mm.toFixed(3)+' mm.';
  const flex=qa.minimum_W4_mesh;
- $('flexmin').textContent='Minimum with the display lifted '+Number(flex.W4_mesh_mm).toFixed(3)+' mm at '+Number(flex.travel_mm).toFixed(3)+' mm. Constraint with the display seated: '+qa.minimum_installed_W4_mesh.installed_W4_part+'.';
+ if(data.seatedStudy){
+  const closest=data.externalWitness;
+  $('flexmin').textContent='Smallest sampled external gap '+closest.native_witness.gap_mm.toFixed(3)+' mm at '+closest.travel_mm.toFixed(2)+' mm, '+closest.net+' to '+closest.part+'. The continuous check confirms at least '+data.clearanceGate.toFixed(3)+' mm between moving leads and stationary surfaces, and between each pair of leads. Inside the plug, the jacket clears the terminal lock by '+data.terminalGap.toFixed(3)+' mm.';
+ }else{
+  $('flexmin').textContent='Minimum with the display lifted '+Number(flex.W4_mesh_mm).toFixed(3)+' mm at '+Number(flex.travel_mm).toFixed(3)+' mm. Constraint with the display seated: '+qa.minimum_installed_W4_mesh.installed_W4_part+'.';
+ }
  const overlap=qa.unmodified_seated_plastics_intersections.reduce((s,c)=>s+c.volume_mm3,0);
  $('limits').textContent='Seated plastic overlap '+overlap.toFixed(3)+' mm³. The casting omits the catch recess and internal socket detail. TPA seating and the 0.916 mm SDA bend at full travel need a physical trial.';
+ if(data.seatedStudy){
+  const limits=Object.entries(qa.W4_geometry).sort((a,b)=>a[1].min_centerline_radius_mm-b[1].min_centerline_radius_mm);
+  $('limits').textContent='Tightest sampled lead bend '+limits[0][1].min_centerline_radius_mm.toFixed(2)+' mm on '+limits[0][0]+'. The supplier model omits the internal catch recess. Check latch force, lead dress and repeated flex on the physical assembly.';
+ }
  cameraPose(false);update(0);$('loading').hidden=true;document.documentElement.dataset.ready='true';
 }
 main().catch(e=>{$('loading').textContent='3D view could not initialize. '+e.message;document.documentElement.dataset.ready='error';console.error(e)});

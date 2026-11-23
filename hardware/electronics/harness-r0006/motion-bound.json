@@ -1,0 +1,120 @@
+{
+  "form_sha256": "2af465b112e3dbcc8f76f7c77f377d2dd1a7ff796b0e8dccc0da29817d66e9dd",
+  "station_count": 133,
+  "travel_pitch_mm": 0.0625,
+  "wire": {
+    "VCC": {
+      "maximum_centerline_displacement_from_nearest_station_mm": 0.0420423,
+      "maximum_free_centerline_motion_relative_to_moving_plug_mm": 0.0632909,
+      "relative_displacement_by_sixteen_equal_bezier_parameter_intervals_mm": [
+        0.01163,
+        0.0235439,
+        0.0345165,
+        0.0447442,
+        0.0535926,
+        0.0599065,
+        0.0629746,
+        0.0632909,
+        0.062861,
+        0.0601206,
+        0.0553729,
+        0.0491665,
+        0.0421952,
+        0.0355064,
+        0.0322049,
+        0.0321543
+      ],
+      "continuous_centerline_bend_radius_lower_bound_mm": 1.912352,
+      "minimum_sampled_self_gap_for_centerline_arc_separation_at_least_4p5_mm": 2.692328,
+      "reference_length_bounds_mm": [
+        46.2979859,
+        46.3069934
+      ]
+    },
+    "SCL": {
+      "maximum_centerline_displacement_from_nearest_station_mm": 0.032056,
+      "maximum_free_centerline_motion_relative_to_moving_plug_mm": 0.0390994,
+      "relative_displacement_by_sixteen_equal_bezier_parameter_intervals_mm": [
+        0.0088442,
+        0.0195268,
+        0.0277129,
+        0.0320056,
+        0.0327895,
+        0.0326543,
+        0.0307373,
+        0.027637,
+        0.0315667,
+        0.0367412,
+        0.0390193,
+        0.0390994,
+        0.0382948,
+        0.0356643,
+        0.0333362,
+        0.0321541
+      ],
+      "continuous_centerline_bend_radius_lower_bound_mm": 1.675704,
+      "minimum_sampled_self_gap_for_centerline_arc_separation_at_least_4p5_mm": 2.808872,
+      "reference_length_bounds_mm": [
+        38.1928926,
+        38.2010835
+      ]
+    },
+    "SDA": {
+      "maximum_centerline_displacement_from_nearest_station_mm": 0.0328561,
+      "maximum_free_centerline_motion_relative_to_moving_plug_mm": 0.043678,
+      "relative_displacement_by_sixteen_equal_bezier_parameter_intervals_mm": [
+        0.0035543,
+        0.0060576,
+        0.0100555,
+        0.0156565,
+        0.0210883,
+        0.0264066,
+        0.0313015,
+        0.0357884,
+        0.0396361,
+        0.042388,
+        0.0436274,
+        0.043678,
+        0.0432253,
+        0.0413723,
+        0.0383947,
+        0.0346712
+      ],
+      "continuous_centerline_bend_radius_lower_bound_mm": 2.68553,
+      "minimum_sampled_self_gap_for_centerline_arc_separation_at_least_4p5_mm": 2.786527,
+      "reference_length_bounds_mm": [
+        37.9726417,
+        37.9796606
+      ]
+    },
+    "GND": {
+      "maximum_centerline_displacement_from_nearest_station_mm": 0.0341513,
+      "maximum_free_centerline_motion_relative_to_moving_plug_mm": 0.0592927,
+      "relative_displacement_by_sixteen_equal_bezier_parameter_intervals_mm": [
+        0.0057875,
+        0.0107018,
+        0.0188831,
+        0.0272041,
+        0.0346122,
+        0.0406986,
+        0.047859,
+        0.0538676,
+        0.0578438,
+        0.0592907,
+        0.0592927,
+        0.058008,
+        0.0542463,
+        0.0487164,
+        0.0423813,
+        0.0361693
+      ],
+      "continuous_centerline_bend_radius_lower_bound_mm": 3.01443,
+      "minimum_sampled_self_gap_for_centerline_arc_separation_at_least_4p5_mm": 2.827183,
+      "reference_length_bounds_mm": [
+        39.0067234,
+        39.011844
+      ]
+    }
+  },
+  "scope": "Continuous centerline travel bound, including the straight translating stub. Applies directly to round swept envelopes about the centerline. The separate minimum jacket-to-part mesh distances also include flat end caps; an independent cap comparison is needed to use those distances as certified sphere-envelope clearances. Self distances are sampled, with adjacent portions excluded by arc length."
+}

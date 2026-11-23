@@ -1,0 +1,116 @@
+{
+  "assembly": "TW-A-0001-R0013",
+  "part": "TW-P-0027-R0001",
+  "source": "TW-A-0001-R0013 compressed STEP reimport",
+  "wall_apertures": [
+    {
+      "y_mm": -34.5,
+      "x_mm": [
+        -30.0,
+        -4.0
+      ],
+      "z_mm": [
+        17.5,
+        23.5
+      ],
+      "area_mm2": 156.0
+    },
+    {
+      "y_mm": -32.5,
+      "x_mm": [
+        -30.0,
+        -4.0
+      ],
+      "z_mm": [
+        17.5,
+        23.5
+      ],
+      "area_mm2": 156.0
+    }
+  ],
+  "shell_thickness_mm": 2.0,
+  "bezel_side": "display +Z; bottom wall -Y; USB -X; reel +X",
+  "closed_face_mm": [
+    28.8,
+    8.8,
+    1.2
+  ],
+  "nominal_flange_overlap_per_side_mm": 1.4,
+  "flange_pry_relief_remaining_overlap_mm": 0.6,
+  "guide_clearance_xz_per_side_mm": [
+    0.25,
+    0.26
+  ],
+  "wall_to_latch_nominal_axial_float_mm": 0.18,
+  "maximum_nominal_lateral_float_xz_mm": [
+    0.25,
+    0.26
+  ],
+  "covered_projection_area_mm2": 156,
+  "maximum_uncovered_at_float_and_60deg_mm2": 0.0,
+  "seated_housing_intersection_mm3": 0.0,
+  "undeformed_axial_pull_mm": 0.72,
+  "four_latch_intersections_at_axial_pull_mm3": [
+    0.68,
+    0.68,
+    0.68,
+    0.68
+  ],
+  "hook_engagement_per_side_mm": 0.4,
+  "nearest_other_installed_parts_mm": {
+    "Bezel": 2.96978,
+    "A1-touch": 3.70653,
+    "A1-mounts": 8.76201,
+    "A1-carrier": 5.22988,
+    "A1-population": 7.38709,
+    "A1-k3": 4.46474,
+    "A1-reset": 6.05206,
+    "A1-boot": 4.46474,
+    "A1-J9": 8.55006,
+    "A1-backing": 5.23,
+    "cellAlt": 8.43045,
+    "H1-1": 9.76322,
+    "batt0": 16.27712,
+    "w30": 7.38549,
+    "w31": 7.41134,
+    "altTail0": 14.85741
+  },
+  "open_service_probe_paths": {
+    "A1-k3": {
+      "center_xz_mm": [
+        -25.00056,
+        20.1
+      ],
+      "depth_from_shell_mm": 7.6502,
+      "obstruction_mm3": 0.0,
+      "diameter_mm": 2
+    },
+    "A1-reset": {
+      "center_xz_mm": [
+        -16.50056,
+        20.1
+      ],
+      "depth_from_shell_mm": 7.6502,
+      "obstruction_mm3": 0.0,
+      "diameter_mm": 2
+    },
+    "A1-boot": {
+      "center_xz_mm": [
+        -8.00056,
+        20.1
+      ],
+      "depth_from_shell_mm": 7.6502,
+      "obstruction_mm3": 0.0,
+      "diameter_mm": 2
+    }
+  },
+  "rod_x_clearance_over_axial_slide_mm": 4.1,
+  "distance_to_speaker_face_or_seal_mm": 21.3197,
+  "physical_tests_pending": [
+    "retention and peel force",
+    "TPU creep and repeated removal",
+    "print tolerance and debris",
+    "actuation of the three service switches",
+    "rattle and acoustic response with assembled cover"
+  ]
+}

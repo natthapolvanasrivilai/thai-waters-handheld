@@ -1,6 +1,8 @@
 # Thai Waters product wiki
 
-[Current hardware investigation and interactive service review](../../quality/hardware-review-2026-11-23.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
+[R0013 seated connector and USB review](../../quality/seated-connector-review.md)
+
+[R0012 service review and R20 print trial](../../quality/hardware-review-2026-11-23.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
 
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 

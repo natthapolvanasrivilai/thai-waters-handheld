@@ -31,7 +31,23 @@ def manifold(v,t):
 def main():
     args=argparse.ArgumentParser(description=__doc__)
     args.add_argument("r19b",type=Path)
-    path=args.parse_args().r19b
+    args.add_argument("--revision-dir",type=Path)
+    args.add_argument("--output",type=Path,default=HERE/"r19b-shell-fit.json")
+    cfg=args.parse_args()
+    path=cfg.r19b
+    source=H/"installed.json"
+    override={}
+    form=guide
+    if cfg.revision_dir:
+        revision=cfg.revision_dir.resolve()
+        sys.path.insert(0,str(revision))
+        from stroke import new_leads
+        form=new_leads().guide
+        source=revision/"overlay.json"
+        for row in json.loads(source.read_bytes())["add"]:
+            part=revision/row["brep"]
+            assert hashlib.sha256(part.read_bytes()).hexdigest()==row["sha256"]
+            override[row["name"]]=part
     assert hashlib.sha256(path.read_bytes()).hexdigest()==R19B
     with ZipFile(path) as z:
         settings=ET.fromstring(z.read("Metadata/model_settings.config"))
@@ -55,14 +71,14 @@ def main():
     enclosure=manifold(vertices,t)
     assert enclosure is not None
     shell_mesh=model(vertices,t)
-    harness_hash=hashlib.sha256((H/"installed.json").read_bytes()).hexdigest()
+    harness_hash=hashlib.sha256(source.read_bytes()).hexdigest()
     checks={}
     def placed(k):
-        return cq.Shape.importBrep(str(H/"placed"/(k+".brep")))
+        return cq.Shape.importBrep(str(override.get(k,H/"placed"/(k+".brep"))))
     ids=["drvBoard","drvParts","A3-J1-header","A3-J1-plug","A3-J1-TPA","A4-integration","A5-power",
          "A4-spacers","A5-spacers",*["w1"+n for n in ("VCC","SCL","SDA","GND")],
          *["wh"+n for n in ("VCC","SCL","SDA","GND")]]
-    for k in ids:
+    for k in sorted(set(ids)|set(override)):
         hits=0.;gap=float("inf");missing=0
         for s in placed(k).Solids():
             vv,tt=tri(s)
@@ -77,15 +93,15 @@ def main():
     for d in np.linspace(0,STROKE,67):
         for n in ("VCC","SCL","SDA","GND"):
             tx,_,z=r[n]["tap_center_mm"]
-            pts=guide(n,tx,z,d);pts.insert(0,[pts[0][0],-5.35+d,10.36])
+            pts=form(n,tx,z,d);pts.insert(0,[pts[0][0],-5.35+d,10.36])
             gap=meshgap(tube(pts,JACKET_OD/2),shell_mesh)
             best=min(best,(gap,n,float(d)))
-    assert harness_hash==hashlib.sha256((H/"installed.json").read_bytes()).hexdigest()
+    assert harness_hash==hashlib.sha256(source.read_bytes()).hexdigest()
     results={"r19b_sha256":R19B,"harness_sha256":harness_hash,
       "scope":"R19b printed housing triangles, component 1 only. Registration uses four named H1 screw-corridor modifier centers and the shared 1.4 mm height datum. Physical registration, carrier, bezel, battery insertion, support residue, hand access and cable tolerances remain open.",
       "registration_max_residual_mm":float(error),"source_to_installed_rotation":reg.tolist(),"translation_mm":pos.tolist(),
       "r19b_triangles":len(t),"seated":checks,"W4_to_R19b_shell_67_stations":{"minimum_mesh_mm":round(best[0],5),"wire":best[1],"travel_mm":best[2]}}
-    (HERE/"r19b-shell-fit.json").write_text(json.dumps(results,indent=2)+"\n",encoding="utf-8")
+    cfg.output.write_text(json.dumps(results,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(results["W4_to_R19b_shell_67_stations"]),flush=True)
 if __name__=="__main__":
     main()

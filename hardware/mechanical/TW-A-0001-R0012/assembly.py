@@ -26,23 +26,23 @@ def unpack(source,out):
     with gzip.open(source,"rb") as inp,out.open("wb") as f:
         shutil.copyfileobj(inp,f)
 
-def integrate(reference, work, exports):
+def integrate(reference, work, exports, *, here=HERE, old=OLD, manifest=HARNESS):
     work.mkdir(exist_ok=True,parents=True)
     exports.mkdir(exist_ok=True,parents=True)
-    baseline=load(OLD/"installed-step.json")
-    assert digest(reference)==load(OLD/"export-verification.json")["packed_step_sha256"]
+    baseline=load(old/"installed-step.json")
+    assert digest(reference)==load(old/"export-verification.json")["packed_step_sha256"]
     raw=work/"source.step"
     unpack(reference,raw)
     assert digest(raw)==baseline["step_sha256"]
     print("Reading source STEP",flush=True)
     source=cq.Assembly.load(str(raw))
-    signature=digest(HARNESS)
-    changes=load(HARNESS)
+    signature=digest(manifest)
+    changes=load(manifest)
     expected=baseline["components"].copy()
     remove=set(changes["remove"])
     assert {n.name for n in source.children}==set(expected)
     assert remove.issubset(expected)
-    updated=cq.Assembly(name="TW_A_0001_R0012_supplier_cell")
+    updated=cq.Assembly(name=here.name.replace("-", "_")+"_supplier_cell")
     for child in source.children:
         if child.name in remove:
             del expected[child.name]
@@ -51,7 +51,7 @@ def integrate(reference, work, exports):
     for row in changes["add"]:
         key=row["name"]
         assert key not in expected
-        brep=HARNESS.parent/row["brep"]
+        brep=manifest.parent/row["brep"]
         assert digest(brep)==row["sha256"],key
         shape=cq.Shape.importBrep(str(brep))
         assert shape.isValid() and shape.Volume()>0,key
@@ -59,7 +59,7 @@ def integrate(reference, work, exports):
         expected[key]=dict(**describe(shape), source_brep=row["brep"],source_sha256=row["sha256"],
                            component_label=row.get("label",key),geometry_provenance=row.get("note",""))
     print("Writing",len(expected),"installed components",flush=True)
-    output=work/(HERE.name+"-dressed.step")
+    output=work/(here.name+"-dressed.step")
     updated.export(str(output))
     del source,updated
     gc.collect()
@@ -82,12 +82,12 @@ def integrate(reference, work, exports):
         assert len(shape.Solids())==ref["solids"] and dv<=max(.014,ref["volume_mm3"]*3e-6) and db<=.015,(key,dv,db)
         worst_volume=max(worst_volume,dv)
         worst_extent=max(worst_extent,db)
-    assert signature==digest(HARNESS),"Harness changed during STEP generation"
+    assert signature==digest(manifest),"Harness changed during STEP generation"
     cover=measure(shaped)
-    cover.update(assembly=HERE.name,source="R0012 compressed STEP reimport")
-    save(HERE/"QA/service-cover.json",cover)
-    save(HERE/"installed-step.json",dict(component_count=len(expected),step_sha256=digest(reread),components=expected))
-    save(HERE/"export-verification.json",dict(source_assembly=OLD.name,source_step_sha256=baseline["step_sha256"],
+    cover.update(assembly=here.name,source=here.name+" compressed STEP reimport")
+    save(here/"QA/service-cover.json",cover)
+    save(here/"installed-step.json",dict(component_count=len(expected),step_sha256=digest(reread),components=expected))
+    save(here/"export-verification.json",dict(source_assembly=old.name,source_step_sha256=baseline["step_sha256"],
         installed_step_components=len(expected),step_sha256=digest(reread),packed_step_sha256=digest(packed),
         max_roundtrip_absolute_volume_delta_mm3=round(worst_volume,6),max_bounds_delta_mm=round(worst_extent,6),
         harness_manifest_sha256=signature,component_provenance={r["name"]:r.get("note","") for r in changes["add"]},removed_nodes=sorted(remove),added_nodes=[r["name"] for r in changes["add"]]))

@@ -48,22 +48,25 @@ def main():
     html=args.full.read_text(encoding="utf-8")
     here=DATA.search(html)
     data=json.loads(here[2])
+    revision=data["qa"]["revision"]
+    assert revision in ("TW-A-0001-R0012","TW-A-0001-R0013")
+    label=revision.rsplit("-",1)[-1]
     # Permit only project-authored loom geometry. Keep all solver measurements and wire trajectories.
     data["items"]={name:obj for name,obj in data["items"].items()
                    if name.startswith(("w1","tee-","wh")) and "motion" in obj}
     assert len(data["items"])>=8
     data["section"]={k:[] for k in data["section"]}
     html=html[:here.start(2)]+json.dumps(data,separators=(",",":"))+html[here.end(2):]
-    html=re.sub(r'<a href="TW-A-0001-R0012-exploded.html">.*?</a>',"",html,count=1)
+    html=re.sub(rf'<a href="{revision}-exploded.html">.*?</a>',"",html,count=1)
     html=html.replace("<h1>CviLux plug withdrawal</h1>","<h1>Harness withdrawal clearance</h1>")
     html=html.replace("<aside class=\"card\"><section>","<aside class=\"card\"><section hidden>",1)
     html=html.replace('<body>','<body data-wire-study>',1)
     html=html.replace('</style>', '[data-wire-study] .legend span:nth-child(-n+2){display:none} '
                       '[data-wire-study] .buttons label:has(#context){display:none}</style>',1)
     html=html.replace('id="closeup">Latch close-up','id="closeup">Crimp ends',1)
-    html=html.replace('</aside>',LOADER+'</aside>',1)
+    html=html.replace('</aside>',LOADER.replace('R0012',label)+'</aside>',1)
     html=html.replace("document.getElementById('file').addEventListener","document.getElementById('file')?.addEventListener")
-    out=HERE.parents[2]/"docs/models/TW-A-0001-R0012-motion-review.html"
+    out=HERE.parents[2]/"docs/models"/(revision+"-motion-review.html")
     out.write_text(html,encoding="utf-8")
     print(out)
 if __name__=="__main__":

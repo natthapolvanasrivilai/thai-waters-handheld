@@ -1,0 +1,38 @@
+{
+  "pass_nominal": true,
+  "form_sha256": "2af465b112e3dbcc8f76f7c77f377d2dd1a7ff796b0e8dccc0da29817d66e9dd",
+  "mating_model_sha256": {
+    "A3-J1-plug": "2ef06982164edda5b862a0ba59b0a712cfe63243b837d4ae9535ded1cefa12bc",
+    "A3-J1-TPA": "0ca6c1f564a304c2b8f57dc32f20f983ea98e92910aa1c8d9b0112bb43dccb52",
+    "A3-J1-C1": "e063d38d3df92018aa5c1dcb4ba15939a0acb73e7a93ddbac69c66baf9224ba6",
+    "whVCC-Cu": "2e1494f17ea25af260d5e54365627512f5282f065bd0e5e70e95e6dd7adbd86a",
+    "A3-J1-C3": "70bb281d17ff57ab7638a74469a6b146125eb95058edd5347e2f5c8a3d2f2f49",
+    "whSCL-Cu": "5eaf1e49e51e46c9bb35816769505866a0dbbc594397293dbe4978e812f3b803",
+    "A3-J1-C4": "433e769f167474fe0777364593fc1bc71514a4450885507769426fa40880a869",
+    "whSDA-Cu": "c1dbf089a312ddd3404483bb327f9aca28327fb10feaa23ca2247ee29cc26341",
+    "A3-J1-C5": "181a235b667548a8d2a23737f66b319065038b4201b5b315d3d9d09787f65174",
+    "whGND-Cu": "413ba12cbdd8f643f03f24ad1f0c88a508fdf501367b72683da1d4e4dd3b2e10"
+  },
+  "continuous_nominal_clearance_test_mm": 0.0399,
+  "minimum_exact_straight_stub_to_nonmating_moving_part_mm": 0.04,
+  "rocker_press_lower_bound_after_rotation_allowance_mm": 1.565237,
+  "exact_free_span_queries": 39,
+  "reused_valid_bounds": 94,
+  "uncertified_pairs": [],
+  "uncertified_count": 0,
+  "scope": "Free span to body, rocker, TPA, all terminals and conductors during withdrawal. Rigid stub to TPA, rocker, other terminals/conductors. The own crimp and the uncut vendor housing around the rigid stub are intentional/model-limited interfaces. Press is checked before +Y withdrawal.",
+  "per_net": {
+    "VCC": {
+      "relative_drift_at_first_sixteenth_mm": 0.011630999999999999
+    },
+    "SCL": {
+      "relative_drift_at_first_sixteenth_mm": 0.0088452
+    },
+    "SDA": {
+      "relative_drift_at_first_sixteenth_mm": 0.0035553
+    },
+    "GND": {
+      "relative_drift_at_first_sixteenth_mm": 0.0057885
+    }
+  }
+}

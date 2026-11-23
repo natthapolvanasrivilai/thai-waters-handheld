@@ -1,0 +1,53 @@
+{
+  "vendor_pdf": "https://raw.githubusercontent.com/waveshareteam/ESP32-S3-Touch-LCD-3.5B/main/hardware/schematic/ESP32-S3-Touch-LCD-3.5B-V2-Schematic.pdf",
+  "vendor_pdf_sha256": "a0b65d8be900a4017d056d5b9ef8626bd138cb8be8d5814f40fb7ad34d4f321b",
+  "vendor_STEP_sha256": "d774a7edf75b5fc4b699b55c2f60837b46ce24a0da6edce2aa11f6f508266666",
+  "vendor_STEP_contains_LRC4": false,
+  "vendor_STEP_contains_bead_MPN": false,
+  "vendor_net_pins": {
+    "VBUS'": [
+      "J5-A4/B9",
+      "J5-A9/B4",
+      "LRC4-1"
+    ],
+    "VBUS": [
+      "C20-2",
+      "C24-1",
+      "D3-1",
+      "J8-1",
+      "LRC4-2",
+      "UP1-37"
+    ],
+    "USB_N": [
+      "D2-2",
+      "J5-A7",
+      "J5-B7",
+      "J8-5",
+      "R19-1"
+    ],
+    "USB_P": [
+      "D1-2",
+      "J5-A6",
+      "J5-B6",
+      "J8-7",
+      "R18-1"
+    ],
+    "CC1": [
+      "J5-A5",
+      "R26-2"
+    ],
+    "CC2": [
+      "J5-B5",
+      "R24-2"
+    ]
+  },
+  "fixed_legacy_footprints": 17,
+  "A5_pcb_sha256": "49ad025fc07b3be5baf86e7c96b523f28b35122ebcc890427754145919b7d540",
+  "installed_brep_sha256": "f7f31f9a75e97a589f62d422cfa85f143c9e0828c82e142bcdcc134e8ecb58bc",
+  "installed_lands": {
+    "W1": "LRC4-1",
+    "W2": "J8-1",
+    "W3": "J8-3"
+  },
+  "matched_lot_and_access": "unverified"
+}

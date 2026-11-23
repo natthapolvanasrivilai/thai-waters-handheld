@@ -1,0 +1,191 @@
+{
+  "r19b_sha256": "dcfc3c9c0725d91c54026f1e65f5b9855a036b35f61483d5b1dfcfb471db546c",
+  "harness_sha256": "c69afaab1c28e31d2382803fde4b4ab86412882f556eb7e8d1e06730b7045f9a",
+  "scope": "R19b printed housing triangles, component 1 only. Registration uses four named H1 screw-corridor modifier centers and the shared 1.4 mm height datum. Physical registration, carrier, bezel, battery insertion, support residue, hand access and cable tolerances remain open.",
+  "registration_max_residual_mm": 7.45692602777126e-07,
+  "source_to_installed_rotation": [
+    [
+      0.7071067742421032,
+      0.0,
+      0.7071067881309918
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      -0.7071067881309918,
+      0.0,
+      0.7071067742421032
+    ]
+  ],
+  "translation_mm": [
+    4.0907850407072415,
+    2.5749987999999995,
+    14.743123376301837
+  ],
+  "r19b_triangles": 92754,
+  "seated": {
+    "A3-J1-TPA": {
+      "mesh_gap_mm": 7.03674,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A3-J1-header": {
+      "mesh_gap_mm": 1.63249,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A3-J1-plug": {
+      "mesh_gap_mm": 5.36,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A4-integration": {
+      "mesh_gap_mm": 9.03503,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A4-spacers": {
+      "mesh_gap_mm": 10.18916,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W2": {
+      "mesh_gap_mm": 8.88169,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W2-Cu": {
+      "mesh_gap_mm": 8.97101,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W2-solder": {
+      "mesh_gap_mm": 8.61905,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W3": {
+      "mesh_gap_mm": 8.88278,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W3-Cu": {
+      "mesh_gap_mm": 9.01577,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W3-solder": {
+      "mesh_gap_mm": 12.03,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W3-splice-cover": {
+      "mesh_gap_mm": 12.42977,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W7": {
+      "mesh_gap_mm": 5.41915,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W7-Cu": {
+      "mesh_gap_mm": 5.39388,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-W7-solder": {
+      "mesh_gap_mm": 5.00124,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-bond": {
+      "mesh_gap_mm": 2.67803,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-power": {
+      "mesh_gap_mm": 2.00245,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "A5-spacers": {
+      "mesh_gap_mm": 2.76303,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "USB-BOND": {
+      "mesh_gap_mm": 10.43127,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "USB-W4C": {
+      "mesh_gap_mm": 0.4268,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 1
+    },
+    "USB-W4C-Cu": {
+      "mesh_gap_mm": 0.41,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 1
+    },
+    "drvBoard": {
+      "mesh_gap_mm": 0.85001,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "drvParts": {
+      "mesh_gap_mm": 3.695,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "w1GND": {
+      "mesh_gap_mm": 0.60418,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "w1SCL": {
+      "mesh_gap_mm": 2.47923,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "w1SDA": {
+      "mesh_gap_mm": 1.3612,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "w1VCC": {
+      "mesh_gap_mm": 3.79792,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "whGND": {
+      "mesh_gap_mm": 1.49799,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "whSCL": {
+      "mesh_gap_mm": 1.09119,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "whSDA": {
+      "mesh_gap_mm": 1.35171,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    },
+    "whVCC": {
+      "mesh_gap_mm": 5.47501,
+      "known_common_volume_mm3": 0.0,
+      "solids_without_volume_check": 0
+    }
+  },
+  "W4_to_R19b_shell_67_stations": {
+    "minimum_mesh_mm": 0.85808,
+    "wire": "SDA",
+    "travel_mm": 7.5
+  }
+}

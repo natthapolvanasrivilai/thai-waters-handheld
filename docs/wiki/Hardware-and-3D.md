@@ -2,6 +2,10 @@
 
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 
+## R0013 seated-display service
+
+[Plug motion, installed harness, full assembly and measured clearance](../../quality/seated-connector-review.md)
+
 ## Connector service and failed-print investigation
 
 [Open the R0012 service review, circuits, R19b print investigation and packaging trial](../../quality/hardware-review-2026-11-23.md). R0012 identifies the dressed STEP engineering branch. R19b identifies the physical X1C trial. Their housing, reel and light features differ.

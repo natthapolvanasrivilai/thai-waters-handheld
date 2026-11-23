@@ -13,7 +13,11 @@ from zipfile import ZipFile, ZIP_DEFLATED
 ROOT = Path(__file__).resolve().parent
 parser = argparse.ArgumentParser()
 parser.add_argument("--engine", required=True, type=Path)
-exe = parser.parse_args().engine.resolve()
+parser.add_argument("--output", type=Path, default=ROOT)
+options = parser.parse_args()
+exe = options.engine.resolve()
+ROOT = options.output.resolve()
+ROOT.mkdir(parents=True, exist_ok=True)
 rails = [
     ("cell_min",3,0), ("cell_full",4.2,0), ("usb_low",0,4.75), ("usb_nom",0,5),
     ("usb_high",0,5.25), ("both_lowpack",3,5), ("both_fullpack",4.2,4.75)

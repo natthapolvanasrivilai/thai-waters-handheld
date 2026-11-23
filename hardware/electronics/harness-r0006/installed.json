@@ -1,0 +1,50 @@
+{
+  "remove": [
+    "whVCC",
+    "whSCL",
+    "whSDA",
+    "whGND"
+  ],
+  "add": [
+    {
+      "name": "whVCC",
+      "brep": "placed/whVCC.brep",
+      "label": "W4 VCC service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#cf7651",
+      "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+      "sha256": "48035d1d30edac9d234749f741e38bba3d99258022e8cd0e4d527be261310a18"
+    },
+    {
+      "name": "whSCL",
+      "brep": "placed/whSCL.brep",
+      "label": "W4 SCL service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#9aaa72",
+      "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+      "sha256": "9a32ed2e6e755e76f3fa32586f3ab1c856b929bcbb78497faa7d7b46d896b2ea"
+    },
+    {
+      "name": "whSDA",
+      "brep": "placed/whSDA.brep",
+      "label": "W4 SDA service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#849ec0",
+      "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+      "sha256": "e3bcda11ed0bd858f5175d3e0a209b3660596a596fd99252e6376bb3ae7a5485"
+    },
+    {
+      "name": "whGND",
+      "brep": "placed/whGND.brep",
+      "label": "W4 GND service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#545a62",
+      "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+      "sha256": "bb15741bf37829af018ee96f2826d958b268299d655ef58aeeb2640c3fe8e87b"
+    }
+  ]
+}

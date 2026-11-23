@@ -60,15 +60,17 @@ def postlayout(bounds, routing):
     ), ".tran 1u 10u", [("sink","max i(Vsink)","A",0,.003)]
 
 
-def execute(engine):
-    copper_file = HERE / "copper.json"
+def execute(engine, *, output=HERE, routing_file=None, a3_board="pcb-haptic-cie-r0001/A3-CIE-R0001.kicad_pcb",
+            a5_board="pcb-power-r0004/usb-input.kicad_pcb", reference_usb_copper=None):
+    copper_file = output / "copper.json"
     copper_bytes = copper_file.read_bytes()
     bounds = json.loads(copper_bytes)
-    routing_file = ORIGINAL.parent / "harness-r0005" / "routing.json"
+    if routing_file is None:
+        routing_file = ORIGINAL.parent / "harness-r0005" / "routing.json"
     routing_bytes = routing_file.read_bytes()
     routing = json.loads(routing_bytes)
-    names = {"A3": "pcb-haptic-cie-r0001/A3-CIE-R0001.kicad_pcb",
-             "A4": "pcb-r0004/harness.kicad_pcb", "A5": "pcb-power-r0004/usb-input.kicad_pcb"}
+    names = {"A3": a3_board,
+             "A4": "pcb-r0004/harness.kicad_pcb", "A5": a5_board}
     for key,name in names.items():
         assert baseline.digest(ORIGINAL.parent / name) == bounds[key]["sha256"], key
     with tempfile.TemporaryDirectory() as temp:
@@ -80,7 +82,12 @@ def execute(engine):
         assert list(csv.DictReader((scratch/"results.csv").open())) == list(csv.DictReader((ORIGINAL/"results.csv").open()))
         rows = []
         with zipfile.ZipFile(scratch/"postlayout-logs.zip", "w", zipfile.ZIP_DEFLATED) as archive:
-            for name, net, tran, specs in postlayout(bounds, routing):
+            simulation_bounds=dict(bounds)
+            if reference_usb_copper is not None:
+                # These legacy tests specifically exercise the old dual-path circuit.
+                # A replacement topology is tested from its own schematic and deck.
+                simulation_bounds["A5"]=json.loads(reference_usb_copper.read_bytes())["A5"]
+            for name, net, tran, specs in postlayout(simulation_bounds, routing):
                 deck = scratch / (name + ".cir")
                 log = scratch / (name + ".log")
                 deck.write_text("\n".join([name,net,tran,*[".meas tran " + t + " " + cmd for t,cmd,*_ in specs],".end",""]))
@@ -112,9 +119,13 @@ def execute(engine):
             new_postlayout_cases=len({r["case"] for r in rows}), postlayout_measurements=len(rows),
             status={s:sum(r["status"]==s for r in rows) for s in ("WITHIN","RECORD","OUTSIDE")},
             outside=faults,archive_sha256=baseline.digest(scratch/"postlayout-logs.zip"))
+        if reference_usb_copper is not None:
+            report["legacy_USB_copper_sha256"]=baseline.digest(reference_usb_copper)
+            report["legacy_USB_board_sha256"]=simulation_bounds["A5"]["sha256"]
+            report["scope"]="A3/A4 bus and audio used current routed copper. Legacy USB cases replay their original dual-path network. The fitted prototype USB entry has a separate schematic-specific simulation report."
         (scratch/"replay.json").write_text(json.dumps(report,indent=2)+"\n")
         for name in ("postlayout-logs.zip","measurements.csv","replay.json"):
-            shutil.copyfile(scratch/name,HERE/name)
+            shutil.copyfile(scratch/name,output/name)
         print(json.dumps(report))
 
 if __name__ == "__main__":

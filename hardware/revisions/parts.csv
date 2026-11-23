@@ -64,3 +64,8 @@ TW-P-0029-R0001,R0012 dressed fit-study assembly definition,hardware/mechanical/
 TW-P-0030-R0001,A3 routed haptic PCB with 2.50 mm J1,hardware/electronics/pcb-haptic-cie-r0001/A3-CIE-R0001.kicad_pcb,,bf6e27eae40be1d4511e3aba462ddbc0ad581bcbdd3b2149c98023096d5da8af
 TW-P-0031-R0001,"A4 routed audio, bus and key PCB",hardware/electronics/pcb-r0004/harness.kicad_pcb,,f55a55680ec3ebf2bf98e6a318fad044182b9c31b241376b53d26665a7c8860b
 TW-P-0032-R0001,A5 routed USB input daughterboard,hardware/electronics/pcb-power-r0004/usb-input.kicad_pcb,,1d201718bc5c16f5f86075ed478696abe0c7d3d0434b7d7769b8b485524c4a07
+TW-P-0028-R0003,CviLux formed service leads for the seated display,hardware/electronics/harness-r0006/installed.json,,085cd74b692ae7c66d54202472c844310615147367fcd60aa13c3bbd16703567
+TW-P-0029-R0002,R0013 dressed service assembly,hardware/mechanical/TW-A-0001-R0013/installed-step.json,,ffc7a5e4d3fe24220f88a80fb800cd8407029b295d383d2b93ec470e5439675a
+TW-P-0030-R0002,A3 rerouted haptic PCB,hardware/electronics/pcb-haptic-cie-r0002/A3-CIE-R0002.kicad_pcb,,703cb2c5fee0528ecb6579708c4d15fe8ff78646c1d427ef827336323d33bddd
+TW-P-0032-R0002,A5 ballasted USB input PCB,hardware/electronics/usb-entry-r0006/usb-input.kicad_pcb,,bff8e08cf1429418861939b073c542ac465bc38efb9d9e73db9c455146d009a1
+TW-P-0033-R0001,"Fitted USB output, ground and status lamp leads",hardware/electronics/usb-entry-r0006/installed-leads/installed.json,,30fc5fb443256677d40d5012bbd2177e414f4cc3c8c7fa4be2db57ca2a66d907

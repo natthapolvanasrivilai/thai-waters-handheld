@@ -1,0 +1,8 @@
+ref,A5_net,A1_pin,A1_net,other_end,action
+W1,ENTRY,LRC4-1,VBUS',A1 J5-side land of LRC4,Remove LRC4 on V2; prove isolated land before adding this one fixed red lead
+W2,PMIC,J8-1,VBUS,A1 fixed PCB-side solder tail,Return limited VBUS to C20 C24 D3 and UP1-37; J8 plug remains removable
+W3,GND,J8-3,GND,A1 fixed PCB-side ground tail,Black local return and short common lamp ground pigtail per installed lead study
+W4,CC1,R26-2,CC1,J5 A5 and non-ground end of the original R26,Separate high-impedance CC1 sense; retain original Rd; no external grant wire
+W5,CC2,R24-2,CC2,J5 B5 and non-ground end of the original R24,Separate high-impedance CC2 sense; retain original Rd; no external grant wire
+W6,unconnected-(W6-Pad1),,,Isolated pad,Leave empty
+W7,CTRL,,,USB-PCB2 input via revised red USB-W4A,Detach old J8-1 lamp feed completely; install one wire from W7 to resistor carrier

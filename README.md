@@ -1,5 +1,7 @@
 # Thai Waters handheld
 
+[R0013 seated connector and USB review](quality/seated-connector-review.md)
+
 [Hardware closure and playtest issues](quality/hardware-gate.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [November hardware review](quality/hardware-review-2026-11-23.md)
 
 [Private touch playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) · [Builds and verification](docs/wiki/Software-and-tests.md#current-release) · [Clock and collection recovery](docs/wiki/Clock-and-saves.md)

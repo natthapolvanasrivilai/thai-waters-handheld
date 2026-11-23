@@ -35,3 +35,7 @@ hardware/electronics/usb-entry-r0005/installed-leads/*.json -text
 hardware/electronics/harness-r0006/*.json -text
 hardware/mechanical/TW-A-0001-R0013/*.json -text
 hardware/verification/r0013/copper.json -text
+hardware/electronics/usb-entry-r0006/*.kicad_* -text
+hardware/electronics/usb-entry-r0006/*.json -text
+hardware/electronics/usb-entry-r0006/connectivity.xml -text
+hardware/electronics/usb-entry-r0006/installed-leads/*.json -text

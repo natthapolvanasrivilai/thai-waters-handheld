@@ -1,0 +1,229 @@
+{
+  "remove": [
+    "A5-bond",
+    "A5-power",
+    "USB-BOND",
+    "USB-W4A",
+    "USB-W4A-Cu",
+    "USB-W4C",
+    "USB-W4C-Cu",
+    "drvBoard",
+    "drvParts",
+    "whGND",
+    "whSCL",
+    "whSDA",
+    "whVCC"
+  ],
+  "add": [
+    {
+      "name": "whVCC",
+      "brep": "../../electronics/harness-r0006/placed/whVCC.brep",
+      "label": "W4 VCC service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#cf7651",
+      "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+      "sha256": "48035d1d30edac9d234749f741e38bba3d99258022e8cd0e4d527be261310a18"
+    },
+    {
+      "name": "whSCL",
+      "brep": "../../electronics/harness-r0006/placed/whSCL.brep",
+      "label": "W4 SCL service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#9aaa72",
+      "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+      "sha256": "9a32ed2e6e755e76f3fa32586f3ab1c856b929bcbb78497faa7d7b46d896b2ea"
+    },
+    {
+      "name": "whSDA",
+      "brep": "../../electronics/harness-r0006/placed/whSDA.brep",
+      "label": "W4 SDA service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#849ec0",
+      "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+      "sha256": "e3bcda11ed0bd858f5175d3e0a209b3660596a596fd99252e6376bb3ae7a5485"
+    },
+    {
+      "name": "whGND",
+      "brep": "../../electronics/harness-r0006/placed/whGND.brep",
+      "label": "W4 GND service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#545a62",
+      "note": "Fixed-length service lead. A1/A4/A5 and W1 stay at their installed datums throughout withdrawal.",
+      "sha256": "bb15741bf37829af018ee96f2826d958b268299d655ef58aeeb2640c3fe8e87b"
+    },
+    {
+      "name": "drvBoard",
+      "brep": "../../electronics/pcb-haptic-cie-r0002/placed/drvBoard.brep",
+      "label": "R0002 A3 haptic substrate",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#2c7350",
+      "note": "Installed from the rerouted A3 KiCad layout with the relocated electronic components.",
+      "sha256": "446a55e409cc8e991b080ede3460595f578fba491a27a9fd02a7e91c3e1c2fa2"
+    },
+    {
+      "name": "drvParts",
+      "brep": "../../electronics/pcb-haptic-cie-r0002/placed/drvParts.brep",
+      "label": "R0002 A3 populated electronics",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#3f413e",
+      "note": "Installed from the rerouted A3 KiCad layout with the relocated electronic components.",
+      "sha256": "0841e70b497a5407b2362148ad86a8c549e4fb64249b944d736981c7aaae0df2"
+    },
+    {
+      "name": "A5-power",
+      "brep": "../../electronics/usb-entry-r0006/A5-power.brep",
+      "label": "R0006 A5 input protection and current control",
+      "group": "Wiring",
+      "ref": "A5",
+      "color": "#314c6a",
+      "note": "Revised A5 fixed at its installed location. A1 intercept wiring requires incoming-board identification.",
+      "sha256": "1e76d61bb2ac700d589846ba1460b9ffa9345a9a68765cc5820d9dfca9098a96"
+    },
+    {
+      "name": "A5-bond",
+      "brep": "A5-bond.brep",
+      "label": "Six A5 adhesive bondlines",
+      "group": "Wiring",
+      "ref": "A5",
+      "color": "#81765b",
+      "note": "Six insulating adhesive pads. Board-side adhesive conforms to the revised back copper.",
+      "sha256": "51f946cc190fee94184fe11b4e63eeadbe14f148099da74322a627ab8a69248f"
+    },
+    {
+      "name": "USB-W4C-Cu",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/USB-W4C-Cu.brep",
+      "sha256": "10e9d1a1b2f6235fd7914be405c5493faecc3ac98648e73598b382147a5da60c",
+      "label": "USB-W4C-Cu",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b57547",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "USB-W4C",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/USB-W4C.brep",
+      "sha256": "3212b7ec786bfa97eaf14b8bfaf3cdcc7dc5bb9d438f42a35cec37fe2fdeab8a",
+      "label": "USB-W4C",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#494b50",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W2-Cu",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W2-Cu.brep",
+      "sha256": "5931e4c74013b631f47139bcb16678d22ecc4a70ef6ee24fc312ae1f35ac5b11",
+      "label": "A5-W2-Cu",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b57547",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W2",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W2.brep",
+      "sha256": "5a1438c40e37890c0cba903dc2860cf2d28e1cc489826aef77f51c8129ff6cba",
+      "label": "A5-W2",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b9614e",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W2-solder",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W2-solder.brep",
+      "sha256": "aa3e99075a6ea4df80ba43043bcef9c0f056c2824ae34c47495585ce12c2852f",
+      "label": "A5-W2-solder",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#aba99c",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W3-Cu",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W3-Cu.brep",
+      "sha256": "4ebb5feec7273bf62e234464d8ce7d182623005efdadfee2800c0af53611e68e",
+      "label": "A5-W3-Cu",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b57547",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W3",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W3.brep",
+      "sha256": "1b1d5d550d19a2cb2601492ddfdbd695eb8b7ac01a3f667c87c52bf25a7a740c",
+      "label": "A5-W3",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#494b50",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W3-splice-cover",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W3-splice-cover.brep",
+      "sha256": "c0f48b50c9205e3f41ff54453adb8adb0f5e2be41bc91e647b72a589ee2e2acd",
+      "label": "A5-W3-splice-cover",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#494b50",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W3-solder",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W3-solder.brep",
+      "sha256": "4cd0b5074be53e259a4a3a2e04ca42336864a3bcceb4395c59a7d66fbf6c905a",
+      "label": "A5-W3-solder",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#aba99c",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W7-Cu",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W7-Cu.brep",
+      "sha256": "5c4ff8e767f4f40c072c4d09dc6d72e308a04dd42303a49b6b4fa5fd530bd60e",
+      "label": "A5-W7-Cu",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b57547",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W7",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W7.brep",
+      "sha256": "b2a2261514923d1c6d7b9d2baf526c2c3d3a85c1281226cedac8acc450f59684",
+      "label": "A5-W7",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b9614e",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W7-solder",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/A5-W7-solder.brep",
+      "sha256": "c82d4870a2577b21a4c24ec8ab2edb015c576bb0983c3d332bbd1cfe1144ecd0",
+      "label": "A5-W7-solder",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#aba99c",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "USB-BOND",
+      "brep": "../../electronics/usb-entry-r0006/installed-leads/USB-BOND.brep",
+      "sha256": "2ed6fefa21411e6346dc1db9d60545677dbfa6ffab631fb9397d6728788bd666",
+      "label": "USB-BOND",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b9614e",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    }
+  ]
+}

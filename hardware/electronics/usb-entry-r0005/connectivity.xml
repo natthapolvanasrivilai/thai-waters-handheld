@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\maliev-scan\Documents\Codex\2026-11-18\new-chat\outputs\thai-waters-r12-review\hardware\electronics\usb-entry-r0005\usb-input.kicad_sch</source>
+    <date>2026-11-23T11:36:18</date>
+    <tool>Eeschema 10.0.8</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>USB input current control</title>
+        <company/>
+        <rev>R0005</rev>
+        <date/>
+        <source>usb-input.kicad_sch</source>
+        <comment number="1" value="A1 V2 LRC4 DNP. W1 to LRC4-1. W2 to J8-1. See assembly schedule."/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>100nF 16V X7R</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="C" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>db8e4e49-9312-59b8-87c4-9a2dd84ec52d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C2">
+      <value>1uF 16V X7R</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="C" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>af37dbad-b3f9-53fb-a30b-139a39c7c9c5</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D1">
+      <value>ESD5Z6.0T1G</value>
+      <footprint>Diode_SMD:D_SOD-523</footprint>
+      <fields>
+        <field name="Footprint">Diode_SMD:D_SOD-523</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="TVS" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>185276b8-1ab2-5654-81f8-9014a6b688da</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="FB1">
+      <value>BLM18PG121SN1D</value>
+      <footprint>Inductor_SMD:L_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Inductor_SMD:L_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="FB" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6aed0c58-acf4-5109-b8c9-debf9d018026</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q1">
+      <value>PMV65XP,215</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="P" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1c0502dd-9c11-5ac3-8520-1bc95e9678d7</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q2">
+      <value>PMV65XP,215</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="P" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d79d3478-d33b-5803-9df1-e732f236cacd</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q3">
+      <value>PMV16XNR</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="N" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>72c23145-2c83-53af-907f-4e55f0c111c0</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R1">
+      <value>88.7k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="R" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a8fad7b5-7641-52d5-93b7-09c2d30178bf</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R2">
+      <value>56R 1% 1W</value>
+      <footprint>Resistor_SMD:R_2512_6332Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_2512_6332Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="R" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>47b048f4-367b-5070-ba2d-fbdcf8d763f1</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R3">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="R" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>880a0285-3c77-521d-93c0-d97f57f8ab7c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R4">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="R" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bd5eb8ba-3ae8-5f7c-8f85-374890350c7e</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R5">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="R" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>151838ec-d10a-5603-93c2-5d80dd3dc20d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U1">
+      <value>TPS2553QDBVRQ1</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="SW" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3c1fd4d3-84d3-5fdf-bce4-627181b37b85</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="3"/>
+            <pin num="2"/>
+            <pin num="6"/>
+            <pin num="4"/>
+            <pin num="5"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="W1">
+      <value>J5_VBUS</value>
+      <footprint>Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</footprint>
+      <fields>
+        <field name="Footprint">Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="SUPPLY" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c53f11bc-51eb-5bdf-a96c-bf7ba713c9fa</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="W2">
+      <value>PMIC</value>
+      <footprint>Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</footprint>
+      <fields>
+        <field name="Footprint">Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="LAND" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2e297c9e-f8b2-56fc-af59-a59f3fd0e965</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="W3">
+      <value>GND</value>
+      <footprint>Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</footprint>
+      <fields>
+        <field name="Footprint">Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="SUPPLY" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e248cb9c-436c-5afe-a340-64896a2a976c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="W4">
+      <value>LOW_EN</value>
+      <footprint>Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</footprint>
+      <fields>
+        <field name="Footprint">Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="LAND" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>947a2b9d-9a8e-58e7-8e30-b0adec858cd8</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="W5">
+      <value>FULL_EN</value>
+      <footprint>Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</footprint>
+      <fields>
+        <field name="Footprint">Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="LAND" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>14c7947c-d89c-551d-aa56-7af2d41c9e32</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="W6">
+      <value>FAULT_N</value>
+      <footprint>Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</footprint>
+      <fields>
+        <field name="Footprint">Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="LAND" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>213d1d89-b31f-51c1-9cb1-c9b08781bf56</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="W7">
+      <value>LAMP_RAW</value>
+      <footprint>Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</footprint>
+      <fields>
+        <field name="Footprint">Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="TW_Power" part="LAND" description=""/>
+      <property name="Sheetname" value="usb-input"/>
+      <property name="Sheetfile" value="usb-input.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d81e20a8-3798-56d3-af3f-ae19d8cbfe97</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="TW_Power" part="C">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">C</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="TW_Power" part="FB">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">FB</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="power_in"/>
+        <pin num="2" name="2" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="TW_Power" part="LAND">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LAND</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="TW_Power" part="N">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">N</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="TW_Power" part="P">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">P</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="TW_Power" part="R">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">R</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="TW_Power" part="SUPPLY">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SUPPLY</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="TW_Power" part="SW">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SW</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="IN" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="~{FAULT}" type="open_collector"/>
+        <pin num="5" name="ILIM" type="passive"/>
+        <pin num="6" name="OUT" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="TW_Power" part="TVS">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TVS</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="TW_Power">
+      <uri>${KIPRJMOD}/TW_Power.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="ENTRY" class="Default">
+      <node ref="D1" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="FB1" pin="1" pinfunction="1_1" pintype="power_in"/>
+      <node ref="W1" pin="1" pinfunction="1_1" pintype="power_out"/>
+    </net>
+    <net code="2" name="FAULT_N" class="Default">
+      <node ref="U1" pin="4" pinfunction="~{FAULT}_4" pintype="open_collector"/>
+      <node ref="W6" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="3" name="FULL_EN" class="Default">
+      <node ref="R4" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="EN_3" pintype="input"/>
+      <node ref="W5" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="4" name="GND" class="Default">
+      <node ref="C1" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C2" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D1" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="Q3" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="R1" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R4" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R5" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="GND_2" pintype="power_in"/>
+      <node ref="W3" pin="1" pinfunction="1_1" pintype="power_out"/>
+    </net>
+    <net code="5" name="ILIM" class="Default">
+      <node ref="R1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="5" pinfunction="ILIM_5" pintype="passive"/>
+    </net>
+    <net code="6" name="LOW_EN" class="Default">
+      <node ref="Q3" pin="1" pinfunction="G_1" pintype="input"/>
+      <node ref="R5" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="W4" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="7" name="LOW_OUT" class="Default">
+      <node ref="Q2" pin="3" pinfunction="D_3" pintype="passive"/>
+      <node ref="R2" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="8" name="MID_S" class="Default">
+      <node ref="Q1" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q2" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="R3" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="9" name="PAIR_G" class="Default">
+      <node ref="Q1" pin="1" pinfunction="G_1" pintype="input"/>
+      <node ref="Q2" pin="1" pinfunction="G_1" pintype="input"/>
+      <node ref="Q3" pin="3" pinfunction="D_3" pintype="passive"/>
+      <node ref="R3" pin="2" pinfunction="2_2" pintype="passive"/>
+    </net>
+    <net code="10" name="PMIC" class="Default">
+      <node ref="C2" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R2" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U1" pin="6" pinfunction="OUT_6" pintype="power_out"/>
+      <node ref="W2" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="11" name="RAW" class="Default">
+      <node ref="C1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="FB1" pin="2" pinfunction="2_2" pintype="power_out"/>
+      <node ref="Q1" pin="3" pinfunction="D_3" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="IN_1" pintype="power_in"/>
+      <node ref="W7" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+  </nets>
+</export>

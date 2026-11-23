@@ -1,6 +1,6 @@
 # Hardware revision register
 
-**Engineering branch.** TW-A-0001-R0012 and TW-A-0002-R0005 identify the dressed enclosure and its CviLux/daughterboard study. The withdrawn R19b and R20 inert X1C project numbers track a separate print series. [Configurations, comparison and current holds](../../quality/hardware-review-2026-11-23.md)
+**Current engineering configuration.** TW-A-0001-R0013 pairs with TW-A-0002-R0006 for seated CviLux service, the revised A3 layout and the limited A5 USB input. R20 identifies the inert X1C first article on the separate print track. [R0013 review and physical holds](../../quality/seated-connector-review.md) · [R0012 and the R20 print](../../quality/hardware-review-2026-11-23.md)
 
 Record the exact enclosure and electrical integration IDs on each build traveler. The historical R0008 fit baseline paired **TW-A-0001-R0008** with **TW-A-0002-R0002** (Rev F wiring). Record the firmware version and binary SHA-256 separately. An assembly ID identifies a design configuration. Each physical unit still needs its own serial, option set, incoming part lots and test results.
 
