@@ -144,7 +144,7 @@ function review(number, sha, fullName = project) {
     assert.ok(await page.locator('#findPart').isVisible());
     await page.locator('[data-tab=assembly]').click();
     const archived = page.frameLocator('#viewer');
-    await archived.locator('#stepTitle').waitFor({state: 'visible'});
+    await archived.locator('html[data-ready="true"]').waitFor({state: 'attached'});
     const archivedStep = await archived.locator('#stepTitle').innerText();
     await archived.getByRole('button', {name: 'Next assembly stage'}).click();
     await archived.locator('#stepTitle').filter({hasText: archivedStep}).waitFor({state: 'hidden'});
