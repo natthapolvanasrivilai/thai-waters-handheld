@@ -125,6 +125,10 @@ EXPORT int strokes(){return g.strokes;}
 EXPORT int strokesNeeded(){return g.strokesNeeded;}
 EXPORT float lureTravel(){return g.lureTurns;}
 EXPORT void config(int mode,int volume,int cue,int fx){s.music=mode;s.volume=volume;s.cue=cue;s.cueVolume=fx;}
+EXPORT void setRodFinish(int finish){
+ const auto rod=uint8_t(finish>=0&&finish<=2?finish:0);
+ if(rod!=s.rodFinish){s.rodFinish=rod;clickPending=0;reelSound.clearInput();synth.clearReelClick();}
+}
 EXPORT void reelVolume(int level){if(level>=0&&level<=3){s.reelVolume=level;if(!level){clickPending=0;reelSound.clearInput();synth.clearReelClick();}}}
 EXPORT int16_t* samples(){
  const bool held=g.phase==Phase::Landed && !g.filed;

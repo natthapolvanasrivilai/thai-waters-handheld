@@ -8,6 +8,7 @@ struct SoundSettings {
   uint8_t cueVolume=2;
   uint8_t reelVolume=1;
   uint8_t site=0,arrangement=0; bool reverse=false;
+  uint8_t rodFinish=0; // Runtime only; sourced from the existing saved finish.
   bool valid() const {return music<4 && volume<4 && cue<3 && cueVolume<4 && reelVolume<4;}
 };
 bool startSound();
