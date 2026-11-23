@@ -1,0 +1,526 @@
+{
+  "native_version": "BambuStudio 02.09.01.70",
+  "R19b": {
+    "project_sha256": "dcfc3c9c0725d91c54026f1e65f5b9855a036b35f61483d5b1dfcfb471db546c",
+    "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+    "process": "0.20mm Standard @BBL X1C",
+    "materials": [
+      "PolyLite PETG @BBL X1C",
+      "PolyLite PETG @BBL X1C",
+      "Generic PETG",
+      "Generic TPU"
+    ],
+    "nozzle_offset": [
+      "0x2"
+    ],
+    "plates": {
+      "1": {
+        "name": "01 Charcoal PETG - Housing, Carrier and Mechanism",
+        "bed": "Engineering Plate",
+        "instances": {
+          "502": {
+            "name": "R19 datum-pocket housing / USB baffle supports under geometry review",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "1"
+          },
+          "512": {
+            "name": "collar_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "516": {
+            "name": "grip-screw-keeper_1",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "0"
+          },
+          "518": {
+            "name": "receiver-nut-keeper_1",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "0"
+          },
+          "520": {
+            "name": "key-board-retainer-west_1",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "0"
+          },
+          "522": {
+            "name": "battery-wire-bridge_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "1"
+          },
+          "524": {
+            "name": "Rod grip - localized trailing micro-tab trim PROOF ONLY",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "1"
+          },
+          "1101": {
+            "name": "Opaque RGB diffuser retainer v10",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "0"
+          },
+          "1102": {
+            "name": "Opaque RGB card retainer v10",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "0"
+          },
+          "506": {
+            "name": "R13D reel rotor - reinforced ring and upright pivots",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "1"
+          },
+          "508": {
+            "name": "K12 folding crank stem (engineering hold)",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "0"
+          },
+          "1150": {
+            "name": "K12 spring assembly option \u2013 DIGITAL QA ONLY",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "1"
+          },
+          "1201": {
+            "name": "R19 floor-key carrier - filament 1 (NO PRINT APPROVAL)",
+            "extruder": "1",
+            "brim": "outer_only",
+            "support": "0"
+          }
+        }
+      },
+      "2": {
+        "name": "02 Teal PETG - Bezel, Reel Knob and Power Button",
+        "bed": "Engineering Plate",
+        "instances": {
+          "504": {
+            "name": "Bezel - hidden hooks and solid front",
+            "extruder": "2",
+            "brim": "no_brim",
+            "support": "1"
+          },
+          "510": {
+            "name": "grip_1",
+            "extruder": "2",
+            "brim": "outer_only",
+            "support": "0"
+          },
+          "514": {
+            "name": "Power cap - raised power symbol and keyed teardrop",
+            "extruder": "2",
+            "brim": "outer_only",
+            "support": "0"
+          }
+        }
+      },
+      "3": {
+        "name": "03 Clear PETG - Single RGB Diffuser",
+        "bed": "Engineering Plate",
+        "instances": {
+          "1100": {
+            "name": "Single removable RGB diffuser v10",
+            "extruder": "3",
+            "brim": "outer_only",
+            "support": "0"
+          }
+        }
+      },
+      "4": {
+        "name": "04 Black TPU95A - External Spool Only",
+        "bed": "Cool Plate",
+        "instances": {
+          "532": {
+            "name": "usb-c-shield-mask_1",
+            "extruder": "4",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "534": {
+            "name": "P17 lower service cover - reinforced TPU catch roots",
+            "extruder": "4",
+            "brim": "no_brim",
+            "support": "0"
+          }
+        }
+      }
+    }
+  },
+  "R20_full": {
+    "project_sha256": "09578dd2571c70ef88761d1e78a51553615d56378bb6b450f2d8189e4e994f73",
+    "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+    "process": "0.20mm Standard @BBL X1C",
+    "materials": [
+      "PolyLite PETG @BBL X1C",
+      "PolyLite PETG @BBL X1C",
+      "Generic PETG",
+      "Generic TPU"
+    ],
+    "nozzle_offset": [
+      "0x2"
+    ],
+    "plates": {
+      "1": {
+        "name": "01 Charcoal PETG - inert fit parts and floor pocket",
+        "bed": "Engineering Plate",
+        "instances": {
+          "502": {
+            "name": "R20 floor pocket section",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "512": {
+            "name": "collar_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "516": {
+            "name": "grip-screw-keeper_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "518": {
+            "name": "receiver-nut-keeper_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "520": {
+            "name": "key-board-retainer-west_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "522": {
+            "name": "battery-wire-bridge_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "1"
+          },
+          "1101": {
+            "name": "Opaque RGB diffuser retainer v10",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "1102": {
+            "name": "Opaque RGB card retainer v10",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "506": {
+            "name": "R20 spring-free encoder thumbwheel",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "1201": {
+            "name": "R20 keyed encoder carrier",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          }
+        }
+      },
+      "2": {
+        "name": "02 Teal PETG - Bezel, Reel Knob and Power Button",
+        "bed": "Engineering Plate",
+        "instances": {
+          "504": {
+            "name": "Bezel - hidden hooks and solid front",
+            "extruder": "2",
+            "brim": "no_brim",
+            "support": "1"
+          },
+          "510": {
+            "name": "grip_1",
+            "extruder": "2",
+            "brim": "outer_only",
+            "support": "0"
+          },
+          "514": {
+            "name": "Power cap - raised power symbol and keyed teardrop",
+            "extruder": "2",
+            "brim": "outer_only",
+            "support": "0"
+          }
+        }
+      },
+      "3": {
+        "name": "03 Clear PETG - Single RGB Diffuser",
+        "bed": "Engineering Plate",
+        "instances": {
+          "1100": {
+            "name": "Single removable RGB diffuser v10",
+            "extruder": "3",
+            "brim": "outer_only",
+            "support": "0"
+          }
+        }
+      },
+      "4": {
+        "name": "04 Black TPU95A - External Spool Only",
+        "bed": "Cool Plate",
+        "instances": {
+          "532": {
+            "name": "usb-c-shield-mask_1",
+            "extruder": "4",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "534": {
+            "name": "P17 lower service cover - reinforced TPU catch roots",
+            "extruder": "4",
+            "brim": "no_brim",
+            "support": "0"
+          }
+        }
+      }
+    }
+  },
+  "R20_first_article": {
+    "project_sha256": "8633c456a0e7850894762848dbb211b10e7d92f7ae39ade2f3f2f308a3888059",
+    "printer": "Bambu Lab X1 Carbon 0.4 nozzle",
+    "process": "0.20mm Standard @BBL X1C",
+    "materials": [
+      "PolyLite PETG @BBL X1C",
+      "PolyLite PETG @BBL X1C",
+      "Generic PETG",
+      "Generic TPU"
+    ],
+    "nozzle_offset": [
+      "0x2"
+    ],
+    "plates": {
+      "1": {
+        "name": "R20 support-removal and fit samples",
+        "bed": "Engineering Plate",
+        "instances": {
+          "502": {
+            "name": "R20 floor pocket section",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "516": {
+            "name": "grip-screw-keeper_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "518": {
+            "name": "receiver-nut-keeper_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "520": {
+            "name": "key-board-retainer-west_1",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "1101": {
+            "name": "Opaque RGB diffuser retainer v10",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "1102": {
+            "name": "Opaque RGB card retainer v10",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "506": {
+            "name": "R20 spring-free encoder thumbwheel",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          },
+          "1201": {
+            "name": "R20 keyed encoder carrier",
+            "extruder": "1",
+            "brim": "no_brim",
+            "support": "0"
+          }
+        }
+      }
+    }
+  },
+  "runs": {
+    "r19baseline": {
+      "input_editable_sha256": "dcfc3c9c0725d91c54026f1e65f5b9855a036b35f61483d5b1dfcfb471db546c",
+      "output_sliced_3mf_sha256": "5b607c4a4f51a317c6fbb53bdb38dc7164f304f4e2b76acfb624a4090f80db63",
+      "native_result_sha256": "fdc1ba2c90bd2ba6fd3e7b9e79b4192588fa5cb1127a2194eb08d107264e7fbb",
+      "plates": [
+        {
+          "id": 1,
+          "objects": 13,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 319.39,
+          "estimate_g": 92.38,
+          "deposited_gcode_sha256": "f72af2212ea1155897243b875473353f8805268496eb85441bfdc66e336a872d"
+        },
+        {
+          "id": 2,
+          "objects": 3,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 31.4,
+          "estimate_g": 7.13,
+          "deposited_gcode_sha256": "0a41ac7dcbdf9097f0016ae1002ad967610283f4282a4317af1705c465d4f55f"
+        },
+        {
+          "id": 3,
+          "objects": 1,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 8.1,
+          "estimate_g": 0.38,
+          "deposited_gcode_sha256": "18dd7931b50ac561247a60c094024b84ba38e53e2de8b2b2b47260d6057420ad"
+        },
+        {
+          "id": 4,
+          "objects": 2,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 15.21,
+          "estimate_g": 0.86,
+          "deposited_gcode_sha256": "61bb33ca3f409b330d904cf3e6b34cdce8d82d6dc3f8478b4223b7b158578702"
+        }
+      ]
+    },
+    "verified": {
+      "input_editable_sha256": "09578dd2571c70ef88761d1e78a51553615d56378bb6b450f2d8189e4e994f73",
+      "output_sliced_3mf_sha256": "a01c2911a6bfbb4e08d0a0951a2cd66097c25bb90a2ca16838d397e357947b62",
+      "native_result_sha256": "63c97ed3b8d875071126b406f7c27f56b412b7b41e46d4d1a99bcbdbb9240e49",
+      "plates": [
+        {
+          "id": 1,
+          "objects": 10,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 28.14,
+          "estimate_g": 5.75,
+          "deposited_gcode_sha256": "64912298bd726cdd6c1d4711b21d0f9ca77938b223c814380c727d68824da62f"
+        },
+        {
+          "id": 2,
+          "objects": 3,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 31.4,
+          "estimate_g": 7.13,
+          "deposited_gcode_sha256": "75858d1141f4df456e0b3f253dfed365c0e178f1984fcd1cb4c2027cf6aeaf23"
+        },
+        {
+          "id": 3,
+          "objects": 1,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 8.1,
+          "estimate_g": 0.38,
+          "deposited_gcode_sha256": "18dd7931b50ac561247a60c094024b84ba38e53e2de8b2b2b47260d6057420ad"
+        },
+        {
+          "id": 4,
+          "objects": 2,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 15.21,
+          "estimate_g": 0.86,
+          "deposited_gcode_sha256": "61bb33ca3f409b330d904cf3e6b34cdce8d82d6dc3f8478b4223b7b158578702"
+        }
+      ]
+    },
+    "reopen-verified": {
+      "input_editable_sha256": "09578dd2571c70ef88761d1e78a51553615d56378bb6b450f2d8189e4e994f73",
+      "output_sliced_3mf_sha256": "90370888ec877769e40a09a92b01fe561edbc1f5df32dc5ed5d82dac1d58bb6d",
+      "native_result_sha256": "c3638143440d9c1ad993e670ce32c7d1058e4b83c6181822458e82ce9425a712",
+      "plates": [
+        {
+          "id": 1,
+          "objects": 10,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 28.14,
+          "estimate_g": 5.75,
+          "deposited_gcode_sha256": "04902307d6b9346c14f21a47959935a5acfeb17b026773e506eb89818f3be8fd"
+        },
+        {
+          "id": 2,
+          "objects": 3,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 31.4,
+          "estimate_g": 7.13,
+          "deposited_gcode_sha256": "0a41ac7dcbdf9097f0016ae1002ad967610283f4282a4317af1705c465d4f55f"
+        },
+        {
+          "id": 3,
+          "objects": 1,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 8.1,
+          "estimate_g": 0.38,
+          "deposited_gcode_sha256": "18dd7931b50ac561247a60c094024b84ba38e53e2de8b2b2b47260d6057420ad"
+        },
+        {
+          "id": 4,
+          "objects": 2,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 15.21,
+          "estimate_g": 0.86,
+          "deposited_gcode_sha256": "61bb33ca3f409b330d904cf3e6b34cdce8d82d6dc3f8478b4223b7b158578702"
+        }
+      ]
+    },
+    "first-article": {
+      "input_editable_sha256": "8633c456a0e7850894762848dbb211b10e7d92f7ae39ade2f3f2f308a3888059",
+      "output_sliced_3mf_sha256": "e79cb7ea71a67e568573a4d12e47969f647dc526db4b3d1da9299f60bfa04d64",
+      "native_result_sha256": "1ea7d91f0a817166efcfc7dc5be2e7e13f752bf34ea41ef5ec7cc9e77b02ee95",
+      "plates": [
+        {
+          "id": 1,
+          "objects": 8,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 25.85,
+          "estimate_g": 5.08,
+          "deposited_gcode_sha256": "d5a05e58c5c1b9d1f9d63cb84953f708eace47238f492869ed213b391f658387"
+        }
+      ]
+    },
+    "first-reopen": {
+      "input_editable_sha256": "8633c456a0e7850894762848dbb211b10e7d92f7ae39ade2f3f2f308a3888059",
+      "output_sliced_3mf_sha256": "20b2d3d4645260fd3600dd1c4fe0f6ebc6ac33f11f855b1d1027c4d5d64a729c",
+      "native_result_sha256": "4ddef6065b9d7503bdfd3c6a87982a371d958db9d5cc023ea33aadfb1666f2c8",
+      "plates": [
+        {
+          "id": 1,
+          "objects": 8,
+          "warning": "",
+          "material_changes": 0,
+          "estimate_minutes": 25.85,
+          "estimate_g": 5.08,
+          "deposited_gcode_sha256": "1d9bd2f4132ce1fa4dad96c9072bed21a9a6677cdfea2f558192f09b5251cf00"
+        }
+      ]
+    }
+  }
+}

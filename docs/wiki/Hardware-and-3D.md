@@ -2,7 +2,11 @@
 
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 
-## Current print and inspection checkpoints
+## Connector service and failed-print investigation
+
+[Open the R0012 service review, circuits, R19b print investigation and packaging trial](../../quality/hardware-review-2026-11-23.md). R0012 identifies the dressed STEP engineering branch. R19b identifies the physical X1C trial. Their housing, reel and light features differ.
+
+## Earlier R0011 print and inspection checkpoints
 
 The R0011 engineering model includes the receiver-down housing, lower service cover and revised haptic harness. Inspect purchased and drawing-derived geometry through the part register. Source fit, retention, tolerances and the unplaced controller power changes have open hardware gates. [Interactive private handbook and dressed STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-hardware-review-1) · [Terminal selection, routes and clearances](../../hardware/electronics/harness-r0004/README.md) · [STEP round-trip checks](../../hardware/mechanical/TW-A-0001-R0011/export-verification.json)
 

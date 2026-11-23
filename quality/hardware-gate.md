@@ -1,8 +1,8 @@
 # Hardware closure before gameplay development
 
-[Private issue tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
+[Product issue tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [Latest hardware evidence and open physical checks](hardware-review-2026-11-23.md)
 
-**Production and powered-prototype approval are on hold.** The owner requested hardware and electrical closure before further gameplay development. The phone playtest and USB firmware remain at the published [0.9.4 baseline](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/firmware-v0.9.4).
+**Production and powered-prototype approval are on hold.** The owner requested hardware closure. The [software build record](../docs/wiki/Software-and-tests.md#current-release) identifies the separately maintained playtest. The table below preserves the earlier hardware findings.
 
 | Hardware finding | Verification needed for closure |
 |---|---|

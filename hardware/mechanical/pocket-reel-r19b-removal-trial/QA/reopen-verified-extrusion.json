@@ -1,0 +1,452 @@
+{
+  "status": "pass",
+  "inputs": {
+    "sliced_3mf_sha256": "90370888ec877769e40a09a92b01fe561edbc1f5df32dc5ed5d82dac1d58bb6d",
+    "native_report_sha256": "c3638143440d9c1ad993e670ce32c7d1058e4b83c6181822458e82ce9425a712",
+    "features_sha256": "a9511bd15b76e921506fd1a94313a1d7ea9adf7e1ae1f423daaba9043fa43eb3"
+  },
+  "warnings": [],
+  "objects": [
+    {
+      "plate": 1,
+      "name": "R20 floor pocket section",
+      "object_id": "502",
+      "mesh_bottom_mm": -4.7683716530855236e-08,
+      "mesh_top_mm": 2.400000047683715,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 2.4,
+      "model_layers": 12,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "name": "collar_1",
+      "object_id": "512",
+      "mesh_bottom_mm": 0.0,
+      "mesh_top_mm": 2.5,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 2.4,
+      "model_layers": 12,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "name": "grip-screw-keeper_1",
+      "object_id": "516",
+      "mesh_bottom_mm": 3.1069946615502886e-10,
+      "mesh_top_mm": 1.5900000336893005,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 1.6,
+      "model_layers": 8,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "name": "receiver-nut-keeper_1",
+      "object_id": "518",
+      "mesh_bottom_mm": 3.4465025278151984e-10,
+      "mesh_top_mm": 0.8299999836553498,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 0.8,
+      "model_layers": 4,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "name": "key-board-retainer-west_1",
+      "object_id": "520",
+      "mesh_bottom_mm": 4.9041748440004085e-09,
+      "mesh_top_mm": 7.469999795095825,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 7.4,
+      "model_layers": 37,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "name": "battery-wire-bridge_1",
+      "object_id": "522",
+      "mesh_bottom_mm": -1.8530272871686293e-09,
+      "mesh_top_mm": 3.3299999218530276,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 3.4,
+      "model_layers": 17,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "name": "Opaque RGB diffuser retainer v10",
+      "object_id": "1101",
+      "mesh_bottom_mm": -7.907102750337458e-11,
+      "mesh_top_mm": 0.6499999760790711,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 0.6,
+      "model_layers": 3,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "name": "Opaque RGB card retainer v10",
+      "object_id": "1102",
+      "mesh_bottom_mm": 3.8418579428878274e-10,
+      "mesh_top_mm": 1.8799999956158142,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 1.8,
+      "model_layers": 9,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "name": "R20 spring-free encoder thumbwheel",
+      "object_id": "506",
+      "mesh_bottom_mm": -2.2932275101084088e-07,
+      "mesh_top_mm": 13.905000457322757,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 14.0,
+      "model_layers": 70,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "name": "R20 keyed encoder carrier",
+      "object_id": "1201",
+      "mesh_bottom_mm": -8.306884069497755e-10,
+      "mesh_top_mm": 7.3200001708306885,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 7.4,
+      "model_layers": 37,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 2,
+      "name": "Bezel - hidden hooks and solid front",
+      "object_id": "504",
+      "mesh_bottom_mm": -1.8530275092132342e-09,
+      "mesh_top_mm": 5.079999921853027,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 5.0,
+      "model_layers": 25,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 2,
+      "name": "grip_1",
+      "object_id": "510",
+      "mesh_bottom_mm": 5.463256869120414e-08,
+      "mesh_top_mm": 9.300000245367432,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 9.4,
+      "model_layers": 47,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 2,
+      "name": "Power cap - raised power symbol and keyed teardrop",
+      "object_id": "514",
+      "mesh_bottom_mm": -4.6325687730330856e-10,
+      "mesh_top_mm": 1.5199999804632567,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 1.5,
+      "model_layers": 14,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 3,
+      "name": "Single removable RGB diffuser v10",
+      "object_id": "1100",
+      "mesh_bottom_mm": 4.305114487124229e-09,
+      "mesh_top_mm": 2.029999975694885,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 2.0,
+      "model_layers": 10,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 4,
+      "name": "usb-c-shield-mask_1",
+      "object_id": "532",
+      "mesh_bottom_mm": 9.476837448119113e-08,
+      "mesh_top_mm": 0.5100000852316313,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 0.6,
+      "model_layers": 3,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    },
+    {
+      "plate": 4,
+      "name": "P17 lower service cover - reinforced TPU catch roots",
+      "object_id": "534",
+      "mesh_bottom_mm": -4.63256988325611e-10,
+      "mesh_top_mm": 4.519999980463257,
+      "model_bottom_mm": 0.0,
+      "model_top_mm": 4.52,
+      "model_layers": 37,
+      "bottom_tolerance_mm": 0.27,
+      "top_tolerance_mm": 0.27,
+      "status": "pass"
+    }
+  ],
+  "features": [
+    {
+      "plate": 1,
+      "object_id": "506",
+      "name": "Thumbwheel broad front bed face",
+      "reference": "New flat front at original rotor X+3.52, centred on its original encoder axis; native instance transformation, minus the saved X1C nozzle offset (0,2 mm).",
+      "minimum_path_mm": 4.0,
+      "layers": [
+        {
+          "z_mm": 0.2,
+          "path_mm": 91.727361,
+          "status": "pass"
+        },
+        {
+          "z_mm": 0.4,
+          "path_mm": 110.625553,
+          "status": "pass"
+        },
+        {
+          "z_mm": 1.0,
+          "path_mm": 32.029109,
+          "status": "pass"
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "object_id": "506",
+      "name": "Original encoder socket wall",
+      "reference": "R19b shaft original axial section, 4.55 mm outer and 3.10 mm bore radii near its mouth; native instance transformation, minus the saved X1C nozzle offset (0,2 mm).",
+      "minimum_path_mm": 0.4,
+      "layers": [
+        {
+          "z_mm": 9.4,
+          "path_mm": 10.075497,
+          "status": "pass"
+        },
+        {
+          "z_mm": 11.6,
+          "path_mm": 8.612081,
+          "status": "pass"
+        },
+        {
+          "z_mm": 13.8,
+          "path_mm": 8.654923,
+          "status": "pass"
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "object_id": "1201",
+      "name": "left strengthened carrier arm",
+      "reference": "Original web section at local X +/-20, new rib confined to local Y -8.93 through -7.68; native instance transformation, minus the saved X1C nozzle offset (0,2 mm).",
+      "minimum_path_mm": 2.0,
+      "layers": [
+        {
+          "z_mm": 0.2,
+          "path_mm": 20.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 0.6,
+          "path_mm": 20.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 0.8,
+          "path_mm": 15.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 1.0,
+          "path_mm": 15.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 1.2,
+          "path_mm": 15.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 1.4,
+          "path_mm": 15.0,
+          "status": "pass"
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "object_id": "1201",
+      "name": "right strengthened carrier arm",
+      "reference": "Original web section at local X +/-20, new rib confined to local Y -8.93 through -7.68; native instance transformation, minus the saved X1C nozzle offset (0,2 mm).",
+      "minimum_path_mm": 2.0,
+      "layers": [
+        {
+          "z_mm": 0.2,
+          "path_mm": 20.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 0.6,
+          "path_mm": 20.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 0.8,
+          "path_mm": 15.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 1.0,
+          "path_mm": 15.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 1.2,
+          "path_mm": 15.0,
+          "status": "pass"
+        },
+        {
+          "z_mm": 1.4,
+          "path_mm": 15.0,
+          "status": "pass"
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "object_id": "1201",
+      "name": "Upper left carrier pin",
+      "reference": "R19b registered PCB post tip at local X-10.16 Y+8.145; native instance transformation, minus the saved X1C nozzle offset (0,2 mm).",
+      "minimum_path_mm": 0.6,
+      "layers": [
+        {
+          "z_mm": 6.2,
+          "path_mm": 7.691702,
+          "status": "pass"
+        },
+        {
+          "z_mm": 6.6,
+          "path_mm": 7.693783,
+          "status": "pass"
+        },
+        {
+          "z_mm": 7.0,
+          "path_mm": 7.692494,
+          "status": "pass"
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "object_id": "1201",
+      "name": "Lower right carrier pin",
+      "reference": "R19b registered PCB post tip at local X+10.16 Y-4.555; native instance transformation, minus the saved X1C nozzle offset (0,2 mm).",
+      "minimum_path_mm": 0.6,
+      "layers": [
+        {
+          "z_mm": 6.2,
+          "path_mm": 7.690292,
+          "status": "pass"
+        },
+        {
+          "z_mm": 6.6,
+          "path_mm": 7.692919,
+          "status": "pass"
+        },
+        {
+          "z_mm": 7.0,
+          "path_mm": 7.683182,
+          "status": "pass"
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "object_id": "1101",
+      "name": "Diffuser retainer lower finger",
+      "reference": "R19b 34 lower finger centred on its -Y edge, retained original 0.65 mm section; native instance transformation, minus the saved X1C nozzle offset (0,2 mm).",
+      "minimum_path_mm": 0.5,
+      "layers": [
+        {
+          "z_mm": 0.2,
+          "path_mm": 5.391867,
+          "status": "pass"
+        },
+        {
+          "z_mm": 0.4,
+          "path_mm": 5.691786,
+          "status": "pass"
+        },
+        {
+          "z_mm": 0.6,
+          "path_mm": 5.691786,
+          "status": "pass"
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "plate": 1,
+      "object_id": "1102",
+      "name": "Card retainer upright hook",
+      "reference": "R19b 36 hook at original local positive X and negative Y; native instance transformation, minus the saved X1C nozzle offset (0,2 mm).",
+      "minimum_path_mm": 0.3,
+      "layers": [
+        {
+          "z_mm": 1.2,
+          "path_mm": 1.808464,
+          "status": "pass"
+        },
+        {
+          "z_mm": 1.6,
+          "path_mm": 3.309999,
+          "status": "pass"
+        },
+        {
+          "z_mm": 1.8,
+          "path_mm": 3.309999,
+          "status": "pass"
+        }
+      ],
+      "status": "pass"
+    }
+  ],
+  "scope": "digital planned model paths only, not physical print acceptance"
+}

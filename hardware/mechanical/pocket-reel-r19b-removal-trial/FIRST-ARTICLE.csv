@@ -1,0 +1,11 @@
+sample_id,editable_project_sha256,serial_or_printer_id,firmware,nozzle_mm,filament_sku_and_lot,conditioning,plate_and_preparation,settings_changes,part,inspection,measurement_or_observation,units,cycles,pass_fail_or_hold,photo_or_record
+,,,,,,,,,All eight,Plate before removal and after release and record any adhesion failure or fracture,,,,,
+,,,,,,,,,Floor pocket sample,Identify both asymmetric pockets and check for obstructions,,,,,
+,,,,,,,,,Keyed encoder carrier,Measure left and right web/rib at midspan and inspect roots and tips,,,,,
+,,,,,,,,,Keyed encoder carrier,Seat both keys in floor coupon and inspect four seats and two pins and record rocking,,,,,
+,,,,,,,,,Spring-free encoder thumbwheel,Measure encoder and socket and record seating depth and play and inspect shoulder after rotation,,,,,
+,,,,,,,,,RGB diffuser retainer,Inspect both thin fingers and test with matching original diffuser,,,,,
+,,,,,,,,,RGB card retainer,Inspect upright hook and test with matching original card or dummy,,,,,
+,,,,,,,,,Grip screw keeper,Inspect ring and check with matching original fastener,,,,,
+,,,,,,,,,Receiver nut keeper,Inspect ring and check clearance around matching nut,,,,,
+,,,,,,,,,West key-board retainer,Check original seat and both locating features with matching dummy,,,,,

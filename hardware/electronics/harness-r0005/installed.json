@@ -1,0 +1,441 @@
+{
+  "remove": [
+    "A3-J1-C1",
+    "A3-J1-C3",
+    "A3-J1-C4",
+    "A3-J1-C5",
+    "A3-J1-header",
+    "A3-J1-plug",
+    "A3-J1-spacer",
+    "A3-mode-strap",
+    "A3-mode-strap-Cu",
+    "drvBoard",
+    "drvParts",
+    "tee-GND-Cu",
+    "tee-GND-seal",
+    "tee-SCL-Cu",
+    "tee-SCL-seal",
+    "tee-SDA-Cu",
+    "tee-SDA-seal",
+    "tee-VCC-Cu",
+    "tee-VCC-seal",
+    "w1GND",
+    "w1SCL",
+    "w1SDA",
+    "w1VCC",
+    "whGND",
+    "whGND-Cu",
+    "whSCL",
+    "whSCL-Cu",
+    "whSDA",
+    "whSDA-Cu",
+    "whVCC",
+    "whVCC-Cu",
+    "wm0",
+    "wm0-Cu",
+    "wm1",
+    "wm1-Cu"
+  ],
+  "add": [
+    {
+      "name": "A4-integration",
+      "brep": "placed/A4-integration.brep",
+      "label": "A4 populated R0004 integration PCB",
+      "group": "Wiring",
+      "ref": "A4",
+      "color": "#306c45",
+      "note": "Direct rigid placement of the released populated KiCad PCB STEP, including all board copper and library package solids. Component face points toward the floor.",
+      "sha256": "6b61b5a7179baeee6e1d442decb408e16edecc16aa42836b5b121a90e1758ade"
+    },
+    {
+      "name": "A4-spacers",
+      "brep": "placed/A4-spacers.brep",
+      "label": "Three A4 insulating spacers",
+      "group": "Wiring",
+      "ref": "A4",
+      "color": "#d0caaa",
+      "note": "Three 3 x 3 x 2 mm electrically insulating blocks between A4 and A1. Verify 0.50 mm nominal A1 component clearance on the received assembly.",
+      "sha256": "ceee8819d0be3997fa8c29d75d91d21bf368410b92f54aa0ab778523b6997fc1"
+    },
+    {
+      "name": "A4-bond",
+      "brep": "placed/A4-bond.brep",
+      "label": "Six A4 adhesive bondlines",
+      "group": "Wiring",
+      "ref": "A4",
+      "color": "#87806c",
+      "note": "Two nominal 0.25 mm insulating adhesive bondlines per support. Check assembled thickness, peel, thermal exposure and pad position on the received unit.",
+      "sha256": "5b8c10d2fcb36fc31f31ba96f109d852b5efc6bba44a1f8f8bf700b332bf3a12"
+    },
+    {
+      "name": "A5-power",
+      "brep": "placed/A5-power.brep",
+      "label": "A5 populated USB power-entry PCB",
+      "group": "Wiring",
+      "ref": "A5",
+      "color": "#314c6a",
+      "note": "Direct placement of KiCad power daughterboard STEP on the A1 subassembly. The resistor thermal path, six point-to-point wires and controller net isolation need qualification.",
+      "sha256": "ec142536050b3f1959974887f51d31429674975a8243631061641d3b57ce6832"
+    },
+    {
+      "name": "A5-spacers",
+      "brep": "placed/A5-spacers.brep",
+      "label": "Three A5 insulating spacers",
+      "group": "Wiring",
+      "ref": "A5",
+      "color": "#c5bfb1",
+      "note": "3 x 3 x 2.7 mm electrically insulating spacers. Qualify bonded footprint, overhang and vibration.",
+      "sha256": "c3f60c663c0ca4dd874cd97f63e9096b1c05da1239e63bfe67db3087f7f6da44"
+    },
+    {
+      "name": "A5-bond",
+      "brep": "placed/A5-bond.brep",
+      "label": "Six A5 adhesive bondlines",
+      "group": "Wiring",
+      "ref": "A5",
+      "color": "#81765b",
+      "note": "Nominal 0.25 mm insulating adhesive bondlines on both faces of each support. Verify temperature and peel retention.",
+      "sha256": "81da646d1b45644048a43df48d30719528685e596d982f8b01f1074fca49bd16"
+    },
+    {
+      "name": "drvParts",
+      "brep": "placed/drvParts.brep",
+      "label": "A3 components after R1/R2 removal",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#3f413e",
+      "note": "Boardoza R1.0 source solids. The two R1/R2 pull-ups removed using the native PCB XY coordinates. Central bus pulls reside on A4.",
+      "sha256": "5dbf62cd17b3ba927155bcf7ceeebd7786196fcd39f27be701a78cfb7896a7fc"
+    },
+    {
+      "name": "wm0",
+      "brep": "placed/wm0.brep",
+      "label": "wm0 motor lead",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#9f5048",
+      "note": "Factory motor stub continued underneath A3 to its plated output hole. Insulation remains below the pad.",
+      "sha256": "45e36bea52aeadc75752175d59b43de9d08fcfbb12705d4247847630ab1a76ad"
+    },
+    {
+      "name": "wm0-Cu",
+      "brep": "placed/wm0-Cu.brep",
+      "label": "wm0 exposed pad end",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#b7774a",
+      "note": "Bottom entry into the source-board plated through hole. Solder and trim at the component face.",
+      "sha256": "0457dd1294cf55a6dfd155761ad71de5bafb90dd2bc81b9a4585923907957570"
+    },
+    {
+      "name": "wm1",
+      "brep": "placed/wm1.brep",
+      "label": "wm1 motor lead",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#414849",
+      "note": "Factory motor stub continued underneath A3 to its plated output hole. Insulation remains below the pad.",
+      "sha256": "965a9e249b14e48d4371b9a07e2e7efbbb1173e6fc30ac79a8e8eafe21f2b98d"
+    },
+    {
+      "name": "wm1-Cu",
+      "brep": "placed/wm1-Cu.brep",
+      "label": "wm1 exposed pad end",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#b7774a",
+      "note": "Bottom entry into the source-board plated through hole. Solder and trim at the component face.",
+      "sha256": "f819c5f6a03121ad9cb9ba6a13c6621b68daa33793fc77cfc533eb1fdbd9a4a2"
+    },
+    {
+      "name": "w1VCC",
+      "brep": "placed/w1VCC.brep",
+      "label": "W1 VCC trunk",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#555957",
+      "note": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run.",
+      "sha256": "df017dfd7e07b12da986752eee3d25f3b7504e18df5c1adb085eace3b80a5c08"
+    },
+    {
+      "name": "w1GND",
+      "brep": "placed/w1GND.brep",
+      "label": "W1 GND trunk",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#555957",
+      "note": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run.",
+      "sha256": "82de506ee5bf9b06b0ba74160b8cb016058425f3cddacb6c29d2d55c19dd1395"
+    },
+    {
+      "name": "w1SDA",
+      "brep": "placed/w1SDA.brep",
+      "label": "W1 SDA trunk",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#555957",
+      "note": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run.",
+      "sha256": "18100eb088b5a1d0b8ac76d3e21dab8b94eacb1b8dd467d4e0ea8c8895246b87"
+    },
+    {
+      "name": "w1SCL",
+      "brep": "placed/w1SCL.brep",
+      "label": "W1 SCL trunk",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#555957",
+      "note": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run.",
+      "sha256": "e9b172d66a699989e550e5dfc5da30c99301d8d200cfa8b593a1640159e902b6"
+    },
+    {
+      "name": "drvBoard",
+      "brep": "placed/drvBoard.brep",
+      "label": "A3 2.50 mm revision substrate",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#2c7350",
+      "note": "Installed KiCad A3-substrate.step with the CviLux J1 footprint. Bare substrate STEP is 1.51 mm thick.",
+      "sha256": "a23f77b2f9aa7c06102dd264d68c51061a80d53c6e3f289e11e30cff291a9fdc"
+    },
+    {
+      "name": "A3-J1-header",
+      "brep": "placed/A3-J1-header.brep",
+      "label": "CviLux right-angle header",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#83b7ad",
+      "note": "CIEP05P1HK0-NH manufacturer solid, both molded lock bosses and five integral-model pins.",
+      "sha256": "a295e325478623c49ed430463fed17763fef45a4c7e4294e2821eda9e73489e6"
+    },
+    {
+      "name": "A3-J1-plug",
+      "brep": "placed/A3-J1-plug.brep",
+      "label": "CviLux five-way latch housing",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#f1daae",
+      "note": "CIEP05SL000 unmodified manufacturer solid. Supplied blind pin pockets and flat catch underside limit seating validation.",
+      "sha256": "2ef06982164edda5b862a0ba59b0a712cfe63243b837d4ae9535ded1cefa12bc"
+    },
+    {
+      "name": "A3-J1-TPA",
+      "brep": "placed/A3-J1-TPA.brep",
+      "label": "CviLux terminal position assurance",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#545c68",
+      "note": "CIEP05C0010 supplier solid. Both outer slots registered to molded side ears; internal tooth pockets are absent from the supplier plug solid. Lock depth requires supplier or physical confirmation.",
+      "sha256": "0ca6c1f564a304c2b8f57dc32f20f983ea98e92910aa1c8d9b0112bb43dccb52"
+    },
+    {
+      "name": "A3-J1-spacer",
+      "brep": "placed/A3-J1-spacer.brep",
+      "label": "1.40 mm header support",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#aa9665",
+      "note": "Unclad insulating drilled shim under the rear header feet. Verify shroud support contact and final solder-tail protrusion.",
+      "sha256": "8fc0fff40265ed230bcfc8920b8adb768d566c4b67ec9777433ee23617e83baa"
+    },
+    {
+      "name": "A3-J1-C1",
+      "brep": "placed/A3-J1-C1.brep",
+      "label": "Cavity 1 VCC terminal",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#bf9364",
+      "note": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement.",
+      "sha256": "e063d38d3df92018aa5c1dcb4ba15939a0acb73e7a93ddbac69c66baf9224ba6"
+    },
+    {
+      "name": "whVCC-Cu",
+      "brep": "placed/whVCC-Cu.brep",
+      "label": "W4 VCC conductor",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#c58456",
+      "note": "26 AWG nominal copper conductor in the modeled front crimp.",
+      "sha256": "2e1494f17ea25af260d5e54365627512f5282f065bd0e5e70e95e6dd7adbd86a"
+    },
+    {
+      "name": "whVCC",
+      "brep": "placed/whVCC.brep",
+      "label": "W4 VCC service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#cf7651",
+      "note": "Fixed-length bending branch. Crimp end follows plug, other end remains bonded to stationary W1 tap.",
+      "sha256": "f1ab02594937120c488221cc7aaad946f06a1e862b07549975298da4d5753459"
+    },
+    {
+      "name": "tee-VCC-Cu",
+      "brep": "placed/tee-VCC-Cu.brep",
+      "label": "W1 VCC fixed tap-Cu",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#b67b52",
+      "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+      "sha256": "bd4cc8d5d2cc6955ba341e5e204eb49fec61b0e2e451b72efb652124fbd6e67c"
+    },
+    {
+      "name": "tee-VCC-seal",
+      "brep": "placed/tee-VCC-seal.brep",
+      "label": "W1 VCC fixed tap-seal",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#4f6666",
+      "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+      "sha256": "d82f6b876dca3a6e0c964bee636c0506a7541008aa8a97e975af7fca1b0df66e"
+    },
+    {
+      "name": "A3-J1-C5",
+      "brep": "placed/A3-J1-C5.brep",
+      "label": "Cavity 5 GND terminal",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#bf9364",
+      "note": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement.",
+      "sha256": "181a235b667548a8d2a23737f66b319065038b4201b5b315d3d9d09787f65174"
+    },
+    {
+      "name": "whGND-Cu",
+      "brep": "placed/whGND-Cu.brep",
+      "label": "W4 GND conductor",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#c58456",
+      "note": "26 AWG nominal copper conductor in the modeled front crimp.",
+      "sha256": "413ba12cbdd8f643f03f24ad1f0c88a508fdf501367b72683da1d4e4dd3b2e10"
+    },
+    {
+      "name": "whGND",
+      "brep": "placed/whGND.brep",
+      "label": "W4 GND service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#545a62",
+      "note": "Fixed-length bending branch. Crimp end follows plug, other end remains bonded to stationary W1 tap.",
+      "sha256": "fc1a705797ebfe4e27b66872a72dde96f5444cfb4d1dc309b5c6eddf439ea0e8"
+    },
+    {
+      "name": "tee-GND-Cu",
+      "brep": "placed/tee-GND-Cu.brep",
+      "label": "W1 GND fixed tap-Cu",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#b67b52",
+      "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+      "sha256": "2ddca97cfca495d20e06c20f5c67cf0d5a87c11d472148c0ea1cbe49c308b325"
+    },
+    {
+      "name": "tee-GND-seal",
+      "brep": "placed/tee-GND-seal.brep",
+      "label": "W1 GND fixed tap-seal",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#4f6666",
+      "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+      "sha256": "8cd8b90eb4d8437c274b9f1210dc885053b8ceb046d49040a10f0bbf33ed84fc"
+    },
+    {
+      "name": "A3-J1-C4",
+      "brep": "placed/A3-J1-C4.brep",
+      "label": "Cavity 4 SDA terminal",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#bf9364",
+      "note": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement.",
+      "sha256": "433e769f167474fe0777364593fc1bc71514a4450885507769426fa40880a869"
+    },
+    {
+      "name": "whSDA-Cu",
+      "brep": "placed/whSDA-Cu.brep",
+      "label": "W4 SDA conductor",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#c58456",
+      "note": "26 AWG nominal copper conductor in the modeled front crimp.",
+      "sha256": "c1dbf089a312ddd3404483bb327f9aca28327fb10feaa23ca2247ee29cc26341"
+    },
+    {
+      "name": "whSDA",
+      "brep": "placed/whSDA.brep",
+      "label": "W4 SDA service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#849ec0",
+      "note": "Fixed-length bending branch. Crimp end follows plug, other end remains bonded to stationary W1 tap.",
+      "sha256": "36ef6fdf1382e3ddf875d4ebfd5e13a73161086849d47d3c79497f8449cb0b30"
+    },
+    {
+      "name": "tee-SDA-Cu",
+      "brep": "placed/tee-SDA-Cu.brep",
+      "label": "W1 SDA fixed tap-Cu",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#b67b52",
+      "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+      "sha256": "b2239c4f0c46e094a8c7d7cdfe0bb88c465f0ea524739f043b060a9a440a02e0"
+    },
+    {
+      "name": "tee-SDA-seal",
+      "brep": "placed/tee-SDA-seal.brep",
+      "label": "W1 SDA fixed tap-seal",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#4f6666",
+      "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+      "sha256": "d343a16641ec5dd38fec5e124701937ab1268a9fab95b785eb92657692fa905d"
+    },
+    {
+      "name": "A3-J1-C3",
+      "brep": "placed/A3-J1-C3.brep",
+      "label": "Cavity 3 SCL terminal",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#bf9364",
+      "note": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement.",
+      "sha256": "70bb281d17ff57ab7638a74469a6b146125eb95058edd5347e2f5c8a3d2f2f49"
+    },
+    {
+      "name": "whSCL-Cu",
+      "brep": "placed/whSCL-Cu.brep",
+      "label": "W4 SCL conductor",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#c58456",
+      "note": "26 AWG nominal copper conductor in the modeled front crimp.",
+      "sha256": "5eaf1e49e51e46c9bb35816769505866a0dbbc594397293dbe4978e812f3b803"
+    },
+    {
+      "name": "whSCL",
+      "brep": "placed/whSCL.brep",
+      "label": "W4 SCL service loop",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#9aaa72",
+      "note": "Fixed-length bending branch. Crimp end follows plug, other end remains bonded to stationary W1 tap.",
+      "sha256": "5c19d56a37ca29d6a7c8d601a5fd0a183fab5283b4581f5a23e8b158afcffda5"
+    },
+    {
+      "name": "tee-SCL-Cu",
+      "brep": "placed/tee-SCL-Cu.brep",
+      "label": "W1 SCL fixed tap-Cu",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#b67b52",
+      "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+      "sha256": "d8494df518c276905dbe526164985a2a8ae64a85fc312c803587c010a908e911"
+    },
+    {
+      "name": "tee-SCL-seal",
+      "brep": "placed/tee-SCL-seal.brep",
+      "label": "W1 SCL fixed tap-seal",
+      "group": "Haptics",
+      "ref": "A3 / W4",
+      "color": "#4f6666",
+      "note": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder.",
+      "sha256": "949e5bdd73619f30989faede2c59fa79242282409129d0dc7290c5f74cb9dfcf"
+    }
+  ]
+}

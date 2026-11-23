@@ -14,3 +14,5 @@ TW-A-0002-R0003,,USB status and haptic integration,Independent USB indication an
 TW-A-0001-R0010,,Dressed enclosure with removable lower service cover,"Matched R0009 print set plus P17 opaque TPU cover for PWR, RESET and BOOT.",hardware/mechanical/TW-A-0001-R0010/README.md,R0010-001
 TW-A-0001-R0011,,"Dressed enclosure, receiver-down housing",First-layer-connected rod-grip receiver with lower service cover.,hardware/mechanical/TW-A-0001-R0011/README.md,R0011-001
 TW-A-0002-R0004,,Reworked A3 interconnect and electrical verification candidate,Paired R0011 hardware review. Controller ECO placement and powered qualification remain open.,hardware/electronics/integration-r0004/README.md,R0004-001
+TW-A-0001-R0012,,Dressed enclosure with CviLux service study,147-member engineering configuration in the R0011 enclosure lineage. R19b is a separate physical-fit lineage.,quality/hardware-review-2026-11-23.md,R0012-001
+TW-A-0002-R0005,,CviLux haptics and R0004 daughterboard fit study,"A3, A4 and A5 engineering integration. The proposed A1 controller ECO remains incomplete.",hardware/verification/r0012/README.md,R0005-001

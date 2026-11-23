@@ -46,7 +46,7 @@ def calibration():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=Path, default=ROOT / "hardware/mechanical/TW-A-0001-R0011/installed-step.json")
+    parser.add_argument("--model", type=Path, default=ROOT / "hardware/mechanical/TW-A-0001-R0012/installed-step.json")
     args = parser.parse_args()
     components = json.loads(args.model.read_text())["components"]
     body = extent(components, set(components) - ROD)

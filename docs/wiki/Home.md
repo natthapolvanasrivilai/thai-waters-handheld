@@ -1,6 +1,6 @@
 # Thai Waters product wiki
 
-[Hardware closure and playtest issues](../../quality/hardware-gate.md) · [Open the private tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
+[Current hardware investigation and interactive service review](../../quality/hardware-review-2026-11-23.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
 
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 
@@ -8,7 +8,7 @@ This handbook follows a unit from a cast on the simulator through component sele
 
 [Mechanical design and fit history](Hardware-and-3D.md) · [Known one-unit costs and selling-price research](BOM-and-business.md)
 
-**Next inert fit print · TW-A-0001-R0011.** The rod receiver prints directly on the bed. The lower service opening closes with a removable cover. Read the [print setup](../../hardware/mechanical/TW-A-0001-R0011/PRINT-GUIDE.md), [hardware gate](../../quality/hardware-gate.md) and [electrical verification](Electrical-verification.md) before moving to a populated assembly.
+**Historical R0011 inert fit print.** The rod receiver prints directly on the bed and a removable cover closes the lower service opening. The later R19b X1C trial was withdrawn after support-removal failures. [Current first-article record](../../quality/hardware-review-2026-11-23.md) · [Historical R0011 print setup](../../hardware/mechanical/TW-A-0001-R0011/PRINT-GUIDE.md)
 
 [Current software release, playtest and hardware milestone](Software-and-tests.md#current-release)
 

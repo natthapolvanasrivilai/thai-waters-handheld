@@ -1,0 +1,483 @@
+{
+    "error_string": "Success.",
+    "layer_height": 0.20000000298023224,
+    "peak_rss_mb": 283.85546875,
+    "plate_index": 0,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bottom surface": 39.081634521484375,
+                "Bridge": 23.171281814575195,
+                "Custom": 429.8676452636719,
+                "Flush": 29.0,
+                "Gap infill": 16.56585693359375,
+                "Inner wall": 344.2773132324219,
+                "Internal solid infill": 127.9056167602539,
+                "Outer wall": 280.3561706542969,
+                "Overhang wall": 0.29503872990608215,
+                "Sparse infill": 164.96649169921875,
+                "Top surface": 57.43585968017578,
+                "Travel": 190.7994384765625,
+                "Undefined": 175.73228454589844
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFG60",
+                    "id": 1,
+                    "main_used_g": 5.752505779266357,
+                    "total_used_g": 5.752505779266357
+                }
+            ],
+            "id": 1,
+            "layer_filament_change": 0,
+            "main_predication": 1215.8533935546875,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 22.0,
+                        "height": 2.4000000953674316,
+                        "width": 8.0,
+                        "x": 75.0,
+                        "y": 71.0,
+                        "z": -4.7683716530855236e-08
+                    },
+                    "id": 5,
+                    "name": "R20 floor pocket section",
+                    "triangle_count": 530
+                },
+                {
+                    "bbox": {
+                        "depth": 13.200006484985352,
+                        "height": 2.5,
+                        "width": 13.198270797729492,
+                        "x": 113.40086364746094,
+                        "y": 222.39999389648438,
+                        "z": 0.0
+                    },
+                    "id": 17,
+                    "name": "collar_1",
+                    "triangle_count": 1552
+                },
+                {
+                    "bbox": {
+                        "depth": 9.018823623657227,
+                        "height": 1.590000033378601,
+                        "width": 9.019994735717773,
+                        "x": 148.49000549316406,
+                        "y": 168.49058532714844,
+                        "z": 3.1069946615502886e-10
+                    },
+                    "id": 25,
+                    "name": "grip-screw-keeper_1",
+                    "triangle_count": 1552
+                },
+                {
+                    "bbox": {
+                        "depth": 7.698997497558594,
+                        "height": 0.8299999833106995,
+                        "width": 7.700006008148193,
+                        "x": 170.14999389648438,
+                        "y": 169.15049743652344,
+                        "z": 3.4465025278151984e-10
+                    },
+                    "id": 29,
+                    "name": "receiver-nut-keeper_1",
+                    "triangle_count": 1548
+                },
+                {
+                    "bbox": {
+                        "depth": 5.350003242492676,
+                        "height": 7.46999979019165,
+                        "width": 16.79999351501465,
+                        "x": 186.60000610351563,
+                        "y": 170.3249969482422,
+                        "z": 4.9041748440004085e-09
+                    },
+                    "id": 33,
+                    "name": "key-board-retainer-west_1",
+                    "triangle_count": 1520
+                },
+                {
+                    "bbox": {
+                        "depth": 12.096647262573242,
+                        "height": 3.3299999237060547,
+                        "width": 47.51769256591797,
+                        "x": 181.24114990234375,
+                        "y": 200.95167541503906,
+                        "z": -1.8530272871686293e-09
+                    },
+                    "id": 37,
+                    "name": "battery-wire-bridge_1",
+                    "triangle_count": 6384
+                },
+                {
+                    "bbox": {
+                        "depth": 9.009891510009766,
+                        "height": 0.6499999761581421,
+                        "width": 3.9399256706237793,
+                        "x": 118.03003692626953,
+                        "y": 198.49505615234375,
+                        "z": -7.907102750337458e-11
+                    },
+                    "id": 53,
+                    "name": "Opaque RGB diffuser retainer v10",
+                    "triangle_count": 1536
+                },
+                {
+                    "bbox": {
+                        "depth": 5.399874687194824,
+                        "height": 1.8799999952316284,
+                        "width": 3.93996524810791,
+                        "x": 146.02999877929688,
+                        "y": 206.3000030517578,
+                        "z": 3.8418579428878274e-10
+                    },
+                    "id": 57,
+                    "name": "Opaque RGB card retainer v10",
+                    "triangle_count": 1562
+                },
+                {
+                    "bbox": {
+                        "depth": 25.49233627319336,
+                        "height": 13.905000686645508,
+                        "width": 25.5,
+                        "x": 25.25,
+                        "y": 160.2538299560547,
+                        "z": -2.2932275101084088e-07
+                    },
+                    "id": 61,
+                    "name": "R20 spring-free encoder thumbwheel",
+                    "triangle_count": 6500
+                },
+                {
+                    "bbox": {
+                        "depth": 21.759998321533203,
+                        "height": 7.320000171661377,
+                        "width": 64.70000457763672,
+                        "x": 147.64999389648438,
+                        "y": 124.12000274658203,
+                        "z": -8.306884069497755e-10
+                    },
+                    "id": 65,
+                    "name": "R20 keyed encoder carrier",
+                    "triangle_count": 22444
+                }
+            ],
+            "times": {
+                "conflict_check_time": 20,
+                "detect_overhangs_time": 26,
+                "export_gcode_time": 1498,
+                "flush_plan_time": 0,
+                "generate_support_material_time": 53,
+                "infill_generate_time": 348,
+                "infill_time": 870,
+                "ironing_time": 0,
+                "make_perimeters_time": 744,
+                "multifilament_segment_2d_time": 0,
+                "other_slice_time": 3,
+                "prepare_infill_time": 522,
+                "region_split_time": 0,
+                "skirt_brim_time": 0,
+                "slice_layers_time": 318,
+                "sliced_time": 3505,
+                "sliced_time_with_cache": 1498,
+                "support_detect_time": 10,
+                "support_interface_time": 0,
+                "support_normal_generate_time": 0,
+                "support_toolpath_time": 0,
+                "support_tree_generate_time": 0,
+                "toolpath_time": 264,
+                "wall_time": 426,
+                "wipe_tower_time": 18
+            },
+            "total_predication": 1688.623291015625,
+            "triangle_count": 45128,
+            "warning_message": ""
+        },
+        {
+            "feature_type_times": {
+                "Bottom surface": 114.16331481933594,
+                "Brim": 5.177613258361816,
+                "Custom": 430.0414733886719,
+                "Flush": 29.0,
+                "Gap infill": 20.9268856048584,
+                "Inner wall": 214.46336364746094,
+                "Internal solid infill": 311.7511291503906,
+                "Outer wall": 292.6600341796875,
+                "Overhang wall": 0.7920812368392944,
+                "Support": 160.7564239501953,
+                "Support interface": 10.554769515991211,
+                "Support transition": 3.1873927116394043,
+                "Top surface": 132.8911590576172,
+                "Travel": 172.65869140625,
+                "Undefined": 157.5119171142578
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFG60",
+                    "id": 2,
+                    "main_used_g": 7.1264872550964355,
+                    "total_used_g": 7.1264872550964355
+                }
+            ],
+            "id": 2,
+            "layer_filament_change": 0,
+            "main_predication": 1411.0152587890625,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 67.72000122070313,
+                        "height": 5.079999923706055,
+                        "width": 107.22000122070313,
+                        "x": 381.5899963378906,
+                        "y": 56.13999938964844,
+                        "z": -1.8530275092132342e-09
+                    },
+                    "id": 9,
+                    "name": "Bezel - hidden hooks and solid front",
+                    "triangle_count": 6248
+                },
+                {
+                    "bbox": {
+                        "depth": 7.455450534820557,
+                        "height": 9.300000190734863,
+                        "width": 7.455468654632568,
+                        "x": 431.4722595214844,
+                        "y": 167.27227783203125,
+                        "z": 5.463256869120414e-08
+                    },
+                    "id": 13,
+                    "name": "grip_1",
+                    "triangle_count": 37520
+                },
+                {
+                    "bbox": {
+                        "depth": 7.700006008148193,
+                        "height": 1.5199999809265137,
+                        "width": 7.698470115661621,
+                        "x": 470.35076904296875,
+                        "y": 167.14999389648438,
+                        "z": -4.6325687730330856e-10
+                    },
+                    "id": 21,
+                    "name": "Power cap - raised power symbol and keyed teardrop",
+                    "triangle_count": 15728
+                }
+            ],
+            "times": {
+                "conflict_check_time": 29,
+                "detect_overhangs_time": 12,
+                "export_gcode_time": 2724,
+                "flush_plan_time": 0,
+                "generate_support_material_time": 102,
+                "infill_generate_time": 103,
+                "infill_time": 161,
+                "ironing_time": 0,
+                "make_perimeters_time": 208,
+                "multifilament_segment_2d_time": 0,
+                "other_slice_time": 1,
+                "prepare_infill_time": 58,
+                "region_split_time": 0,
+                "skirt_brim_time": 23,
+                "slice_layers_time": 97,
+                "sliced_time": 3286,
+                "sliced_time_with_cache": 2747,
+                "support_detect_time": 70,
+                "support_interface_time": 0,
+                "support_normal_generate_time": 31,
+                "support_toolpath_time": 1,
+                "support_tree_generate_time": 0,
+                "toolpath_time": 21,
+                "wall_time": 111,
+                "wipe_tower_time": 3
+            },
+            "total_predication": 1883.87939453125,
+            "triangle_count": 59496,
+            "warning_message": ""
+        },
+        {
+            "feature_type_times": {
+                "Brim": 8.342445373535156,
+                "Custom": 428.7976989746094,
+                "Flush": 29.0,
+                "Gap infill": 2.8312911987304688,
+                "Inner wall": 3.376642942428589,
+                "Outer wall": 11.625627517700195,
+                "Travel": 17.399505615234375,
+                "Undefined": 2.0567519664764404
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFG99",
+                    "id": 3,
+                    "main_used_g": 0.37681257724761963,
+                    "total_used_g": 0.37681257724761963
+                }
+            ],
+            "id": 3,
+            "layer_filament_change": 0,
+            "main_predication": 14.6060791015625,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 2.2600018978118896,
+                        "height": 2.0299999713897705,
+                        "width": 7.3899993896484375,
+                        "x": 124.30500030517578,
+                        "y": -180.3300018310547,
+                        "z": 4.305114487124229e-09
+                    },
+                    "id": 49,
+                    "name": "Single removable RGB diffuser v10",
+                    "triangle_count": 92
+                }
+            ],
+            "times": {
+                "conflict_check_time": 0,
+                "detect_overhangs_time": 0,
+                "export_gcode_time": 60,
+                "flush_plan_time": 0,
+                "generate_support_material_time": 1,
+                "infill_generate_time": 0,
+                "infill_time": 0,
+                "ironing_time": 0,
+                "make_perimeters_time": 1,
+                "multifilament_segment_2d_time": 0,
+                "other_slice_time": 2,
+                "prepare_infill_time": 0,
+                "region_split_time": 0,
+                "skirt_brim_time": 1,
+                "slice_layers_time": 0,
+                "sliced_time": 67,
+                "sliced_time_with_cache": 61,
+                "support_detect_time": 0,
+                "support_interface_time": 0,
+                "support_normal_generate_time": 0,
+                "support_toolpath_time": 0,
+                "support_tree_generate_time": 0,
+                "toolpath_time": 0,
+                "wall_time": 1,
+                "wipe_tower_time": 1
+            },
+            "total_predication": 486.0304260253906,
+            "triangle_count": 92,
+            "warning_message": ""
+        },
+        {
+            "feature_type_times": {
+                "Bottom surface": 14.683077812194824,
+                "Custom": 519.6499633789063,
+                "Flush": 29.0,
+                "Gap infill": 2.5729174613952637,
+                "Inner wall": 70.05944061279297,
+                "Internal solid infill": 55.720218658447266,
+                "Outer wall": 170.6663818359375,
+                "Top surface": 17.820295333862305,
+                "Travel": 48.04065704345703,
+                "Undefined": 32.678131103515625
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFU99",
+                    "id": 4,
+                    "main_used_g": 0.858579695224762,
+                    "total_used_g": 0.858579695224762
+                }
+            ],
+            "id": 4,
+            "layer_filament_change": 0,
+            "main_predication": 350.595458984375,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 13.879999160766602,
+                        "height": 0.5099999904632568,
+                        "width": 8.009992599487305,
+                        "x": 415.19500732421875,
+                        "y": -186.13999938964844,
+                        "z": 9.476837448119113e-08
+                    },
+                    "id": 41,
+                    "name": "usb-c-shield-mask_1",
+                    "triangle_count": 4560
+                },
+                {
+                    "bbox": {
+                        "depth": 8.800005912780762,
+                        "height": 4.519999980926514,
+                        "width": 28.800012588500977,
+                        "x": 437.79998779296875,
+                        "y": -183.60000610351563,
+                        "z": -4.63256988325611e-10
+                    },
+                    "id": 45,
+                    "name": "P17 lower service cover - reinforced TPU catch roots",
+                    "triangle_count": 2280
+                }
+            ],
+            "times": {
+                "conflict_check_time": 2,
+                "detect_overhangs_time": 1,
+                "export_gcode_time": 263,
+                "flush_plan_time": 0,
+                "generate_support_material_time": 5,
+                "infill_generate_time": 16,
+                "infill_time": 29,
+                "ironing_time": 0,
+                "make_perimeters_time": 36,
+                "multifilament_segment_2d_time": 0,
+                "other_slice_time": 2,
+                "prepare_infill_time": 13,
+                "region_split_time": 0,
+                "skirt_brim_time": 0,
+                "slice_layers_time": 24,
+                "sliced_time": 347,
+                "sliced_time_with_cache": 263,
+                "support_detect_time": 0,
+                "support_interface_time": 0,
+                "support_normal_generate_time": 0,
+                "support_toolpath_time": 0,
+                "support_tree_generate_time": 0,
+                "toolpath_time": 6,
+                "wall_time": 12,
+                "wipe_tower_time": 2
+            },
+            "total_predication": 912.8521118164063,
+            "triangle_count": 6840,
+            "warning_message": ""
+        }
+    ],
+    "sparse_infill_density": 15.0,
+    "times": {
+        "export_3mf_time": 399,
+        "export_slicedata_time": 0,
+        "export_time": 771,
+        "import_time": 821,
+        "load_slicedata_time": 0,
+        "prepare_time": 830
+    },
+    "upward_compatible_machine": [
+        "Bambu Lab P1S 0.4 nozzle",
+        "Bambu Lab P1P 0.4 nozzle",
+        "Bambu Lab X1 0.4 nozzle",
+        "Bambu Lab X1E 0.4 nozzle",
+        "Bambu Lab A1 0.4 nozzle",
+        "Bambu Lab H2D 0.4 nozzle",
+        "Bambu Lab H2D Pro 0.4 nozzle",
+        "Bambu Lab H2S 0.4 nozzle",
+        "Bambu Lab P2S 0.4 nozzle",
+        "Bambu Lab H2C 0.4 nozzle",
+        "Bambu Lab X2D 0.4 nozzle",
+        "Bambu Lab A2L 0.4 nozzle"
+    ],
+    "wall_loops": 2
+}

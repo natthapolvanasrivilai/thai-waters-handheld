@@ -2,7 +2,11 @@
 
 [Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 
-## Current R0004 engineering review
+## Routed-board verification
+
+[Read the A3, A4 and A5 layout checks and 268 circuit cases](../../hardware/verification/r0012/README.md). The daughterboards implement the haptic, audio, key, bus and part of the USB input circuits. The untouched supplier controller still bypasses the current limiter. The complete controller integration and first powered article remain open.
+
+## R0004 controller baseline
 
 **Engineering hold.** R0004 is a proposed revision, not an installed or released controller. The reference route is a revision-controlled supplier spin of the A1 USB/power controller PCB. Consider an interposer only if the identified incoming board allows interception of raw USB power, both USB data lines and hardware load controls, with verified isolation, service access and fit. A cable harness, audio bench coupon or status-light PCB does not implement those functions. The controller schematic and layout are not released for fabrication.
 

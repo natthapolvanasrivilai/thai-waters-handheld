@@ -1,0 +1,18 @@
+{
+  "browser": "158.0.4370.33",
+  "installed_step_members": 147,
+  "inspection_rows": 155,
+  "revised_nodes": 40,
+  "selected_node": "A3-J1-header",
+  "exercised": [
+    "assembled",
+    "harness",
+    "select changed component",
+    "isolate",
+    "show assembly",
+    "slide lock",
+    "section plane",
+    "interior"
+  ],
+  "page_errors": []
+}

@@ -59,3 +59,8 @@ TW-P-0027-R0001,Lower service key cover,hardware/mechanical/TW-A-0001-R0010/Prin
 TW-P-0001-R0010,"Housing, receiver-down print orientation",hardware/mechanical/TW-A-0001-R0011/Print/housing-battery-bay.stl,,ccbdd035b46d46a761a75ca0661b0c19c966b78cc7e3c5e46169c9874fb2e922
 TW-P-0026-R0002,R0004 controller electrical ECO specification,hardware/electronics/integration-r0004/README.md,,7406335e0bcb348ca31cfa4a83b2f917bc627c4c414e5ba00f9e41c3b3e85516
 TW-P-0028-R0001,Reworked A3 haptic interconnect placement manifest,hardware/electronics/harness-r0004/installed.json,,0dd0d7a2ea11f4e177605342ff220da0c6683a15d55e4f15733463f295b243ce
+TW-P-0028-R0002,CviLux A3/W4 installed harness definition,hardware/electronics/harness-r0005/installed.json,,847e80118fd80539571716e8be029c103c578a78c839ebb6149177462a8e582c
+TW-P-0029-R0001,R0012 dressed fit-study assembly definition,hardware/mechanical/TW-A-0001-R0012/installed-step.json,,d2bd2f71058ca2d5f4c4aad90b23173990d9b1f6111c3d2f83adcdf9955f50d6
+TW-P-0030-R0001,A3 routed haptic PCB with 2.50 mm J1,hardware/electronics/pcb-haptic-cie-r0001/A3-CIE-R0001.kicad_pcb,,bf6e27eae40be1d4511e3aba462ddbc0ad581bcbdd3b2149c98023096d5da8af
+TW-P-0031-R0001,"A4 routed audio, bus and key PCB",hardware/electronics/pcb-r0004/harness.kicad_pcb,,f55a55680ec3ebf2bf98e6a318fad044182b9c31b241376b53d26665a7c8860b
+TW-P-0032-R0001,A5 routed USB input daughterboard,hardware/electronics/pcb-power-r0004/usb-input.kicad_pcb,,1d201718bc5c16f5f86075ed478696abe0c7d3d0434b7d7769b8b485524c4a07

@@ -1,0 +1,196 @@
+{
+  "r19b": {
+    "1201": {
+      "model_mm3": 527.319,
+      "support_mm3": 0.0,
+      "brim_mm3": 113.086,
+      "support_layers": 0,
+      "first_model_contact_mm2": 255.922,
+      "first_model_contact_regions": 1
+    },
+    "520": {
+      "model_mm3": 128.954,
+      "support_mm3": 0.0,
+      "brim_mm3": 16.417,
+      "support_layers": 0,
+      "first_model_contact_mm2": 68.714,
+      "first_model_contact_regions": 1
+    },
+    "518": {
+      "model_mm3": 30.648,
+      "support_mm3": 0.0,
+      "brim_mm3": 10.589,
+      "support_layers": 0,
+      "first_model_contact_mm2": 42.713,
+      "first_model_contact_regions": 1
+    },
+    "516": {
+      "model_mm3": 77.887,
+      "support_mm3": 0.0,
+      "brim_mm3": 12.029,
+      "support_layers": 0,
+      "first_model_contact_mm2": 47.018,
+      "first_model_contact_regions": 1
+    },
+    "1102": {
+      "model_mm3": 6.004,
+      "support_mm3": 0.0,
+      "brim_mm3": 17.852,
+      "support_layers": 0,
+      "first_model_contact_mm2": 8.796,
+      "first_model_contact_regions": 1
+    },
+    "1101": {
+      "model_mm3": 8.882,
+      "support_mm3": 0.0,
+      "brim_mm3": 17.964,
+      "support_layers": 0,
+      "first_model_contact_mm2": 14.596,
+      "first_model_contact_regions": 1
+    },
+    "506": {
+      "model_mm3": 2383.74,
+      "support_mm3": 1315.306,
+      "brim_mm3": 20.458,
+      "support_layers": 109,
+      "first_model_contact_mm2": 14.326,
+      "first_model_contact_regions": 1
+    },
+    "502": {
+      "model_mm3": 35840.177,
+      "support_mm3": 3589.397,
+      "brim_mm3": 208.867,
+      "support_layers": 191,
+      "first_model_contact_mm2": 256.83,
+      "first_model_contact_regions": 1
+    }
+  },
+  "r20_first_article": {
+    "1201": {
+      "model_mm3": 559.16,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 256.128,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 37,
+        "components": 154,
+        "refined_layers": [
+          {
+            "z": 3.8,
+            "raster_flag_count": 1,
+            "refined_component_count": 4
+          }
+        ],
+        "fully_unbacked_components": []
+      }
+    },
+    "520": {
+      "model_mm3": 129.77,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 68.588,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 37,
+        "components": 66,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "518": {
+      "model_mm3": 30.415,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 42.542,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 4,
+        "components": 4,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "516": {
+      "model_mm3": 78.748,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 46.709,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 8,
+        "components": 8,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1102": {
+      "model_mm3": 5.93,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 8.759,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 9,
+        "components": 9,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1101": {
+      "model_mm3": 8.179,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 14.617,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 3,
+        "components": 3,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "506": {
+      "model_mm3": 2556.491,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 357.159,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 70,
+        "components": 70,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "502": {
+      "model_mm3": 365.181,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 166.26,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 12,
+        "components": 12,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    }
+  }
+}

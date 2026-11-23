@@ -7,7 +7,7 @@ Print the [floor layout](floor-layout.svg) and [three divider blanks](divider-di
 | Handheld | Screen up, folded reel clear of the wall. Installed CAD gives 110.72 × 75.40 × 33.20 mm. The device bay leaves 8.28 × 12.60 × 17.30 mm **in total** for protection and tolerance. |
 | Rod grip and captive hardware | Rotate the removed grip by 90° in plan. Allow 130.40 × 31.00 × 38.94 mm including the screw and keeper. Keep the narrow locking features clear of the divider. |
 | USB cable | Use the BOM’s 1 m Tensility 10-03675. Measure its naturally tied coil with both plugs before accepting the 101.5 × 88 mm bay. |
-| Hex key | Fully sleeve the Wera 05021015001, close the sleeve and measure it against the 77.5 × 52.5 mm bay. Verify it stays captive when inverted. |
+| Hex key | The Wera 05021015001 has a published 58 × 20 × 3 mm envelope. Fully sleeve it, close the sleeve and measure it against the 77.5 × 52.5 mm bay. Verify it stays captive when inverted. [Wera drawing](https://hybris-media.wera.de/download/pdfgenerator-datasheets/en/05021015001.pdf) |
 
 **Carton proof.** Start with a finished internal 222 × 142 × 52 mm sample, 1.5 mm measured divider stock and a 48 mm divider height. Cut the three rectangles, fold and glue their 8 mm feet as shown. Trim overlapping feet at the junctions to one thickness. Recheck all clear dimensions after folding and adhesive cure. The CAD fit uses one board thickness at the floor. The other 4 mm above the dividers is available for a loose top pad secured by the lid. The sample assumes that pad bridges the perimeter and dividers. Measure the loaded deflection above the glass.
 

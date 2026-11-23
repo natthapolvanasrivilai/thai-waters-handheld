@@ -1,0 +1,154 @@
+{
+  "verified_utc": "2026-11-19",
+  "tools": {
+    "CadQuery": "2.8.0",
+    "cadquery-ocp": "7.9.3.1.1",
+    "python": "3.11.13"
+  },
+  "manufacturer_files": [
+    {
+      "file": "CIEP05C0010.IGS",
+      "source_url": "https://www.cvilux.com/uploads/3d/101/753/CIEP05C0010.zip",
+      "zip_sha256": "75bf3cf21eaf15737dcc1ba681860c463ec34ea459e2efd81373921b387e3425",
+      "zip_member": "CIEP05C0010.IGS",
+      "bytes": 594008,
+      "sha256": "09223cc8ce88ba3413b33db4f7b2ecc3927f0c22115c1bcf8c7d8a3d8e2fcd4e"
+    },
+    {
+      "file": "CIEP05P1HK0-NH.IGS",
+      "source_url": "https://www.cvilux.com/uploads/3d/101/752/CIEP05P1HK0_NH.zip",
+      "zip_sha256": "365345c8f0fcacfe01d73ea50a32f991d8791440687347b4541057574bc13e00",
+      "zip_member": "CIEP05P1HK0-NH.IGS",
+      "bytes": 1004828,
+      "sha256": "6383cf7abb3fb1069981887fa1485c44506851e8016913212c53425337868db1"
+    },
+    {
+      "file": "CIEP05SL000.IGS",
+      "source_url": "https://www.cvilux.com/uploads/3d/101/750/CIEP05SL000.zip",
+      "zip_sha256": "67c5e1b4c22ab88e692397f3235e032f0517064445cd6242e1b44bbc7eaa55d5",
+      "zip_member": "CIEP05SL000.IGS",
+      "bytes": 1555540,
+      "sha256": "474e5fdbf0b67a6fb9eed646661cd1290d962a6cf7c6b5adcc7e470f4962323e"
+    },
+    {
+      "file": "CIEPT021PP0.IGS",
+      "source_url": "https://www.cvilux.com/uploads/3d/101/749/CIEPT021PP0.zip",
+      "zip_sha256": "becdf2cf18bb845406cc17f696a17cfe2934632d887b00055002f82c5cbe57a8",
+      "zip_member": "CIEPT021PP0.IGS",
+      "bytes": 1227950,
+      "sha256": "0750e5acfe9828b47537533b44f24ba56262eab2431c04551abdd03d3a1571e2"
+    },
+    {
+      "file": "CIEP03S.pdf",
+      "source_url": "https://www.cvilux.com/uploads/drawings/101/753/CIEP03S.pdf",
+      "bytes": 268587,
+      "sha256": "bda66d5b5cdae7b358250cb10ce9889196d968e2ac9d63da6086dff0826b2190"
+    },
+    {
+      "file": "CIEP04S.pdf",
+      "source_url": "https://www.cvilux.com/uploads/drawings/101/750/CIEP04S.pdf",
+      "bytes": 304802,
+      "sha256": "7ce1a59e1d03531bd123b7d0ba1897fd762bc26ccaf344a882e52593ca4f32f1"
+    },
+    {
+      "file": "CIEP06S.pdf",
+      "source_url": "https://www.cvilux.com/uploads/drawings/101/749/CIEP06S.pdf",
+      "bytes": 394189,
+      "sha256": "d1dcf7dc29adefdbf03266247b784ad4885a192c7ded1be20a3ef235b1f4b919"
+    },
+    {
+      "file": "CIEP08S.pdf",
+      "source_url": "https://www.cvilux.com/uploads/drawings/101/752/CIEP08S.pdf",
+      "bytes": 315058,
+      "sha256": "089be6ea42cbe4ad0f3e521e751c264b2eb8cf2a28772b715cfd9d642c2a94cb"
+    },
+    {
+      "file": "SPCI172.pdf",
+      "source_url": "https://www.cvilux.com/uploads/spec/101/753/SPCI172.pdf",
+      "bytes": 362469,
+      "sha256": "8130b37001f566b26d0f7d306fd23d0c1de5a26b56d1afcec2ca1f4aa025be77"
+    }
+  ],
+  "assembly_imports": [
+    {
+      "file": "CIEP05P1HK0-NH.step",
+      "sha256": "95bb40570391c16e66d1439bc24694dda137715d8e411f9fe894e07401ff74f5",
+      "bytes": 1973538,
+      "source_file": "CIEP05P1HK0-NH.IGS",
+      "valid": true,
+      "solids": 6,
+      "faces": 235,
+      "volume_mm3": 359.41287,
+      "bounds_xyz_min_mm": [
+        -9.20365,
+        -4.94063,
+        2.47249
+      ],
+      "bounds_xyz_max_mm": [
+        5.69635,
+        4.60937,
+        12.7
+      ]
+    },
+    {
+      "file": "CIEP05C0010.step",
+      "sha256": "62b4d4c48fe7e722696ab8686372639953c7ac756564079637ec4fc1e4227ea5",
+      "bytes": 566220,
+      "source_file": "CIEP05C0010.IGS",
+      "valid": true,
+      "solids": 1,
+      "faces": 121,
+      "volume_mm3": 121.29249,
+      "bounds_xyz_min_mm": [
+        -7.35,
+        -1.425,
+        -1.275
+      ],
+      "bounds_xyz_max_mm": [
+        7.35,
+        6.275,
+        1.425
+      ]
+    },
+    {
+      "file": "CIEP05SL000.step",
+      "sha256": "97ca34350cd156bbfb8ea8b6b8ca387ef271def3e8bea4ae67ec5e63d3e13609",
+      "bytes": 1484797,
+      "source_file": "CIEP05SL000.IGS",
+      "valid": true,
+      "solids": 1,
+      "faces": 329,
+      "volume_mm3": 619.216126,
+      "bounds_xyz_min_mm": [
+        -7.2,
+        -4.8,
+        -4.875
+      ],
+      "bounds_xyz_max_mm": [
+        7.2,
+        4.8,
+        2.675
+      ]
+    },
+    {
+      "file": "CIEPT021PP0-open.step",
+      "sha256": "6f8bc19de970ebcf49be30e6e52fc267da2ec7cadacb45b5898389d8d189cadf",
+      "bytes": 1532076,
+      "source_file": "CIEPT021PP0.IGS",
+      "valid": true,
+      "solids": 1,
+      "faces": 190,
+      "volume_mm3": 6.773885,
+      "bounds_xyz_min_mm": [
+        -1.2,
+        -0.25,
+        -8.0
+      ],
+      "bounds_xyz_max_mm": [
+        1.2,
+        2.45,
+        0.0
+      ]
+    }
+  ]
+}

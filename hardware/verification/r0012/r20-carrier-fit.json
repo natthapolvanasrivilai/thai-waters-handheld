@@ -1,0 +1,87 @@
+{
+  "r19b_sha256": "dcfc3c9c0725d91c54026f1e65f5b9855a036b35f61483d5b1dfcfb471db546c",
+  "carrier_rebuild_sha256": "90635e6beabca1cdc5b07258c9a44049614d3af9fabae209fd7f3e7908e6579d",
+  "installed_transform": [
+    [
+      0,
+      0,
+      -1,
+      47
+    ],
+    [
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      13.005
+    ]
+  ],
+  "tests": {
+    "A2-pcb": {
+      "surface_gap_mm": 0.0,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "A2-chip": {
+      "surface_gap_mm": 5.65326,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "A2-population": {
+      "surface_gap_mm": 0.2833,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "A2-sockets": {
+      "surface_gap_mm": 1.1251,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "drvBoard": {
+      "surface_gap_mm": 9.01511,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "A3-J1-header": {
+      "surface_gap_mm": 11.27,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "A4-integration": {
+      "surface_gap_mm": 5.09295,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "A5-power": {
+      "surface_gap_mm": 4.48571,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "w1VCC": {
+      "surface_gap_mm": 2.00692,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "w1GND": {
+      "surface_gap_mm": 6.52191,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "w1SDA": {
+      "surface_gap_mm": 4.10243,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    },
+    "w1SCL": {
+      "surface_gap_mm": 6.52191,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0
+    }
+  },
+  "scope": "Mixed-lineage registration study at nominal seated position; A2 and W1 pose comes from R0012. Positive common volumes require reconciliation before combining configurations."
+}

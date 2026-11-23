@@ -1,5 +1,7 @@
 # Hardware revision register
 
+**Engineering branch.** TW-A-0001-R0012 and TW-A-0002-R0005 identify the dressed enclosure and its CviLux/daughterboard study. The withdrawn R19b and R20 inert X1C project numbers track a separate print series. [Configurations, comparison and current holds](../../quality/hardware-review-2026-11-23.md)
+
 Record the exact enclosure and electrical integration IDs on each build traveler. The historical R0008 fit baseline paired **TW-A-0001-R0008** with **TW-A-0002-R0002** (Rev F wiring). Record the firmware version and binary SHA-256 separately. An assembly ID identifies a design configuration. Each physical unit still needs its own serial, option set, incoming part lots and test results.
 
 [R0011 receiver-down fit print](../mechanical/TW-A-0001-R0011/README.md) pairs the existing installed housing surfaces with the revised print definition **TW-P-0001-R0010**. The register keeps a new part revision for the changed print orientation. P17 remains fitted. Physical rail strength, grip fit and support cleanup require an inert print.

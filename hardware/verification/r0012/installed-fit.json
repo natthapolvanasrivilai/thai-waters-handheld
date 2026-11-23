@@ -1,5 +1,5 @@
 {
-  "installed_step_sha256": "62010fd8949b556c9de2ce0f28ab5fb3abfee7670a9a5caeb077ee10cada4a30",
+  "installed_step_sha256": "9f91fe45a97a491455840506b69689d33e871b7ac336f5e64d5e03faf8719259",
   "installed_members": 147,
   "checks": {
     "cellAlt / changed parts": {
@@ -23,38 +23,33 @@
       "touch_or_overlap": []
     },
     "A4-integration / installed neighbors": {
-      "minimum_nominal_mm": 0.695,
-      "closest": "A3-J1-plug",
-      "touch_or_overlap": []
-    },
-    "A5-power / installed neighbors": {
-      "minimum_nominal_mm": 1.2,
+      "minimum_nominal_mm": 0.5,
       "closest": "A1-population",
       "touch_or_overlap": []
     },
+    "A5-power / installed neighbors": {
+      "minimum_nominal_mm": 0.80921,
+      "closest": "whVCC",
+      "touch_or_overlap": []
+    },
     "whVCC / seated hardware": {
-      "minimum_nominal_mm": 0.0,
-      "closest": "Housing",
-      "touch_or_overlap": [
-        {
-          "component": "Housing",
-          "common_volume_mm3": 0.0
-        }
-      ]
+      "minimum_nominal_mm": 0.80921,
+      "closest": "A5-power",
+      "touch_or_overlap": []
     },
     "whGND / seated hardware": {
-      "minimum_nominal_mm": 2.58987,
+      "minimum_nominal_mm": 1.94105,
       "closest": "Housing",
       "touch_or_overlap": []
     },
     "whSDA / seated hardware": {
-      "minimum_nominal_mm": 2.59696,
-      "closest": "drvParts",
+      "minimum_nominal_mm": 2.002,
+      "closest": "A5-power",
       "touch_or_overlap": []
     },
     "whSCL / seated hardware": {
-      "minimum_nominal_mm": 2.36532,
-      "closest": "drvParts",
+      "minimum_nominal_mm": 1.08738,
+      "closest": "A5-power",
       "touch_or_overlap": []
     },
     "w1VCC / seated hardware": {

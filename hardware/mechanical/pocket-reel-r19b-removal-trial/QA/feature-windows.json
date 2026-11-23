@@ -1,0 +1,186 @@
+{
+  "features": [
+    {
+      "plate": 1,
+      "object_id": "506",
+      "name": "Thumbwheel broad front bed face",
+      "xy_mm": [
+        [
+          34.5,
+          41.5
+        ],
+        [
+          168,
+          174
+        ]
+      ],
+      "required_layers_z_mm": [
+        0.2,
+        0.4,
+        1.0
+      ],
+      "minimum_path_mm": 4,
+      "reference": "New flat front at original rotor X+3.52, centred on its original encoder axis; native instance transformation, minus the saved X1C nozzle offset (0,2 mm)."
+    },
+    {
+      "plate": 1,
+      "object_id": "506",
+      "name": "Original encoder socket wall",
+      "xy_mm": [
+        [
+          41.2,
+          42.7
+        ],
+        [
+          169.3,
+          172.7
+        ]
+      ],
+      "required_layers_z_mm": [
+        9.4,
+        11.6,
+        13.8
+      ],
+      "minimum_path_mm": 0.4,
+      "reference": "R19b shaft original axial section, 4.55 mm outer and 3.10 mm bore radii near its mouth; native instance transformation, minus the saved X1C nozzle offset (0,2 mm)."
+    },
+    {
+      "plate": 1,
+      "object_id": "1201",
+      "name": "left strengthened carrier arm",
+      "xy_mm": [
+        [
+          157,
+          162
+        ],
+        [
+          124.4,
+          126.1
+        ]
+      ],
+      "required_layers_z_mm": [
+        0.2,
+        0.6,
+        0.8,
+        1,
+        1.2,
+        1.4
+      ],
+      "minimum_path_mm": 2,
+      "reference": "Original web section at local X +/-20, new rib confined to local Y -8.93 through -7.68; native instance transformation, minus the saved X1C nozzle offset (0,2 mm)."
+    },
+    {
+      "plate": 1,
+      "object_id": "1201",
+      "name": "right strengthened carrier arm",
+      "xy_mm": [
+        [
+          198,
+          203
+        ],
+        [
+          124.4,
+          126.1
+        ]
+      ],
+      "required_layers_z_mm": [
+        0.2,
+        0.6,
+        0.8,
+        1,
+        1.2,
+        1.4
+      ],
+      "minimum_path_mm": 2,
+      "reference": "Original web section at local X +/-20, new rib confined to local Y -8.93 through -7.68; native instance transformation, minus the saved X1C nozzle offset (0,2 mm)."
+    },
+    {
+      "plate": 1,
+      "object_id": "1201",
+      "name": "Upper left carrier pin",
+      "xy_mm": [
+        [
+          168.5,
+          171.2
+        ],
+        [
+          140.1,
+          143.1
+        ]
+      ],
+      "required_layers_z_mm": [
+        6.2,
+        6.6,
+        7.0
+      ],
+      "minimum_path_mm": 0.6,
+      "reference": "R19b registered PCB post tip at local X-10.16 Y+8.145; native instance transformation, minus the saved X1C nozzle offset (0,2 mm)."
+    },
+    {
+      "plate": 1,
+      "object_id": "1201",
+      "name": "Lower right carrier pin",
+      "xy_mm": [
+        [
+          188.9,
+          191.5
+        ],
+        [
+          127.5,
+          130.4
+        ]
+      ],
+      "required_layers_z_mm": [
+        6.2,
+        6.6,
+        7.0
+      ],
+      "minimum_path_mm": 0.6,
+      "reference": "R19b registered PCB post tip at local X+10.16 Y-4.555; native instance transformation, minus the saved X1C nozzle offset (0,2 mm)."
+    },
+    {
+      "plate": 1,
+      "object_id": "1101",
+      "name": "Diffuser retainer lower finger",
+      "xy_mm": [
+        [
+          118.4,
+          121.7
+        ],
+        [
+          196.4,
+          197.45
+        ]
+      ],
+      "required_layers_z_mm": [
+        0.2,
+        0.4,
+        0.6
+      ],
+      "minimum_path_mm": 0.5,
+      "reference": "R19b 34 lower finger centred on its -Y edge, retained original 0.65 mm section; native instance transformation, minus the saved X1C nozzle offset (0,2 mm)."
+    },
+    {
+      "plate": 1,
+      "object_id": "1102",
+      "name": "Card retainer upright hook",
+      "xy_mm": [
+        [
+          148.2,
+          149.85
+        ],
+        [
+          204.1,
+          206.1
+        ]
+      ],
+      "required_layers_z_mm": [
+        1.2,
+        1.6,
+        1.8
+      ],
+      "minimum_path_mm": 0.3,
+      "reference": "R19b 36 hook at original local positive X and negative Y; native instance transformation, minus the saved X1C nozzle offset (0,2 mm)."
+    }
+  ]
+}

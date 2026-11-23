@@ -1,4 +1,6 @@
-# Prototype BOM and selling price
+# Prototype sourcing and cost
+
+**R0012 service study.** The [CviLux interconnect and board changes](../../sourcing/production-intent/R0012-interconnect-delta.csv) supersede the Würth haptic header, plug and terminated leads in the historical budget. Cavities 1, 3, 4 and 5 take contacts. A4 and A5 have separate population definitions. Prototype sample prices, harness tooling and delivered board costs are open. Applying the earlier total to this configuration would understate those unknowns. [Historical R0011/R0004 budget](../../sourcing/production-intent/R0011-R0004-BOM.md)
 
 [Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 

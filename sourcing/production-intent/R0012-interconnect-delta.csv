@@ -1,0 +1,13 @@
+reference,disposition,manufacturer,orderable_part,installed_quantity,unit,source,procurement_status
+W4-PCB,replace Würth header,CviLux,CIEP05P1HK0-NH,1,each,https://www.cvilux.com/uploads/3d/101/752/CIEP05P1HK0_NH.zip,Exact manufacturer geometry; sample or distributor quote required
+W4-PLUG,replace Würth plug,CviLux,CIEP05SL000,1,each,https://www.cvilux.com/uploads/3d/101/750/CIEP05SL000.zip,Exact manufacturer geometry; sample and latch check required
+W4-TPA,add rear secondary lock,CviLux,CIEP05C0010,1,each,https://www.cvilux.com/uploads/3d/101/753/CIEP05C0010.zip,Confirm seated depth on a matched sample
+W4-CONTACT,replace factory Würth leads,CviLux,CIEPT021PP0,4,each,https://www.cvilux.com/uploads/3d/101/749/CIEPT021PP0.zip,Cavities 1 3 4 5; catalog reel quantity 10000; loose samples or harness house quotation required
+W4-WIRE,replace terminated branch wire only,Pico Canada,8826-0-44,4,cut lengths,https://picocanada.com/view_product/8826-0,26 AWG black 1.30 mm nominal OD; identify each end; verify delivered OD and bend/strain on sample
+W4-STRAP,omit discrete ground jumper,Thai Waters,A3 PCB ground connection,0,each,../../hardware/electronics/pcb-haptic-cie-r0001/A3-CIE-R0001.kicad_pcb,TRIG ground on A3 fork; cavity 2 empty
+W4-SPACER,replace original shim,Thai Waters,A3-J1-spacer,1,each,../../hardware/electronics/harness-r0005/placed/A3-J1-spacer.brep,Check support and solder-tail projection on sample
+A3,replace stock breakout with routed 2.50 mm fork,Thai Waters / Boardoza,A3-CIE-R0001,1,PCB assembly,../../hardware/electronics/pcb-haptic-cie-r0001/A3-CIE-R0001.kicad_pro,Bare board plus assembly quote required; omit R1 and R2
+A4,add routed interposer,Thai Waters,TW-A-0002-R0004-A4,1,PCB assembly,../../hardware/electronics/pcb-r0004/bom.csv,Board-level BOM; fabrication and assembly quote required
+A5,add power entry daughterboard,Thai Waters,A5 USB input,1,PCB assembly,../../hardware/electronics/pcb-power-r0004/design.json,Raw VBUS interception and controls on host required; bench only until integrated
+A4-MOUNT,add insulating support stack,Thai Waters,A4 spacer and bond kit,1,set,../../hardware/electronics/harness-r0005/placed/A4-spacers.brep,Three insulators and six bondlines; materials and process require qualification
+A5-MOUNT,add insulating support stack,Thai Waters,A5 spacer and bond kit,1,set,../../hardware/electronics/harness-r0005/placed/A5-spacers.brep,Three insulators and six bondlines; materials and process require qualification
