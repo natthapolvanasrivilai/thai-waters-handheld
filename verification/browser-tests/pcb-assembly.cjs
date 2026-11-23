@@ -13,6 +13,30 @@ async function pixels(page){
   const raw=await page.locator('#model').screenshot();
   return {raw,hash:require('node:crypto').createHash('sha256').update(raw).digest('hex')};
 }
+async function assertRestoredSection(page, before, after){
+  // Compare the rendered composition in normalized coordinates. Chrome and the
+  // window system can round antialiased edges differently on a second render.
+  const delta=await page.evaluate(async pngs=>{
+    const images=await Promise.all(pngs.map(async png=>{
+      const image=new Image();
+      image.src='data:image/png;base64,'+png;
+      await image.decode();
+      const canvas=document.createElement('canvas');
+      canvas.width=128;canvas.height=96;
+      const ctx=canvas.getContext('2d');
+      ctx.drawImage(image,0,0,128,96);
+      return ctx.getImageData(0,0,128,96).data;
+    }));
+    let changed=0,total=0;
+    for(let i=0;i<images[0].length;i+=4){
+      const rgb=[0,1,2].map(k=>Math.abs(images[0][i+k]-images[1][i+k]));
+      total+=rgb[0]+rgb[1]+rgb[2];
+      if(Math.max(...rgb)>16)changed++;
+    }
+    return {mean:total/(128*96*3),fraction:changed/(128*96)};
+  },[before,after].map(pic=>pic.raw.toString('base64')));
+  assert.ok(delta.mean<2 && delta.fraction<.025,'Restored section differs: '+JSON.stringify(delta));
+}
 async function usbPixels(page){
   return page.locator('#model').evaluate(canvas=>{
     const {width:w,height:h}=canvas,rgba=canvas.getContext('2d').getImageData(0,0,w,h).data;
@@ -193,7 +217,9 @@ async function inspect(browser,guide){
       assert.ok(await page.locator('#sectionLegend').isHidden());
       assert.notEqual((await pixels(page)).hash,usbStart.hash);
       await page.locator('#reset').click();
-      assert.equal((await pixels(page)).hash,usbStart.hash);
+      assert.equal(await page.locator('#section').getAttribute('aria-pressed'),'true');
+      assert.ok(await page.locator('#sectionLegend').isVisible());
+      await assertRestoredSection(page,usbStart,await pixels(page));
       if(usb.status==='blocked'){
         assert.deepEqual(usbStep.fixedOffset,[0,0,usb.rejected_vertical.first_contact_offset_z_from_above_mm[0]]);
         assert.ok(!usbStep.waypoints&&!usbStep.motionPart);
