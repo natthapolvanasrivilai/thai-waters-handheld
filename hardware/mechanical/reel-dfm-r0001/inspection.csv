@@ -1,0 +1,27 @@
+plate,part,layers,bed_mm2,brim_mm3,support_mm3,island_starts,side_p05_mm,underside_below_30deg_mm2,check
+1,Case with integral board mounts,158,776.24,0.0,9388.194,1,0.95,7145.403,Clear supports at the USB well and receiver in small pieces. Inspect the shelf and post roots. Seat the unplugged gauges and slide the receiver fully home.
+2,bezel_1,11,2396.226,0.0,0.0,0,2.01,0.0,Rest the broad front on a flat surface. Check corner lift and the edges of the display cutout.
+2,Reel rotor - reinforced pocket,111,29.874,32.067,93.303,1,1.45,0.0,Remove the recessed support in sections. Inspect both ends under light. Fit the screw and sleeve and fold the crank through 90° before turning a complete revolution.
+2,folding-stem_1,76,2.913,19.902,0.0,0,1.1,0.0,The hinge eye starts on only 2.91 mm² of model contact. Trim the brim with the eye supported. Insert the pin and check for splitting.
+2,grip_1,47,8.501,0.0,0.0,0,1.362,0.0,Inspect the sleeve mouth for a split. Check that the grip rotates freely on its fastener.
+2,collar_1,12,56.688,0.0,0.0,0,1.9,0.0,Remove lip or elephant foot from the nonworking edge only. Check free rotation and axial seating.
+2,R0017 keyed power cap,10,34.45,0.0,0.0,0,0.382,11.63,The face detail and flange have thin local edges. Check the keyed corner and smooth return with the real switch.
+2,grip-screw-keeper_1,8,47.018,0.0,0.0,0,2.66,0.0,Check the thin washer stays flat and captures the rod fastener through its travel.
+2,receiver-nut-keeper_1,4,42.713,0.0,0.0,0,2.05,0.0,Support the 0.83 mm cap when lifting it. Check nut capture with the receiver unloaded.
+2,key-board-retainer-west_1,37,68.714,0.0,0.0,0,1.03,0.0,Inspect the two feet and thin return edges. Install over the inert switch board and check both ends seat.
+2,battery-wire-bridge_1,17,252.439,0.0,0.0,0,1.35,0.0,Inspect the two screw seats and tape slots. Test lead clearance with the maximum inert battery gauge.
+3,rod-grip_1,664,168.67,123.379,0.0,0,3.9,0.0,Inspect the handle shoulder approximately 34 mm above the print bed. Check dovetail engagement and the captive fastener before applying hand load.
+4,status-charge-guide_1,6,7.927,19.921,0.0,0,0.867,0.0,Cut the clear part free of its brim while supporting the elbow. Check the thin optical arm for whitening or fracture.
+4,status-usb-guide_1,6,5.063,13.102,0.0,0,1.2,0.0,Support the 1.2 mm wide light pipe while trimming its brim. Fit it to the USB lamp channel and verify light transmission.
+4,status-power-guide_1,6,7.916,19.908,0.0,0,0.87,0.0,Support the branch while cutting the brim. Inspect the bend for whitening and dry fit the power lens.
+5,usb-c-shield-mask_1,3,77.416,0.0,0.0,0,0.509,0.0,Peel the cool flexible sheet from its broad edge. Check the narrow webs for tears and fit a plug through the opening.
+5,service-cover_1,23,227.359,0.0,0.0,0,0.84,0.0,Inspect the flexible retaining edge and flex it once outside the housing. Seat the cover and verify removal access.
+6,PKCELL-max-body-with-wire-sockets_1,27,2167.123,0.0,0.0,0,35.3,0.0,Check the two socket mouths and insert loose dummy leads. Trial the maximum envelope without a cell.
+6,Adafruit-258-CAD-with-PCM-and-stubs_1,315,170.609,84.385,0.0,0,5.0,0.0,Trim the brim at the end face. Inspect the rigid lead stubs and trial this gauge separately.
+7,A1 display and controller,67,5558.293,0.0,0.0,0,1.0,1736.054,Inspect the underside spans and connector outlines for sag. Check four mounting points before using the gauge for closure.
+7,A2 reel sensor,23,399.368,0.0,0.0,0,1.25,0.0,Inspect the small modeled features and locating holes. Seat the inert gauge on all four lands.
+7,A3 haptic board,49,373.322,0.0,0.0,0,3.0,3.923,Inspect connectors and the underside span. The gauge should sit flat across both integral rails.
+7,Case-mounted PCB outline gauge,4,851.495,0.0,0.0,0,1.424,0.0,Release the 0.8 mm sheet along its broad edge. Check both holes and the third rest before seating the display.
+7,Top power switch board,27,103.153,0.0,0.0,0,3.498,0.0,Check that the tiny simulated plunger survives removal and aligns with the cap. The printed gauge has no switching action.
+7,USB indicator LED board,4,12.973,0.0,0.0,0,0.8,0.0,Release the 4.8 mm gauge with a flat tool and keep it in a tray. Check the LED end enters the side channel.
+7,USB lamp resistor board,5,6.331,0.0,0.0,0,0.81,0.0,The gauge is only 3.2 × 2.0 mm in plan. Capture it in a tray during removal and verify the footprint with calipers.

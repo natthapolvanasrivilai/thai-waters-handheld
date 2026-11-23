@@ -81,3 +81,5 @@ TW-P-0001-R0014,Housing with integrated combined-board mounts,hardware/electroni
 TW-P-0034-R0001,Routed combined control and USB PCB,hardware/electronics/case-board-r0001/case-board.kicad_pcb,,22b0fc8a5d63e7d7b8cf93ea86b88a61e5dde3504efdabbed6125158e66b6230
 TW-P-0035-R0001,Combined PCB outline fit gauge,hardware/electronics/case-board-r0001/Case-board-R0001-X1C-fit.3mf,3D/Objects/gauge_108.model,aed422154785ce177cfd0a4b154342fb33dac169bed2a0f70a308d95fc542b00
 TW-P-0036-R0001,Case board population and installation BOM,hardware/electronics/case-board-r0001/bom.csv,,a4efda1030d6f6007cfb9d9a2d65f6acf911010bd4db307b26ea4002c9d7b921
+TW-P-0007-R0006,Reinforced crank pocket rotor,hardware/mechanical/reel-dfm-r0001/rotor.stl,,10893b42e820905f56f55f01c4d706f0b357de21265a301ad3fbd45884bc6d53
+TW-P-0037-R0001,Seven-plate X1C process and gauge set,hardware/mechanical/reel-dfm-r0001/Thai-Waters-DFM-R0001-X1C.3mf,,58a072dcd4f14b83a02fcd88fbe1f8ee0ba960334c662bdeeb04ccaa8939fb60

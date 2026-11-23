@@ -24,3 +24,4 @@ TW-A-0001-R0016,,Housing with side-loading USB lamp,The leadless USB indicator s
 TW-A-0001-R0017,,Keyed power cap in R0016 housing,Retrofit replaces the power cap only. Paired with TW-A-0002-R0006.,hardware/mechanical/TW-A-0001-R0017/README.md,R0017-001
 TW-A-0003-R0001,,Unpowered case-mounted PCB fit kit,Two-plate housing and outline gauge for the combined control and USB PCB.,hardware/electronics/case-board-r0001/README.md,CB0001-001
 TW-A-0004-R0001,,Case-mounted auxiliary PCBA engineering definition,Control and USB circuit with routed layout and installation BOM. Under powered qualification.,hardware/electronics/case-board-r0001/README.md,CB0001-002
+TW-A-0003-R0002,,Seven-plate reinforced reel fit kit,X1C unpowered print trial with reinforced rotor and revised rod grip layer settings.,hardware/mechanical/reel-dfm-r0001/README.md,DFM0001-001

@@ -1,0 +1,478 @@
+[
+  {
+    "plate": 1,
+    "name": "Case with integral board mounts",
+    "model_mm3": 33302.227,
+    "support_mm3": 9388.194,
+    "brim_mm3": 0.0,
+    "support_layers": 147,
+    "first_model_contact_mm2": 776.24,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 158,
+      "components": 880,
+      "refined_layers": [
+        {
+          "z": 14.2,
+          "raster_flag_count": 1,
+          "refined_component_count": 9
+        }
+      ],
+      "fully_unbacked_components": [
+        {
+          "z": 14.2,
+          "area_mm2": 17.00415,
+          "bbox": [
+            81.595,
+            120.49000000000001,
+            84.505,
+            126.36
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "plate": 2,
+    "name": "bezel_1",
+    "model_mm3": 4077.952,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 2396.226,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 11,
+      "components": 11,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "Reel rotor - reinforced pocket",
+    "model_mm3": 2074.728,
+    "support_mm3": 93.303,
+    "brim_mm3": 32.067,
+    "support_layers": 39,
+    "first_model_contact_mm2": 29.874,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 111,
+      "components": 133,
+      "refined_layers": [
+        {
+          "z": 10.4,
+          "raster_flag_count": 1,
+          "refined_component_count": 3
+        }
+      ],
+      "fully_unbacked_components": [
+        {
+          "z": 10.4,
+          "area_mm2": 2.89225,
+          "bbox": [
+            89.027744,
+            148.329744,
+            89.652256,
+            153.268256
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "plate": 2,
+    "name": "folding-stem_1",
+    "model_mm3": 202.723,
+    "support_mm3": 0.0,
+    "brim_mm3": 19.902,
+    "support_layers": 0,
+    "first_model_contact_mm2": 2.913,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 76,
+      "components": 78,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "grip_1",
+    "model_mm3": 228.94,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 8.501,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 47,
+      "components": 47,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "collar_1",
+    "model_mm3": 147.944,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 56.688,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 12,
+      "components": 12,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "R0017 keyed power cap",
+    "model_mm3": 39.42,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 34.45,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 10,
+      "components": 12,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "grip-screw-keeper_1",
+    "model_mm3": 77.887,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 47.018,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 8,
+      "components": 8,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "receiver-nut-keeper_1",
+    "model_mm3": 30.648,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 42.713,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 4,
+      "components": 4,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "key-board-retainer-west_1",
+    "model_mm3": 128.954,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 68.714,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 37,
+      "components": 66,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "battery-wire-bridge_1",
+    "model_mm3": 368.192,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 252.439,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 17,
+      "components": 17,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 3,
+    "name": "rod-grip_1",
+    "model_mm3": 15741.138,
+    "support_mm3": 0.0,
+    "brim_mm3": 123.379,
+    "support_layers": 0,
+    "first_model_contact_mm2": 168.67,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 664,
+      "components": 685,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 4,
+    "name": "status-charge-guide_1",
+    "model_mm3": 12.991,
+    "support_mm3": 0.0,
+    "brim_mm3": 19.921,
+    "support_layers": 0,
+    "first_model_contact_mm2": 7.927,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 6,
+      "components": 6,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 4,
+    "name": "status-usb-guide_1",
+    "model_mm3": 8.037,
+    "support_mm3": 0.0,
+    "brim_mm3": 13.102,
+    "support_layers": 0,
+    "first_model_contact_mm2": 5.063,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 6,
+      "components": 6,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 4,
+    "name": "status-power-guide_1",
+    "model_mm3": 12.975,
+    "support_mm3": 0.0,
+    "brim_mm3": 19.908,
+    "support_layers": 0,
+    "first_model_contact_mm2": 7.916,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 6,
+      "components": 6,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 5,
+    "name": "usb-c-shield-mask_1",
+    "model_mm3": 41.641,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 77.416,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 3,
+      "components": 4,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 5,
+    "name": "service-cover_1",
+    "model_mm3": 370.711,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 227.359,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 23,
+      "components": 90,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 6,
+    "name": "PKCELL-max-body-with-wire-sockets_1",
+    "model_mm3": 5301.359,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 2167.123,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 27,
+      "components": 27,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 6,
+    "name": "Adafruit-258-CAD-with-PCM-and-stubs_1",
+    "model_mm3": 5390.527,
+    "support_mm3": 0.0,
+    "brim_mm3": 84.385,
+    "support_layers": 0,
+    "first_model_contact_mm2": 170.609,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 315,
+      "components": 330,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "A1 display and controller",
+    "model_mm3": 17732.909,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 5558.293,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 67,
+      "components": 407,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "A2 reel sensor",
+    "model_mm3": 834.846,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 399.368,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 23,
+      "components": 84,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "A3 haptic board",
+    "model_mm3": 1167.012,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 373.322,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 49,
+      "components": 62,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "Case-mounted PCB outline gauge",
+    "model_mm3": 663.76,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 851.495,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 4,
+      "components": 4,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "Top power switch board",
+    "model_mm3": 242.121,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 103.153,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 27,
+      "components": 27,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "USB indicator LED board",
+    "model_mm3": 8.248,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 12.973,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 4,
+      "components": 4,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "USB lamp resistor board",
+    "model_mm3": 3.886,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 6.331,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 5,
+      "components": 5,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  }
+]

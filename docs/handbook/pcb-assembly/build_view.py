@@ -155,6 +155,9 @@ def build(modules, revision):
             or housing["sourceSha256"] != hashlib.sha256((ROOT / source).read_bytes()).hexdigest()):
         raise ValueError(f"Regenerate the scene from the current {revision} housing before packaging")
     steps = json.loads((HERE / "steps.json").read_text(encoding="utf8").replace("@@REVISION@@",housing_revision))
+    if revision in ("R0016", "R0017"):
+        step = next(item for item in steps if item["title"] == "Orient the open housing")
+        step["check"] += " This historical view shows the thin R0005 rotor. Use the reinforced TW-P-0007-R0006 rotor from plate 2 of the TW-A-0003-R0002 print kit."
     apply_power_key_paths(steps, ROOT / f"hardware/mechanical/{assembly}/QA/power-key",scene["parts"])
     apply_usb_indicator(scene, steps, housing_revision)
     if revision == "R0017":

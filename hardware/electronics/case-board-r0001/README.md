@@ -1,5 +1,7 @@
 # Case-mounted control and USB board R0001
 
+The [seven-plate X1C print review](../../mechanical/reel-dfm-r0001/README.md) carries forward this housing and gauge and includes the reinforced reel and updated rod-grip process.
+
 The rear shell now carries one custom PCB that combines A4 audio, sensor-bus and power-key circuitry with A5 USB input protection. Two screws locate the board on integral PETG posts. A third integral rest supports the free edge. The Waveshare module mounts independently on its original enclosure points. This removes six loose spacers and twelve adhesive joints. The product still has separate sensor, haptic and indicator hardware at their functional locations.
 
 **Ready for an unpowered fit print.** The electrical assembly is under engineering review. The two-piece fit kit is TW-A-0003-R0001. The board layout is TW-P-0034-R0001; its population and BOM are registered together as TW-A-0004-R0001.

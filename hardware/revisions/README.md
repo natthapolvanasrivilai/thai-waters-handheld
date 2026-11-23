@@ -1,5 +1,7 @@
 # Hardware revision register
 
+[TW-A-0003-R0002 seven-plate DFM trial](../mechanical/reel-dfm-r0001/README.md) registers the reinforced rotor, combined-board housing and saved X1C print process. The fold and spin are digitally checked. First-article cleanup remains open.
+
 [TW-A-0003-R0001 case-board fit kit](../electronics/case-board-r0001/README.md) registers the two printable fit pieces separately from the full-device baseline. The combined auxiliary PCB is TW-P-0034-R0001.
 
 [R0017 keyed cap](../mechanical/TW-A-0001-R0017/README.md) uses TW-P-0013-R0003 with the R0016 housing. Only the cap needs printing.

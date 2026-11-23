@@ -262,3 +262,7 @@ TW-A-0003-R0001,TW-P-0001-R0014,1,hardware/electronics/case-board-r0001/Case-boa
 TW-A-0003-R0001,TW-P-0035-R0001,1,hardware/electronics/case-board-r0001/Case-board-R0001-X1C-fit.3mf,3D/Objects/gauge_108.model
 TW-A-0004-R0001,TW-P-0034-R0001,1,hardware/electronics/case-board-r0001/case-board.kicad_pcb,
 TW-A-0004-R0001,TW-P-0036-R0001,1,hardware/electronics/case-board-r0001/bom.csv,
+TW-A-0003-R0002,TW-P-0007-R0006,1,hardware/mechanical/reel-dfm-r0001/rotor.stl,
+TW-A-0003-R0002,TW-P-0037-R0001,1,hardware/mechanical/reel-dfm-r0001/Thai-Waters-DFM-R0001-X1C.3mf,
+TW-A-0003-R0002,TW-P-0001-R0014,1,hardware/mechanical/reel-dfm-r0001/Thai-Waters-DFM-R0001-X1C.3mf,3D/Objects/object_1.model
+TW-A-0003-R0002,TW-P-0035-R0001,1,hardware/mechanical/reel-dfm-r0001/Thai-Waters-DFM-R0001-X1C.3mf,3D/Objects/gauge_108.model

@@ -2,7 +2,7 @@
 
 [Prototype carton and divider trial, CAD dimensions and printable patterns](../../manufacturing/packaging/fit-tray/README.md)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/reel-dfm-r0001-fit-1/Thai-Waters-handbook.html)
 
 Trial the USB indicator with the unpowered R0016 case and the leadless Plate 7 gauge. On earlier housings, skip this gauge. Record shelf seating, free withdrawal and support cleanup. [Fit procedure](../../hardware/mechanical/TW-A-0001-R0016/README.md)
 

@@ -1,0 +1,558 @@
+{
+  "before": [
+    {
+      "z": 7.6,
+      "installed_x": 57.252,
+      "model_width_mm": 0.0,
+      "crossings": 0
+    },
+    {
+      "z": 7.8,
+      "installed_x": 56.969,
+      "model_width_mm": 0.315,
+      "crossings": 0
+    },
+    {
+      "z": 8.0,
+      "installed_x": 56.686,
+      "model_width_mm": 0.484,
+      "crossings": 2
+    },
+    {
+      "z": 8.2,
+      "installed_x": 56.403,
+      "model_width_mm": 0.495,
+      "crossings": 2
+    },
+    {
+      "z": 8.4,
+      "installed_x": 56.121,
+      "model_width_mm": 0.492,
+      "crossings": 2
+    },
+    {
+      "z": 8.6,
+      "installed_x": 55.838,
+      "model_width_mm": 0.493,
+      "crossings": 2
+    },
+    {
+      "z": 8.8,
+      "installed_x": 55.555,
+      "model_width_mm": 0.492,
+      "crossings": 2
+    },
+    {
+      "z": 9.0,
+      "installed_x": 55.272,
+      "model_width_mm": 0.491,
+      "crossings": 2
+    },
+    {
+      "z": 9.2,
+      "installed_x": 54.989,
+      "model_width_mm": 0.493,
+      "crossings": 2
+    },
+    {
+      "z": 9.4,
+      "installed_x": 54.706,
+      "model_width_mm": 0.493,
+      "crossings": 2
+    },
+    {
+      "z": 9.6,
+      "installed_x": 54.424,
+      "model_width_mm": 0.493,
+      "crossings": 2
+    },
+    {
+      "z": 9.8,
+      "installed_x": 54.141,
+      "model_width_mm": 0.493,
+      "crossings": 2
+    },
+    {
+      "z": 10.0,
+      "installed_x": 53.858,
+      "model_width_mm": 0.493,
+      "crossings": 2
+    },
+    {
+      "z": 10.2,
+      "installed_x": 53.575,
+      "model_width_mm": 0.493,
+      "crossings": 2
+    },
+    {
+      "z": 10.4,
+      "installed_x": 53.292,
+      "model_width_mm": 0.494,
+      "crossings": 2
+    },
+    {
+      "z": 10.6,
+      "installed_x": 53.009,
+      "model_width_mm": 0.495,
+      "crossings": 2
+    },
+    {
+      "z": 10.8,
+      "installed_x": 52.726,
+      "model_width_mm": 0.495,
+      "crossings": 2
+    },
+    {
+      "z": 11.0,
+      "installed_x": 52.444,
+      "model_width_mm": 0.495,
+      "crossings": 2
+    },
+    {
+      "z": 11.2,
+      "installed_x": 52.161,
+      "model_width_mm": 0.495,
+      "crossings": 2
+    },
+    {
+      "z": 11.4,
+      "installed_x": 51.878,
+      "model_width_mm": 0.491,
+      "crossings": 2
+    },
+    {
+      "z": 11.6,
+      "installed_x": 51.595,
+      "model_width_mm": 0.495,
+      "crossings": 2
+    },
+    {
+      "z": 11.8,
+      "installed_x": 51.312,
+      "model_width_mm": 0.491,
+      "crossings": 2
+    },
+    {
+      "z": 12.0,
+      "installed_x": 51.029,
+      "model_width_mm": 0.491,
+      "crossings": 2
+    },
+    {
+      "z": 12.2,
+      "installed_x": 50.747,
+      "model_width_mm": 0.487,
+      "crossings": 2
+    },
+    {
+      "z": 12.4,
+      "installed_x": 50.464,
+      "model_width_mm": 0.491,
+      "crossings": 2
+    },
+    {
+      "z": 12.6,
+      "installed_x": 50.181,
+      "model_width_mm": 0.489,
+      "crossings": 2
+    },
+    {
+      "z": 12.8,
+      "installed_x": 49.898,
+      "model_width_mm": 0.485,
+      "crossings": 2
+    },
+    {
+      "z": 13.0,
+      "installed_x": 49.615,
+      "model_width_mm": 0.489,
+      "crossings": 2
+    }
+  ],
+  "all": [
+    {
+      "z": 7.6,
+      "installed_x": 57.252,
+      "model_width_mm": 1.677,
+      "crossings": 2
+    },
+    {
+      "z": 7.8,
+      "installed_x": 56.969,
+      "model_width_mm": 1.851,
+      "crossings": 4
+    },
+    {
+      "z": 8.0,
+      "installed_x": 56.686,
+      "model_width_mm": 1.851,
+      "crossings": 5
+    },
+    {
+      "z": 8.2,
+      "installed_x": 56.403,
+      "model_width_mm": 1.842,
+      "crossings": 5
+    },
+    {
+      "z": 8.4,
+      "installed_x": 56.121,
+      "model_width_mm": 1.85,
+      "crossings": 5
+    },
+    {
+      "z": 8.6,
+      "installed_x": 55.838,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 8.8,
+      "installed_x": 55.555,
+      "model_width_mm": 1.845,
+      "crossings": 5
+    },
+    {
+      "z": 9.0,
+      "installed_x": 55.272,
+      "model_width_mm": 1.846,
+      "crossings": 5
+    },
+    {
+      "z": 9.2,
+      "installed_x": 54.989,
+      "model_width_mm": 1.853,
+      "crossings": 5
+    },
+    {
+      "z": 9.4,
+      "installed_x": 54.706,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 9.6,
+      "installed_x": 54.424,
+      "model_width_mm": 1.856,
+      "crossings": 5
+    },
+    {
+      "z": 9.8,
+      "installed_x": 54.141,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 10.0,
+      "installed_x": 53.858,
+      "model_width_mm": 1.854,
+      "crossings": 5
+    },
+    {
+      "z": 10.2,
+      "installed_x": 53.575,
+      "model_width_mm": 1.845,
+      "crossings": 5
+    },
+    {
+      "z": 10.4,
+      "installed_x": 53.292,
+      "model_width_mm": 1.847,
+      "crossings": 5
+    },
+    {
+      "z": 10.6,
+      "installed_x": 53.009,
+      "model_width_mm": 1.851,
+      "crossings": 5
+    },
+    {
+      "z": 10.8,
+      "installed_x": 52.726,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 11.0,
+      "installed_x": 52.444,
+      "model_width_mm": 1.849,
+      "crossings": 5
+    },
+    {
+      "z": 11.2,
+      "installed_x": 52.161,
+      "model_width_mm": 1.851,
+      "crossings": 5
+    },
+    {
+      "z": 11.4,
+      "installed_x": 51.878,
+      "model_width_mm": 1.853,
+      "crossings": 5
+    },
+    {
+      "z": 11.6,
+      "installed_x": 51.595,
+      "model_width_mm": 1.854,
+      "crossings": 5
+    },
+    {
+      "z": 11.8,
+      "installed_x": 51.312,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 12.0,
+      "installed_x": 51.029,
+      "model_width_mm": 1.848,
+      "crossings": 5
+    },
+    {
+      "z": 12.2,
+      "installed_x": 50.747,
+      "model_width_mm": 1.848,
+      "crossings": 5
+    },
+    {
+      "z": 12.4,
+      "installed_x": 50.464,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 12.6,
+      "installed_x": 50.181,
+      "model_width_mm": 1.855,
+      "crossings": 5
+    },
+    {
+      "z": 12.8,
+      "installed_x": 49.898,
+      "model_width_mm": 1.847,
+      "crossings": 5
+    },
+    {
+      "z": 13.0,
+      "installed_x": 49.615,
+      "model_width_mm": 1.844,
+      "crossings": 5
+    }
+  ],
+  "reopen": [
+    {
+      "z": 7.6,
+      "installed_x": 57.252,
+      "model_width_mm": 1.677,
+      "crossings": 2
+    },
+    {
+      "z": 7.8,
+      "installed_x": 56.969,
+      "model_width_mm": 1.851,
+      "crossings": 4
+    },
+    {
+      "z": 8.0,
+      "installed_x": 56.686,
+      "model_width_mm": 1.851,
+      "crossings": 5
+    },
+    {
+      "z": 8.2,
+      "installed_x": 56.403,
+      "model_width_mm": 1.842,
+      "crossings": 5
+    },
+    {
+      "z": 8.4,
+      "installed_x": 56.121,
+      "model_width_mm": 1.85,
+      "crossings": 5
+    },
+    {
+      "z": 8.6,
+      "installed_x": 55.838,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 8.8,
+      "installed_x": 55.555,
+      "model_width_mm": 1.845,
+      "crossings": 5
+    },
+    {
+      "z": 9.0,
+      "installed_x": 55.272,
+      "model_width_mm": 1.846,
+      "crossings": 5
+    },
+    {
+      "z": 9.2,
+      "installed_x": 54.989,
+      "model_width_mm": 1.853,
+      "crossings": 5
+    },
+    {
+      "z": 9.4,
+      "installed_x": 54.706,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 9.6,
+      "installed_x": 54.424,
+      "model_width_mm": 1.856,
+      "crossings": 5
+    },
+    {
+      "z": 9.8,
+      "installed_x": 54.141,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 10.0,
+      "installed_x": 53.858,
+      "model_width_mm": 1.854,
+      "crossings": 5
+    },
+    {
+      "z": 10.2,
+      "installed_x": 53.575,
+      "model_width_mm": 1.845,
+      "crossings": 5
+    },
+    {
+      "z": 10.4,
+      "installed_x": 53.292,
+      "model_width_mm": 1.847,
+      "crossings": 5
+    },
+    {
+      "z": 10.6,
+      "installed_x": 53.009,
+      "model_width_mm": 1.851,
+      "crossings": 5
+    },
+    {
+      "z": 10.8,
+      "installed_x": 52.726,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 11.0,
+      "installed_x": 52.444,
+      "model_width_mm": 1.849,
+      "crossings": 5
+    },
+    {
+      "z": 11.2,
+      "installed_x": 52.161,
+      "model_width_mm": 1.851,
+      "crossings": 5
+    },
+    {
+      "z": 11.4,
+      "installed_x": 51.878,
+      "model_width_mm": 1.853,
+      "crossings": 5
+    },
+    {
+      "z": 11.6,
+      "installed_x": 51.595,
+      "model_width_mm": 1.854,
+      "crossings": 5
+    },
+    {
+      "z": 11.8,
+      "installed_x": 51.312,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 12.0,
+      "installed_x": 51.029,
+      "model_width_mm": 1.848,
+      "crossings": 5
+    },
+    {
+      "z": 12.2,
+      "installed_x": 50.747,
+      "model_width_mm": 1.848,
+      "crossings": 5
+    },
+    {
+      "z": 12.4,
+      "installed_x": 50.464,
+      "model_width_mm": 1.852,
+      "crossings": 5
+    },
+    {
+      "z": 12.6,
+      "installed_x": 50.181,
+      "model_width_mm": 1.855,
+      "crossings": 5
+    },
+    {
+      "z": 12.8,
+      "installed_x": 49.898,
+      "model_width_mm": 1.847,
+      "crossings": 5
+    },
+    {
+      "z": 13.0,
+      "installed_x": 49.615,
+      "model_width_mm": 1.844,
+      "crossings": 5
+    }
+  ],
+  "original_rod_starts": [
+    {
+      "z": 34.0,
+      "area_mm2": 0.15561,
+      "bbox": [
+        136.6725400322984,
+        136.4255419176264,
+        137.14045480294033,
+        136.8524599677016
+      ]
+    }
+  ],
+  "island_support": [
+    {
+      "name": "Case with integral board mounts",
+      "z": 14.2,
+      "model_start_area_mm2": 17.00415,
+      "bbox": [
+        81.595,
+        120.49000000000001,
+        84.505,
+        126.36
+      ],
+      "support_intersection_by_z": {
+        "13.4": 8.1207,
+        "13.6": 8.1207,
+        "13.8": 8.1207
+      }
+    },
+    {
+      "name": "Reel rotor - reinforced pocket",
+      "z": 10.4,
+      "model_start_area_mm2": 2.89225,
+      "bbox": [
+        89.027744,
+        148.329744,
+        89.652256,
+        153.268256
+      ],
+      "support_intersection_by_z": {
+        "9.6": 1.8834,
+        "9.8": 1.9046,
+        "10.0": 0.0079
+      }
+    }
+  ]
+}
