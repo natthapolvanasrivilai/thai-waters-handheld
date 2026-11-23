@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Synthetic file storage probe</title>
+<style>
+ body{font:18px sans-serif;margin:20px}
+ button,a{display:block;margin:12px 0;padding:20px;touch-action:none}
+</style>
+<button id="seed" type="button">Write synthetic preferences</button>
+<button id="move" type="button">Commit synthetic career</button>
+<a id="relative" href="./prefixed/probe.html">Relative sibling</a>
+<script>
+'use strict';
+const key = ['pocket-reel-fixture-language','pocket-reel-fixture-career'];
+function readFixture() {
+ let language=null, career=null, error=null;
+ try {
+  language=localStorage.getItem(key[0]);
+  career=localStorage.getItem(key[1]);
+ } catch(e) { error=e.name; }
+ return {language,career,error,known:history.state?.fixtureKnown===true,
+   ready:document.readyState,epoch:performance.timeOrigin,protocol:location.protocol};
+}
+const fixtureAtScript = readFixture();
+const record = [];
+function writeFixture(button, event) {
+ record.push({button, trusted:event.isTrusted, type:event.type, source:event.pointerType||'keyboard'});
+ if (button==='seed') localStorage.setItem(key[0],'synthetic-TH');
+ localStorage.setItem(key[1],button==='seed'?'synthetic-initial':'synthetic-travel');
+ history.replaceState({...history.state,fixtureKnown:true},'');
+}
+for (const button of ['seed','move']) {
+ const el=document.getElementById(button);
+ el.addEventListener('pointerdown',e=>{if(e.pointerType==='touch') {
+  e.preventDefault();el.setPointerCapture(e.pointerId);
+ }});
+ el.addEventListener('pointerup',e=>{if(e.pointerType==='touch')writeFixture(button,e);});
+ el.addEventListener('click',e=>{if(e.detail===0)writeFixture(button,e);});
+}
+</script>

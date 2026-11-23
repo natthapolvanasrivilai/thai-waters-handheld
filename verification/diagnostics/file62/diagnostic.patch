@@ -1,0 +1,25 @@
+--- a/verification/browser-tests/location-map.cjs
++++ b/verification/browser-tests/location-map.cjs
+@@ -33,6 +33,9 @@
+       epoch:performance.timeOrigin,known:history.state?.pocketReelCareerKnown===true,raw:null,error:null};
+      try{entry.raw=localStorage.getItem('thai-atlas-v2');}
+      catch(e){entry.error=e.name||'StorageError';}
++     // Existing app-owned preference only. Record a flag, never its value; do not seed storage.
++     try{entry.languageBinding=localStorage.getItem('thai-waters-language')===null?'missing':'present';}
++     catch{entry.languageBinding='blocked';}
+      return entry;
+     };
+     window.__mapFileStorageRead=read;
+@@ -255,10 +258,10 @@
+    await p.reload();
+    let startupError=null;
+    try{await requireBootHome(p);}catch(e){startupError=e;}
+-   const observed=await p.evaluate(()=>({sameFile:location.protocol==='file:',atStart:__mapFileAtStart,
++   const observed=await p.evaluate(fileUrl=>({sameFile:location.href===fileUrl,atStart:__mapFileAtStart,
+     afterBoot:__mapFileStorageRead(),recovery:!$('startupRecovery').hidden,
+     lock:fileCareerGuard.recovering,powered,place:g?placeId:null,phase:g?.state()??null,
+-    pending:pendingCapture?.id??null}));
++    pending:pendingCapture?.id??null}),url);
+    const evidence={lane:name,beforeReload:summary(beforeReload),sameFile:observed.sameFile,
+     atStart:summary(observed.atStart),afterBoot:summary(observed.afterBoot),recovery:observed.recovery,
+     lock:observed.lock,powered:observed.powered,place:observed.place,phase:observed.phase,
