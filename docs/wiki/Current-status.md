@@ -4,7 +4,7 @@ Reviewed 2026-11-23
 
 ## Engineering revision
 
-TW-A-0001-R0017 fits a keyed power cap into the existing R0016 housing. Reprint only the cap. Both its pressing face and the inner flange follow the single square corner in the existing opening. [Cap-only X1C plate](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-1/R0017-keyed-power-cap-X1C.3mf) · [Profile and fit evidence](../../hardware/mechanical/TW-A-0001-R0017/README.md)
+TW-A-0001-R0017 fits a keyed power cap into the existing R0016 housing. Reprint only the cap. Both its pressing face and the inner flange follow the single square corner in the existing opening. [Cap-only X1C plate](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/R0017-keyed-power-cap-X1C.3mf) · [Profile and fit evidence](../../hardware/mechanical/TW-A-0001-R0017/README.md)
 
 TW-A-0001-R0016 provides a side-loading channel for the USB indicator and includes the power-key relief and A3 board rails. [R0016 housing and dry fit](../../hardware/mechanical/TW-A-0001-R0016/README.md)
 
@@ -38,7 +38,7 @@ With the display off the case and the switch board and its west retainer set asi
 
 Let the R0013 plate 7 finish. For the new case, print only plate 1 from the R0016 project. Reuse all eight PCB gauges and the six square A4/A5 spacers. Set aside both long A3 strips. In the new case, dry-fit A3 directly onto the printed rail tops with J1 toward the lower service edge. Check for rocking, contact under the board and display closure before any bonding.
 
-[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-1/R0017-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-1/Thai-Waters-handbook.html) · [Housing identification and A3 fit instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
+[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/R0017-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/Thai-Waters-handbook.html) · [Housing identification and A3 fit instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
 
 With an older flat-floor R0013 housing, its two loose strips still establish the correct height. The R20 carrier trial is independent of the housing change. In the R0014 project plate 7 contains the same eight PCB gauges and six loose A4/A5 spacers. The four thin A2 shims in the full housing remain separate measured stock.
 

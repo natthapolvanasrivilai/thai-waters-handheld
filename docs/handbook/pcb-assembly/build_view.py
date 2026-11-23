@@ -151,7 +151,7 @@ def build(modules, revision):
     if (scene["assembly"] != assembly or housing["source"] != source
             or housing["sourceSha256"] != hashlib.sha256((ROOT / source).read_bytes()).hexdigest()):
         raise ValueError(f"Regenerate the scene from the current {revision} housing before packaging")
-    steps = json.loads((HERE / "steps.json").read_text(encoding="utf8").replace("@@REVISION@@",revision))
+    steps = json.loads((HERE / "steps.json").read_text(encoding="utf8").replace("@@REVISION@@",housing_revision))
     apply_power_key_paths(steps, ROOT / f"hardware/mechanical/{assembly}/QA/power-key",scene["parts"])
     apply_usb_indicator(scene, steps, housing_revision)
     if revision == "R0017":

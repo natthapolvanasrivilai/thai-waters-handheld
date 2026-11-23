@@ -105,6 +105,10 @@ async function inspect(browser,guide){
       const housingAssembly=looseRails?'TW-A-0001-R0011':housingId;
       assert.equal(assembly.housing,'hardware/mechanical/'+housingAssembly+'/Print/housing-battery-bay.stl');
       assert.ok((await page.title()).includes(revision));
+      if(revision==='R0017'){
+        assert.ok(assembly.steps.some(s=>s.instruction.includes('R0016 plate-1 housing')));
+        assert.ok(assembly.steps.every(s=>!s.instruction.includes('R0017 plate-1 housing')));
+      }
       assert.deepEqual(assembly.parts.filter(id=>/^A[345]s/.test(id)).sort(),
         [...(looseRails?['A3s1','A3s2']:[]),'A4s1','A4s2','A4s3','A5s1','A5s2','A5s3']);
       const ids=await page.locator('#steps option').evaluateAll(x=>x.map(e=>e.value));

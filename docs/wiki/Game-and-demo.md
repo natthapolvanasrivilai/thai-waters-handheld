@@ -1,6 +1,6 @@
 # Play and evaluate a cast
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/Thai-Waters-handbook.html)
 
 [Open the private phone playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt.site) for the current hosted browser build. The downloaded R0011 handbook’s embedded demo is archived. On a phone, open the playtest directly in the browser for motion permission. The [phone test guide](../../game/sites/Phone-playtest.md) covers calibration and fallback controls.
 
