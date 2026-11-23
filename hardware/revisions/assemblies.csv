@@ -18,3 +18,4 @@ TW-A-0001-R0012,,Dressed enclosure with CviLux service study,147-member engineer
 TW-A-0002-R0005,,CviLux haptics and R0004 daughterboard fit study,"A3, A4 and A5 engineering integration. The proposed A1 controller ECO remains incomplete.",hardware/verification/r0012/README.md,R0005-001
 TW-A-0001-R0013,,Seated-display CviLux service assembly,155 installed components in the engineering STEP. R20 is a separate carrier print.,quality/seated-connector-review.md,R0013-001
 TW-A-0002-R0006,,Seated-service haptics and limited USB input,Rerouted A3 on the seated display installation and A5 with source detection and resistive current limiting.,hardware/verification/r0013/README.md,R0006-001
+TW-A-0001-R0014,,Housing with integral A3 haptic-board seats,Two grooved rails carry the board at its R0013 datum in the R0006 electrical installation.,hardware/mechanical/TW-A-0001-R0014/README.md,R0014-001

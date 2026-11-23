@@ -41,3 +41,7 @@ hardware/electronics/usb-entry-r0006/*.kicad_* -text
 hardware/electronics/usb-entry-r0006/*.json -text
 hardware/electronics/usb-entry-r0006/connectivity.xml -text
 hardware/electronics/usb-entry-r0006/installed-leads/*.json -text
+
+hardware/mechanical/TW-A-0001-R0014/*.json -text
+hardware/mechanical/TW-A-0001-R0014/QA/*.json -text
+hardware/mechanical/TW-A-0001-R0014/Printing/QA/*.json -text

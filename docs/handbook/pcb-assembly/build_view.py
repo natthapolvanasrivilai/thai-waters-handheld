@@ -1,5 +1,6 @@
 """Build the offline Plate 7 assembly view from checked geometry and step instructions."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -8,11 +9,16 @@ import tempfile
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-OUTPUT = ROOT / "docs/models/R0013-PCB-assembly.html"
+OUTPUT = ROOT / "docs/models/R0014-PCB-assembly.html"
 
 
 def build(modules):
     scene = json.loads((HERE / "scene.json").read_bytes())
+    housing = scene["parts"]["housing"]
+    source = "hardware/mechanical/TW-A-0001-R0014/Print/housing-battery-bay.stl"
+    if (scene["assembly"] != "TW-A-0001-R0014" or housing["source"] != source
+            or housing["sourceSha256"] != hashlib.sha256((ROOT / source).read_bytes()).hexdigest()):
+        raise ValueError("Regenerate the scene from the current R0014 housing before packaging")
     steps = json.loads((HERE / "steps.json").read_bytes())
     all_ids = set(scene["parts"])
     covered = set()

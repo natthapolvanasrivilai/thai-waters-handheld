@@ -1,0 +1,56 @@
+{
+  "reference": "R0009 controlled installed housing, R0013 STEP. The lower face is Z0.80 and the inside floor is Z2.50. The existing integral grip receiver lip intercepts the east witness at X26.90 and extends to Z-3.20; these baseline surfaces are independently checked before the change.",
+  "regions": [
+    {
+      "name": "floor below west A3 rail",
+      "axis": "z",
+      "plane_mm": 0.8,
+      "outward": -1,
+      "footprint_mm": [
+        [
+          16.5,
+          19.5
+        ],
+        [
+          -12,
+          0
+        ]
+      ],
+      "stock_depth_mm": 1.7
+    },
+    {
+      "name": "floor below east A3 rail and existing receiver lip",
+      "axis": "z",
+      "plane_mm": 0.8,
+      "outward": -1,
+      "footprint_mm": [
+        [
+          24.5,
+          27.5
+        ],
+        [
+          -12,
+          0
+        ]
+      ],
+      "stock_depth_mm": 1.7,
+      "allowed_protrusions": [
+        {
+          "name": "existing receiver lip",
+          "reason": "R0009 housing-battery-bay.brep intersects this witness over X26.90..27.50. The receiver sole is at Z-3.20.",
+          "footprint_mm": [
+            [
+              26.9,
+              27.5
+            ],
+            [
+              -12,
+              0
+            ]
+          ],
+          "max_height_mm": 4
+        }
+      ]
+    }
+  ]
+}

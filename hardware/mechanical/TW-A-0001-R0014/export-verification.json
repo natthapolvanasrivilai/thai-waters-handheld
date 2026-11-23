@@ -1,0 +1,16 @@
+{
+  "source_assembly": "TW-A-0001-R0013",
+  "source_step_sha256": "9096cb87773e21e6dc5fd4114182ab9818a4c1b762eb9a21e312203e5f3357e4",
+  "installed_step_components": 154,
+  "step_sha256": "736154bed8462ee35f554eb8219495ad4da92870026ce1b03ba1e8a389fda2fb",
+  "packed_step_sha256": "95ebe5c86d4698bbd21c3f808c7b7463e83b22618fda6dbc245f21fa3a51604e",
+  "unchanged_installed_members": 153,
+  "changed_member": "Housing",
+  "removed_node": "adhH",
+  "total_volume_of_new_housing_outside_old_housing_and_foam_mm3": 0,
+  "max_roundtrip_absolute_volume_delta_mm3": 0.00029,
+  "max_bounds_delta_mm": 0.0002,
+  "local_dressed_step": "TW-A-0001-R0014-dressed.step",
+  "local_archive": "TW-A-0001-R0014-dressed.step.gz",
+  "sharing": "Full electrical assembly contains locally retained supplier geometry. Preserve the R0013 distribution boundary."
+}

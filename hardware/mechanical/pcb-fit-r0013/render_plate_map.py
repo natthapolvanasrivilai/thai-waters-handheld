@@ -1,4 +1,5 @@
 """Render a print-friendly plate 7 identification map from the delivered native 3MF."""
+from argparse import ArgumentParser
 from pathlib import Path
 from hashlib import sha256
 from xml.etree import ElementTree as ET
@@ -31,8 +32,8 @@ def metadata(node,key):
     return node.find(f"metadata[@key='{key}']").get("value")
 
 
-def read_plate():
-    with ZipFile(PROJECT) as pack:
+def read_plate(project, spacer_counts):
+    with ZipFile(project) as pack:
         graph=ET.fromstring(pack.read("3D/3dmodel.model"))
         cfg=ET.fromstring(pack.read("Metadata/model_settings.config"))
         plate=next(p for p in cfg.findall("plate") if metadata(p,"plater_id")=="7")
@@ -56,7 +57,11 @@ def read_plate():
             shape=trimesh.Trimesh(xyz,triangles,process=False)
             shape.apply_transform(plate_pose)
             meshes[name]=shape
-        assert len(meshes)==16 and np.max(np.ptp(shifts,axis=0))<.0001
+        expected = set(GAUGES)
+        for board, count in spacer_counts.items():
+            zone = "floor" if board == "A3" else "display"
+            expected.update(f"{board} {zone} spacer {i}" for i in range(1, count + 1))
+        assert set(meshes)==expected and np.max(np.ptp(shifts,axis=0))<.0001
         return meshes
 
 
@@ -85,14 +90,17 @@ def draw_mesh(ax,mesh,base):
     ax.plot(outline[:,0],outline[:,1],lw=.57,color=INK,zorder=4)
 
 
-def render():
-    meshes=read_plate()
+def render(project=PROJECT, revision="R0013", output=HERE/"plate-7.png"):
+    spacer_counts = {"A4":3, "A5":3}
+    if revision=="R0013":
+        spacer_counts["A3"]=2
+    meshes=read_plate(project, spacer_counts)
     fig=plt.figure(figsize=(11.69,8.27),facecolor="white")
     fig.text(.066,.942,"Plate 7   PCB fit gauges",fontsize=25,fontweight="bold",color=INK)
     fig.text(.067,.903,"Top view of the saved X1 Carbon plate. The rear edge is toward the top.",
              fontsize=11,color=MUTED)
     fig.text(.934,.946,"THAI WATERS",ha="right",weight="bold",fontsize=10,color=INK)
-    fig.text(.934,.918,"TW-A-0001-R0013",ha="right",fontsize=9,color=MUTED)
+    fig.text(.934,.918,f"TW-A-0001-{revision}",ha="right",fontsize=9,color=MUTED)
     ax=fig.add_axes([.075,.136,.865,.730])
     ax.set_xlim(26,229)
     ax.set_ylim(43,192)
@@ -128,6 +136,8 @@ def render():
             ax.text(x,y,short,ha="center",weight="bold",color=INK,fontsize=10,zorder=6)
             ax.text(x,y-4.4,long,ha="center",color=MUTED,fontsize=8.2,zorder=6)
     for prefix,label in SPACERS.items():
+        if prefix not in spacer_counts:
+            continue
         group=[m for name,m in meshes.items() if name.startswith(prefix+" ") and "spacer " in name]
         xmin=min(m.bounds[0,0] for m in group)
         xmax=max(m.bounds[1,0] for m in group)
@@ -141,9 +151,15 @@ def render():
     fig.text(.075,.035,"Keep the A4 and A5 spacer sets separate when you lift them from the plate.",
              fontsize=10,color=INK)
     fig.text(.94,.035,"Cropped plate view  ·  Scale shown by axes",ha="right",fontsize=8,color=MUTED)
-    fig.savefig(HERE/"plate-7.png",dpi=230,metadata={"Source3MF":sha256(PROJECT.read_bytes()).hexdigest()})
+    fig.savefig(output,dpi=230,metadata={"Source3MF":sha256(project.read_bytes()).hexdigest()})
     plt.close(fig)
 
 
 if __name__=="__main__":
-    render()
+    parser=ArgumentParser(description=__doc__)
+    parser.add_argument("--r0014",action="store_true",help="Draw the revised kit with integral A3 rails")
+    if parser.parse_args().r0014:
+        kit = HERE.with_name("TW-A-0001-R0014")/"Printing"
+        render(kit/"Thai-Waters-R0014-PCB-Fit-X1C.3mf", "R0014", kit/"plate-7.png")
+    else:
+        render()

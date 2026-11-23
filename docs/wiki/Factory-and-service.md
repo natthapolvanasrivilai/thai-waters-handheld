@@ -2,7 +2,9 @@
 
 [Prototype carton and divider trial, CAD dimensions and printable patterns](../../manufacturing/packaging/fit-tray/README.md)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/Thai-Waters-handbook.html)
+
+For the R0014 dry fit, run a fingertip along both A3 seats to check for strings, set the unpowered board gauge directly on the hard lands, and check for rocking before seating the display. Use both long strips only with an older flat-floor R0013 shell. [R0014 assembly instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
 
 Select **Assembly process** for the ten factory stations and the downloadable unit record. In the 3D viewer, step through the mechanical order to inspect access before routing a harness.
 

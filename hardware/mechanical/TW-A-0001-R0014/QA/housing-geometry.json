@@ -1,0 +1,189 @@
+{
+  "parent_brep_sha256": "8aec1c9df2d2b894b9316144e6fa9924b0adb6e320cf27208812d2fb1b99fc47",
+  "previous_stl_sha256": "ccbdd035b46d46a761a75ca0661b0c19c966b78cc7e3c5e46169c9874fb2e922",
+  "removed_foam_brep_sha256": "1fea27839fce1912e6219c5487f4602f545fc0371d1a2b48b2509d9e31b5f7f8",
+  "housing_step_sha256": "5cc73e2d7f684b8ee30ca5e2a22bc7c069d183870ac28fa6d86844c923590290",
+  "housing_brep_sha256": "ae66ab30cb6289ddb4919fe5414bdbd486d1a23587c75a6ba7a3049c3754c52e",
+  "print_stl_sha256": "7e719b8ec875275e80b865f8de49a7602a1fe6e3e34f5ffc4ff0a508bcefe4e2",
+  "witness_sha256": "5aab73417831b81a0fbdea5985e50c1058d44c98b6ce2840dc91e19c30263f35",
+  "step_valid_single_solid": true,
+  "print_watertight_single_component": true,
+  "units": "mm",
+  "installed_centers_xy": [
+    [
+      18.0,
+      -6
+    ],
+    [
+      26.0,
+      -6
+    ]
+  ],
+  "rail_envelope_mm": [
+    3,
+    12,
+    2.1
+  ],
+  "visible_rail_z_mm": [
+    2.5,
+    4.6
+  ],
+  "groove_width_length_depth_mm": [
+    1.2,
+    8,
+    0.4
+  ],
+  "groove_open_direction": "+Y",
+  "added_PETG_mm3": 143.520011,
+  "real_foam_replaced_mm3": 151.2,
+  "gross_foot_area_each_mm2": 36,
+  "hard_bearing_top_area_each_mm2": 26.4,
+  "groove_capacity_each_mm3": 3.84,
+  "global_original_material_removed_mm3": 0.0,
+  "global_added_material_outside_two_interior_rails_mm3": 0.0,
+  "print_volume_increase_mm3": 143.520037,
+  "baseline_exterior": {
+    "pass": true,
+    "regions": [
+      {
+        "name": "floor below west A3 rail",
+        "axis": "z",
+        "plane_mm": 0.8,
+        "outward": -1,
+        "footprint_mm": [
+          [
+            16.5,
+            19.5
+          ],
+          [
+            -12,
+            0
+          ]
+        ],
+        "stock_depth_mm": 1.7,
+        "allowed_protrusions": [],
+        "stock_openings": [],
+        "required_stock_mm3": 61.19999999999999,
+        "missing_stock_mm3": 0,
+        "unexpected_outer_mm3": 0,
+        "unexpected_outer_solids": 0,
+        "max_unexpected_height_mm": 0,
+        "pass": true
+      },
+      {
+        "name": "floor below east A3 rail and existing receiver lip",
+        "axis": "z",
+        "plane_mm": 0.8,
+        "outward": -1,
+        "footprint_mm": [
+          [
+            24.5,
+            27.5
+          ],
+          [
+            -12,
+            0
+          ]
+        ],
+        "stock_depth_mm": 1.7,
+        "allowed_protrusions": [
+          {
+            "name": "existing receiver lip",
+            "reason": "R0009 housing-battery-bay.brep intersects this witness over X26.90..27.50. The receiver sole is at Z-3.20.",
+            "footprint_mm": [
+              [
+                26.9,
+                27.5
+              ],
+              [
+                -12,
+                0
+              ]
+            ],
+            "max_height_mm": 4
+          }
+        ],
+        "stock_openings": [],
+        "required_stock_mm3": 61.19999999999999,
+        "missing_stock_mm3": 0,
+        "unexpected_outer_mm3": 0,
+        "unexpected_outer_solids": 0,
+        "max_unexpected_height_mm": 0,
+        "pass": true
+      }
+    ],
+    "numerical_volume_tol_mm3": 1e-05
+  },
+  "released_exterior": {
+    "pass": true,
+    "regions": [
+      {
+        "name": "floor below west A3 rail",
+        "axis": "z",
+        "plane_mm": 0.8,
+        "outward": -1,
+        "footprint_mm": [
+          [
+            16.5,
+            19.5
+          ],
+          [
+            -12,
+            0
+          ]
+        ],
+        "stock_depth_mm": 1.7,
+        "allowed_protrusions": [],
+        "stock_openings": [],
+        "required_stock_mm3": 61.19999999999999,
+        "missing_stock_mm3": 0,
+        "unexpected_outer_mm3": 0,
+        "unexpected_outer_solids": 0,
+        "max_unexpected_height_mm": 0,
+        "pass": true
+      },
+      {
+        "name": "floor below east A3 rail and existing receiver lip",
+        "axis": "z",
+        "plane_mm": 0.8,
+        "outward": -1,
+        "footprint_mm": [
+          [
+            24.5,
+            27.5
+          ],
+          [
+            -12,
+            0
+          ]
+        ],
+        "stock_depth_mm": 1.7,
+        "allowed_protrusions": [
+          {
+            "name": "existing receiver lip",
+            "reason": "R0009 housing-battery-bay.brep intersects this witness over X26.90..27.50. The receiver sole is at Z-3.20.",
+            "footprint_mm": [
+              [
+                26.9,
+                27.5
+              ],
+              [
+                -12,
+                0
+              ]
+            ],
+            "max_height_mm": 4
+          }
+        ],
+        "stock_openings": [],
+        "required_stock_mm3": 61.19999999999999,
+        "missing_stock_mm3": 0,
+        "unexpected_outer_mm3": 0,
+        "unexpected_outer_solids": 0,
+        "max_unexpected_height_mm": 0,
+        "pass": true
+      }
+    ],
+    "numerical_volume_tol_mm3": 1e-05
+  }
+}

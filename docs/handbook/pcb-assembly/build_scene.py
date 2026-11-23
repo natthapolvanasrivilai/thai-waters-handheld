@@ -13,6 +13,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 MECHANICAL = ROOT / "hardware/mechanical"
 GAUGES = MECHANICAL / "pcb-fit-r0013"
+ASSEMBLY = MECHANICAL / "TW-A-0001-R0014"
 R20 = MECHANICAL / "pocket-reel-r19b-removal-trial"
 sys.path.insert(0, str(GAUGES))
 import check_assembly_fit as fit
@@ -93,9 +94,15 @@ def build():
         np.testing.assert_allclose(mesh.bounds, row["installed_min_max_mm"], atol=.0001, rtol=0)
 
     orientations = read(fit.HOUSING / "part-orientations.json")
+    housing_orientation = read(ASSEMBLY / "part-orientations.json")["housing-battery-bay"]
     for label, original in fit.COMPANIONS.items():
-        row = orientations[original]
-        path = fit.HOUSING / row["print_stl"]
+        if label == "Housing":
+            row = housing_orientation
+            np.testing.assert_allclose(row["assembly_to_print"], orientations[original]["assembly_to_print"])
+            path = ASSEMBLY / row["print_stl"]
+        else:
+            row = orientations[original]
+            path = fit.HOUSING / row["print_stl"]
         mesh = checked_mesh(path, row["sha256"])
         pose = np.linalg.inv(row["assembly_to_print"])
         if label in ("Adafruit", "PKCELL"):
@@ -103,7 +110,28 @@ def build():
         scene.add(CASE_IDS[label], mesh, path, pose)
 
     fixture_ids = dict(CASE_IDS)
+    # The R0013 ledger includes two loose A3 strips. Their bearing faces are
+    # now part of one R0014 housing solid; the other spacer bodies are unchanged.
+    integral_seats = set()
     for original, (bottom, centers) in fit.SUPPORTS.items():
+        if original == "A3-floor-shim":
+            housing, board = scene.solids["housing"], scene.solids["A3"]
+            for index, center in enumerate(centers, 1):
+                key = f"{original}-{index}"
+                integral_seats.add(key)
+                seat = report["dry_spacer_coverage_at_faces"][key]
+                z = seat["installed_bottom_top_mm"][1]
+                footprint = mf.CrossSection.square((3, 12), center=True).translate(center)
+                # An open-ended 1.20 × 8.00 mm adhesive groove removes 9.60
+                # mm² from each former strip's 36 mm² top bearing footprint.
+                groove = mf.CrossSection.square((1.2, 8), center=True).translate((center[0], -4))
+                expected = footprint - groove
+                patch = footprint ^ housing.slice(z - .001) ^ board.slice(z + .001)
+                if (expected - patch).area() + (patch - expected).area() > .001:
+                    raise ValueError(f"A3 board does not bear on the integral rail faces at {center}")
+                if (footprint ^ housing.slice(z + .001)).area() > .001:
+                    raise ValueError(f"Housing projects above the A3 seat at {center}")
+            continue
         path = GAUGES / "meshes" / (original + ".stl")
         for index, (x, y) in enumerate(centers, 1):
             name = f"{original[:2]}s{index}"
@@ -112,7 +140,7 @@ def build():
             recorded = report["dry_spacer_coverage_at_faces"][f"{original}-{index}"]
             fixture_ids[f"{original}-{index}"] = name
             np.testing.assert_allclose(mesh.bounds[:,2], recorded["installed_bottom_top_mm"], atol=.0001)
-            under, above = (("housing","A3") if original.startswith("A3") else (original[:2],"A1"))
+            under, above = original[:2], "A1"
             contact = fit.seat_contact(scene.solids[name], bottom, scene.solids[under], scene.solids[above])
             if contact != recorded:
                 raise ValueError(f"Support registration or face contact changed: {name}")
@@ -121,6 +149,8 @@ def build():
     # controlled fit ledger. Both battery alternatives are checked in turn.
     for board, recorded in report["final_gauges_to_full_case_parts_common_mm3"].items():
         for fixture, volume in recorded.items():
+            if fixture in integral_seats:
+                continue  # Included in the gauge-to-housing check for this board.
             actual = fit.common(scene.solids[BOARD_IDS[board]], scene.solids[fixture_ids[fixture]])
             if abs(actual - volume) > .00001:
                 raise ValueError(f"Installed fit changed for {board} against {fixture}")
@@ -170,7 +200,7 @@ def build():
                 raise ValueError("Stock intersects its neighbor")
 
     return {
-        "units": "mm", "scale": SCALE, "assembly": "TW-A-0001-R0013",
+        "units": "mm", "scale": SCALE, "assembly": ASSEMBLY.name,
         "frame": "Installed XYZ: +X reel, +Y power cap, +Z display",
         "encoding": "v: base64 little-endian int32 XYZ times scale; f: base64 little-endian uint32 triangle indices",
         "parts": scene.parts,

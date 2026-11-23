@@ -1,8 +1,10 @@
 # Prototype sourcing and cost
 
+**R0014 housing.** One revised printed housing includes the two A3 seats. The earlier dry-fit strips and die-cut support pads are omitted at A3. Six loose printed spacers remain on the PCB gauge plate for A4 and A5. Bond material, application and retention still require qualification before costing a production process. [R0014 build record](../../hardware/mechanical/TW-A-0001-R0014/README.md)
+
 **R0012 service study.** The [CviLux interconnect and board changes](../../sourcing/production-intent/R0012-interconnect-delta.csv) supersede the Würth haptic header, plug and terminated leads in the historical budget. Cavities 1, 3, 4 and 5 take contacts. A4 and A5 have separate population definitions. Prototype sample prices, harness tooling and delivered board costs are open. Applying the earlier total to this configuration would understate those unknowns. [Historical R0011/R0004 budget](../../sourcing/production-intent/R0011-R0004-BOM.md)
 
-[Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/Thai-Waters-handbook.html)
+[Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/Thai-Waters-handbook.html)
 
 ## Historical R0011/R0004 engineering BOM
 

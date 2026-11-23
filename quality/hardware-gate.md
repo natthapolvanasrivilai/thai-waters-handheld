@@ -1,6 +1,6 @@
 # Hardware closure before gameplay development
 
-[R0013 seated service and USB power results](seated-connector-review.md)
+[R0014 integrated A3 supports and physical checks](../hardware/mechanical/TW-A-0001-R0014/README.md) · [R0013 seated service and USB power results](seated-connector-review.md)
 
 [Product issue tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [Latest hardware evidence and open physical checks](hardware-review-2026-11-23.md)
 

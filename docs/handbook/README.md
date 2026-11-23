@@ -2,7 +2,7 @@
 
 Update [the status record](../wiki/Current-status.md) in the same change as a new revision, owner observation, print kit, release, or changed project gate. Include the review date, identifiers, physical evidence, open checks and next action. Link directly to the underlying records. The reader accepts plain paragraphs, `##` headings and inline Markdown links to files or releases in this GitHub project.
 
-The [handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/Thai-Waters-handbook.html) discovers the current source each time it opens. A single same-repository open PR can serve as the active engineering review. Append the following marker as the last line of that PR's description, outside any code block.
+The [handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/Thai-Waters-handbook.html) discovers the current source each time it opens. A single same-repository open PR can serve as the active engineering review. Append the following marker as the last line of that PR's description, outside any code block.
 
 ```text
 <!-- current-handbook -->
@@ -16,7 +16,7 @@ Routine record edits reach existing downloads on their next successful open. Kee
 
 ## Package the offline PCB assembly guide
 
-1. From the repository root, run `npm ci --prefix game/src` and `python docs/handbook/pcb-assembly/build_view.py` to regenerate the [standalone 3D guide](../models/R0013-PCB-assembly.html). See the [viewer builder](pcb-assembly/build_view.py) for source inputs.
+1. From the repository root, run `npm ci --prefix game/src` and `python docs/handbook/pcb-assembly/build_view.py` to regenerate the [standalone 3D guide](../models/R0014-PCB-assembly.html). See the [viewer builder](pcb-assembly/build_view.py) for source inputs.
 2. When releasing a new offline edition or changing [the reader](live-panel.html), run `python tools/check_current_handbook.py --embed RELEASE_TAG`, followed by `python tools/check_current_handbook.py`. The packager stamps the status snapshot and embeds the standalone HTML bytes. The second command compares the embedded panel with its source and the current standalone file.
 3. Run `npm ci --ignore-scripts --prefix verification/browser-tests` and `node verification/browser-tests/handbook-current.cjs`. The test opens the local handbook, uses the PCB assembly tab offline, compares its loaded bytes with the standalone file, then exercises archive navigation. Run `node verification/browser-tests/handbook-current.cjs PATH_TO_PREVIOUS_HANDBOOK --legacy` for a pre-assembly live reader. It checks the standalone download link delivered by the current status record.
-4. Attach the [single-file handbook](../index.html) as `Thai-Waters-handbook.html` and the standalone file as `R0013-PCB-assembly.html`. Link both release assets from the [status record](../wiki/Current-status.md). After publication, open the standalone download from an earlier live reader and compare the downloaded files with the packaged originals.
+4. Attach the [single-file handbook](../index.html) as `Thai-Waters-handbook.html` and the standalone file as `R0014-PCB-assembly.html`. Link both release assets from the [status record](../wiki/Current-status.md). After publication, open the standalone download from an earlier live reader and compare the downloaded files with the packaged originals.

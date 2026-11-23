@@ -1,6 +1,6 @@
 # Hardware revision register
 
-**Current engineering configuration.** TW-A-0001-R0013 pairs with TW-A-0002-R0006 for seated CviLux service, the revised A3 layout and the limited A5 USB input. R20 identifies the inert X1C first article on the separate print track. [R0013 review and physical holds](../../quality/seated-connector-review.md) · [R0012 and the R20 print](../../quality/hardware-review-2026-11-23.md)
+**Current engineering configuration.** TW-A-0001-R0014 carries A3 directly on two integral floor rails, with TW-A-0002-R0006 electronics. The R20 carrier remains a separate sensor fixture. [R0014 build and fit checks](../mechanical/TW-A-0001-R0014/README.md) · [Prior R0013 seated service review](../../quality/seated-connector-review.md)
 
 Record the exact enclosure and electrical integration IDs on each build traveler. The historical R0008 fit baseline paired **TW-A-0001-R0008** with **TW-A-0002-R0002** (Rev F wiring). Record the firmware version and binary SHA-256 separately. An assembly ID identifies a design configuration. Each physical unit still needs its own serial, option set, incoming part lots and test results.
 

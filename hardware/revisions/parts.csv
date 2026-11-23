@@ -69,3 +69,5 @@ TW-P-0029-R0002,R0013 dressed service assembly,hardware/mechanical/TW-A-0001-R00
 TW-P-0030-R0002,A3 rerouted haptic PCB,hardware/electronics/pcb-haptic-cie-r0002/A3-CIE-R0002.kicad_pcb,,703cb2c5fee0528ecb6579708c4d15fe8ff78646c1d427ef827336323d33bddd
 TW-P-0032-R0002,A5 ballasted USB input PCB,hardware/electronics/usb-entry-r0006/usb-input.kicad_pcb,,bff8e08cf1429418861939b073c542ac465bc38efb9d9e73db9c455146d009a1
 TW-P-0033-R0001,"Fitted USB output, ground and status lamp leads",hardware/electronics/usb-entry-r0006/installed-leads/installed.json,,30fc5fb443256677d40d5012bbd2177e414f4cc3c8c7fa4be2db57ca2a66d907
+TW-P-0001-R0011,Housing with integral A3 support rails,hardware/mechanical/TW-A-0001-R0014/Print/housing-battery-bay.stl,,7e719b8ec875275e80b865f8de49a7602a1fe6e3e34f5ffc4ff0a508bcefe4e2
+TW-P-0029-R0003,R0014 dressed assembly with integral A3 rails,hardware/mechanical/TW-A-0001-R0014/installed-step.json,,543b57a79d5900616b9a02dc33f0ee0b11d049f9515eb262e61b7f35acb24cdc

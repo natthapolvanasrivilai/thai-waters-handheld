@@ -4,7 +4,7 @@ Reviewed 2026-11-23
 
 ## Engineering revision
 
-The seated-display assembly pairs TW-A-0001-R0013 mechanics with TW-A-0002-R0006 electronics. The modeled haptic plug withdraws 8.25 mm with the display seated. The R20 print trial tests the carrier and floor sample separately.
+TW-A-0001-R0014 integrates the two A3 haptic-board supports into the housing floor. TW-A-0002-R0006 remains the electrical configuration. The 2.10 mm rails locate the underside at its previous height. During the modeled 8.25 mm haptic-plug withdrawal, the rigid moving parts stay at least 3.25 mm from the new rails and the flexible leads stay at least 4.26 mm away. [R0014 housing and fit evidence](../../hardware/mechanical/TW-A-0001-R0014/README.md)
 
 [Assembly and USB evidence](../../quality/seated-connector-review.md) · [Interactive seated connector motion](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-seated-service-review-1/TW-A-0001-R0013-motion-review.html) · [Placed boards and circuit checks](../../hardware/verification/r0013/README.md) · [Revision register](../../hardware/revisions/README.md)
 
@@ -16,17 +16,17 @@ The owner confirmed that the R20 four-post carrier fits the printed floor sample
 
 ## Next fit check
 
-Open the 3D PCB assembly guide to follow the eight plate-7 gauges into the housing and onto the underside of the display. The guide also shows how A2 seats on the separate R20 carrier. In the new handbook, choose PCB assembly to use the guide offline.
+Let the R0013 plate 7 finish. For the new case, print plate 1 from the R0014 project. Reuse all eight PCB gauges and the six square A4/A5 spacers. Set aside both long A3 strips. In the new case, dry-fit A3 directly onto the printed rail tops with J1 toward the lower service edge. Check for rocking, contact under the board and display closure before any bonding.
 
-[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/R0013-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/Thai-Waters-handbook.html) · [Dry assembly instructions and spacer positions](../../hardware/mechanical/pcb-fit-r0013/assembly-fit.md)
+[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/R0014-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/Thai-Waters-handbook.html) · [Housing identification and A3 fit instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
 
-Select only plate 7 of the R0013 X1C project to print eight inert PCB gauges and eight loose spacers for A3, A4 and A5. Bambu Studio estimates about 65 minutes and 26.8 g of PETG on the Engineering Plate. Check whether all four corners of the A2 gauge seat on the printed R20 carrier. This checks nominal fit. Actual connector motion, solder clearance, fastener load and powered operation need physical parts.
+With an older flat-floor R0013 housing, its two loose strips still establish the correct height. The R20 carrier trial is independent of the housing change. In the R0014 project plate 7 contains the same eight PCB gauges and six loose A4/A5 spacers. The four thin A2 shims in the full housing remain separate measured stock.
 
-[Illustrated plate map](../../hardware/mechanical/pcb-fit-r0013/plate-7.png) · [Gauge dimensions and print instructions](../../hardware/mechanical/pcb-fit-r0013/README.md) · [Download the seven-plate X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-fit-1/Thai-Waters-R0013-PCB-Fit-X1C.3mf)
+[Download the R0014 X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/Thai-Waters-R0014-PCB-Fit-X1C.3mf) · [R0014 gauge map](../../hardware/mechanical/TW-A-0001-R0014/Printing/plate-7.png) · [Older R0013 plate map for the print in progress](../../hardware/mechanical/pcb-fit-r0013/plate-7.png)
 
-In the older R0011 enclosure project, the slicer silently produced just one model layer for each of the five parts on plates 4 and 5. In the corrected download, each of the three light guides slices to six layers, the USB shield mask to three and the service cover to 23. All 35 objects across seven plates passed the model-height toolpath check. Plate 7 also passed after reopening and slicing it separately. Physical fit of these gauges still needs a print.
+The R0013 print project corrected the earlier one-layer fault in the optical and flexible parts. The X1 Carbon slice estimates 2 h 6 min and 53.9 g for plate 1 on the saved SuperTack PETG profile. Both A3 rails have continuous perimeter paths and open grooves, with no generated support in the A3 bay. The existing USB-end detail uses removable support. Physical A3 seating and real-board retention remain open.
 
-[Native slicer and layer-height evidence](../../hardware/mechanical/pcb-fit-r0013/QA/project-check.json)
+[R0014 print preparation and native checks](../../hardware/mechanical/TW-A-0001-R0014/Printing/README.md) · [Earlier R0013 native results](../../hardware/mechanical/pcb-fit-r0013/QA/project-check.json)
 
 ## Qualification and software
 

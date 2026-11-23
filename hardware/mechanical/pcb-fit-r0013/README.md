@@ -1,5 +1,7 @@
 # Plate 7 · R0013 PCB fit kit
 
+**Using an R0014 housing with these gauges?** Set the two long A3 strips aside and seat A3 directly on the built-in rails. All eight PCB gauges and the six square A4/A5 spacers transfer. The instructions below describe the earlier R0013 flat-floor housing. [R0014 fit sequence](../TW-A-0001-R0014/README.md)
+
 [Open the X1 Carbon project](Thai-Waters-R0013-PCB-Fit-X1C.3mf) · [Illustrated plate map](plate-7.png) · [Assembly sequence and shim positions](assembly-fit.md) · [Current project status](../../../docs/wiki/Current-status.md)
 
 Choose **PCB assembly** in the handbook for the 3D dry-fit guide, or download the guide on its own and open it in a browser. [Offline 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/R0013-PCB-assembly.html) · [Offline handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/Thai-Waters-handbook.html)
