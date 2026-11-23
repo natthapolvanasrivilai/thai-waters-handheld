@@ -20,6 +20,69 @@ const file=pathToFileURL(wanted).href;
   await play.tap();await p.waitForFunction(()=>g&&!$('act').disabled);
   assert.equal(new URL(p.url()).protocol,'file:');assert.equal(p.url(),file);return p;
  };
+ // Exercise the real packed WASM PCM adapter on a separate synthetic profile.
+ // The exact timestamped virtual-encoder fixture avoids frame/touch jitter;
+ // the rest of this file still exercises real file input and Recovery controls.
+ const rodPcm=(p,next=null)=>p.evaluate(next=>{
+  if(typeof g.setRodFinish!=='function')throw Error('Packed WASM lacks the rod-voice export');
+  g.config(3,0,1,0);g.reelVolume(2);
+  const read=()=>Array.from(new Int16Array(g.memory.buffer,g.samples(),512));
+  const queue=()=>{
+   g.resetDetents();g.dialReset();g.dialSample(2048,0);
+   let cue=0;
+   for(let i=1;i<=4;i++){
+    g.dialSample(2048+90*i,30*i);
+    cue=g.rumbleEvent(1000+30*i,1);
+   }
+   if(cue!==9)throw Error('Expected a real detent before reading PCM');
+  };
+  if(next!==null){
+   queue();
+   const field=document.getElementById('finish');
+   field.selectedIndex=next;field.dispatchEvent(new Event('change',{bubbles:true}));
+   return read();
+  }
+  // Each voice cycles eight takes; order depends on preceding clicks.
+  const takes=[];
+  for(let i=0;i<8;i++){queue();const pcm=read();if(!pcm.some(Boolean))throw Error('Detent produced no PCM');takes.push(pcm.join(','));}
+  return takes.sort();
+ },next);
+ const rodMenu=async p=>{
+  await p.locator('#openMenu').tap();await p.locator('[data-section=home] [data-to=rod]').tap();
+  const field=await showControl(p,'#finish');await field.waitFor();
+  return field;
+ };
+ const rodVoices=async()=>{
+  const p=await open();
+  try{
+   const river=await rodPcm(p);
+   assert.equal(new Set(river).size,8,'Default River reed emits all eight real PCM takes');
+   const field=await rodMenu(p);
+   assert.equal(await field.evaluate(el=>el.selectedIndex),0);
+   await field.selectOption({index:0});
+   const riverSave=await p.evaluate(k=>JSON.parse(localStorage.getItem(k)),key);
+   assert(riverSave);assert.equal(riverSave.schema,4);assert.equal(riverSave.finish,0);
+   // One synchronous DOM event inside the PCM fixture ensures the frame
+   // loop cannot consume the queued A click before the switch clears it.
+   assert((await rodPcm(p,1)).every(x=>x===0),'Switch drops pending old-voice PCM');
+   const copper=await rodPcm(p);
+   assert.equal(new Set(copper).size,8,'Copper emits all eight real PCM takes');
+   assert.notDeepEqual(copper,river,'Copper and River reed route to different voices');
+   const saved=await p.evaluate(k=>localStorage.getItem(k),key);
+   const {finish:oldFinish,...riverFields}=riverSave;
+   const {finish:newFinish,...copperFields}=JSON.parse(saved);
+   assert.equal(newFinish,1);assert.deepEqual(copperFields,riverFields,'Equip changes only the existing finish field');
+   await p.reload();
+   const resume=await requireBootHome(p);await resume.tap();
+   await p.waitForFunction(()=>g&&!$('act').disabled);
+   assert.equal(new URL(p.url()).protocol,'file:');
+   assert.equal(await p.evaluate(k=>localStorage.getItem(k),key),saved,'Resume leaves saved bytes untouched');
+   assert.equal(await p.locator('#finish').evaluate(el=>el.selectedIndex),1);
+   assert.deepEqual(await rodPcm(p),copper,'Real restore installs Copper audio before first use');
+   await (await rodMenu(p)).selectOption({index:0});
+   assert.deepEqual(await rodPcm(p),river,'Selecting River reed switches back to exact A voice');
+  }finally{await p.context().close();}
+ };
  const career=async p=>{
   await p.locator('#openMenu').tap();await p.locator('[data-section=home] [data-to=rod]').tap();
   const careerOpen=await showControl(p,'#careerOpen');
@@ -29,6 +92,7 @@ const file=pathToFileURL(wanted).href;
  try{
   const src=await open(),backupPage=await open();
   console.log('TW_LANE file '+crypto.createHash('sha256').update(await fs.readFile(wanted)).digest('hex'));
+  await rodVoices();
   const phone=await open({width:320,height:700});await phone.context().close();
   assert.equal(await src.evaluate(()=>g.state()),0);
   assert(await src.locator('#openMenu').isVisible());

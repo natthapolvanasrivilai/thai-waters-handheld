@@ -86,7 +86,7 @@ public:
     else if(reveal.active()){landing=reveal;landingNote=0;nextLandingNote();}
     wasHeld=held;
     if(trigger||reveal.active()||!s.reelVolume)pawl.clear();
-    else if(reelClick)pawl.strike(reelClick);
+    else if(reelClick)pawl.strike(reelClick,s.rodFinish);
     if(trigger){cueAge=0;cuePhase=0;}
     for(size_t i=0;i<frames;i++){
       int pcm=score.sample(s.arrangement,sineTable,s.music,s.volume,chase,cueAge<6200||landing.active(),surge,lost);
@@ -94,7 +94,7 @@ public:
       pcm+=boatAmbience.sample(boat,boatOn?s.cueVolume:0);
       if(landing.active())pcm+=landingSample(s.cueVolume);
       if(cueAge<5300||landing.active())pawl.clear();
-      else pcm+=pawl.sample(sineTable,s.reelVolume);
+      else pcm+=pawl.sample(s.reelVolume);
       bool first=cueAge<1600,second=cueAge>=2300 && cueAge<5300;
       if((first||second) && s.cue!=1){
         int t=first?int(cueAge):int(cueAge)-2300, len=first?1600:3000;

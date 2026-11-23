@@ -313,7 +313,7 @@ const baitNotes=['A bank-fishing staple for perch and mud foragers.','Tip a bott
 $('technique').onchange=()=>{g.setTechnique($('technique').selectedIndex);save();showRig()};
 function refresh(){
  showRig();
- document.documentElement.dataset.water=atlas.locations[placeId].pool;setUi($('spot'),atlas.locations[placeId].name);$('finish').selectedIndex=finish;
+ document.documentElement.dataset.water=atlas.locations[placeId].pool;setUi($('spot'),atlas.locations[placeId].name);$('finish').selectedIndex=finish;g.setRodFinish(finish);
  renderBook();
  let discovered=0,landedTotal=0;
  for(let id=0;id<atlas.fish.length;id++){const n=g.caught(id);if(n)discovered++;landedTotal+=n;}
@@ -614,7 +614,7 @@ function closeMenu(forPowerOff=false){
 
 $('searchSpot').oninput=$('waterType').onchange=listSpots;$('places').onchange=()=>{pendingSpot=+$('places').value;listSpots();};
 $('fishHere').onclick=()=>travelToSpot(pendingSpot);
-$('finish').onchange=()=>{finish=$('finish').selectedIndex;save();};
+$('finish').onchange=()=>{finish=$('finish').selectedIndex;g.setRodFinish(finish);save();};
 $('tilt').oninput=()=>{rodAngle=+$('tilt').value;};
 function cue(m){setUi($('motionStatus'),m);}
 let neutral=null,centering=false,sourceName='',readoutTime=0;
