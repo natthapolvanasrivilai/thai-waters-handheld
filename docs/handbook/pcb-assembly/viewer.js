@@ -26,7 +26,7 @@ for (const [position,intensity] of [[[40,-60,105],2.1],[[-80,28,50],1.05],[[20,2
   const lamp=new THREE.DirectionalLight(0xfff9e9,intensity);
   lamp.position.set(...position);scene.add(lamp);
 }
-const colors={housing:0x76978b,bezel:0x314a40,pkcell:0xb09d70,adafruit:0xb09d70,carrier:0x749283,floor:0x778a83,
+const colors={housing:0x76978b,usbSection:0x76978b,uGuide:0x3788ad,bezel:0x314a40,pkcell:0xb09d70,adafruit:0xb09d70,carrier:0x749283,floor:0x778a83,
   bridge:0x84968a,A1:0x536d67,KEY:0x47877e,cap:0x54665f,keeper:0x78958a};
 const labels={A1:'A1 · Display',A2:'A2 · Reel sensor',A3:'A3 · Haptics',A4:'A4 · Integration',A5:'A5 · USB power',KEY:'Power switch',USB1:'USB indicator',USB2:'Lamp resistor',housing:'Housing',bezel:'Bezel',carrier:'R20 carrier',floor:'R20 floor sample',bridge:'Battery bridge',cap:'Power cap',keeper:'Switch retainer',pkcell:'PKCELL gauge',adafruit:'Adafruit gauge'};
 function label(id){
@@ -35,7 +35,7 @@ function label(id){
   return shim?shim[1]+(shim[1]==='A2'?' shim ':' spacer ')+shim[2]:id;
 }
 const vec=a=>new THREE.Vector3(...a), meshMap=new Map();
-const shellParts=new Set(['housing','bezel']);
+const shellParts=new Set(['housing','usbSection','bezel']);
 const warm=0xd98c39;
 function bytes(s){return Uint8Array.from(atob(s),c=>c.charCodeAt(0));}
 for(const [id,p] of Object.entries(geometry.parts)){
@@ -50,7 +50,7 @@ for(const [id,p] of Object.entries(geometry.parts)){
   mesh.userData={id,color,center:g.boundingBox.getCenter(new THREE.Vector3())};
   scene.add(mesh);meshMap.set(id,mesh);
 }
-let current=0,ghost=false,frameWidth=100,guides=[],scheduled=false,followPart=false;
+let current=0,ghost=false,section=false,frameWidth=100,guides=[],scheduled=false,followPart=false;
 const marked=new Set();
 const selected=()=>steps[current];
 const partId=id=>id==='pkcell'?el('pack').value:id;
@@ -100,20 +100,25 @@ function includeMotion(bounds){
   }
   return bounds;
 }
+function stepCamera(){
+  const s=selected();
+  const eye=vec(s.section&&!section?[1,-.5,.9]:s.eye);
+  if(s.waypoints)poseBounds(includeMotion(new THREE.Box3()),eye,s.width,1.28);
+  else pose(vec(s.target),eye,s.width);
+}
 function reset(){
   followPart=false;
-  const s=selected();
-  if(s.waypoints)poseBounds(includeMotion(new THREE.Box3()),vec(s.eye),s.width,1.28);
-  else pose(vec(s.target),vec(s.eye),s.width);
+  section=!!selected().section;setLook();stepCamera();
 }
 function overview(){
   followPart=false;
+  section=false;setLook();
   const bounds=new THREE.Box3();
   for(const m of meshMap.values()){
     if(m.visible)bounds.union(m.geometry.boundingBox.clone().translate(m.position));
   }
   if(selected().waypoints)includeMotion(bounds);
-  const eye=camera.position.clone().sub(controls.target);
+  const eye=selected().section?vec([.65,-.8,1.55]):camera.position.clone().sub(controls.target);
   poseBounds(bounds,eye,9,1.10);
 }
 function focus(){
@@ -128,6 +133,10 @@ function focus(){
 }
 function setLook(){
   const s=selected(),visible=new Set(s.visible.map(partId)),active=new Set(activeIds());
+  if(section){
+    visible.clear();
+    for(const id of ['usbSection','USB1','uGuide'])visible.add(id);
+  }
   for (const [id,m] of meshMap){
     m.visible=visible.has(id);
     const translucent=ghost&&shellParts.has(id)&&!active.has(id);
@@ -136,9 +145,12 @@ function setLook(){
     m.renderOrder=translucent?2:0;
   }
   el('focus').disabled=active.size===0;
-  stage.querySelector('.legend').hidden=active.size===0;
+  stage.querySelector('.legend').hidden=active.size===0||section;
   el('ghost').setAttribute('aria-pressed',String(ghost));
   el('ghost').disabled=![...visible].some(id=>shellParts.has(id)&&!active.has(id));
+  el('section').hidden=!s.section;
+  el('section').setAttribute('aria-pressed',String(section));
+  el('sectionLegend').hidden=!section;
   invalidate();
 }
 function removeGuides(){
@@ -169,7 +181,7 @@ function placement(){
       break;
     }
   }
-  const offset=trace[trace.length-1];
+  const offset=s.fixedOffset?vec(s.fixedOffset):trace[trace.length-1];
   const focused=meshMap.get(activeIds()[0]);
   if(followPart&&focused&&moving.has(focused.userData.id)){
     const delta=offset.clone().sub(focused.position);
@@ -213,9 +225,9 @@ function step(index){
     input.addEventListener('change',()=>input.checked?marked.add(key):marked.delete(key));
     row.append(input,document.createTextNode(text));el('checkItems').append(row);
   }
-  ghost=false;followPart=false;
+  ghost=false;section=!!s.section;followPart=false;
   el('position').value=String(s.start??(motionPath(s).length>0?65:0));
-  setLook();placement();reset();
+  placement();reset();
 }
 steps.forEach((s,i)=>el('steps').add(new Option((i+1)+'. '+s.title,i)));
 el('steps').onchange=()=>step(Number(el('steps').value));
@@ -223,6 +235,7 @@ el('prev').onclick=()=>step(current-1);el('next').onclick=()=>step(current+1);
 el('position').oninput=placement;el('nextPosition').onclick=advancePlacement;
 el('focus').onclick=focus;el('overview').onclick=overview;el('reset').onclick=reset;
 el('ghost').onclick=()=>{ghost=!ghost;setLook();};
+el('section').onclick=()=>{section=!section;followPart=false;setLook();stepCamera();};
 el('pack').onchange=()=>step(current);
 surface.onkeydown=event=>{
   if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home'].includes(event.key))return;

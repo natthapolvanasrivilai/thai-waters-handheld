@@ -159,9 +159,9 @@
   {
     "title": "Identify the USB1 indicator",
     "group": "Open housing",
-    "instruction": "Pick up USB-PCB1, the 4.80 × 3.20 mm indicator card. Locate the raised LED block in the middle of one face.",
-    "facing": "Turn the LED toward the left wall (−X) before fitting the card.",
-    "check": "Its long edge will run from the service edge toward the power key.",
+    "instruction": "Pick up the unwired Plate 7 USB-PCB1 gauge. Find the raised LED block on its 4.80 × 3.20 mm face.",
+    "facing": "Point the LED toward the U light guide in the USB wall (−X). The 4.80 mm edge runs from the service edge toward the power key.",
+    "check": "Use the loose printed gauge for this trial. The soldered lamp is tethered to the display.",
     "visible": ["USB1"],
     "active": ["USB1"],
     "offset": [0, 0, 0],
@@ -170,17 +170,17 @@
     "width": 9
   },
   {
-    "title": "Slide USB1 into the guides",
+    "title": "Load the USB1 dry gauge from the service end",
     "group": "Open housing",
-    "instruction": "Lower the indicator between the two guides inside the left wall until its bottom edge reaches the shelf.",
-    "facing": "LED block faces the U light guide. The 4.80 mm edge runs along the wall in plan.",
-    "check": "Check that USB1 sits square on its shelf. The nominal LED-to-guide gap is 0.30 mm.",
+    "instruction": "With the U light guide in place, hold the gauge upright {approach:g} mm toward the service edge from its seat. Lower it {drop:g} mm to shelf height, then slide it {approach:g} mm toward the power key under the USB well. Use Next position to see each move.",
+    "facing": "The section looks squarely at the USB wall from inside. The service edge is left and the power-key edge is right. Keep the LED facing the blue U light guide (−X).",
+    "check": "Check that the bottom edge rests on the shelf, the leading edge meets the far stop and the LED centers on the U guide. The nominal optical gap is {gap:.2f} mm. Stop and record where it catches if you cannot place or withdraw the loose gauge freely.",
     "visible": ["housing", "rotor", "collar", "A2s1", "A2s2", "A2s3", "A2s4", "A2", "A3", "KEY", "keeper", "cap", "uGuide", "USB1"],
     "active": ["USB1"],
-    "offset": [0, 0, 5],
-    "eye": [1, -0.45, 0.85],
-    "target": [-42, 0, 14.5],
-    "width": 20
+    "usbIndicator": true,
+    "section": true,
+    "eye": [1, 0, 0],
+    "width": 26
   },
   {
     "title": "Try one inert battery gauge",

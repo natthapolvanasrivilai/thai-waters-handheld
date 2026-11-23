@@ -49,3 +49,7 @@ hardware/mechanical/TW-A-0001-R0014/Printing/QA/*.json -text
 hardware/mechanical/TW-A-0001-R0015/*.json -text
 hardware/mechanical/TW-A-0001-R0015/QA/*.json -text
 hardware/mechanical/TW-A-0001-R0015/Printing/QA/*.json -text
+
+hardware/mechanical/TW-A-0001-R0016/*.json -text
+hardware/mechanical/TW-A-0001-R0016/QA/*.json -text
+hardware/mechanical/TW-A-0001-R0016/Printing/QA/*.json -text

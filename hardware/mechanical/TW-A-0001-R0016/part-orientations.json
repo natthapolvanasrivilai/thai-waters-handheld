@@ -1,0 +1,51 @@
+{
+  "housing-battery-bay": {
+    "viewer_id": "Housing",
+    "coordinate_frame": "assembly",
+    "original_stl": "../TW-A-0001-R0015/Print/housing-battery-bay.stl",
+    "assembly_brep": "CAD/housing-battery-bay.brep",
+    "print_stl": "Print/housing-battery-bay.stl",
+    "assembly_to_print": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        3.200001004005232
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "build_up_assembly": [
+      0,
+      0,
+      1
+    ],
+    "bed_face": "Integral rod-grip receiver soles and closed end",
+    "brim": "None",
+    "material": "Opaque PETG, case colour",
+    "assembly_volume_mm3": 39795.76795,
+    "extents_mm": [
+      110.72,
+      74.25,
+      31.0
+    ],
+    "sha256": "035f50d7a8170fac53077a72283c0eb772f5163f7fbb7c802ca323e874823b98",
+    "part_revision": "TW-P-0001-R0013"
+  }
+}

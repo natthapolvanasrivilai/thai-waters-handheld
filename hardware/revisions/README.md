@@ -1,6 +1,8 @@
 # Hardware revision register
 
-**Current engineering configuration.** TW-A-0001-R0015 pairs the relieved key bay with TW-A-0002-R0006 electronics. [Key installation and physical checks](../mechanical/TW-A-0001-R0015/README.md)
+**Current engineering configuration.** TW-A-0001-R0016 and TW-A-0002-R0006 pair the USB1 side-entry housing with the existing electrical assembly. [USB indicator dry fit](../mechanical/TW-A-0001-R0016/README.md)
+
+TW-A-0001-R0015 pairs the relieved key bay with TW-A-0002-R0006 electronics. [Key installation and physical checks](../mechanical/TW-A-0001-R0015/README.md)
 
 TW-A-0001-R0014 carries A3 directly on two integral floor rails, with TW-A-0002-R0006 electronics. The R20 carrier remains a separate sensor fixture. [R0014 build and fit checks](../mechanical/TW-A-0001-R0014/README.md) · [Prior R0013 seated service review](../../quality/seated-connector-review.md)
 

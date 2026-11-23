@@ -20,3 +20,4 @@ TW-A-0001-R0013,,Seated-display CviLux service assembly,155 installed components
 TW-A-0002-R0006,,Seated-service haptics and limited USB input,Rerouted A3 on the seated display installation and A5 with source detection and resistive current limiting.,hardware/verification/r0013/README.md,R0006-001
 TW-A-0001-R0014,,Housing with integral A3 haptic-board seats,Two grooved rails carry the board at its R0013 datum in the R0006 electrical installation.,hardware/mechanical/TW-A-0001-R0014/README.md,R0014-001
 TW-A-0001-R0015,,Housing with inside-loading key and switch rim relief,The switch rim clears the inner wall during board insertion after seating the cap. Paired with TW-A-0002-R0006.,hardware/mechanical/TW-A-0001-R0015/README.md,R0015-001
+TW-A-0001-R0016,,Housing with side-loading USB lamp,The leadless USB indicator slides under the USB well from the service end. Paired with TW-A-0002-R0006.,hardware/mechanical/TW-A-0001-R0016/README.md,R0016-001

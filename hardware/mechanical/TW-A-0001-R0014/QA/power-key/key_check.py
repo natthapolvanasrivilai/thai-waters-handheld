@@ -197,7 +197,7 @@ def oblique_search(meshes, case, cap):
                 scope="Finite numerical search of rigid poses with both board edges engaged. Other trajectories are unverified.")
 
 
-def run():
+def run(numbers=(13,14,15)):
     all_cad, meshes, base_sources = all_geometry()
     cap, keeper = all_cad.pop("Key cap"), all_cad.pop("Retainer")
     keeper_path = keeper_sweep(keeper)
@@ -206,7 +206,7 @@ def run():
     mesh_parts = {k:solid(v) for k,v in meshes.items()}
     mesh_cap = mesh_parts["Key cap"]
     mesh_keeper_path = mesh_paths["Retainer"]
-    for number in (13,14,15):
+    for number in numbers:
         assembly = MECH / f"TW-A-0001-R{number:04}"
         base = R11 if number == 13 else assembly
         sources = base_sources.copy()
@@ -227,14 +227,14 @@ def run():
                        for k,s in mesh_paths.items() if k != "Retainer"}
         controls = {k:pair(all_cad[k].translate((0,0,9)),case) for k in ("KEY gauge","Switch plunger")}
         board_report = dict(
-            status="clear" if number == 15 else "blocked",
-            removal_offsets_mm=OFFSETS if number == 15 else [],
+            status="clear" if number >= 15 else "blocked",
+            removal_offsets_mm=OFFSETS if number >= 15 else [],
             installed_to_free_lowest_point_above_case_mm=round(7.5+TRAVEL-bounds(case)[-1],4),
             straight_sweep_print_common_mm3=print_board,
             vertical_offset_9mm_CAD=controls,
             preassembled_undeformed_pin_to_plated_PCB_common_mm3=round(volume(all_cad["Trimmed terminals"],all_cad["Key PCB"]),6))
         cad_pairs = {k:dict(housing=pair(s,case),cap=pair(s,cap)) for k,s in board_sweeps.items()}
-        if number == 15:
+        if number >= 15:
             assert max(p["common_mm3"] for v in cad_pairs.values() for p in v.values()) < CAD_EPS
             assert max(p for v in print_board.values() for p in v.values()) < PRINT_EPS
             board_report["continuous_CAD_bounds"] = cad_pairs
@@ -272,4 +272,8 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--revision", choices=(13,14,15,16), type=int)
+    revision = parser.parse_args().revision
+    run((revision,) if revision else (13,14,15,16))

@@ -1,14 +1,18 @@
 # Inspect the assembly and battery pocket
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0015-power-key-fit-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/Thai-Waters-handbook.html)
+
+## USB indicator entry
+
+The R0016 handbook shows the side slot in section. The three older guides show where the attempted insertion meets the USB-C well. The finished lamp is tethered to the display. [R0016 procedure](../../hardware/mechanical/TW-A-0001-R0016/README.md) · [Current 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0016-PCB-assembly.html)
 
 ## R0015 power key
 
-Open the PCB assembly guide and select the cap step to follow its two movements. The switch board slides in afterward and the west retainer goes in last. Use R0015 plate 1 to clear the switch rim. [Procedure and evidence](../../hardware/mechanical/TW-A-0001-R0015/README.md) · [R0015 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0015-power-key-fit-1/R0015-PCB-assembly.html)
+Open the PCB assembly guide and select the cap step to follow its two movements. The switch board slides in afterward and the west retainer goes in last. Use R0015 plate 1 to clear the switch rim. [Procedure and evidence](../../hardware/mechanical/TW-A-0001-R0015/README.md) · [R0015 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0015-PCB-assembly.html)
 
 ## R0014 integral haptic-board rails
 
-For an existing R0014 case use its corrected standalone sequence. The power board step stops at the obstructed insertion. The plate-1 floor carries A3 directly on two hard lands with open-ended adhesive grooves. The plate-7 PCB gauges also fit the preceding project. [R0014 dry fit and housing](../../hardware/mechanical/TW-A-0001-R0014/README.md) · [Download the 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0015-power-key-fit-1/R0014-PCB-assembly.html)
+For an existing R0014 case use its corrected standalone sequence. The power board step stops at the obstructed insertion. The plate-1 floor carries A3 directly on two hard lands with open-ended adhesive grooves. The plate-7 PCB gauges also fit the preceding project. [R0014 dry fit and housing](../../hardware/mechanical/TW-A-0001-R0014/README.md) · [Download the 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0014-PCB-assembly.html)
 
 [Current revision and open physical checks](Current-status.md) · [R0014 plate map](../../hardware/mechanical/TW-A-0001-R0014/Printing/plate-7.png) · [Plug motion, installed harness, full assembly and measured clearance](../../quality/seated-connector-review.md)
 

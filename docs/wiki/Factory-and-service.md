@@ -2,7 +2,9 @@
 
 [Prototype carton and divider trial, CAD dimensions and printable patterns](../../manufacturing/packaging/fit-tray/README.md)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0015-power-key-fit-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/Thai-Waters-handbook.html)
+
+Trial the USB indicator with the unpowered R0016 case and the leadless Plate 7 gauge. On earlier housings, skip this gauge. Record shelf seating, free withdrawal and support cleanup. [Fit procedure](../../hardware/mechanical/TW-A-0001-R0016/README.md)
 
 For the R0015 key, place the cap from inside, then lower the board and west retainer. Reserve the older cases for a cap-only check. [Step-by-step key fit](../../hardware/mechanical/TW-A-0001-R0015/README.md)
 

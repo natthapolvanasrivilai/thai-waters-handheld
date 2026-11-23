@@ -10,18 +10,69 @@ import tempfile
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-REVISIONS = {"R0014": "scene.json", "R0015": "scene-r0015.json"}
+REVISIONS = {"R0014": "scene.json", "R0015": "scene-r0015.json", "R0016": "scene-r0016.json"}
+USB_QA = ROOT / "hardware/mechanical/TW-A-0001-R0015/QA/usb-indicator"
+
+
+def verify_sources(report, assembly):
+    if report["assembly"] != assembly:
+        raise ValueError(f"Motion evidence belongs to another assembly: {report['assembly']}")
+    for source, digest in report["sources_sha256"].items():
+        if hashlib.sha256((ROOT / source).read_bytes()).hexdigest() != digest:
+            raise ValueError(f"Rerun motion checks for the current {source}")
+
+
+def apply_usb_indicator(scene, steps, revision):
+    report = json.loads((USB_QA / f"{revision}.json").read_bytes())
+    verify_sources(report, scene["assembly"])
+    sections = json.loads((HERE / "usb1-sections.json").read_bytes())
+    section = sections["revisions"][revision]
+    for part in ("housing", "USB1", "uGuide"):
+        mesh = scene["parts"][part]
+        if mesh["sourceSha256"] != report["sources_sha256"].get(mesh["source"]):
+            raise ValueError(f"The USB1 path and scene must use the same {part} mesh")
+    for path, digest in (("source", "sourceSha256"), ("orientation", "orientationSha256")):
+        if report["sources_sha256"].get(section[path]) != section[digest]:
+            raise ValueError("Regenerate the USB1 housing section from the checked sources")
+    scene["parts"]["usbSection"] = dict(sections["meshes"][section["mesh"]],
+        source=section["source"], sourceSha256=section["sourceSha256"], sectionBoundsMm=sections["bounds_mm"])
+
+    index, = [i for i, s in enumerate(steps) if s.get("usbIndicator")]
+    step = steps[index]
+    points = report["waypoints_offset_mm"]
+    if report["waypoint_order"] != "from above the housing to the registered seat":
+        raise ValueError("Unexpected USB1 waypoint order")
+    if report["status"] == "blocked":
+        if points:
+            raise ValueError("A blocked USB1 path cannot have installation waypoints")
+        contact, collision = report["rejected_vertical"]["first_contact_offset_z_from_above_mm"]
+        if not 0 < collision < contact:
+            raise ValueError("Missing first contact witness for the obstructed drop")
+        step.update(title="Stop above the blocked USB1 slot", inspectionPart="USB1",
+                    fixedOffset=[0, 0, contact], offset=[0, 0, 0], target=[-41.8, 0, 19.8], width=32,
+                    instruction=f"The section shows the gauge at the first obstruction, {contact:.2f} mm above its seat. The roof crosses the straight drop, and the slot also blocks a straight push from inside. Set the loose gauge aside.",
+                    check="Look for the roof over the shelf. Leave USB1 out for the remaining dry checks. Use the R0016 housing for the side-loading trial.")
+        for later in steps[index+1:]:
+            later["visible"] = [part for part in later["visible"] if part != "USB1"]
+    elif report["status"] == "clear":
+        if (len(points) != 3 or points[0][0] != 0 or points[0][1] >= 0 or points[0][2] <= 0
+                or points[1] != [0, points[0][1], 0] or points[2] != [0, 0, 0]
+                or report["above_rim_start_gap_mm"] <= 0):
+            raise ValueError("Update the USB1 instructions for the measured route")
+        step.update(motionPart="USB1", start=100, waypoints=list(reversed(points)))
+        step["instruction"] = step["instruction"].format(approach=-points[0][1], drop=points[0][2])
+        step["check"] = step["check"].format(gap=report["seated_guide_gap_mm"])
+    else:
+        raise ValueError("USB1 disposition is unknown")
+    display, = [s for s in steps if s["title"] == "Lower the display onto its four seats"]
+    display["check"] += " Use loose, unwired gauges. The soldered lamp leads cannot span the pictured 18 mm display lift."
 
 
 def apply_power_key_paths(steps, qa_dir, parts=None):
     """Attach the measured removal waypoints. The viewer plays them backwards to install."""
     def read_evidence(name):
         report = json.loads((qa_dir / name).read_bytes())
-        if report["assembly"] != qa_dir.parents[1].name:
-            raise ValueError(f"{name} belongs to another assembly")
-        for source, digest in report["sources_sha256"].items():
-            if hashlib.sha256((ROOT / source).read_bytes()).hexdigest() != digest:
-                raise ValueError(f"Rerun {name} checks for the current {source}")
+        verify_sources(report, qa_dir.parents[1].name)
         return report
 
     cap = read_evidence("cap-path.json")
@@ -101,6 +152,7 @@ def build(modules, revision):
         raise ValueError(f"Regenerate the scene from the current {revision} housing before packaging")
     steps = json.loads((HERE / "steps.json").read_text(encoding="utf8").replace("@@REVISION@@",revision))
     apply_power_key_paths(steps, ROOT / f"hardware/mechanical/{assembly}/QA/power-key",scene["parts"])
+    apply_usb_indicator(scene, steps, revision)
     all_ids = set(scene["parts"])
     covered = set()
     for i, step in enumerate(steps, 1):

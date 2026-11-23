@@ -4,7 +4,7 @@ const {pathToFileURL}=require('node:url');
 const {chromium}=require('playwright-core');
 const fs=require('node:fs');
 const guides=process.argv[2]?[path.resolve(process.argv[2])]:
-  ['R0013-PCB-assembly-corrected.html','R0014-PCB-assembly.html','R0015-PCB-assembly.html']
+  ['R0013-PCB-assembly-corrected.html','R0014-PCB-assembly.html','R0015-PCB-assembly.html','R0016-PCB-assembly.html']
     .map(name=>path.join(__dirname,'../../docs/models',name));
 const screenshots=process.env.ASSEMBLY_SCREENSHOTS;
 const cases=[{width:1140,height:800},{width:390,height:844}];
@@ -13,6 +13,31 @@ async function pixels(page){
   const raw=await page.locator('#model').screenshot();
   return {raw,hash:require('node:crypto').createHash('sha256').update(raw).digest('hex')};
 }
+async function usbPixels(page){
+  return page.locator('#model').evaluate(canvas=>{
+    const {width:w,height:h}=canvas,rgba=canvas.getContext('2d').getImageData(0,0,w,h).data;
+    const bounds=predicate=>{
+      let left=w,right=-1,top=h,bottom=-1;
+      for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+        const i=4*(y*w+x);
+        if(rgba[i+3]===255&&predicate(rgba[i],rgba[i+1],rgba[i+2])){
+          left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);
+        }
+      }
+      return right<0?null:{left,right,top,bottom,x:(left+right)/2,y:(top+bottom)/2};
+    };
+    const board=bounds((r,g,b)=>r>g*1.35&&g>b*1.7);
+    const pipe=bounds((r,g,b)=>b>g*1.15&&g>r*1.65);
+    let roof;
+    if(board){
+      for(let y=board.bottom+1;y<h;y++){
+        const i=4*(y*w+Math.round(board.x));
+        if(rgba[i+3]===255&&rgba[i+1]>rgba[i]&&rgba[i+1]>rgba[i+2]){roof=y;break;}
+      }
+    }
+    return {board,pipe,roof};
+  });
+}
 async function inspect(browser,guide){
     const revision=path.basename(guide).split('-')[0];
     const looseRails=revision==='R0013';
@@ -20,7 +45,9 @@ async function inspect(browser,guide){
     const loadReport=(name,assembly=assemblyId)=>JSON.parse(fs.readFileSync(
       path.join(__dirname,'../../hardware/mechanical',assembly,'QA/power-key',name),'utf8'));
     const key=loadReport('key-path.json'),blocked=key.pcb.status==='blocked';
-    assert.equal(blocked,revision!=='R0015');
+    const usb=loadReport('../usb-indicator/'+revision+'.json','TW-A-0001-R0015');
+    assert.equal(blocked,revision==='R0013'||revision==='R0014');
+    assert.equal(usb.status==='clear',revision==='R0016');
     for(const [idx,viewport] of cases.entries()){
       const context=await browser.newContext({viewport,offline:true,isMobile:!!idx,hasTouch:!!idx});
       if(idx)await context.addInitScript(()=>{
@@ -93,7 +120,7 @@ async function inspect(browser,guide){
       const zoomed=await pixels(page);await page.locator('#model').press('ArrowRight');
       assert.notEqual(zoomed.hash,(await pixels(page)).hash);
       await page.locator('#reset').click();await page.locator('#next').click();
-      const motionSteps=assembly.steps.filter(step=>step.motionPart);
+      const motionSteps=assembly.steps.filter(step=>['cap','KEY','keeper'].includes(step.motionPart));
       assert.deepEqual(motionSteps.map(step=>step.motionPart),blocked?['cap']:['cap','KEY','keeper']);
       assert.equal(await page.locator('#title').innerText(),motionSteps[0].title);
       const records=[loadReport('cap-path.json',looseRails?'TW-A-0001-R0014':assemblyId),key.pcb,key.keeper];
@@ -155,6 +182,60 @@ async function inspect(browser,guide){
           assert.ok(step.visible.every(id=>!['cap','KEY','keeper'].includes(id)));
         }
       }
+      const usbStep=assembly.steps.find(s=>s.usbIndicator);
+      assert.deepEqual(usbStep.active,['USB1']);
+      assert.ok(usbStep.visible.includes('housing')&&usbStep.visible.includes('uGuide'));
+      await select(usbStep.title);
+      assert.equal(await page.locator('#section').getAttribute('aria-pressed'),'true');
+      assert.ok(await page.locator('#sectionLegend').isVisible());
+      const usbStart=await pixels(page);
+      await page.locator('#section').click();
+      assert.ok(await page.locator('#sectionLegend').isHidden());
+      assert.notEqual((await pixels(page)).hash,usbStart.hash);
+      await page.locator('#reset').click();
+      assert.equal((await pixels(page)).hash,usbStart.hash);
+      if(usb.status==='blocked'){
+        assert.deepEqual(usbStep.fixedOffset,[0,0,usb.rejected_vertical.first_contact_offset_z_from_above_mm[0]]);
+        assert.ok(!usbStep.waypoints&&!usbStep.motionPart);
+        assert.ok(await page.locator('#position').isHidden());
+        assert.match(await page.locator('#instruction').innerText(),/Set the loose gauge aside/);
+        assert.ok(assembly.steps.slice(assembly.steps.indexOf(usbStep)+1).every(s=>!s.visible.includes('USB1')));
+        if(idx){
+          const {board,pipe,roof}=await usbPixels(page);
+          assert.ok(board&&pipe&&board.bottom<pipe.top);
+          assert.ok(roof-board.bottom<=2,'Blocked gauge must be displayed at the top surface of the roof');
+        }
+      }else{
+        assert.equal(usbStep.motionPart,'USB1');
+        assert.deepEqual(usbStep.waypoints,usb.waypoints_offset_mm.slice().reverse());
+        assert.equal(await page.locator('#position').inputValue(),'100');
+        assert.equal(await page.locator('#positionText').innerText(),'Clear above housing');
+        const first=idx?await usbPixels(page):null;
+        if(idx){
+          const [seat,bend,top]=await page.evaluate(()=>window.guideVertices);
+          assert.ok(Math.abs(seat[1]-bend[1])<.01&&Math.abs(bend[0]-top[0])<.01);
+          assert.ok(seat[0]>bend[0]+10&&bend[1]>top[1]+10,'Show the slide and drop on separate screen axes');
+          assert.ok(Math.hypot(first.board.x-top[0],first.board.y-top[1])<2);
+          assert.ok(Math.hypot(first.pipe.x-seat[0],first.pipe.y-seat[1])<2);
+        }
+        await page.locator('#nextPosition').click();
+        const middle=await pixels(page);
+        assert.notEqual(middle.hash,usbStart.hash);
+        assert.equal(await page.locator('#positionText').innerText(),Math.abs(usb.waypoints_offset_mm[1][1])+' mm to seat');
+        const lowered=idx?(await usbPixels(page)).board:null;
+        if(idx)assert.ok(Math.abs(lowered.x-first.board.x)<1&&lowered.y>first.board.y+10);
+        await page.locator('#nextPosition').click();
+        assert.notEqual((await pixels(page)).hash,middle.hash);
+        assert.equal(await page.locator('#positionText').innerText(),'Seated');
+        assert.ok(await page.locator('#nextPosition').isDisabled());
+        if(idx){
+          const seated=(await usbPixels(page)).board;
+          assert.ok(Math.abs(seated.y-lowered.y)<1&&seated.x>lowered.x+10);
+          assert.ok(Math.hypot(seated.x-first.pipe.x,seated.y-first.pipe.y)<2,'Center the seated LED on the pipe');
+        }
+      }
+      await select('Lower the display onto its four seats');
+      assert.match(await page.locator('#check').innerText(),/soldered lamp leads cannot span/);
       await select('Fit the bezel and inspect the seam');
       assert.equal(await page.locator('#checks input').count(),5);
       const checks=await page.locator('#checks').innerText();
@@ -174,7 +255,7 @@ async function inspect(browser,guide){
       assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
       await context.close();
     }
-    console.log(revision+': passed every offline assembly step on desktop and mobile, measured power-key paths, waypoint navigation, camera controls, closure checks and battery selection.');
+    console.log(revision+': passed offline desktop and mobile steps, power-key sequence, USB1 section and '+usb.status+' route, camera controls, closure and battery selection.');
 }
 (async()=>{
   const opts=process.env.BROWSER_PATH?{executablePath:process.env.BROWSER_PATH}:

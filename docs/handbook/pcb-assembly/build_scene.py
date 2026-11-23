@@ -207,12 +207,50 @@ def build(assembly=ASSEMBLY):
     }
 
 
+def build_usb_sections():
+    """Cut a longitudinal housing slice spanning the exact USB1 substrate thickness."""
+    extent = mf.Manifold.cube((.6, 32, 24)).translate((-42.1, -23, 6))
+    shapes, meshes, revisions = [], [], {}
+    for revision in ("R0013", "R0014", "R0015", "R0016"):
+        housing_rev = "R0011" if revision == "R0013" else revision
+        folder = MECHANICAL / f"TW-A-0001-{housing_rev}"
+        orientation = folder / "part-orientations.json"
+        row = read(orientation)["housing-battery-bay"]
+        source = folder / row["print_stl"]
+        mesh = checked_mesh(source, row["sha256"])
+        mesh.apply_transform(np.linalg.inv(row["assembly_to_print"]))
+        section = fit.solid(mesh) ^ extent
+        if section.is_empty():
+            raise ValueError(f"Missing USB1 bay in {revision}")
+        for index, previous in enumerate(shapes):
+            if (previous - section).is_empty() and (section - previous).is_empty():
+                break
+        else:
+            index = len(shapes)
+            shapes.append(section)
+            data = section.to_mesh64()
+            cut = trimesh.Trimesh(data.vert_properties[:, :3].copy(), data.tri_verts.copy(), process=False)
+            scene = Scene()
+            scene.add("cut", cut, source, np.eye(4), .002)
+            meshes.append({k: v for k, v in scene.parts["cut"].items() if k not in ("source", "sourceSha256")})
+        revisions[revision] = dict(mesh=index, source=source.relative_to(ROOT).as_posix(),
+                                   sourceSha256=row["sha256"], orientation=orientation.relative_to(ROOT).as_posix(),
+                                   orientationSha256=fit.digest(orientation))
+    return dict(bounds_mm=[[-42.1, -23, 6], [-41.5, 9, 30]], revisions=revisions, meshes=meshes)
+
+
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--revision", choices=["R0014", "R0015"], default="R0014")
-    revision = parser.parse_args().revision
+    parser.add_argument("--revision", choices=["R0014", "R0015", "R0016"], default="R0014")
+    parser.add_argument("--usb-sections", action="store_true", help="Build USB1 inspection sections for all guides")
+    args = parser.parse_args()
+    if args.usb_sections:
+        (HERE / "usb1-sections.json").write_bytes(
+            (json.dumps(build_usb_sections(), separators=(",", ":")) + "\n").encode())
+        sys.exit(0)
+    revision = args.revision
     scene = build(MECHANICAL / ("TW-A-0001-" + revision))
-    target = HERE / ("scene.json" if revision == "R0014" else "scene-r0015.json")
+    target = HERE / ("scene.json" if revision == "R0014" else f"scene-{revision.lower()}.json")
     target.write_bytes((json.dumps(scene, separators=(",",":"), allow_nan=False) + "\n").encode())
     print(f"Wrote {len(scene['parts'])} registered meshes, {target.stat().st_size:,} bytes")

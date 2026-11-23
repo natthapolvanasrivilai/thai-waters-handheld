@@ -1,8 +1,9 @@
-"""Apply the verified key sequence to the archived R0013 flat-floor guide."""
+"""Apply the checked power-key and USB1 operations to the archived R0013 flat-floor guide."""
 import copy
 import json
 from pathlib import Path
 import re
+from build_view import HERE, apply_usb_indicator
 
 ROOT = Path(__file__).resolve().parents[3]
 MODELS = ROOT / "docs/models"
@@ -29,7 +30,8 @@ def main():
         raise ValueError("Recheck the R0013 power-key bay against the motion evidence")
 
     old_parts, new_parts = (guide["scene"]["parts"] for guide in (old, current))
-    rows = [copy.deepcopy(s) for s in current["steps"] if s.get("motionPart") or s.get("inspectionPart")]
+    rows = [copy.deepcopy(s) for s in current["steps"]
+            if (s.get("motionPart") or s.get("inspectionPart")) in ("cap", "KEY", "keeper")]
     if [s.get("motionPart") or s.get("inspectionPart") for s in rows] != ["cap", "KEY"]:
         raise ValueError("Expected the inside-loading cap and the legacy blocked-board inspection")
     if not rows[0].get("waypoints") or rows[1].get("waypoints") or "housing" in rows[1]["visible"]:
@@ -52,6 +54,15 @@ def main():
     checks = old["steps"][-1]["checklist"]
     key_check = next(i for i, text in enumerate(checks) if "KEY remains captured" in text)
     checks[key_check] = "Set the loose cap, KEY gauge and west retainer aside before closure. Check that A2 stays on all four shims."
+    source = json.loads((HERE / "steps.json").read_bytes())
+    identify, = [s for s in source if s["title"] == "Identify the USB1 indicator"]
+    placement, = [s for s in source if s.get("usbIndicator")]
+    usb_index = next(i for i, s in enumerate(old["steps"]) if s["title"] == "Slide USB1 into the guides")
+    if old["steps"][usb_index-1]["title"] != identify["title"]:
+        raise ValueError("Recheck the archived USB1 sequence")
+    placement["visible"] = old["steps"][usb_index]["visible"]
+    old["steps"][usb_index-1:usb_index+1] = [identify, placement]
+    apply_usb_indicator(old["scene"], old["steps"], "R0013")
     encoded = json.dumps(old, ensure_ascii=True, separators=(",", ":")).replace("<", "\\u003c")
     page = template[:match.start(2)].replace("R0014", "R0013") + encoded
     page += template[match.end(2):].replace("R0014", "R0013")

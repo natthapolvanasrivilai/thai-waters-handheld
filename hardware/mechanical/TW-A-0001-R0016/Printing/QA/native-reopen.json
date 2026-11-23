@@ -1,0 +1,111 @@
+{
+    "error_string": "Success.",
+    "layer_height": 0.20000000298023224,
+    "peak_rss_mb": 309.12109375,
+    "plate_index": 1,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bottom surface": 39.90232849121094,
+                "Bridge": 662.9434814453125,
+                "Custom": 429.8551330566406,
+                "Flush": 29.0,
+                "Gap infill": 410.32257080078125,
+                "Inner wall": 838.96630859375,
+                "Internal solid infill": 900.6702270507813,
+                "Outer wall": 1163.77197265625,
+                "Overhang wall": 219.47201538085938,
+                "Sparse infill": 133.91383361816406,
+                "Support": 1050.0333251953125,
+                "Support interface": 407.948486328125,
+                "Support transition": 205.87777709960938,
+                "Top surface": 248.62002563476563,
+                "Travel": 916.6471557617188,
+                "Undefined": 901.5357666015625
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFG60",
+                    "id": 1,
+                    "main_used_g": 53.90830612182617,
+                    "total_used_g": 53.90830612182617
+                }
+            ],
+            "id": 1,
+            "layer_filament_change": 0,
+            "main_predication": 7171.08154296875,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 74.25,
+                        "height": 31.000003814697266,
+                        "width": 110.72000885009766,
+                        "x": 72.63999938964844,
+                        "y": 90.87499237060547,
+                        "z": -7.348631925196969e-09
+                    },
+                    "id": 5,
+                    "name": "housing-battery-bay_1",
+                    "triangle_count": 86814
+                }
+            ],
+            "times": {
+                "conflict_check_time": 0,
+                "detect_overhangs_time": 20,
+                "export_gcode_time": 1028,
+                "flush_plan_time": 0,
+                "generate_support_material_time": 648,
+                "infill_generate_time": 98,
+                "infill_time": 294,
+                "ironing_time": 0,
+                "make_perimeters_time": 736,
+                "multifilament_segment_2d_time": 0,
+                "other_slice_time": 6,
+                "prepare_infill_time": 196,
+                "region_split_time": 1,
+                "skirt_brim_time": 1,
+                "slice_layers_time": 203,
+                "sliced_time": 2868,
+                "sliced_time_with_cache": 1029,
+                "support_detect_time": 253,
+                "support_interface_time": 4,
+                "support_normal_generate_time": 370,
+                "support_toolpath_time": 21,
+                "support_tree_generate_time": 0,
+                "toolpath_time": 107,
+                "wall_time": 532,
+                "wipe_tower_time": 6
+            },
+            "total_predication": 7643.79443359375,
+            "triangle_count": 86814,
+            "warning_message": ""
+        }
+    ],
+    "sparse_infill_density": 15.0,
+    "times": {
+        "export_3mf_time": 691,
+        "export_slicedata_time": 0,
+        "export_time": 1039,
+        "import_time": 240,
+        "load_slicedata_time": 0,
+        "prepare_time": 243
+    },
+    "upward_compatible_machine": [
+        "Bambu Lab P1S 0.4 nozzle",
+        "Bambu Lab P1P 0.4 nozzle",
+        "Bambu Lab X1 0.4 nozzle",
+        "Bambu Lab X1E 0.4 nozzle",
+        "Bambu Lab A1 0.4 nozzle",
+        "Bambu Lab H2D 0.4 nozzle",
+        "Bambu Lab H2D Pro 0.4 nozzle",
+        "Bambu Lab H2S 0.4 nozzle",
+        "Bambu Lab P2S 0.4 nozzle",
+        "Bambu Lab H2C 0.4 nozzle",
+        "Bambu Lab X2D 0.4 nozzle",
+        "Bambu Lab A2L 0.4 nozzle"
+    ],
+    "wall_loops": 2
+}

@@ -2,6 +2,8 @@
 
 This issue affects two separate fitting operations. The cap’s wide flange enters through the open display side. The populated switch board then needs room for the metal rim of its switch while sliding down the guides. The former R0013 animation showed the flange entering from outside after the board was in place. The R0013 and R0014 walls also foul the rim during a straight board insertion. The old guide is withdrawn for that operation.
 
+**USB1 correction.** Keep the indicator gauge out of this R0015 case. Use the R0016 side-entry housing for the lamp placement. [USB1 procedure and retained checks](../TW-A-0001-R0016/README.md)
+
 **Print only plate 1 for the revised housing.** Reuse the cap, west retainer, PCB gauges, bezel and other fit-kit parts. R0015 includes the two raised A3 rails. Keep the two loose A3 strips from an R0013 gauge plate aside. [Bambu Studio project](Printing/Thai-Waters-R0015-PCB-Fit-X1C.3mf) · [Interactive R0015 assembly guide](../../../docs/models/R0015-PCB-assembly.html)
 
 ## Fit the key before the display
