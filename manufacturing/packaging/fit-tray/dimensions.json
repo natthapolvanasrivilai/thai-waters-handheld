@@ -1,0 +1,65 @@
+{
+  "source": "hardware/mechanical/TW-A-0001-R0011/installed-step.json",
+  "component_count": 142,
+  "carton_finished_inside_mm": [
+    222,
+    142,
+    52
+  ],
+  "wall_stock_assumed_mm": 1.5,
+  "bays": {
+    "handheld": {
+      "clear_bay_mm": [
+        119,
+        88,
+        50.5
+      ],
+      "item_envelope_mm": [
+        110.72,
+        75.4,
+        33.2
+      ],
+      "total_free_space_mm": [
+        8.28,
+        12.6,
+        17.3
+      ]
+    },
+    "USB cable": {
+      "clear_bay_mm": [
+        101.5,
+        88,
+        50.5
+      ],
+      "item_envelope_mm": null,
+      "total_free_space_mm": null
+    },
+    "detached grip": {
+      "clear_bay_mm": [
+        143,
+        52.5,
+        50.5
+      ],
+      "item_envelope_mm": [
+        130.4,
+        31.0,
+        38.938
+      ],
+      "total_free_space_mm": [
+        12.6,
+        21.5,
+        11.562
+      ]
+    },
+    "sleeved key": {
+      "clear_bay_mm": [
+        77.5,
+        52.5,
+        50.5
+      ],
+      "item_envelope_mm": null,
+      "total_free_space_mm": null
+    }
+  },
+  "status": "inert dimensional trial; physical samples, restraint, and transport qualification pending"
+}
