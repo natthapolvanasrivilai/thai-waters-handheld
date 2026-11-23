@@ -23,6 +23,9 @@ jobs:
         with:
           ref: ${{ env.SOURCE_SHA }}
           persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
       - name: Rebuild browser assets
         shell: bash
         run: |
@@ -38,6 +41,22 @@ jobs:
           ZIG="$RUNNER_TEMP/zig-linux-x86_64-0.13.0/zig"
           "$ZIG" version >> "$RUNNER_TEMP/browser-build.txt"
           python3 game/build-engine.py --zig "$ZIG"
+          node - <<'JS'
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const built = new WebAssembly.Module(fs.readFileSync('game/assets/landscape.wasm'));
+          assert.deepEqual(WebAssembly.Module.imports(built), [], 'landscape.wasm must be standalone');
+          const scene = new WebAssembly.Instance(built).exports;
+          const methods = ['arrivalDuration', 'arrivalLanding', 'arrivalShapes', 'sampleArrival',
+            'arrivalPixels', 'paintPlace', 'placePalette', 'ambientSpans', 'sampleAmbient',
+            'ambientBoatMix', 'ambientBoatPcm'];
+          for (const name of methods) assert.equal(typeof scene[name], 'function', 'Missing scenery ABI: ' + name);
+          assert.ok(scene.memory instanceof WebAssembly.Memory, 'Missing scenery memory export');
+          const direct = ['ambient', 'scenery'].map(name =>
+            fs.readFileSync('verification/browser-tests/' + name + '.cjs', 'utf8').includes('TW_LANDSCAPE '));
+          assert.equal(direct[0], direct[1], 'Mixed landscape test source capability');
+          assert.equal(scene.sampleAmbient.length, direct[0] ? 3 : 2, 'Wrong scenery sampling ABI');
+          JS
           python3 game/build.py
           python3 - <<'PY'
           import base64

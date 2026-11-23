@@ -2,6 +2,17 @@
 #include "../../firmware/WillowCreek/BoatAmbience.h"
 #include "../../firmware/WillowCreek/ArrivalPixels.h"
 
+#if defined(__wasm__)
+#include <stddef.h>
+// Zig may lower fills to memset. Keep the standalone scenery module
+// import-free; the volatile byte stores cannot become another memset call.
+extern "C" void* memset(void* destination,int value,size_t count){
+  auto* out=static_cast<volatile unsigned char*>(destination);
+  while(count--) *out++=static_cast<unsigned char>(value);
+  return destination;
+}
+#endif
+
 namespace {
 uint8_t indexed[scenery::width*scenery::height];
 scenery::Color palette[scenery::colorCount];
