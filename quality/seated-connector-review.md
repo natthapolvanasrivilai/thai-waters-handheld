@@ -29,7 +29,7 @@ The 65 fitted USB simulations produced 189 measurements. Of these, 175 met their
 
 ## First-article record
 
-The owner reports that the R20 parts released intact, with heavy stringing. The carrier-to-floor fit and powered assembly remain open. [First print photographs and illustrated fit check](../hardware/mechanical/pocket-reel-r19b-removal-trial/QA/R20-first-print/README.md)
+The owner reports that the R20 parts released intact, with heavy stringing. The owner also confirmed that the R20 four-post carrier fits the printed floor sample. Board seating, repeatability and powered assembly remain open. [First print photographs and illustrated fit check](../hardware/mechanical/pocket-reel-r19b-removal-trial/QA/R20-first-print/README.md)
 
 The R20 carrier check covered 31 component groups with zero positive intersection volumes and zero unresolved solids. The A2 board touches its seat as designed; its populated components clear the carrier by 0.283 mm in the registered model. Both pack envelopes in the R0013 STEP have a closest measured gap of 0.500 mm to the housing. Physical support removal, retention and printed tolerances remain first-article observations.
 
