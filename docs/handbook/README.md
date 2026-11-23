@@ -2,7 +2,7 @@
 
 Update [the status record](../wiki/Current-status.md) in the same change as a new revision, owner observation, print kit, release, or changed project gate. Include the review date, identifiers, physical evidence, open checks and next action. Link directly to the underlying records. The reader accepts plain paragraphs, `##` headings and inline Markdown links to files or releases in this GitHub project.
 
-The [handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/Thai-Waters-handbook.html) discovers the current source each time it opens. A single same-repository open PR can serve as the active engineering review. Append the following marker as the last line of that PR's description, outside any code block.
+The [handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Thai-Waters-handbook.html) discovers the current source each time it opens. A single same-repository open PR can serve as the active engineering review. Append the following marker as the last line of that PR's description, outside any code block.
 
 ```text
 <!-- current-handbook -->

@@ -1,5 +1,7 @@
 # Prototype sourcing and cost
 
+The A4/A5 mounting allowance covers six insulating blocks and twelve adhesive interfaces. Block stock, adhesive part numbers, process and cost remain unqualified. PETG in the print kit is for test gauges. [Mounts and board functions](../../hardware/mechanical/pcb-fit-display-r0002/README.md)
+
 **R0016 housing.** The indicator entrance and retaining lip are printed into Plate 1. The PCB gauge and purchased parts carry over. Qualify the wired installation and retention before setting a production labor allowance. [Print record](../../hardware/mechanical/TW-A-0001-R0016/Printing/README.md)
 
 **R0015 housing.** The key-bay relief uses the existing cap, retainer and electronics and adds no purchased item. [R0015 build record](../../hardware/mechanical/TW-A-0001-R0015/README.md)
@@ -8,7 +10,7 @@
 
 **R0012 service study.** The [CviLux interconnect and board changes](../../sourcing/production-intent/R0012-interconnect-delta.csv) supersede the Würth haptic header, plug and terminated leads in the historical budget. Cavities 1, 3, 4 and 5 take contacts. A4 and A5 have separate population definitions. Prototype sample prices, harness tooling and delivered board costs are open. Applying the earlier total to this configuration would understate those unknowns. [Historical R0011/R0004 budget](../../sourcing/production-intent/R0011-R0004-BOM.md)
 
-[Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/Thai-Waters-handbook.html)
+[Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Thai-Waters-handbook.html)
 
 ## Historical R0011/R0004 engineering BOM
 

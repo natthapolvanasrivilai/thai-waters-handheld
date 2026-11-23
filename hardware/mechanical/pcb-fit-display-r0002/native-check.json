@@ -1,0 +1,168 @@
+{
+  "slices": [
+    {
+      "seats": [
+        {
+          "component": "A4-integration",
+          "centre_xy_gcode_mm": [
+            143.5,
+            136
+          ],
+          "bearing_layer_mm": 10.0,
+          "cad_bearing_mm": 9.965,
+          "top_coverage": 0.9838,
+          "minimum_perimeter_coverage": 0.977
+        },
+        {
+          "component": "A4-integration",
+          "centre_xy_gcode_mm": [
+            161.5,
+            135.5
+          ],
+          "bearing_layer_mm": 10.0,
+          "cad_bearing_mm": 9.965,
+          "top_coverage": 0.9875,
+          "minimum_perimeter_coverage": 0.9769
+        },
+        {
+          "component": "A4-integration",
+          "centre_xy_gcode_mm": [
+            161.5,
+            127.5
+          ],
+          "bearing_layer_mm": 10.0,
+          "cad_bearing_mm": 9.965,
+          "top_coverage": 0.9875,
+          "minimum_perimeter_coverage": 0.9769
+        },
+        {
+          "component": "A5-power",
+          "centre_xy_gcode_mm": [
+            145.5,
+            109.5
+          ],
+          "bearing_layer_mm": 10.6,
+          "cad_bearing_mm": 10.66,
+          "top_coverage": 0.9853,
+          "minimum_perimeter_coverage": 0.9769
+        },
+        {
+          "component": "A5-power",
+          "centre_xy_gcode_mm": [
+            156.5,
+            111.9
+          ],
+          "bearing_layer_mm": 10.6,
+          "cad_bearing_mm": 10.66,
+          "top_coverage": 0.9815,
+          "minimum_perimeter_coverage": 0.9763
+        },
+        {
+          "component": "A5-power",
+          "centre_xy_gcode_mm": [
+            160.5,
+            108.7
+          ],
+          "bearing_layer_mm": 10.6,
+          "cad_bearing_mm": 10.66,
+          "top_coverage": 0.9878,
+          "minimum_perimeter_coverage": 0.9769
+        }
+      ],
+      "warnings": "",
+      "gcode_sha256": "fdd7826794c47e53a0d25658fab5110ba511fc6ca0cdbf6f327b6f624ff7aff0",
+      "estimated_seconds": 3170,
+      "estimated_g": 23.02
+    },
+    {
+      "seats": [
+        {
+          "component": "A4-integration",
+          "centre_xy_gcode_mm": [
+            143.5,
+            136
+          ],
+          "bearing_layer_mm": 10.0,
+          "cad_bearing_mm": 9.965,
+          "top_coverage": 0.9838,
+          "minimum_perimeter_coverage": 0.977
+        },
+        {
+          "component": "A4-integration",
+          "centre_xy_gcode_mm": [
+            161.5,
+            135.5
+          ],
+          "bearing_layer_mm": 10.0,
+          "cad_bearing_mm": 9.965,
+          "top_coverage": 0.9875,
+          "minimum_perimeter_coverage": 0.9769
+        },
+        {
+          "component": "A4-integration",
+          "centre_xy_gcode_mm": [
+            161.5,
+            127.5
+          ],
+          "bearing_layer_mm": 10.0,
+          "cad_bearing_mm": 9.965,
+          "top_coverage": 0.9875,
+          "minimum_perimeter_coverage": 0.9769
+        },
+        {
+          "component": "A5-power",
+          "centre_xy_gcode_mm": [
+            145.5,
+            109.5
+          ],
+          "bearing_layer_mm": 10.6,
+          "cad_bearing_mm": 10.66,
+          "top_coverage": 0.9853,
+          "minimum_perimeter_coverage": 0.9769
+        },
+        {
+          "component": "A5-power",
+          "centre_xy_gcode_mm": [
+            156.5,
+            111.9
+          ],
+          "bearing_layer_mm": 10.6,
+          "cad_bearing_mm": 10.66,
+          "top_coverage": 0.9815,
+          "minimum_perimeter_coverage": 0.9763
+        },
+        {
+          "component": "A5-power",
+          "centre_xy_gcode_mm": [
+            160.5,
+            108.7
+          ],
+          "bearing_layer_mm": 10.6,
+          "cad_bearing_mm": 10.66,
+          "top_coverage": 0.9878,
+          "minimum_perimeter_coverage": 0.9769
+        }
+      ],
+      "warnings": "",
+      "gcode_sha256": "fdd7826794c47e53a0d25658fab5110ba511fc6ca0cdbf6f327b6f624ff7aff0",
+      "estimated_seconds": 3170,
+      "estimated_g": 23.02
+    }
+  ],
+  "nominal_gauge_balance": {
+    "A4-integration": {
+      "uniform_solid_centroid_xy_mm": [
+        24.6566,
+        -5.5178
+      ],
+      "distance_outside_support_polygon_mm": 0.0
+    },
+    "A5-power": {
+      "uniform_solid_centroid_xy_mm": [
+        24.2266,
+        10.7759
+      ],
+      "distance_outside_support_polygon_mm": 2.3733
+    }
+  }
+}

@@ -282,7 +282,18 @@ async function inspect(browser,guide){
         assert.match(checks,/retainer aside before closure/);
       }else{
         assert.match(checks,/both integral housing rails/);
-        assert.match(checks,/six loose printed spacers/);
+        if(['R0016','R0017'].includes(revision)){
+          assert.match(checks,/six A4\/A5 lands/);
+          for (const name of ['A4','A5']){
+            await select('Find the three '+name+' seats');
+            assert.ok(await page.locator('#position').isHidden());
+            assert.match(await page.locator('#instruction').innerText(),/part of the printed display gauge/);
+            const step=assembly.steps.find(s=>s.title==='Find the three '+name+' seats');
+            assert.deepEqual(step.moving,[]);
+            assert.equal(step.visible.filter(id=>/^A[45]s/.test(id)).length,6);
+          }
+          await select('Fit the bezel and inspect the seam');
+        }else assert.match(checks,/six loose printed spacers/);
         assert.match(checks,blocked?/bay remains empty/:/KEY remains captured/);
       }
       await page.locator('#checks input').first().check();

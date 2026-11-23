@@ -31,6 +31,7 @@ const colors={housing:0x76978b,usbSection:0x76978b,uGuide:0x3788ad,bezel:0x314a4
 const labels={A1:'A1 · Display',A2:'A2 · Reel sensor',A3:'A3 · Haptics',A4:'A4 · Integration',A5:'A5 · USB power',KEY:'Power switch',USB1:'USB indicator',USB2:'Lamp resistor',housing:'Housing',bezel:'Bezel',carrier:'R20 carrier',floor:'R20 floor sample',bridge:'Battery bridge',cap:'Power cap',keeper:'Switch retainer',pkcell:'PKCELL gauge',adafruit:'Adafruit gauge'};
 function label(id){
   if(labels[id])return labels[id];
+  if(geometry.fixedDisplaySeats?.includes(id))return id.slice(0,2)+' integral seat '+id.slice(-1);
   const shim=/^(A[2-5])s(\d)$/.exec(id);
   return shim?shim[1]+(shim[1]==='A2'?' shim ':' spacer ')+shim[2]:id;
 }

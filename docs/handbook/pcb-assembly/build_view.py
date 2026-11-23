@@ -14,6 +14,9 @@ REVISIONS = {"R0014": "scene.json", "R0015": "scene-r0015.json", "R0016": "scene
 USB_QA = ROOT / "hardware/mechanical/TW-A-0001-R0015/QA/usb-indicator"
 
 
+from fixed_display import apply_fixed_display
+
+
 def verify_sources(report, assembly):
     if report["assembly"] != assembly:
         raise ValueError(f"Motion evidence belongs to another assembly: {report['assembly']}")
@@ -174,6 +177,8 @@ def build(modules, revision):
         step["check"] = "The face should follow the outline of the hole. Hold the cap at its seat until the switch board and keeper are fitted. With the real switch, press at the centre and edges and check that it returns freely."
         step["instruction"] = "The view opens at the alignment point, 2.50 mm inside the hole. Slide the keyed cap straight outward to seat it. To see how to reach this position from above, move the slider to the far right."
         step["start"] = 100 * 2.5 / 26.5
+    if revision in ("R0016", "R0017"):
+        apply_fixed_display(scene, steps, ROOT)
     all_ids = set(scene["parts"])
     covered = set()
     for i, step in enumerate(steps, 1):

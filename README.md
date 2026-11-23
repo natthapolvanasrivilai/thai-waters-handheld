@@ -1,6 +1,6 @@
 # Thai Waters handheld
 
-[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
+[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
 
 [Hardware closure and playtest issues](quality/hardware-gate.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [November hardware review](quality/hardware-review-2026-11-23.md)
 
@@ -10,9 +10,9 @@
 
 **[Browse the product wiki](docs/wiki/Home.md)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
 
-Use the **R0016 housing on plate 1** for the USB indicator and power-key dry fit. The indicator enters from the service end under the USB-C well. The cap fits from inside, then the switch board slides through a new relief in the top wall. Reuse the retainer and Plate 7 gauges. Print the [R0017 keyed power cap](hardware/mechanical/TW-A-0001-R0017/README.md) for the existing opening. [R0016 X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/Thai-Waters-R0016-PCB-Fit-X1C.3mf)
+Use the **R0016 housing on plate 1** for the USB indicator and power-key dry fit. The indicator enters from the service end under the USB-C well. The cap fits from inside, then the switch board slides through a new relief in the top wall. Reuse the retainer and Plate 7 board gauges. The [single-piece display gauge](hardware/mechanical/pcb-fit-display-r0002/README.md) eliminates six loose blocks from the dry fit. Print the [R0017 keyed power cap](hardware/mechanical/TW-A-0001-R0017/README.md) for the existing opening. [R0016 X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/Thai-Waters-R0016-PCB-Fit-X1C.3mf)
 
-Choose **PCB assembly** in the downloaded handbook or [download the standalone 3D assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/R0017-PCB-assembly.html).
+Choose **PCB assembly** in the downloaded handbook or [download the standalone 3D assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/R0017-PCB-assembly.html).
 
 Open the downloaded handbook in a browser. **Current status** checks this GitHub project on every open and links to the evidence for the selected revision. When the check fails, the handbook labels the dated snapshot saved with the file. The archived tabs still work offline. The [original R0011 handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html) and [Rev F engineering release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/rev-f-engineering-0.7) preserve their original evidence.
 

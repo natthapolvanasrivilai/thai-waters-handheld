@@ -14,6 +14,10 @@ TW-A-0001-R0014 integrates the two A3 haptic-board supports into the housing flo
 
 [Assembly and USB evidence](../../quality/seated-connector-review.md) · [Interactive seated connector motion](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-seated-service-review-1/TW-A-0001-R0013-motion-review.html) · [Placed boards and circuit checks](../../hardware/verification/r0013/README.md) · [Revision register](../../hardware/revisions/README.md)
 
+## Display gauge and A4/A5 mounting
+
+The new inert PETG display has all six test seats built in. Reuse the A4 and A5 board gauges. Step 19 highlights A5’s fixed seats. The original six loose PETG blocks belong to the plain Plate 7 display. The owner observed the spacers in the animation and has not printed them. Actual board retention, spacer stock and adhesive remain open. [One-piece display gauge for X1C](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Display-gauge-with-seats-X1C.3mf) · [R0016 guide matching the pictured housing](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/R0016-PCB-assembly.html) · [Board functions, real mount and small parts](../../hardware/mechanical/pcb-fit-display-r0002/README.md) · [Mount qualification #100](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/100)
+
 ## First physical print
 
 The owner confirmed that the R20 four-post carrier fits the printed floor sample. The parts came off the plate intact with heavy stringing. A physical A2 sensor board was unavailable. Board seating, printed dimensions and repeatability still need a specimen check.
@@ -36,9 +40,9 @@ With the display off the case and the switch board and its west retainer set asi
 
 ## Next fit check
 
-Let the R0013 plate 7 finish. For the new case, print only plate 1 from the R0016 project. Reuse all eight PCB gauges and the six square A4/A5 spacers. Set aside both long A3 strips. In the new case, dry-fit A3 directly onto the printed rail tops with J1 toward the lower service edge. Check for rocking, contact under the board and display closure before any bonding.
+Let the R0013 plate 7 finish. For the new case, print only plate 1 from the R0016 project. Use the fixed-seat display gauge or the original plain display with six square blocks. Reuse the other board gauges. Set aside both long A3 strips. In the new case, dry-fit A3 directly onto the printed rail tops with J1 toward the lower service edge. Check for rocking, contact under the board and display closure before any bonding.
 
-[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/R0017-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/Thai-Waters-handbook.html) · [Housing identification and A3 fit instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
+[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/R0017-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Thai-Waters-handbook.html) · [Housing identification and A3 fit instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
 
 With an older flat-floor R0013 housing, its two loose strips still establish the correct height. The R20 carrier trial is independent of the housing change. In the R0014 project plate 7 contains the same eight PCB gauges and six loose A4/A5 spacers. The four thin A2 shims in the full housing remain separate measured stock.
 
