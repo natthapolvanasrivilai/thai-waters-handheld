@@ -258,3 +258,7 @@ TW-A-0001-R0017,TW-P-0022-R0001,1,hardware/mechanical/TW-A-0001-R0009/Print/stat
 TW-A-0001-R0017,TW-P-0023-R0001,1,hardware/mechanical/TW-A-0001-R0009/Print/status-power-guide.stl,
 TW-A-0001-R0017,TW-P-0027-R0001,1,hardware/mechanical/TW-A-0001-R0010/Print/service-cover.stl,
 TW-A-0001-R0017,TW-P-0029-R0006,1,hardware/mechanical/TW-A-0001-R0017/installed-step.json,
+TW-A-0003-R0001,TW-P-0001-R0014,1,hardware/electronics/case-board-r0001/Case-board-R0001-X1C-fit.3mf,3D/Objects/object_1.model
+TW-A-0003-R0001,TW-P-0035-R0001,1,hardware/electronics/case-board-r0001/Case-board-R0001-X1C-fit.3mf,3D/Objects/gauge_108.model
+TW-A-0004-R0001,TW-P-0034-R0001,1,hardware/electronics/case-board-r0001/case-board.kicad_pcb,
+TW-A-0004-R0001,TW-P-0036-R0001,1,hardware/electronics/case-board-r0001/bom.csv,

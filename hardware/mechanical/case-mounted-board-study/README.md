@@ -1,6 +1,8 @@
 # Mount the auxiliary electronics to the case
 
-For the next hardware layout, keep the purchased Waveshare screen/controller on its own original mounts. Combine the A4 controls/audio interface and A5 USB-input circuit on one custom PCB. Seat this board on features printed into the rear housing, then fasten it before fitting the display. A short, disconnectable harness is the intended electrical connection. This eliminates six individual spacers and twelve adhesive interfaces at the display. The reel sensor and haptic parts still have their own functional locations.
+[The populated design and the two-plate print project supersede this blank-board study.](../../electronics/case-board-r0001/README.md)
+
+The original proposal was to keep the purchased Waveshare screen/controller on its own original mounts. Combine the A4 controls/audio interface and A5 USB-input circuit on one custom PCB. Seat this board on features printed into the rear housing, then fasten it before fitting the display. A short, disconnectable harness is the intended electrical connection. This eliminates six individual spacers and twelve adhesive interfaces at the display. The reel sensor and haptic parts still have their own functional locations.
 
 This is a packaging study based on R0017. The released R0016/R0017 print and fit guides describe the earlier prototype. The integrated seats on the plastic display gauge reproduce that earlier geometry. They are unnecessary for testing this new mounting idea. Leave the real display unmodified.
 

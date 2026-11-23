@@ -1,0 +1,68 @@
+{
+  "project_sha256": "a101c53809c43db0de40ef4363ba97e19319c5e9ee2370d719036b18a37020fe",
+  "bosses": [
+    {
+      "center": [
+        36,
+        -14.400000000000006
+      ],
+      "model_layers": 81,
+      "height_range_mm": [
+        5.6,
+        21.0
+      ],
+      "min_annulus_coverage": 0.999,
+      "pilot_core_open": true
+    },
+    {
+      "center": [
+        10.5,
+        3.9000000000000057
+      ],
+      "model_layers": 81,
+      "height_range_mm": [
+        5.6,
+        21.0
+      ],
+      "min_annulus_coverage": 0.932,
+      "pilot_core_open": true
+    },
+    {
+      "center": [
+        37.5,
+        19.85
+      ],
+      "model_layers": 81,
+      "height_range_mm": [
+        5.6,
+        21.0
+      ],
+      "min_annulus_coverage": 0.982,
+      "pilot_core_open": false
+    }
+  ],
+  "plate_1": {
+    "gcode_sha256": "e21056189b962d3227a1e141ba705c2907392bcfcf088b710f23313caa6f0350",
+    "header": [
+      "; HEADER_BLOCK_START",
+      "; BambuStudio 02.09.01.70",
+      "; model printing time: 2h 3m 18s; total estimated time: 2h 10m 42s",
+      "; total layer number: 180",
+      "; total filament length [mm] : 17849.54",
+      "; total filament volume [cm^3] : 42933.18",
+      "; total filament weight [g] : 54.53"
+    ]
+  },
+  "plate_2": {
+    "gcode_sha256": "ad8b0fea56c6fcd68200fae68385e80e499aa79b7fbe4b62bf292a2bdc50f11e",
+    "header": [
+      "; HEADER_BLOCK_START",
+      "; BambuStudio 02.09.01.70",
+      "; model printing time: 2m 10s; total estimated time: 9m 34s",
+      "; total layer number: 4",
+      "; total filament length [mm] : 385.67",
+      "; total filament volume [cm^3] : 927.65",
+      "; total filament weight [g] : 1.18"
+    ]
+  }
+}

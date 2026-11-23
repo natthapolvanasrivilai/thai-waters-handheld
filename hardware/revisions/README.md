@@ -1,5 +1,7 @@
 # Hardware revision register
 
+[TW-A-0003-R0001 case-board fit kit](../electronics/case-board-r0001/README.md) registers the two printable fit pieces separately from the full-device baseline. The combined auxiliary PCB is TW-P-0034-R0001.
+
 [R0017 keyed cap](../mechanical/TW-A-0001-R0017/README.md) uses TW-P-0013-R0003 with the R0016 housing. Only the cap needs printing.
 
 **Current engineering configuration.** TW-A-0001-R0016 and TW-A-0002-R0006 pair the USB1 side-entry housing with the existing electrical assembly. [USB indicator dry fit](../mechanical/TW-A-0001-R0016/README.md)

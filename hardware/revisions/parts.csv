@@ -77,3 +77,7 @@ TW-P-0001-R0013,Housing with service-end USB indicator channel,hardware/mechanic
 TW-P-0029-R0005,R0016 registered side-entry lamp assembly,hardware/mechanical/TW-A-0001-R0016/installed-step.json,,f532b93c02c8f1984f3498b9b24ef9cd9a8618505801a75e3cb0390235f951f7
 TW-P-0013-R0003,Power cap keyed to existing aperture,hardware/mechanical/TW-A-0001-R0017/Print/power-cap.stl,,88e3fc654f5606dce678211151b7c7d6d107742e1577c2e478a6041302b49bbd
 TW-P-0029-R0006,Installed assembly with keyed cap,hardware/mechanical/TW-A-0001-R0017/installed-step.json,,3f3e6e71bd7e7372d21748e5203416719971581057b0110203aea7b1217cfda6
+TW-P-0001-R0014,Housing with integrated combined-board mounts,hardware/electronics/case-board-r0001/Case-board-R0001-X1C-fit.3mf,3D/Objects/object_1.model,bf08e6b8fb2e4d0323115b6e1abc6c48068f133f39f260740f89a024dfb0de56
+TW-P-0034-R0001,Routed combined control and USB PCB,hardware/electronics/case-board-r0001/case-board.kicad_pcb,,22b0fc8a5d63e7d7b8cf93ea86b88a61e5dde3504efdabbed6125158e66b6230
+TW-P-0035-R0001,Combined PCB outline fit gauge,hardware/electronics/case-board-r0001/Case-board-R0001-X1C-fit.3mf,3D/Objects/gauge_108.model,aed422154785ce177cfd0a4b154342fb33dac169bed2a0f70a308d95fc542b00
+TW-P-0036-R0001,Case board population and installation BOM,hardware/electronics/case-board-r0001/bom.csv,,a4efda1030d6f6007cfb9d9a2d65f6acf911010bd4db307b26ea4002c9d7b921

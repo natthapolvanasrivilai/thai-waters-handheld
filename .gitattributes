@@ -53,3 +53,7 @@ hardware/mechanical/TW-A-0001-R0015/Printing/QA/*.json -text
 hardware/mechanical/TW-A-0001-R0016/*.json -text
 hardware/mechanical/TW-A-0001-R0016/QA/*.json -text
 hardware/mechanical/TW-A-0001-R0016/Printing/QA/*.json -text
+hardware/electronics/case-board-r0001/*.kicad_* -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0001/*.json -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0001/bom.csv -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0001/Case-board-R0001-view.html binary

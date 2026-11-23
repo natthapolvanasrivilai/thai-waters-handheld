@@ -1,0 +1,40 @@
+{
+  "board_32mm_drop_to_installed_parts_lower_mm": [
+    0.7399999999999956,
+    "Housing",
+    0.125
+  ],
+  "driver_4mm_shank_by_screw_lower_mm": [
+    [
+      1.8231000861670257,
+      "A2-pcb"
+    ],
+    [
+      3.857571566347087,
+      "whVCC"
+    ]
+  ],
+  "installation_stage": [
+    "A2-chip",
+    "A2-pcb",
+    "A2-population",
+    "A2-sockets",
+    "A3-J1-TPA",
+    "A3-J1-header",
+    "A3-J1-plug",
+    "Housing",
+    "J8plug",
+    "maximum pack",
+    "tee-SCL-Cu",
+    "tee-SCL-seal",
+    "tee-SDA-Cu",
+    "tee-SDA-seal",
+    "termination-W1-SCL",
+    "w1SCL",
+    "whGND",
+    "whSCL",
+    "whSDA",
+    "whVCC"
+  ],
+  "scope": "Footprint lowers to deliberate seating contact on the three integral supports. Approach uses the parent housing plus already installed parts. Driver test uses a 4 mm diameter straight shank with handle above the open case. Placement by hand and tooling tolerance require a fit trial."
+}

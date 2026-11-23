@@ -14,13 +14,15 @@ TW-A-0001-R0014 integrates the two A3 haptic-board supports into the housing flo
 
 [Assembly and USB evidence](../../quality/seated-connector-review.md) · [Interactive seated connector motion](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-seated-service-review-1/TW-A-0001-R0013-motion-review.html) · [Placed boards and circuit checks](../../hardware/verification/r0013/README.md) · [Revision register](../../hardware/revisions/README.md)
 
-## Next hardware layout
+## Case-mounted PCB fit kit
 
-A4 and A5 are targeted for one custom PCB supported by the rear housing. The Waveshare display uses its own mounts. An initial blank-board model clears the rigid display throughout an 18 mm lift. The nearest screw-head clearance is 0.40 mm. Existing leads interfere, and the populated PCB, detachable harness and case posts still require verification. The R0017 print and animation remain the earlier fit baseline. [Case-mounted board and cutaway CAD](../../hardware/mechanical/case-mounted-board-study/README.md) · [Mount redesign #100](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/100)
+TW-A-0003-R0001 replaces both display-mounted daughterboards with one routed case-mounted board in the new fit kit. The housing has two screw posts and an integral end rest. Print plate 1 for the housing and plate 2 for the combined outline gauge. Use the independent display mounts. [Download the X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0001-fit-1/Case-board-R0001-X1C-fit.3mf) · [Interactive board and support views](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0001-fit-1/Case-board-R0001-view.html) · [Assembly and test results](../../hardware/electronics/case-board-r0001/README.md)
 
-## Display gauge and A4/A5 mounting
+The populated board and three revised power lead jackets clear in the seated model. CAD includes the 8.25 mm haptic-connector stroke and an 18 mm rigid screen lift with the leads disconnected. Both fit plates sliced. Physical fit, a complete detachable display loom and charging measurements are pending. The 330 mA batteryless startup simulations missed the required voltage. [Mount qualification #100](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/100)
 
-The new inert PETG display has all six test seats built in. Reuse the A4 and A5 board gauges. Step 19 highlights A5’s fixed seats. The original six loose PETG blocks belong to the plain Plate 7 display. The owner observed the spacers in the animation and has not printed them. Actual board retention, spacer stock and adhesive remain open. [One-piece display gauge for X1C](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Display-gauge-with-seats-X1C.3mf) · [R0016 guide matching the pictured housing](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/R0016-PCB-assembly.html) · [Board functions, real mount and small parts](../../hardware/mechanical/pcb-fit-display-r0002/README.md) · [Mount qualification #100](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/100)
+## Earlier R0017 display gauge
+
+The earlier inert PETG display has all six test seats built in. Reuse the A4 and A5 board gauges. Step 19 highlights A5’s fixed seats. The original six loose PETG blocks belong to the plain Plate 7 display. The owner observed the spacers in the animation and has not printed them. These blocks belong to the R0017 stack. [One-piece display gauge for X1C](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Display-gauge-with-seats-X1C.3mf) · [R0016 guide matching the pictured housing](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/R0016-PCB-assembly.html) · [Board functions, real mount and small parts](../../hardware/mechanical/pcb-fit-display-r0002/README.md) · [Mount qualification #100](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/100)
 
 ## First physical print
 
@@ -44,7 +46,7 @@ With the display off the case and the switch board and its west retainer set asi
 
 ## Next fit check
 
-Let the R0013 plate 7 finish. For the new case, print only plate 1 from the R0016 project. Use the fixed-seat display gauge or the original plain display with six square blocks. Reuse the other board gauges. Set aside both long A3 strips. In the new case, dry-fit A3 directly onto the printed rail tops with J1 toward the lower service edge. Check for rocking, contact under the board and display closure before any bonding.
+Let the R0013 plate 7 finish. For an R0016/R0017 build, print only plate 1 from the R0016 project. Use the fixed-seat display gauge or the original plain display with six square blocks. Reuse the other board gauges. Set aside both long A3 strips. In the new case, dry-fit A3 directly onto the printed rail tops with J1 toward the lower service edge. Check for rocking, contact under the board and display closure before any bonding.
 
 [Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/R0017-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/display-gauge-r0002/Thai-Waters-handbook.html) · [Housing identification and A3 fit instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
 
