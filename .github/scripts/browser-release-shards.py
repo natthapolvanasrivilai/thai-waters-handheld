@@ -16,6 +16,7 @@ SHARDS = {
     "world": ("scenery", "ambient", "mobile-audio", "landing-audio", "hosted-startup", "tournament",
               "thai-catch", "thai-species-names", "gallery-history", "collection-native", "specimen-art"),
 }
+LANDSCAPE_TESTS = {"verification/browser-tests/scenery.cjs", "verification/browser-tests/ambient.cjs"}
 SITE = ("game/sites/test.mjs", "game/sites/cup-test.mjs")
 PERSISTENCE_LANES = {
     **{f"verification/browser-tests/{name}.cjs": "loopback" for name in (
@@ -61,7 +62,33 @@ def identity(bundle):
     require(re.fullmatch(r"[0-9a-f]{40}", src), "Bad source SHA")
     require((bundle / "BUILD.txt").read_text().splitlines()[0] == "SOURCE_COMMIT=" + src,
             "Artifact source mismatch")
-    return {"source": src, "html": digest(bundle / "Thai-Waters-play.html"), "wasm": digest(bundle / "atlas.wasm")}
+    return {"source": src, "html": digest(bundle / "Thai-Waters-play.html"), "wasm": digest(bundle / "atlas.wasm"),
+            "landscape": digest(bundle / "landscape.wasm")}
+
+
+# Last reviewed source before direct landscape fixture receipts were required.
+LEGACY_LANDSCAPE_END = "e5203606efd67186bdf144ab4ac3d6c2acab6638"
+
+
+def landscape_proof_mode(root, bundle, source):
+    git = ["git", "-C", str(root)]
+    def tracked_has_marker(path):
+        checked_in = subprocess.check_output([*git, "show", f"{source}:{path}"])
+        return b"TW_LANDSCAPE " in checked_in
+    caps = [tracked_has_marker(path) for path in sorted(LANDSCAPE_TESTS)]
+    require(len(set(caps)) == 1, "Mixed checked-in landscape proof capabilities")
+    wasm = bundle / "landscape.wasm"
+    n = subprocess.check_output(["node", "-e",
+        "const m=new WebAssembly.Module(require('node:fs').readFileSync(process.argv[1]));"
+        "console.log(new WebAssembly.Instance(m).exports.sampleAmbient.length)", str(wasm)], text=True).strip()
+    if all(caps):
+        require(n == "3", "Direct landscape proof requires the new game ABI")
+        return "direct-world"
+    require(n == "2", "New landscape ABI requires direct proof from both world tests")
+    require(subprocess.run([*git, "merge-base", "--is-ancestor", source, LEGACY_LANDSCAPE_END],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0,
+            "Missing direct landscape proof on an unverified historical source")
+    return "historical-artifact-only"
 
 
 def lane_evidence(log, name, html):
@@ -74,8 +101,12 @@ def lane_evidence(log, name, html):
 def run(root, shard, bundle, diagnostics):
     tests = partition(root)[shard]
     expected = identity(bundle)
-    actual = (digest(root / "game/Thai-Waters-play.html"), digest(root / "game/assets/atlas.wasm"))
-    require(actual == (expected["html"], expected["wasm"]), "Checkout artifact differs from staged build")
+    expected["landscapeProof"] = landscape_proof_mode(root, bundle, expected["source"])
+    direct = expected["landscapeProof"] == "direct-world"
+    print("Landscape proof mode: " + expected["landscapeProof"], flush=True)
+    actual = (digest(root / "game/Thai-Waters-play.html"), digest(root / "game/assets/atlas.wasm"),
+              digest(root / "game/assets/landscape.wasm"))
+    require(actual == (expected["html"], expected["wasm"], expected["landscape"]), "Checkout artifact differs from staged build")
     diagnostics.mkdir(parents=True, exist_ok=True)
     results = []
     for name in tests:
@@ -100,12 +131,19 @@ def run(root, shard, bundle, diagnostics):
             print(f"{name}: missing, duplicate, or incorrect browser lane proof", flush=True)
             if code == 0:
                 code = 1
+        landscape_observed = [line for line in output.splitlines() if line.startswith("TW_LANDSCAPE ")]
+        if name in LANDSCAPE_TESTS and landscape_observed != (["TW_LANDSCAPE " + expected["landscape"]] if direct else []):
+            print(f"{name}: missing, duplicate, or incorrect directly tested landscape hash", flush=True)
+            if code == 0:
+                code = 1
         print(f"{name}: exit {code}, {time.monotonic() - started:.1f}s", flush=True)
         if code:
             print(output[-4000:], flush=True)
         result = {"test": name, "exit": code, "seconds": round(time.monotonic() - started, 2)}
         if lane and observed:
             result["lane"] = lane
+        if direct and name in LANDSCAPE_TESTS and code == 0:
+            result["landscape"] = expected["landscape"]
         results.append(result)
         report = dict(expected, shard=shard, results=results)
         (diagnostics / "report.json").write_text(json.dumps(report, indent=2) + "\n")
@@ -114,6 +152,9 @@ def run(root, shard, bundle, diagnostics):
 
 def verify(root, bundle, diagnostics):
     expected = identity(bundle)
+    expected["landscapeProof"] = landscape_proof_mode(root, bundle, expected["source"])
+    direct = expected["landscapeProof"] == "direct-world"
+    print("Landscape proof mode: " + expected["landscapeProof"], flush=True)
     parts = partition(root)
     for shard, tests in parts.items():
         report_path = diagnostics / ("browser-report-" + expected["source"] + "-" + shard) / "report.json"
@@ -127,6 +168,8 @@ def verify(root, bundle, diagnostics):
                 f"Failed tests for {shard}")
         require(all(r.get("lane") == PERSISTENCE_LANES.get(r["test"]) for r in results),
                 f"Missing or incorrect persistence lane for {shard}")
+        require(all(r.get("landscape") == (expected["landscape"] if direct and r["test"] in LANDSCAPE_TESTS else None)
+                    for r in results), f"Missing or incorrect directly tested landscape hash for {shard}")
     print(f"Verified {sum(map(len, parts.values()))} exact-source tests across {len(parts)} shards")
 
 

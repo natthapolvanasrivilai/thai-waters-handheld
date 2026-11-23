@@ -48,9 +48,9 @@ uint8_t* paintPlace(int place,int period){
 }
 uint32_t* placePalette(){return palette;}
 uint8_t* ambientSpans(){return reinterpret_cast<uint8_t*>(spans);}
-int sampleAmbient(uint32_t ms,unsigned utcDayPlusOne){
+int sampleAmbient(uint32_t ms,unsigned utcDayPlusOne,int reducedMotion=0){
   WebSpans out;
-  scenery::paintAmbient(out,layout,ms,utcDayPlusOne,&boatMix);
+  scenery::paintAmbient(out,layout,ms,utcDayPlusOne,&boatMix,reducedMotion!=0);
   return out.count<=capacity?out.count:-1;
 }
 #if defined(__wasm__)

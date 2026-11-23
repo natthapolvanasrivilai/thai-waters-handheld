@@ -9,6 +9,7 @@ const hash = buffer => createHash('sha256').update(buffer).digest('hex');
 const repeat = 524288;
 
 async function check() {
+  console.log('TW_LANDSCAPE '+hash(bytes));
   const {instance:{exports:e}} = await WebAssembly.instantiate(bytes);
   let base, palette, maxSpans=0;
   function load(id,p) {
@@ -16,8 +17,8 @@ async function check() {
     base=new Uint8Array(e.memory.buffer,address,240*160);
     palette=new Uint32Array(e.memory.buffer,e.placePalette(),64);
   }
-  function spans(ms,utcDayPlusOne=0) {
-    const n=e.sampleAmbient(ms,utcDayPlusOne);
+  function spans(ms,utcDayPlusOne=0,reduced=0) {
+    const n=e.sampleAmbient(ms,utcDayPlusOne,reduced);
     assert.ok(n>0 && n<=256,'bounded span buffer');
     maxSpans=Math.max(n,maxSpans);
     return Buffer.from(new Uint8Array(e.memory.buffer,e.ambientSpans(),n*4));
@@ -32,6 +33,25 @@ async function check() {
     for(let y=0;y<160;y++)for(let x=0;x<240;x++)
       frame.writeUIntBE(palette[raster[x*160+159-y]],(y*240+x)*3,3);
     return frame;
+  }
+  // Source-built landscape module, not the frozen prebuilt. Older two-arg
+  // WASM silently ignores the extra JS argument and must fail this check.
+  assert.equal(e.sampleAmbient.length,3,'stale landscape.wasm: missing reduced-motion ABI');
+  for(let period=0;period<4;period++){
+    let changed=0;
+    for(const id of [51,52,53]){
+      load(id,period);
+      if(id===52)assert.ok(base.every(ink=>ink<57),'Ping cannot use uninitialized handheld palette entries');
+      for(let i=1;i<40;i++){
+        const ms=i*3072;
+        const ordinary=spans(ms,0,0),mix=e.ambientBoatMix();
+        const reduced=spans(ms,0,1);
+        assert.equal(e.ambientBoatMix(),mix,'motion preference keeps boat audio');
+        if(id!==52)assert.deepEqual(reduced,ordinary,'neighbor ambience unaffected');
+        else if(!ordinary.equals(reduced))changed++;
+      }
+    }
+    assert.ok(changed>=30,'Ping addition must visibly respond in each period');
   }
   let samples=0;
   for(const {id,name} of places)for(let p=0;p<4;p++){

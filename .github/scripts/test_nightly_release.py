@@ -37,9 +37,11 @@ class Verify(unittest.TestCase):
             record = f"SOURCE_COMMIT={self.sha}\n"
             wasm = b"\0asm\x01\0\0\0"
             (self.browser / "atlas.wasm").write_bytes(wasm)
-            (self.browser / "Thai-Waters-play.html").write_bytes(b"<script>const wasm='" + base64.b64encode(wasm) + b"';</script>")
+            landscape = wasm + b"\0\x01\0"  # distinct valid empty custom section
+            (self.browser / "landscape.wasm").write_bytes(landscape)
+            (self.browser / "Thai-Waters-play.html").write_bytes(b"<script>const wasm='" + base64.b64encode(wasm) + b"', landscape='" + base64.b64encode(landscape) + b"';</script>")
             (self.browser / "BUILD.txt").write_text(record)
-            sums(self.browser, self.n.BROWSER)
+            sums(self.browser, ("Thai-Waters-play.html", "atlas.wasm", "landscape.wasm", "BUILD.txt"))
             (self.controller / "verify/source.txt").write_text(record)
             name = "Thai-Waters-controller-08665bb.zip"
             with zipfile.ZipFile(self.controller / "release-controller" / name, "w") as z:
@@ -56,12 +58,37 @@ class Verify(unittest.TestCase):
         for name, digest in assets.items():
             self.assertEqual(hashlib.sha256((self.out / name).read_bytes()).hexdigest(), digest)
         with zipfile.ZipFile(self.out / "Thai-Waters-browser-08665bb.zip") as z:
-            self.assertEqual(set(z.namelist()), {"BUILD.txt", "SHA256SUMS", "Thai-Waters-play.html", "atlas.wasm"})
+            self.assertEqual(set(z.namelist()), {"BUILD.txt", "SHA256SUMS", "Thai-Waters-play.html", "atlas.wasm", "landscape.wasm"})
             self.assertIsNone(z.testzip())
 
     def test_bad_browser_wasm(self):
         (self.browser / "atlas.wasm").write_bytes(b"not wasm")
-        sums(self.browser, self.n.BROWSER)
+        sums(self.browser, ("Thai-Waters-play.html", "atlas.wasm", "landscape.wasm", "BUILD.txt"))
+        with self.assertRaises(ValueError):
+            self.prepare()
+        self.assertFalse(self.out.exists())
+
+    def test_rejects_substituted_landscape_even_with_refreshed_sums(self):
+        f = self.browser / "landscape.wasm"
+        f.write_bytes(f.read_bytes() + b"\0\x01\0")
+        sums(self.browser, ("Thai-Waters-play.html", "atlas.wasm", "landscape.wasm", "BUILD.txt"))
+        with self.assertRaisesRegex(ValueError, r"HTML.*landscape"):
+            self.prepare()
+        self.assertFalse(self.out.exists())
+
+    def test_rejects_duplicate_embedding_of_either_module(self):
+        page = self.browser / "Thai-Waters-play.html"
+        original = page.read_bytes()
+        for name in ("atlas.wasm", "landscape.wasm"):
+            with self.subTest(name=name):
+                page.write_bytes(original + base64.b64encode((self.browser / name).read_bytes()))
+                sums(self.browser, ("Thai-Waters-play.html", "atlas.wasm", "landscape.wasm", "BUILD.txt"))
+                with self.assertRaisesRegex(ValueError, rf"HTML.*{name}"):
+                    self.prepare()
+                self.assertFalse(self.out.exists())
+
+    def test_rejects_omitted_landscape_checksum(self):
+        sums(self.browser, ("Thai-Waters-play.html", "atlas.wasm", "BUILD.txt"))
         with self.assertRaises(ValueError):
             self.prepare()
         self.assertFalse(self.out.exists())

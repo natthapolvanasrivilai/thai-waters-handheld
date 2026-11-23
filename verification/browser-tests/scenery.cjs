@@ -9,6 +9,7 @@ const wasm = readFileSync(path.join(game, 'assets/landscape.wasm'));
 const digest = pixels => createHash('sha256').update(pixels).digest('hex');
 
 async function verify() {
+  console.log('TW_LANDSCAPE '+digest(wasm));
   const {instance: {exports: scene}} = await WebAssembly.instantiate(wasm);
   const seen = new Set();
   for (let period = 0; period < 4; ++period) {
