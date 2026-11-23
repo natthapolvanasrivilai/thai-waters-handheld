@@ -1,0 +1,8 @@
+A4_Z_lift_mm,lower_A4_board_to_A1_population_mm,minimum_pressed_rocker_to_A4_mm,closest_withdrawal_mm,method,decision
+0,1.500,0.000,,Native STEP released rocker intersects A4 by 1.813 cubic mm before translation,previous layout failed
+0.800,0.700,0.27144,0.625,67 equally spaced withdrawal poses with the rocker held and installed A4,screened
+0.950,0.550,0.42144,0.625,67 equally spaced withdrawal poses with the rocker held and installed A4,screened
+1.000,0.500,0.47144,0.625,67 equally spaced withdrawal poses with the rocker held and installed A4,selected 2.00 mm insulating blocks plus two 0.25 mm bondlines
+1.050,0.450,0.52144,0.625,67 equally spaced withdrawal poses with the rocker held and installed A4,less A1 clearance
+1.200,0.300,0.67144,0.625,67 equally spaced withdrawal poses with the rocker held and installed A4,less A1 clearance
+1.500,0.000,,,Native CAD seated boards at original XY,A4 touches A1 population

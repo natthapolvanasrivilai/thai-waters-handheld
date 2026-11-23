@@ -1,0 +1,55 @@
+{
+  "installed_source_sha256": {
+    "A3-J1-header.brep": "a295e325478623c49ed430463fed17763fef45a4c7e4294e2821eda9e73489e6",
+    "drvParts.brep": "5dbf62cd17b3ba927155bcf7ceeebd7786196fcd39f27be701a78cfb7896a7fc"
+  },
+  "support_nominal_mm": 1.4,
+  "housing_to_populated_parts": {
+    "C1": {
+      "body_gap_mm": 0.515,
+      "intersection_mm3": 0.0
+    },
+    "U1": {
+      "body_gap_mm": 0.565,
+      "intersection_mm3": 0.0
+    },
+    "C2": {
+      "body_gap_mm": 0.96294,
+      "intersection_mm3": 0.0
+    }
+  },
+  "R1": "DNP",
+  "scope": "Rigid nominal installed housing only. Overlap of the J1 courtyard with C1/U1/R1 remains reported.",
+  "plan_view_relocation_study": {
+    "C1": {
+      "courtyard_xy_mm": [
+        125.275,
+        53.775,
+        126.825,
+        56.825
+      ],
+      "housing_inside_vertical_prism_mm3": 6.34321,
+      "minimum_shift_to_clear_positive_x_mm": 4.17
+    },
+    "R1": {
+      "courtyard_xy_mm": [
+        125.275,
+        61.4,
+        126.825,
+        64.45
+      ],
+      "housing_inside_vertical_prism_mm3": 6.79116,
+      "minimum_shift_to_clear_positive_x_mm": 4.17
+    },
+    "U1": {
+      "courtyard_xy_mm": [
+        125.02,
+        57.005,
+        131.38,
+        60.595
+      ],
+      "housing_inside_vertical_prism_mm3": 15.25211,
+      "minimum_shift_to_clear_positive_x_mm": 4.425
+    }
+  }
+}

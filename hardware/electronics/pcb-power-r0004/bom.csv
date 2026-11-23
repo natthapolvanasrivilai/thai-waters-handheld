@@ -1,0 +1,10 @@
+reference,quantity,manufacturer,part_number,description,source
+U1,1,Texas Instruments,TPS2553QDBVRQ1,Current-limited USB switch SOT-23-6 active-high enable,https://www.ti.com/lit/ds/symlink/tps2553-q1.pdf
+Q1 Q2,2,Nexperia,"PMV65XP,215",Common-source pair of P-channel FETs,https://assets.nexperia.com/documents/data-sheet/PMV65XP.pdf
+Q3,1,Nexperia,PMV16XNR,N-channel weak-path gate driver,https://www.nexperia.com/chemical-content/PMV16XN.html
+R1,1,Panasonic,ERJ-3EKF8872V,88.7 kOhm 1% 0603 sets ILIM,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+R2,1,Vishay,CRCW251256R0FKEG,56 Ohm 1% 1 W weak path 2512 check derating,https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R3 R4 R5,3,Panasonic,ERJ-3EKF1003V,100 kOhm 1% 0603,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+C1,1,Murata,GRM188R71C104KA01D,100 nF 16 V X7R 0603,https://ds.murata.com/simsurfing/mlcc.html?partnumbers=%5B%22GRM188R71C104KA01%22%5D
+C2,1,Murata,GRM188R71C105KA12D,1 uF 16 V X7R 0603,https://ds.murata.com/simsurfing/mlcc.html?partnumbers=%5B%22GRM188R71C105KA12%22%5D
+PCB,1,Custom,TW-A5-USB-R0004,23 x 16 mm two-layer 0.80 mm finished FR-4,usb-input-fab.zip

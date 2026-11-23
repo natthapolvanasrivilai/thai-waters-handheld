@@ -16,3 +16,12 @@ docs/models/*.html -text
 *.brep binary
 *.3mf binary
 *.glb binary
+*.IGS binary
+# Byte-preserve the hashed CAD, electrical sources and reports on every checkout.
+hardware/electronics/harness-r0005/*.json -text
+hardware/electronics/harness-r0005/source-cad/*.json -text
+hardware/electronics/pcb-haptic-cie-r0001/*.kicad_* -text
+hardware/electronics/pcb-r0004/*.kicad_* -text
+hardware/electronics/pcb-power-r0004/*.kicad_* -text
+hardware/mechanical/TW-A-0001-R0012/*.json -text
+hardware/verification/r0012/copper.json -text

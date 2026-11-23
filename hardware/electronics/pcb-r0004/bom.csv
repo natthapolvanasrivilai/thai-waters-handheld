@@ -1,0 +1,9 @@
+ref,qty,manufacturer,orderable_part,description,source
+R1 R2,2,Vishay,CRCW25124R99FKEG,4.99 ohm 1% 1 W 2512 thick film,https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R3 R4,2,Panasonic,ERJ-3EKF1501V,1.50 kilohm 1% 0603,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+R5,1,Panasonic,ERJ-3EKF3303V,330 kilohm 1% 0603,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+R6,1,Panasonic,ERJ-3EKF1003V,100 kilohm 1% 0603,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+D1,1,Nexperia,"BAV170,215",Dual low leakage diode SOT23 common cathode pin 3,https://www.nexperia.com/chemical-content/BAV170.html
+Q1,1,Nexperia,"PMV65XP,215",P-channel MOSFET SOT23 pins G S D,https://www.nexperia.com/chemical-content/PMV65XP.html
+Q2,1,Nexperia,PMV16XNR,N-channel MOSFET SOT23 pins G S D,https://www.nexperia.com/chemical-content/PMV16XN.html
+PCB,1,custom,TW-A-0002-R0004-A4,23 x 13 mm two-layer 0.8 mm FR4 with 35 um outer copper,harness-fab.zip

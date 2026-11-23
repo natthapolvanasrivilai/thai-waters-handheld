@@ -1,0 +1,14 @@
+ref,net,x_mm,y_mm,endpoint
+J1,AMP_P,1.6,1.6,"A1 J9-1 via retained keyed speaker plug, U6 OUT+ through R40"
+J2,SPK_P,1.6,4.7,"SP1 Adafruit 3923 positive lead, identified by continuity/mark"
+J3,SPK_N,1.6,8.3,SP1 Adafruit 3923 negative lead
+J4,AMP_N,1.6,11.4,"A1 J9-2 via same keyed plug, U6 OUT- through R42"
+J5,SDA,11.6,1.45,"A1 J8-27 ESP_SDA/GPIO8, fixed A1 end of W1"
+J6,VCC3V3,14.1,1.45,"A1 J8-31 VCC3V3, fixed A1 end of W1"
+J7,SCL,16.6,1.45,"A1 J8-25 ESP_SCL/GPIO7, fixed A1 end of W1"
+J8,USB_RAW,19.1,1.45,"A1 J8-1 VBUS, retained raw tap if controller is revised"
+J9,VBAT,21.6,1.45,"A1 J8-2 VBAT, protected J7 cell net"
+J10,SW_SENSE,11.6,11.55,"W3 remote SW1 white contact, disconnect prior direct K3 connection"
+J11,GND,14.9,11.55,W3 remote SW1 black contact
+J12,GND,18.2,11.55,A1 original K3 pin 1 ground; verify to J8-3
+J13,K3_RAW,21.5,11.55,A1 original K3 pin 2; continuity to R38 pad 2

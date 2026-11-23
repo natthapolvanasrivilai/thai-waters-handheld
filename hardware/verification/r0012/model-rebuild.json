@@ -1,0 +1,37 @@
+{
+  "input": "Nine supplier inputs matched manufacturer-file SHA-256 values. Clean native project and public preparation scripts.",
+  "comparison": {
+    "CIEP05P1HK0-NH-mounted.step": {
+      "solids": 6,
+      "faces": 235,
+      "max_bound_difference_mm": 0.0,
+      "volume_difference_mm3": 0.0
+    },
+    "DRV2605LDGSR.step": {
+      "solids": 12,
+      "faces": 189,
+      "max_bound_difference_mm": 0.0,
+      "volume_difference_mm3": 0.0
+    }
+  },
+  "populated_kicad_10_0_8_export": {
+    "geometry_valid": true,
+    "total_solids": 88,
+    "comparison_to_installed": {
+      "A3-J1-header": {
+        "matched_solids": 6,
+        "maximum_component_bound_difference_mm": 1e-07
+      },
+      "drvParts": {
+        "matched_solids": 14,
+        "maximum_component_bound_difference_mm": 0.0
+      }
+    },
+    "datum_translation_mm": [
+      -37.95,
+      -135.15,
+      4.6
+    ],
+    "rotation_about_Z_degrees": 90
+  }
+}

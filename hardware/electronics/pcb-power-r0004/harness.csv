@@ -1,0 +1,7 @@
+reference,net,signal_path,qualification
+W1,RAW,Protected connector-side raw VBUS before A1 PMIC,Identify incoming controller and prove isolation from W2 after supplier change
+W2,PMIC,Controller PMIC-side VBUS input,Map from identified A1 layout and measure isolation before use
+W3,GND,Controller power return,Identify low-impedance return on received source layout
+W4,LOW_EN,Active-high weak path grant input driven by separate controller,Missing physical grant logic and matched harness endpoints
+W5,FULL_EN,Active-high configured path grant input driven by separate controller,Missing grant timing qualification across reset and grant loss
+W6,FAULT_N,Active-low open-drain fault indication from TPS2553,External pull-up and qualified input required on grant-control domain
