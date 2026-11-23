@@ -107,10 +107,10 @@ function review(number, sha, fullName = project) {
     offline = true;
     await saved();
     await page.locator('[data-tab=business]').click();
-    assert.ok(await page.locator('#archive-note').isVisible());
+    await page.locator('#archive-note').waitFor({state: 'visible'});
     assert.ok(await page.locator('#findPart').isVisible());
     await page.locator('#archive-note a').click();
-    assert.equal(await page.locator('#archive-note').isVisible(), false);
+    await page.locator('#archive-note').waitFor({state: 'hidden'});
     await page.setViewportSize({width: 390, height: 844});
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2));
     assert.deepEqual(unexpected, []);
