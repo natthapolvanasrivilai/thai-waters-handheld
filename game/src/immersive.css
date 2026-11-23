@@ -362,3 +362,32 @@ html:lang(th) #lcdUI #menu[data-page=boot-home] #arcadeDock #bootResume{font-siz
 #bootModes svg{width:25px;height:25px}
 .arcade-settings-language{display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:5px 0 9px;border-bottom:1px solid #6a9d99;margin-bottom:9px}
 #menu .arcade-settings-language button[aria-pressed=true]{background:#0d696b;color:#fff;border-color:#9ce5de}
+
+/* Arcade title: visible pacing, no flashing, native touch targets. */
+#lcdUI #menu[data-page=boot-home] #bootStart{font-size:27px;line-height:1.22;letter-spacing:.025em;color:#fbffef;animation:arcade-start-beat 2.65s ease-in-out infinite}
+html:lang(th) #lcdUI #menu[data-page=boot-home] #bootStart{font-size:28px;letter-spacing:0}
+/* Animate brightness without changing the controls' native touch geometry. */
+@keyframes arcade-start-beat{
+ 0%,100%{opacity:.56}
+ 26%,49%{opacity:1}
+ 72%{opacity:.80}
+}
+#lcdUI #menu[data-page=boot-home] #bootStart:is(:hover,:focus-visible){color:#c3ffeb}
+#menu[data-page=boot-home][data-arcade-phase=reveal] .arcade-lettering{animation:arcade-title-in .84s cubic-bezier(.2,.72,.22,1) both}
+@keyframes arcade-title-in{0%{opacity:0;transform:translateY(17px) scale(.91)}34%{opacity:.36}100%{opacity:1;transform:none}}
+#lcdUI #menu[data-page=boot-home][data-arcade-phase=launch] #bootStart{display:none}
+#menu[data-page=boot-home][data-arcade-phase=launch] .arcade-lettering{animation:arcade-title-launch 1s ease-in-out both}
+@keyframes arcade-title-launch{0%{opacity:1;transform:none}38%{opacity:.93;transform:translateY(-5px) scale(1.035)}100%{opacity:0;transform:translateY(-19px) scale(1.08)}}
+#lcdUI #menu[data-page=boot-home] :is(#skipArcade,#titleAudio){position:absolute;margin:0;padding:0;display:grid;place-items:center;border:0;background:transparent;min-height:48px;color:#d9fbef;box-shadow:none}
+#lcdUI #menu[data-page=boot-home] :is(#skipArcade,#titleAudio)[hidden]{display:none}
+#lcdUI #menu[data-page=boot-home] #skipArcade{right:14px;bottom:15px;padding:0 14px;font-size:17px;font-weight:750}
+#lcdUI #menu[data-page=boot-home] #titleAudio{width:58px;right:12px;bottom:13px;color:#add3d0}
+#lcdUI #menu[data-page=boot-home][data-arcade-modes] #titleAudio{left:88px;right:auto;bottom:23px;min-height:70px}
+#lcdUI #menu[data-page=boot-home][data-arcade-phase=launch] #titleAudio{display:none}
+#lcdUI #menu[data-page=boot-home] #titleAudio[aria-pressed=true]{color:#b5ffdf}
+#lcdUI #menu[data-page=boot-home] :is(#titleAudio,#skipArcade):focus-visible{background:#23675f63;color:#f0fff8}
+#titleAudio svg{width:22px;height:22px}
+@media(prefers-reduced-motion:reduce){
+ #lcdUI #menu[data-page=boot-home] #bootStart,
+ #menu[data-page=boot-home] .arcade-lettering{animation:none;opacity:1;transform:none}
+}

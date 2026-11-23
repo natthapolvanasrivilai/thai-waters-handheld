@@ -43,6 +43,7 @@ async function requireBootHome(page,{temporary=false}={}){
   if(await page.evaluate(()=>matchMedia('(pointer: coarse)').matches))await start.tap();
   else await start.press('Enter');
  }
+ await page.locator('#menu[data-arcade-phase=modes]').waitFor({state:'visible'});
  const after=await view();checkBase(after);
  assert(after.modes&&after.railReady&&!after.titleVisible,'One aligned scroll rail exposes the original six routes');
  assert(temporary||before.state.saved.readable,'Normal startup must have readable save storage');

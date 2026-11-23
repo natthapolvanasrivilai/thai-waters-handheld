@@ -36,6 +36,7 @@ function setPower(on){
  if(on){lastLabel='';openBootHome();draw();}
  else{
   if(!atBootHome)save();
+  if(arcadeContext&&arcadeContext!==audio)arcadeContext.suspend().catch(()=>{});
   audio?.suspend().catch(()=>{});ctx.fillStyle='#0e1715';ctx.fillRect(0,0,480,320);
   setUi($('message'),'Power off');setUi($('sub'),'Use PWR to wake the simulator.');
   for(const id of ['metrics','origin'])setUi($(id),'');$('catchContinue').hidden=true;$('tension').hidden=true;
