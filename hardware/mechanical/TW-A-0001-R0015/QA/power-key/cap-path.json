@@ -1,0 +1,91 @@
+{
+  "assembly": "TW-A-0001-R0015",
+  "part": "cap",
+  "frame": "Installed XYZ, millimetres; +Y outward at the key, +Z toward the display.",
+  "removal_offsets_mm": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      -2.5,
+      0
+    ],
+    [
+      0,
+      -2.5,
+      24
+    ]
+  ],
+  "insertion": "Read offsets in reverse; hold orientation and interpolate each leg separately.",
+  "prerequisites": "Open housing; cap precedes upright KEY board, switch, keeper, keeper screw, display and bezel.",
+  "sources_sha256": {
+    "hardware/mechanical/TW-A-0001-R0015/CAD/housing-battery-bay.brep": "99381e19cd835f09966deab7f99a6687b334e14a3a5a80bee84fb13e54e3d5ab",
+    "hardware/mechanical/TW-A-0001-R0009/CAD/power-cap.brep": "48f8cbbcc2c704fa55232a9f1734f085c6ba745f1e901e7ae52133f326045c33",
+    "hardware/mechanical/TW-A-0001-R0009/CAD/key-board-retainer-west.brep": "3d6e578bb745dbc7c5f8e7ec2fa7198df00ab813fc078b5bc11138ba57f80af5",
+    "hardware/electronics/power-key-r0009/Key PCB.brep": "efa9ad2ef1f8a34abd7de82251d6d058a96c064976d84b23a132a477d5075bd7",
+    "hardware/components/omron-b3f-1002-g/Switch case.brep": "8fe2c759bd9d64fd9937e095d66e626051ea08da29962648634c930c62a9ced5",
+    "hardware/components/omron-b3f-1002-g/Switch plunger.brep": "076048763b886bd9dd86a6d63cb574f2582bec6e95fed6b1bca4c52645744e82",
+    "hardware/components/omron-b3f-1002-g/Trimmed terminals.brep": "c97832a7f0da192b8cf1fe9012995b3d96e59e0966d630de27baf0458e4b1090",
+    "hardware/mechanical/TW-A-0001-R0009/Print/power-cap.stl": "5f568806c412dea751cfd2756eb365d68b1d273782ad58715ec50655ebff0f13",
+    "hardware/mechanical/TW-A-0001-R0015/Print/housing-battery-bay.stl": "380c0d297fc039e1e09a2bb932df5394e2bb79f863e9f681322f999ee1344670"
+  },
+  "installed_assembly_step_sha256": "7837fd124ab9696c2dcd6317fa167b7d2dac87e24697480c391c20eedc155432",
+  "approach_above_entire_housing_mm": 4.85,
+  "capture": {
+    "flange_diameter_mm": 7.7,
+    "cap_face_diameter_mm": 5.5,
+    "inner_counterbore_diameter_mm": 8.3,
+    "outer_hole_diameter_mm": 6.0,
+    "flange_radial_overlap_with_outer_hole_mm": 0.85
+  },
+  "insertion_legs": {
+    "drop": {
+      "cad_envelope_gap_mm": 0.55,
+      "cad_common_mm3": 0.0,
+      "print_envelope_gap_mm": 0.550504,
+      "print_common_mm3": 0.0
+    },
+    "slide": {
+      "cad_envelope_gap_mm": 0.01,
+      "cad_common_mm3": 0.0,
+      "print_envelope_gap_mm": 0.009999,
+      "print_common_mm3": 0.0
+    }
+  },
+  "limiting_pair": "Cap flange to housing counterbore shoulder at seated end of +Y slide.",
+  "other_fixed_parts_x_separation_lower_bounds_mm": {
+    "Rotor": 75.75,
+    "Collar": 76.3,
+    "A2-sensor": 71.63,
+    "A3-haptic": 42.95001,
+    "Four A2 shims": 73.2
+  },
+  "seated_cap_gaps_mm": {
+    "Retainer": 0.8,
+    "Key PCB": 4.35,
+    "Switch case": 1.0,
+    "Switch plunger": 0.05,
+    "Trimmed terminals": 4.35
+  },
+  "controls": {
+    "exterior_offset_mm": [
+      0,
+      0.5,
+      0
+    ],
+    "exterior_cap_to_housing_common_mm3": 8.094983,
+    "exterior_print_common_mm3": 8.092972,
+    "obstructed_interior_offset_mm": [
+      0,
+      -1,
+      0
+    ],
+    "cap_to_installed_keeper_common_mm3": 0.288014,
+    "cap_to_installed_stationary_plunger_common_mm3": 12.393649
+  },
+  "numerical_volume_threshold_mm3": 1e-06,
+  "scope": "Continuous, conservative rigid envelopes on the installed nominal BREP and registered original print meshes. Nominal distances; physical seating, print tolerance, hand access and press feel require a dry fit."
+}

@@ -1,0 +1,14 @@
+{
+  "source_assembly": "TW-A-0001-R0014",
+  "source_step_sha256": "736154bed8462ee35f554eb8219495ad4da92870026ce1b03ba1e8a389fda2fb",
+  "installed_step_components": 154,
+  "step_sha256": "7837fd124ab9696c2dcd6317fa167b7d2dac87e24697480c391c20eedc155432",
+  "packed_step_sha256": "5820fa8e96cd5e005fbaab56260df7e0d1cb5bb8b4cf3247c40b9cb645e957d8",
+  "unchanged_installed_members": 153,
+  "changed_member": "Housing",
+  "max_roundtrip_absolute_volume_delta_mm3": 0.00029,
+  "max_bounds_delta_mm": 0.0002,
+  "local_dressed_step": "TW-A-0001-R0015-dressed.step",
+  "local_archive": "TW-A-0001-R0015-dressed.step.gz",
+  "sharing": "Locally retained supplier assembly."
+}

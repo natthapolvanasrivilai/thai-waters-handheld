@@ -1,5 +1,7 @@
 # R0014 housing with built-in A3 board supports
 
+**Power-key fit correction.** Install the cap from inside with the switch board and keeper removed. The legacy switch rim catches the wall during a straight drop. Use R0015 plate 1 for the complete key assembly trial. [Revised procedure and applicable prints](../TW-A-0001-R0015/README.md)
+
 **Use plate 1 of the R0014 X1C project for the new housing.** If plate 7 from the R0013 project is already printing, finish that job. Keep all eight PCB gauges and the six small square A4/A5 spacers. Set aside the two long A3 strips when using this housing. The R0014 plate 7 omits those two strips. [Editable X1C project](Printing/Thai-Waters-R0014-PCB-Fit-X1C.3mf) · [Plate 7 map](Printing/plate-7.png) · [Interactive PCB assembly](../../../docs/models/R0014-PCB-assembly.html)
 
 TW-A-0001-R0014 pairs housing **TW-P-0001-R0011** with electrical integration **TW-A-0002-R0006**. In the installed R0013 assembly, both strips belonged to the single member `adhH`. They represented die-cut 3M 4991 VHB foam, 2.3 mm before compression and 2.10 mm installed. The loose plate-7 strips represented that installed height for dry fit. R0014 replaces both foam footprints with PETG rails fused into the housing. [Original foam definition](../../electronics/haptic-r0009/place.py) · [Housing STEP in installed coordinates](CAD/housing-battery-bay.step) · [Receiver-down STL](Print/housing-battery-bay.stl) · [Pose and mesh digest](part-orientations.json)

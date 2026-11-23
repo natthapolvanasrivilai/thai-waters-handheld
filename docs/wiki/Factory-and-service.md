@@ -2,7 +2,9 @@
 
 [Prototype carton and divider trial, CAD dimensions and printable patterns](../../manufacturing/packaging/fit-tray/README.md)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0015-power-key-fit-1/Thai-Waters-handbook.html)
+
+For the R0015 key, place the cap from inside, then lower the board and west retainer. Reserve the older cases for a cap-only check. [Step-by-step key fit](../../hardware/mechanical/TW-A-0001-R0015/README.md)
 
 For the R0014 dry fit, run a fingertip along both A3 seats to check for strings, set the unpowered board gauge directly on the hard lands, and check for rocking before seating the display. Use both long strips only with an older flat-floor R0013 shell. [R0014 assembly instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
 

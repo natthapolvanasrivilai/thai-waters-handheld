@@ -81,7 +81,7 @@ class Scene:
         return mesh
 
 
-def build():
+def build(assembly=ASSEMBLY):
     scene = Scene()
     ledger_path = GAUGES / "geometry.json"
     report = read(GAUGES / "assembly-fit.json")
@@ -94,12 +94,12 @@ def build():
         np.testing.assert_allclose(mesh.bounds, row["installed_min_max_mm"], atol=.0001, rtol=0)
 
     orientations = read(fit.HOUSING / "part-orientations.json")
-    housing_orientation = read(ASSEMBLY / "part-orientations.json")["housing-battery-bay"]
+    housing_orientation = read(assembly / "part-orientations.json")["housing-battery-bay"]
     for label, original in fit.COMPANIONS.items():
         if label == "Housing":
             row = housing_orientation
             np.testing.assert_allclose(row["assembly_to_print"], orientations[original]["assembly_to_print"])
-            path = ASSEMBLY / row["print_stl"]
+            path = assembly / row["print_stl"]
         else:
             row = orientations[original]
             path = fit.HOUSING / row["print_stl"]
@@ -200,7 +200,7 @@ def build():
                 raise ValueError("Stock intersects its neighbor")
 
     return {
-        "units": "mm", "scale": SCALE, "assembly": ASSEMBLY.name,
+        "units": "mm", "scale": SCALE, "assembly": assembly.name,
         "frame": "Installed XYZ: +X reel, +Y power cap, +Z display",
         "encoding": "v: base64 little-endian int32 XYZ times scale; f: base64 little-endian uint32 triangle indices",
         "parts": scene.parts,
@@ -208,7 +208,11 @@ def build():
 
 
 if __name__ == "__main__":
-    scene = build()
-    target = HERE / "scene.json"
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--revision", choices=["R0014", "R0015"], default="R0014")
+    revision = parser.parse_args().revision
+    scene = build(MECHANICAL / ("TW-A-0001-" + revision))
+    target = HERE / ("scene.json" if revision == "R0014" else "scene-r0015.json")
     target.write_bytes((json.dumps(scene, separators=(",",":"), allow_nan=False) + "\n").encode())
     print(f"Wrote {len(scene['parts'])} registered meshes, {target.stat().st_size:,} bytes")

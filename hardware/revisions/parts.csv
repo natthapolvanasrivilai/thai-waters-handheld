@@ -71,3 +71,5 @@ TW-P-0032-R0002,A5 ballasted USB input PCB,hardware/electronics/usb-entry-r0006/
 TW-P-0033-R0001,"Fitted USB output, ground and status lamp leads",hardware/electronics/usb-entry-r0006/installed-leads/installed.json,,30fc5fb443256677d40d5012bbd2177e414f4cc3c8c7fa4be2db57ca2a66d907
 TW-P-0001-R0011,Housing with integral A3 support rails,hardware/mechanical/TW-A-0001-R0014/Print/housing-battery-bay.stl,,7e719b8ec875275e80b865f8de49a7602a1fe6e3e34f5ffc4ff0a508bcefe4e2
 TW-P-0029-R0003,R0014 dressed assembly with integral A3 rails,hardware/mechanical/TW-A-0001-R0014/installed-step.json,,543b57a79d5900616b9a02dc33f0ee0b11d049f9515eb262e61b7f35acb24cdc
+TW-P-0001-R0012,Housing with switch rim entry relief,hardware/mechanical/TW-A-0001-R0015/Print/housing-battery-bay.stl,,380c0d297fc039e1e09a2bb932df5394e2bb79f863e9f681322f999ee1344670
+TW-P-0029-R0004,R0015 registered power-key fit assembly,hardware/mechanical/TW-A-0001-R0015/installed-step.json,,a269ffd5740080d606489c5c5d0030922cef68f54cdd78231ae5e603e39753a1

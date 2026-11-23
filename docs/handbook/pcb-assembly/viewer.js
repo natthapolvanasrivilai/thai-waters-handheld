@@ -50,7 +50,7 @@ for(const [id,p] of Object.entries(geometry.parts)){
   mesh.userData={id,color,center:g.boundingBox.getCenter(new THREE.Vector3())};
   scene.add(mesh);meshMap.set(id,mesh);
 }
-let current=0,ghost=false,frameWidth=100,guides=[],scheduled=false;
+let current=0,ghost=false,frameWidth=100,guides=[],scheduled=false,followPart=false;
 const marked=new Set();
 const selected=()=>steps[current];
 const partId=id=>id==='pkcell'?el('pack').value:id;
@@ -84,16 +84,37 @@ function pose(target,eye,width){
   camera.position.copy(target).add(eye.normalize().multiplyScalar(290));
   camera.lookAt(target);camera.updateProjectionMatrix();controls.update();resize();
 }
+function poseBounds(bounds,eye,minWidth,padding){
+  const size=bounds.getSize(new THREE.Vector3()),direction=eye.clone().normalize();
+  const right=new THREE.Vector3().crossVectors(camera.up,direction).normalize();
+  const up=new THREE.Vector3().crossVectors(direction,right);
+  const extent=axis=>Math.abs(axis.x)*size.x+Math.abs(axis.y)*size.y+Math.abs(axis.z)*size.z;
+  const width=Math.max(minWidth,padding*extent(right),padding*extent(up)/.72);
+  pose(bounds.getCenter(new THREE.Vector3()),eye,width);
+}
+function includeMotion(bounds){
+  for(const id of movedIds()){
+    for(const point of selected().waypoints){
+      bounds.union(meshMap.get(id).geometry.boundingBox.clone().translate(vec(point)));
+    }
+  }
+  return bounds;
+}
 function reset(){
-  const s=selected();pose(vec(s.target),vec(s.eye),s.width);
+  followPart=false;
+  const s=selected();
+  if(s.waypoints)poseBounds(includeMotion(new THREE.Box3()),vec(s.eye),s.width,1.28);
+  else pose(vec(s.target),vec(s.eye),s.width);
 }
 function overview(){
+  followPart=false;
   const bounds=new THREE.Box3();
   for(const m of meshMap.values()){
     if(m.visible)bounds.union(m.geometry.boundingBox.clone().translate(m.position));
   }
+  if(selected().waypoints)includeMotion(bounds);
   const eye=camera.position.clone().sub(controls.target);
-  pose(bounds.getCenter(new THREE.Vector3()),eye,Math.max(9,bounds.getSize(new THREE.Vector3()).length()*1.12));
+  poseBounds(bounds,eye,9,1.10);
 }
 function focus(){
   const bounds=new THREE.Box3();
@@ -101,8 +122,9 @@ function focus(){
     const m=meshMap.get(id);bounds.union(m.geometry.boundingBox.clone().translate(m.position));
   }
   if(bounds.isEmpty())return;
+  followPart=true;
   const eye=camera.position.clone().sub(controls.target);
-  pose(bounds.getCenter(new THREE.Vector3()),eye,Math.max(9,bounds.getSize(new THREE.Vector3()).length()*1.28));
+  poseBounds(bounds,eye,9,1.28);
 }
 function setLook(){
   const s=selected(),visible=new Set(s.visible.map(partId)),active=new Set(activeIds());
@@ -123,22 +145,59 @@ function removeGuides(){
   for(const line of guides){scene.remove(line);line.geometry.dispose();line.material.dispose();}
   guides=[];
 }
+function motionPath(step){
+  const points=(step.waypoints??[[0,0,0],step.offset]).map(vec);
+  const distances=[0];
+  for(let i=1;i<points.length;i++)distances.push(distances[i-1]+points[i].distanceTo(points[i-1]));
+  return {points,distances,length:distances[distances.length-1]};
+}
 function placement(){
-  const s=selected(),t=Number(el('position').value)/100,moving=new Set(movedIds()),offset=vec(s.offset);
-  const adjustable=offset.lengthSq()>0&&moving.size>0;
-  for(const [id,m] of meshMap)m.position.copy(offset).multiplyScalar(moving.has(id)?t:0);
+  const s=selected(),t=Number(el('position').value)/100,moving=new Set(movedIds());
+  const path=motionPath(s),sliderDistance=t*path.length;
+  const distance=path.distances.find(value=>Math.abs(value-sliderDistance)<.0001)??sliderDistance;
+  const adjustable=path.length>0&&moving.size>0;
+  // Trace in reverse assembly order from the seat to the slider position.
+  const trace=[path.points[0]];
+  for(let i=1;i<path.points.length;i++){
+    if(distance>=path.distances[i]){
+      trace.push(path.points[i]);
+    }else{
+      if(distance>path.distances[i-1]){
+        const fraction=(distance-path.distances[i-1])/(path.distances[i]-path.distances[i-1]);
+        trace.push(path.points[i-1].clone().lerp(path.points[i],fraction));
+      }
+      break;
+    }
+  }
+  const offset=trace[trace.length-1];
+  const focused=meshMap.get(activeIds()[0]);
+  if(followPart&&focused&&moving.has(focused.userData.id)){
+    const delta=offset.clone().sub(focused.position);
+    camera.position.add(delta);controls.target.add(delta);controls.update();
+  }
+  for(const [id,m] of meshMap){
+    if(moving.has(id))m.position.copy(offset);else m.position.set(0,0,0);
+  }
   removeGuides();
-  if(t>.03&&adjustable){
+  if(distance>0&&adjustable){
     for(const id of activeIds().filter(id=>moving.has(id))){
-      const m=meshMap.get(id),end=m.userData.center.clone().add(m.position),start=m.userData.center;
-      const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints([start,end]),new THREE.LineDashedMaterial({color:0x93642c,dashSize:.7,gapSize:.5,depthTest:false}));
+      const center=meshMap.get(id).userData.center;
+      const guidePoints=trace.map(point=>center.clone().add(point));
+      const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(guidePoints),new THREE.LineDashedMaterial({color:0x93642c,dashSize:.7,gapSize:.5,depthTest:false}));
       line.computeLineDistances();line.renderOrder=3;scene.add(line);guides.push(line);
     }
   }
   el('position').disabled=!adjustable;el('position').closest('.slideRow').hidden=!adjustable;
-  el('positionText').textContent=t===0?'Seated':t===1?'Lifted clear':Math.round(offset.length()*t*10)/10+' mm offset';
+  el('nextPosition').hidden=!s.motionPart;
+  el('nextPosition').disabled=t===0;
+  el('positionText').textContent=t===0?'Seated':t===1?(s.motionPart?'Clear above housing':'Lifted clear'):Number(distance.toFixed(2))+' mm to seat';
   el('position').setAttribute('aria-valuetext',el('positionText').textContent);
   invalidate();
+}
+function advancePlacement(){
+  const path=motionPath(selected()),distance=Number(el('position').value)*path.length/100;
+  const previous=path.distances.filter(value=>value < distance-.0001).pop()??0;
+  el('position').value=String(100*previous/path.length);placement();
 }
 function step(index){
   current=Math.max(0,Math.min(index,steps.length-1));const s=selected();
@@ -154,14 +213,15 @@ function step(index){
     input.addEventListener('change',()=>input.checked?marked.add(key):marked.delete(key));
     row.append(input,document.createTextNode(text));el('checkItems').append(row);
   }
-  ghost=false;
-  el('position').value=String(s.start??(vec(s.offset).lengthSq()>0?65:0));
+  ghost=false;followPart=false;
+  el('position').value=String(s.start??(motionPath(s).length>0?65:0));
   setLook();placement();reset();
 }
 steps.forEach((s,i)=>el('steps').add(new Option((i+1)+'. '+s.title,i)));
 el('steps').onchange=()=>step(Number(el('steps').value));
 el('prev').onclick=()=>step(current-1);el('next').onclick=()=>step(current+1);
-el('position').oninput=placement;el('focus').onclick=focus;el('overview').onclick=overview;el('reset').onclick=reset;
+el('position').oninput=placement;el('nextPosition').onclick=advancePlacement;
+el('focus').onclick=focus;el('overview').onclick=overview;el('reset').onclick=reset;
 el('ghost').onclick=()=>{ghost=!ghost;setLook();};
 el('pack').onchange=()=>step(current);
 surface.onkeydown=event=>{

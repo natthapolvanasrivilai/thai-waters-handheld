@@ -1,6 +1,6 @@
 # Thai Waters handheld
 
-[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
+[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0015-power-key-fit-1/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
 
 [Hardware closure and playtest issues](quality/hardware-gate.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [November hardware review](quality/hardware-review-2026-11-23.md)
 
@@ -10,9 +10,9 @@
 
 **[Browse the product wiki](docs/wiki/Home.md)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
 
-For the R0014 dry fit, print the housing on plate 1. If you already printed the R0013 PCB gauges, set the two long A3 strips aside. [R0014 X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/Thai-Waters-R0014-PCB-Fit-X1C.3mf)
+Use the **R0015 housing on plate 1** for the complete key assembly trial. The cap fits from inside, then the switch board slides through a new relief in the top wall. Reuse the cap, retainer and Plate 7 gauges. [R0015 X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0015-power-key-fit-1/Thai-Waters-R0015-PCB-Fit-X1C.3mf)
 
-Choose **PCB assembly** in the downloaded handbook or [download the standalone 3D assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0014-integral-rails-1/R0014-PCB-assembly.html).
+Choose **PCB assembly** in the downloaded handbook or [download the standalone 3D assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0015-power-key-fit-1/R0015-PCB-assembly.html).
 
 Open the downloaded handbook in a browser. **Current status** checks this GitHub project on every open and links to the evidence for the selected revision. When the check fails, the handbook labels the dated snapshot saved with the file. The archived tabs still work offline. The [original R0011 handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html) and [Rev F engineering release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/rev-f-engineering-0.7) preserve their original evidence.
 
@@ -24,7 +24,7 @@ Personal product project of GitHub user natthapolvanasrivilai. The handheld uses
 |---|---|
 | Hardware configuration | [Numeric assembly and part revision register](hardware/revisions/README.md) · [Hardware qualification and first-article status](quality/hardware-gate.md) |
 | Product definition | [Requirements and status](product/requirements.md) |
-| Industrial design and fit | [R0014 housing and A3 rails](hardware/mechanical/TW-A-0001-R0014/README.md) · [Seated R0013 connector and USB review](quality/seated-connector-review.md) · [R20 physical carrier fit](hardware/mechanical/pocket-reel-r19b-removal-trial/QA/R20-first-print/README.md) · [R0013 PCB fit kit and plate map](hardware/mechanical/pcb-fit-r0013/README.md) |
+| Industrial design and fit | [R0015 power-key fit](hardware/mechanical/TW-A-0001-R0015/README.md) · [R0014 housing and A3 rails](hardware/mechanical/TW-A-0001-R0014/README.md) · [Seated R0013 connector and USB review](quality/seated-connector-review.md) · [R20 physical carrier fit](hardware/mechanical/pocket-reel-r19b-removal-trial/QA/R20-first-print/README.md) · [R0013 PCB fit kit and plate map](hardware/mechanical/pcb-fit-r0013/README.md) |
 | Archived mechanical candidates | [R0011 receiver toolpaths](hardware/mechanical/TW-A-0001-R0011/README.md) · [Lower service cover and fitted STEP](hardware/mechanical/TW-A-0001-R0010/README.md) |
 | Parts and procurement | [R0011 / R0004 engineering BOM](sourcing/production-intent/R0011-R0004-BOM.md) · [Line items and source evidence](sourcing/production-intent/R0011-R0004-engineering-BOM.csv) · [Cable routes and connections](hardware/electronics/harness-r0003/README.md) |
 | Firmware and game content | [Arduino sketch](firmware/WillowCreek) · [Hosted browser and matching verification record](docs/wiki/Software-and-tests.md#current-release) · [Historical engineering downloads](docs/wiki/Software-and-tests.md#historical-builds) |

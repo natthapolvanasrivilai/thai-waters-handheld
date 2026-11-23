@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PCB assembly · Thai Waters R0014</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PCB assembly · Thai Waters @@REVISION@@</title>
 <style>
 :root{color-scheme:light;font:15px/1.45 "Segoe UI",system-ui,sans-serif;color:#17362f;background:#f8f6ed;--ink:#17362f;--border:#c5cec0;--label:#5c695f;--paper:#fffcf4}
 *{box-sizing:border-box}body{margin:0}main{max-width:1380px;margin:auto;padding:clamp(10px,1.7vw,24px)}
@@ -14,10 +14,10 @@ button[aria-pressed=true]{background:#dce8de;border-color:#5e7965}button:disable
 @media(max-width:750px){main{padding:7px}.layout{grid-template-columns:1fr}.scene{border-right:0;border-bottom:1px solid var(--border)}.viewport{min-height:255px;height:36vh;max-height:330px}.panel{gap:9px}.sceneTools,.slideRow{padding:5px 9px}.sceneTools button{min-height:42px;font-size:13px}.nav{display:grid;grid-template-columns:1fr 1fr}.nav select{grid-column:1/-1}.rev{font-size:12px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 </style></head>
-<body><main><header><h1>PCB assembly</h1><span class="rev">Thai Waters · R0014 · Plate 7</span></header>
+<body><main><header><h1>PCB assembly</h1><span class="rev">Thai Waters · @@REVISION@@ · Plate 7</span></header>
 <div class="layout"><section class="scene" aria-label="Interactive assembly model">
 <div class="viewport" id="stage"><canvas id="model" tabindex="0" aria-label="3D model. Drag to rotate, pinch or scroll to zoom. Use arrow keys to rotate."></canvas><span id="tag" class="tag" hidden></span><div class="legend"><span class="dot"></span>Current part</div></div>
-<div class="slideRow"><label for="position">Part position</label><input type="range" id="position" min="0" max="100" value="50" aria-describedby="positionText"><output id="positionText" for="position"></output></div>
+<div class="slideRow"><label for="position">Part position</label><input type="range" id="position" min="0" max="100" step="any" value="50" aria-describedby="positionText"><output id="positionText" for="position"></output><button type="button" id="nextPosition" hidden>Next position</button></div>
 <div class="sceneTools"><button id="reset" type="button">Step view</button><button id="overview" type="button">Whole assembly</button><button id="focus" type="button">Zoom to part</button><button id="ghost" type="button" aria-pressed="false">See through case</button></div>
 </section><section class="panel" aria-label="Assembly instructions"><div class="statusHeading"><span id="group"></span><span id="counter"></span></div><div aria-live="polite"><h2 id="title"></h2><p id="instruction"></p></div>
 <div class="row"><h3>Orientation</h3><p id="facing"></p></div><div class="row"><h3>Check by hand</h3><p id="check"></p></div>

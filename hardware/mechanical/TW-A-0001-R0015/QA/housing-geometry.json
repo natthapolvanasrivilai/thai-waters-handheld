@@ -1,0 +1,119 @@
+{
+  "assembly": "TW-A-0001-R0015",
+  "housing_part": "TW-P-0001-R0012",
+  "parent_assembly": "TW-A-0001-R0014",
+  "parent_brep_sha256": "ae66ab30cb6289ddb4919fe5414bdbd486d1a23587c75a6ba7a3049c3754c52e",
+  "parent_print_sha256": "7e719b8ec875275e80b865f8de49a7602a1fe6e3e34f5ffc4ff0a508bcefe4e2",
+  "housing_brep_sha256": "99381e19cd835f09966deab7f99a6687b334e14a3a5a80bee84fb13e54e3d5ab",
+  "housing_step_sha256": "6ac22b41ab19a13e1f0ab5e7cb3c60d30a5fb9a22685903bc74930c6564356eb",
+  "print_stl_sha256": "380c0d297fc039e1e09a2bb932df5394e2bb79f863e9f681322f999ee1344670",
+  "relief_box_installed_xyz_mm": [
+    [
+      -39.3,
+      32.3,
+      9.25
+    ],
+    [
+      -32.7,
+      32.8,
+      28.2
+    ]
+  ],
+  "units": "mm",
+  "removed_material_mm3": 8.887644,
+  "print_volume_removed_mm3": 8.887965,
+  "step_valid_single_solid": true,
+  "mesh_watertight_single_solid": true,
+  "original_bounds_preserved": true,
+  "global_new_material_mm3": 0.0,
+  "global_removal_outside_stated_box_mm3": 0.0,
+  "protected_bore_window_mm": [
+    [
+      -41,
+      32.801,
+      7.5
+    ],
+    [
+      -31,
+      34.801,
+      17.5
+    ]
+  ],
+  "protected_outer_bore_and_capture_shoulder_symmetric_difference_mm3": 0.0,
+  "nominal_distance_from_relief_plane_to_outer_face_mm": 1.7,
+  "retained_axial_counterbore_depth_from_relief_plane_to_shoulder_mm": 0.75,
+  "floor_regions_sha256": "5aab73417831b81a0fbdea5985e50c1058d44c98b6ce2840dc91e19c30263f35",
+  "exterior": {
+    "pass": true,
+    "regions": [
+      {
+        "name": "floor below west A3 rail",
+        "axis": "z",
+        "plane_mm": 0.8,
+        "outward": -1,
+        "footprint_mm": [
+          [
+            16.5,
+            19.5
+          ],
+          [
+            -12,
+            0
+          ]
+        ],
+        "stock_depth_mm": 1.7,
+        "allowed_protrusions": [],
+        "stock_openings": [],
+        "required_stock_mm3": 61.19999999999999,
+        "missing_stock_mm3": 0,
+        "unexpected_outer_mm3": 0,
+        "unexpected_outer_solids": 0,
+        "max_unexpected_height_mm": 0,
+        "pass": true
+      },
+      {
+        "name": "floor below east A3 rail and existing receiver lip",
+        "axis": "z",
+        "plane_mm": 0.8,
+        "outward": -1,
+        "footprint_mm": [
+          [
+            24.5,
+            27.5
+          ],
+          [
+            -12,
+            0
+          ]
+        ],
+        "stock_depth_mm": 1.7,
+        "allowed_protrusions": [
+          {
+            "name": "existing receiver lip",
+            "reason": "R0009 housing-battery-bay.brep intersects this witness over X26.90..27.50. The receiver sole is at Z-3.20.",
+            "footprint_mm": [
+              [
+                26.9,
+                27.5
+              ],
+              [
+                -12,
+                0
+              ]
+            ],
+            "max_height_mm": 4
+          }
+        ],
+        "stock_openings": [],
+        "required_stock_mm3": 61.19999999999999,
+        "missing_stock_mm3": 0,
+        "unexpected_outer_mm3": 0,
+        "unexpected_outer_solids": 0,
+        "max_unexpected_height_mm": 0,
+        "pass": true
+      }
+    ],
+    "numerical_volume_tol_mm3": 1e-05
+  },
+  "scope": "Open-housing key insertion. Exterior floor check inherited from R0014; global solid subtraction establishes that every change lies in the specified inside wall box."
+}
