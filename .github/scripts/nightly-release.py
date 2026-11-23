@@ -14,7 +14,7 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 from zoneinfo import ZoneInfo
 
 
-BROWSER = ("Thai-Waters-play.html", "atlas.wasm", "BUILD.txt")
+BROWSER = ("Thai-Waters-play.html", "atlas.wasm", "landscape.wasm", "BUILD.txt")
 SHA = re.compile(r"[0-9a-f]{40}")
 DIGEST = re.compile(r"[0-9a-f]{64}")
 
@@ -42,9 +42,11 @@ def prepare(browser, controller, out, sha):
     short = sha[:7]
     checks(browser, BROWSER)
     require((browser / "BUILD.txt").read_text().splitlines()[0] == source, "Wrong browser commit")
-    wasm = (browser / "atlas.wasm").read_bytes()
-    require(wasm.startswith(b"\0asm"), "Bad WASM header")
-    require((browser / BROWSER[0]).read_bytes().count(base64.b64encode(wasm)) == 1, "Standalone HTML and WASM differ")
+    html = (browser / BROWSER[0]).read_bytes()
+    for name in ("atlas.wasm", "landscape.wasm"):
+        wasm = (browser / name).read_bytes()
+        require(wasm.startswith(b"\0asm"), f"Bad WASM header: {name}")
+        require(html.count(base64.b64encode(wasm)) == 1, f"Standalone HTML and {name} differ")
 
     controller_name = f"Thai-Waters-controller-{short}.zip"
     folder = controller / "release-controller"

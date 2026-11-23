@@ -142,6 +142,60 @@ inline void motif(Image& im,Feature f,int x,int y,Random& r){
   }
 }
 struct Layout {unsigned seed; int place,period,horizon,sunX; Recipe recipe;};
+inline void pingUrbanBanks(Image& im,int horizon,int period,int motifX,int motifY){
+  auto dry=[&](int x,int y,int ink){
+    if(unsigned(x)>=width||unsigned(y)>=height)return;
+    const int from=im.at(x,y);
+    if(!((from>=WaterTop&&from<Far)||from==Deep||from==Wake))im.dot(x,y,ink);
+  };
+  // Reuse real dry inks from the existing initialized LCD palette.
+  for(int y=motifY-12;y<=motifY+3;y++)
+    for(int x=motifX-20;x<motifX+31;x++){
+      const int c=im.at(x,y);
+      if(c==Roof||c==Wall||c==Window||c==Timber||c==Post)
+        dry(x,y,y<horizon?Crown:y==horizon?Wood:y<=horizon+2?Stone:Wood);
+    }
+  for(int side=0;side<2;side++){
+    const int extent=side?81:111;
+    for(int e=0;e<extent;e++){
+      const int x=side?width-1-e:e;
+      const int t=extent-e,lip=horizon-1+t*t/(extent*(side?16:12));
+      for(int y=lip-3-t/22;y<=lip;y++){
+        const bool cap=(y==lip-2&&((e+side*3)/11)%4<2);
+        dry(x,y,cap?StoneLight:((x+y/2)%12<2?Stone:Wood));
+      }
+    }
+  }
+  for(int y=horizon-29;y<horizon-12;y++)
+    for(int x=11;x<31;x++)dry(x,y,y<horizon-27?Stone:Wall);
+  for(int x=13;x<29;x+=5)for(int y=horizon-23;y<horizon-14;y+=5)
+    dry(x,y,period>=2&&x%3==0?Gold:Window);
+  for(int x=190;x<224;x++){
+    const int y=horizon-20-(x<201?(x-190)/3:x<216?4:(224-x)/4);
+    for(int z=y;z<=horizon-13;z++)dry(x,z,z<y+2?Roof:StoneLight);
+  }
+  constexpr int trees[][5]={{0,1,21,19,8},{19,0,14,15,11},{37,-1,15,12,10},
+    {54,-3,13,9,7},{69,-4,11,8,5},{84,-5,9,6,4},{97,-5,6,4,3},
+    {164,-5,8,6,4},{175,-3,11,8,6},{190,-1,13,11,7},{207,1,17,14,10},
+    {224,4,19,16,9},{240,5,21,18,8}};
+  for(int j=0;j<13;j++){
+    const auto& tree=trees[j];
+    for(int dy=-tree[3];dy<tree[3]/2;dy++){
+      for(int dx=-tree[2];dx<=tree[2];dx++){
+        const int y=horizon+tree[1]+dy,x=tree[0]+dx;
+        const int curve=dx*dx*100/(tree[2]*tree[2])+dy*dy*95/(tree[3]*tree[3]);
+        const unsigned speck=hash(unsigned(x*149+y*71+j*11));
+        if(curve<85+int(speck%30))
+          dry(x,y,curve<58&&dy<-tree[4]/2?(speck%5==0?SunLeaf:Leaf):curve<79?Crown:Wood);
+      }
+    }
+  }
+  for(int y=122;y<height;y++) for(int x=0;x<width;x++){
+    const int e=minOf(x,width-1-x);
+    if(e>=(x<width/2?27:15)||im.at(x,y)!=Shadow)continue;
+    if(((x+((y/4)&1)*3)%11)<3)dry(x,y,Wood);
+  }
+}
 inline void render(Image im,Color *colors,int place,int time,Layout* layout=nullptr){
   constexpr int count=sizeof(recipes)/sizeof(recipes[0]);
   place=clamp(place,0,count-1);time=clamp(time,0,3);
@@ -295,5 +349,6 @@ inline void render(Image im,Color *colors,int place,int time,Layout* layout=null
     int x=leftBank?r.between(-4,52):r.between(189,243),y=r.between(100,153);
     im.oval(x,y,2+y/65,1,Reed);if(i%7==0)im.span(x-1,y-2,3,Petal);
   }}
+  if(place==52)pingUrbanBanks(im,horizon,time,featureX,featureY);
 }
 }

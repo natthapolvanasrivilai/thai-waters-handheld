@@ -144,7 +144,7 @@ template<class Sink> void drawVessel(Sink& out,const Layout& s,Voyage v,uint32_t
     int glint=1+triangle(t>>1,4);foam(-6,5,glint,WaterLight+1);foam(-4,7,1,Wake);
   }
 }
-template<class Sink> void paintAmbient(Sink& out,const Layout& s,uint32_t ms,unsigned utcDayPlusOne=0,uint16_t* sound=nullptr){
+template<class Sink> void paintAmbient(Sink& out,const Layout& s,uint32_t ms,unsigned utcDayPlusOne=0,uint16_t* sound=nullptr,bool reducePingMotion=false){
   uint32_t t=ms>>6;
   Water w=s.recipe.water;
   bool sea=s.place>=96,river=w==Bend||w==Stream||w==Wide||w==Gorge||w==Estuary;
@@ -195,6 +195,15 @@ template<class Sink> void paintAmbient(Sink& out,const Layout& s,uint32_t ms,uns
     int n=1+breath/(sea?3:5)+(gust>45?2:0);
     if(breath>2)wet(out,x-7,y,n,breath>12?Wake:WaterTop+5);
     if(sea&&breath>9)wet(out,x-8,y+1,2,WaterLight);
+  }
+  if(s.place==52){
+    const uint32_t current=reducePingMotion?0:ms;
+    for(unsigned i=0;i<8;i++){
+      const unsigned v=hash(s.seed+1901U*i);
+      const int depth=(v+current/(192U-12U*i))%65;
+      const int y=s.horizon+10+depth,x=65+int((v>>9)%110)+int(i%3)*depth/10-9;
+      wet(out,x,y,2+depth/12,WaterTop+4+(i%2));
+    }
   }
   // A narrow band of highlights follows the painted sun or moon path.
   for(int i=0;i<7;i++){

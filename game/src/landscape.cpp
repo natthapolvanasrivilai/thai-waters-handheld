@@ -2,6 +2,17 @@
 #include "../../firmware/WillowCreek/BoatAmbience.h"
 #include "../../firmware/WillowCreek/ArrivalPixels.h"
 
+#if defined(__wasm__)
+#include <stddef.h>
+// Zig may lower fills to memset. Keep the standalone scenery module
+// import-free; the volatile byte stores cannot become another memset call.
+extern "C" void* memset(void* destination,int value,size_t count){
+  auto* out=static_cast<volatile unsigned char*>(destination);
+  while(count--) *out++=static_cast<unsigned char>(value);
+  return destination;
+}
+#endif
+
 namespace {
 uint8_t indexed[scenery::width*scenery::height];
 scenery::Color palette[scenery::colorCount];
@@ -28,40 +39,40 @@ struct WebSpans {
 };
 }
 namespace {arrival::Frame arrivalFrame;uint8_t arrivalLayer[scenery::width*scenery::height];}
+#if defined(__wasm__)
+#define SCENIC_EXPORT(name) __attribute__((export_name(#name)))
+#else
+#define SCENIC_EXPORT(name)
+#endif
 extern "C" {
-int arrivalDuration(){return arrival::duration;}
-int arrivalLanding(int place,int pool){return arrival::landing(place,pool);}
-int16_t* arrivalShapes(){return reinterpret_cast<int16_t*>(arrivalFrame.shapes);}
-int sampleArrival(int place,int pool,unsigned ms){
+SCENIC_EXPORT(arrivalDuration) int arrivalDuration(){return arrival::duration;}
+SCENIC_EXPORT(arrivalLanding) int arrivalLanding(int place,int pool){return arrival::landing(place,pool);}
+SCENIC_EXPORT(arrivalShapes) int16_t* arrivalShapes(){return reinterpret_cast<int16_t*>(arrivalFrame.shapes);}
+SCENIC_EXPORT(sampleArrival) int sampleArrival(int place,int pool,unsigned ms){
   arrival::draw(arrivalFrame,place,pool,ms);
   return arrivalFrame.count;
 }
-uint8_t* arrivalPixels(int place,int pool,unsigned ms){
+SCENIC_EXPORT(arrivalPixels) uint8_t* arrivalPixels(int place,int pool,unsigned ms){
   arrival::draw(arrivalFrame,place,pool,ms);
   for(auto& value:arrivalLayer)value=255;
   arrival::raster(arrivalFrame,[](int x,int y,uint8_t ink){arrivalLayer[y*scenery::width+x]=ink;});
   return arrivalLayer;
 }
-uint8_t* paintPlace(int place,int period){
+SCENIC_EXPORT(paintPlace) uint8_t* paintPlace(int place,int period){
   scenery::render({indexed},palette,place,period,&layout);
   return indexed;
 }
-uint32_t* placePalette(){return palette;}
-uint8_t* ambientSpans(){return reinterpret_cast<uint8_t*>(spans);}
-int sampleAmbient(uint32_t ms,unsigned utcDayPlusOne){
+SCENIC_EXPORT(placePalette) uint32_t* placePalette(){return palette;}
+SCENIC_EXPORT(ambientSpans) uint8_t* ambientSpans(){return reinterpret_cast<uint8_t*>(spans);}
+SCENIC_EXPORT(sampleAmbient) int sampleAmbient(uint32_t ms,unsigned utcDayPlusOne,int reducedMotion=0){
   WebSpans out;
-  scenery::paintAmbient(out,layout,ms,utcDayPlusOne,&boatMix);
+  scenery::paintAmbient(out,layout,ms,utcDayPlusOne,&boatMix,reducedMotion!=0);
   return out.count<=capacity?out.count:-1;
 }
-#if defined(__wasm__)
-__attribute__((export_name("ambientBoatMix")))
-#endif
-unsigned ambientBoatMix(){return boatMix;}
-#if defined(__wasm__)
-__attribute__((export_name("ambientBoatPcm")))
-#endif
-const int16_t* ambientBoatPcm(unsigned mix,unsigned volume){
+SCENIC_EXPORT(ambientBoatMix) unsigned ambientBoatMix(){return boatMix;}
+SCENIC_EXPORT(ambientBoatPcm) const int16_t* ambientBoatPcm(unsigned mix,unsigned volume){
   for(auto& v:boatSamples)v=boatVoice.sample(uint16_t(mix),volume);
   return boatSamples;
 }
 }
+#undef SCENIC_EXPORT
