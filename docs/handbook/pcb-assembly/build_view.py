@@ -10,7 +10,7 @@ import tempfile
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-REVISIONS = {"R0014": "scene.json", "R0015": "scene-r0015.json", "R0016": "scene-r0016.json"}
+REVISIONS = {"R0014": "scene.json", "R0015": "scene-r0015.json", "R0016": "scene-r0016.json", "R0017": "scene-r0016.json"}
 USB_QA = ROOT / "hardware/mechanical/TW-A-0001-R0015/QA/usb-indicator"
 
 
@@ -144,7 +144,8 @@ def apply_power_key_paths(steps, qa_dir, parts=None):
 
 def build(modules, revision):
     scene = json.loads((HERE / REVISIONS[revision]).read_bytes())
-    assembly = f"TW-A-0001-{revision}"
+    housing_revision = "R0016" if revision == "R0017" else revision
+    assembly = f"TW-A-0001-{housing_revision}"
     housing = scene["parts"]["housing"]
     source = f"hardware/mechanical/{assembly}/Print/housing-battery-bay.stl"
     if (scene["assembly"] != assembly or housing["source"] != source
@@ -152,7 +153,27 @@ def build(modules, revision):
         raise ValueError(f"Regenerate the scene from the current {revision} housing before packaging")
     steps = json.loads((HERE / "steps.json").read_text(encoding="utf8").replace("@@REVISION@@",revision))
     apply_power_key_paths(steps, ROOT / f"hardware/mechanical/{assembly}/QA/power-key",scene["parts"])
-    apply_usb_indicator(scene, steps, revision)
+    apply_usb_indicator(scene, steps, housing_revision)
+    if revision == "R0017":
+        kit = ROOT / "hardware/mechanical/TW-A-0001-R0017"
+        report = json.loads((kit / "QA/fit.json").read_bytes())
+        cap = json.loads((kit / "QA/viewer-cap.json").read_bytes())
+        if (hashlib.sha256((ROOT / cap["source"]).read_bytes()).hexdigest()
+                != cap["sourceSha256"] or cap["sourceSha256"] != report["cap_stl_sha256"]
+                or report["source_housing_sha256"] != hashlib.sha256(
+                    (ROOT / source).parents[1].joinpath("CAD/housing-battery-bay.brep").read_bytes()).hexdigest()):
+            raise ValueError("The keyed cap and its housing must match the checked pair")
+        if (any(q["common_mm3"] for q in report["insertion_and_press"].values())
+                or min(q["gap_mm"] for q in report["board_and_keeper_install"].values()) <= 0):
+            raise ValueError("Keyed cap or subsequent board insertion is obstructed")
+        scene["assembly"] = kit.name
+        scene["parts"]["cap"] = cap
+        step, = [s for s in steps if s.get("motionPart") == "cap"]
+        step["title"] = "Match the keyed cap to the opening"
+        step["facing"] = "Point the single rounded square corner toward the matching corner in the opening (+X, +Z). Keep the wide flange inside."
+        step["check"] = "The face should follow the outline of the hole. Hold the cap at its seat until the switch board and keeper are fitted. With the real switch, press at the centre and edges and check that it returns freely."
+        step["instruction"] = "The view opens at the alignment point, 2.50 mm inside the hole. Slide the keyed cap straight outward to seat it. To see how to reach this position from above, move the slider to the far right."
+        step["start"] = 100 * 2.5 / 26.5
     all_ids = set(scene["parts"])
     covered = set()
     for i, step in enumerate(steps, 1):

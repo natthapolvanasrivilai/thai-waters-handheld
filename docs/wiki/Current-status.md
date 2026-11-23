@@ -4,6 +4,8 @@ Reviewed 2026-11-23
 
 ## Engineering revision
 
+TW-A-0001-R0017 fits a keyed power cap into the existing R0016 housing. Reprint only the cap. Both its pressing face and the inner flange follow the single square corner in the existing opening. [Cap-only X1C plate](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-1/R0017-keyed-power-cap-X1C.3mf) · [Profile and fit evidence](../../hardware/mechanical/TW-A-0001-R0017/README.md)
+
 TW-A-0001-R0016 provides a side-loading channel for the USB indicator and includes the power-key relief and A3 board rails. [R0016 housing and dry fit](../../hardware/mechanical/TW-A-0001-R0016/README.md)
 
 TW-A-0001-R0015 adds clearance for the power-switch rim during assembly. The R0016 plate 1 housing carries that power-key change forward. [Housing change and fit procedure](../../hardware/mechanical/TW-A-0001-R0015/README.md)
@@ -26,15 +28,17 @@ R0013 through R0015 have a roof above USB1. Skip the lamp placement on those pri
 
 ## Power cap dry fit
 
-With the display off the case and the switch board and its west retainer set aside, lower the cap through the open display side. Keep the pressing face pointed toward the top edge and the broad flange inside. Start 2.50 mm inboard of its seated position. When the face lines up with the opening, slide it outward into the recessed seat. Hold the flange there while preparing the board. Check for strings around the seat and stop if the cap binds. On an R0013 or R0014 print, remove the cap after this check and set the board and keeper aside. The board catches the wall during insertion. On R0015 or R0016, hold the cap seated, lower the board with its switch facing the button, then lower the west retainer. Physical fit and press/return are pending.
+Align the squared corner on the cap with the matching corner in the hole. The R0017 guide opens at the alignment point. After fitting the real switch and keeper, check a centre press and an edge press for return and twist. The solid printed switch gauge checks alignment only.
 
-[Corrected R0013 guide for the flat-floor case](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0013-PCB-assembly-corrected.html) · [Corrected R0014 guide for the integral-rail case](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0014-PCB-assembly.html) · [Measured cap motion and exterior interference](../../hardware/mechanical/TW-A-0001-R0014/QA/power-key/cap-path.json)
+With the display off the case and the switch board and its west retainer set aside, lower the cap through the open display side. Keep the pressing face pointed toward the top edge and the broad flange inside. Start 2.50 mm inboard of its seated position. When the face lines up with the opening, slide it outward into the recessed seat. Hold the flange there while preparing the board. Check for strings around the seat and stop if the cap binds. On an R0013 or R0014 print, remove the cap after this check and set the board and keeper aside. The board catches the wall during insertion. On the R0015 or R0016 housing, hold the cap seated, lower the board with its switch facing the button, then lower the west retainer. Physical fit and press/return are pending.
+
+[Original R0016 round-cap guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0016-PCB-assembly.html) · [Corrected R0013 guide for the flat-floor case](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0013-PCB-assembly-corrected.html) · [Corrected R0014 guide for the integral-rail case](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0014-PCB-assembly.html) · [Measured cap motion and exterior interference](../../hardware/mechanical/TW-A-0001-R0014/QA/power-key/cap-path.json)
 
 ## Next fit check
 
 Let the R0013 plate 7 finish. For the new case, print only plate 1 from the R0016 project. Reuse all eight PCB gauges and the six square A4/A5 spacers. Set aside both long A3 strips. In the new case, dry-fit A3 directly onto the printed rail tops with J1 toward the lower service edge. Check for rocking, contact under the board and display closure before any bonding.
 
-[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0016-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/Thai-Waters-handbook.html) · [Housing identification and A3 fit instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
+[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-1/R0017-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-1/Thai-Waters-handbook.html) · [Housing identification and A3 fit instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
 
 With an older flat-floor R0013 housing, its two loose strips still establish the correct height. The R20 carrier trial is independent of the housing change. In the R0014 project plate 7 contains the same eight PCB gauges and six loose A4/A5 spacers. The four thin A2 shims in the full housing remain separate measured stock.
 

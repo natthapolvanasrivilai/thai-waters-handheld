@@ -1,0 +1,43 @@
+{
+  "project_sha256": "a7e46c67008cd3fe53d033cb9cbcc7f09e924b33f5e9257337d2f1903ed4ab1c",
+  "slices": [
+    {
+      "layers_key_corner_fraction": {
+        "0.2": 1.0,
+        "0.32": 0.956,
+        "0.44": 0.956,
+        "0.56": 0.828,
+        "0.68": 1.0,
+        "0.8": 1.0,
+        "0.92": 1.0,
+        "1.04": 1.0,
+        "1.16": 1.0,
+        "1.28": 0.991
+      },
+      "first_layer_rivet_witnesses_clear": 4,
+      "support": false,
+      "gcode_sha256": "20be8357bf8a095bbf896c394f1c0db46ff244f23c23e8493e1b32e929920bd6",
+      "slicer_warnings": "",
+      "estimated_seconds": 544
+    },
+    {
+      "layers_key_corner_fraction": {
+        "0.2": 1.0,
+        "0.32": 0.956,
+        "0.44": 0.956,
+        "0.56": 0.828,
+        "0.68": 1.0,
+        "0.8": 1.0,
+        "0.92": 1.0,
+        "1.04": 1.0,
+        "1.16": 1.0,
+        "1.28": 0.991
+      },
+      "first_layer_rivet_witnesses_clear": 4,
+      "support": false,
+      "gcode_sha256": "20be8357bf8a095bbf896c394f1c0db46ff244f23c23e8493e1b32e929920bd6",
+      "slicer_warnings": "",
+      "estimated_seconds": 544
+    }
+  ]
+}

@@ -24,7 +24,7 @@ def window(x0,y0,x1,y1):
     return box(x0+DX,y0+DY,x1+DX,y1+DY)
 
 
-def footprints(gcode, region=None, zmin=5.4, zmax=17.6, trace=None):
+def footprints(gcode, region=None, zmin=5.4, zmax=17.6, trace=None, object_id="385"):
     """Clip actual deposition to the board footprint. Skip native support-only interlayers for model backing."""
     if region is None:
         region = window(*BOARD)
@@ -60,7 +60,7 @@ def footprints(gcode, region=None, zmin=5.4, zmax=17.6, trace=None):
         xy = tuple(args.get(k,old[i]) if absolute_xy else old[i]+args.get(k,0.) for i,k in enumerate("XY"))
         if "E" not in args:
             continue
-        if instance == "385":
+        if instance == object_id:
             assert relative_e and absolute_xy
         e = args["E"]
         if e < 0:
@@ -68,7 +68,7 @@ def footprints(gcode, region=None, zmin=5.4, zmax=17.6, trace=None):
             continue
         recovered = min(debt,e)
         debt -= recovered
-        if instance != "385" or e-recovered <= 1e-7 or not (zmin <= z <= zmax):
+        if instance != object_id or e-recovered <= 1e-7 or not (zmin <= z <= zmax):
             continue
         if role not in MODEL and not role.startswith("Support"):
             assert role in NON_MODEL

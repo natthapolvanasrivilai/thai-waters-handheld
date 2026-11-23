@@ -75,3 +75,5 @@ TW-P-0001-R0012,Housing with switch rim entry relief,hardware/mechanical/TW-A-00
 TW-P-0029-R0004,R0015 registered power-key fit assembly,hardware/mechanical/TW-A-0001-R0015/installed-step.json,,a269ffd5740080d606489c5c5d0030922cef68f54cdd78231ae5e603e39753a1
 TW-P-0001-R0013,Housing with service-end USB indicator channel,hardware/mechanical/TW-A-0001-R0016/Print/housing-battery-bay.stl,,035f50d7a8170fac53077a72283c0eb772f5163f7fbb7c802ca323e874823b98
 TW-P-0029-R0005,R0016 registered side-entry lamp assembly,hardware/mechanical/TW-A-0001-R0016/installed-step.json,,f532b93c02c8f1984f3498b9b24ef9cd9a8618505801a75e3cb0390235f951f7
+TW-P-0013-R0003,Power cap keyed to existing aperture,hardware/mechanical/TW-A-0001-R0017/Print/power-cap.stl,,88e3fc654f5606dce678211151b7c7d6d107742e1577c2e478a6041302b49bbd
+TW-P-0029-R0006,Installed assembly with keyed cap,hardware/mechanical/TW-A-0001-R0017/installed-step.json,,3f3e6e71bd7e7372d21748e5203416719971581057b0110203aea7b1217cfda6

@@ -1,5 +1,7 @@
 # Hardware revision register
 
+[R0017 keyed cap](../mechanical/TW-A-0001-R0017/README.md) uses TW-P-0013-R0003 with the R0016 housing. Only the cap needs printing.
+
 **Current engineering configuration.** TW-A-0001-R0016 and TW-A-0002-R0006 pair the USB1 side-entry housing with the existing electrical assembly. [USB indicator dry fit](../mechanical/TW-A-0001-R0016/README.md)
 
 TW-A-0001-R0015 pairs the relieved key bay with TW-A-0002-R0006 electronics. [Key installation and physical checks](../mechanical/TW-A-0001-R0015/README.md)

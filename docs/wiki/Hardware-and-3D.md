@@ -1,10 +1,12 @@
 # Inspect the assembly and battery pocket
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/Thai-Waters-handbook.html)
+[R0017 keyed cap and cap-only fit plate](../../hardware/mechanical/TW-A-0001-R0017/README.md) follows the existing power-button opening. Use it with the R0016 housing. [Current 3D assembly guide](../models/R0017-PCB-assembly.html)
+
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-1/Thai-Waters-handbook.html)
 
 ## USB indicator entry
 
-The R0016 handbook shows the side slot in section. The three older guides show where the attempted insertion meets the USB-C well. The finished lamp is tethered to the display. [R0016 procedure](../../hardware/mechanical/TW-A-0001-R0016/README.md) · [Current 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0016-PCB-assembly.html)
+The R0016 handbook shows the side slot in section. The three older guides show where the attempted insertion meets the USB-C well. The finished lamp is tethered to the display. [R0016 procedure](../../hardware/mechanical/TW-A-0001-R0016/README.md) · [Current 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-1/R0017-PCB-assembly.html)
 
 ## R0015 power key
 

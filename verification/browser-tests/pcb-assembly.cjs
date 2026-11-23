@@ -4,7 +4,7 @@ const {pathToFileURL}=require('node:url');
 const {chromium}=require('playwright-core');
 const fs=require('node:fs');
 const guides=process.argv[2]?[path.resolve(process.argv[2])]:
-  ['R0013-PCB-assembly-corrected.html','R0014-PCB-assembly.html','R0015-PCB-assembly.html','R0016-PCB-assembly.html']
+  ['R0013-PCB-assembly-corrected.html','R0014-PCB-assembly.html','R0015-PCB-assembly.html','R0016-PCB-assembly.html','R0017-PCB-assembly.html']
     .map(name=>path.join(__dirname,'../../docs/models',name));
 const screenshots=process.env.ASSEMBLY_SCREENSHOTS;
 const cases=[{width:1140,height:800},{width:390,height:844}];
@@ -66,12 +66,13 @@ async function inspect(browser,guide){
     const revision=path.basename(guide).split('-')[0];
     const looseRails=revision==='R0013';
     const assemblyId='TW-A-0001-'+revision;
-    const loadReport=(name,assembly=assemblyId)=>JSON.parse(fs.readFileSync(
+    const housingId=revision==='R0017'?'TW-A-0001-R0016':assemblyId;
+    const loadReport=(name,assembly=housingId)=>JSON.parse(fs.readFileSync(
       path.join(__dirname,'../../hardware/mechanical',assembly,'QA/power-key',name),'utf8'));
     const key=loadReport('key-path.json'),blocked=key.pcb.status==='blocked';
-    const usb=loadReport('../usb-indicator/'+revision+'.json','TW-A-0001-R0015');
+    const usb=loadReport('../usb-indicator/'+housingId.slice(-5)+'.json','TW-A-0001-R0015');
     assert.equal(blocked,revision==='R0013'||revision==='R0014');
-    assert.equal(usb.status==='clear',revision==='R0016');
+    assert.equal(usb.status==='clear',housingId.endsWith('R0016'));
     for(const [idx,viewport] of cases.entries()){
       const context=await browser.newContext({viewport,offline:true,isMobile:!!idx,hasTouch:!!idx});
       if(idx)await context.addInitScript(()=>{
@@ -101,7 +102,7 @@ async function inspect(browser,guide){
         return {id:scene.assembly,housing:scene.parts.housing.source,parts:Object.keys(scene.parts),steps};
       });
       assert.equal(assembly.id,assemblyId);
-      const housingAssembly=looseRails?'TW-A-0001-R0011':assemblyId;
+      const housingAssembly=looseRails?'TW-A-0001-R0011':housingId;
       assert.equal(assembly.housing,'hardware/mechanical/'+housingAssembly+'/Print/housing-battery-bay.stl');
       assert.ok((await page.title()).includes(revision));
       assert.deepEqual(assembly.parts.filter(id=>/^A[345]s/.test(id)).sort(),
@@ -147,13 +148,20 @@ async function inspect(browser,guide){
       const motionSteps=assembly.steps.filter(step=>['cap','KEY','keeper'].includes(step.motionPart));
       assert.deepEqual(motionSteps.map(step=>step.motionPart),blocked?['cap']:['cap','KEY','keeper']);
       assert.equal(await page.locator('#title').innerText(),motionSteps[0].title);
-      const records=[loadReport('cap-path.json',looseRails?'TW-A-0001-R0014':assemblyId),key.pcb,key.keeper];
+      const records=[loadReport('cap-path.json',looseRails?'TW-A-0001-R0014':housingId),key.pcb,key.keeper];
       for(const [i,step] of motionSteps.entries()){
         await select(step.title);
         assert.deepEqual(step.waypoints,records[i].removal_offsets_mm);
         assert.deepEqual(step.active,[step.motionPart]);
         assert.deepEqual(step.visible.filter(id=>['cap','KEY','keeper'].includes(id)).sort(),
           motionSteps.slice(0,i+1).map(previous=>previous.motionPart).sort());
+        if(revision==='R0017' && step.motionPart==='cap'){
+          assert.match(await page.locator('#positionText').innerText(),/2.5 mm to seat/);
+          assert.match(step.facing,/matching corner/);
+          const capSource=await page.locator('#assemblyData').evaluate(el=>JSON.parse(el.textContent).scene.parts.cap.source);
+          assert.match(capSource,/R0017\/Print\/power-cap.stl$/);
+          await page.locator('#position').fill('100');
+        }
         assert.equal(await page.locator('#position').inputValue(),'100');
         assert.equal(await page.locator('#positionText').innerText(),'Clear above housing');
         const start=await pixels(page);
