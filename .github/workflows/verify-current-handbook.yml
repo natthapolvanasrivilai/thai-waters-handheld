@@ -29,4 +29,6 @@ jobs:
       - name: Check the downloaded handbook in Chrome
         env:
           BROWSER_PATH: /usr/bin/google-chrome
-        run: node verification/browser-tests/handbook-current.cjs
+        run: |
+          node verification/browser-tests/handbook-current.cjs
+          node verification/browser-tests/pcb-assembly.cjs

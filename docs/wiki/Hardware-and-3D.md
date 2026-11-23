@@ -1,8 +1,10 @@
 # Inspect the assembly and battery pocket
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-fit-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/Thai-Waters-handbook.html)
 
 ## R0013 seated-display service
+
+Choose **PCB assembly** in the downloaded handbook to follow plate 7 through the R20 sensor trial and full enclosure fit. The same interactive guide opens as a single offline file. [Download the 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/R0013-PCB-assembly.html) · [Dry assembly and spacer positions](../../hardware/mechanical/pcb-fit-r0013/assembly-fit.md)
 
 [Current revision and open physical checks](Current-status.md) · [Plate 7 PCB gauge map and instructions](../../hardware/mechanical/pcb-fit-r0013/README.md) · [Plug motion, installed harness, full assembly and measured clearance](../../quality/seated-connector-review.md)
 

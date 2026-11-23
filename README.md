@@ -1,6 +1,6 @@
 # Thai Waters handheld
 
-[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-fit-1/Thai-Waters-handbook.html) · [R0013 hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
+[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/Thai-Waters-handbook.html) · [R0013 hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
 
 [Hardware closure and playtest issues](quality/hardware-gate.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [November hardware review](quality/hardware-review-2026-11-23.md)
 
@@ -9,6 +9,8 @@
 [Hardware revisions and CAD](docs/wiki/Hardware-and-3D.md) · [One-unit BOM and price research](docs/wiki/BOM-and-business.md) · [Current release and hardware milestone](docs/wiki/Software-and-tests.md#current-release)
 
 **[Browse the product wiki](docs/wiki/Home.md)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
+
+For the plate-7 dry fit, choose **PCB assembly** in the downloaded handbook or [download the standalone 3D assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/R0013-PCB-assembly.html).
 
 Open the downloaded handbook in a browser. **Current status** checks this GitHub project on every open and links to the evidence for the selected revision. When the check fails, the handbook labels the dated snapshot saved with the file. The archived tabs still work offline. The [original R0011 handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html) and [Rev F engineering release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/rev-f-engineering-0.7) preserve their original evidence.
 

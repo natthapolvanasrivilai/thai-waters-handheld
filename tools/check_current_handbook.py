@@ -1,5 +1,6 @@
 """Validate the live handbook and stamp its offline snapshot only when packaging a release."""
 import argparse
+import base64
 import csv
 import json
 import re
@@ -12,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 STATUS = "docs/wiki/Current-status.md"
 BOOK = ROOT / "docs/index.html"
 PANEL = ROOT / "docs/handbook/live-panel.html"
+ASSEMBLY = ROOT / "docs/models/R0013-PCB-assembly.html"
+ASSEMBLY_MARK = "@@PCB_ASSEMBLY@@"
 MARK = "@@SNAPSHOT@@"
 START = "<!-- Start live handbook -->"
 END = "<!-- End live handbook -->"
@@ -56,8 +59,10 @@ def compare_sources(base):
 
 def render_panel(snapshot):
     template = PANEL.read_text(encoding="utf-8").rstrip()
-    if template.count(MARK) != 1:
-        raise ValueError("Expected exactly one snapshot placeholder")
+    if template.count(MARK) != 1 or template.count(ASSEMBLY_MARK) != 1:
+        raise ValueError("Expected one placeholder each for the status snapshot and PCB assembly guide")
+    assembly = base64.b64encode(ASSEMBLY.read_bytes()).decode("ascii")
+    template = template.replace(ASSEMBLY_MARK, assembly)
     # An embedded document cannot close its containing script.
     payload = json.dumps(snapshot, ensure_ascii=True).replace("<", "\\u003c")
     return START + "\n" + template.replace(MARK, payload) + "\n" + END

@@ -16,6 +16,10 @@ The owner confirmed that the R20 four-post carrier fits the printed floor sample
 
 ## Next fit check
 
+Open the 3D PCB assembly guide to follow the eight plate-7 gauges into the housing and onto the underside of the display. The guide also shows how A2 seats on the separate R20 carrier. In the new handbook, choose PCB assembly to use the guide offline.
+
+[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/R0013-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/Thai-Waters-handbook.html) · [Dry assembly instructions and spacer positions](../../hardware/mechanical/pcb-fit-r0013/assembly-fit.md)
+
 Select only plate 7 of the R0013 X1C project to print eight inert PCB gauges and eight loose spacers for A3, A4 and A5. Bambu Studio estimates about 65 minutes and 26.8 g of PETG on the Engineering Plate. Check whether all four corners of the A2 gauge seat on the printed R20 carrier. This checks nominal fit. Actual connector motion, solder clearance, fastener load and powered operation need physical parts.
 
 [Illustrated plate map](../../hardware/mechanical/pcb-fit-r0013/plate-7.png) · [Gauge dimensions and print instructions](../../hardware/mechanical/pcb-fit-r0013/README.md) · [Download the seven-plate X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-fit-1/Thai-Waters-R0013-PCB-Fit-X1C.3mf)

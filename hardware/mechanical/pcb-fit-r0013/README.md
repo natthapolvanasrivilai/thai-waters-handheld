@@ -2,6 +2,8 @@
 
 [Open the X1 Carbon project](Thai-Waters-R0013-PCB-Fit-X1C.3mf) · [Illustrated plate map](plate-7.png) · [Assembly sequence and shim positions](assembly-fit.md) · [Current project status](../../../docs/wiki/Current-status.md)
 
+Choose **PCB assembly** in the handbook for the 3D dry-fit guide, or download the guide on its own and open it in a browser. [Offline 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/R0013-PCB-assembly.html) · [Offline handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-assembly-1/Thai-Waters-handbook.html)
+
 **For the R20 pieces already printed, you only need plate 7.** Open the 3MF as a project in Bambu Studio. In Prepare select **07 PCB fit gauges - R0013**, then **Slice plate**. The plate uses the X1 Carbon 0.4 mm nozzle, Engineering Plate, slot 1 PETG and 0.20 mm layers. Check that the spool and physical plate match. Leave the objects at 100% scale in their saved orientations. After cooling, keep each set of loose spacers together. Remove strings from bearing faces without sanding the locating pins or enlarging the bores.
 
 ![Top view of the eight PCB gauges and their separate spacers on plate seven](plate-7.png)

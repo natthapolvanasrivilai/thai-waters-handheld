@@ -1,5 +1,6 @@
 <section id="current">
   <h2>Current project status</h2>
+  <p><a href="#pcb-assembly">Open the offline R0013 PCB assembly guide</a></p>
   <p id="handbook-check" class="warn" role="status">Checking GitHub. The saved release record appears below.</p>
   <div class="toolbar">
     <button type="button" class="cmd" id="handbook-refresh">Check for updates</button>
@@ -122,5 +123,26 @@
   })();
   </script>
 </section>
+<section id="pcb-assembly" aria-label="R0013 PCB assembly" hidden>
+  <p><a id="pcb-assembly-open" target="_blank" rel="noopener">Open the 3D guide in its own tab</a></p>
+  <iframe id="pcb-assembly-frame" title="R0013 PCB assembly guide" allowfullscreen></iframe>
+  <script type="application/octet-stream" id="pcb-assembly-file">@@PCB_ASSEMBLY@@</script>
+  <script>
+    function loadPcbAssembly() {
+      const frame = document.getElementById('pcb-assembly-frame');
+      if (frame.hasAttribute('src')) return;
+      const encoded = document.getElementById('pcb-assembly-file').textContent;
+      const bytes = Uint8Array.from(atob(encoded), char => char.charCodeAt(0));
+      const url = URL.createObjectURL(new Blob([bytes], {type: 'text/html;charset=utf-8'}));
+      frame.src = url;
+      document.getElementById('pcb-assembly-open').href = url;
+    }
+  </script>
+</section>
 <p id="archive-note" class="warn"><strong>Archived R0011/R0004 engineering snapshot.</strong> These tabs preserve the original simulator, CAD, circuits and costing. <a href="#current">See the current project status and evidence</a>.</p>
-<style>#current:not([hidden]) ~ #archive-note { display: none; } #current { max-width: 90ch; } #current .toolbar { align-items: center; }</style>
+<style>
+#current:not([hidden]) ~ #archive-note, #pcb-assembly:not([hidden]) ~ #archive-note { display: none; }
+#current { max-width: 90ch; }
+#current .toolbar { align-items: center; }
+#pcb-assembly-frame { width: 100%; height: 86vh; border: 0; background: white; }
+</style>

@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict');
+const {createHash} = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 const {pathToFileURL} = require('node:url');
@@ -6,6 +7,8 @@ const {chromium} = require('playwright-core');
 
 const root = path.resolve(__dirname, '../..');
 const handbook = pathToFileURL(path.resolve(process.argv[2] || path.join(root, 'docs/index.html'))).href;
+const legacy = process.argv.includes('--legacy');
+const guide = 'R0013-PCB-assembly.html';
 const record = fs.readFileSync(path.join(root, 'docs/wiki/Current-status.md'), 'utf8');
 const project = 'natthapolvanasrivilai/thai-waters-handheld';
 const github = 'https://github.com/' + project;
@@ -35,7 +38,10 @@ function review(number, sha, fullName = project) {
     await page.route(/^https?:/, async route => {
       const url = new URL(route.request().url());
       const headers = {'access-control-allow-origin': '*', 'access-control-expose-headers': 'Link'};
-      if (offline) return route.abort();
+      if (offline) {
+        if (route.request().frame().parentFrame()) unexpected.push(url.href);
+        return route.abort();
+      }
       if (url.hostname === 'api.github.com' && url.pathname === '/repos/' + project + '/pulls') {
         const first = url.searchParams.get('page') === '1';
         if (first && secondPage.length) headers.link = '<https://api.github.com/>; rel="next"';
@@ -71,6 +77,9 @@ function review(number, sha, fullName = project) {
     assert.match(await check.innerText(), /Checked GitHub .*open review #98/);
     assert.equal(await page.getByRole('link', {name:'Open review #98'}).getAttribute('href'), github + '/pull/98');
     assert.ok((await panel.locator('a').all()).length >= 4);
+    const guideLink = panel.getByRole('link', {name: 'Download the standalone 3D PCB assembly guide'});
+    assert.ok((await guideLink.getAttribute('href')).startsWith(github + '/releases/download/'));
+    assert.ok((await guideLink.getAttribute('href')).endsWith('/' + guide));
     for (const link of await panel.locator('a').all()) {
       const dest = await link.getAttribute('href');
       assert.ok(dest.startsWith(github + '/'), dest);
@@ -106,16 +115,47 @@ function review(number, sha, fullName = project) {
     apiStatus = 200;
     offline = true;
     await saved();
+    const assemblyTab = page.getByRole('button', {name: 'PCB assembly', exact: true});
+    if (legacy) {
+      assert.equal(await assemblyTab.count(), 0);
+    } else {
+      const frame = page.locator('#pcb-assembly-frame');
+      assert.equal(await frame.getAttribute('src'), null);
+      await assemblyTab.click();
+      const model = page.frameLocator('#pcb-assembly-frame');
+      await model.locator('#model').waitFor({state: 'visible'});
+      const steps = model.locator('#steps');
+      const stage = await steps.inputValue();
+      await model.locator('#next').click();
+      assert.notEqual(await steps.inputValue(), stage);
+      assert.ok(await page.locator('#archive-note').isHidden());
+      const blob = await frame.getAttribute('src');
+      assert.equal(await page.locator('#pcb-assembly-open').getAttribute('href'), blob);
+      const digest = await page.evaluate(async url => {
+        const file = await (await fetch(url)).arrayBuffer();
+        const hash = await crypto.subtle.digest('SHA-256', file);
+        return Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, '0')).join('');
+      }, blob);
+      const standalone = fs.readFileSync(path.join(root, 'docs/models', guide));
+      assert.equal(digest, createHash('sha256').update(standalone).digest('hex'));
+    }
     await page.locator('[data-tab=business]').click();
     await page.locator('#archive-note').waitFor({state: 'visible'});
     assert.ok(await page.locator('#findPart').isVisible());
+    await page.locator('[data-tab=assembly]').click();
+    const archived = page.frameLocator('#viewer');
+    await archived.locator('#stepTitle').waitFor({state: 'visible'});
+    const archivedStep = await archived.locator('#stepTitle').innerText();
+    await archived.getByRole('button', {name: 'Next assembly stage'}).click();
+    await archived.locator('#stepTitle').filter({hasText: archivedStep}).waitFor({state: 'hidden'});
     await page.locator('#archive-note a').click();
     await page.locator('#archive-note').waitFor({state: 'hidden'});
     await page.setViewportSize({width: 390, height: 844});
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2));
     assert.deepEqual(unexpected, []);
     assert.deepEqual(errors, []);
-    console.log('PASS local reopen, current PR handover, default branch, exact-revision links, ambiguity, malformed/missing/private/offline records, archive navigation and mobile width.');
+    console.log('PASS live source selection, current assembly download, offline fallback, archive navigation and mobile width. ' +
+      (legacy ? 'Verified previous reader.' : 'Verified interactive offline PCB tab and exact standalone bytes.'));
   } finally {
     await browser.close();
   }
