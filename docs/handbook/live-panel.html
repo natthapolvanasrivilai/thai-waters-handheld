@@ -1,0 +1,126 @@
+<section id="current">
+  <h2>Current project status</h2>
+  <p id="handbook-check" class="warn" role="status">Checking GitHub. The saved release record appears below.</p>
+  <div class="toolbar">
+    <button type="button" class="cmd" id="handbook-refresh">Check for updates</button>
+    <a id="handbook-source" href="https://github.com/natthapolvanasrivilai/thai-waters-handheld">Project on GitHub</a>
+    <a href="https://github.com/natthapolvanasrivilai/thai-waters-handheld/pulls">Project reviews on GitHub</a>
+  </div>
+  <noscript>Enable JavaScript to check for updates or read the project on GitHub.</noscript>
+  <div id="handbook-record"></div>
+  <script type="application/json" id="handbook-snapshot">@@SNAPSHOT@@</script>
+  <script>
+  (() => {
+    const project = 'natthapolvanasrivilai/thai-waters-handheld';
+    const github = 'https://github.com/' + project;
+    const api = 'https://api.github.com/repos/' + project;
+    const recordPath = 'docs/wiki/Current-status.md';
+    const status = document.getElementById('handbook-check');
+    const contents = document.getElementById('handbook-record');
+    const source = document.getElementById('handbook-source');
+    const refresh = document.getElementById('handbook-refresh');
+    const bundled = JSON.parse(document.getElementById('handbook-snapshot').textContent);
+
+    function display(markdown, ref) {
+      const lines = markdown.trim().split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+      if (lines[0] !== '# Project status' || !/^Reviewed \d{4}-\d{2}-\d{2}$/.test(lines[1]) ||
+          !lines.slice(2).some(line => line.startsWith('## '))) {
+        throw Error('The project status record is incomplete.');
+      }
+      const recordUrl = github + '/blob/' + ref + '/' + recordPath;
+      const fragment = document.createDocumentFragment();
+      for (const line of lines.slice(1)) {
+        const heading = line.startsWith('## ');
+        const element = document.createElement(heading ? 'h3' : 'p');
+        const value = heading ? line.slice(3) : line;
+        let position = 0;
+        for (const match of value.matchAll(/\[([^\]]+)\]\(([^\s)]+)\)/g)) {
+          const url = new URL(match[2], recordUrl);
+          if (!url.href.startsWith(github + '/')) throw Error('Unexpected evidence link.');
+          const anchor = document.createElement('a');
+          anchor.href = url.href;
+          anchor.textContent = match[1];
+          element.append(value.slice(position, match.index), anchor);
+          position = match.index + match[0].length;
+        }
+        element.append(value.slice(position));
+        fragment.append(element);
+      }
+      contents.replaceChildren(fragment);
+      source.href = recordUrl;
+      source.textContent = 'Read this record on GitHub';
+    }
+
+    async function read(url, signal) {
+      const response = await fetch(url, {signal, cache: 'no-store', credentials: 'omit', redirect: 'error', referrerPolicy: 'no-referrer'});
+      if (response.status === 403 || response.status === 429) throw Error('GitHub limited access to this request.');
+      if (response.status === 404) throw Error('The project or its status record is unavailable for anonymous access.');
+      if (!response.ok) throw Error('GitHub returned HTTP ' + response.status + '.');
+      return response;
+    }
+
+    async function revision(signal) {
+      let selected;
+      let page = 1;
+      // Only same-project maintainers can designate a review. Ignore forks and quoted markers.
+      while (true) {
+        const response = await read(api + '/pulls?state=open&per_page=100&page=' + page + '&t=' + Date.now(), signal);
+        const pulls = await response.json();
+        for (const pull of pulls) {
+          const lastLine = (pull.body || '').trimEnd().split(/\r?\n/).at(-1);
+          if (pull.head?.repo?.full_name !== project || lastLine !== '<!-- current-handbook -->') continue;
+          if (selected) throw Error('Multiple reviews are designated as current.');
+          selected = {sha: pull.head.sha, label: 'open review #' + pull.number, review: pull.number};
+        }
+        if (!/<[^>]+>;\s*rel="next"/.test(response.headers.get('Link') || '')) break;
+        page++;
+      }
+      if (selected) return selected;
+      const latest = await (await read(api + '/commits?sha=HEAD&per_page=1&t=' + Date.now(), signal)).json();
+      return {sha: latest[0]?.sha, label: 'default branch'};
+    }
+
+    function showSnapshot(message) {
+      display(bundled.markdown, bundled.tag);
+      status.className = 'warn';
+      status.textContent = message + ' Showing the saved ' + bundled.tag + ' release record. Its status may have changed.';
+    }
+
+    async function update() {
+      if (refresh.disabled) return;
+      refresh.disabled = true;
+      showSnapshot('Checking GitHub.');
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+      try {
+        const rev = await revision(controller.signal);
+        if (!/^[a-f0-9]{40}$/.test(rev.sha)) throw Error('GitHub did not identify a source commit.');
+        const raw = 'https://raw.githubusercontent.com/' + project + '/' + rev.sha + '/' + recordPath;
+        const response = await read(raw, controller.signal);
+        display(await response.text(), rev.sha);
+        status.className = 'meta';
+        status.textContent = 'Checked GitHub ' + new Date().toLocaleString() + ' · ' + rev.label + ' · ' + rev.sha.slice(0, 9);
+        if (rev.review) {
+          const link = document.createElement('a');
+          link.href = github + '/pull/' + rev.review;
+          link.textContent = 'Open review #' + rev.review;
+          status.append(' · ', link);
+        }
+      } catch (error) {
+        const reason = error.name === 'AbortError' ? 'The request timed out.' :
+          error instanceof TypeError ? 'Check your network or open the project in GitHub.' : error.message;
+        showSnapshot('Could not verify current status. ' + reason);
+      } finally {
+        clearTimeout(timeout);
+        refresh.disabled = false;
+      }
+    }
+
+    refresh.addEventListener('click', update);
+    window.addEventListener('pageshow', event => { if (event.persisted) update(); });
+    update();
+  })();
+  </script>
+</section>
+<p id="archive-note" class="warn"><strong>Archived R0011/R0004 engineering snapshot.</strong> These tabs preserve the original simulator, CAD, circuits and costing. <a href="#current">See the current project status and evidence</a>.</p>
+<style>#current:not([hidden]) ~ #archive-note { display: none; } #current { max-width: 90ch; } #current .toolbar { align-items: center; }</style>

@@ -1,12 +1,12 @@
 # Thai Waters product wiki
 
-[R0013 seated connector and USB review](../../quality/seated-connector-review.md)
+[**Current project status and next fit check**](Current-status.md) · [R0013 review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98) · [Seated connector and USB review](../../quality/seated-connector-review.md)
 
 [R0012 service review and R20 print trial](../../quality/hardware-review-2026-11-23.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-fit-1/Thai-Waters-handbook.html)
 
-This handbook follows a unit from a cast on the simulator through component selection, enclosure fit, programming, factory acceptance and sale. Start with the activity below, or [download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html). Open the downloaded HTML in a browser. The playable game, 3D meshes, circuit traces and costing data are embedded. A local copy is also available at [docs/index.html](../index.html) in your checkout.
+Open the downloaded handbook in a browser or open [docs/index.html](../index.html) from a checkout. The **Current status** tab checks the GitHub project each time. It shows the selected revision, physical observations, open checks and engineering downloads. Links to source files use the displayed commit. A failed check shows the saved release record and its review date. The other tabs preserve the offline R0011 simulator, 3D meshes, traces and costing. [Original R0011 handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 
 [Mechanical design and fit history](Hardware-and-3D.md) · [Known one-unit costs and selling-price research](BOM-and-business.md)
 

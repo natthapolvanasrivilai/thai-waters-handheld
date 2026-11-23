@@ -2,7 +2,7 @@
 
 [Prototype carton and divider trial, CAD dimensions and printable patterns](../../manufacturing/packaging/fit-tray/README.md)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-fit-1/Thai-Waters-handbook.html)
 
 Select **Assembly process** for the ten factory stations and the downloadable unit record. In the 3D viewer, step through the mechanical order to inspect access before routing a harness.
 

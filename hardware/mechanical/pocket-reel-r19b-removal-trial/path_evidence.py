@@ -24,7 +24,7 @@ def arc_points(a,b,fields,clockwise):
     steps=max(1,math.ceil(abs(sweep)/max(.015,2*math.acos(max(-1,1-.015/max(radius,.015))))))
     return [a,*[(x+radius*math.cos(start+sweep*i/steps),y+radius*math.sin(start+sweep*i/steps)) for i in range(1,steps)],b]
 
-def inspect(path,track_layers=False):
+def inspect(path,track_layers=False,*,focus=FOCUS,layer_observer=None):
     role='Custom';instance='';z=0.;width=.42;xy=(0.,0.);debt=0.;rel=False;abs_xy=True
     volume=defaultdict(lambda:defaultdict(float)); first=defaultdict(list)
     support_layers=defaultdict(set);layers=defaultdict(lambda:defaultdict(list))
@@ -44,11 +44,11 @@ def inspect(path,track_layers=False):
             new=tuple(fields.get(k,xy[i]) if abs_xy else xy[i]+fields.get(k,0) for i,k in enumerate('XY'))
             old=xy;xy=new
             if 'E' not in fields:continue
-            if instance in FOCUS:assert rel and abs_xy
+            if instance in focus:assert rel and abs_xy
             e=fields['E']
             if e<0:debt-=e;continue
             paid=min(e,debt);debt-=paid
-            if instance not in FOCUS or new==old or z<=0 or e-paid<1e-7:continue
+            if instance not in focus or new==old or z<=0 or e-paid<1e-7:continue
             group='support' if role.startswith('Support') else ('brim' if role=='Brim' else 'model')
             if role in {'Custom','Skirt','Prime tower','Flush'}:continue
             volume[instance][group]+=(e-paid)*math.pi*(1.75/2)**2
@@ -67,6 +67,8 @@ def inspect(path,track_layers=False):
                    'first_model_contact_regions':len(bed.geoms) if hasattr(bed,'geoms') else int(not bed.is_empty)}
         if track_layers:
             result[i]['model_component_backing']=backing(layers[i])
+            if layer_observer is not None:
+                layer_observer(i,layers[i])
     return result,first
 
 def backing(layers):

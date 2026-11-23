@@ -1,6 +1,6 @@
 # Firmware, simulator and software verification
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Archived interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-fit-1/Thai-Waters-handbook.html)
 
 Open **Software** in the archived R0011 handbook for that engineering snapshot. Filter by feature to see its implementation, automated coverage and remaining on-device acceptance. Select **Test plan** to follow a validation item to its stage and acceptance criteria.
 
@@ -24,7 +24,7 @@ Open the [private playtest](https://thai-waters-pocket-angler.shoung0690.chatgpt
 
 The historical [standalone browser download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/engineering-2026-11-20-rayong-thai-90d5c37/Thai-Waters-play.html) in the [engineering prerelease](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/engineering-2026-11-20-rayong-thai-90d5c37) was built from exact source commit `90d5c37e162c118df6563f7836f41cff363edab8`. Game HTML SHA-256: `c0d3904c24587ab0c01dd54400e8857f5e91c213e3b3dd86bae5d83f1d78765b`. [Exact-source verification](https://github.com/natthapolvanasrivilai/thai-waters-handheld/actions/runs/44756393230). This is not a record of the current hosted game.
 
-This version-controlled product wiki is the canonical documentation. The [archived interactive handbook](../index.html) has its own embedded simulator and is not the current phone build. A documentation-only Site update can change the Site's version without changing the game HTML.
+This version-controlled product wiki is the canonical documentation. The [live handbook](../index.html) opens on current project status. Its playable demo preserves the R0011 engineering snapshot. A documentation-only Site update can change the Site's version without changing the game HTML.
 
 The [USB engineering preview for that historical release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/engineering-2026-11-20-rayong-thai-90d5c37/Thai-Waters-controller-90d5c37.zip) compiles for the Waveshare 31137, Rev F sensor pinout, with Arduino-ESP32 3.3.10. The offline integrity check passed for the four ESP32-S3 images and the SD art file. The USB package SHA-256 is `25bb91275b186bf3e09b800be4c705003a3d054400ee649a74f8a59ae3bf54d9`. The [earlier 0.9.4 package](../../releases/prototypes/Thai-Waters-controller-0.9.4.zip) remains an archive, not the matching build. The browser includes 2,545 individual fish portraits; the controller uses a resident selection and a checked microSD bank for the full catalog. See the [board setup and card instructions](../../firmware/Phone-controller.md).
 

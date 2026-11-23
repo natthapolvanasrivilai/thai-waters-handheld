@@ -1,10 +1,10 @@
 # Inspect the assembly and battery pocket
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0013-pcb-fit-1/Thai-Waters-handbook.html)
 
 ## R0013 seated-display service
 
-[Plug motion, installed harness, full assembly and measured clearance](../../quality/seated-connector-review.md)
+[Current revision and open physical checks](Current-status.md) · [Plate 7 PCB gauge map and instructions](../../hardware/mechanical/pcb-fit-r0013/README.md) · [Plug motion, installed harness, full assembly and measured clearance](../../quality/seated-connector-review.md)
 
 ## Connector service and failed-print investigation
 
