@@ -25,3 +25,13 @@ hardware/electronics/pcb-r0004/*.kicad_* -text
 hardware/electronics/pcb-power-r0004/*.kicad_* -text
 hardware/mechanical/TW-A-0001-R0012/*.json -text
 hardware/verification/r0012/copper.json -text
+hardware/electronics/pcb-haptic-cie-r0002/*.kicad_* -text
+hardware/electronics/pcb-haptic-cie-r0002/*.json -text
+hardware/electronics/pcb-haptic-cie-r0002/connectivity.xml -text
+hardware/electronics/usb-entry-r0005/*.kicad_* -text
+hardware/electronics/usb-entry-r0005/*.json -text
+hardware/electronics/usb-entry-r0005/connectivity.xml -text
+hardware/electronics/usb-entry-r0005/installed-leads/*.json -text
+hardware/electronics/harness-r0006/*.json -text
+hardware/mechanical/TW-A-0001-R0013/*.json -text
+hardware/verification/r0013/copper.json -text
