@@ -22,6 +22,8 @@ Deliver a usable native project for the specified printer and intended fit trial
 
 ## Native reopen gate and handoff
 
+Commit the editable design source, delivered slicer project and verification evidence in the revision folder. Link the committed files from the handoff and publish any release downloads from that commit. Keep earlier revision folders and tags accessible. [Hardware revision register](../../../hardware/revisions/README.md)
+
 Reopen the exact delivered editable project in the appropriate native slicer, retain placement and settings, and slice every expected plate without silently dropping objects. Independently reopen and reslice the critical plate/feature in a clean session. Check hashes, plate/object mapping, warning output and actual deposited paths. Keep scoped witnesses, input revisions, failures and reproducible results. A quiet slice is strictly digital evidence; tool-less assembly, as-printed fit, thermal behavior, wear, and any energized or production tests remain separate gates. Preserve any existing hardware hold and never send to or operate a printer solely because this checklist passed.
 
 For a PCB fit plate, register each inert board, spacer and mounted height to the current installed assembly. Keep the printed R20 carrier trial separate from the full shell's integral mount. Compare artwork, pin spacing, locating-hole toolpaths and seated-case collisions. Verify the project has a filament color entry for every material slot. Missing color entries silently truncated the R0011 optical and flexible plates at the first layer despite a successful native slice. [Worked example and acceptance records](../../../hardware/mechanical/pcb-fit-r0013/README.md)

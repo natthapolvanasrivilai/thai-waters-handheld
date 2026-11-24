@@ -1,5 +1,7 @@
 # Hardware revision register
 
+Keep each issued hardware revision in Git. Commit the editable CAD, matching print project and verification records together in a revision-specific folder. Link that folder here and preserve it when a later revision supersedes it.
+
 [TW-A-0003-R0008 PolyTerra PLA fit print](../mechanical/step-fit-r0008/README.md) contains the angled housing with integral receiver backing and two removable handle saddles on the X1 Carbon and Cool Plate SuperTack.
 
 [TW-A-0003-R0002 seven-plate DFM trial](../mechanical/reel-dfm-r0001/README.md) registers the reinforced rotor, combined-board housing and saved X1C print process. The fold and spin are digitally checked. First-article cleanup remains open.
