@@ -4,7 +4,7 @@ Reviewed 2026-11-24
 
 ## Engineering revision
 
-**Current PLA test print.** TW-A-0003-R0005 uses the R0004 enclosure geometry with one RGB window and rear bezel screws. All 27 parts use PolyTerra PLA on the X1 Carbon, 0.4 mm nozzle and Cool Plate SuperTack. Twelve toolpath checks cover the status aperture, access passages, key opening and bezel pockets. Physical fit and powered verification remain open. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0004-polyterra-supertack-1/Thai-Waters-R0004-PolyTerra-PLA-SuperTack-X1C.3mf) · [PLA print sequence and checks](../../hardware/mechanical/polyterra-fit-r0001/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Enclosure-fit-guide.html)
+**Current PLA test print.** TW-A-0003-R0006 adds an exterior ramp to the rod receiver. The housing and grip print at 45° with localized supports. All 27 parts use PolyTerra PLA on the X1 Carbon, 0.4 mm nozzle and Cool Plate SuperTack. Twelve toolpath checks cover the status aperture, access passages, key opening and bezel pockets. Physical fit and powered verification remain open. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0006-angled-polyterra-1/Thai-Waters-R0006-PolyTerra-SuperTack-X1C.3mf) · [PLA print sequence and checks](../../hardware/mechanical/polyterra-fit-r0002/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0006-angled-polyterra-1/Enclosure-fit-guide.html)
 
 TW-A-0001-R0017 fits a keyed power cap into the existing R0016 housing. Reprint only the cap. Both its pressing face and the inner flange follow the single square corner in the existing opening. [Cap-only X1C plate](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/R0017-keyed-power-cap-X1C.3mf) · [Profile and fit evidence](../../hardware/mechanical/TW-A-0001-R0017/README.md)
 
@@ -48,7 +48,7 @@ With the display off the case and the switch board and its west retainer set asi
 
 ## Next fit check
 
-Start with the nine-minute white PLA diffuser gauge on plate 4. Plates 1, 2 and 7 complete the enclosure and board trial. Use plate 5 to check rigid cover outlines. [PLA first-article sheet](../../hardware/mechanical/polyterra-fit-r0001/first-article.csv)
+Inspect plate 1 (housing) and plate 3 (rod grip) together for the receiver slide trial. Plate 4 checks the white diffuser shape. Plates 1, 2 and 7 complete the enclosure and board trial. Use plate 5 to check rigid cover outlines. [PLA first-article sheet](../../hardware/mechanical/polyterra-fit-r0002/first-article.csv)
 
 ## Qualification and software
 

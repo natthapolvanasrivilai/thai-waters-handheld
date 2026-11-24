@@ -1,0 +1,7 @@
+{
+  "added_mm3": 845.192,
+  "removed_mm3": 0.0,
+  "lower_bound_to_sliding_grip_mm": 2.18,
+  "motion": "Any translation along the receiver Y axis",
+  "solids": 1
+}
