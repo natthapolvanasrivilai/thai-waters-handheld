@@ -6,8 +6,10 @@ from interfaces import HERE,box
 from service import swept
 from mount import b,near
 from gauges import other
-def run(cache):
-    read=lambda n:cq.importers.importStep(str(HERE/(n+'.step'))).val()
+def run(cache, housing_path=None, report_path=None):
+    def read(n):
+        path = housing_path if n == 'housing' and housing_path else HERE/(n+'.step')
+        return cq.importers.importStep(str(path)).val()
     shell,shelf,lens,lamp=map(read,['housing','shelf','diffuser','rgb-gauge'])
     spk=other(cache)[0]; report={}
     def record(name,parts,targets):
@@ -33,6 +35,6 @@ def run(cache):
     targets['shelf']=shelf
     record('lamp_lower_at_service_end',[rectpath(q.translate((0,-18,0)),(0,0,24)) for q in (board,led)],targets)
     record('lamp_slide_18mm',[rectpath(q,(0,-18,0)) for q in (board,led)],targets)
-    (HERE/'light-motion.json').write_text(json.dumps(report,indent=2)+'\n')
+    (report_path or HERE/'light-motion.json').write_text(json.dumps(report,indent=2)+'\n')
     assert not any(report.values()),report
 if __name__=='__main__':run(Path(sys.argv[1]))

@@ -7,7 +7,7 @@
 R0016 keeps the R0006 electronics. The five USB lamp simulation cases reproduced their registered measurements. The soldered display and lamp still require a workable assembly sequence and bench validation. [Lamp fit and wiring limits](../../hardware/mechanical/TW-A-0001-R0016/README.md) · [Hardware issue #99](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/99)
 
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0006-angled-polyterra-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0007-single-light-print-1/Thai-Waters-handbook.html)
 
 ## R0013 fitted electronics
 

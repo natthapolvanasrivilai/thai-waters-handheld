@@ -1,6 +1,6 @@
 # Hardware revision register
 
-[TW-A-0003-R0006 PolyTerra PLA fit print](../mechanical/polyterra-fit-r0002/README.md) contains the angled housing with integral receiver backing and two removable handle saddles on the X1 Carbon and Cool Plate SuperTack.
+[TW-A-0003-R0007 PolyTerra PLA fit print](../mechanical/polyterra-fit-r0003/README.md) contains the angled housing with integral receiver backing and two removable handle saddles on the X1 Carbon and Cool Plate SuperTack.
 
 [TW-A-0003-R0002 seven-plate DFM trial](../mechanical/reel-dfm-r0001/README.md) registers the reinforced rotor, combined-board housing and saved X1C print process. The fold and spin are digitally checked. First-article cleanup remains open.
 

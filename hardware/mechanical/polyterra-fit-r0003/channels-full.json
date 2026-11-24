@@ -1,0 +1,110 @@
+[
+  {
+    "feature": "status aperture",
+    "layers": 55,
+    "rim_model_layers": 43,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "key",
+    "layers": 34,
+    "rim_model_layers": 33,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "driver -24",
+    "layers": 153,
+    "rim_model_layers": 153,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "shank -24",
+    "layers": 29,
+    "rim_model_layers": 29,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "driver 24",
+    "layers": 153,
+    "rim_model_layers": 153,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "shank 24",
+    "layers": 29,
+    "rim_model_layers": 29,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "controller -36 -24.25",
+    "layers": 75,
+    "rim_model_layers": 75,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "controller -36 24.25",
+    "layers": 88,
+    "rim_model_layers": 75,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "controller 36 -24.25",
+    "layers": 75,
+    "rim_model_layers": 75,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "controller 36 24.25",
+    "layers": 75,
+    "rim_model_layers": 75,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "hook -18",
+    "layers": 22,
+    "rim_model_layers": 22,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  },
+  {
+    "feature": "hook 18",
+    "layers": 22,
+    "rim_model_layers": 22,
+    "max_mm2": {
+      "model": 0,
+      "support": 0
+    }
+  }
+]

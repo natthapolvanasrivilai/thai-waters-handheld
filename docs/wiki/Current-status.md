@@ -4,9 +4,9 @@ Reviewed 2026-11-24
 
 ## Engineering revision
 
-**Current PLA test print.** TW-A-0003-R0006 adds an exterior ramp to the rod receiver. The housing and grip print at 45° with localized supports. All 27 parts use PolyTerra PLA on the X1 Carbon, 0.4 mm nozzle and Cool Plate SuperTack. Twelve toolpath checks cover the status aperture, access passages, key opening and bezel pockets. Physical fit and powered verification remain open. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0006-angled-polyterra-1/Thai-Waters-R0006-PolyTerra-SuperTack-X1C.3mf) · [PLA print sequence and checks](../../hardware/mechanical/polyterra-fit-r0002/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0006-angled-polyterra-1/Enclosure-fit-guide.html)
+**Current PLA test print.** TW-A-0003-R0007 includes the supported rod receiver and the single-light USB well. The housing and grip print at 45° with localized supports. All 27 parts use PolyTerra PLA on the X1 Carbon, 0.4 mm nozzle and Cool Plate SuperTack. Twelve toolpath checks cover the status aperture, access passages, key opening and bezel pockets. Physical fit and powered verification remain open. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0007-single-light-print-1/Thai-Waters-R0007-PolyTerra-SuperTack-X1C.3mf) · [PLA print sequence and checks](../../hardware/mechanical/polyterra-fit-r0003/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0007-single-light-print-1/Enclosure-fit-guide.html)
 
-**USB wall review.** The two octagonal mouths flanking the inside of the USB-C well are unused. The upper one beside the two shelf posts served the former power-indicator light pipe (+Y). The lower one served the charging-indicator light pipe (−Y). The R0006 STEP and a section of the editable plate 1 mesh both retain these 1.44 mm bores. Their former exterior exits are closed. The current RGB indicator uses the central rectangular diffuser below USB. Leave the two mouths empty during the R0006 fit trial. Removing their internal sleeves while preserving the USB well and diffuser seat remains an open CAD correction. [R0006 fit notes](../../hardware/mechanical/polyterra-fit-r0002/README.md)
+**USB wall correction.** Both obsolete internal sleeves have been removed. STEP and print-mesh sections show one status window. The USB well, lamp shelf and diffuser clear the revised housing. [Before and after](../../hardware/mechanical/polyterra-fit-r0003/usb-wall-review.png)
 
 TW-A-0001-R0017 fits a keyed power cap into the existing R0016 housing. Reprint only the cap. Both its pressing face and the inner flange follow the single square corner in the existing opening. [Cap-only X1C plate](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/R0017-keyed-power-cap-X1C.3mf) · [Profile and fit evidence](../../hardware/mechanical/TW-A-0001-R0017/README.md)
 
@@ -50,7 +50,7 @@ With the display off the case and the switch board and its west retainer set asi
 
 ## Next fit check
 
-Inspect plate 1 (housing) and plate 3 (rod grip) together for the receiver slide trial. Plate 4 checks the white diffuser shape. Plates 1, 2 and 7 complete the enclosure and board trial. Use plate 5 to check rigid cover outlines. [PLA first-article sheet](../../hardware/mechanical/polyterra-fit-r0002/first-article.csv)
+Inspect plate 1 (housing) and plate 3 (rod grip) together for the receiver slide trial. Plate 4 checks the white diffuser shape. Plates 1, 2 and 7 complete the enclosure and board trial. Use plate 5 to check rigid cover outlines. [PLA first-article sheet](../../hardware/mechanical/polyterra-fit-r0003/first-article.csv)
 
 ## Qualification and software
 

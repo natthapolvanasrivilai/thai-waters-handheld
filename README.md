@@ -1,6 +1,6 @@
 # Thai Waters handheld
 
-[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0006-angled-polyterra-1/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
+[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0007-single-light-print-1/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
 
 [Hardware closure and playtest issues](quality/hardware-gate.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [November hardware review](quality/hardware-review-2026-11-23.md)
 
@@ -10,7 +10,7 @@
 
 **[Browse the product wiki](docs/wiki/Home.md)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
 
-Use **TW-A-0003-R0006** for the next PolyTerra PLA/SuperTack unpowered print. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0006-angled-polyterra-1/Thai-Waters-R0006-PolyTerra-SuperTack-X1C.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0006-angled-polyterra-1/Enclosure-fit-guide.html) · [PLA print checks and fit instructions](hardware/mechanical/polyterra-fit-r0002/README.md)
+Use **TW-A-0003-R0007** for the next PolyTerra PLA/SuperTack unpowered print. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0007-single-light-print-1/Thai-Waters-R0007-PolyTerra-SuperTack-X1C.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0007-single-light-print-1/Enclosure-fit-guide.html) · [PLA print checks and fit instructions](hardware/mechanical/polyterra-fit-r0003/README.md)
 
 Open the downloaded handbook in a browser. **Current status** checks this GitHub project on every open and links to the evidence for the selected revision. When the check fails, the handbook labels the dated snapshot saved with the file. The archived tabs still work offline. The [original R0011 handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html) and [Rev F engineering release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/rev-f-engineering-0.7) preserve their original evidence.
 
