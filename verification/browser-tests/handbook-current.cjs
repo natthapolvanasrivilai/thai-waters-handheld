@@ -8,7 +8,7 @@ const {chromium} = require('playwright-core');
 const root = path.resolve(__dirname, '../..');
 const handbook = pathToFileURL(path.resolve(process.argv[2] || path.join(root, 'docs/index.html'))).href;
 const legacy = process.argv.includes('--legacy');
-const guide = 'R0017-PCB-assembly.html';
+const guide = 'Enclosure-fit-guide.html';
 const record = fs.readFileSync(path.join(root, 'docs/wiki/Current-status.md'), 'utf8');
 const project = 'natthapolvanasrivilai/thai-waters-handheld';
 const github = 'https://github.com/' + project;
@@ -77,7 +77,7 @@ function review(number, sha, fullName = project) {
     assert.match(await check.innerText(), /Checked GitHub .*open review #98/);
     assert.equal(await page.getByRole('link', {name:'Open review #98'}).getAttribute('href'), github + '/pull/98');
     assert.ok((await panel.locator('a').all()).length >= 4);
-    const guideLink = panel.getByRole('link', {name: 'Download the standalone 3D PCB assembly guide'});
+    const guideLink = panel.getByRole('link', {name: 'Offline 3D fit guide'});
     assert.ok((await guideLink.getAttribute('href')).startsWith(github + '/releases/download/'));
     assert.ok((await guideLink.getAttribute('href')).endsWith('/' + guide));
     for (const link of await panel.locator('a').all()) {
@@ -123,11 +123,13 @@ function review(number, sha, fullName = project) {
       assert.equal(await frame.getAttribute('src'), null);
       await assemblyTab.click();
       const model = page.frameLocator('#pcb-assembly-frame');
-      await model.locator('#model').waitFor({state: 'visible'});
-      const steps = model.locator('#steps');
-      const stage = await steps.inputValue();
-      await model.locator('#next').click();
-      assert.notEqual(await steps.inputValue(), stage);
+      await model.locator('#viewport canvas').waitFor({state: 'visible'});
+      const stages = model.locator('button[data-step]');
+      assert.equal(await stages.count(), 8);
+      for (const button of await stages.all()) {
+        await button.click();
+        assert.equal(await button.getAttribute('aria-pressed'), 'true');
+      }
       assert.ok(await page.locator('#archive-note').isHidden());
       const blob = await frame.getAttribute('src');
       assert.equal(await page.locator('#pcb-assembly-open').getAttribute('href'), blob);
@@ -136,7 +138,7 @@ function review(number, sha, fullName = project) {
         const hash = await crypto.subtle.digest('SHA-256', file);
         return Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, '0')).join('');
       }, blob);
-      const standalone = fs.readFileSync(path.join(root, 'docs/models', guide));
+      const standalone = fs.readFileSync(path.join(root, 'hardware/mechanical/enclosure-fit-r0003', guide));
       assert.equal(digest, createHash('sha256').update(standalone).digest('hex'));
     }
     await page.locator('[data-tab=business]').click();
