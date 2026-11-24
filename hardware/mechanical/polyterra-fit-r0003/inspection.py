@@ -7,14 +7,14 @@ from pathlib import Path
 import json,zipfile,sys
 from lxml import etree as E
 
-def report(cache):
+def report(cache, folder=HERE, project=OUT, template_project=kit.OUT):
     cache=Path(cache)
     reference=MECH/'enclosure-print-r0004'
     load=lambda p:cq.importers.importStep(str(p)).val()
-    shell=load(HERE/'housing.step')
+    shell=load(folder/'housing.step')
     before=load(PARENT/'housing.step')
     assert shell.isValid() and len(shell.Solids())==1 and len(shell.Shells())==1
-    with zipfile.ZipFile(OUT) as z,zipfile.ZipFile(kit.OUT) as parent:
+    with zipfile.ZipFile(project) as z,zipfile.ZipFile(template_project) as parent:
         files={k:z.read(k) for k in z.namelist()}
         mesh,doc,key=kit.read(files,E.fromstring(files[kit.MODEL]),2)
         assert set(z.namelist())==set(parent.namelist())
@@ -63,8 +63,8 @@ def report(cache):
     limit=cq.Solid.makeBox(11,26,12,cq.Vector(-50,-13,11))
     assert add.cut(limit).Volume()<.001 and sub.cut(limit).Volume()<.001
     result=dict(collector_end_witnesses=tips,aperture_height_width_mm=apertures,installed_comparison=active,added_mm3=round(add.Volume(),3),removed_mm3=round(sub.Volume(),3),delta_outside_usb_region_mm3=0)
-    (HERE/'interface-check.json').write_text(json.dumps(result,indent=2)+'\n')
+    (folder/'interface-check.json').write_text(json.dumps(result,indent=2)+'\n')
     sys.path.insert(0,str(reference))
     import light_motion
-    light_motion.run(cache,HERE/'housing.step',HERE/'light-motion.json')
+    light_motion.run(cache,folder/'housing.step',folder/'light-motion.json')
 if __name__=='__main__':report(sys.argv[1])

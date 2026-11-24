@@ -1,0 +1,63 @@
+{
+  "source_step_sha256": "5003e8d4856b37eca4e8a7eeb9755a99fbed5c8df4b1f93f31e87e7fdb0d4a3b",
+  "released_step_sha256": "68ce56a0eeddf5b23819b52576324a474949d377ba1e60b03041c6522a11448c",
+  "project_sha256": "e4f92173cecc0126a2544f294427c334e959c349c17462bc7713ccd17fb04372",
+  "exact_triangle_indices": true,
+  "vertex_registration_error_mm": 7.027130174104115e-10,
+  "triangle_count": 90392,
+  "step_surface_types": {
+    "PLANE": 386,
+    "BSPLINE": 10,
+    "CYLINDER": 162,
+    "CONE": 11,
+    "TORUS": 14
+  },
+  "step_difference_from_intended_fit_mm3": [
+    0.0,
+    0.0
+  ],
+  "previous_print": {
+    "boundary_edges": 0,
+    "nonmanifold_edges": 57,
+    "watertight": false,
+    "consistent_winding": true,
+    "usb_sides": [
+      {
+        "installed_y_mm": -8.76,
+        "triangles": 22,
+        "face_area_mm2": 16.918531,
+        "reversed_triangles": 3,
+        "overlapping_area_mm2": 6.425e-05
+      },
+      {
+        "installed_y_mm": 8.76,
+        "triangles": 16,
+        "face_area_mm2": 17.542978,
+        "reversed_triangles": 5,
+        "overlapping_area_mm2": 3.542e-05
+      }
+    ]
+  },
+  "current_print": {
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "watertight": true,
+    "consistent_winding": true,
+    "usb_sides": [
+      {
+        "installed_y_mm": -8.76,
+        "triangles": 4,
+        "face_area_mm2": 67.7322,
+        "reversed_triangles": 0,
+        "overlapping_area_mm2": -0.0
+      },
+      {
+        "installed_y_mm": 8.76,
+        "triangles": 4,
+        "face_area_mm2": 67.7322,
+        "reversed_triangles": 0,
+        "overlapping_area_mm2": -0.0
+      }
+    ]
+  }
+}

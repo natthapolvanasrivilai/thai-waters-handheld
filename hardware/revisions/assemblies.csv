@@ -30,3 +30,4 @@ TW-A-0003-R0004,,Single-window enclosure fit and solid-front bezel,Eight X1C pla
 TW-A-0003-R0005,,PolyTerra PLA and SuperTack enclosure print configuration,R0004 geometry with local support exclusions and all-PLA gauges.,hardware/mechanical/polyterra-fit-r0001/README.md,PLA0001-001
 TW-A-0003-R0006,,Diagonal housing and handle PLA fit trial,Continuous receiver backing and localized removable support at 45 degrees.,hardware/mechanical/polyterra-fit-r0002/README.md,PLA0002-001
 TW-A-0003-R0007,,Single-light angled enclosure fit print,Two oblique optical sleeves removed; active diffuser and USB well verified.,hardware/mechanical/polyterra-fit-r0003/README.md,PLA0003-001
+TW-A-0003-R0008,,Editable STEP housing and matched print project,Direct full-solid tessellation with unchanged installed dimensions.,hardware/mechanical/step-fit-r0008/README.md,STEP0008-001

@@ -105,3 +105,5 @@ TW-P-0015-R0003,45-degree grip fixture and tool orientation,hardware/mechanical/
 TW-P-0037-R0005,PolyTerra SuperTack diagonal print process,hardware/mechanical/polyterra-fit-r0002/Thai-Waters-R0006-PolyTerra-SuperTack-X1C.3mf,,0611121fa0b8f6fecd5c7d5ee8e7166f674548e225ad213d411e9f7dc70b8da1
 TW-P-0001-R0019,Housing with obsolete side light pipes removed,hardware/mechanical/polyterra-fit-r0003/Thai-Waters-R0007-PolyTerra-SuperTack-X1C.3mf,3D/Objects/object_1.model,9c64df4cfe7206a3b92c5b8cc5f8fad27bbb86254a6aef5da15059b888faca23
 TW-P-0037-R0006,Single-light angled PLA print project,hardware/mechanical/polyterra-fit-r0003/Thai-Waters-R0007-PolyTerra-SuperTack-X1C.3mf,,af101f1ec1f81f23bee58a0d469af3a5d41a488d3e9a7782450a4e4231b9b896
+TW-P-0001-R0020,Editable STEP master for the single-light housing,hardware/mechanical/step-fit-r0008/housing.step,,68ce56a0eeddf5b23819b52576324a474949d377ba1e60b03041c6522a11448c
+TW-P-0037-R0007,X1C fixture and direct STEP print export,hardware/mechanical/step-fit-r0008/Thai-Waters-R0008-STEP-PolyTerra-SuperTack-X1C.3mf,,e4f92173cecc0126a2544f294427c334e959c349c17462bc7713ccd17fb04372

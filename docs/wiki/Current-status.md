@@ -4,9 +4,9 @@ Reviewed 2026-11-24
 
 ## Engineering revision
 
-**Current PLA test print.** TW-A-0003-R0007 includes the supported rod receiver and the single-light USB well. The housing and grip print at 45° with localized supports. All 27 parts use PolyTerra PLA on the X1 Carbon, 0.4 mm nozzle and Cool Plate SuperTack. Twelve toolpath checks cover the status aperture, access passages, key opening and bezel pockets. Physical fit and powered verification remain open. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0007-single-light-print-1/Thai-Waters-R0007-PolyTerra-SuperTack-X1C.3mf) · [PLA print sequence and checks](../../hardware/mechanical/polyterra-fit-r0003/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0007-single-light-print-1/Enclosure-fit-guide.html)
+**Current PLA test print.** TW-A-0003-R0008 uses an editable STEP housing with clean USB side faces and the supported rod receiver. The housing and grip print at 45° with localized supports. All 27 parts use PolyTerra PLA on the X1 Carbon, 0.4 mm nozzle and Cool Plate SuperTack. Twelve toolpath checks cover the status aperture, access passages, key opening and bezel pockets. Physical fit and powered verification remain open. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0008-step-housing-1/Thai-Waters-R0008-STEP-PolyTerra-SuperTack-X1C.3mf) · [PLA print sequence and checks](../../hardware/mechanical/step-fit-r0008/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0008-step-housing-1/Enclosure-fit-guide.html)
 
-**USB wall correction.** Both obsolete internal sleeves have been removed. STEP and print-mesh sections show one status window. The USB well, lamp shelf and diffuser clear the revised housing. [Before and after](../../hardware/mechanical/polyterra-fit-r0003/usb-wall-review.png)
+**Editable housing master.** Plate 1 now comes directly from the saved STEP. The repaired print model has clean USB flanks and zero non-manifold edges. [Housing STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0008-step-housing-1/housing.step) · [Print-face comparison](../../hardware/mechanical/step-fit-r0008/usb-wall-review.png)
 
 TW-A-0001-R0017 fits a keyed power cap into the existing R0016 housing. Reprint only the cap. Both its pressing face and the inner flange follow the single square corner in the existing opening. [Cap-only X1C plate](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/R0017-keyed-power-cap-X1C.3mf) · [Profile and fit evidence](../../hardware/mechanical/TW-A-0001-R0017/README.md)
 
@@ -50,7 +50,7 @@ With the display off the case and the switch board and its west retainer set asi
 
 ## Next fit check
 
-Inspect plate 1 (housing) and plate 3 (rod grip) together for the receiver slide trial. Plate 4 checks the white diffuser shape. Plates 1, 2 and 7 complete the enclosure and board trial. Use plate 5 to check rigid cover outlines. [PLA first-article sheet](../../hardware/mechanical/polyterra-fit-r0003/first-article.csv)
+Inspect plate 1 (housing) and plate 3 (rod grip) together for the receiver slide trial. Plate 4 checks the white diffuser shape. Plates 1, 2 and 7 complete the enclosure and board trial. Use plate 5 to check rigid cover outlines. [PLA first-article sheet](../../hardware/mechanical/step-fit-r0008/first-article.csv)
 
 ## Qualification and software
 
