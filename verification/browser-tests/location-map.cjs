@@ -19,12 +19,7 @@ assert.equal(orderedIds[1],unmapped);
  try{
   for(const touch of [false,true]){
    const c=await browser.newContext({offline:true,viewport:touch?{width:390,height:844}:{width:480,height:600},hasTouch:touch,isMobile:touch});
-   const p=await c.newPage(),errors=[],outside=[],pagehide=[];
-   const prefix='MAP_FILE_PAGEHIDE ';
-   p.on('console',message=>{
-    if(message.type()!=='debug'||!message.text().startsWith(prefix)||pagehide.length>=8)return;
-    try{pagehide.push(JSON.parse(message.text().slice(prefix.length)));}catch{}
-   });
+   const p=await c.newPage(),errors=[],outside=[];
    p.setDefaultTimeout(6000);
    p.setDefaultNavigationTimeout(12000);
    p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(/^https?:/.test(r.url()))outside.push(r.url());});
@@ -43,14 +38,6 @@ assert.equal(orderedIds[1],unmapped);
      catch{entry.languageBinding='blocked';}
      return entry;
     };
-    window.addEventListener('pagehide',event=>{
-     const observed=read();
-     console.debug('MAP_FILE_PAGEHIDE '+JSON.stringify({
-      epoch:observed.epoch,known:observed.known,persisted:event.persisted,
-      career:observed.error?'blocked':observed.raw===null?'missing':'present',
-      language:observed.languageBinding
-     }));
-    },{once:true});
     window.__mapFileStorageRead=read;
     window.__mapFileAtStart=read();
    },url);
@@ -278,8 +265,7 @@ assert.equal(orderedIds[1],unmapped);
    const evidence={lane:name,beforeReload:summary(beforeReload),sameFile:observed.sameFile,
     atStart:summary(observed.atStart),afterBoot:summary(observed.afterBoot),recovery:observed.recovery,
     lock:observed.lock,powered:observed.powered,place:observed.place,phase:observed.phase,
-    pending:observed.pending,startupError:startupError?.message??null,errors,
-    pagehide:pagehide.find(x=>x.epoch===beforeReload.epoch)??null};
+    pending:observed.pending,startupError:startupError?.message??null,errors};
    const diagnostic=JSON.stringify(evidence);
    console.log('Map standalone reload '+diagnostic);
    assert(observed.sameFile&&observed.atStart.ready==='loading'&&observed.atStart.epoch!==beforeReload.epoch,
