@@ -1,267 +1,109 @@
 name: Verify release artifacts
 on:
-  schedule:
-    - cron: '17 18 * * *' # 01:17 Asia/Bangkok
-  push:
-    branches: [main, ci/verified-release-builds]
   workflow_dispatch:
     inputs:
       source_sha:
-        description: Full release commit SHA
+        description: Full reviewed Windows diagnostic branch SHA
         required: true
         type: string
 permissions:
   contents: read
-env:
-  SOURCE_SHA: ${{ inputs.source_sha || github.sha }}
 jobs:
-  browser_build:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 25
+  solo_windows:
+    if: github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/diagnostic/solo-packaged-windows-f08-v2' && github.run_attempt == 1 && inputs.source_sha == github.sha
+    runs-on: windows-2025
+    timeout-minutes: 20
+    env:
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: "false"
+      BASE: f08e82693c259f505d848f91298bd60ae239d662
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
-          ref: ${{ env.SOURCE_SHA }}
+          ref: ${{ github.sha }}
+          fetch-depth: 2
           persist-credentials: false
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22.16.0'
-      - name: Rebuild browser assets
-        shell: bash
+      - name: Run bounded synthetic Windows diagnostics (HOLD)
+        shell: pwsh
         run: |
-          set -euo pipefail
-          [[ "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
-          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          echo "SOURCE_COMMIT=$SOURCE_SHA" > "$RUNNER_TEMP/browser-build.txt"
-          cd "$RUNNER_TEMP"
-          curl --fail --location --silent --show-error --retry 2 https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz -o zig.tar.xz
-          echo 'd45312e61ebcc48032b77bc4cf7fd6915c11fa16e4aad116b66c9468211230ea  zig.tar.xz' | sha256sum -c
-          tar -xf zig.tar.xz
-          cd "$GITHUB_WORKSPACE"
-          ZIG="$RUNNER_TEMP/zig-linux-x86_64-0.13.0/zig"
-          "$ZIG" version >> "$RUNNER_TEMP/browser-build.txt"
-          python3 game/build-engine.py --zig "$ZIG"
-          node - <<'JS'
-          const assert = require('node:assert/strict');
-          const fs = require('node:fs');
-          const built = new WebAssembly.Module(fs.readFileSync('game/assets/landscape.wasm'));
-          assert.deepEqual(WebAssembly.Module.imports(built), [], 'landscape.wasm must be standalone');
-          const scene = new WebAssembly.Instance(built).exports;
-          const methods = ['arrivalDuration', 'arrivalLanding', 'arrivalShapes', 'sampleArrival',
-            'arrivalPixels', 'paintPlace', 'placePalette', 'ambientSpans', 'sampleAmbient',
-            'ambientBoatMix', 'ambientBoatPcm'];
-          for (const name of methods) assert.equal(typeof scene[name], 'function', 'Missing scenery ABI: ' + name);
-          assert.ok(scene.memory instanceof WebAssembly.Memory, 'Missing scenery memory export');
-          const direct = ['ambient', 'scenery'].map(name =>
-            fs.readFileSync('verification/browser-tests/' + name + '.cjs', 'utf8').includes('TW_LANDSCAPE '));
-          assert.equal(direct[0], direct[1], 'Mixed landscape test source capability');
-          assert.equal(scene.sampleAmbient.length, direct[0] ? 3 : 2, 'Wrong scenery sampling ABI');
-          JS
-          python3 game/build.py
-          python3 - <<'PY'
-          import base64
-          from pathlib import Path
-          page = Path("game/Thai-Waters-play.html").read_bytes()
-          for name in ("atlas", "landscape"):
-              wasm = Path(f"game/assets/{name}.wasm").read_bytes()
-              assert wasm[:4] == b"\0asm"
-              assert page.count(base64.b64encode(wasm)) == 1, name
-          PY
-          if [ "$SOURCE_SHA" = a8137e41a91c608630ff21bf9d7b775fe688fb0e ]; then
-            test -n "$(git diff --name-only -- game/assets/atlas.wasm)"
-          fi
-      - name: Stage exact browser build for testing
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir browser-input
-          cp game/Thai-Waters-play.html game/assets/{atlas,landscape}.wasm browser-input/
-          cp "$RUNNER_TEMP/browser-build.txt" browser-input/BUILD.txt
-          (cd browser-input && sha256sum Thai-Waters-play.html atlas.wasm landscape.wasm BUILD.txt > SHA256SUMS)
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: browser-input-${{ env.SOURCE_SHA }}
-          path: browser-input/
-          if-no-files-found: error
-          retention-days: 3
-  browser_tests:
-    needs: browser_build
-    runs-on: ubuntu-24.04
-    timeout-minutes: 35
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: [arrival, gameplay, device, world]
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ env.SOURCE_SHA }}
-          # Verify legacy ancestry without fetching historical asset blobs.
-          fetch-depth: 0
-          filter: blob:none
-          persist-credentials: false
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ github.workflow_sha }}
-          path: workflow-source
-          sparse-checkout: .github/scripts
-          persist-credentials: false
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: browser-input-${{ env.SOURCE_SHA }}
-          path: ${{ runner.temp }}/browser-input
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: '22.16.0'
-      - name: Test exact browser artifact
-        shell: bash
-        env:
-          SHARD: ${{ matrix.shard }}
-        run: |
-          set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/browser-logs"
-          exec > >(tee -a "$RUNNER_TEMP/browser-logs/setup.log") 2>&1
-          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          bundle="$RUNNER_TEMP/browser-input"
-          (cd "$bundle" && sha256sum -c --strict SHA256SUMS)
-          cp "$bundle/Thai-Waters-play.html" game/Thai-Waters-play.html
-          cp "$bundle"/{atlas,landscape}.wasm game/assets/
-          npm ci --prefix game/lan
-          npm ci --prefix verification/browser-tests
-          (
-            cd verification/browser-tests
-            ./node_modules/.bin/playwright-core install --with-deps chromium
-          )
-          export BROWSER_PATH="$(node -p 'require("./verification/browser-tests/node_modules/playwright-core").chromium.executablePath()')"
-          python3 workflow-source/.github/scripts/browser-release-shards.py run --shard "$SHARD" \
-            --bundle "$bundle" --diagnostics "$RUNNER_TEMP/browser-logs"
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: browser-report-${{ env.SOURCE_SHA }}-${{ matrix.shard }}
-          path: ${{ runner.temp }}/browser-logs/
-          if-no-files-found: warn
-          retention-days: 5
-  browser_release:
-    needs: [browser_build, browser_tests, controller]
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ env.SOURCE_SHA }}
-          # Verify legacy ancestry without fetching historical asset blobs.
-          fetch-depth: 0
-          filter: blob:none
-          persist-credentials: false
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ github.workflow_sha }}
-          path: workflow-source
-          sparse-checkout: .github/scripts
-          persist-credentials: false
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: '22.16.0'
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: browser-input-${{ env.SOURCE_SHA }}
-          path: release-browser
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          pattern: browser-report-${{ env.SOURCE_SHA }}-*
-          path: browser-reports
-      - name: Verify exact-source test coverage and hashes
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          (cd release-browser && sha256sum -c --strict SHA256SUMS)
-          python3 workflow-source/.github/scripts/browser-release-shards.py verify \
-            --bundle release-browser --diagnostics browser-reports
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: browser-${{ env.SOURCE_SHA }}
-          path: release-browser/
-          if-no-files-found: error
-          retention-days: 5
-  controller:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ env.SOURCE_SHA }}
-          persist-credentials: false
-      - name: Verify audio and compile exact controller sources
-        shell: bash
-        run: |
-          set -euo pipefail
-          [[ "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
-          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          mkdir -p "$RUNNER_TEMP/ard-bin" "$RUNNER_TEMP/ard-user" verify release-controller
-          printf 'SOURCE_COMMIT=%s\n' "$SOURCE_SHA" > verify/source.txt
-          for probe in location_audio catch_music catch_music_adapter fight_music_v2 fight_transitions fish-hints; do
-            c++ -std=c++17 -O2 "firmware/tests/$probe.cpp" -o "$RUNNER_TEMP/$probe"
-            "$RUNNER_TEMP/$probe" | tee "verify/$probe.txt"
-          done
-          curl --fail --location --silent --show-error --retry 2 https://github.com/arduino/arduino-cli/releases/download/v1.3.1/arduino-cli_1.3.1_Linux_64bit.tar.gz -o "$RUNNER_TEMP/ard.tgz"
-          echo "376428d7d45be640c00812a71612e1742edc2f5f9ee3742a2d6da7870e079588  $RUNNER_TEMP/ard.tgz" | sha256sum -c
-          tar -xzf "$RUNNER_TEMP/ard.tgz" -C "$RUNNER_TEMP/ard-bin" arduino-cli
-          export PATH="$RUNNER_TEMP/ard-bin:$PATH"
-          export ARDUINO_DIRECTORIES_USER="$RUNNER_TEMP/ard-user"
-          export ARDUINO_DIRECTORIES_DATA="$RUNNER_TEMP/ard-data"
-          export ARDUINO_DIRECTORIES_DOWNLOADS="$RUNNER_TEMP/ard-downloads"
-          deps=releases/prototypes/Thai-Waters-controller-0.9.4.zip
-          unzip -q "$deps" 'libraries/*' -d "$ARDUINO_DIRECTORIES_USER"
-          index=https://espressif.github.io/arduino-esp32/package_esp32_index.json
-          arduino-cli core update-index --additional-urls "$index"
-          arduino-cli core install esp32:esp32@3.3.10 --additional-urls "$index"
-          arduino-cli compile --fqbn 'esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi,FlashMode=qio,PartitionScheme=app3M_fat9M_16MB,USBMode=hwcdc,CDCOnBoot=cdc' --build-path "$RUNNER_TEMP/ard-build" firmware/WillowCreek 2>&1 | tee verify/target-build.txt
-          test "$(stat -c%s "$RUNNER_TEMP/ard-build/WillowCreek.ino.bin")" -le 3145728
-          boot="$ARDUINO_DIRECTORIES_DATA/packages/esp32/hardware/esp32/3.3.10/tools/partitions/boot_app0.bin"
-          out="Thai-Waters-controller-${SOURCE_SHA:0:7}.zip"
-          python3 firmware/tools/package-controller-preview.py --build "$RUNNER_TEMP/ard-build" --boot-app0 "$boot" --dependencies "$deps" --verification verify --output "release-controller/$out"
-          unzip -q "release-controller/$out" -d "$RUNNER_TEMP/ard-package"
-          python3 "$RUNNER_TEMP/ard-package/flash-controller-preview.py" --check
-          (cd release-controller && sha256sum "$out" > SHA256SUMS)
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: controller-${{ env.SOURCE_SHA }}
-          path: |
-            release-controller/
-            verify/
-          if-no-files-found: error
-          retention-days: 5
-  nightly_release:
-    needs: [browser_release, controller]
-    if: github.event_name == 'schedule' && github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    permissions:
-      contents: write
-    concurrency:
-      group: verified-pocket-reel-nightly-release
-      cancel-in-progress: false
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          ref: ${{ github.workflow_sha }}
-          sparse-checkout: .github/scripts
-          persist-credentials: false
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: browser-${{ env.SOURCE_SHA }}
-          path: nightly/browser
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: controller-${{ env.SOURCE_SHA }}
-          path: nightly/controller
-      - name: Test nightly packaging and publication guards
-        run: python3 .github/scripts/test_nightly_release.py
-      - name: Verify and package the testable build
-        run: python3 .github/scripts/nightly-release.py prepare nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
-      - name: Publish a private prerelease with verified assets
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python3 .github/scripts/nightly-release.py publish nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          $parent = & git rev-list --parents -n1 HEAD
+          if ($parent -cne "$env:GITHUB_SHA $env:BASE") { throw 'Wrong base or head' }
+          $diag = 'verification/diagnostics/solo-windows-package'
+          $pack = 'verification/solo'
+          $allow = @("M`t.github/workflows/verify-release-artifacts.yml","A`t$diag/exact-browser-probe.mjs","A`t$diag/exact-http.test.mjs","A`t$diag/exact-pack.mjs","A`t$diag/rebuild-browser-input.py","A`t$pack/.gitattributes","A`t$pack/README.txt","A`t$pack/Start-Pocket-Reel-Solo.mjs","A`t$pack/pack.py","A`t$pack/test_pack.py")
+          if (((& git diff --name-status $env:BASE HEAD) -join "`n") -cne ($allow -join "`n")) { throw 'Unexpected diagnostic source changes' }
+          $candidate = Join-Path $env:RUNNER_TEMP 'Pocket Reel ทดสอบ HOLD'
+          $src = Join-Path $env:RUNNER_TEMP 'source-f08'
+          $tools = Join-Path $env:RUNNER_TEMP 'zig-f08'
+          $archive = Join-Path $env:RUNNER_TEMP 'zig.zip'
+          function RequireHash($path,$digest) {
+            if ((Get-FileHash -Algorithm SHA256 -LiteralPath $path).Hash.ToLowerInvariant() -cne $digest) { throw 'Pinned checksum mismatch' }
+          }
+          try {
+            & git -c core.autocrlf=false worktree add --detach $src $env:BASE
+            $manifest = Invoke-RestMethod 'https://ziglang.org/download/index.json'
+            $win = $manifest.'0.13.0'.'x86_64-windows'
+            $url = 'https://ziglang.org/download/0.13.0/zig-windows-x86_64-0.13.0.zip'
+            $zigHash = 'd859994725ef9402381e557c60bb57497215682e355204d754ee3df75ee3c158'
+            if ($win.tarball -cne $url -or $win.shasum -cne $zigHash) { throw 'Official Zig pin changed or unavailable' }
+            Invoke-WebRequest -Uri $url -OutFile $archive
+            RequireHash $archive $zigHash
+            Expand-Archive -LiteralPath $archive -DestinationPath $tools
+            $zig = Join-Path $tools 'zig-windows-x86_64-0.13.0/zig.exe'
+            if ((& $zig version) -cne '0.13.0') { throw 'Wrong Zig' }
+            Push-Location $src
+            try {
+              & python game/build-engine.py --zig $zig
+              & python game/build.py
+              # The unchanged Python source writes text with the host newline.
+              # Canonical packaging is LF; validate exact historical bytes after normalization.
+              & python -c "from pathlib import Path; p=Path('game/Thai-Waters-play.html'); p.write_bytes(p.read_bytes().replace(bytes([13,10]),bytes([10])))"
+              RequireHash 'game/assets/atlas.wasm' '80b88fca6773b7c348a43e2cb5f1e8ad0478e77ce8790e1de53eb479e946bf2d'
+              RequireHash 'game/assets/landscape.wasm' 'e7d84c41d04f94b0065f64708f8061a6cacc825d2a7cae5983aad516a2a84cfb'
+              $htmlSha = '0f87d0c63afd86d97602b401967a8c13d75aabfda9a674e6d16a17efc3457f2e'
+              RequireHash 'game/Thai-Waters-play.html' $htmlSha
+              & npm ci --prefix verification/browser-tests --ignore-scripts
+              $env:NODE_PATH = Join-Path $src 'verification/browser-tests/node_modules'
+              if ((& node --version) -cne 'v22.16.0' -or (& node -p 'require("playwright-core/package.json").version') -cne '1.62.1') { throw 'Wrong Node or Playwright' }
+              & node verification/browser-tests/node_modules/playwright-core/cli.js install chromium
+            } finally { Pop-Location }
+            $chrome = & node -p 'require("playwright-core").chromium.executablePath()'
+            $version = (Get-Item -LiteralPath $chrome).VersionInfo.ProductVersion
+            if ($version -cne '151.0.7922.34') { throw 'Wrong Chromium' }
+            $env:POCKET_REEL_CHROMIUM_PIN = $version
+            $env:BROWSER_PATH = $chrome
+            $env:POCKET_REEL_DISPOSABLE_RUNNER = '1'
+            $inputZip = Join-Path $env:RUNNER_TEMP 'browser-exact-input.zip'
+            $soloZip = Join-Path $env:RUNNER_TEMP 'solo-exact-hold.zip'
+            $inputSha = 'c875933cba45f853b913654cfd6d4be536ca546635436044dcc48630f6065f4d'
+            $soloSha = 'c55b13d1a619e287e8f2e9c8af1d5b661f9695edc3946500033bc56777f34485'
+            & python -B "$diag/rebuild-browser-input.py" $inputZip $src
+            RequireHash $inputZip $inputSha
+            & python -B -m unittest discover -s $pack -v
+            & python -B "$pack/pack.py" build --browser $inputZip --browser-sha256 $inputSha --source $env:BASE --output $soloZip
+            RequireHash $soloZip $soloSha
+            & python -B "$pack/pack.py" verify --browser $inputZip --browser-sha256 $inputSha --source $env:BASE --output $soloZip
+            Expand-Archive -LiteralPath $soloZip -DestinationPath $candidate
+            if ((Get-ChildItem -LiteralPath $candidate | Measure-Object).Count -ne 4) { throw 'Wrong extracted package inventory' }
+            RequireHash (Join-Path $candidate 'README.txt') 'b4478e0fb93100d4a812094cab52602697bb88d4fdcfdafb016cfe092f76598c'
+            [IO.File]::WriteAllText((Join-Path $candidate 'HOLD.txt'),'ENGINEERING HOLD - NOT RELEASE ELIGIBLE')
+            $env:POCKET_REEL_HOLD_PACKAGE = $candidate
+            & node --test "$diag/exact-http.test.mjs"
+            $helperPath = 'verification/browser-tests/boot-home-check.cjs'
+            $helperPin = '6545cdb2f579ef2d9755925351840ca84c495398'
+            if ((& git -C $src rev-parse "$env:BASE`:$helperPath") -cne $helperPin) { throw 'Wrong f08 boot helper blob' }
+            $env:POCKET_REEL_F08_BOOT_HELPER = Join-Path $src $helperPath
+            if ((& git -C $src hash-object $env:POCKET_REEL_F08_BOOT_HELPER) -cne $helperPin) { throw 'Boot helper checkout changed' }
+            & node "$diag/exact-browser-probe.mjs"
+            # Additional direct-file witness; neither this nor loopback substitutes for the unchanged aggregate.
+            & node (Join-Path $src 'verification/browser-tests/file-career-offline.cjs')
+            Write-Output 'Windows synthetic diagnostic only; publication remains ineligible.'
+          } finally {
+            Remove-Item -LiteralPath $candidate -Recurse -Force -ErrorAction SilentlyContinue
+          }
