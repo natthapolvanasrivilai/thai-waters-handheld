@@ -452,8 +452,8 @@ struct Game {
       if(heavyFight){
         const float extra=limit(weightGrams(fish,length)*.00012f,4.f,8.f);
         target+=extra;line+=extra;
-        runMs=std::clamp(runMs+450u,1700u,2450u);
-        recoverMs=std::max(recoverMs,1850u);
+        runMs=std::clamp<uint32_t>(runMs+450u,1700u,2450u);
+        recoverMs=std::max<uint32_t>(recoverMs,1850u);
       }
     }else if(p==Phase::Ready || p==Phase::Flight)heavyFight=false;
   }
