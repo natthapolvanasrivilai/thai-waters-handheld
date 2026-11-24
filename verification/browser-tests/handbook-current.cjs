@@ -138,7 +138,7 @@ function review(number, sha, fullName = project) {
         const hash = await crypto.subtle.digest('SHA-256', file);
         return Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, '0')).join('');
       }, blob);
-      const standalone = fs.readFileSync(path.join(root, 'hardware/mechanical/enclosure-fit-r0003', guide));
+      const standalone = fs.readFileSync(path.join(root, 'hardware/mechanical/enclosure-print-r0004', guide));
       assert.equal(digest, createHash('sha256').update(standalone).digest('hex'));
     }
     await page.locator('[data-tab=business]').click();

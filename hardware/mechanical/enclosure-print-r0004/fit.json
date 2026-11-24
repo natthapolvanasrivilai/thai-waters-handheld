@@ -1,0 +1,47 @@
+{
+  "intersections_mm3": {},
+  "apertures_by_x_mm": {
+    "-49.99": [
+      [
+        [
+          -14.100000001490116,
+          -12.100000001490116
+        ],
+        [
+          -1.25,
+          1.25
+        ]
+      ]
+    ],
+    "-49.75": [
+      [
+        [
+          -14.100000001490116,
+          -12.100000001490116
+        ],
+        [
+          -1.25,
+          1.25
+        ]
+      ]
+    ],
+    "-49.3": [
+      [
+        [
+          -14.100000001490116,
+          -12.100000001490116
+        ],
+        [
+          -1.25,
+          1.25
+        ]
+      ]
+    ]
+  },
+  "lens_to_emitter_mm": 0.25,
+  "glass_to_bezel_mm": 0.25,
+  "rear_fastener_count": 2,
+  "blind_pilot_top_skin_mm": 1.0,
+  "rear_screw_engagement_mm": 2.68,
+  "scope": "Installed CAD and rear axial driver envelopes. Physical fit, light output and retention await the first article."
+}

@@ -1,6 +1,6 @@
 # Thai Waters handheld
 
-[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
+[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
 
 [Hardware closure and playtest issues](quality/hardware-gate.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [November hardware review](quality/hardware-review-2026-11-23.md)
 
@@ -10,7 +10,7 @@
 
 **[Browse the product wiki](docs/wiki/Home.md)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
 
-Use **TW-A-0003-R0003** for the next unpowered enclosure print. [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Thai-Waters-R0003-Enclosure-X1C.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Enclosure-fit-guide.html) · [Hardware review and fit instructions](hardware/mechanical/enclosure-fit-r0003/README.md)
+Use **TW-A-0003-R0004** for the next unpowered enclosure print. [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Thai-Waters-R0004-X1C-Color-Fit.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Enclosure-fit-guide.html) · [Hardware review and fit instructions](hardware/mechanical/enclosure-print-r0004/README.md)
 
 Open the downloaded handbook in a browser. **Current status** checks this GitHub project on every open and links to the evidence for the selected revision. When the check fails, the handbook labels the dated snapshot saved with the file. The archived tabs still work offline. The [original R0011 handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html) and [Rev F engineering release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/rev-f-engineering-0.7) preserve their original evidence.
 

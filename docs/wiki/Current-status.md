@@ -4,7 +4,7 @@ Reviewed 2026-11-24
 
 ## Engineering revision
 
-TW-A-0003-R0003 is the current unpowered fit kit. It includes a screw-retained bezel, clear access to all four controller screws, a separately printed lamp shelf, a populated combined-board gauge, speaker and motor gauges, and an alternative A3 with its plug seated. All 30 objects sliced, with zero completely unbacked model starts. The physical fit, real harness and batteryless USB startup remain open. [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Thai-Waters-R0003-Enclosure-X1C.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Enclosure-fit-guide.html) · [Hardware review and print sequence](../../hardware/mechanical/enclosure-fit-r0003/README.md)
+TW-A-0003-R0004 is the current unpowered fit kit. One RGB status window sits below USB-C. The smooth bezel engages two hidden hooks and fastens from the rear. All 27 objects on eight X1C plates were sliced in their assigned materials. Powered RGB, batteryless startup and physical fit remain open. [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Thai-Waters-R0004-X1C-Color-Fit.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Enclosure-fit-guide.html) · [Print sequence and measurements](../../hardware/mechanical/enclosure-print-r0004/README.md)
 
 TW-A-0001-R0017 fits a keyed power cap into the existing R0016 housing. Reprint only the cap. Both its pressing face and the inner flange follow the single square corner in the existing opening. [Cap-only X1C plate](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/R0017-keyed-power-cap-X1C.3mf) · [Profile and fit evidence](../../hardware/mechanical/TW-A-0001-R0017/README.md)
 
@@ -48,7 +48,7 @@ With the display off the case and the switch board and its west retainer set asi
 
 ## Next fit check
 
-Print plates 1, 2 and 7 first. Fit the lamp shelf above the speaker gauge and check all four controller screw paths. Try one battery envelope and one A3 configuration at a time before closing the bezel. Record every result on the [30-object first-article sheet](../../hardware/mechanical/enclosure-fit-r0003/first-article.csv).
+Print plates 1, 2, 4 and 7 first. Test the clear lens under USB-C, then engage the hidden bezel hooks and install two rear screws. [First-article record](../../hardware/mechanical/enclosure-print-r0004/first-article.csv)
 
 ## Qualification and software
 

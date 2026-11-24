@@ -1,12 +1,12 @@
 # Inspect the assembly and battery pocket
 
-TW-A-0003-R0003 is the current unpowered fit kit. It includes a screw-retained bezel, clear access to all four controller screws, a separately printed lamp shelf, a populated combined-board gauge, speaker and motor gauges, and an alternative A3 with its plug seated. All 30 objects sliced, with zero completely unbacked model starts. The physical fit, real harness and batteryless USB startup remain open. [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Thai-Waters-R0003-Enclosure-X1C.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Enclosure-fit-guide.html) · [Hardware review and print sequence](../../hardware/mechanical/enclosure-fit-r0003/README.md)
+TW-A-0003-R0004 is the current unpowered fit kit. One RGB status window sits below USB-C. The smooth bezel engages two hidden hooks and fastens from the rear. All 27 objects on eight X1C plates were sliced in their assigned materials. Powered RGB, batteryless startup and physical fit remain open. [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Thai-Waters-R0004-X1C-Color-Fit.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Enclosure-fit-guide.html) · [Print sequence and measurements](../../hardware/mechanical/enclosure-print-r0004/README.md)
 
 [Case-mounted board fit kit and interactive 3D inspection](../../hardware/electronics/case-board-r0001/README.md). The combined A4/A5 circuit now has a populated PCB, its own housing mounts, a two-plate X1C project and motion checks. The R0017 spacer walkthrough below is for the earlier fit kit.
 
 [R0017 keyed cap and cap-only fit plate](../../hardware/mechanical/TW-A-0001-R0017/README.md) follows the existing power-button opening. Use it with the R0016 housing. [Archived R0017 assembly guide](../models/R0017-PCB-assembly.html)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Thai-Waters-handbook.html)
 
 [A4 and A5 explained, physical mounting and small-part review](../../hardware/mechanical/pcb-fit-display-r0002/README.md)
 

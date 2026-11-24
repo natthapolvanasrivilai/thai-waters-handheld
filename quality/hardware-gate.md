@@ -1,6 +1,6 @@
 # Hardware closure before gameplay development
 
-**Current fit release.** [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Thai-Waters-R0003-Enclosure-X1C.3mf) · [Whole-hardware review, outstanding conditions and first-article sheet](../hardware/mechanical/enclosure-fit-r0003/README.md) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Enclosure-fit-guide.html)
+**Current fit release.** [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Thai-Waters-R0004-X1C-Color-Fit.3mf) · [Whole-hardware review, outstanding conditions and first-article sheet](../hardware/mechanical/enclosure-print-r0004/README.md) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Enclosure-fit-guide.html)
 
 [R0016 USB1 entry and wired assembly limits](../hardware/mechanical/TW-A-0001-R0016/README.md) · [R0015 cap, board and keeper fit](../hardware/mechanical/TW-A-0001-R0015/README.md) · [R0014 integrated A3 supports and physical checks](../hardware/mechanical/TW-A-0001-R0014/README.md) · [R0013 seated service and USB power results](seated-connector-review.md)
 

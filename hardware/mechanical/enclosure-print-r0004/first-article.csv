@@ -1,0 +1,28 @@
+plate,part,filament,color,model layers,first layer mm2,support mm3,physical check,result
+1,Housing - single status window and rear screw access,PETG,#899C89,158,772.759,9768.729,Check the one status opening and rear screw access. Inspect each post root.,Awaiting R0004 print
+1,Status shelf with diffuser stops,PETG,#899C89,17,75.129,0.0,Test the low diffuser stop and the shelf screw with the speaker installed.,Awaiting R0004 print
+2,Solid-front bezel - concealed hooks,PETG,#303938,25,2396.138,0.0,"Engage both concealed hooks and check seating, rear pilots and glass clearance.",Awaiting R0004 print
+2,Reel rotor - pocket facing up,PETG,#303938,70,27.548,880.397,Remove support from the accessible face and around the hinge. Inspect both ends of the crank pocket. Rotate fully with crank folded and extended.,Awaiting R0004 print
+2,collar_1,PETG,#303938,12,56.688,0.0,Check collar retention and full-turn clearance.,Awaiting R0004 print
+2,grip-screw-keeper_1,PETG,#303938,8,47.018,0.0,Inspect the thin keeper and cycle the grip screw.,Awaiting R0004 print
+2,receiver-nut-keeper_1,PETG,#303938,4,42.713,0.0,Check nut capture and grip screw alignment without forcing.,Awaiting R0004 print
+2,key-board-retainer-west_1,PETG,#303938,37,68.714,0.0,Check the KEY board remains seated and the plunger returns.,Awaiting R0004 print
+2,battery-wire-bridge_1,PETG,#303938,17,252.439,0.0,Check the bridge closes over dummy leads without imprints.,Awaiting R0004 print
+3,rod-grip_1,PETG,#899C89,173,834.902,3820.79,"Slide into the receiver, lock and remove by hand. Inspect the dovetail for peeling.",Awaiting R0004 print
+4,Single RGB diffuser,PETG,#E6F2F2,12,12.812,0.0,Check diffuser shoulders and fit before installing the shelf.,Awaiting R0004 print
+5,usb-c-shield-mask_1,TPU,#202221,3,77.416,0.0,Peel the flexible mask from its wide edge. Test the USB-C shell and cable insertion.,Awaiting R0004 print
+5,service-cover_1,TPU,#202221,23,227.359,0.0,"Check edge integrity, access coverage and removal without tearing.",Awaiting R0004 print
+6,PKCELL-max-body-with-wire-sockets_1,PETG,#92979A,27,2167.123,0.0,Test maximum pack with dummy lead slack and connector. Remove before trying the other pack.,Awaiting R0004 print
+6,Adafruit-258-CAD-with-PCM-and-stubs_1,PETG,#92979A,30,2120.844,0.0,"Test PCM, tail and lead exit in the alternative configuration. Use one gauge at a time.",Awaiting R0004 print
+7,A1 display and controller,PETG,#92979A,67,5558.293,0.0,Measure underside for sag. Seat at four controller mounts and verify screen position and pressure.,Awaiting R0004 print
+7,A2 reel sensor,PETG,#92979A,23,399.368,0.0,Check reel-wall lands and pin registration. Compare with real A2 when available.,Awaiting R0004 print
+7,A3 haptic board,PETG,#92979A,49,373.322,0.0,Check bare board seats flat on the two integral rails. Remove before fitting the mated gauge.,Awaiting R0004 print
+7,Combined PCB - populated height gauge,PETG,#92979A,12,852.09,0.0,Package side down. Inspect all three supports and both screw positions. Check display lift.,Awaiting R0004 print
+7,Top power switch board,PETG,#92979A,27,103.153,0.0,Install after keyed cap. Check switch orientation and alignment.,Awaiting R0004 print
+7,RGB carrier and emitter fit gauge,PETG,#92979A,6,13.338,0.0,Slide the carrier into the shelf; align the emitter to the one diffuser.,Awaiting R0004 print
+7,Speaker with gasket and lead exits,PETG,#92979A,35,496.187,0.0,"Check oval rim, gasket height and lead exits. Inspect space under lamp shelf.",Awaiting R0004 print
+7,Vibration motor and lead exit,PETG,#92979A,18,86.833,0.0,"Check motor body, cable exit and board clearance.",Awaiting R0004 print
+7,A3 alternate - plug seated,PETG,#92979A,54,373.322,0.0,Install in place of bare A3. Seat A1 and inspect plug space. Verify unlatching and extraction separately with a wired sample.,Awaiting R0004 print
+8,folding-stem_1,PETG,#D99A4E,27,6.714,76.173,"Cut the brim while supporting the hinge. Inspect the eye, then cycle the pivot by hand.",Awaiting R0004 print
+8,grip_1,PETG,#D99A4E,47,15.155,0.0,Check grip rotates freely and stays on its axle.,Awaiting R0004 print
+8,R0017 keyed power cap,PETG,#D99A4E,10,34.451,0.0,"Insert from inside before the switch PCB. Check for twisting, binding and free return.",Awaiting R0004 print

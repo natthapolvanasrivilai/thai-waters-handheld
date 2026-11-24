@@ -1,6 +1,6 @@
 # Prototype sourcing and cost
 
-**Current R0003 enclosure.** Add four bezel screws and one lamp-shelf screw, all the same Accu M2 × 6 T6 part as H6. The combined PCB is case-mounted with two M2 × 4 screws. Omit the six bonded display spacers for this configuration. [Fastener quantities and sources](../../sourcing/production-intent/Enclosure-R0003-fastener-delta.csv) · [Current PCB BOM](../../hardware/electronics/case-board-r0001/bom.csv)
+**R0004 enclosure.** Fit two rear bezel screws and one shelf screw. The optical stack consists of one clear printed diffuser and one Kingbright RGB package. The RGB carrier and drive electronics are under development. The prior blue USB circuit is superseded for this application. [Current BOM changes](../../sourcing/production-intent/Enclosure-R0004-delta.csv) · [Combined PCB baseline](../../hardware/electronics/case-board-r0001/bom.csv)
 
 The archived R0017 A4/A5 mounting allowance covers six insulating blocks and twelve adhesive interfaces. Block stock, adhesive part numbers, process and cost remain unqualified. PETG in the print kit is for test gauges. [Mounts and board functions](../../hardware/mechanical/pcb-fit-display-r0002/README.md)
 
@@ -12,7 +12,7 @@ The archived R0017 A4/A5 mounting allowance covers six insulating blocks and twe
 
 **R0012 service study.** The [CviLux interconnect and board changes](../../sourcing/production-intent/R0012-interconnect-delta.csv) supersede the Würth haptic header, plug and terminated leads in the historical budget. Cavities 1, 3, 4 and 5 take contacts. A4 and A5 have separate population definitions. Prototype sample prices, harness tooling and delivered board costs are open. Applying the earlier total to this configuration would understate those unknowns. [Historical R0011/R0004 budget](../../sourcing/production-intent/R0011-R0004-BOM.md)
 
-[Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Thai-Waters-handbook.html)
+[Wiki contents](Home.md) · [Hardware and cable routing](Hardware-and-3D.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Thai-Waters-handbook.html)
 
 ## Historical R0011/R0004 engineering BOM
 

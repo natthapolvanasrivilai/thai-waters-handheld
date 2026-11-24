@@ -1,0 +1,218 @@
+[
+  {
+    "plate": 1,
+    "part": "Housing - single status window and rear screw access",
+    "slot": 1,
+    "colour": "#899C89",
+    "instance": "385",
+    "pose": "registered face"
+  },
+  {
+    "plate": 1,
+    "part": "Status shelf with diffuser stops",
+    "slot": 1,
+    "colour": "#899C89",
+    "instance": "2142",
+    "pose": "registered face"
+  },
+  {
+    "plate": 2,
+    "part": "Solid-front bezel - concealed hooks",
+    "slot": 2,
+    "colour": "#303938",
+    "instance": "386",
+    "pose": "registered face"
+  },
+  {
+    "plate": 2,
+    "part": "Reel rotor - pocket facing up",
+    "slot": 2,
+    "colour": "#303938",
+    "instance": "387",
+    "pose": "registered face"
+  },
+  {
+    "plate": 2,
+    "part": "collar_1",
+    "slot": 2,
+    "colour": "#303938",
+    "instance": "390",
+    "pose": "registered face"
+  },
+  {
+    "plate": 2,
+    "part": "grip-screw-keeper_1",
+    "slot": 2,
+    "colour": "#303938",
+    "instance": "392",
+    "pose": "registered face"
+  },
+  {
+    "plate": 2,
+    "part": "receiver-nut-keeper_1",
+    "slot": 2,
+    "colour": "#303938",
+    "instance": "393",
+    "pose": "registered face"
+  },
+  {
+    "plate": 2,
+    "part": "key-board-retainer-west_1",
+    "slot": 2,
+    "colour": "#303938",
+    "instance": "394",
+    "pose": "registered face"
+  },
+  {
+    "plate": 2,
+    "part": "battery-wire-bridge_1",
+    "slot": 2,
+    "colour": "#303938",
+    "instance": "395",
+    "pose": "registered face"
+  },
+  {
+    "plate": 3,
+    "part": "rod-grip_1",
+    "slot": 1,
+    "colour": "#899C89",
+    "instance": "396",
+    "pose": "Broad side of handle mounting foot down"
+  },
+  {
+    "plate": 4,
+    "part": "Single RGB diffuser",
+    "slot": 4,
+    "colour": "#E6F2F2",
+    "instance": "398",
+    "pose": "registered face"
+  },
+  {
+    "plate": 5,
+    "part": "usb-c-shield-mask_1",
+    "slot": 5,
+    "colour": "#202221",
+    "instance": "400",
+    "pose": "registered face"
+  },
+  {
+    "plate": 5,
+    "part": "service-cover_1",
+    "slot": 5,
+    "colour": "#202221",
+    "instance": "401",
+    "pose": "registered face"
+  },
+  {
+    "plate": 6,
+    "part": "PKCELL-max-body-with-wire-sockets_1",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "402",
+    "pose": "registered face"
+  },
+  {
+    "plate": 6,
+    "part": "Adafruit-258-CAD-with-PCM-and-stubs_1",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "403",
+    "pose": "Broad face of battery pack down"
+  },
+  {
+    "plate": 7,
+    "part": "A1 display and controller",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "1701",
+    "pose": "registered face"
+  },
+  {
+    "plate": 7,
+    "part": "A2 reel sensor",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "1702",
+    "pose": "registered face"
+  },
+  {
+    "plate": 7,
+    "part": "A3 haptic board",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "1703",
+    "pose": "registered face"
+  },
+  {
+    "plate": 7,
+    "part": "Combined PCB - populated height gauge",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "1704",
+    "pose": "registered face"
+  },
+  {
+    "plate": 7,
+    "part": "Top power switch board",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "1706",
+    "pose": "registered face"
+  },
+  {
+    "plate": 7,
+    "part": "RGB carrier and emitter fit gauge",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "1707",
+    "pose": "registered face"
+  },
+  {
+    "plate": 7,
+    "part": "Speaker with gasket and lead exits",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "2144",
+    "pose": "registered face"
+  },
+  {
+    "plate": 7,
+    "part": "Vibration motor and lead exit",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "2146",
+    "pose": "registered face"
+  },
+  {
+    "plate": 7,
+    "part": "A3 alternate - plug seated",
+    "slot": 6,
+    "colour": "#92979A",
+    "instance": "2148",
+    "pose": "registered face"
+  },
+  {
+    "plate": 8,
+    "part": "folding-stem_1",
+    "slot": 3,
+    "colour": "#D99A4E",
+    "instance": "388",
+    "pose": "Hinge seating face down"
+  },
+  {
+    "plate": 8,
+    "part": "grip_1",
+    "slot": 3,
+    "colour": "#D99A4E",
+    "instance": "389",
+    "pose": "Broad face of knob down"
+  },
+  {
+    "plate": 8,
+    "part": "R0017 keyed power cap",
+    "slot": 3,
+    "colour": "#D99A4E",
+    "instance": "391",
+    "pose": "registered face"
+  }
+]

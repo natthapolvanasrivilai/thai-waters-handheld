@@ -26,3 +26,4 @@ TW-A-0003-R0001,,Unpowered case-mounted PCB fit kit,Two-plate housing and outlin
 TW-A-0004-R0001,,Case-mounted auxiliary PCBA engineering definition,Control and USB circuit with routed layout and installation BOM. Under powered qualification.,hardware/electronics/case-board-r0001/README.md,CB0001-002
 TW-A-0003-R0002,,Seven-plate reinforced reel fit kit,X1C unpowered print trial with reinforced rotor and revised rod grip layer settings.,hardware/mechanical/reel-dfm-r0001/README.md,DFM0001-001
 TW-A-0003-R0003,,Full enclosure unpowered fit kit,"Seven X1C plates with shelf, secured bezel, controller screw access and component envelopes.",hardware/mechanical/enclosure-fit-r0003/README.md,ENC0003-001
+TW-A-0003-R0004,,Single-window enclosure fit and solid-front bezel,Eight X1C plates with rear-access closure and single RGB status diffuser.,hardware/mechanical/enclosure-print-r0004/README.md,ENC0004-001
