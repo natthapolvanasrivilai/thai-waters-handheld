@@ -49,7 +49,13 @@ const locationMap=(()=>{
  }
  function labels(){
   const id=model.selected();
-  picker.replaceChildren(new Option(text('Choose mapped water','เลือกแหล่งน้ำบนแผนที่'),''),...data.pins.map(([id])=>new Option(atlas.locations[id].name,id)));
+  picker.replaceChildren(new Option(text('Choose mapped water','เลือกแหล่งน้ำบนแผนที่'),''),...data.pins.map(([id])=>{
+   const full=atlas.locations[id].name;
+   // Only the chart picker is narrow; the full destination list keeps the atlas name.
+   const option=new Option(id===89?text('Khun Dan Dam','เขื่อนขุนด่านปราการชล'):full,id);
+   if(id===89)option.title=full;
+   return option;
+  }));
   picker.value=id===null?'':String(id);update();
  }
  function at(e){

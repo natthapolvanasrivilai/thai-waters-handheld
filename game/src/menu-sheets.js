@@ -17,7 +17,7 @@ const menuSheets=(()=>{
  const spots=panel('spots'),tip=spots.querySelector(':scope > small');
  add('spots','Destination','หมายตกปลา',row(box('searchSpot'),$('locationMapOpen')),row(field('places'),$('fishHere')));
  add('spots','Conditions','สภาพหมาย',box('period'),$('travelStory'),tip);
- add('spots','Map pilot','แผนที่ทดลอง',$('mapGraphic'),$('mapAccess'));
+ add('spots','Fishing map','แผนที่ตกปลา',$('mapGraphic'),$('mapAccess'));
  pages.get('spots')[2].el.id='waterbodyMapSheet';
  const rod=panel('rod');
  add('rod','Tackle','ชุดตกปลา',row(field('technique'),field('finish')),box('hookBait'));

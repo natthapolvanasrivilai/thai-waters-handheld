@@ -53,6 +53,16 @@
       "title": "EGAT: Chulabhorn Dam background, Chaiyaphum",
       "url": "https://www.egat.co.th/home/en/chulabhorn-dm-about/",
       "role": "identity-only"
+    },
+    "khun-dan-rid-project": {
+      "title": "Royal Irrigation Department: Nakhon Nayok irrigation large projects",
+      "url": "https://rid-project.rid.go.th/sums/big",
+      "role": "identity-only"
+    },
+    "pran-buri-rid14": {
+      "title": "Royal Irrigation Department Region 14: Pran Buri Reservoir",
+      "url": "https://rid14.rid.go.th/th/family-news/105673",
+      "role": "identity-only"
     }
   },
   "features": [
@@ -258,6 +268,40 @@
         "coordinateSource": "msea-res-s1",
         "sourceRow": "Lam_Pao",
         "identitySource": "nam-un-lam-pao-rid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 89,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.324,
+          14.307
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Khun_Dan_Prakan_Chon",
+        "identitySource": "khun-dan-rid-project"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 94,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.783,
+          12.462
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Pranburi",
+        "identitySource": "pran-buri-rid14"
       }
     }
   ]

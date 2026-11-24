@@ -20,4 +20,13 @@ The standalone offline HTML includes complete machine-readable attribution in th
 
 The nine existing markers are unchanged. The three points are source-record markers, not measured shore positions or permission to fish. Destination names, save IDs and fish pools are unchanged.
 
+## Nakhon Nayok and Prachuap Khiri Khan follow-up
+
+| Existing game destination | Representative longitude, latitude | MSEA-Res Table S1 row | Independent identity |
+| --- | --- | --- | --- |
+| #89 Khun Dan Prakan Chon Reservoir (Nakhon Nayok) | 101.324, 14.307 | Khun_Dan_Prakan_Chon | [RID large irrigation projects](https://rid-project.rid.go.th/sums/big) |
+| #94 Pran Buri Reservoir (Prachuap Khiri Khan) | 99.783, 12.462 | Pranburi | [RID Pran Buri project](https://rid14.rid.go.th/th/family-news/105673) |
+
+These two representatives extend the map to 14 markers. All 117 destinations retain the same order and identifiers. These points are not measured shore positions or legal fishing access.
+
 Add evidence and exact intended game-ID/name validation before any new marker. Do not batch-fill coordinates with provincial centroids or geocoders that return roads, similarly named villages, or separately sourced access points. Build validation and source-file attribution supplement browser QA; do not publish the map when actual selection, keyboard, drag/tap separation, and explicit travel are unverified.
