@@ -1,6 +1,5 @@
 #pragma once
 #include "ScenicRecipes.h"
-#include "ScoreInstruments.h"
 #include <algorithm>
 #include <stdint.h>
 
@@ -33,7 +32,7 @@ constexpr Palette palette(scenery::Water water){
 
 class Score {
   struct Event {uint32_t start=0, step=0; unsigned duration=0, level=0, voice=0;};
-  struct Voice {uint32_t phase=0, step=0, life=0; unsigned age=0, duration=0; int level=0;uint32_t readStep=0;};
+  struct Voice {uint32_t phase=0, step=0, life=0; unsigned age=0, duration=0; int level=0;};
   Event events[124]{};
   Voice voices[3]{};
   unsigned pressure=0;
@@ -98,7 +97,7 @@ class Score {
     if(track==actionTrack){
       // D minor: Dm–Bb–F–C / Gm–Bb–A7–Dm. Opening and answer vary
       // the hook before an A7 pull and a deliberate D minor resolution.
-      // Sixteenth-note notation. Tine lead, muted bass and picked strings.
+      // Sixteenth-note notation. One arrangement, three acoustic voices.
       static constexpr Note hook[]={
         {0,62,3},{3,65,2},{6,69,3},{10,72,2},{13,69,3},
         {16,70,3},{20,69,2},{23,65,3},{28,62,3},
@@ -168,8 +167,8 @@ class Score {
       {46,62,2}
     };
     static constexpr Note creekSupport[]={
-      {0,50,3},{3,57,1},{6,54,2},{8,47,3},{12,54,1},{14,57,2},{16,43,4},{21,50,2},
-      {24,42,3},{28,50,2},{31,44,1},{32,45,3},{36,55,2},{38,52,2},{40,50,5},{46,54,2}
+      {0,50,3},{4,57,3},{8,47,3},{12,54,3},{16,43,3},{20,50,3},
+      {24,42,3},{28,50,3},{32,45,3},{36,55,3},{40,50,5},{46,54,2}
     };
     static constexpr Note lakeLead[]={
       {0,69,2},{2,67,1},{3,65,2},{6,72,2},{8,69,2},{10,65,2},
@@ -227,26 +226,6 @@ class Score {
         addPhrase(seaLead,eighth,transpose,level,0);
         addPhrase(seaSupport,eighth,transpose,level/4,1);break;
     }
-  }
-  unsigned instrumentFor(unsigned voice) const {
-    if(voice==1)return 2; // mellow plucked bass under both arrangements
-    if(id==actionTrack)return voice==0?1:0; // tighter tine lead and picked guitar syncopation
-    switch(scene.instrument){
-      case Instrument::Nylon: case Instrument::Acoustic: return 0;
-      case Instrument::Mallet: case Instrument::Flute: return 1;
-      default: return 3;
-    }
-  }
-  bool ensemble() const {return id<actionTrack || id==actionTrack;}
-  int playInstrument(Voice& v,unsigned voice){
-    if(v.age>=v.duration)return 0;
-    const unsigned i=v.phase>>16, f=(v.phase>>8)&255;
-    if(i+1>=instruments::frames)return 0;
-    const int8_t* pcm=instruments::pcm[instrumentFor(voice)];
-    const int wave=int(pcm[i])*(256-int(f))+int(pcm[i+1])*int(f);
-    const unsigned tail=std::min(v.duration-v.age,640u);
-    ++v.age; v.phase+=v.readStep;
-    return (wave*v.level/32768)*int(tail)/640;
   }
   int voiceSample(Voice& v,const int16_t* sine){
     if(v.life==0 || v.age>=v.duration)return 0;
@@ -315,16 +294,9 @@ public:
     if(id!=requested && !release)release=releaseSamples;
     while(cursor<count && events[cursor].start==clock){
       const auto e=events[cursor++];
-      auto& v=voices[e.voice];
-      v={0,e.step,1u<<20,0,e.duration,int(e.level)};
-      if(ensemble()){
-        // Convert 32-bit oscillator pitch to the source rate's Q16 read increment once per note.
-        v.readStep=uint32_t((uint64_t(e.step)*instruments::rate<<16)/
-          (uint64_t(step(instruments::rootsCentiHz[instrumentFor(e.voice)]))*sampleRate));
-      }
+      voices[e.voice]={0,e.step,1u<<20,0,e.duration,int(e.level)};
     }
-    const auto voice=[&](unsigned i){return ensemble()?playInstrument(voices[i],i):voiceSample(voices[i],sine);};
-    const int main=voice(0), harmony=voice(1);
+    const int main=voiceSample(voices[0],sine), harmony=voiceSample(voices[1],sine);
     int bed=main+(music==1?harmony/3:harmony);
     if(id==actionTrack){
       // Articulate the picked parts over a short ramp when a fish runs.
@@ -332,7 +304,7 @@ public:
       // separately by game events in CreekSynth, never on musical beats.
       if(surge && pressure<2048)++pressure;
       else if(!surge && pressure>0)--pressure;
-      const int picking=voice(2);
+      const int picking=voiceSample(voices[2],sine);
       bed=main*(4096+int(pressure)*5/8)/4096+harmony+
         picking*(2400+int(pressure)*3/2)/4096;
     }
