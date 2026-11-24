@@ -43,6 +43,16 @@
       "url": "https://chm-thai.onep.go.th/wp-content/uploads/2023/03/03-wetland-%E0%B9%80%E0%B8%AB%E0%B8%99%E0%B8%B7%E0%B8%ADResize.pdf",
       "profile": "https://naturalsite.onep.go.th/site/detail/1121",
       "role": "identity-and-extent"
+    },
+    "nam-un-lam-pao-rid": {
+      "title": "Royal Irrigation Department: official large-reservoir list, Sakon Nakhon and Kalasin",
+      "url": "https://water.rid.go.th/hydhome/document/2555/order-OWMH.pdf",
+      "role": "identity-only"
+    },
+    "chulabhorn-egat": {
+      "title": "EGAT: Chulabhorn Dam background, Chaiyaphum",
+      "url": "https://www.egat.co.th/home/en/chulabhorn-dm-about/",
+      "role": "identity-only"
     }
   },
   "features": [
@@ -197,6 +207,57 @@
         "coordinateSource": "msea-res-s1",
         "sourceRow": "Bang_Lang",
         "identitySource": "fleet-egat"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.747,
+          17.297
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Nam_Oun",
+        "identitySource": "nam-un-lam-pao-rid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 30,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.636,
+          16.539
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Chulabhorn",
+        "identitySource": "chulabhorn-egat"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.44,
+          16.654
+        ]
+      },
+      "properties": {
+        "kind": "representative-reservoir-area",
+        "coordinateSource": "msea-res-s1",
+        "sourceRow": "Lam_Pao",
+        "identitySource": "nam-un-lam-pao-rid"
       }
     }
   ]

@@ -10,4 +10,14 @@ The standalone offline HTML includes complete machine-readable attribution in th
 - Reservoir facts: Mahto, S. S., Fatichi, S., and Galelli, S. (2025), [MSEA-Res](https://essd.copernicus.org/articles/17/2693/2025/), supplementary Table S1, DOI 10.5194/essd-17-2693-2025. © authors, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Adapted by selecting, rounding and joining to stable game IDs. The GeoJSON gives the independent official Thai identity source for each record.
 - Kwan Phayao: [official NGA GNS WGS84 record 540205](https://geonames.nga.mil/geon-ags/rest/services/RESEARCH/GIS_OUTPUT/MapServer/0/540205) and linked Thai variant 540204 (same unique feature). [NGA GNS](https://geonames.nga.mil/geonames/GNSHome/index.html) permits use and recommends credit: Geographic Names Database data, names approved by US BGN and maintained by NGA. Thailand's ONEP natural-site profile and northern wetlands record p.46 independently establish the named waterbody and its approximate extent. No third-party imagery, live tiles or descriptions copied.
 
+## Northeast reservoir follow-up
+
+| Existing game destination | Representative longitude, latitude | MSEA-Res Table S1 row | Independent identity |
+| --- | --- | --- | --- |
+| #19 Nam Un Reservoir (Sakon Nakhon) | 103.747, 17.297 | Nam_Oun | [RID large-reservoir list](https://water.rid.go.th/hydhome/document/2555/order-OWMH.pdf) |
+| #30 Chulabhorn Reservoir (Chaiyaphum) | 101.636, 16.539 | Chulabhorn | [EGAT dam background](https://www.egat.co.th/home/en/chulabhorn-dm-about/) |
+| #32 Lam Pao Reservoir (Kalasin) | 103.440, 16.654 | Lam_Pao | [RID large-reservoir list](https://water.rid.go.th/hydhome/document/2555/order-OWMH.pdf) |
+
+The nine existing markers are unchanged. The three points are source-record markers, not measured shore positions or permission to fish. Destination names, save IDs and fish pools are unchanged.
+
 Add evidence and exact intended game-ID/name validation before any new marker. Do not batch-fill coordinates with provincial centroids or geocoders that return roads, similarly named villages, or separately sourced access points. Build validation and source-file attribution supplement browser QA; do not publish the map when actual selection, keyboard, drag/tap separation, and explicit travel are unverified.

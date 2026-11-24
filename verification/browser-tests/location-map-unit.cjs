@@ -7,7 +7,23 @@ const geo=JSON.parse(fs.readFileSync(path.join(root,'game/content/map-pilot.geoj
 const rows=geo.features.map(r=>[r.id,...r.geometry.coordinates]), map=create(rows,230,186);
 const mae=map.position(0),phayao=map.position(16);
 const local=(a,x=a[0],y=a[1])=>({x:a[0],y:a[1],clientX:x,clientY:y});
-assert.equal(rows.length,9);
+assert.equal(rows.length,12);
+const northeast=[[19,103.747,17.297],[30,101.636,16.539],[32,103.44,16.654]];
+assert.deepEqual(rows.slice(-3),northeast);
+for(const [id,lon,lat] of northeast){
+ const pt=map.project([lon,lat]);
+ assert.equal(map.pick(...pt),id,'nearest marker keeps its stable ID');
+ assert.equal(map.start(id,local(pt)),true);
+ assert.equal(map.cancel(id),true);
+ assert.equal(map.end(id,local(pt)),false);
+ assert.equal(map.selected(),null);
+}
+const candidate=map.position(19);
+assert.equal(map.start(1,local(candidate)),true);
+assert.equal(map.end(1,local(candidate)),true);
+assert.equal(map.confirm(false,()=>{throw Error('disabled')}),false);
+assert.equal(map.confirm(true,id=>id),19);
+assert.equal(map.choose(null),true);
 assert.ok(phayao[0]>mae[0]&&Math.abs(phayao[1]-mae[1])<1);
 assert.equal(map.selected(),null);
 assert.equal(map.pick(...mae),0);
@@ -46,7 +62,7 @@ assert.equal(map.confirm(true,id=>{calls.push(id);return true}),true);
 assert.deepEqual(calls,[0]);
 map.choose(null);
 assert.equal(map.confirm(true,()=>{throw Error('disabled')}),false);
-console.log('PASS 9 sourced IDs; pan, reset and cancel preserve selection; explicit guarded travel; zero is valid');
+console.log('PASS 12 sourced IDs; pan, reset and cancel preserve selection; explicit guarded travel; zero is valid');
 
 const touch=createTouchActivation(), fires=[];
 const at=(more={})=>({pointerId:7,pointerType:'touch',isPrimary:true,isTrusted:true,button:0,
