@@ -1,0 +1,78 @@
+{
+  "overlap_mm3": {
+    "PCB": {},
+    "screw 1": {},
+    "screw 2": {},
+    "W2 copper": {
+      "A1-J8": 9e-05
+    },
+    "W2 jacket": {},
+    "W2 board fillet": {},
+    "W3 copper": {},
+    "W3 jacket": {},
+    "W3 board fillet": {},
+    "W7 copper": {},
+    "W7 jacket": {},
+    "W7 board fillet": {},
+    "boss 1": {},
+    "boss 2": {},
+    "rest": {},
+    "PCB vs assembly": {},
+    "boss 1 vs assembly": {},
+    "boss 2 vs assembly": {},
+    "rest vs assembly": {},
+    "W2 copper vs assembly": {},
+    "W2 jacket vs assembly": {},
+    "W2 board fillet vs assembly": {},
+    "W3 copper vs assembly": {},
+    "W3 jacket vs assembly": {},
+    "W3 board fillet vs assembly": {},
+    "W7 copper vs assembly": {},
+    "W7 jacket vs assembly": {},
+    "W7 board fillet vs assembly": {}
+  },
+  "lead_routes": {
+    "W2": {
+      "length_mm": 57.84,
+      "min_bend_radius_mm": 0.588,
+      "board_end": [
+        34.45,
+        12.0,
+        19.0
+      ],
+      "far_end": [
+        -19.06,
+        19.82,
+        20.751
+      ]
+    },
+    "W3": {
+      "length_mm": 56.211,
+      "min_bend_radius_mm": 0.59,
+      "board_end": [
+        34.45,
+        5.0,
+        19.0
+      ],
+      "far_end": [
+        -17.561943,
+        17.742536,
+        16.355954
+      ]
+    },
+    "W7": {
+      "length_mm": 54.768,
+      "min_bend_radius_mm": 0.415,
+      "board_end": [
+        30.65,
+        17.3,
+        19.0
+      ],
+      "far_end": [
+        -19.98,
+        18.47,
+        17.34
+      ]
+    }
+  }
+}

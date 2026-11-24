@@ -126,6 +126,8 @@ function review(number, sha, fullName = project) {
       await model.locator('#viewport canvas').waitFor({state: 'visible'});
       const stages = model.locator('button[data-step]');
       assert.equal(await stages.count(), 8);
+      await model.locator('#inspect-board').click();
+      assert.match(await model.locator('#info').textContent(), /Component side/);
       for (const button of await stages.all()) {
         await button.click();
         assert.equal(await button.getAttribute('aria-pressed'), 'true');
@@ -138,7 +140,7 @@ function review(number, sha, fullName = project) {
         const hash = await crypto.subtle.digest('SHA-256', file);
         return Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, '0')).join('');
       }, blob);
-      const standalone = fs.readFileSync(path.join(root, 'hardware/mechanical/step-fit-r0008', guide));
+      const standalone = fs.readFileSync(path.join(root, 'hardware/electronics/case-board-r0002', 'Mount-review.html'));
       assert.equal(digest, createHash('sha256').update(standalone).digest('hex'));
     }
     await page.locator('[data-tab=business]').click();

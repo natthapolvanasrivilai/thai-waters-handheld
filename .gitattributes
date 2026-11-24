@@ -60,3 +60,7 @@ hardware/electronics/case-board-r0001/Case-board-R0001-view.html binary
 hardware/mechanical/enclosure-fit-r0003/Enclosure-fit-guide.html binary
 
 hardware/mechanical/enclosure-print-r0004/Enclosure-fit-guide.html binary
+hardware/electronics/case-board-r0002/*.kicad_* -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0002/*.json -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0002/bom.csv -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0002/Mount-review.html binary

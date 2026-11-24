@@ -7,7 +7,7 @@ from build import A5
 sys.path.insert(0,str(A5/"installed-leads"))
 from form import COPPER, JACKET, curved, sweep
 
-def installed():
+def installed(extra_waypoints=None):
     rows=json.loads((A5/"installed-leads/routes.json").read_bytes())
     parts={}
     specs={}
@@ -19,6 +19,9 @@ def installed():
         vertices[0]=cq.Vector(top.x,top.y,19.0)
         vertices[1]=vertices[1]+cq.Vector(0,0,.35)
         if ref=="W3":vertices[3]=vertices[3]+cq.Vector(0,0,.40)
+        if extra_waypoints and ref in extra_waypoints:
+            index,point=extra_waypoints[ref]
+            vertices.insert(index,cq.Vector(*point))
         lead,radius=curved(vertices)
         pin=cq.Vector(top.x,top.y,17.46 if ref=="W7" else 17.61)
         end=vertices[-1]

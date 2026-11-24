@@ -107,3 +107,8 @@ TW-P-0001-R0019,Housing with obsolete side light pipes removed,hardware/mechanic
 TW-P-0037-R0006,Single-light angled PLA print project,hardware/mechanical/polyterra-fit-r0003/Thai-Waters-R0007-PolyTerra-SuperTack-X1C.3mf,,af101f1ec1f81f23bee58a0d469af3a5d41a488d3e9a7782450a4e4231b9b896
 TW-P-0001-R0020,Editable STEP master for the single-light housing,hardware/mechanical/step-fit-r0008/housing.step,,68ce56a0eeddf5b23819b52576324a474949d377ba1e60b03041c6522a11448c
 TW-P-0037-R0007,X1C fixture and direct STEP print export,hardware/mechanical/step-fit-r0008/Thai-Waters-R0008-STEP-PolyTerra-SuperTack-X1C.3mf,,e4f92173cecc0126a2544f294427c334e959c349c17462bc7713ccd17fb04372
+TW-P-0034-R0002,Rectangular routed case board,hardware/electronics/case-board-r0002/case-board.kicad_pcb,,aaab9d33b5b04815a3178a40aac9649dac80e361524bcfb1b8363dae45bd1267
+TW-P-0036-R0002,Rectangular case-board BOM,hardware/electronics/case-board-r0002/bom.csv,,39028135e92e29ff541f55cf0335bf9a0e85e09f7d70d63f7906c56e6d75b476
+TW-P-0001-R0021,Enclosure with inset board bearing,hardware/electronics/case-board-r0002/housing.step,,dbea143bbe452069f60fbcec954038f8abf357c15469f1030fbab4adc392f0ce
+TW-P-0035-R0003,Rectangular PCB package-height fit gauge,hardware/electronics/case-board-r0002/pcb-gauge.step,,8259c95ca00ad9f6a05c805d8278c685207b98dba977544d198aca7279192a52
+TW-P-0037-R0008,Board gauge SuperTack fixture,hardware/electronics/case-board-r0002/Case-board-R0002-PolyTerra-SuperTack-X1C.3mf,,ebf97eff70a70a71890224d3c5e10535165df85328bccf367b1e5829ce97495d

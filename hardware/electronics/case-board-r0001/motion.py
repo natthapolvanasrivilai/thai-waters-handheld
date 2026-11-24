@@ -17,18 +17,21 @@ from intervals import pole_motion,ribbon
 from stroke import new_leads
 from service_check import meshgap,model,tri,maximum_drawing_pack
 
-def run(cache, additions=None, closure=None, output=None):
+def run(cache, additions=None, closure=None, output=None, mounted=None, leads=None):
     cad=lambda n:cq.Shape.importBrep(str(cache/(n+".brep")))
-    pcb=cq.importers.importStep(str(HERE/"case-board.step")).val().rotate((0,0,0),(1,0,0),180).translate((13,-14,18.5))
-    screws=cq.importers.importStep(str(ROOT/"hardware/components/standard-fasteners/4mm.step")).val()
-    fixed={"PCB":pcb,"rest":support(*REST,3)}
-    for i,(x,y) in enumerate(MOUNTS,1):
-        fixed[f"boss {i}"]=support(x-87,y-114,i)
-        fixed[f"screw {i}"]=screws.translate((x-87,y-114,18.5))
+    if mounted is None:
+        pcb=cq.importers.importStep(str(HERE/"case-board.step")).val().rotate((0,0,0),(1,0,0),180).translate((13,-14,18.5))
+        screws=cq.importers.importStep(str(ROOT/"hardware/components/standard-fasteners/4mm.step")).val()
+        fixed={"PCB":pcb,"rest":support(*REST,3)}
+        for i,(x,y) in enumerate(MOUNTS,1):
+            fixed[f"boss {i}"]=support(x-87,y-114,i)
+            fixed[f"screw {i}"]=screws.translate((x-87,y-114,18.5))
+    else:
+        fixed=dict(mounted)
     fixed.update(additions or {})
     rigid_names=set(fixed)
     fixed.update(closure or {})
-    fixed.update(installed()[0])
+    fixed.update(installed()[0] if leads is None else leads)
     shapes={k:model(*tri(s)) for k,s in fixed.items()}
     wire=new_leads()
     body,latch=wire.split_latch(cad("A3-J1-plug"))
