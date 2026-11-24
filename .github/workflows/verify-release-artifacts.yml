@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 3
+          fetch-depth: 4
           persist-credentials: false
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -33,9 +33,11 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $PSNativeCommandUseErrorActionPreference = $true
           $parent = & git rev-list --parents -n1 HEAD
-          $previous = 'dea26c684f8f7de70a1f8b66e507a8cff9a3daa1'
-          if ($parent -cne "$env:GITHUB_SHA $previous" -or (& git rev-list --parents -n1 $previous) -cne "$previous $env:BASE") { throw 'Wrong base or head' }
-          if ((& git diff --name-only $previous HEAD) -cne '.github/workflows/verify-release-artifacts.yml') { throw 'Unexpected successor changes' }
+          $previous = '4bf5f6815f41edfca7ff072b24929a06bbafd3ef'
+          $first = 'dea26c684f8f7de70a1f8b66e507a8cff9a3daa1'
+          if ($parent -cne "$env:GITHUB_SHA $previous" -or (& git rev-list --parents -n1 $previous) -cne "$previous $first" -or (& git rev-list --parents -n1 $first) -cne "$first $env:BASE") { throw 'Wrong base or head' }
+          $successorPaths = @('.github/workflows/verify-release-artifacts.yml','verification/diagnostics/solo-windows/exact-browser-probe.mjs')
+          if (((& git diff --name-only $previous HEAD) -join "`n") -cne ($successorPaths -join "`n")) { throw 'Unexpected successor changes' }
           $diag = 'verification/diagnostics/solo-windows'
           $allow = @("M`t.github/workflows/verify-release-artifacts.yml","A`t$diag/Start-Pocket-Reel-Solo.mjs","A`t$diag/exact-browser-probe.mjs","A`t$diag/exact-http.test.mjs","A`t$diag/exact-pack.mjs")
           if (((& git diff --name-status $env:BASE HEAD) -join "`n") -cne ($allow -join "`n")) { throw 'Unexpected diagnostic source changes' }
@@ -79,6 +81,7 @@ jobs:
             if ($version -cne '151.0.7922.34') { throw 'Wrong Chromium' }
             $env:POCKET_REEL_CHROMIUM_PIN = $version
             $env:BROWSER_PATH = $chrome
+            $env:POCKET_REEL_F08_BOOT_HELPER = Join-Path $src 'verification/browser-tests/boot-home-check.cjs'
             $env:POCKET_REEL_DISPOSABLE_RUNNER = '1'
             New-Item -ItemType Directory -Path $candidate | Out-Null
             Copy-Item -LiteralPath (Join-Path $src 'game/Thai-Waters-play.html') -Destination $candidate

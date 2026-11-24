@@ -1,7 +1,7 @@
 import {createRequire} from 'node:module';
 import {mkdtemp,readFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
-import {join} from 'node:path';
+import {isAbsolute,join} from 'node:path';
 import {prepare,processFor,H,BASE,SHA} from './exact-pack.mjs';
 class ProbeError extends Error {}
 const check=(ok,phase)=>{if(!ok)throw new ProbeError(phase);};
@@ -19,6 +19,24 @@ const main=async()=>{
  const finishBrowser=async()=>{if(ctx){const pending=ctx;ctx=null;await pending.close();}};
  const finishServer=async()=>{if(server){const pending=server;server=null;await pending.stop();}};
  const errors=[],outside=[];
+ const bootHelper=process.env.POCKET_REEL_F08_BOOT_HELPER;
+ check(typeof bootHelper==='string'&&isAbsolute(bootHelper),'exact-f08-boot-helper-required');
+ const {requireBootHome}=require(bootHelper);
+ check(typeof requireBootHome==='function','invalid-f08-boot-helper');
+ const boot=async p=>{
+  try{return await requireBootHome(p);}
+  catch(error){
+   const state=await p.evaluate(expected=>{
+    const menu=document.getElementById('menu');
+    const visible=id=>{const e=document.getElementById(id);return !!(e&&!e.hidden&&e.getClientRects().length&&getComputedStyle(e).visibility!=='hidden');};
+    return {initialized:typeof g!=='undefined'&&!!g,exactUrl:location.href===expected,
+      recovery:visible('startupRecovery'),title:visible('bootStart'),
+      modes:menu?.dataset.arcadePhase==='modes',resume:visible('bootResume')};
+   },BASE).catch(()=>null);
+   console.error('Boot diagnostic '+JSON.stringify({phase,state,pageErrorCount:errors.length,outsideCount:outside.length}));
+   throw error;
+  }
+ };
  const open=async(profile,observe=false)=>{
   const entry=profile==='persistent-source'?'source':'destination';
   phase=entry+'-chromium-launch';
@@ -31,7 +49,7 @@ const main=async()=>{
   phase=entry+'-canonical-page';
   check(H(await (await p.goto(BASE)).body())===SHA,'browser-received-noncanonical-bytes');
   phase=entry+'-boot-home';
-  await p.locator('#bootResume').waitFor({state:'visible'});return p;
+  await boot(p);return p;
  };
  const snap=p=>p.evaluate(()=>({raw:localStorage.getItem('thai-atlas-v2'),catchCount:g.caught(1433),epoch:performance.timeOrigin,initial:window.__initialRouteCareer}));
  const career=async(p,restore=false)=>{
@@ -110,7 +128,7 @@ const main=async()=>{
   await upload();await p.locator('#careerRestore').waitFor({state:'visible'});
   check((await snap(p)).raw===before,'preview-wrote-career');
   phase='cancel-preview-reload';
-  await p.reload();await p.locator('#bootResume').waitFor({state:'visible'});
+  await p.reload();await boot(p);
   check((await snap(p)).raw===before,'cancel-by-reload-wrote-career');
   phase='destination-resume';
   await p.locator('#bootResume').tap();await p.waitForFunction(()=>g?.state()===0&&!$('act').disabled);await career(p,true);
@@ -120,7 +138,7 @@ const main=async()=>{
   phase='explicit-backup-replace';
   await Promise.all([p.waitForNavigation(),p.locator('#careerRestore').tap()]);
   await p.waitForFunction(epoch=>performance.timeOrigin!==epoch,preReplaceEpoch);
-  await p.locator('#bootResume').waitFor({state:'visible'});
+  await boot(p);
   phase='destination-import-readback';
   const imported=await snap(p);check(imported.raw===saved.raw&&imported.catchCount===1,'explicit-manual-import-did-not-restore');
   phase='destination-final-restart';
