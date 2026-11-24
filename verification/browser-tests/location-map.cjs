@@ -101,9 +101,10 @@ assert.equal(orderedIds[1],unmapped);
    assert.equal(msea.licenseUrl,'https://creativecommons.org/licenses/by/4.0/');
    assert.equal(msea.identifier,'https://doi.org/10.5194/essd-17-2693-2025');
    assert.match(msea.changes,/rounded/);
-   assert.equal(credits.featureSources.length,12);
+   assert.equal(credits.featureSources.length,14);
    const northeast=[[19,103.747,17.297,'Nam_Oun'],[30,101.636,16.539,'Chulabhorn'],[32,103.44,16.654,'Lam_Pao']];
-   assert.deepEqual(credits.featureSources.slice(-3).map(r=>[r.gameId,r.sourceRow]),northeast.map(([id,,,row])=>[id,row]));
+   const nextPins=[[89,101.324,14.307,'Khun_Dan_Prakan_Chon'],[94,99.783,12.462,'Pranburi']];
+   assert.deepEqual(credits.featureSources.slice(9).map(r=>[r.gameId,r.sourceRow]),[...northeast,...nextPins].map(([id,,,row])=>[id,row]));
    const chooseKwanByKeyboard=async()=>{
     const trigger=p.locator('#mapWaterbody + button'),overlay=p.locator('#lcdPicker');
     await trigger.press('ArrowDown');
@@ -130,9 +131,15 @@ assert.equal(orderedIds[1],unmapped);
     await press('#back');
     await press('[data-section=boot-home] [data-to=spots]');
     assert(await p.locator('#waterbodyMap').isVisible());
+    assert.equal(await p.locator('#menuTitle').textContent(),lang==='th'?'แผนที่ตกปลา':'Fishing map');
     assert(await p.locator('#mapTravel').isDisabled(),'boot preview never travels');
     await assertList();
-    assert.equal(await p.locator('#mapWaterbody option').count(),13);
+    assert.equal(await p.locator('#mapWaterbody option').count(),15);
+    const mapLabel=lang==='th'?'เขื่อนขุนด่านปราการชล':'Khun Dan Dam';
+    const fullName=await p.evaluate(()=>atlas.locations[89].name);
+    assert.equal(await p.locator('#mapWaterbody option[value="89"]').textContent(),mapLabel,'long map-only label fits the LCD');
+    assert.equal(await p.locator('#mapWaterbody option[value="89"]').getAttribute('title'),fullName);
+    assert.equal(await p.locator('#places option[value="89"]').textContent(),fullName,'retain the canonical list label');
     assert(await p.locator('#mapAccessNote').isVisible());
     assert.match(await p.locator('#mapAccessNote').innerText(),lang==='th'?/ไม่ใช่จุดเข้าตกปลา/:/not a fishing-access point/);
     const r=await p.locator('#menu').boundingBox();
@@ -152,6 +159,7 @@ assert.equal(orderedIds[1],unmapped);
    await press('#bootResume');await press('#openMenu');await press('[data-section=home] [data-to=spots]');
    assert(await p.locator('#locationMapOpen').isVisible(),'in-game entry preserves list-first navigation');
    await press('#locationMapOpen');
+   assert.equal(await p.locator('#menuTitle').textContent(),'Fishing map','in-game chart uses the same end-user heading');
    assert(!(await p.locator('#mapWaterbody option').evaluateAll(xs=>xs.map(x=>x.value))).includes(unmapped));
    const snapshot=()=>p.evaluate(()=>({
     live:placeId,pending:pendingSpot,engine:g.state(),raw:localStorage.getItem('thai-atlas-v2')
@@ -171,12 +179,12 @@ assert.equal(orderedIds[1],unmapped);
    assert.equal(initialStorage.known,false);
    const before=await p.locator('#spot').textContent(), prior=await p.locator('#places').inputValue();
    const b=await p.locator('#waterbodyMap').boundingBox();
-   for(const [id,lon,lat] of northeast){
+   for(const [id,lon,lat] of [...northeast,...nextPins]){
     const x=b.x+b.width*(115+(lon-101.1)*10.2)/230,y=b.y+b.height*(93+(13.1-lat)*10.6)/186;
     if(touch)await p.touchscreen.tap(x,y);else await p.mouse.click(x,y);
-    assert.equal(await p.locator('#mapWaterbody').inputValue(),String(id),name+' selects the exact Northeast marker');
+    assert.equal(await p.locator('#mapWaterbody').inputValue(),String(id),name+' selects the exact representative marker');
     assert.equal(await p.locator('#mapStage').textContent(),await p.evaluate(id=>atlas.locations[id].name,id));
-    assertSnapshot(await snapshot(),beforeState,'Northeast marker selection must not travel or write a save');
+    assertSnapshot(await snapshot(),beforeState,'Marker selection must not travel or write a save');
    }
    const x=b.x+b.width*(115+(99.875-101.1)*10.2)/230,y=b.y+b.height*(93+(13.1-19.171)*10.6)/186;
    if(touch)await p.touchscreen.tap(x,y);else await p.mouse.click(x,y);

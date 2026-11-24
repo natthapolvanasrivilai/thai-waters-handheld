@@ -28,7 +28,8 @@ def load_map(root, locations):
     offset = {0:"Mae Ngat Reservoir",2:"Cheow Lan Lake",16:"Kwan Phayao",31:"Ubol Ratana Reservoir",
               19:"Nam Un Reservoir",30:"Chulabhorn Reservoir",32:"Lam Pao Reservoir",
               46:"Sirindhorn Reservoir",56:"Bhumibol Reservoir",70:"Sirikit Reservoir",
-              86:"Srinagarind Reservoir",95:"Bang Lang Reservoir"}
+              86:"Srinagarind Reservoir",89:"Khun Dan Prakan Chon Reservoir",
+              94:"Pran Buri Reservoir",95:"Bang Lang Reservoir"}
     by_id = {row["id"]: row for row in locations}
     seen = set()
     pins = []
@@ -83,7 +84,7 @@ def credits(root):
         "creator": ["S. S. Mahto", "S. Fatichi", "S. Galelli"],
         "copyright": "© Authors 2025",
         "identifier": "https://doi.org/10.5194/essd-17-2693-2025",
-        "changes": "Selected eleven reservoir records, rounded WGS84 coordinates to 0.001°, and linked them to stable game IDs."
+        "changes": "Selected reservoir records, rounded WGS84 coordinates to 0.001°, and linked them to stable game IDs."
     })
     citation["mapSources"]["nga-gns-kwan-phayao"]["credit"] = (
         "Geographic Names Database data, names approved by the U.S. Board on Geographic Names and maintained by NGA."
