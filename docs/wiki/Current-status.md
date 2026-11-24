@@ -1,10 +1,10 @@
 # Project status
 
-Reviewed 2026-11-23
+Reviewed 2026-11-24
 
 ## Engineering revision
 
-TW-A-0003-R0002 is the current seven-plate unpowered print kit. Plate 2 carries the reinforced crank-pocket rim and plate 3 corrects an unsupported rod-grip start. All 26 parts and gauges have individual print checks. Support removal at the housing shelf and opposite reel lip still needs an inert first article. [Print review and per-part checks](../../hardware/mechanical/reel-dfm-r0001/README.md) · [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/reel-dfm-r0001-fit-1/Thai-Waters-DFM-R0001-X1C.3mf) · [Offline section and part inspector](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/reel-dfm-r0001-fit-1/Print-inspection.html)
+TW-A-0003-R0003 is the current unpowered fit kit. It includes a screw-retained bezel, clear access to all four controller screws, a separately printed lamp shelf, a populated combined-board gauge, speaker and motor gauges, and an alternative A3 with its plug seated. All 30 objects sliced, with zero completely unbacked model starts. The physical fit, real harness and batteryless USB startup remain open. [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Thai-Waters-R0003-Enclosure-X1C.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Enclosure-fit-guide.html) · [Hardware review and print sequence](../../hardware/mechanical/enclosure-fit-r0003/README.md)
 
 TW-A-0001-R0017 fits a keyed power cap into the existing R0016 housing. Reprint only the cap. Both its pressing face and the inner flange follow the single square corner in the existing opening. [Cap-only X1C plate](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0017-keyed-cap-fit-2/R0017-keyed-power-cap-X1C.3mf) · [Profile and fit evidence](../../hardware/mechanical/TW-A-0001-R0017/README.md)
 
@@ -32,13 +32,13 @@ The owner confirmed that the R20 four-post carrier fits the printed floor sample
 
 [Photos and illustrated fit check](../../hardware/mechanical/pocket-reel-r19b-removal-trial/QA/R20-first-print/README.md)
 
-## USB indicator dry fit
+## Earlier R0016 USB indicator dry fit
 
 R0013 through R0015 have a roof above USB1. Skip the lamp placement on those prints. In R0016, point the LED toward the USB wall, lower the upright gauge 15 mm toward the service end from the U mark, then slide it parallel to the wall toward the mark until it seats. Use the supplied Bambu project for plate 1 (estimated 2 h 7 min and 53.91 g). Its native slice left 0.10 mm of vertical clearance for the leadless gauge. The installed lamp leads cannot accommodate the guide’s 18 mm vertical display motion and need a separate wired assembly trial.
 
 [Physical and wired fit record #99](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/99) · [Corrected R0015 guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0015-PCB-assembly.html) · [Motion evidence](../../hardware/mechanical/TW-A-0001-R0015/QA/usb-indicator/R0016.json) · [R0016 print and slice checks](../../hardware/mechanical/TW-A-0001-R0016/Printing/README.md)
 
-## Power cap dry fit
+## R0017 power cap dry fit
 
 Align the squared corner on the cap with the matching corner in the hole. The R0017 guide opens at the alignment point. After fitting the real switch and keeper, check a centre press and an edge press for return and twist. The solid printed switch gauge checks alignment only.
 
@@ -48,17 +48,7 @@ With the display off the case and the switch board and its west retainer set asi
 
 ## Next fit check
 
-Let the R0013 plate 7 finish. For an R0016/R0017 build, print only plate 1 from the R0016 project. Use the fixed-seat display gauge or the original plain display with six square blocks. Reuse the other board gauges. Set aside both long A3 strips. In the new case, dry-fit A3 directly onto the printed rail tops with J1 toward the lower service edge. Check for rocking, contact under the board and display closure before any bonding.
-
-[Download the standalone 3D PCB assembly guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/reel-dfm-r0001-fit-1/R0017-PCB-assembly.html) · [Download the handbook with the offline PCB assembly tab](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/reel-dfm-r0001-fit-1/Thai-Waters-handbook.html) · [Housing identification and A3 fit instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
-
-With an older flat-floor R0013 housing, its two loose strips still establish the correct height. The R20 carrier trial is independent of the housing change. In the R0014 project plate 7 contains the same eight PCB gauges and six loose A4/A5 spacers. The four thin A2 shims in the full housing remain separate measured stock.
-
-[Download the R0016 X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/Thai-Waters-R0016-PCB-Fit-X1C.3mf) · [R0014 gauge map](../../hardware/mechanical/TW-A-0001-R0014/Printing/plate-7.png) · [Older R0013 plate map for the print in progress](../../hardware/mechanical/pcb-fit-r0013/plate-7.png)
-
-The R0013 print project corrected the earlier one-layer fault in the optical and flexible parts. The prior R0015 X1 Carbon slice estimated 2 h 6 min and 53.95 g for plate 1 on the saved SuperTack PETG profile. Both A3 rails have continuous perimeter paths and open grooves, with no generated support in the A3 bay. The existing USB-end detail uses removable support. Physical A3 seating and real-board retention remain open.
-
-[R0015 native slice and key relief](../../hardware/mechanical/TW-A-0001-R0015/Printing/README.md) · [R0014 print preparation and native checks](../../hardware/mechanical/TW-A-0001-R0014/Printing/README.md) · [Earlier R0013 native results](../../hardware/mechanical/pcb-fit-r0013/QA/project-check.json)
+Print plates 1, 2 and 7 first. Fit the lamp shelf above the speaker gauge and check all four controller screw paths. Try one battery envelope and one A3 configuration at a time before closing the bezel. Record every result on the [30-object first-article sheet](../../hardware/mechanical/enclosure-fit-r0003/first-article.csv).
 
 ## Qualification and software
 

@@ -1,0 +1,32 @@
+{
+  "sled_installed": {},
+  "new_posts_installed": {},
+  "screws_installed": {},
+  "anti_rotation_cheek_gap_mm": 0.25,
+  "screw_centres_mm": [
+    [
+      -44.6,
+      18.0
+    ]
+  ],
+  "physical_pilot_engagement_mm": 4.4,
+  "screw_shell_common_mm3": [
+    0.0
+  ],
+  "screw_hits_sled_mm3": [
+    0.0
+  ],
+  "drop_throughout": {},
+  "slide_throughout": {},
+  "driver_throughout": {},
+  "installed_cable_gap_mm": 0.4400593116422431,
+  "speaker_gauge_vs_shell_mm3": 0.0,
+  "motor_gauge_vs_shell_mm3": 0.0,
+  "speaker_vs_shelf_mm": 0.6500000000000004,
+  "motor_vs_new_parts_mm": 52.08452779690118,
+  "pcb_gauge_vs_new_parts_mm": 46.01440643972276,
+  "pcb_gauge_vs_enclosure_mm3": 0.0,
+  "pcb_gauge_vs_retained": {},
+  "pilot_floor_mm": 2.5,
+  "screw_tip_relief_mm": 1.0
+}

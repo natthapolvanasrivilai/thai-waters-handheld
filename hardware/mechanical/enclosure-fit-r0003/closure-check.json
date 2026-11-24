@@ -1,0 +1,55 @@
+{
+  "pad_centres_mm": [
+    [
+      -37.0,
+      -33.65
+    ],
+    [
+      24.0,
+      -33.65
+    ],
+    [
+      -20.0,
+      33.65
+    ],
+    [
+      24.0,
+      33.65
+    ]
+  ],
+  "head_recess_mm": 0.1,
+  "screw_tip_relief_mm": 0.75,
+  "tapped_engagement_mm": 3.85,
+  "seat_web_mm": 1.75,
+  "bezel_final_vs_shell_mm3": 0.0,
+  "bezel_final_vs_retained": {},
+  "new_pads_through_12mm_closure": {},
+  "screw_vs_bezel_or_retained": {},
+  "screen_to_new_pads_mm": 0.32,
+  "h1_head_access": {
+    "1": {
+      "x": -36.0,
+      "y": -24.25,
+      "housing_overlap_mm3": 0.0,
+      "grip_overlap_mm3": 0.0
+    },
+    "2": {
+      "x": -36.0,
+      "y": 24.25,
+      "housing_overlap_mm3": 0.0,
+      "grip_overlap_mm3": 0.0
+    },
+    "3": {
+      "x": 36.0,
+      "y": -24.25,
+      "housing_overlap_mm3": 0.0,
+      "grip_overlap_mm3": 0.0
+    },
+    "4": {
+      "x": 36.0,
+      "y": 24.25,
+      "housing_overlap_mm3": 0.0,
+      "grip_overlap_mm3": 0.0
+    }
+  }
+}

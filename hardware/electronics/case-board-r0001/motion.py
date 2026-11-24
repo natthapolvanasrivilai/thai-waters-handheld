@@ -17,7 +17,7 @@ from intervals import pole_motion,ribbon
 from stroke import new_leads
 from service_check import meshgap,model,tri,maximum_drawing_pack
 
-def run(cache):
+def run(cache, additions=None, closure=None, output=None):
     cad=lambda n:cq.Shape.importBrep(str(cache/(n+".brep")))
     pcb=cq.importers.importStep(str(HERE/"case-board.step")).val().rotate((0,0,0),(1,0,0),180).translate((13,-14,18.5))
     screws=cq.importers.importStep(str(ROOT/"hardware/components/standard-fasteners/4mm.step")).val()
@@ -25,7 +25,9 @@ def run(cache):
     for i,(x,y) in enumerate(MOUNTS,1):
         fixed[f"boss {i}"]=support(x-87,y-114,i)
         fixed[f"screw {i}"]=screws.translate((x-87,y-114,18.5))
+    fixed.update(additions or {})
     rigid_names=set(fixed)
+    fixed.update(closure or {})
     fixed.update(installed()[0])
     shapes={k:model(*tri(s)) for k,s in fixed.items()}
     wire=new_leads()
@@ -80,7 +82,7 @@ def run(cache):
     report["rigid_display_18mm_lift_to_new_mount_mm"]=bound
     report["scope"]="Conservative midpoint allowances on nominal triangulated CAD. Display check covers rigid parts with electrical leads disconnected. Drawing-maximum pack uses geometric surface distance. Check physical fit, driver access, release force and harness service loop separately."
     print(report,flush=True)
-    (HERE/"motion.json").write_text(json.dumps(report,indent=2)+"\n")
+    (output or HERE/"motion.json").write_text(json.dumps(report,indent=2)+"\n")
     assert min(rigid[0],best[0],bound[0],report["drawing_maximum_pack_to_changes_mm"][0])>0
 if __name__=="__main__":
     p=argparse.ArgumentParser()

@@ -1,0 +1,14 @@
+{
+  "1": {
+    "checked": 1,
+    "native_result_sha256": "28cd338e6a4287b6974f064402d940a86c94e7b42521f9486222fa5a1b78d459"
+  },
+  "2": {
+    "checked": 10,
+    "native_result_sha256": "ee991104fd545868b6ddb60d4be9e037c7863120499db9f11819d47bf0dd8c2d"
+  },
+  "7": {
+    "checked": 11,
+    "native_result_sha256": "065184b235f9d0a04c77199bcd5605dbf01c225c02e685b3c17b9f4b025d71af"
+  }
+}

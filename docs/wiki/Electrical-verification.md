@@ -1,9 +1,11 @@
 # Read a circuit trace
 
+**R0003 enclosure review.** Both custom layouts passed the current ERC and routing checks. Two 330 mA batteryless starts failed the 3.9 V acceptance threshold. The proposed Waveshare V2 rework and populated measurements are open. [Current circuit results and hardware review](../../hardware/mechanical/enclosure-fit-r0003/README.md#review-of-the-hardware)
+
 R0016 keeps the R0006 electronics. The five USB lamp simulation cases reproduced their registered measurements. The soldered display and lamp still require a workable assembly sequence and bench validation. [Lamp fit and wiring limits](../../hardware/mechanical/TW-A-0001-R0016/README.md) · [Hardware issue #99](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/99)
 
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/reel-dfm-r0001-fit-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0003-1/Thai-Waters-handbook.html)
 
 ## R0013 fitted electronics
 
