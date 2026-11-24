@@ -1370,6 +1370,7 @@ function draw(){
  if(p===5)landedCatch(age);
  const waitHint=g.noStock()?'Quiet water · check bait and depth':g.technique()===0?(g.teasing()?'Nibble · hold steady':'Watch the float'):g.technique()===1?(g.sinking()?'Pause · let it flutter':'Wind a short burst'):(g.sinking()?(g.rodUp()?'Lower the rod':'Let the jig fall'):'Lift the jig, then lower');
  const fightHint=p===4?fightLabel():'';
+ const fightLine=p===4?L('Line out')+' '+Math.round(g.fraction()*100)+'%':'';
  let title=['Tap the water to aim and cast','Casting · '+$('hookBait').options[g.baitChoice()%6].text+' / '+$('baitDepth').options[Math.floor(g.baitChoice()/6)].text,waitHint,'Bite! Lift now',fightHint,'Landed!',reasons[g.reason()]][p];
  if(p===3&&$('cue').selectedIndex===2)title='Listen to the line';
  if(p===5)title=atlas.fish[g.species()].name;
@@ -1396,8 +1397,8 @@ function draw(){
  $('act').hidden=p===1;
  updateRigHud();
  if(!landed&&!menu.open){
-  const hint=p===9?'Tap the water to aim and cast':p===4?fightHint+'  '+g.remaining().toFixed(1)+' turns':title;
-  caption(hint,9,309,'left',p===3&&$('cue').selectedIndex!==2?'#ffd291':'#fff4d8',11);
+  const hint=p===9?L('Tap the water to aim and cast'):p===4?L(fightHint)+'  ·  '+fightLine:L(title);
+  caption(hint,9,309,'left',p===3&&$('cue').selectedIndex!==2?'#ffd291':'#fff4d8',11,'',false,462);
   if(p===4||p===7)tensionLight(ctx,p===7?Math.max(.6,g.tension()):g.tension(),bx,by);
  }
  const battery=$('simBattery').value;
@@ -1408,7 +1409,7 @@ function draw(){
   $('lcdPower').setAttribute('aria-label',L(charge?'Simulator battery '+percentage+(battery.endsWith('+')?', charging':''):battery==='USB'?'Simulator on USB power':'Battery gauge unavailable'));
  }
  if(title!==lastLabel){setUi($('message'),title);lastLabel=title}
- setUi($('sub'),[rigNotes[g.technique()],'Let it settle.',g.technique()===0?'A twitch is a nibble. Strike on a full dive.':(g.strokes()+1)+' / '+g.strokesNeeded()+' · '+rigNotes[g.technique()], $('cue').selectedIndex===2?'Listen for the bite.':'Set the hook before the float resurfaces.',g.remaining().toFixed(1)+' turns left · line tension',p===5?catchRewardLabel():'','Try another cast.'][p]);
+ setUi($('sub'),[rigNotes[g.technique()],'Let it settle.',g.technique()===0?'A twitch is a nibble. Strike on a full dive.':(g.strokes()+1)+' / '+g.strokesNeeded()+' · '+rigNotes[g.technique()], $('cue').selectedIndex===2?'Listen for the bite.':'Set the hook before the float resurfaces.',fightLine+' · '+L('Line tension'),p===5?catchRewardLabel():'','Try another cast.'][p]);
  setUi($('act'),p===4||(p===2&&g.technique()===1)?'Reel ¼ turn':p===2&&g.technique()===2?'Jig':p>=2&&p<=3?'Lift':'Cast');$('tension').hidden=p!==4;$('tension').value=g.tension();if(p===7)setUi($('act'),g.contact()===1?'Lift free':'Pay out');
 
  if(p===8)setUi($('act'),'Reel ¼ turn');

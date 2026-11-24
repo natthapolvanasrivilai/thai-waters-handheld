@@ -74,6 +74,8 @@ int main() {
     return g;
   };
   auto giant=sharkFight(145), smallShark=sharkFight(110);
+  auto borderline=sharkFight(130);
+  assert(borderline.fightStyle()==FightStyle::Heavy && !trophySize(shark,130));
   assert(giant.surge() && giant.rodLoad()>.72f);
   assert(!smallShark.surge() && smallShark.rodLoad()<.40f);
   assert(giant.target>smallShark.target+3.f);
@@ -96,14 +98,39 @@ int main() {
   assert(steady.phase==Phase::Bite);
   steady.tick(20,false,true,0);
   assert(steady.phase==Phase::Fight && steady.surge());
-  int elapsed=0, runs=0;bool wasRun=false;
+  const auto fightStart=steady;
+  int elapsed=0, runs=0;float forward=0;bool wasRun=false,warned=false,tired=false;
   while(steady.running() && elapsed<80000){
     const bool run=steady.surge();runs+=run&&!wasRun;wasRun=run;
-    steady.tick(20,false,false,run?-.004f:.04f);elapsed+=20;
+    const bool warning=steady.heavyRunSoon();warned|=warning;tired|=steady.heavyTired();
+    const float step=(run||warning)?0.f:.04f;forward+=step;
+    steady.tick(20,false,false,step);elapsed+=20;
   }
-  assert(elapsed>=14000 && runs>=2 && steady.phase==Phase::Landed);
+  assert(elapsed>=20000 && elapsed<=35000 && runs>=3 && forward>=18 && forward<=32);
+  assert(steady.phase==Phase::Landed && warned && tired);
   assert(steady.landedGrams==42406);
-  printf("Heavy shark fixture: %d ms, %d runs, %d g.\n",elapsed,runs,steady.landedGrams);
+  for(int rank:{0,3})for(bool taps:{false,true}){
+    auto paced=fightStart, rushed=fightStart;
+    paced.progress.rank[1]=paced.progress.rank[2]=rank;
+    rushed.progress.rank[1]=rushed.progress.rank[2]=rank;
+    float wound=0;bool warning=false,fatigue=false;
+    int i=0;
+    for(;i<3000 && paced.running();++i){
+      const bool warn=paced.heavyRunSoon();
+      warning|=warn;fatigue|=paced.heavyTired();
+      const float step=(paced.surge()||warn)?0.f:taps?(i%13==0?.25f:0.f):.02f;
+      wound+=step;paced.tick(20,false,false,step);
+    }
+    assert(paced.phase==Phase::Landed && wound>12.f && wound<35.f && warning && fatigue && i<3000);
+    printf("Paced %s rank %d: %d ms, %.2f input turns.\n",taps?"tap":"hold",rank,i*20,wound);
+    const auto rushPoints=rushed.progress.points();
+    for(int j=0;j<500 && rushed.running();++j)rushed.tick(20,false,false,taps?(j%13==0?.25f:0.f):.02f);
+    assert(rushed.phase==Phase::Lost && rushed.reason==Reason::Snapped && rushed.progress.points()==rushPoints);
+  }
+  auto next=sharkFight(145);next.heavyBestLine=0;assert(next.heavyTired());
+  next.enter(Phase::Ready);next.line=next.target=10;next.enter(Phase::Fight);
+  assert(next.heavyFight && !next.heavyTired());
+  printf("Heavy shark fixture: %d ms, %d runs, %.2f input turns, %d g.\n",elapsed,runs,forward,steady.landedGrams);
   assert(steady.progress.points()==0 && steady.landingReward()==LandingReward::TacklePoint);
   assert(steady.fileCatch() && steady.pointsAwarded==2 && steady.progress.points()==2);
   assert(!steady.fileCatch() && steady.progress.points()==2);

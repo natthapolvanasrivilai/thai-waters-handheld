@@ -156,6 +156,13 @@ inline bool trophySize(int id,int cm){
  return f.form==1 && f.tier>=1 && cm*5>=f.high*4 &&
    int64_t(weightGrams(id,cm))*90>=3000000;
 }
+// Fight difficulty is intentionally separate from the one-time trophy reward.
+inline bool strongRunSize(int id,int cm){
+ if(id<originalSpecies || id>=fishCount)return false;
+ const auto& f=catalog[id];
+ return f.form==1 && f.tier>=1 && cm*10>=f.high*7 &&
+   int64_t(weightGrams(id,cm))*90>=2000000;
+}
 inline const char* sizeLabel(int id,int cm){
  if(id<0 || id>=fishCount || (id==ray && cm>catalog[ray].high))return "Recorded size";
  return id<originalSpecies?catchmass::measure[id]:catalog[id].measure;

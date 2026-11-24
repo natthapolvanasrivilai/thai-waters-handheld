@@ -404,7 +404,7 @@ void play(const View& v){
       screen.drawEllipse(bobX,bobY,radius,2+radius/5,0xe73b);
     }else waterStrike(bobX,bobY,g.age,g.surge());
     head=creek::fightInstruction(g);col=g.surge()?gold:white;
-    snprintf(desc,sizeof(desc),"%.1f turns left  |  %s",g.line,v.practice?"Tap for 1/4 turn":"Watch line tension");sub=desc;
+    snprintf(desc,sizeof(desc),"Line out %d%%  |  %s",g.target>0?int(g.line/g.target*100.f+.5f):0,v.practice?"Tap for 1/4 turn":"Watch line tension");sub=desc;
     break;
   case Phase::Landed:{
     const auto& f=creek::catalog[g.fish];
@@ -470,7 +470,7 @@ void play(const View& v){
     head=!v.motion?"Check the motion sensor":wheelFault(v.field);sub="Paused. Menu offers touch practice.";col=gold;
   }
   char hint[96];snprintf(hint,sizeof(hint),"%s",head);
-  if(g.phase==Phase::Fight)snprintf(hint,sizeof(hint),"%s  %.1f turns",head,g.line);
+  if(g.phase==Phase::Fight)snprintf(hint,sizeof(hint),"%s  |  Line out %d%%",head,g.target>0?int(g.line/g.target*100.f+.5f):0);
   if(!v.practice&&(!v.motion||v.field!=Field::Good))snprintf(hint,sizeof(hint),"%s",head);
   int width=12+textWidth(hint,1);
   screen.fillRoundRect(7,296,width,17,3,ink);label(13,301,hint,col,1);
