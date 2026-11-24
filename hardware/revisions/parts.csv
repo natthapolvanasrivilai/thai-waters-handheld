@@ -112,3 +112,4 @@ TW-P-0036-R0002,Rectangular case-board BOM,hardware/electronics/case-board-r0002
 TW-P-0001-R0021,Enclosure with inset board bearing,hardware/electronics/case-board-r0002/housing.step,,dbea143bbe452069f60fbcec954038f8abf357c15469f1030fbab4adc392f0ce
 TW-P-0035-R0003,Rectangular PCB package-height fit gauge,hardware/electronics/case-board-r0002/pcb-gauge.step,,8259c95ca00ad9f6a05c805d8278c685207b98dba977544d198aca7279192a52
 TW-P-0037-R0008,Board gauge SuperTack fixture,hardware/electronics/case-board-r0002/Case-board-R0002-PolyTerra-SuperTack-X1C.3mf,,ebf97eff70a70a71890224d3c5e10535165df85328bccf367b1e5829ce97495d
+TW-P-0037-R0009,Complete X1C enclosure and PCB fit project,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,,7a5396b67d74c2e9121fe3478d679fd35a40c035477ef5a74d302e279e8b64a5

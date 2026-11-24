@@ -35,8 +35,8 @@ def make_master():
     assert solid.isValid() and len(solid.Solids()) == len(solid.Shells()) == 1
     cq.exporters.export(solid, str(MASTER))
 
-def step_mesh():
-    solid = cq.importers.importStep(str(MASTER)).val()
+def step_mesh(master=MASTER):
+    solid = cq.importers.importStep(str(master)).val()
     assert solid.isValid() and len(solid.Solids()) == len(solid.Shells()) == 1
     points, faces = solid.tessellate(.008, .07)
     # OCCT emits face-local vertices. Index common boundary coordinates once,

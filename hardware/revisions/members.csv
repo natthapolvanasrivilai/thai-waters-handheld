@@ -338,3 +338,15 @@ TW-A-0004-R0002,TW-P-0036-R0002,1,hardware/electronics/case-board-r0002/bom.csv,
 TW-A-0004-R0002,TW-P-0001-R0021,1,hardware/electronics/case-board-r0002/housing.step,
 TW-A-0004-R0002,TW-P-0035-R0003,1,hardware/electronics/case-board-r0002/pcb-gauge.step,
 TW-A-0004-R0002,TW-P-0037-R0008,1,hardware/electronics/case-board-r0002/Case-board-R0002-PolyTerra-SuperTack-X1C.3mf,
+TW-A-0003-R0009,TW-P-0001-R0021,1,hardware/electronics/case-board-r0002/housing.step,
+TW-A-0003-R0009,TW-P-0006-R0006,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,3D/Objects/object_2.model
+TW-A-0003-R0009,TW-P-0037-R0009,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,
+TW-A-0003-R0009,TW-P-0038-R0002,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,3D/Objects/gauge_142.model
+TW-A-0003-R0009,TW-P-0042-R0001,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,3D/Objects/object_14.model
+TW-A-0003-R0009,TW-P-0043-R0001,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,3D/Objects/gauge_114.model
+TW-A-0003-R0009,TW-P-0007-R0007,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,3D/Objects/object_3.model
+TW-A-0003-R0009,TW-P-0035-R0003,1,hardware/electronics/case-board-r0002/pcb-gauge.step,
+TW-A-0003-R0009,TW-P-0039-R0001,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,3D/Objects/gauge_144.model
+TW-A-0003-R0009,TW-P-0040-R0001,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,3D/Objects/gauge_146.model
+TW-A-0003-R0009,TW-P-0041-R0001,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,3D/Objects/gauge_148.model
+TW-A-0003-R0009,TW-P-0015-R0003,1,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,3D/Objects/object_12.model

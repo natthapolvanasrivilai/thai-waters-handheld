@@ -1,6 +1,6 @@
 # Rectangular control and USB board R0002
 
-[Open the offline 3D mount review](Mount-review.html) · [Print the board gauge](Case-board-R0002-PolyTerra-SuperTack-X1C.3mf) · [Editable KiCad layout](case-board.kicad_pcb) · [Populated PCB STEP](case-board.step) · [Housing STEP](housing.step) · [Mounted assembly STEP](case-mount-assembly.step)
+[Print the complete enclosure and board set](../../mechanical/full-fit-r0009/README.md) · [Open the offline 3D mount review](Mount-review.html) · [Print the board gauge](Case-board-R0002-PolyTerra-SuperTack-X1C.3mf) · [Editable KiCad layout](case-board.kicad_pcb) · [Populated PCB STEP](case-board.step) · [Housing STEP](housing.step) · [Mounted assembly STEP](case-mount-assembly.step)
 
 ![Rectangular control PCB with both fasteners inside the perimeter](mounted.png)
 
@@ -10,7 +10,7 @@ In the interactive guide, **Lower boards** shows the installed assembly. **PCB u
 
 ## First physical check
 
-Print the single gray gauge on the X1 Carbon with PolyTerra PLA, a 0.4 mm nozzle and SuperTack. The native slice has 12 model layers, 1.70 g of model filament and zero support. If you have an R0008 case, lower the gauge with the raised component blocks facing down. Start both M2 screws by hand. Check for rocking, inspect the nearby sensor and wire space, and offer the unpowered display to its mounts. The R0008 case can check the new board outline and hole pattern. Testing the larger corner bearing requires the revised housing. The [R0008 eight-plate enclosure project](../../mechanical/step-fit-r0008/README.md) is still the published full-case print. This revision issues a board gauge and editable housing for review.
+Print the single gray gauge on the X1 Carbon with PolyTerra PLA, a 0.4 mm nozzle and SuperTack. The native slice has 12 model layers, 1.70 g of model filament and zero support. If you have an R0008 case, lower the gauge with the raised component blocks facing down. Start both M2 screws by hand. Check for rocking, inspect the nearby sensor and wire space, and offer the unpowered display to its mounts. The R0008 case can check the new board outline and hole pattern. Testing the larger corner bearing requires the revised housing. The [complete R0009 eight-plate project](../../mechanical/full-fit-r0009/README.md) includes this gauge and the revised housing.
 
 ## Engineering checks
 
@@ -23,7 +23,7 @@ Print the single gray gauge on the X1 Carbon with PolyTerra PLA, a 0.4 mm nozzle
 | Display and maximum pack | The 18 mm rigid display lift has a 0.30 mm clearance bound. The maximum pack has 1.20 mm nominal clearance to the changed parts. [Motion report](motion.json) |
 | Printed gauge | Native toolpaths cover all 12 layers and both pilot cores stay open through the substrate. The source STEP fits the old and revised cases in CAD. [Gauge and opening checks](gauge-check.json) |
 
-The populated assembly still needs physical verification. The two earlier batteryless startup failures remain open on the same circuit. The new shell has undergone CAD and assembly checks. A full-case slice and physical support-removal trial are pending for its revised posts. [Parent circuit results](../case-board-r0001/verification.json)
+The populated assembly still needs physical verification. The two earlier batteryless startup failures remain open on the same circuit. The new shell has undergone CAD and assembly checks. The complete R0009 project has been sliced. Support removal and physical fit of its revised posts await the first article. [Parent circuit results](../case-board-r0001/verification.json)
 
 ### Rebuild
 

@@ -1,10 +1,10 @@
 # Build, record and service a unit
 
-[Current PolyTerra print checks](../../hardware/mechanical/step-fit-r0008/README.md) · [Mechanical assembly sequence](../../hardware/mechanical/enclosure-print-r0004/README.md#fit-sequence) · [Per-part first-article sheet](../../hardware/mechanical/step-fit-r0008/first-article.csv)
+[Current PolyTerra print checks](../../hardware/mechanical/step-fit-r0008/README.md) · [Mechanical assembly sequence](../../hardware/mechanical/enclosure-print-r0004/README.md#fit-sequence) · [Per-part first-article sheet](../../hardware/mechanical/full-fit-r0009/first-article.csv)
 
 [Prototype carton and divider trial, CAD dimensions and printable patterns](../../manufacturing/packaging/fit-tray/README.md)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-guide-2/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Thai-Waters-handbook.html)
 
 Trial the USB indicator with the unpowered R0016 case and the leadless Plate 7 gauge. On earlier housings, skip this gauge. Record shelf seating, free withdrawal and support cleanup. [Fit procedure](../../hardware/mechanical/TW-A-0001-R0016/README.md)
 

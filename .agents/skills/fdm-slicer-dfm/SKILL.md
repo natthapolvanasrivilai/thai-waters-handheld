@@ -43,3 +43,5 @@ For angled designs, recover the intended bearing face from CAD, test the unsuppo
 When retiring an optical path, check the interior collector, the buried bore, and the exterior skin in both the installed CAD and the delivered print mesh. Count exterior apertures and recheck the live diffuser and connector against the updated solid. [Single-light correction](../../../hardware/mechanical/polyterra-fit-r0003/README.md)
 
 For STEP-defined housings, register the editable solid as the part definition. Reopen that saved STEP and tessellate it as one housing for the print file. Preserve fixture transforms and modifiers separately. Compare the shipped triangles, topology, marked planar faces and native layer paths with the master before publishing. [STEP-based housing release](../../../hardware/mechanical/step-fit-r0008/README.md)
+
+For enclosure fit handoffs, publish the complete multi-plate project as the primary download. Pair the latest registered housing and PCB dummy, and map every required printed plastic and component gauge to its plate and native instance. Label board-only coupons as optional.

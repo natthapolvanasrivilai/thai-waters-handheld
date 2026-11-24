@@ -32,3 +32,4 @@ TW-A-0003-R0006,,Diagonal housing and handle PLA fit trial,Continuous receiver b
 TW-A-0003-R0007,,Single-light angled enclosure fit print,Two oblique optical sleeves removed; active diffuser and USB well verified.,hardware/mechanical/polyterra-fit-r0003/README.md,PLA0003-001
 TW-A-0003-R0008,,Editable STEP housing and matched print project,Direct full-solid tessellation with unchanged installed dimensions.,hardware/mechanical/step-fit-r0008/README.md,STEP0008-001
 TW-A-0004-R0002,,Rectangular PCB and shell mount review,"Routed populated board with two inboard screws, shaped corner seat and unpowered outline gauge.",hardware/electronics/case-board-r0002/README.md,BOARD0002-001
+TW-A-0003-R0009,,Complete enclosure and PCB fit print,Paired rectangular PCB gauge and revised housing in the eight-plate project.,hardware/mechanical/full-fit-r0009/README.md,KIT0009-001

@@ -1,6 +1,6 @@
 # Thai Waters handheld
 
-[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-guide-2/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
+[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
 
 [Hardware closure and playtest issues](quality/hardware-gate.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [November hardware review](quality/hardware-review-2026-11-23.md)
 
@@ -12,7 +12,7 @@
 
 [Rectangular PCB, revised mount and fit gauge](hardware/electronics/case-board-r0002/README.md) · [Open the new board review](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-guide-2/Mount-review.html)
 
-Use **TW-A-0003-R0008** for the next PolyTerra PLA/SuperTack unpowered print. [Editable housing STEP](hardware/mechanical/step-fit-r0008/housing.step) · [PolyTerra PLA X1C project](hardware/mechanical/step-fit-r0008/Thai-Waters-R0008-STEP-PolyTerra-SuperTack-X1C.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0008-step-housing-1/Enclosure-fit-guide.html) · [PLA print checks and fit instructions](hardware/mechanical/step-fit-r0008/README.md)
+**Current PLA test print.** TW-A-0003-R0009 includes the rectangular PCB and matching case, all enclosure plastics and the PCB and component mockups. The 27 objects occupy eight plates for PolyTerra PLA on the X1 Carbon with a 0.4 mm nozzle and SuperTack. Physical fit awaits printing. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf) · [PLA print sequence and checks](hardware/mechanical/full-fit-r0009/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Enclosure-fit-guide.html)
 
 Open the downloaded handbook in a browser. **Current status** checks this GitHub project on every open and links to the evidence for the selected revision. When the check fails, the handbook labels the dated snapshot saved with the file. The archived tabs still work offline. The [original R0011 handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html) and [Rev F engineering release](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/rev-f-engineering-0.7) preserve their original evidence.
 
