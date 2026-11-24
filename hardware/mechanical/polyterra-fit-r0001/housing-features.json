@@ -1,0 +1,74 @@
+[
+  {
+    "feature": "Status aperture",
+    "rim_model_layers": 8,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0.0
+  },
+  {
+    "feature": "Rear driver -24",
+    "rim_model_layers": 112,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0
+  },
+  {
+    "feature": "Rear screw -24",
+    "rim_model_layers": 13,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0
+  },
+  {
+    "feature": "Rear driver +24",
+    "rim_model_layers": 112,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0
+  },
+  {
+    "feature": "Rear screw +24",
+    "rim_model_layers": 13,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0
+  },
+  {
+    "feature": "Controller access -36 -24.25",
+    "rim_model_layers": 43,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0
+  },
+  {
+    "feature": "Controller access -36 +24.25",
+    "rim_model_layers": 43,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0.0
+  },
+  {
+    "feature": "Controller access +36 -24.25",
+    "rim_model_layers": 43,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0
+  },
+  {
+    "feature": "Controller access +36 +24.25",
+    "rim_model_layers": 43,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0
+  },
+  {
+    "feature": "Key opening centre",
+    "rim_model_layers": 14,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0.0
+  },
+  {
+    "feature": "Hook pocket -18",
+    "rim_model_layers": 13,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0
+  },
+  {
+    "feature": "Hook pocket +18",
+    "rim_model_layers": 13,
+    "maximum_model_in_opening_mm2": 0.0,
+    "maximum_support_in_opening_mm2": 0
+  }
+]

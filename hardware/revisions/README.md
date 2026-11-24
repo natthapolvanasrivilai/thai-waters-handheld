@@ -1,5 +1,7 @@
 # Hardware revision register
 
+[TW-A-0003-R0005 PolyTerra PLA fit print](../mechanical/polyterra-fit-r0001/README.md) is the current print process for the R0004 enclosure geometry on the X1 Carbon and Cool Plate SuperTack.
+
 [TW-A-0003-R0002 seven-plate DFM trial](../mechanical/reel-dfm-r0001/README.md) registers the reinforced rotor, combined-board housing and saved X1C print process. The fold and spin are digitally checked. First-article cleanup remains open.
 
 [TW-A-0003-R0001 case-board fit kit](../electronics/case-board-r0001/README.md) registers the two printable fit pieces separately from the full-device baseline. The combined auxiliary PCB is TW-P-0034-R0001.

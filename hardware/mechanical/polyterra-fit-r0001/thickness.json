@@ -1,0 +1,623 @@
+[
+  {
+    "name": "Housing - single status window and rear screw access",
+    "elevated_underside_under_30deg_mm2": 7162.861,
+    "volume_mesh": true,
+    "size_mm": [
+      110.72,
+      74.25,
+      31.0
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 10226,
+      "p05_mm": 0.95,
+      "min_sample_mm": 0.06,
+      "fraction_under_0_84": 0.0142
+    },
+    "inclined_or_flat": {
+      "count": 6909,
+      "p05_mm": 1.3,
+      "min_sample_mm": 0.015,
+      "fraction_under_0_84": 0.0207
+    }
+  },
+  {
+    "name": "Solid-front bezel - concealed hooks",
+    "elevated_underside_under_30deg_mm2": 3.87,
+    "volume_mesh": true,
+    "size_mm": [
+      107.22,
+      67.72,
+      5.08
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 1811,
+      "p05_mm": 1.01,
+      "min_sample_mm": 1.01,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 16092,
+      "p05_mm": 0.519,
+      "min_sample_mm": 0.005,
+      "fraction_under_0_84": 0.0818
+    }
+  },
+  {
+    "name": "Reel rotor - pocket facing up",
+    "elevated_underside_under_30deg_mm2": 515.376,
+    "volume_mesh": true,
+    "size_mm": [
+      25.5,
+      25.5,
+      13.9
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 8840,
+      "p05_mm": 1.45,
+      "min_sample_mm": 0.01,
+      "fraction_under_0_84": 0.0051
+    },
+    "inclined_or_flat": {
+      "count": 7896,
+      "p05_mm": 0.65,
+      "min_sample_mm": 0.65,
+      "fraction_under_0_84": 0.2444
+    }
+  },
+  {
+    "name": "folding-stem_1",
+    "elevated_underside_under_30deg_mm2": 41.123,
+    "volume_mesh": true,
+    "size_mm": [
+      14.454,
+      15.496,
+      5.339
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 10324,
+      "p05_mm": 0.9,
+      "min_sample_mm": 0.511,
+      "fraction_under_0_84": 0.0015
+    },
+    "inclined_or_flat": {
+      "count": 7122,
+      "p05_mm": 1.1,
+      "min_sample_mm": 0.642,
+      "fraction_under_0_84": 0.0014
+    }
+  },
+  {
+    "name": "grip_1",
+    "elevated_underside_under_30deg_mm2": 6.374,
+    "volume_mesh": true,
+    "size_mm": [
+      7.455,
+      7.455,
+      9.3
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 13536,
+      "p05_mm": 1.362,
+      "min_sample_mm": 0.461,
+      "fraction_under_0_84": 0.0203
+    },
+    "inclined_or_flat": {
+      "count": 2295,
+      "p05_mm": 0.786,
+      "min_sample_mm": 0.652,
+      "fraction_under_0_84": 0.0693
+    }
+  },
+  {
+    "name": "collar_1",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      13.198,
+      13.2,
+      2.5
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 10189,
+      "p05_mm": 1.9,
+      "min_sample_mm": 1.9,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 7811,
+      "p05_mm": 2.5,
+      "min_sample_mm": 2.5,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "R0017 keyed power cap",
+    "elevated_underside_under_30deg_mm2": 11.63,
+    "volume_mesh": true,
+    "size_mm": [
+      7.7,
+      7.7,
+      1.32
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 4157,
+      "p05_mm": 0.382,
+      "min_sample_mm": 0.007,
+      "fraction_under_0_84": 0.1018
+    },
+    "inclined_or_flat": {
+      "count": 12960,
+      "p05_mm": 0.3,
+      "min_sample_mm": 0.3,
+      "fraction_under_0_84": 0.4937
+    }
+  },
+  {
+    "name": "grip-screw-keeper_1",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      9.02,
+      9.019,
+      1.59
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 6747,
+      "p05_mm": 2.66,
+      "min_sample_mm": 2.66,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 11253,
+      "p05_mm": 1.59,
+      "min_sample_mm": 1.59,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "receiver-nut-keeper_1",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      7.7,
+      7.699,
+      0.83
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 3770,
+      "p05_mm": 2.05,
+      "min_sample_mm": 2.05,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 14230,
+      "p05_mm": 0.4,
+      "min_sample_mm": 0.4,
+      "fraction_under_0_84": 1.0
+    }
+  },
+  {
+    "name": "key-board-retainer-west_1",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      16.8,
+      5.35,
+      7.47
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 7793,
+      "p05_mm": 1.03,
+      "min_sample_mm": 0.75,
+      "fraction_under_0_84": 0.0191
+    },
+    "inclined_or_flat": {
+      "count": 9611,
+      "p05_mm": 1.5,
+      "min_sample_mm": 1.25,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "battery-wire-bridge_1",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      47.518,
+      12.097,
+      3.33
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 5027,
+      "p05_mm": 1.35,
+      "min_sample_mm": 1.09,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 12614,
+      "p05_mm": 1.2,
+      "min_sample_mm": 1.2,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "rod-grip_1",
+    "elevated_underside_under_30deg_mm2": 1961.454,
+    "volume_mesh": true,
+    "size_mm": [
+      130.4,
+      31.0,
+      34.547
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 5009,
+      "p05_mm": 10.372,
+      "min_sample_mm": 2.219,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 10926,
+      "p05_mm": 3.9,
+      "min_sample_mm": 3.9,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "Diffuser - opaque PLA fit gauge",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      6.9,
+      3.5,
+      2.38
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 10156,
+      "p05_mm": 0.55,
+      "min_sample_mm": 0.55,
+      "fraction_under_0_84": 0.2553
+    },
+    "inclined_or_flat": {
+      "count": 7844,
+      "p05_mm": 1.6,
+      "min_sample_mm": 1.6,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "USB mask - rigid PLA fit gauge",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      8.01,
+      13.88,
+      0.51
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 2211,
+      "p05_mm": 0.509,
+      "min_sample_mm": 0.475,
+      "fraction_under_0_84": 0.7408
+    },
+    "inclined_or_flat": {
+      "count": 14282,
+      "p05_mm": 0.32,
+      "min_sample_mm": 0.32,
+      "fraction_under_0_84": 1.0
+    }
+  },
+  {
+    "name": "Service cover - rigid PLA fit gauge",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      28.8,
+      8.8,
+      4.52
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 5001,
+      "p05_mm": 0.84,
+      "min_sample_mm": 0.84,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 12299,
+      "p05_mm": 1.194,
+      "min_sample_mm": 0.441,
+      "fraction_under_0_84": 0.0064
+    }
+  },
+  {
+    "name": "PKCELL-max-body-with-wire-sockets_1",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      35.3,
+      62.3,
+      5.3
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 3395,
+      "p05_mm": 35.3,
+      "min_sample_mm": 1.307,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 14497,
+      "p05_mm": 5.3,
+      "min_sample_mm": 1.559,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "Adafruit-258-CAD-with-PCM-and-stubs_1",
+    "elevated_underside_under_30deg_mm2": 38.849,
+    "volume_mesh": true,
+    "size_mm": [
+      63.0,
+      37.0,
+      6.0
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 2580,
+      "p05_mm": 37.0,
+      "min_sample_mm": 1.0,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 14945,
+      "p05_mm": 5.0,
+      "min_sample_mm": 1.0,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "A1 display and controller",
+    "elevated_underside_under_30deg_mm2": 1736.054,
+    "volume_mesh": true,
+    "size_mm": [
+      92.44,
+      61.0,
+      13.4
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 4020,
+      "p05_mm": 1.0,
+      "min_sample_mm": 0.8,
+      "fraction_under_0_84": 0.0032
+    },
+    "inclined_or_flat": {
+      "count": 13949,
+      "p05_mm": 1.1,
+      "min_sample_mm": 1.1,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "A2 reel sensor",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      25.4,
+      17.78,
+      4.53
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 5563,
+      "p05_mm": 1.25,
+      "min_sample_mm": 0.2,
+      "fraction_under_0_84": 0.0124
+    },
+    "inclined_or_flat": {
+      "count": 12041,
+      "p05_mm": 1.57,
+      "min_sample_mm": 1.57,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "A3 haptic board",
+    "elevated_underside_under_30deg_mm2": 3.923,
+    "volume_mesh": true,
+    "size_mm": [
+      20.0,
+      20.0,
+      9.76
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 7279,
+      "p05_mm": 3.0,
+      "min_sample_mm": 0.206,
+      "fraction_under_0_84": 0.0088
+    },
+    "inclined_or_flat": {
+      "count": 10489,
+      "p05_mm": 1.51,
+      "min_sample_mm": 1.51,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "Combined PCB - populated height gauge",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      32.8,
+      38.2,
+      2.4
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 2731,
+      "p05_mm": 0.8,
+      "min_sample_mm": 0.5,
+      "fraction_under_0_84": 0.1062
+    },
+    "inclined_or_flat": {
+      "count": 15182,
+      "p05_mm": 0.84,
+      "min_sample_mm": 0.84,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "Top power switch board",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      11.0,
+      10.0,
+      5.3
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 7090,
+      "p05_mm": 3.498,
+      "min_sample_mm": 0.7,
+      "fraction_under_0_84": 0.0437
+    },
+    "inclined_or_flat": {
+      "count": 10910,
+      "p05_mm": 1.0,
+      "min_sample_mm": 1.0,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "RGB carrier and emitter fit gauge",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      4.8,
+      3.2,
+      1.3
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 5748,
+      "p05_mm": 0.829,
+      "min_sample_mm": 0.5,
+      "fraction_under_0_84": 0.0505
+    },
+    "inclined_or_flat": {
+      "count": 12004,
+      "p05_mm": 0.6,
+      "min_sample_mm": 0.6,
+      "fraction_under_0_84": 0.8299
+    }
+  },
+  {
+    "name": "Status shelf with diffuser stops",
+    "elevated_underside_under_30deg_mm2": 0.111,
+    "volume_mesh": true,
+    "size_mm": [
+      9.1,
+      23.3,
+      3.35
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 7524,
+      "p05_mm": 1.1,
+      "min_sample_mm": 0.96,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 10045,
+      "p05_mm": 1.1,
+      "min_sample_mm": 0.67,
+      "fraction_under_0_84": 0.0016
+    }
+  },
+  {
+    "name": "Speaker with gasket and lead exits",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      19.9,
+      32.5,
+      7.0
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 6238,
+      "p05_mm": 1.24,
+      "min_sample_mm": 1.24,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 11743,
+      "p05_mm": 5.1,
+      "min_sample_mm": 5.1,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "Vibration motor and lead exit",
+    "elevated_underside_under_30deg_mm2": 0.0,
+    "volume_mesh": true,
+    "size_mm": [
+      9.999,
+      14.999,
+      3.55
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 7703,
+      "p05_mm": 3.0,
+      "min_sample_mm": 3.0,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 10002,
+      "p05_mm": 3.55,
+      "min_sample_mm": 3.55,
+      "fraction_under_0_84": 0.0
+    }
+  },
+  {
+    "name": "A3 alternate - plug seated",
+    "elevated_underside_under_30deg_mm2": 3.923,
+    "volume_mesh": true,
+    "size_mm": [
+      20.0,
+      20.0,
+      10.81
+    ],
+    "connected_shells": 1,
+    "upright": {
+      "count": 7951,
+      "p05_mm": 8.389,
+      "min_sample_mm": 1.4,
+      "fraction_under_0_84": 0.0
+    },
+    "inclined_or_flat": {
+      "count": 9868,
+      "p05_mm": 1.51,
+      "min_sample_mm": 1.51,
+      "fraction_under_0_84": 0.0
+    }
+  }
+]

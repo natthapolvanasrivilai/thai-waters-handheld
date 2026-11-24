@@ -1,0 +1,451 @@
+{
+  "project": "Thai-Waters-R0004-PolyTerra-PLA-SuperTack-X1C.3mf",
+  "project_sha256": "bd35e50bb2b7cb3a9798d53c2ee64de83905259c7bf73e2b3f321ecfdf2e61e2",
+  "verified_native_geometry_resources": 29,
+  "material": "PolyTerra PLA @BBL X1C",
+  "plate": "Supertack Plate",
+  "nozzle_mm": 0.4,
+  "bed_c": 45,
+  "nozzle_c": 220,
+  "independent_replay": true,
+  "plates": [
+    {
+      "plate": 1,
+      "parts": 2,
+      "model_and_support_g": 59.64,
+      "seconds": 10016,
+      "movement_sha256": "dba93e2bae1fad5ea66a3efb45d582a8ee03ad05ad1b4fbabf8740b864b79c1d",
+      "replay_movement_sha256": "3bce62e1cf386337d486345e87662dcb3e83bb2e353e0f2d27dd43633112593f"
+    },
+    {
+      "plate": 2,
+      "parts": 7,
+      "model_and_support_g": 10.88,
+      "seconds": 2415,
+      "movement_sha256": "7d23d9694907186400035d750c8ff7d4da29cc7b8a8b8c34e9fc9115ad0df555",
+      "replay_movement_sha256": "8019c00203c9afcb0dbc9e2c02df69a252131f7856c5999b0eedd59c3b9fda90"
+    },
+    {
+      "plate": 3,
+      "parts": 1,
+      "model_and_support_g": 26.91,
+      "seconds": 4319,
+      "movement_sha256": "4c3c2c622cf6afde03f4035592c22dc23d3814462ca21d40de75fb961c9a3ec5",
+      "replay_movement_sha256": "1a74b680d9d97c2267bf47e34044c8fe19a7b4e4b086cd4f2b472b004b40ff34"
+    },
+    {
+      "plate": 4,
+      "parts": 1,
+      "model_and_support_g": 0.38,
+      "seconds": 555,
+      "movement_sha256": "618b896196a9158d0c6e7f727e85e52c4f6fc456a8b762e0687c97596d3d19c1",
+      "replay_movement_sha256": "618b896196a9158d0c6e7f727e85e52c4f6fc456a8b762e0687c97596d3d19c1"
+    },
+    {
+      "plate": 5,
+      "parts": 2,
+      "model_and_support_g": 0.87,
+      "seconds": 678,
+      "movement_sha256": "36eb8a0200dd3275b241c1ed3cfa9f4a5c11f73628b9bc9207ba96665e32dc7d",
+      "replay_movement_sha256": "36eb8a0200dd3275b241c1ed3cfa9f4a5c11f73628b9bc9207ba96665e32dc7d"
+    },
+    {
+      "plate": 6,
+      "parts": 2,
+      "model_and_support_g": 14.35,
+      "seconds": 2064,
+      "movement_sha256": "4c1eedc2bdcd4f5af7221cac894ad9ba7fe10efab2da43515f5e0e308c8fb635",
+      "replay_movement_sha256": "4c1eedc2bdcd4f5af7221cac894ad9ba7fe10efab2da43515f5e0e308c8fb635"
+    },
+    {
+      "plate": 7,
+      "parts": 9,
+      "model_and_support_g": 32.54,
+      "seconds": 4894,
+      "movement_sha256": "77d6b83ab04ce99b04213ef476210bec37f744e7001571a0fa4a7acd1e0afff8",
+      "replay_movement_sha256": "77d6b83ab04ce99b04213ef476210bec37f744e7001571a0fa4a7acd1e0afff8"
+    },
+    {
+      "plate": 8,
+      "parts": 3,
+      "model_and_support_g": 1.1,
+      "seconds": 884,
+      "movement_sha256": "09962cebbcee39960b46c91673c22b2d603eea4fa403e3f9954e26d5f87bba0d",
+      "replay_movement_sha256": "a02b46aa141586a34a4854cedf99a46ee3726160c9fe4a0369bbb16b7ec70455"
+    }
+  ],
+  "supported_starts": [
+    {
+      "part": "rod-grip_1",
+      "z_mm": 5.6,
+      "patch_area_mm2": 1.653,
+      "support_at_mm": 5.2,
+      "overlap_percent": 56.8
+    }
+  ],
+  "replay_differences": [
+    {
+      "plate": 1,
+      "part": "385",
+      "whole_job_support_mm3": 9459.189,
+      "plate_job_support_mm3": 9440.894,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 1,
+      "part": "2142",
+      "whole_job_support_mm3": 0.0,
+      "plate_job_support_mm3": 0.0,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 2,
+      "part": "386",
+      "whole_job_support_mm3": 0.0,
+      "plate_job_support_mm3": 0.0,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 2,
+      "part": "390",
+      "whole_job_support_mm3": 0.0,
+      "plate_job_support_mm3": 0.0,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 2,
+      "part": "395",
+      "whole_job_support_mm3": 0.0,
+      "plate_job_support_mm3": 0.0,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 2,
+      "part": "394",
+      "whole_job_support_mm3": 0.0,
+      "plate_job_support_mm3": 0.0,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 2,
+      "part": "393",
+      "whole_job_support_mm3": 0.0,
+      "plate_job_support_mm3": 0.0,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 2,
+      "part": "392",
+      "whole_job_support_mm3": 0.0,
+      "plate_job_support_mm3": 0.0,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 2,
+      "part": "387",
+      "whole_job_support_mm3": 908.93,
+      "plate_job_support_mm3": 908.2,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 3,
+      "part": "396",
+      "whole_job_support_mm3": 3941.901,
+      "plate_job_support_mm3": 3941.901,
+      "model_delta_mm3": 0.001
+    },
+    {
+      "plate": 8,
+      "part": "391",
+      "whole_job_support_mm3": 0.0,
+      "plate_job_support_mm3": 0.0,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 8,
+      "part": "389",
+      "whole_job_support_mm3": 0.0,
+      "plate_job_support_mm3": 0.0,
+      "model_delta_mm3": 0.0
+    },
+    {
+      "plate": 8,
+      "part": "388",
+      "whole_job_support_mm3": 82.192,
+      "plate_job_support_mm3": 78.579,
+      "model_delta_mm3": 0.0
+    }
+  ],
+  "parts": [
+    {
+      "plate": 1,
+      "part": "Housing - single status window and rear screw access",
+      "layers": 158,
+      "height_mm": 31.0,
+      "first_layer_mm2": 772.759,
+      "model_mm3": 35669.786,
+      "support_mm3": 9459.189,
+      "supported_starts": 0
+    },
+    {
+      "plate": 1,
+      "part": "Status shelf with diffuser stops",
+      "layers": 17,
+      "height_mm": 3.35,
+      "first_layer_mm2": 75.129,
+      "model_mm3": 134.65,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 2,
+      "part": "Solid-front bezel - concealed hooks",
+      "layers": 25,
+      "height_mm": 5.08,
+      "first_layer_mm2": 2396.138,
+      "model_mm3": 4306.121,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 2,
+      "part": "Reel rotor - pocket facing up",
+      "layers": 70,
+      "height_mm": 13.9,
+      "first_layer_mm2": 27.548,
+      "model_mm3": 2048.845,
+      "support_mm3": 908.93,
+      "supported_starts": 0
+    },
+    {
+      "plate": 2,
+      "part": "collar_1",
+      "layers": 12,
+      "height_mm": 2.5,
+      "first_layer_mm2": 56.688,
+      "model_mm3": 152.616,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 2,
+      "part": "grip-screw-keeper_1",
+      "layers": 13,
+      "height_mm": 1.59,
+      "first_layer_mm2": 46.71,
+      "model_mm3": 82.469,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 2,
+      "part": "receiver-nut-keeper_1",
+      "layers": 6,
+      "height_mm": 0.83,
+      "first_layer_mm2": 42.54,
+      "model_mm3": 32.158,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 2,
+      "part": "key-board-retainer-west_1",
+      "layers": 37,
+      "height_mm": 7.47,
+      "first_layer_mm2": 68.714,
+      "model_mm3": 133.027,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 2,
+      "part": "battery-wire-bridge_1",
+      "layers": 17,
+      "height_mm": 3.33,
+      "first_layer_mm2": 252.439,
+      "model_mm3": 379.819,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 3,
+      "part": "rod-grip_1",
+      "layers": 173,
+      "height_mm": 34.547,
+      "first_layer_mm2": 834.902,
+      "model_mm3": 16318.4,
+      "support_mm3": 3941.901,
+      "supported_starts": 1
+    },
+    {
+      "plate": 4,
+      "part": "Diffuser - opaque PLA fit gauge",
+      "layers": 19,
+      "height_mm": 2.38,
+      "first_layer_mm2": 12.868,
+      "model_mm3": 24.23,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 5,
+      "part": "USB mask - rigid PLA fit gauge",
+      "layers": 4,
+      "height_mm": 0.51,
+      "first_layer_mm2": 78.627,
+      "model_mm3": 35.691,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 5,
+      "part": "Service cover - rigid PLA fit gauge",
+      "layers": 23,
+      "height_mm": 4.52,
+      "first_layer_mm2": 227.359,
+      "model_mm3": 363.3,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 6,
+      "part": "PKCELL-max-body-with-wire-sockets_1",
+      "layers": 27,
+      "height_mm": 5.3,
+      "first_layer_mm2": 2167.123,
+      "model_mm3": 5468.771,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 6,
+      "part": "Adafruit-258-CAD-with-PCM-and-stubs_1",
+      "layers": 30,
+      "height_mm": 6.0,
+      "first_layer_mm2": 2120.844,
+      "model_mm3": 5222.416,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 7,
+      "part": "A1 display and controller",
+      "layers": 67,
+      "height_mm": 13.4,
+      "first_layer_mm2": 5558.293,
+      "model_mm3": 18292.882,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 7,
+      "part": "A2 reel sensor",
+      "layers": 23,
+      "height_mm": 4.53,
+      "first_layer_mm2": 399.368,
+      "model_mm3": 861.212,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 7,
+      "part": "A3 haptic board",
+      "layers": 49,
+      "height_mm": 9.76,
+      "first_layer_mm2": 373.322,
+      "model_mm3": 1203.868,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 7,
+      "part": "Combined PCB - populated height gauge",
+      "layers": 12,
+      "height_mm": 2.4,
+      "first_layer_mm2": 852.09,
+      "model_mm3": 816.6,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 7,
+      "part": "Top power switch board",
+      "layers": 27,
+      "height_mm": 5.3,
+      "first_layer_mm2": 103.153,
+      "model_mm3": 249.769,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 7,
+      "part": "RGB carrier and emitter fit gauge",
+      "layers": 10,
+      "height_mm": 1.3,
+      "first_layer_mm2": 13.338,
+      "model_mm3": 9.771,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 7,
+      "part": "Speaker with gasket and lead exits",
+      "layers": 35,
+      "height_mm": 7.0,
+      "first_layer_mm2": 496.187,
+      "model_mm3": 1503.123,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 7,
+      "part": "Vibration motor and lead exit",
+      "layers": 18,
+      "height_mm": 3.55,
+      "first_layer_mm2": 86.833,
+      "model_mm3": 256.101,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 7,
+      "part": "A3 alternate - plug seated",
+      "layers": 54,
+      "height_mm": 10.81,
+      "first_layer_mm2": 373.322,
+      "model_mm3": 1384.28,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 8,
+      "part": "folding-stem_1",
+      "layers": 27,
+      "height_mm": 5.339,
+      "first_layer_mm2": 6.714,
+      "model_mm3": 199.83,
+      "support_mm3": 82.192,
+      "supported_starts": 0
+    },
+    {
+      "plate": 8,
+      "part": "grip_1",
+      "layers": 47,
+      "height_mm": 9.3,
+      "first_layer_mm2": 15.155,
+      "model_mm3": 236.264,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    },
+    {
+      "plate": 8,
+      "part": "R0017 keyed power cap",
+      "layers": 10,
+      "height_mm": 1.32,
+      "first_layer_mm2": 34.451,
+      "model_mm3": 40.664,
+      "support_mm3": 0.0,
+      "supported_starts": 0
+    }
+  ]
+}

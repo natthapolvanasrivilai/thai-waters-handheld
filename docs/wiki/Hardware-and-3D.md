@@ -1,12 +1,12 @@
 # Inspect the assembly and battery pocket
 
-TW-A-0003-R0004 is the current unpowered fit kit. One RGB status window sits below USB-C. The smooth bezel engages two hidden hooks and fastens from the rear. All 27 objects on eight X1C plates were sliced in their assigned materials. Powered RGB, batteryless startup and physical fit remain open. [Bambu Studio project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Thai-Waters-R0004-X1C-Color-Fit.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Enclosure-fit-guide.html) · [Print sequence and measurements](../../hardware/mechanical/enclosure-print-r0004/README.md)
+**Current PLA test print.** TW-A-0003-R0005 uses the R0004 enclosure geometry with one RGB window and rear bezel screws. All 27 parts use PolyTerra PLA on the X1 Carbon, 0.4 mm nozzle and Cool Plate SuperTack. Twelve toolpath checks cover the status aperture, access passages, key opening and bezel pockets. Physical fit and powered verification remain open. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0004-polyterra-supertack-1/Thai-Waters-R0004-PolyTerra-PLA-SuperTack-X1C.3mf) · [PLA print sequence and checks](../../hardware/mechanical/polyterra-fit-r0001/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Enclosure-fit-guide.html)
 
 [Case-mounted board fit kit and interactive 3D inspection](../../hardware/electronics/case-board-r0001/README.md). The combined A4/A5 circuit now has a populated PCB, its own housing mounts, a two-plate X1C project and motion checks. The R0017 spacer walkthrough below is for the earlier fit kit.
 
 [R0017 keyed cap and cap-only fit plate](../../hardware/mechanical/TW-A-0001-R0017/README.md) follows the existing power-button opening. Use it with the R0016 housing. [Archived R0017 assembly guide](../models/R0017-PCB-assembly.html)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/enclosure-fit-r0004-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0004-polyterra-supertack-1/Thai-Waters-handbook.html)
 
 [A4 and A5 explained, physical mounting and small-part review](../../hardware/mechanical/pcb-fit-display-r0002/README.md)
 
