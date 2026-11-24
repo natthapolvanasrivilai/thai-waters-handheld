@@ -1,5 +1,13 @@
 {
   "species": {
+    "61": {
+      "key": 2407216,
+      "scientific": "Abalistes stellatus",
+      "name": "ปลาวัวจุดขาว",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/28",
+      "reference": "ONEP TH-BIF exact species Thai-name field; also explicitly paired in the TH-BIF lagoon checklist. No new aliases."
+    },
     "63": {
       "key": 2398657,
       "scientific": "Abudefduf bengalensis",
@@ -85,6 +93,14 @@
       "source": "https://chm-thai.onep.go.th/wp-content/uploads/2023/07/File_vertebrate_Fish_03_270766.pdf",
       "reference": "Field survey identifies ขยุย as exact Akysis varius (https://doi1.nrct.go.th/ListDoi/Download/403692?Resolve_DOI=10.14457%2FBRU.res.2010.3); Printed p. 67; guide extraction distorts compound names, not imported (https://www.nagaofoundation.or.jp/publication/documents/Thailand_FGB_2023_142-188.pdf)"
     },
+    "114": {
+      "key": 2390537,
+      "scientific": "Alectis ciliaris",
+      "name": "ปลาผมนางลาย",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/1347",
+      "reference": "ONEP TH-BIF exact species Thai-name field; retain the distinctive display only."
+    },
     "116": {
       "key": 2390581,
       "scientific": "Alepes djedaba",
@@ -123,6 +139,14 @@
       "source": "https://chm-thai.onep.go.th/wp-content/uploads/2026/05/5_Fish_04NOV2025.xlsx",
       "reference": "ONEP workbook ALL row 323. Earlier ONEP, Fishes / 27; same institution (https://chm-thai.onep.go.th/wp-content/uploads/2023/07/File_vertebrate_Fish_03_270766.pdf)"
     },
+    "150": {
+      "key": 5212090,
+      "scientific": "Amphiprion akallopisos",
+      "name": "ปลาการ์ตูนอินเดียแดง",
+      "aliases": [],
+      "source": "https://edailyreport.dmcr.go.th/milestone/detail/6615?datenow=1794934800&section=calendar",
+      "reference": "DMCR field report explicitly pairs the Thai label with the exact binomial; a Department of Fisheries list independently corroborates the pairing: https://www4.fisheries.go.th/local/file_document/20170203113551_file.pdf"
+    },
     "151": {
       "key": 5212081,
       "scientific": "Amphiprion clarkii",
@@ -151,6 +175,14 @@
       "aliases": [],
       "source": "https://www4.fisheries.go.th/local/file_document/20161208141836_file.pdf"
     },
+    "161": {
+      "key": 2413348,
+      "scientific": "Anodontostoma chacunda",
+      "name": "ปลาโคก",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/2465",
+      "reference": "ONEP TH-BIF exact species Thai-name field. No broad alternate names promoted."
+    },
     "167": {
       "key": 5201409,
       "scientific": "Apistus carinatus",
@@ -168,6 +200,14 @@
       "aliases": [],
       "source": "https://thbif.onep.go.th/taxons/detail/2878",
       "reference": "Exact TH-BIF plus Kasetsart primary field research. Retain only the attested label; do not propagate to other taxa. Wikidata discovery, exact P225 and legacy P846: https://www.wikidata.org/wiki/Q2200326"
+    },
+    "187": {
+      "key": 2407375,
+      "scientific": "Arothron mappa",
+      "name": "ปลาปักเป้าหน้าลาย",
+      "aliases": [],
+      "source": "https://thbif.onep.go.th/taxons/detail/3756",
+      "reference": "ONEP TH-BIF exact species Thai-name field. No trade or regional aliases added."
     },
     "204": {
       "key": 2390522,
