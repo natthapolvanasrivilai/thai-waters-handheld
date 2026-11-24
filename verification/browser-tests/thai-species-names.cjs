@@ -163,6 +163,21 @@ const {chromium}=require('playwright-core');
   assert.equal(await page.locator('#bookDetail h2').textContent(),seamoth.short);
   assert.match(await page.locator('#bookDetail').textContent(),/Pegasus laternarius/u);
   await page.evaluate(()=>closeBookDetail());
+  const coastalNext=[
+   [61,2407216,'Abalistes stellatus','ปลาวัวจุดขาว'],
+   [114,2390537,'Alectis ciliaris','ปลาผมนางลาย'],
+   [150,5212090,'Amphiprion akallopisos','ปลาการ์ตูนอินเดียแดง'],
+   [161,2413348,'Anodontostoma chacunda','ปลาโคก'],
+   [187,2407375,'Arothron mappa','ปลาปักเป้าหน้าลาย'],
+  ];
+  assert.deepEqual(await page.evaluate(ids=>ids.map(id=>{
+   const f=atlas.fish[id],o=originalAtlas.fish[id];
+   return [id,f.key,f.scientificName,f.name,f.thaiNameKind,o.name,f.art,f.thaiSearchAliases];
+  }),coastalNext.map(([id])=>id)),coastalNext.map(([id,key,latin,thai])=>[id,key,latin,thai,'species',latin,id,[]]));
+  for(const [id,,latin,thai] of coastalNext){
+   assert(!await match(thai,id)&&!await match(latin,id),'uncaught coastal species remain undiscoverable');
+  }
+  assert(initial.sourceCount>=234,'all previously sourced labels and the coastal batch are retained');
   const [snapperId,,snapperLatin,snapperThai]=wetlandsNext[2];
   for(const q of [snapperThai,snapperLatin])assert(!await match(q,snapperId),'uncaught snapper is not returned by Thai or Latin search');
   const snapperLow=await page.evaluate(id=>atlas.fish[id].low,snapperId);
@@ -250,6 +265,21 @@ const {chromium}=require('playwright-core');
   assert.equal(await page.locator('#bookDetail h2').textContent(),'ปลาสร้อยนกเขาทะเล');
   assert.match(await page.locator('#bookDetail').textContent(),/Plectorhinchus pictus/u);
   await page.evaluate(()=>closeBookDetail());
+  const [coastId,,coastLatin,coastThai]=coastalNext[0];
+  await land(coastId,await page.evaluate(id=>atlas.fish[id].low,coastId));
+  assert.equal(await page.locator('#message').textContent(),coastThai);
+  assert(!/ถอดเสียง/u.test(await page.locator('#metrics').textContent()));
+  await file(coastId);
+  assert(await match(coastThai,coastId)&&await match(coastLatin,coastId));
+  await page.evaluate(id=>showBookEntry(id),coastId);
+  assert.equal(await page.locator('#bookDetail h2').textContent(),coastThai);
+  assert((await page.locator('#bookDetail').textContent()).includes(coastLatin));
+  await page.evaluate(()=>closeBookDetail());
+  await page.reload();
+  await (await requireBootHome(page)).tap();
+  await page.waitForFunction(()=>typeof g!=='undefined'&&g&&!$('act').disabled);
+  assert.equal(await page.evaluate(id=>g.caught(id),coastId),1);
+  assert(await match(coastThai,coastId)&&await match(coastLatin,coastId));
   await page.evaluate(()=>{language='en';chooseAtlas();showBookEntry(2152);});
   assert.equal(await page.locator('#bookDetail h2').textContent(),'Uraspis uraspis');
   await page.evaluate(()=>showBookEntry(1164));

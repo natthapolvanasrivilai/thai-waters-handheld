@@ -4,7 +4,7 @@ The Thai overlay is additive and browser-only. Stable IDs, art, English original
 
 ## Coverage and naming hierarchy
 
-All 2,545 catalog entries have Thai-script display in Thai mode. The 60 existing, unkeyed labels (including fictional fish) are unchanged. Among 2,485 keyed scientific entries, 229 have exact-name vernacular evidence (13 initial + 71 first audit + 23 first follow-up + 87 second follow-up + 12 wetlands follow-up + 15 register follow-up + 8 common-tier freshwater follow-up); the remaining 2,256 use a clearly marked approximate **ชื่อวิทยาศาสตร์ถอดเสียง**, not a verified Thai common name. Attested regional names can be shared by multiple taxa. A family label is kept as family information and caught-only search, never promoted to a species label. The exact Latin and stable ID remain the identity authority. Runtime does not rename an uncaught silhouette or expose an undiscovered identity in name search.
+All 2,545 catalog entries have Thai-script display in Thai mode. The 60 existing, unkeyed labels (including fictional fish) are unchanged. Among 2,485 keyed scientific entries, 234 have exact-name vernacular evidence (13 initial + 71 first audit + 23 first follow-up + 87 second follow-up + 12 wetlands follow-up + 15 register follow-up + 8 common-tier freshwater follow-up + 5 coastal follow-up); the remaining 2,251 use a clearly marked approximate **ชื่อวิทยาศาสตร์ถอดเสียง**, not a verified Thai common name. Attested regional names can be shared by multiple taxa. A family label is kept as family information and caught-only search, never promoted to a species label. The exact Latin and stable ID remain the identity authority. Runtime does not rename an uncaught silhouette or expose an undiscovered identity in name search.
 
 The 71 new rows combine ONEP regional taxon/checklist records, Department of Fisheries species-manual Appendix A, and a separate marine source pass. Each shipped row in [the overlay](thai-specimen-labels.json) records stable ID, GBIF key, exact binomial, name and cited source(s). Regional batches overlapped at IDs 1046 and 1290: paired same-taxon labels retained at 1046; the more specific Department of Fisheries name preferred at 1290, without promoting a generic group name. Appendix A overlaps at IDs 204 and 583 use the appendix display and keep attested same-taxon field/ONEP aliases. Provenance verifies a name, not where the game fish was caught. Source collection is still open and no simulated test establishes real device Thai font fit.
 
@@ -53,6 +53,16 @@ This browser-only batch promotes eight previously transliterated, common-tier **
 ## Javelin grunter
 
 - **#2448 / [GBIF key 2382902](https://www.gbif.org/species/2382902) / *Pomadasys kaakan* (Cuvier, 1830):** the [Kasetsart University Library species entry](https://ebook.lib.ku.ac.th/ebook27/ebook/20140141/files/basic-html/page148.html), printed p.143, and the [ONEP TH-BIF Ranong species record](https://thbif.onep.go.th/minisite/ranong/taxons/detail/12261) attest **ปลาครืดคราด**. The [ONEP national species record](https://thbif.onep.go.th/taxons/detail/33286) also gives **ปลาออดแอดขาว**, retained only as a caught-species search alias. Do not import reference measurements or infer a gameplay capture location from these sources.
+
+## Follow-up: five coastal fish labels
+
+This batch adds names for five coastal fish without changing their existing game rarity or making a field abundance claim. The four ONEP records explicitly list the Thai name for the exact binomial, and the DMCR report pairs the clownfish name with the exact binomial. No aliases, capture locations, ecology, or gameplay parameters were changed.
+
+- **#61 / GBIF key 2407216 / *Abalistes stellatus*:** [primary source](https://thbif.onep.go.th/taxons/detail/28) records **ปลาวัวจุดขาว**.
+- **#114 / GBIF key 2390537 / *Alectis ciliaris*:** [primary source](https://thbif.onep.go.th/taxons/detail/1347) records **ปลาผมนางลาย**.
+- **#150 / GBIF key 5212090 / *Amphiprion akallopisos*:** [primary source](https://edailyreport.dmcr.go.th/milestone/detail/6615?datenow=1794934800&section=calendar) records **ปลาการ์ตูนอินเดียแดง**.
+- **#161 / GBIF key 2413348 / *Anodontostoma chacunda*:** [primary source](https://thbif.onep.go.th/taxons/detail/2465) records **ปลาโคก**.
+- **#187 / GBIF key 2407375 / *Arothron mappa*:** [primary source](https://thbif.onep.go.th/taxons/detail/3756) records **ปลาปักเป้าหน้าลาย**.
 
 ## Holds, not fixes
 - Kryptopterus vitreolus is not K. bicirrhis: the primary [species description](https://mapress.com/zt/article/view/zootaxa.3630.2.6) documents the old misidentification. Keep ปลาก้างพระร่วง on #2354, not #805; don't propagate it from historical lists.
