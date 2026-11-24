@@ -1,6 +1,6 @@
 # Inspect the assembly and battery pocket
 
-**Rectangular PCB mount review.** TW-A-0004-R0002 uses a 32.4 × 35.8 mm PCB with internal screw holes and a tucked-in corner support. The single-plate gauge fits both the R0008 shell and the proposed mount in CAD. [Offline board review](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-mount-review-1/Mount-review.html) · [Print only the PCB gauge](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-mount-review-1/Case-board-R0002-PolyTerra-SuperTack-X1C.3mf) · [CAD, fit and electrical checks](../../hardware/electronics/case-board-r0002/README.md)
+**Rectangular PCB mount review.** TW-A-0004-R0002 uses a 32.4 × 35.8 mm PCB with internal screw holes and a tucked-in corner support. The single-plate gauge fits both the R0008 shell and the proposed mount in CAD. [Offline board review](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-guide-2/Mount-review.html) · [Print only the PCB gauge](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-mount-review-1/Case-board-R0002-PolyTerra-SuperTack-X1C.3mf) · [CAD, fit and electrical checks](../../hardware/electronics/case-board-r0002/README.md)
 
 **Current PLA test print.** TW-A-0003-R0008 uses an editable STEP housing with clean USB side faces and the supported rod receiver. The housing and grip print at 45° with localized supports. All 27 parts use PolyTerra PLA on the X1 Carbon, 0.4 mm nozzle and Cool Plate SuperTack. Twelve toolpath checks cover the status aperture, access passages, key opening and bezel pockets. Physical fit and powered verification remain open. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0008-step-housing-1/Thai-Waters-R0008-STEP-PolyTerra-SuperTack-X1C.3mf) · [PLA print sequence and checks](../../hardware/mechanical/step-fit-r0008/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0008-step-housing-1/Enclosure-fit-guide.html)
 
@@ -8,7 +8,7 @@
 
 [R0017 keyed cap and cap-only fit plate](../../hardware/mechanical/TW-A-0001-R0017/README.md) follows the existing power-button opening. Use it with the R0016 housing. [Archived R0017 assembly guide](../models/R0017-PCB-assembly.html)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-mount-review-1/Thai-Waters-handbook.html)
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-guide-2/Thai-Waters-handbook.html)
 
 [A4 and A5 explained, physical mounting and small-part review](../../hardware/mechanical/pcb-fit-display-r0002/README.md)
 

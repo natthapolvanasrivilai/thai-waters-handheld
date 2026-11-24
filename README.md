@@ -1,6 +1,6 @@
 # Thai Waters handheld
 
-[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-mount-review-1/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
+[**Current project status**](docs/wiki/Current-status.md) · [**Download the live interactive handbook**](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-guide-2/Thai-Waters-handbook.html) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98)
 
 [Hardware closure and playtest issues](quality/hardware-gate.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [November hardware review](quality/hardware-review-2026-11-23.md)
 
@@ -10,7 +10,7 @@
 
 **[Browse the product wiki](docs/wiki/Home.md)** · **[Play on a phone](https://thai-waters-pocket-angler.shoung0690.chatgpt.site)**
 
-[Rectangular PCB, revised mount and fit gauge](hardware/electronics/case-board-r0002/README.md) · [Open the new board review](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-mount-review-1/Mount-review.html)
+[Rectangular PCB, revised mount and fit gauge](hardware/electronics/case-board-r0002/README.md) · [Open the new board review](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-guide-2/Mount-review.html)
 
 Use **TW-A-0003-R0008** for the next PolyTerra PLA/SuperTack unpowered print. [Editable housing STEP](hardware/mechanical/step-fit-r0008/housing.step) · [PolyTerra PLA X1C project](hardware/mechanical/step-fit-r0008/Thai-Waters-R0008-STEP-PolyTerra-SuperTack-X1C.3mf) · [Offline 3D fit guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0008-step-housing-1/Enclosure-fit-guide.html) · [PLA print checks and fit instructions](hardware/mechanical/step-fit-r0008/README.md)
 

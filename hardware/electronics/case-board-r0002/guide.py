@@ -23,7 +23,7 @@ def build():
     scene.geometry[scene.graph.get('Combined')[1]]=mesh(substrate,[44,106,84])
     for i,s in enumerate(s for s in board if not s.isSame(substrate)):
         col=[184,151,86] if s.BoundingBox().zlen<.12 else [69,73,74]
-        n=f'BoardPart{i}'
+        n=f'BoardPartLand{i}' if s.BoundingBox().zlen<.12 else f'BoardPartPackage{i}'
         scene.add_geometry(mesh(s,col),node_name=n,geom_name=n)
     for i in (1,2):
         n=f'BoardPartScrew{i}'
@@ -37,11 +37,21 @@ def build():
                           'Lower the rectangular PCB with components facing the case floor. Seat its two inboard screws and check that the far corner rests flat.')
     stages=stages.replace('o.visible=names.has(o.name)',"o.visible=(o.name.startsWith('BoardPart') && names.has('Combined')) || names.has(o.name)")
     html=html.replace('<button id="inspect-light">','<button id="inspect-board">PCB underside</button><button id="inspect-light">')
+    stages=stages.replace("  gltf.scene.traverse(o=>{", """  finishes.Combined=0x356e53;
+  gltf.scene.traverse(o=>{
+    if(o.name.startsWith('BoardPartPackage'))finishes[o.name]=0x575e62;
+    if(o.name.startsWith('BoardPartLand'))finishes[o.name]=0xb79c62;
+    if(o.name.startsWith('BoardPartScrew'))finishes[o.name]=0xabb4af;""",1)
+    stages=stages.replace("  function show(i){","""  const undersideLight=new THREE.DirectionalLight(0xfffaf0,2.3);
+  undersideLight.position.set(-30,-48,-110);
+  scene.add(undersideLight);
+  function show(i){undersideLight.visible=false;""")
     inspect="""
   document.getElementById('inspect-board').onclick=()=>{
     show(4);
     gltf.scene.traverse(o=>{if(o.isMesh)o.visible=o.name==='Combined'||(o.name.startsWith('BoardPart')&&!o.name.startsWith('BoardPartScrew'));});
-    camera.position.set(45,-30,-54);orbit.target.set(23,1,18);orbit.update();render();
+    undersideLight.visible=true;
+    camera.position.set(45,-28,-53);orbit.target.set(23,1,18);orbit.update();render();
     info.textContent='Component side, facing the case floor. Select Lower boards to return to the installed view.';
   };
 """
