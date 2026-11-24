@@ -77,7 +77,7 @@ function review(number, sha, fullName = project) {
     assert.match(await check.innerText(), /Checked GitHub .*open review #98/);
     assert.equal(await page.getByRole('link', {name:'Open review #98'}).getAttribute('href'), github + '/pull/98');
     assert.ok((await panel.locator('a').all()).length >= 4);
-    const guideLink = panel.getByRole('link', {name: 'Offline 3D fit guide'});
+    const guideLink = panel.getByRole('link', {name: /^Offline 3D (fit guide|assembly)$/});
     assert.ok((await guideLink.getAttribute('href')).startsWith(github + '/releases/download/'));
     assert.ok((await guideLink.getAttribute('href')).endsWith('/' + guide));
     for (const link of await panel.locator('a').all()) {
