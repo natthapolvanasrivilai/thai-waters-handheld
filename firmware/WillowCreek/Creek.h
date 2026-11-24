@@ -59,7 +59,7 @@ enum class Phase : uint8_t { Ready, Flight, Waiting, Bite, Fight, Landed, Lost, 
 enum class Reason : uint8_t { None, Early, Late, Snapped, Escaped, Unworked, NoBite };
 enum class Technique : uint8_t { Float, Spoon, Jig };
 enum class FightBeat : uint8_t { Recover, Run, Slack };
-enum class FightStyle : uint8_t { Standard, Picker, Anchor, Sprinter };
+enum class FightStyle : uint8_t { Standard, Picker, Anchor, Sprinter, Heavy };
 constexpr const char* techniques[]={"Float drift","Stop-and-go spoon","Vertical jig"};
 constexpr uint32_t castWindupMs=180,castDurationMs=900;
 enum FishingSound : uint8_t { CastAir=1, SpoolRelease=2, WaterImpact=4, RetrieveSplash=8, BrokenLine=16 };
@@ -76,18 +76,27 @@ struct Game {
   Progress progress;
   bool filed=false;
   int landedGrams=0;
+  bool heavyFight=false;
+  bool trophyCatch() const {return phase==Phase::Landed && !emptyCast && trophySize(fish,length);}
+  int landingPoints() const {
+    if(phase!=Phase::Landed || emptyCast)return 0;
+    if(filed)return pointsAwarded;
+    const auto& entry=progress.book.entries[fish];
+    if(entry.count && !trophyCatch())return 0;
+    const int found=progress.book.discovered();
+    return Progress::discoveryPoints(found+!entry.count)-Progress::discoveryPoints(found)
+      +(trophyCatch() && !progress.hasTrophy());
+  }
   LandingReward landingReward() const {
     if(emptyCast)return LandingReward::Catch;
+    if(landingPoints())return LandingReward::TacklePoint;
     if(filed){
-      if(pointsAwarded)return LandingReward::TacklePoint;
       if(newEntry)return LandingReward::Discovery;
       return personalBest?LandingReward::PersonalBest:LandingReward::Catch;
     }
     const auto& entry=progress.book.entries[fish];
     if(entry.count)return length>entry.best?LandingReward::PersonalBest:LandingReward::Catch;
-    const int found=progress.book.discovered();
-    return Progress::discoveryPoints(found+1)>Progress::discoveryPoints(found)?
-      LandingReward::TacklePoint:LandingReward::Discovery;
+    return LandingReward::Discovery;
   }
   bool fileCatch(){
     if(phase!=Phase::Landed || filed || emptyCast)return false;
@@ -207,6 +216,7 @@ struct Game {
     contact=ClearWater;heat=.12f;enter(Phase::Waiting);
   }
   FightStyle fightStyle() const {
+    if(phase==Phase::Fight && heavyFight)return FightStyle::Heavy;
     if(fish==prawn || (fish>=originalSpecies && catalog[fish].form==3))return FightStyle::Picker;
     if(fish==ray || (fish>=originalSpecies && catalog[fish].form==4))return FightStyle::Anchor;
     // Stable catalog IDs: queenfish, cobia, barracuda, trevally and sailfish.
@@ -230,6 +240,7 @@ struct Game {
   FightBeat beat() const {
     const uint32_t cycle=recoverMs+runMs+slackMs;
     const uint32_t n=age/cycle,t=age%cycle;
+    if(fightStyle()==FightStyle::Heavy)return t<runMs?FightBeat::Run:t<runMs+recoverMs?FightBeat::Recover:FightBeat::Slack;
     if(fightStyle()==FightStyle::Anchor || fightStyle()==FightStyle::Sprinter){
       if(t<runMs)return liftedCycle==n?FightBeat::Recover:FightBeat::Run;
       return t<runMs+recoverMs?FightBeat::Recover:FightBeat::Slack;
@@ -259,6 +270,7 @@ struct Game {
     switch(style){
       case FightStyle::Picker: bend=movement==FightBeat::Run?.31f:.10f;break;
       case FightStyle::Anchor: bend=holdingBottom()?.82f:.38f;break;
+      case FightStyle::Heavy: bend=movement==FightBeat::Run?.82f:.36f;break;
       case FightStyle::Sprinter: bend=movement==FightBeat::Run?.71f+.13f*std::sin(age*.018f):.28f;break;
       default: bend=movement==FightBeat::Run?.53f:.23f;break;
     }
@@ -270,6 +282,11 @@ struct Game {
     switch(fightStyle()){
       case FightStyle::Picker:return (surge()?5.f:1.6f)*std::sin(age*.021f);
       case FightStyle::Anchor:return holdingBottom()?0:7.f*std::sin(age*.0023f);
+      case FightStyle::Heavy:{
+        const uint32_t cycle=runMs+recoverMs+slackMs,t=age%cycle;
+        const float side=(age/cycle)%2?-1.f:1.f;
+        return t<runMs?side*54.f*t/runMs:side*54.f*(1.f-float(t-runMs)/(cycle-runMs));
+      }
       case FightStyle::Sprinter:{
         // Travel laterally during each run, then trace a slower arc on recovery.
         const uint32_t cycle=runMs+recoverMs+slackMs, t=age%cycle;
@@ -429,7 +446,16 @@ struct Game {
     if(p==Phase::Ready || p==Phase::Flight){
       contact=ClearWater;junkId=-1;easedMs=0;givenLine=0;
     }
-    if(p==Phase::Fight){liftedCycle=UINT32_MAX;steadyLiftMs=0;}
+    if(p==Phase::Fight){
+      liftedCycle=UINT32_MAX;steadyLiftMs=0;
+      heavyFight=!emptyCast && trophySize(fish,length);
+      if(heavyFight){
+        const float extra=limit(weightGrams(fish,length)*.00012f,4.f,8.f);
+        target+=extra;line+=extra;
+        runMs=std::clamp(runMs+450u,1700u,2450u);
+        recoverMs=std::max(recoverMs,1850u);
+      }
+    }else if(p==Phase::Ready || p==Phase::Flight)heavyFight=false;
   }
   void lose(Reason why){reason=why;enter(Phase::Lost);}
   void tick(uint32_t ms,bool cast,bool rise,float turns){
@@ -524,6 +550,7 @@ struct Game {
         switch(style){
           case FightStyle::Picker:purchase=.55f;payout=.05f;load=1.12f;break;
           case FightStyle::Anchor:purchase=0;payout=0;load=1.38f;break;
+          case FightStyle::Heavy:purchase=.08f;payout=.83f;load=1.54f;break;
           case FightStyle::Sprinter:purchase=.12f;payout=1.05f+catalog[fish].tier*.08f;load=1.12f;break;
           default:purchase=.20f;payout=.22f+catalog[fish].tier*.04f;load=.91f+catalog[fish].tier*.065f;break;
         }

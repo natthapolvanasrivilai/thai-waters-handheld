@@ -418,8 +418,13 @@ void play(const View& v){
     if(g.filed){const char* s="Adding to journal";skyLabel((480-textWidth(s,1))/2,300,s,white,1);return;}
     const char* rewards[]={"Catch landed","Personal best","New species","New species +1 tackle point"};
     const int colors[]={white,0xb717,0xbebf,0xe63f,0xfed1,0x87ff};
-    snprintf(desc,sizeof(desc),"%s  /  %s",creek::ranks[f.tier],rewards[int(g.landingReward())]);
-    skyLabel(202,71,desc,colors[f.tier],1);
+    const bool trophy=g.trophyCatch();
+    if(trophy){
+      const int earned=g.landingPoints();
+      if(earned)snprintf(desc,sizeof(desc),"Trophy catch / +%d tackle point%s",earned,earned==1?"":"s");
+      else snprintf(desc,sizeof(desc),"Trophy catch");
+    }else snprintf(desc,sizeof(desc),"%s  /  %s",creek::ranks[f.tier],rewards[int(g.landingReward())]);
+    skyLabel(202,71,desc,trophy?gold:colors[f.tier],1);
     int afterName=catchLines(f.name,91,white,3,24);
     const int stats=afterName+15;
     skyLabel(202,stats,"Est. weight",paper,1);

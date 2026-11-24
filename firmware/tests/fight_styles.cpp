@@ -63,5 +63,57 @@ int main() {
   assert(sprinter.reason==Reason::Snapped);
   for(int id=47;id<=51;id++)assert(fight(id).fightStyle()==FightStyle::Sprinter);
   assert(fight(44).fightStyle()==FightStyle::Standard);
+  // Exact reported Chonburi shark, versus a smaller specimen of the same species.
+  constexpr int shark=955;
+  auto sharkFight=[](int cm){
+    Game g;
+    g.fish=955;g.length=cm;g.destination=99;g.heat=.16f;
+    g.recoverMs=2000;g.runMs=1500;g.slackMs=950;
+    g.target=g.line=4.f+std::min(9.f,cm*.065f);
+    g.enter(Phase::Fight);
+    return g;
+  };
+  auto giant=sharkFight(145), smallShark=sharkFight(110);
+  assert(giant.surge() && giant.rodLoad()>.72f);
+  assert(!smallShark.surge() && smallShark.rodLoad()<.40f);
+  assert(giant.target>smallShark.target+3.f);
+  const float start=giant.line;
+  giant.tick(600,false,false,0);
+  assert(giant.line>start+.28f && std::abs(giant.pullOffset())>13.f);
+  auto reckless=sharkFight(145);
+  const auto original=reckless.progress.points();
+  for(int i=0;i<20&&reckless.running();++i)reckless.tick(100,false,false,.23f);
+  assert(reckless.reason==Reason::Snapped && reckless.progress.points()==original);
+  // Find seed selected through the normal cast path once and pin it here.
+  Game steady;
+  steady.beginSession(1515);steady.arriveAt(99);steady.site=destinations[99].pool;
+  steady.timeSlot=2;steady.setBait(preferredChoice(shark));
+  steady.tick(16,true,false,0);
+  assert(steady.phase==Phase::Flight && steady.fish==shark && steady.length==145);
+  steady.tick(castDurationMs,false,false,0);
+  assert(steady.phase==Phase::Waiting);
+  steady.tick(steady.waitMs+5,false,false,0);
+  assert(steady.phase==Phase::Bite);
+  steady.tick(20,false,true,0);
+  assert(steady.phase==Phase::Fight && steady.surge());
+  int elapsed=0, runs=0;bool wasRun=false;
+  while(steady.running() && elapsed<80000){
+    const bool run=steady.surge();runs+=run&&!wasRun;wasRun=run;
+    steady.tick(20,false,false,run?-.004f:.04f);elapsed+=20;
+  }
+  assert(elapsed>=14000 && runs>=2 && steady.phase==Phase::Landed);
+  assert(steady.landedGrams==42406);
+  printf("Heavy shark fixture: %d ms, %d runs, %d g.\n",elapsed,runs,steady.landedGrams);
+  assert(steady.progress.points()==0 && steady.landingReward()==LandingReward::TacklePoint);
+  assert(steady.fileCatch() && steady.pointsAwarded==2 && steady.progress.points()==2);
+  assert(!steady.fileCatch() && steady.progress.points()==2);
+  steady.length=150;steady.enter(Phase::Landed);steady.filed=false;
+  assert(steady.landingReward()==LandingReward::PersonalBest);
+  assert(steady.fileCatch() && steady.pointsAwarded==0 && steady.progress.points()==2);
+  Game saved; saved.progress=steady.progress;
+  assert(saved.progress.points()==2);
+  saved.progress.rank[0]=1;
+  assert(saved.progress.points()==1);
+  puts("PASS reported heavy shark run, controls, clean landing, exact weight and one career trophy point.");
   puts("PASS prawn triple picks and paired fight tugs; ray anchoring, interrupted wind and steady-lift release; fast pelagic run, lateral pull and snap under load.");
 }

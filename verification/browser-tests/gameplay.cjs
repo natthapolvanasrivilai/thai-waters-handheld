@@ -201,6 +201,48 @@ const {chromium}=require('playwright-core'),path=require('path'),assert=require(
   assert.deepEqual(card.positions,['[11,112,178,93]'],'All fish retain their full size in the left column');
   assert.equal(card.legacy[0],240);assert.equal(card.legacy[1],0);assert.match(card.legacy[2],/Recorded size.*Unweighed/);
   console.log('PASS '+card.layouts+' catch card layouts; right edge '+card.rightmost.toFixed(1)+' px, last baseline '+card.lowest+' px.');
+  const trophyPage=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
+  trophyPage.on('pageerror',e=>errors.push(e.message));
+  await trophyPage.goto(entry.url);
+  await (await requireBootHome(trophyPage)).tap();
+  await trophyPage.waitForFunction(()=>g&&!$('act').disabled);
+  const trophy=await trophyPage.evaluate(()=>{
+   g.restoreCatch(955,145);pendingDay=0;pendingCapture=captureLanding();save();draw();
+   return {preview:g.landingPoints(),points:g.pts(),grams:g.grams(),uid:pendingCapture.uid};
+  });
+  assert.equal(trophy.points,0);
+  assert.equal(trophy.preview,2,'First species and first trophy each earn one point');
+  assert(trophy.grams>=42350&&trophy.grams<42450);
+  await trophyPage.reload();
+  await (await requireBootHome(trophyPage)).tap();
+  await trophyPage.waitForFunction(()=>g.state()===5&&!$('catchContinue').hidden);
+  assert.deepEqual(await trophyPage.evaluate(()=>[g.landingPoints(),g.pts(),pendingCapture.uid]),[2,0,trophy.uid]);
+  assert.match(await trophyPage.locator('#metrics').textContent(),/Trophy catch \+2 tackle points|ปลาไซซ์โทรฟี่ \+2 แต้มอุปกรณ์/u);
+  if(process.env.RUNNER_TEMP){
+   const fs=require('node:fs'),output=path.join(process.env.RUNNER_TEMP,'browser-logs');
+   if(fs.existsSync(output)){
+    await trophyPage.evaluate(()=>document.fonts.ready);
+    const frame=await trophyPage.locator('#scene').evaluate(canvas=>{
+     if(canvas.width!==480||canvas.height!==320)throw Error('Native trophy frame size');
+     return canvas.toDataURL('image/png').split(',')[1];
+    });
+    fs.writeFileSync(path.join(output,'trophy-catch-480x320.png'),Buffer.from(frame,'base64'));
+   }
+  }
+  await trophyPage.locator('#catchContinue').tap();
+  await trophyPage.waitForFunction(()=>g.state()===0&&g.caught(955)===1);
+  assert.equal(await trophyPage.evaluate(()=>g.pts()),2);
+  await trophyPage.reload();
+  await (await requireBootHome(trophyPage)).tap();
+  await trophyPage.waitForFunction(()=>g&&!$('act').disabled);
+  assert.deepEqual(await trophyPage.evaluate(()=>[g.pts(),g.caught(955),catchHistory.filter(r=>r.id===955).length]),[2,1,1]);
+  await trophyPage.evaluate(()=>{g.restoreCatch(955,150);pendingDay=0;pendingCapture=captureLanding();save();draw();});
+  assert.deepEqual(await trophyPage.evaluate(()=>[g.landingPoints(),g.pts()]),[0,2]);
+  await trophyPage.locator('#catchContinue').tap();
+  await trophyPage.waitForFunction(()=>g.state()===0&&g.caught(955)===2);
+  assert.equal(await trophyPage.evaluate(()=>g.pts()),2,'Repeat trophy cannot farm the bonus');
+  await trophyPage.close();
+  console.log('PASS trophy badge, one-time tackle bonus and pending/filed restore without duplicate award.');
   assert.equal(errors.length,0,errors.join(';'));console.log('PASS location, catch, collection, mobile motion and distinct loaded-rod visuals for prawn, ray and runner.');
  }finally{try{await browser.close();}finally{await entry?.close();}}
 })().catch(e=>{console.error(e);process.exitCode=1;});
