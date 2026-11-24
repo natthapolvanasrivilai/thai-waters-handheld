@@ -23,6 +23,7 @@ struct RumblePlan {
    if(g.phase==creek::Phase::Fight){
      if(style==creek::FightStyle::Picker)cue=g.surge()?Pulse::Pick:Pulse::None;
      else if(g.holdingBottom()){cue=Pulse::Bottom;interval=900;}
+     else if(style==creek::FightStyle::Heavy&&g.surge()){cue=Pulse::Dash;interval=600;}
      else if(style==creek::FightStyle::Sprinter&&g.surge()){cue=Pulse::Dash;interval=440;}
      else {cue=Pulse::Pull;interval=(g.surge()?680:1200)-uint32_t(350*g.heat);}
    }

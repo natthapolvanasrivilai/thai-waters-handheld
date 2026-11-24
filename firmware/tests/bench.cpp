@@ -59,6 +59,8 @@ EXPORT int baitScore(int id,int choice){
 }
 EXPORT int recommendedBait(int id){return id>=0 && id<fishCount?preferredChoice(id):0;}
 EXPORT int landingReward(){return int(g.landingReward());}
+EXPORT int trophyCatch(){return g.trophyCatch();}
+EXPORT int landingPoints(){return g.landingPoints();}
 EXPORT void restoreCatch(int fish,int length){
  if(validSavedSize(fish,length)){
    clearTransientSound();

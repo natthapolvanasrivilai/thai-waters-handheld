@@ -8,6 +8,7 @@ inline const char* fightInstruction(const Game& g){
   switch(g.fightStyle()){
     case FightStyle::Picker:return g.surge()?"Short tugs - ease off":"Light pull - wind gently";
     case FightStyle::Anchor:return "Weight lifting - gain line";
+    case FightStyle::Heavy:return g.surge()?"Heavy run - give line":"Heavy fish tiring - gain line";
     case FightStyle::Sprinter:return g.surge()?"Fast run - give line":"Run slowing - gain line";
     default:return g.surge()?"Run - ease off":"Fish turning - gain line";
   }

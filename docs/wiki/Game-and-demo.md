@@ -25,6 +25,8 @@ Tap the water where the cast should land, or use the rod gesture. The four icons
 
 The collection fills the LCD. Tap a rarity-bordered thumbnail to open its field notes and chronological catch log. Gold identifies Mythic specimens. Undiscovered species show a silhouette and fishing clues. Confirming the first catch reveals the name, portrait and full account. Each new log records measured size, estimated mass, Bangkok date and time, fishing location, period, weather, bait and depth. Older aggregate records keep their original counts and best lengths. The catch confirmation pulses until tapped and stays steady when reduced motion is enabled.
 
+**Heavy fish and trophies.** A qualifying large pelagic fish opens with a stronger run and pulls line out. Ease off or give line while it runs, then wind as the fish tires. The catch card highlights a trophy and shows the tackle points earned. The first qualifying trophy in a career grants one bonus tackle point in addition to any normal discovery point. Other trophy catches do not repeat that bonus. An existing journal best that already qualifies counts toward the same one-time bonus.
+
 In the Motion bench, enable the handheld controller after pairing **Thai Waters Rod** in phone Bluetooth settings. On the handheld start the controller session, then use the rod and knob to cast, hook and retrieve in the phone game. In the simulator the right wheel supports a circular drag, a center hold or the Auto reel switch. Safari offers system switch feedback on supported iPhones. The handheld motor supplies fishing patterns when fitted.
 
 [Clock retention, journal storage and the cloud restore design](Clock-and-saves.md)

@@ -148,6 +148,14 @@ inline int weightGrams(int id,int cm){
  for(int step=0;step<3;++step)grams=(grams*cm+catalog[id].high/2)/catalog[id].high;
  return int(std::max<uint64_t>(1,grams));
 }
+// A trophy is a large specimen of a genuinely heavy pelagic species.
+ // The low condition bound makes eligibility independent of catch order and restorable from best length.
+inline bool trophySize(int id,int cm){
+ if(id<originalSpecies || id>=fishCount)return false;
+ const auto& f=catalog[id];
+ return f.form==1 && f.tier>=1 && cm*5>=f.high*4 &&
+   int64_t(weightGrams(id,cm))*90>=3000000;
+}
 inline const char* sizeLabel(int id,int cm){
  if(id<0 || id>=fishCount || (id==ray && cm>catalog[ray].high))return "Recorded size";
  return id<originalSpecies?catchmass::measure[id]:catalog[id].measure;
@@ -182,8 +190,13 @@ struct Progress {
    if(n>=12 && waters()>=2)return 3;if(n>=5)return 2;return n?1:0;
  }
  static int discoveryPoints(int species){return species?1+(std::min(species,originalSpecies)-1)/3:0;}
+ bool hasTrophy() const {
+   for(int i=originalSpecies;i<fishCount;i++)
+     if(book.entries[i].count && trophySize(i,book.entries[i].best))return true;
+   return false;
+ }
  int points() const {
-   int p=discoveryPoints(book.discovered());
+   int p=discoveryPoints(book.discovered())+hasTrophy();
    for(int v:rank)p-=v*(v+1)/2;return p;
  }
  bool upgrade(int i){
