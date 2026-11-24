@@ -19,7 +19,12 @@ assert.equal(orderedIds[1],unmapped);
  try{
   for(const touch of [false,true]){
    const c=await browser.newContext({offline:true,viewport:touch?{width:390,height:844}:{width:480,height:600},hasTouch:touch,isMobile:touch});
-   const p=await c.newPage(),errors=[],outside=[];
+   const p=await c.newPage(),errors=[],outside=[],pagehide=[];
+   const prefix='MAP_FILE_PAGEHIDE ';
+   p.on('console',message=>{
+    if(message.type()!=='debug'||!message.text().startsWith(prefix)||pagehide.length>=8)return;
+    try{pagehide.push(JSON.parse(message.text().slice(prefix.length)));}catch{}
+   });
    p.setDefaultTimeout(6000);
    p.setDefaultNavigationTimeout(12000);
    p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(/^https?:/.test(r.url()))outside.push(r.url());});
@@ -33,8 +38,19 @@ assert.equal(orderedIds[1],unmapped);
       epoch:performance.timeOrigin,known:history.state?.pocketReelCareerKnown===true,raw:null,error:null};
      try{entry.raw=localStorage.getItem('thai-atlas-v2');}
      catch(e){entry.error=e.name||'StorageError';}
+     // Existing app-owned preference only. Record a flag, never its value; do not seed storage.
+     try{entry.languageBinding=localStorage.getItem('thai-waters-language')===null?'missing':'present';}
+     catch{entry.languageBinding='blocked';}
      return entry;
     };
+    window.addEventListener('pagehide',event=>{
+     const observed=read();
+     console.debug('MAP_FILE_PAGEHIDE '+JSON.stringify({
+      epoch:observed.epoch,known:observed.known,persisted:event.persisted,
+      career:observed.error?'blocked':observed.raw===null?'missing':'present',
+      language:observed.languageBinding
+     }));
+    },{once:true});
     window.__mapFileStorageRead=read;
     window.__mapFileAtStart=read();
    },url);
@@ -255,14 +271,15 @@ assert.equal(orderedIds[1],unmapped);
    await p.reload();
    let startupError=null;
    try{await requireBootHome(p);}catch(e){startupError=e;}
-   const observed=await p.evaluate(()=>({sameFile:location.protocol==='file:',atStart:__mapFileAtStart,
+   const observed=await p.evaluate(fileUrl=>({sameFile:location.href===fileUrl,atStart:__mapFileAtStart,
     afterBoot:__mapFileStorageRead(),recovery:!$('startupRecovery').hidden,
     lock:fileCareerGuard.recovering,powered,place:g?placeId:null,phase:g?.state()??null,
-    pending:pendingCapture?.id??null}));
+    pending:pendingCapture?.id??null}),url);
    const evidence={lane:name,beforeReload:summary(beforeReload),sameFile:observed.sameFile,
     atStart:summary(observed.atStart),afterBoot:summary(observed.afterBoot),recovery:observed.recovery,
     lock:observed.lock,powered:observed.powered,place:observed.place,phase:observed.phase,
-    pending:observed.pending,startupError:startupError?.message??null,errors};
+    pending:observed.pending,startupError:startupError?.message??null,errors,
+    pagehide:pagehide.find(x=>x.epoch===beforeReload.epoch)??null};
    const diagnostic=JSON.stringify(evidence);
    console.log('Map standalone reload '+diagnostic);
    assert(observed.sameFile&&observed.atStart.ready==='loading'&&observed.atStart.epoch!==beforeReload.epoch,
