@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 2
+          fetch-depth: 3
           persist-credentials: false
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -33,7 +33,9 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $PSNativeCommandUseErrorActionPreference = $true
           $parent = & git rev-list --parents -n1 HEAD
-          if ($parent -cne "$env:GITHUB_SHA $env:BASE") { throw 'Wrong base or head' }
+          $previous = 'dea26c684f8f7de70a1f8b66e507a8cff9a3daa1'
+          if ($parent -cne "$env:GITHUB_SHA $previous" -or (& git rev-list --parents -n1 $previous) -cne "$previous $env:BASE") { throw 'Wrong base or head' }
+          if ((& git diff --name-only $previous HEAD) -cne '.github/workflows/verify-release-artifacts.yml') { throw 'Unexpected successor changes' }
           $diag = 'verification/diagnostics/solo-windows'
           $allow = @("M`t.github/workflows/verify-release-artifacts.yml","A`t$diag/Start-Pocket-Reel-Solo.mjs","A`t$diag/exact-browser-probe.mjs","A`t$diag/exact-http.test.mjs","A`t$diag/exact-pack.mjs")
           if (((& git diff --name-status $env:BASE HEAD) -join "`n") -cne ($allow -join "`n")) { throw 'Unexpected diagnostic source changes' }
@@ -42,7 +44,7 @@ jobs:
           $tools = Join-Path $env:RUNNER_TEMP 'zig-f08'
           $archive = Join-Path $env:RUNNER_TEMP 'zig.zip'
           function RequireHash($path,$digest) {
-            if ((Get-FileHash -Algorithm SHA256 -LiteralPath $path).Hash.ToLowerInvariant() -cne $digest) { throw 'Pinned checksum mismatch' }
+            if ((Get-FileHash -Algorithm SHA256 -LiteralPath $path).Hash.ToLowerInvariant() -cne $digest) { throw ("Pinned checksum mismatch: " + (Split-Path -Leaf $path)) }
           }
           try {
             & git -c core.autocrlf=false worktree add --detach $src $env:BASE
@@ -80,8 +82,12 @@ jobs:
             $env:POCKET_REEL_DISPOSABLE_RUNNER = '1'
             New-Item -ItemType Directory -Path $candidate | Out-Null
             Copy-Item -LiteralPath (Join-Path $src 'game/Thai-Waters-play.html') -Destination $candidate
-            RequireHash "$diag/Start-Pocket-Reel-Solo.mjs" '0b0791dcb8bcb5c5a049eff2d56b4e535a56e54e20ea1569506d424691006705'
-            Copy-Item -LiteralPath "$diag/Start-Pocket-Reel-Solo.mjs" -Destination $candidate
+            $launchSource = "$diag/Start-Pocket-Reel-Solo.mjs"
+            $launcher = Join-Path $candidate 'Start-Pocket-Reel-Solo.mjs'
+            $checkoutHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $launchSource).Hash.ToLowerInvariant()
+            Write-Output "Launcher checkout SHA-256: $checkoutHash"
+            & node -e 'const {execFileSync}=require("node:child_process"); const {writeFileSync}=require("node:fs"); const [spec,out]=process.argv.slice(1); writeFileSync(out,execFileSync("git",["cat-file","blob",spec]),{flag:"wx"});' "HEAD:$launchSource" $launcher
+            RequireHash $launcher '0b0791dcb8bcb5c5a049eff2d56b4e535a56e54e20ea1569506d424691006705'
             [IO.File]::WriteAllText((Join-Path $candidate 'Pocket-Reel-HTML.sha256'),"$htmlSha  Thai-Waters-play.html`n")
             [IO.File]::WriteAllText((Join-Path $candidate 'HOLD.txt'),'ENGINEERING HOLD - NOT RELEASE ELIGIBLE')
             $env:POCKET_REEL_HOLD_PACKAGE = $candidate
