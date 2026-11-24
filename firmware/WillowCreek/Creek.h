@@ -77,6 +77,7 @@ struct Game {
   bool filed=false;
   int landedGrams=0;
   bool heavyFight=false;
+  float heavyBestLine=0;
   bool trophyCatch() const {return phase==Phase::Landed && !emptyCast && trophySize(fish,length);}
   int landingPoints() const {
     if(phase!=Phase::Landed || emptyCast)return 0;
@@ -255,6 +256,12 @@ struct Game {
     }
     const int shift=n?int((n*383+fish*51+destination*31)%701)-350:0;
     return t<recoverMs+shift?FightBeat::Recover:t<recoverMs+runMs?FightBeat::Run:FightBeat::Slack;
+  }
+  bool heavyTired() const {return heavyFight && heavyBestLine<=target*.70f;}
+  bool heavyRunSoon() const {
+    if(phase!=Phase::Fight || !heavyFight || beat()!=FightBeat::Slack)return false;
+    const uint32_t cycle=recoverMs+runMs+slackMs;
+    return cycle-age%cycle<=350;
   }
   bool surge() const {return phase==Phase::Fight && beat()==FightBeat::Run;}
   bool holdingBottom() const {return fightStyle()==FightStyle::Anchor && surge();}
@@ -448,10 +455,10 @@ struct Game {
     }
     if(p==Phase::Fight){
       liftedCycle=UINT32_MAX;steadyLiftMs=0;
-      heavyFight=!emptyCast && trophySize(fish,length);
+      heavyFight=!emptyCast && strongRunSize(fish,length);
       if(heavyFight){
-        const float extra=limit(weightGrams(fish,length)*.00012f,4.f,8.f);
-        target+=extra;line+=extra;
+        const float extra=limit(weightGrams(fish,length)*.00016f,4.f,10.f);
+        target+=extra;line+=extra;heavyBestLine=line;
         runMs=std::clamp<uint32_t>(runMs+450u,1700u,2450u);
         recoverMs=std::max<uint32_t>(recoverMs,1850u);
       }
@@ -550,14 +557,16 @@ struct Game {
         switch(style){
           case FightStyle::Picker:purchase=.55f;payout=.05f;load=1.12f;break;
           case FightStyle::Anchor:purchase=0;payout=0;load=1.38f;break;
-          case FightStyle::Heavy:purchase=.08f;payout=.83f;load=1.54f;break;
+          case FightStyle::Heavy:purchase=.08f;payout=heavyTired()?.24f:.66f;load=heavyTired()?1.15f:1.40f;break;
           case FightStyle::Sprinter:purchase=.12f;payout=1.05f+catalog[fish].tier*.08f;load=1.12f;break;
           default:purchase=.20f;payout=.22f+catalog[fish].tier*.04f;load=.91f+catalog[fish].tier*.065f;break;
         }
       }
+      if(style==FightStyle::Heavy && !run)purchase=heavyTired()?.98f:loose?.92f:.82f;
       if(run)load*=1.f+.06f*int(weather);
       const float gained=turns*(1.f+.12f*progress.rank[1])*(turns>0?purchase:1.f);
       line=limit(line-gained+dt*payout,0,target+3);
+      if(style==FightStyle::Heavy)heavyBestLine=std::min(heavyBestLine,line);
       heat=limit(heat+forward*load*(1.f-.10f*progress.rank[2])+std::min(0.f,turns)*.66f-dt*(run?.18f:.36f),0,1);
       slack=limit(slack+(loose?dt*.80f:0)-forward*1.4f-std::min(0.f,turns)*.55f,0,2.f);
       idle=limit(idle+dt-std::max(0.f,turns)*9.f,0,9);
