@@ -95,3 +95,6 @@ test('read denial is distinct and cross-frame init preserves only the original l
  assert.equal(sub.scope.window.__twReloadStartup62,undefined);
  assert.deepEqual(sub.writes,[['thai-waters-language','en']]);
 });
+
+// Also exercise the Recovery panel's async backup-preview guard in this CI lane.
+require('./startup-recovery-unit.cjs');
