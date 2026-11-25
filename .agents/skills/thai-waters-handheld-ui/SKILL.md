@@ -12,3 +12,5 @@ Tap water to aim and cast. Place tackle icons in the transparent HUD and line te
 For Daily Cup, lead with the existing target portrait and the qualifying minimum for its actual measurement type, separate from the recorded catch or personal best. Render the calibrated scale on the native LCD and keep “equip and travel” separate from competition entry. Verify touch fit, same-water equip without travel, skip, persistent tackle and the active-cast and unfiled-catch guards in the [tournament check](../../../verification/browser-tests/tournament.cjs).
 
 Exercise changes in the flat LCD and projected device view. Start from the existing [browser checks](../../../verification/browser-tests/package.json) and the [game handbook](../../../docs/wiki/Game-and-demo.md).
+
+For chart pins with overlapping touch areas, show the named choices without moving the player or enabling stale Travel. An exact marker remains direct; a choice only selects. Keep dismissal and focus return clear, and verify Thai/English labels and touch targets with [the browser map check](../../../verification/browser-tests/location-map.cjs).

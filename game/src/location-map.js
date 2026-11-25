@@ -5,6 +5,47 @@ const locationMap=(()=>{
  const ctx=canvas.getContext('2d'),model=waterbodyMapModel.create(data.pins,canvas.width,canvas.height);
  const text=(en,th)=>language==='th'?th:en;
  let revision=0;
+ const access=$('mapAccess'),existing=Array.from(access.children);
+ const choicePanel=document.createElement('div'),choiceTitle=document.createElement('p');
+ const optionButtons=Array.from({length:2},()=>document.createElement('button'));
+ const dismiss=document.createElement('button');
+ choicePanel.className='map-close-pin-choice';
+ choicePanel.hidden=true;
+ choiceTitle.id='mapClosePinTitle';
+ choicePanel.setAttribute('role','group');
+ choicePanel.setAttribute('aria-labelledby',choiceTitle.id);
+ const toCanvas=()=>canvas.focus({preventScroll:true});
+ function dismissChoice(focus=false){
+  if(!model.cancelChoice())return;
+  update();
+  if(focus)toCanvas();
+ }
+ dismiss.type='button';
+ dismiss.onclick=()=>dismissChoice(true);
+ optionButtons.forEach((button,i)=>{
+  button.type='button';
+  button.onclick=()=>{const id=model.pending()[i];if(model.resolve(id)){update();toCanvas();}};
+ });
+ choicePanel.append(choiceTitle,...optionButtons,dismiss);
+ access.append(choicePanel);
+ function renderChoice(){
+  const ids=model.pending(),pending=ids.length>1,opening=choicePanel.hidden&&pending;
+  existing.forEach(element=>{if(element!==$('mapStage'))element.inert=pending;});
+  access.toggleAttribute('data-close-pin-choice',pending);
+  choicePanel.hidden=!pending;
+  if(!pending)return;
+  choiceTitle.textContent=text('Which water?','เลือกแหล่งน้ำ');
+  optionButtons.forEach((button,i)=>{
+   button.hidden=i>=ids.length;
+   button.textContent=i<ids.length?atlas.locations[ids[i]].name:'';
+  });
+  dismiss.textContent=text('Cancel','ยกเลิก');
+  if(opening)optionButtons[0].focus({preventScroll:true});
+ }
+ choicePanel.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  e.preventDefault();e.stopPropagation();dismissChoice(true);
+ });
  function draw(){
   const w=canvas.width,h=canvas.height,[px,py]=model.pan();
   ctx.fillStyle='#183742';ctx.fillRect(0,0,w,h);
@@ -22,6 +63,8 @@ const locationMap=(()=>{
   for(const [id] of data.pins){
    const [x,y]=model.position(id),chosen=id===model.selected();
    if(chosen){ctx.beginPath();ctx.arc(x,y,7,0,Math.PI*2);ctx.strokeStyle='#ffe5a9';ctx.lineWidth=1;ctx.stroke();}
+   const offered=model.pending().includes(id);
+   if(offered){ctx.beginPath();ctx.arc(x,y,5.5,0,Math.PI*2);ctx.strokeStyle='#e1fbf7';ctx.lineWidth=1;ctx.stroke();}
    const r=chosen?4.7:3.5;
    ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(x+r,y);ctx.lineTo(x,y+r);ctx.lineTo(x-r,y);ctx.closePath();
    ctx.fillStyle=chosen?'#ffdf9a':'#99e5d8';ctx.strokeStyle='#163840';ctx.lineWidth=.9;ctx.fill();ctx.stroke();
@@ -36,7 +79,7 @@ const locationMap=(()=>{
   if(!fromPicker&&picker.value!==v){
    picker.value=v;picker.dispatchEvent(new Event('change',{bubbles:true}));
   }
-  travel.disabled=id===null||!allowed();
+  travel.disabled=!!model.pending().length||id===null||!allowed();
   $('mapStage').textContent=id===null?text(data.pins.length+' mapped waters','แหล่งน้ำบนแผนที่ '+data.pins.length+' แห่ง'):atlas.locations[id].name;
   $('mapAccessNote').textContent=data.label[language==='th'?'th':'en'];
   $('mapTravel').textContent=text('Travel','เดินทาง');
@@ -45,7 +88,7 @@ const locationMap=(()=>{
   $('locationMapOpen').textContent=text('Map','แผนที่');
   canvas.setAttribute('aria-label',text('Thailand waterbody overview. Arrow keys pan; Home resets. Use the location list to choose.','แผนที่แหล่งน้ำในประเทศไทย ใช้ลูกศรเลื่อน กด Home เพื่อตั้งใหม่ เลือกแหล่งน้ำจากรายชื่อ'));
   $('mapBootNote').textContent=spotTravelAllowed()?'':text('Resume fishing to travel.','กลับสู่เกมก่อนเดินทาง');
-  draw();
+  renderChoice();draw();
  }
  function labels(){
   const id=model.selected();
@@ -69,7 +112,7 @@ const locationMap=(()=>{
   if(e.isPrimary&&e.button===0&&model.start(e.pointerId,at(e)))canvas.setPointerCapture(e.pointerId);
  });
  canvas.addEventListener('pointermove',e=>{
-  if(model.move(e.pointerId,at(e))){canvas.dataset.dragging='';draw();}
+  if(model.move(e.pointerId,at(e))){canvas.dataset.dragging='';if(!choicePanel.hidden)update();else draw();}
  });
  canvas.addEventListener('pointerup',e=>{
   delete canvas.dataset.dragging;if(model.end(e.pointerId,at(e)))update();
@@ -81,11 +124,11 @@ const locationMap=(()=>{
   const move={ArrowUp:[0,-14],ArrowDown:[0,14],ArrowLeft:[-14,0],ArrowRight:[14,0]}[e.key];
   if(!move&&e.key!=='Home')return;
   e.preventDefault();e.stopPropagation();
-  if(move)model.panBy(...move);else model.resetPan();draw();
+  if(move)model.panBy(...move);else model.resetPan();update();
  });
  for(const event of ['focus','blur'])canvas.addEventListener(event,draw);
  picker.onchange=()=>{model.choose(picker.value===''?null:Number(picker.value));update(true);};
- $('mapReset').onclick=()=>{model.resetPan();draw();canvas.focus({preventScroll:true});};
+ $('mapReset').onclick=()=>{model.resetPan();update();canvas.focus({preventScroll:true});};
  // A touch pointerup is authoritative for Map Travel only. The same gesture
  // may yield no click after map pan, or a delayed one after the menu closes.
  const activation=waterbodyMapModel.createTouchActivation();
@@ -114,7 +157,11 @@ const locationMap=(()=>{
  }
  $('locationMapOpen').onclick=open;
  document.addEventListener('game-language',labels);
- sheet.addEventListener('spots-map-visible',()=>update());
+ sheet.addEventListener('spots-map-visible',()=>{if(!allowed())dismissChoice();update();});
+ const overlay=$('menu');
+ new MutationObserver(()=>{
+  if(!menu.open||menuPage!=='spots'||sheet.hidden)dismissChoice();
+ }).observe(overlay,{attributes:true,attributeFilter:['open','data-page','hidden'],subtree:true});
  labels();
  return {open,resetSelection(){model.choose(null);update();}};
 })();
