@@ -146,6 +146,40 @@ assert.equal(orderedIds[1],unmapped);
     for(const s of ['#waterbodyMap','#mapAccessNote','#mapReset','#mapToList','#mapWaterbody + button']){
      const b=await p.locator(s).boundingBox();assert(b&&b.x>=r.x-1&&b.y>=r.y-1&&b.x+b.width<=r.x+r.width+1&&b.y+b.height<=r.y+r.height+1,s);
     }
+    // The adjacent northern markers share touch space; a midpoint tap is not a choice.
+    const chart=await p.locator('#waterbodyMap').boundingBox();
+    const x=chart.x+chart.width*(115+((99.038+99.875)/2-101.1)*10.2)/230;
+    const y=chart.y+chart.height*(93+(13.1-(19.169+19.171)/2)*10.6)/186;
+    const overlapTap=()=>touch?p.touchscreen.tap(x,y):p.mouse.click(x,y);
+    const selection=()=>p.evaluate(()=>[placeId,pendingSpot,localStorage.getItem('thai-atlas-v2')]);
+    const previous=await selection();
+    await overlapTap();
+    const choice=p.locator('.map-close-pin-choice');
+    assert(await choice.isVisible(),name+' overlapping markers need an explicit choice');
+    assert.equal(await choice.locator('p').textContent(),lang==='th'?'เลือกแหล่งน้ำ':'Which water?');
+    const [first,second,cancel]=await choice.getByRole('button').allTextContents();
+    const options=await p.evaluate(()=>[0,16].map(id=>atlas.locations[id].name).sort());
+    assert.deepEqual([first,second].sort(),options);
+    assert.equal(cancel,lang==='th'?'ยกเลิก':'Cancel');
+    assert(await p.locator('#mapTravel').isDisabled());
+    const hit=await choice.getByRole('button').evaluateAll(buttons=>buttons.every(b=>{
+     const r=b.getBoundingClientRect(),m=document.getElementById('menu').getBoundingClientRect();
+     return (!matchMedia('(pointer: coarse)').matches||r.height>=44)&&r.left>=m.left-1&&r.right<=m.right+1&&
+      r.top>=m.top-1&&r.bottom<=m.bottom+1&&b.scrollHeight<=b.clientHeight+1&&
+      document.elementFromPoint(r.left+r.width/2,r.top+r.height/2)?.closest('button')===b;
+    }));
+    assert(hit,'All three localized choices must fit and accept physical input');
+    if(touch)await choice.getByRole('button',{name:cancel,exact:true}).tap();
+    else await p.keyboard.press('Escape');
+    assert(await choice.isHidden());
+    assert.equal(await p.evaluate(()=>document.activeElement.id),'waterbodyMap');
+    assert.deepEqual(await selection(),previous);
+    await overlapTap();
+    const kwan=choice.getByRole('button',{name:await p.evaluate(()=>atlas.locations[16].name),exact:true});
+    if(touch)await kwan.tap();else await kwan.press('Enter');
+    assert(await choice.isHidden());
+    assert.equal(await p.locator('#mapWaterbody').inputValue(),picked);
+    assert.deepEqual(await selection(),previous,'A named choice still cannot travel or save');
     await press('#mapToList');
     assert(await p.locator('#locationMapOpen').isVisible());
     for(const query of lang==='th'?['Kwan Phayao','กว๊านพะเยา']:['Kwan Phayao']){

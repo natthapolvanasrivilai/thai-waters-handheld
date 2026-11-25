@@ -1,7 +1,7 @@
 // Pure state for a representative map. No engine, DOM, clock, or save access.
 const waterbodyMapModel=(()=>{
  function create(rows,width,height){
-  let x=0,y=0,selected=null,active=null;
+  let x=0,y=0,selected=null,active=null,pending=[];
   const ids=new Set(rows.map(row=>row[0])),limit=(v,n)=>Math.min(n,Math.max(-n,v));
   const project=([lon,lat])=>[width/2+(lon-101.1)*10.2,height/2+(13.1-lat)*10.6];
   function point(row){const [a,b]=project(row.slice(1));return [a+x,b+y];}
@@ -16,11 +16,23 @@ const waterbodyMapModel=(()=>{
    }
    return choice;
   }
-  function choose(id){if(id!==null&&!ids.has(id))return false;selected=id;return true;}
-  function panTo(a,b){x=limit(a,44);y=limit(b,26);}
+  function targets(px,py){
+   if(px<0||py<0||px>width||py>height)return [];
+   const close=[];
+   for(const row of rows){
+    const [a,b]=point(row);
+    if(a>=0&&b>=0&&a<=width&&b<=height&&Math.hypot(a-px,b-py)<=6)close.push(row[0]);
+   }
+   if(close.length)return close;
+   const nearest=pick(px,py);return nearest===null?[]:[nearest];
+  }
+  function cancelChoice(){const had=pending.length>0;pending=[];return had;}
+  function choose(id){if(id!==null&&!ids.has(id))return false;cancelChoice();selected=id;return true;}
+  function resolve(id){return pending.includes(id)&&choose(id);}
+  function panTo(a,b){cancelChoice();x=limit(a,44);y=limit(b,26);}
   function start(id,p){
    if(active)return false;
-   active={id,p,x,y,at:pick(p.x,p.y),drag:false};return true;
+   active={id,p,x,y,at:targets(p.x,p.y),drag:false};return true;
   }
   const distance=(p,q)=>Math.hypot(p.clientX-q.clientX,p.clientY-q.clientY);
   function move(id,p){
@@ -32,12 +44,16 @@ const waterbodyMapModel=(()=>{
   function end(id,p){
    if(!active||id!==active.id)return false;
    const prev=active;active=null;
-   return !prev.drag&&distance(p,prev.p)<7&&prev.at!==null&&pick(p.x,p.y)===prev.at&&choose(prev.at);
+   if(prev.drag||distance(p,prev.p)>=7)return false;
+   const now=targets(p.x,p.y);
+   if(!now.length||now.length!==prev.at.length||!now.every((id,i)=>id===prev.at[i]))return false;
+   if(now.length===1)return choose(now[0]);
+   pending=now;return true;
   }
-  return {project,pick,choose,start,move,cancel,end,pan:()=>[x,y],resetPan:()=>panTo(0,0),
+  return {project,pick,choose,start,move,cancel,end,resolve,cancelChoice,pending:()=>pending.slice(),pan:()=>[x,y],resetPan:()=>panTo(0,0),
    panBy:(a,b)=>panTo(x+a,y+b),selected:()=>selected,
    position:id=>point(rows.find(r=>r[0]===id)),
-   confirm:(allowed,go)=>allowed&&selected!==null?go(selected):false};
+   confirm:(allowed,go)=>allowed&&!pending.length&&selected!==null?go(selected):false};
  }
  // A browser can omit the compatibility click for the first touch after a pan.
  // Compare native event facts only; do not synthesize clicks or touch global state.

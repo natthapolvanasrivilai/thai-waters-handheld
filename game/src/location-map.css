@@ -14,3 +14,8 @@
 #menu #mapGraphic small,#menu .waterbody-map-access small{margin:0;font-size:10px;line-height:1.12}
 #menu #locationMapOpen{min-height:54px}
 #menu #mapBootNote:empty{display:none}
+
+#menu .waterbody-map-access[data-close-pin-choice] > :not(#mapStage):not(.map-close-pin-choice){display:none}
+#menu .map-close-pin-choice:not([hidden]){display:grid;min-width:0;gap:3px}
+#menu .map-close-pin-choice p{margin:0;font-size:12px;line-height:1.1;color:#c1e9da}
+#menu #waterbodyMapSheet .map-close-pin-choice button{width:100%;min-height:44px;min-width:0;white-space:normal;overflow-wrap:anywhere}
