@@ -1,5 +1,7 @@
 # Prototype and production releases
 
+Use the [per-revision constitution and gate](../quality/revision-gates/README.md) for prototype promotion, production promotion and production orders. Engineering checkpoints do not assert readiness.
+
 For new hardware releases, record the numeric assembly IDs, reviewed commit or tag, exact BOM and artifact digests. The [hardware revision register](../hardware/revisions/README.md) resolves a historical label or a part revision to its source. The current inert fit print pairs enclosure **TW-A-0001-R0008** with electrical integration **TW-A-0002-R0002**. Record firmware version and digest, actual accessory fitment, lot/serial effectivity, engineering disposition, evidence and approval alongside those IDs.
 
 Historical builds are in prototypes. Firmware 0.7 is an engineering candidate for PCB 31137 and the Rev E or Rev F enclosure. No production release has been approved. For each promoted build record the Git commit, PCB silkscreen revision, partition layout, binary SHA-256, hardware/API compatibility, tested accessory combinations, regulatory evidence and approver. The populated STEP is gzip-compressed losslessly in the mechanical package.

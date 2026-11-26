@@ -1,4 +1,4 @@
-"""Package exact verified artifacts and publish complete private nightly prereleases."""
+"""Package exact verified artifacts as non-release nightly checkpoints."""
 import argparse
 import base64
 from datetime import datetime
@@ -101,64 +101,7 @@ def verify_tag(base, tag, sha):
 
 
 def publish(browser, controller, out, sha, env):
-    repo = env["GITHUB_REPOSITORY"]
-    base = f"repos/{repo}"
-    guard(env, api(base), sha)
-    short = sha[:7]
-    names = {f"Thai-Waters-browser-{short}.zip", f"Thai-Waters-controller-{short}.zip", "SHA256SUMS"}
-    require({p.name for p in out.iterdir()} == names, "Unexpected nightly asset list")
-    expected = {name: sha256(out / name) for name in names}
-    checks(out, sorted(names - {"SHA256SUMS"}))
-    require(sha256(controller / "release-controller" / f"Thai-Waters-controller-{short}.zip") == expected[f"Thai-Waters-controller-{short}.zip"], "Prepared controller does not match verified package")
-    with ZipFile(out / f"Thai-Waters-browser-{short}.zip") as z:
-        require(set(z.namelist()) == {*BROWSER, "SHA256SUMS"} and all((browser / n).read_bytes() == z.read(n) for n in z.namelist()), "Prepared browser does not match verified package")
-
-    release_pages = api(f"{base}/releases?per_page=100", "--paginate", "--slurp")
-    releases = [r for page in release_pages for r in page]
-    date = datetime.now(ZoneInfo("Asia/Bangkok")).date().isoformat()
-    tag = f"nightly-{date}-{sha}"
-    prior = [r for r in releases if re.fullmatch(r"nightly-\d{4}-\d{2}-\d{2}-" + sha, r["tag_name"]) and not r["draft"]]
-    require(len(prior) <= 1, "Multiple published nightlies already exist for this commit")
-    if prior:
-        found = prior[0]
-        require(found["prerelease"] and set(release_assets(found["assets"])) == names, "Existing nightly is incomplete")
-        verify_tag(base, found["tag_name"], sha)
-        print("Verified existing nightly:", found["html_url"])
-        return
-
-    require(all(r["tag_name"] != tag for r in releases), "A draft for this exact nightly already exists; leaving it unpublished")
-    refs = api(f"{base}/git/matching-refs/tags/{tag}")
-    for ref in refs:
-        if ref["ref"] == "refs/tags/" + tag:
-            verify_tag(base, tag, sha)
-    run = f"{env['GITHUB_SERVER_URL']}/{repo}/actions/runs/{env['GITHUB_RUN_ID']}"
-    notes = (
-        f"Verified nightly build from `{sha}`. [Build and test logs]({run}).\n\n"
-        "Browser: unzip the browser package and open `Thai-Waters-play.html` on a desktop. "
-        "The controller ZIP is a bench artifact only. Hardware hold remains in effect; this release does not authorize flashing.\n"
-    )
-    draft = api(f"{base}/releases", "--method", "POST", "-f", f"tag_name={tag}", "-f",
-                f"target_commitish={sha}", "-f", f"name=Pocket Reel nightly {date} ({short})",
-                "-f", f"body={notes}", "-F", "draft=true", "-F", "prerelease=true", "-f", "make_latest=false")
-    require(draft["draft"] and draft["prerelease"] and draft["target_commitish"] == sha, "GitHub did not create the expected draft")
-    gh("release", "upload", tag, *(str(out / name) for name in sorted(names)), "--repo", repo)
-    endpoint = f"{base}/releases/{draft['id']}"
-    for retry in range(4):
-        current = api(endpoint)
-        require(current["draft"] and current["prerelease"] and current["target_commitish"] == sha, "Draft changed before publication")
-        try:
-            if release_assets(current["assets"]) == expected:
-                break
-        except ValueError:
-            pass
-        if retry < 3:
-            time.sleep(2)
-    else:
-        raise ValueError("Uploaded assets failed validation; draft was not published")
-    live = api(endpoint, "--method", "PATCH", "-F", "draft=false", "-F", "prerelease=true", "-f", "make_latest=false")
-    require(not live["draft"] and live["prerelease"] and release_assets(live["assets"]) == expected, "Published release verification failed")
-    verify_tag(base, tag, sha)
-    print("Published verified private nightly:", live["html_url"])
+    raise ValueError("Nightly publication disabled: every release requires the tagged handbook gate")
 
 
 if __name__ == "__main__":

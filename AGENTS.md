@@ -1,5 +1,7 @@
 # Working on Thai Waters
 
+Use the [revision constitution](quality/revision-gates/README.md) for prototype promotion, production promotion and production orders. Ordinary engineering checkpoints remain separate.
+
 Use the repository-owned skills when working on their subjects. Keep them with this personal private project so a fresh checkout carries the product decisions forward.
 
 - [Specimen artwork](.agents/skills/thai-waters-specimen-art/SKILL.md) covers fish illustration, the exact reference plate and the catch-to-journal art pipeline.

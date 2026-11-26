@@ -3,6 +3,8 @@ name: thai-waters-prototype-release
 description: Package and verify private Thai Waters simulator and ESP32 prototype releases and record their evidence.
 ---
 
+Before deliberate promotion, use the [per-revision constitution](../../../quality/revision-gates/README.md), including discipline evidence and applicable safety checks. Existing engineering checkpoints are separate from promotion.
+
 The browser engine shares C++ gameplay with firmware. After changing shared gameplay, rebuild via [build-engine.py](../../../game/build-engine.py) and [build.py](../../../game/build.py). Check actual input, game state, rendered pixels or PCM in the relevant browser and host fixtures. Preserve save compatibility. For physical builds, use the board profile and flash layout documented in the [controller guide](../../../firmware/Phone-controller.md).
 
 Use the existing [USB packager](../../../firmware/tools/package-controller-preview.py) to verify compiled-source fingerprints and image offsets. Distinguish host simulation, ESP32 compilation and physical bench results in release notes. Retain previous packages needed by existing hardware. For art expansions, record the compiled application size against the target OTA slot. The nominal flash capacity also holds the second application slot and the collection filesystem.

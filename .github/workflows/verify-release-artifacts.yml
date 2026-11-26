@@ -233,15 +233,16 @@ jobs:
             verify/
           if-no-files-found: error
           retention-days: 5
-  nightly_release:
+  nightly_checkpoint:
     needs: [browser_release, controller]
+    name: Verified nightly build (not a release)
     if: github.event_name == 'schedule' && github.repository == 'natthapolvanasrivilai/thai-waters-handheld' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
-      contents: write
+      contents: read
     concurrency:
-      group: verified-pocket-reel-nightly-release
+      group: verified-pocket-reel-nightly-checkpoint
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -261,7 +262,11 @@ jobs:
         run: python3 .github/scripts/test_nightly_release.py
       - name: Verify and package the testable build
         run: python3 .github/scripts/nightly-release.py prepare nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
-      - name: Publish a private prerelease with verified assets
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python3 .github/scripts/nightly-release.py publish nightly/browser nightly/controller nightly/out "$SOURCE_SHA"
+      # Every published prerelease must pass the handbook gate.
+      - name: Keep the verified package as a private CI artifact
+        if: github.event.repository.private == true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: verified-nightly-build-${{ env.SOURCE_SHA }}
+          path: nightly/out
+          if-no-files-found: error
