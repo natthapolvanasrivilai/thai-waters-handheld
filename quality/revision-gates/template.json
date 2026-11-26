@@ -95,5 +95,20 @@
       "statement": "Replace with actual evidence or documented limitation.",
       "evidence": []
     }
+  },
+  "handbook": {
+    "release_version": "REPLACE",
+    "release_tag": "REPLACE",
+    "hardware_revision": "REPLACE",
+    "software_revision": "REPLACE",
+    "edition": "owner-private",
+    "changes": [
+      "Replace with the real change from the last release."
+    ],
+    "path": "verification/revision-evidence/handbooks/Pocket-Reel-Handbook-REPLACE-REPLACE-ME.html",
+    "asset_name": "Pocket-Reel-Handbook-REPLACE-REPLACE-ME.html",
+    "sha256": "REPLACE-WITH-RENDERER-SHA256",
+    "firmware_revision": "REPLACE",
+    "revision_na": {}
   }
 }

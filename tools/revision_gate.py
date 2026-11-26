@@ -7,6 +7,8 @@ import re
 import subprocess
 import sys
 
+from release_handbook import TOKEN, digest, render
+
 # Each ID represents a distinct reviewable test, not a marketing checkbox.
 CHECKS = {
     "mechanical_fdm": (
@@ -28,7 +30,7 @@ def git(root, *args):
     return subprocess.check_output(("git", "-C", str(root), *args)).decode().strip()
 
 
-def validate(doc, root, *, actual_private=False, evidence_sha="", reviews=()):
+def validate(doc, root, *, actual_private=False, evidence_sha="", reviews=(), release_asset=None):
     def require(condition, msg):
         if not condition:
             raise ValueError(msg)
@@ -106,6 +108,52 @@ def validate(doc, root, *, actual_private=False, evidence_sha="", reviews=()):
                     and hashlib.sha256(f.read_bytes()).hexdigest() == ref["sha256"],
                     f"{name}: exact evidence digest mismatch")
 
+    h = doc.get("handbook")
+    require(isinstance(h, dict), "Offline release handbook is mandatory")
+    for field in ("release_version", "release_tag", "hardware_revision", "firmware_revision", "software_revision"):
+        require(isinstance(h.get(field), str) and TOKEN.fullmatch(h[field]),
+                f"Handbook: {field} must be explicit")
+    require(h["hardware_revision"] != "none" or scope == "software-only",
+            "Full or inert hardware snapshot requires a hardware revision")
+    require(h["firmware_revision"] != "none" or scope != "powered",
+            "Full powered release requires a firmware revision")
+    require(h["software_revision"] != "none" or (scope != "software-only" and stage != "production"),
+            "Software-only or production release requires a software revision")
+    na = h.get("revision_na", {})
+    require(isinstance(na, dict), "Handbook: revision N/A rationales must be an object")
+    for field in ("hardware_revision", "firmware_revision", "software_revision"):
+        if h[field] == "none":
+            reason = na.get(field)
+            require(isinstance(reason, str) and len(reason.strip()) >= 16,
+                    f"Handbook: explain why {field} is not applicable")
+    require(h.get("edition") in ("public", "owner-private"), "Handbook: unsupported edition")
+    require(h["edition"] != "owner-private" or actual_private is True,
+            "Do not stage an owner-private handbook in a public repository")
+    changes = h.get("changes")
+    require(isinstance(changes, list) and changes and all(
+        isinstance(entry, str) and len(entry.strip()) >= 12 for entry in changes),
+        "Handbook: record revision changes")
+    name = f"Pocket-Reel-Handbook-{h['release_version']}-{doc['revision']}.html"
+    p = f"verification/revision-evidence/handbooks/{name}"
+    require(h.get("path") == p and h.get("asset_name") == name,
+            "Handbook: canonical path and release asset name required")
+    try:
+        tracked = subprocess.check_output(("git", "-C", str(root), "show", f"{evidence_sha}:{p}"),
+                                          stderr=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as exc:
+        raise ValueError("Handbook: missing tracked offline snapshot") from exc
+    require(h.get("sha256") == digest(tracked), "Handbook: snapshot checksum mismatch")
+    require(tracked == render(root, doc),
+            "Handbook: stale/mismatched content, revision changes, source or evidence status")
+    require(isinstance(release_asset, dict), "Handbook: verified uploaded draft asset required")
+    require(release_asset.get("tag_name") == h["release_tag"] and
+            release_asset.get("tag_commit") == source,
+            "Handbook: GitHub tag does not resolve to exact release source")
+    require(release_asset.get("draft") is True and
+            release_asset.get("prerelease") is (stage == "prototype") and
+            release_asset.get("name") == name and release_asset.get("sha256") == h["sha256"],
+            "Handbook: missing/mismatched uploaded draft asset, digest or release stage")
+
     if stage == "production":
         require(actual_private is True, "Production promotion and orders require a private repository")
         marker = f"release-gate: production {doc['revision']} {source}"
@@ -136,8 +184,9 @@ def main():
                                              f"{a.evidence_sha}:{path.as_posix()}"))
         facts = json.loads(a.github_facts.read_text()) if a.github_facts else {}
         validate(json.loads(manifest), a.root, actual_private=facts.get("private"),
-                 evidence_sha=a.evidence_sha, reviews=facts.get("reviews", []))
-    except (OSError, ValueError, TypeError, subprocess.CalledProcessError) as exc:
+                 evidence_sha=a.evidence_sha, reviews=facts.get("reviews", []),
+                 release_asset=facts.get("release_asset"))
+    except (OSError, KeyError, ValueError, TypeError, subprocess.CalledProcessError) as exc:
         print("REVISION GATE BLOCKED:", exc, file=sys.stderr)
         return 1
     print("REVISION EVIDENCE PASSED. No promotion, publication, power-on or order was performed.")

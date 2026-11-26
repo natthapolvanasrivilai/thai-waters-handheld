@@ -52,6 +52,10 @@ class Verify(unittest.TestCase):
     def prepare(self):
         return self.n.prepare(self.browser, self.controller, self.out, self.sha)
 
+    def test_nightly_without_handbook_cannot_publish(self):
+        with self.assertRaisesRegex(ValueError, "every release requires the tagged handbook gate"):
+            self.n.publish(self.browser, self.controller, self.out, self.sha, {})
+
     def test_real_bundle(self):
         assets = self.prepare()
         self.assertEqual(sorted(assets), ["SHA256SUMS", "Thai-Waters-browser-08665bb.zip", "Thai-Waters-controller-08665bb.zip"])

@@ -4,6 +4,9 @@ on:
     paths:
       - '.github/workflows/revision-release-gate.yml'
       - 'tools/*revision_gate*'
+      - 'tools/release_handbook.py'
+      - '.github/scripts/*nightly*'
+      - '.github/workflows/verify-release-artifacts.yml'
       - 'quality/revision-gates/**'
   push:
     branches: [policy/revision-release-constitution]
@@ -15,6 +18,14 @@ on:
         type: string
       manifest:
         description: Tracked path under quality/revision-gates/
+        required: true
+        type: string
+      release_id:
+        description: GitHub ID of the draft release that already contains the offline handbook asset
+        required: true
+        type: string
+      handbook_asset:
+        description: Exact staged handbook HTML filename
         required: true
         type: string
       review_pr:
@@ -32,6 +43,7 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 -m unittest discover -s tools -p test_revision_gate.py -v
+      - run: python3 .github/scripts/test_nightly_release.py
   check_revision:
     if: github.event_name == 'workflow_dispatch'
     needs: policy_tests
@@ -65,6 +77,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ inputs.review_pr }}
           EVIDENCE_SHA: ${{ inputs.evidence_sha }}
+          RELEASE_ID: ${{ inputs.release_id }}
+          HANDBOOK_ASSET: ${{ inputs.handbook_asset }}
         run: |
           set -euo pipefail
           base="repos/$GITHUB_REPOSITORY"
@@ -75,8 +89,33 @@ jobs:
             test "$(gh api "$base/pulls/$PR_NUMBER" --jq '.head.sha')" = "$EVIDENCE_SHA"
             gh api --paginate --slurp "$base/pulls/$PR_NUMBER/reviews?per_page=100" --jq 'add' > "$RUNNER_TEMP/reviews.json"
           fi
+          [[ "$RELEASE_ID" =~ ^[1-9][0-9]*$ ]]
+          [[ "$HANDBOOK_ASSET" =~ ^Pocket-Reel-Handbook-[A-Za-z0-9._-]+\.html$ ]]
+          release="$(gh api "$base/releases/$RELEASE_ID")"
+          tag="$(jq -er 'select(.draft == true) | .tag_name' <<< "$release")"
+          [[ "$tag" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$ ]]
+          obj="$(gh api "$base/git/ref/tags/$tag" --jq '.object')"
+          for _ in {1..8}; do
+            kind="$(jq -er '.type' <<< "$obj")"
+            sha="$(jq -er '.sha' <<< "$obj")"
+            [[ "$sha" =~ ^[0-9a-f]{40}$ ]]
+            if [[ "$kind" == commit ]]; then break; fi
+            [[ "$kind" == tag ]]
+            obj="$(gh api "$base/git/tags/$sha" --jq '.object')"
+          done
+          [[ "$kind" == commit ]]
+          asset_id="$(jq -er --arg name "$HANDBOOK_ASSET" '[.assets[] |
+            select(.name == $name and .state == "uploaded")] |
+            if length == 1 then .[0].id else error("Missing/duplicate uploaded handbook") end' <<< "$release")"
+          gh api "$base/releases/assets/$asset_id" -H 'Accept: application/octet-stream' \
+            > "$RUNNER_TEMP/handbook-release-asset.html"
+          digest="$(sha256sum "$RUNNER_TEMP/handbook-release-asset.html" | cut -d ' ' -f 1)"
+          jq --arg sha "$sha" --arg name "$HANDBOOK_ASSET" --arg digest "$digest" \
+            '{tag_name, draft, prerelease, tag_commit:$sha, name:$name, sha256:$digest}' \
+            <<< "$release" > "$RUNNER_TEMP/asset.json"
           jq -n --slurpfile p "$RUNNER_TEMP/private.json" --slurpfile r "$RUNNER_TEMP/reviews.json" \
-            '{private: $p[0], reviews: $r[0]}' > "$RUNNER_TEMP/github-facts.json"
+            --slurpfile a "$RUNNER_TEMP/asset.json" \
+            '{private: $p[0], reviews: $r[0], release_asset: $a[0]}' > "$RUNNER_TEMP/github-facts.json"
       - name: Check revision evidence (does not release or order)
         env:
           EVIDENCE_SHA: ${{ inputs.evidence_sha }}
