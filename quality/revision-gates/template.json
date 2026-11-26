@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "stage": "prototype",
+  "scope": "inert",
+  "revision": "REPLACE-ME",
+  "source_commit": "REPLACE-WITH-FULL-EXACT-SOURCE-SHA",
+  "checks": {
+    "mechanical_fdm.native_cad_and_slice": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "mechanical_fdm.printability_and_cosmetics": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "mechanical_fdm.physical_dimensional_first_article": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "pcb.schematic_bom_erc": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "pcb.layout_drc_and_populated_fit": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "pcb.physical_bringup": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "power.hazard_review": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "power.bench_limits_and_controls": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "power.measured_faults_and_protection": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "software_firmware.build_compatibility_and_recovery": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "software_firmware.target_regression_and_update": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "software_firmware.physical_target_endurance": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "assembly.exact_interfaces_and_sequence": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "assembly.fit_and_service_first_article": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "assembly.repeatable_final_qc": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "packaging.configuration_and_traceability": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "packaging.protection_and_labels": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    },
+    "packaging.distribution_validation": {
+      "status": "pending",
+      "statement": "Replace with actual evidence or documented limitation.",
+      "evidence": []
+    }
+  }
+}

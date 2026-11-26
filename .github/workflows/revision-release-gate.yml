@@ -1,0 +1,86 @@
+name: Revision release gate
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/revision-release-gate.yml'
+      - 'tools/*revision_gate*'
+      - 'quality/revision-gates/**'
+  push:
+    branches: [policy/revision-release-constitution]
+  workflow_dispatch:
+    inputs:
+      evidence_sha:
+        description: Exact 40-character SHA containing the completed revision manifest
+        required: true
+        type: string
+      manifest:
+        description: Tracked path under quality/revision-gates/
+        required: true
+        type: string
+      review_pr:
+        description: PR number for production (blank for prototype)
+        required: false
+        type: string
+permissions:
+  contents: read
+jobs:
+  policy_tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s tools -p test_revision_gate.py -v
+  check_revision:
+    if: github.event_name == 'workflow_dispatch'
+    needs: policy_tests
+    permissions:
+      contents: read
+      pull-requests: read
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Require trusted default workflow and exact evidence SHA
+        env:
+          REF: ${{ github.ref }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          EVIDENCE_SHA: ${{ inputs.evidence_sha }}
+        run: |
+          set -euo pipefail
+          test "$REF" = "refs/heads/$DEFAULT_BRANCH"
+          [[ "$EVIDENCE_SHA" =~ ^[0-9a-f]{40}$ ]]
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          path: policy
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          path: evidence
+          ref: ${{ inputs.evidence_sha }}
+      - name: Read repository and current review facts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ inputs.review_pr }}
+          EVIDENCE_SHA: ${{ inputs.evidence_sha }}
+        run: |
+          set -euo pipefail
+          base="repos/$GITHUB_REPOSITORY"
+          gh api "$base" --jq '.private' > "$RUNNER_TEMP/private.json"
+          echo '[]' > "$RUNNER_TEMP/reviews.json"
+          if [[ -n "$PR_NUMBER" ]]; then
+            [[ "$PR_NUMBER" =~ ^[1-9][0-9]*$ ]]
+            test "$(gh api "$base/pulls/$PR_NUMBER" --jq '.head.sha')" = "$EVIDENCE_SHA"
+            gh api --paginate --slurp "$base/pulls/$PR_NUMBER/reviews?per_page=100" --jq 'add' > "$RUNNER_TEMP/reviews.json"
+          fi
+          jq -n --slurpfile p "$RUNNER_TEMP/private.json" --slurpfile r "$RUNNER_TEMP/reviews.json" \
+            '{private: $p[0], reviews: $r[0]}' > "$RUNNER_TEMP/github-facts.json"
+      - name: Check revision evidence (does not release or order)
+        env:
+          EVIDENCE_SHA: ${{ inputs.evidence_sha }}
+          MANIFEST: ${{ inputs.manifest }}
+        run: |
+          python3 policy/tools/revision_gate.py evidence "$MANIFEST" "$EVIDENCE_SHA" \
+            --github-facts "$RUNNER_TEMP/github-facts.json"
