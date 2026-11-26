@@ -1,0 +1,51 @@
+reference,footprint,layer_as_authored,pcb_x_mm,pcb_y_mm,pcb_rotation_deg,assembly_x_mm,assembly_y_mm,manufacturer,exact_mpn,model_reference,disposition
+C101,Capacitor_SMD:C_0603_1608Metric,F.Cu,110.4,118.4,0,23.4,4.4,Murata,GRM188R71C104KA01D,${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+C102,Capacitor_SMD:C_0603_1608Metric,F.Cu,115.9,119.0,180,28.9,5.0,Murata,GRM188R71C105KA12D,${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+C103,Capacitor_SMD:C_0402_1005Metric,F.Cu,117.25,120.75,0,30.25,6.75,Murata,GRM155R71C104KA88D,${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step,Nominal component model; verify manufacturer maximum envelope
+C104,Capacitor_SMD:C_0402_1005Metric,F.Cu,106.25,123.25,0,19.25,9.25,Murata,GRM155R71H103KA88D,${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step,Nominal component model; verify manufacturer maximum envelope
+C105,Capacitor_SMD:C_0402_1005Metric,F.Cu,106.75,131.25,0,19.75,17.25,Murata,GRM155R71H103KA88D,${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step,Nominal component model; verify manufacturer maximum envelope
+D1,Package_TO_SOT_SMD:SOT-23,F.Cu,120.1,106.4,0,33.1,-7.6,Nexperia,"BAV170,215",${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step,Nominal component model; verify manufacturer maximum envelope
+D101,Diode_SMD:D_SOD-523,F.Cu,113.9,130.6,0,26.9,16.6,onsemi,ESD5Z6.0T1G,${KICAD10_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-523.step,Nominal component model; verify manufacturer maximum envelope
+FB101,Inductor_SMD:L_0603_1608Metric,F.Cu,109.65,129.15,0,22.65,15.15,Murata,BLM18PG121SN1D,${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+J1,TW:WireLand,F.Cu,95.6,103.6,0,8.6,-10.4,,,,Bare solder land: route/verify joint envelope
+J10,TW:WireLand,F.Cu,111.6,113.55,90,24.6,-0.45,,,,Bare solder land: route/verify joint envelope
+J11,TW:WireLand,F.Cu,114.9,113.55,90,27.9,-0.45,,,,Bare solder land: route/verify joint envelope
+J12,TW:WireLand,F.Cu,118.2,113.55,90,31.2,-0.45,,,,Bare solder land: route/verify joint envelope
+J13,TW:WireLand,F.Cu,121.5,113.55,90,34.5,-0.45,,,,Bare solder land: route/verify joint envelope
+J2,TW:WireLand,F.Cu,95.6,106.7,0,8.6,-7.3,,,,Bare solder land: route/verify joint envelope
+J3,TW:WireLand,F.Cu,95.6,110.3,0,8.6,-3.7,,,,Bare solder land: route/verify joint envelope
+J4,TW:WireLand,F.Cu,95.6,113.4,0,8.6,-0.6,,,,Bare solder land: route/verify joint envelope
+J5,TW:WireLand,F.Cu,111.6,103.45,90,24.6,-10.55,,,,Bare solder land: route/verify joint envelope
+J6,TW:WireLand,F.Cu,114.1,103.45,90,27.1,-10.55,,,,Bare solder land: route/verify joint envelope
+J7,TW:WireLand,F.Cu,116.6,103.45,90,29.6,-10.55,,,,Bare solder land: route/verify joint envelope
+J8,TW:WireLand,F.Cu,119.1,103.45,90,32.1,-10.55,,,,Bare solder land: route/verify joint envelope
+J9,TW:WireLand,F.Cu,121.6,103.45,90,34.6,-10.55,,,,Bare solder land: route/verify joint envelope
+Q1,Package_TO_SOT_SMD:SOT-23,F.Cu,114.0,108.35,0,27.0,-5.65,Nexperia,"PMV65XP,215",${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step,Nominal component model; verify manufacturer maximum envelope
+Q101,Package_TO_SOT_SMD:SOT-23,F.Cu,104.5,126.0,180,17.5,12.0,Nexperia,"PMV65XP,215",${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step,Nominal component model; verify manufacturer maximum envelope
+Q102,Package_TO_SOT_SMD:SOT-23,F.Cu,108.6,126.0,0,21.6,12.0,Nexperia,"PMV65XP,215",${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step,Nominal component model; verify manufacturer maximum envelope
+Q103,Package_TO_SOT_SMD:SOT-23,F.Cu,103.0,121.4,0,16.0,7.4,Nexperia,PMV16XNR,${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step,Nominal component model; verify manufacturer maximum envelope
+Q2,Package_TO_SOT_SMD:SOT-23,F.Cu,118.5,110.3,0,31.5,-3.7,Nexperia,PMV16XNR,${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23.step,Nominal component model; verify manufacturer maximum envelope
+R1,Resistor_SMD:R_2512_6332Metric,F.Cu,100.55,104.55,0,13.55,-9.45,Vishay,CRCW25124R99FKEG,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_2512_6332Metric.step,Nominal component model; verify manufacturer maximum envelope
+R101,Resistor_SMD:R_0603_1608Metric,F.Cu,116.8,122.25,0,29.8,8.25,Panasonic,ERA-3AEB104V,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+R102,Resistor_SMD:R_2512_6332Metric,F.Cu,115.1,126.3,0,28.1,12.3,Vishay,CRCW251262R0FKEG,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_2512_6332Metric.step,Nominal component model; verify manufacturer maximum envelope
+R103,Resistor_SMD:R_0603_1608Metric,F.Cu,106.6,129.4,0,19.6,15.4,Panasonic,ERJ-3EKF1003V,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+R104,Resistor_SMD:R_0603_1608Metric,F.Cu,108.6,121.6,90,21.6,7.6,Panasonic,ERA-3AEB114V,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+R105,Resistor_SMD:R_0603_1608Metric,F.Cu,103.0,118.6,0,16.0,4.6,YAGEO,RC0603FR-0710ML,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+R106,Resistor_SMD:R_0402_1005Metric,F.Cu,104.0,131.5,0,17.0,17.5,YAGEO,RC0402FR-0710ML,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0402_1005Metric.step,Nominal component model; verify manufacturer maximum envelope
+R107,Resistor_SMD:R_0402_1005Metric,F.Cu,101.5,124.5,90,14.5,10.5,YAGEO,RC0402FR-07100KL,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0402_1005Metric.step,Nominal component model; verify manufacturer maximum envelope
+R108,Resistor_SMD:R_0402_1005Metric,F.Cu,106.5,120.75,0,19.5,6.75,YAGEO,RC0402FR-07100KL,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0402_1005Metric.step,Nominal component model; verify manufacturer maximum envelope
+R109,Resistor_SMD:R_0402_1005Metric,F.Cu,114.0,123.5,0,27.0,9.5,YAGEO,RC0402FR-073K3L,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0402_1005Metric.step,Nominal component model; verify manufacturer maximum envelope
+R2,Resistor_SMD:R_2512_6332Metric,F.Cu,100.55,112.45,0,13.55,-1.55,Vishay,CRCW25124R99FKEG,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_2512_6332Metric.step,Nominal component model; verify manufacturer maximum envelope
+R3,Resistor_SMD:R_0603_1608Metric,F.Cu,112.65,105.45,0,25.65,-8.55,Panasonic,ERJ-3EKF1501V,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+R4,Resistor_SMD:R_0603_1608Metric,F.Cu,115.85,105.45,0,28.85,-8.55,Panasonic,ERJ-3EKF1501V,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+R5,Resistor_SMD:R_0603_1608Metric,F.Cu,111.9,110.9,0,24.9,-3.1,Panasonic,ERJ-3EKF3303V,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+R6,Resistor_SMD:R_0603_1608Metric,F.Cu,115.0,111.2,0,28.0,-2.8,Panasonic,ERJ-3EKF1003V,${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step,Nominal component model; verify manufacturer maximum envelope
+U101,Package_TO_SOT_SMD:SOT-23-6,F.Cu,112.0,121.0,0,25.0,7.0,Texas Instruments,TLV3011BIDBVR,${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-23-6.step,Nominal component model; verify manufacturer maximum envelope
+U102,Package_TO_SOT_SMD:SOT-363_SC-70-6,F.Cu,120.0,122.25,90,33.0,8.25,Texas Instruments,TLV3011BIDCKR,${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-363_SC-70-6.step,Nominal component model; verify manufacturer maximum envelope
+W101,Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm,F.Cu,111.0,131.3,0,24.0,17.3,Jonard Tools,R30R-0100,${KICAD10_3DMODEL_DIR}/Connector_Wire.3dshapes/SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm.step,Wire land: generic wire model not selected terminal geometry
+W102,Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm,F.Cu,121.45,126.0,0,34.45,12.0,Jonard Tools,R30R-0100,${KICAD10_3DMODEL_DIR}/Connector_Wire.3dshapes/SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm.step,Wire land: generic wire model not selected terminal geometry
+W103,Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm,F.Cu,121.45,119.0,0,34.45,5.0,Jonard Tools,R30BLK-0100,${KICAD10_3DMODEL_DIR}/Connector_Wire.3dshapes/SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm.step,Wire land: generic wire model not selected terminal geometry
+W104,Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm,F.Cu,101.55,129.4,0,14.55,15.4,Jonard Tools,R30R-0100,${KICAD10_3DMODEL_DIR}/Connector_Wire.3dshapes/SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm.step,Wire land: generic wire model not selected terminal geometry
+W105,Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm,F.Cu,106.8,118.55,0,19.8,4.55,Jonard Tools,R30R-0100,${KICAD10_3DMODEL_DIR}/Connector_Wire.3dshapes/SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm.step,Wire land: generic wire model not selected terminal geometry
+W106,Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm,F.Cu,121.45,129.4,0,34.45,15.4,,,${KICAD10_3DMODEL_DIR}/Connector_Wire.3dshapes/SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm.step,Isolated unused spare Land; DNP with generic model present
+W107,Connector_Wire:SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm,F.Cu,117.65,131.3,0,30.65,17.3,Jonard Tools,R30R-0100,${KICAD10_3DMODEL_DIR}/Connector_Wire.3dshapes/SolderWire-0.127sqmm_1x01_D0.48mm_OD1mm.step,Wire land: generic wire model not selected terminal geometry

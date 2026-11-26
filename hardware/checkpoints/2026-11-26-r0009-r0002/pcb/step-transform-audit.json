@@ -1,0 +1,278 @@
+{
+  "scope": "Native PCB placement compared to registered AP214 root placements (F.Cu; XY export origin KiCad 100,100, Y inverted); no as-built/geometry tolerances",
+  "seat_z_mm": [
+    0.795
+  ],
+  "components": {
+    "C101": {
+      "step_xyz_mm": [
+        10.4,
+        -18.4,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "C102": {
+      "step_xyz_mm": [
+        15.9,
+        -19.0,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "C103": {
+      "step_xyz_mm": [
+        17.25,
+        -20.75,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "C104": {
+      "step_xyz_mm": [
+        6.25,
+        -23.25,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "C105": {
+      "step_xyz_mm": [
+        6.75,
+        -31.25,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "D1": {
+      "step_xyz_mm": [
+        20.1,
+        -6.4,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "D101": {
+      "step_xyz_mm": [
+        13.9,
+        -30.6,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "FB101": {
+      "step_xyz_mm": [
+        9.65,
+        -29.15,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "Q1": {
+      "step_xyz_mm": [
+        14.0,
+        -8.35,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "Q101": {
+      "step_xyz_mm": [
+        4.5,
+        -26.0,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "Q102": {
+      "step_xyz_mm": [
+        8.6,
+        -26.0,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "Q103": {
+      "step_xyz_mm": [
+        3.0,
+        -21.4,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "Q2": {
+      "step_xyz_mm": [
+        18.5,
+        -10.3,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R1": {
+      "step_xyz_mm": [
+        0.55,
+        -4.55,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R101": {
+      "step_xyz_mm": [
+        16.8,
+        -22.25,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R102": {
+      "step_xyz_mm": [
+        15.1,
+        -26.3,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R103": {
+      "step_xyz_mm": [
+        6.6,
+        -29.4,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R104": {
+      "step_xyz_mm": [
+        8.6,
+        -21.6,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R105": {
+      "step_xyz_mm": [
+        3.0,
+        -18.6,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R106": {
+      "step_xyz_mm": [
+        4.0,
+        -31.5,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R107": {
+      "step_xyz_mm": [
+        1.5,
+        -24.5,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R108": {
+      "step_xyz_mm": [
+        6.5,
+        -20.75,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R109": {
+      "step_xyz_mm": [
+        14.0,
+        -23.5,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R2": {
+      "step_xyz_mm": [
+        0.55,
+        -12.45,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R3": {
+      "step_xyz_mm": [
+        12.65,
+        -5.45,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R4": {
+      "step_xyz_mm": [
+        15.85,
+        -5.45,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R5": {
+      "step_xyz_mm": [
+        11.9,
+        -10.9,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "R6": {
+      "step_xyz_mm": [
+        15.0,
+        -11.2,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "U101": {
+      "step_xyz_mm": [
+        12.0,
+        -21.0,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    },
+    "U102": {
+      "step_xyz_mm": [
+        20.0,
+        -22.25,
+        0.795
+      ],
+      "pcb_step_xy_error_mm": 0.0,
+      "angle_error_deg": 0.0
+    }
+  }
+}

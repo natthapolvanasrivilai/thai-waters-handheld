@@ -1,0 +1,25 @@
+{
+  "rigid_CviLux_to_changes_mm": [
+    0.5089419231044736,
+    "PCB",
+    "withdrawal",
+    8.1875
+  ],
+  "flexible_CviLux_jackets_to_changes_mm": [
+    0.4413836753437786,
+    "PCB",
+    "VCC",
+    0.125,
+    0.1875
+  ],
+  "drawing_maximum_pack_to_changes_mm": [
+    1.1999999999999993,
+    "boss 2"
+  ],
+  "rigid_display_18mm_lift_to_new_mount_mm": [
+    0.2999999999999979,
+    "screw 2",
+    0.125
+  ],
+  "scope": "Conservative midpoint allowances on nominal triangulated CAD. Display check covers rigid parts with electrical leads disconnected. Drawing-maximum pack uses geometric surface distance. Check physical fit, driver access, release force and harness service loop separately."
+}
