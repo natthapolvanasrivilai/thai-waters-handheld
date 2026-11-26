@@ -1,0 +1,29 @@
+{
+  "preloaded_shelf_rejected_at_2mm_inboard_mm3": 1.5840000000000003,
+  "scope": "Shelf is secured first. Board, emitter and registered roots of both leads checked. Unconnected far ends remain free for dressing. Completed tethered loom, solder fillet allowances and insertion force need a wired sample.",
+  "lower": {
+    "USB-W4B to X-38": {
+      "housing": 0.2857
+    }
+  },
+  "side_entry": {},
+  "lower_18": {},
+  "side_entry_18": {},
+  "lower_21": {
+    "USB-W4C to X-38": {
+      "housing": 3.62703
+    },
+    "USB-W4C-Cu to X-38": {
+      "housing": 2.96085
+    }
+  },
+  "side_entry_21": {
+    "USB-W4C to X-38": {
+      "housing": 0.57875
+    },
+    "USB-W4C-Cu to X-38": {
+      "housing": 0.29368
+    }
+  },
+  "revised_leads_vs_new_solids": {}
+}

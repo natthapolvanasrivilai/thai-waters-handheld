@@ -1,0 +1,61 @@
+{
+  "case-board-r0001": {
+    "erc": {
+      "source_sha256": "e9d7e186b4d0579a904f1d777812ac7b6e22aac5275be3635c9e330ba25454f9",
+      "violations": 0,
+      "unrouted": 0,
+      "parity": 0
+    },
+    "drc": {
+      "source_sha256": "22b0fc8a5d63e7d7b8cf93ea86b88a61e5dde3504efdabbed6125158e66b6230",
+      "violations": 0,
+      "unrouted": 0,
+      "parity": 0
+    }
+  },
+  "pcb-haptic-cie-r0002": {
+    "erc": {
+      "source_sha256": "007bae7c8355fde342868be4af6873cf6603717342019ba23c6c9b76a7d242e8",
+      "violations": 0,
+      "unrouted": 0,
+      "parity": 0
+    },
+    "drc": {
+      "source_sha256": "703cb2c5fee0528ecb6579708c4d15fe8ff78646c1d427ef827336323d33bddd",
+      "violations": 0,
+      "unrouted": 0,
+      "parity": 0
+    }
+  },
+  "input_supply": {
+    "cases": 73,
+    "measurements": 205,
+    "statuses": {
+      "PASS": 191,
+      "RECORD": 5,
+      "CONTROL_FAIL": 7,
+      "OPEN_FAIL": 2
+    },
+    "exceptions": [
+      {
+        "case": "unsupported_no_cell_330mA_0.61",
+        "measurement": "input",
+        "value": "1.198555e-08",
+        "unit": "V",
+        "low": "3.9",
+        "high": "5.5",
+        "status": "OPEN_FAIL"
+      },
+      {
+        "case": "unsupported_no_cell_330mA_2.04",
+        "measurement": "input",
+        "value": "0.6322158",
+        "unit": "V",
+        "low": "3.9",
+        "high": "5.5",
+        "status": "OPEN_FAIL"
+      }
+    ],
+    "source_sha256": "22b0fc8a5d63e7d7b8cf93ea86b88a61e5dde3504efdabbed6125158e66b6230"
+  }
+}

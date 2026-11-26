@@ -1,0 +1,1473 @@
+{
+  "assembly": "TW-A-0001-R0016",
+  "editable_project_sha256": "8b47afcd77e3b1b1b757be501b9596f5920fbc5ced75ada28f0d6d4654c3a5f6",
+  "parent_project_sha256": "c98ef59656fcfca2e18dfe6434898e9352af7256d4c4ce2c88b64b31dde26d83",
+  "print_mesh_sha256": "035f50d7a8170fac53077a72283c0eb772f5163f7fbb7c802ca323e874823b98",
+  "native_project_verification": {
+    "mesh_faces": 86814,
+    "max_native_vertex_error_mm": 5.000000413701855e-09,
+    "blocker_installed_bounds_mm": [
+      [
+        -44.2,
+        -18.2,
+        11.55
+      ],
+      [
+        -39.4,
+        3.3,
+        23.0
+      ]
+    ],
+    "local_height_settings": "<?xml version='1.0' encoding='UTF-8'?>\n<objects><object id=\"1\"><range min_z=\"14.4\" max_z=\"15.0\"><option opt_key=\"layer_height\">0.10</option></range></object></objects>",
+    "other_object_placements_and_settings_identical": true
+  },
+  "engine": "BambuStudio 02.09.01.70",
+  "plates": [
+    {
+      "id": 1,
+      "objects": 1,
+      "seconds": 7643,
+      "grams": 53.91
+    },
+    {
+      "id": 2,
+      "objects": 10,
+      "seconds": 2860,
+      "grams": 10.02
+    },
+    {
+      "id": 3,
+      "objects": 1,
+      "seconds": 8541,
+      "grams": 20.47
+    },
+    {
+      "id": 4,
+      "objects": 3,
+      "seconds": 505,
+      "grams": 0.45
+    },
+    {
+      "id": 5,
+      "objects": 2,
+      "seconds": 788,
+      "grams": 0.84
+    },
+    {
+      "id": 6,
+      "objects": 2,
+      "seconds": 4585,
+      "grams": 14.02
+    },
+    {
+      "id": 7,
+      "objects": 14,
+      "seconds": 3888,
+      "grams": 26.66
+    }
+  ],
+  "all_plate_extrusion": {
+    "status": "pass",
+    "inputs": {
+      "sliced_3mf_sha256": "2e0b4bd80a64f4f0421e37c6c8051e46d390b6b067beee3e475427deec157f84",
+      "native_report_sha256": "b5b85a16b7bf9092d7f0c4271763fb6b145f61977f3fc7dbb690f64804bc819c",
+      "features_sha256": "3922fb06dfc10c879307244dca48c2a47e9ebe0da1682a0ac52e362a45319acb"
+    },
+    "warnings": [],
+    "objects": [
+      {
+        "plate": 1,
+        "name": "housing-battery-bay_1",
+        "object_id": "385",
+        "mesh_bottom_mm": -7.348631925196969e-09,
+        "mesh_top_mm": 31.000003807348634,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 31.0,
+        "model_layers": 158,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "bezel_1",
+        "object_id": "386",
+        "mesh_bottom_mm": -3.8418579428878274e-09,
+        "mesh_top_mm": 2.200000043841858,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 2.2,
+        "model_layers": 11,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "rotor_1",
+        "object_id": "387",
+        "mesh_bottom_mm": 6.20361362280164e-08,
+        "mesh_top_mm": 22.44945913796387,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 22.2,
+        "model_layers": 111,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "folding-stem_1",
+        "object_id": "388",
+        "mesh_bottom_mm": 5.07006845396063e-08,
+        "mesh_top_mm": 15.379396489299317,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 15.2,
+        "model_layers": 76,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "grip_1",
+        "object_id": "389",
+        "mesh_bottom_mm": 5.463256869120414e-08,
+        "mesh_top_mm": 9.300000245367432,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 9.4,
+        "model_layers": 47,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "collar_1",
+        "object_id": "390",
+        "mesh_bottom_mm": 0.0,
+        "mesh_top_mm": 2.5,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 2.4,
+        "model_layers": 12,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "power-cap_1",
+        "object_id": "391",
+        "mesh_bottom_mm": -2.2604373928203358e-10,
+        "mesh_top_mm": 1.3200000522260438,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 1.4,
+        "model_layers": 7,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "grip-screw-keeper_1",
+        "object_id": "392",
+        "mesh_bottom_mm": 3.1069946615502886e-10,
+        "mesh_top_mm": 1.5900000336893005,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 1.6,
+        "model_layers": 8,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "receiver-nut-keeper_1",
+        "object_id": "393",
+        "mesh_bottom_mm": 3.4465025278151984e-10,
+        "mesh_top_mm": 0.8299999836553498,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 0.8,
+        "model_layers": 4,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "key-board-retainer-west_1",
+        "object_id": "394",
+        "mesh_bottom_mm": 4.9041748440004085e-09,
+        "mesh_top_mm": 7.469999795095825,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 7.4,
+        "model_layers": 37,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 2,
+        "name": "battery-wire-bridge_1",
+        "object_id": "395",
+        "mesh_bottom_mm": -1.8530272871686293e-09,
+        "mesh_top_mm": 3.3299999218530276,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 3.4,
+        "model_layers": 17,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 3,
+        "name": "rod-grip_1",
+        "object_id": "396",
+        "mesh_bottom_mm": 5.1757808705588104e-08,
+        "mesh_top_mm": 130.39999394824218,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 130.4,
+        "model_layers": 652,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 4,
+        "name": "status-charge-guide_1",
+        "object_id": "397",
+        "mesh_bottom_mm": 1.0965322871925309e-07,
+        "mesh_top_mm": 1.1267747783467712,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 1.2,
+        "model_layers": 6,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 4,
+        "name": "status-usb-guide_1",
+        "object_id": "398",
+        "mesh_bottom_mm": 1.0976278730367994e-07,
+        "mesh_top_mm": 1.2000000382372136,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 1.2,
+        "model_layers": 6,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 4,
+        "name": "status-power-guide_1",
+        "object_id": "399",
+        "mesh_bottom_mm": 1.1010061484739708e-07,
+        "mesh_top_mm": 1.128180017899382,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 1.2,
+        "model_layers": 6,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 5,
+        "name": "usb-c-shield-mask_1",
+        "object_id": "400",
+        "mesh_bottom_mm": 9.476837448119113e-08,
+        "mesh_top_mm": 0.5100000852316313,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 0.6,
+        "model_layers": 3,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 5,
+        "name": "service-cover_1",
+        "object_id": "401",
+        "mesh_bottom_mm": -4.63256988325611e-10,
+        "mesh_top_mm": 4.519999980463257,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 4.6,
+        "model_layers": 23,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 6,
+        "name": "PKCELL-max-body-with-wire-sockets_1",
+        "object_id": "402",
+        "mesh_bottom_mm": 4.632568550988481e-09,
+        "mesh_top_mm": 5.300000195367431,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 5.4,
+        "model_layers": 27,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 6,
+        "name": "Adafruit-258-CAD-with-PCM-and-stubs_1",
+        "object_id": "403",
+        "mesh_bottom_mm": 0.0,
+        "mesh_top_mm": 63.0,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 63.0,
+        "model_layers": 315,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A1 display and controller",
+        "object_id": "1701",
+        "mesh_bottom_mm": 7.34862837248329e-10,
+        "mesh_top_mm": 13.399999619265136,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 13.4,
+        "model_layers": 67,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A2 reel sensor",
+        "object_id": "1702",
+        "mesh_bottom_mm": -4.9041748440004085e-09,
+        "mesh_top_mm": 4.530000204904175,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 4.6,
+        "model_layers": 23,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A3 haptic board",
+        "object_id": "1703",
+        "mesh_bottom_mm": -4.4409178556747975e-09,
+        "mesh_top_mm": 9.760000224440919,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 9.8,
+        "model_layers": 49,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A4 integration board",
+        "object_id": "1704",
+        "mesh_bottom_mm": 4.305114487124229e-09,
+        "mesh_top_mm": 2.029999975694885,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 2.0,
+        "model_layers": 10,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A5 USB power board",
+        "object_id": "1705",
+        "mesh_bottom_mm": 4.76837147544984e-09,
+        "mesh_top_mm": 2.3849999952316283,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 2.4,
+        "model_layers": 12,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "Top power switch board",
+        "object_id": "1706",
+        "mesh_bottom_mm": 4.632568550988481e-09,
+        "mesh_top_mm": 5.300000195367431,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 5.4,
+        "model_layers": 27,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "USB indicator LED board",
+        "object_id": "1707",
+        "mesh_bottom_mm": 9.53674250681047e-10,
+        "mesh_top_mm": 0.8519999990463256,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 0.8,
+        "model_layers": 4,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "USB lamp resistor board",
+        "object_id": "1708",
+        "mesh_bottom_mm": 3.8418579428878274e-09,
+        "mesh_top_mm": 1.0499999561581421,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 1.0,
+        "model_layers": 5,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A4 display spacer 1",
+        "object_id": "1711",
+        "mesh_bottom_mm": 2.9153441882812103e-09,
+        "mesh_top_mm": 2.464999917084656,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 2.4,
+        "model_layers": 12,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A4 display spacer 2",
+        "object_id": "1712",
+        "mesh_bottom_mm": 2.9153441882812103e-09,
+        "mesh_top_mm": 2.464999917084656,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 2.4,
+        "model_layers": 12,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A4 display spacer 3",
+        "object_id": "1713",
+        "mesh_bottom_mm": 2.9153441882812103e-09,
+        "mesh_top_mm": 2.464999917084656,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 2.4,
+        "model_layers": 12,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A5 display spacer 1",
+        "object_id": "1714",
+        "mesh_bottom_mm": -2.9153441882812103e-09,
+        "mesh_top_mm": 3.160000082915344,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 3.2,
+        "model_layers": 16,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A5 display spacer 2",
+        "object_id": "1715",
+        "mesh_bottom_mm": -2.9153441882812103e-09,
+        "mesh_top_mm": 3.160000082915344,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 3.2,
+        "model_layers": 16,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      },
+      {
+        "plate": 7,
+        "name": "A5 display spacer 3",
+        "object_id": "1716",
+        "mesh_bottom_mm": -2.9153441882812103e-09,
+        "mesh_top_mm": 3.160000082915344,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 3.2,
+        "model_layers": 16,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      }
+    ],
+    "features": [
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "west rail south cap",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 5.8,
+            "path_mm": 12.614173,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.0,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.2,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.4,
+            "path_mm": 6.592,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.6,
+            "path_mm": 15.132,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.8,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.0,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.2,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.4,
+            "path_mm": 15.468,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.6,
+            "path_mm": 14.774,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 13.759573,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "west rail west shoulder",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.6,
+            "path_mm": 16.8,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 16.8,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "west rail east shoulder",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.6,
+            "path_mm": 16.8,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 16.8,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "west rail groove floor",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.4,
+            "path_mm": 15.422666,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "east rail south cap",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 5.8,
+            "path_mm": 12.617187,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.0,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.2,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.4,
+            "path_mm": 6.592,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.6,
+            "path_mm": 15.132,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.8,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.0,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.2,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.4,
+            "path_mm": 15.467664,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.6,
+            "path_mm": 14.774,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 13.759573,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "east rail west shoulder",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.6,
+            "path_mm": 16.8,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 16.8,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "east rail east shoulder",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.6,
+            "path_mm": 16.8,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 16.8,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "east rail groove floor",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.4,
+            "path_mm": 15.423006,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      }
+    ],
+    "scope": "digital planned model paths only, not physical print acceptance"
+  },
+  "reopened_plate_extrusion": {
+    "status": "pass",
+    "inputs": {
+      "sliced_3mf_sha256": "01fbd63efa9a087d4cd186240f0aef1f6e574df8274734dc6aca09bb3d8f1c9f",
+      "native_report_sha256": "9534759fdf8692fe450ea9b1fc5c9a0deda9b60f8fb2798c4d077f98b55ef016",
+      "features_sha256": "3922fb06dfc10c879307244dca48c2a47e9ebe0da1682a0ac52e362a45319acb"
+    },
+    "warnings": [],
+    "objects": [
+      {
+        "plate": 1,
+        "name": "housing-battery-bay_1",
+        "object_id": "385",
+        "mesh_bottom_mm": -7.348631925196969e-09,
+        "mesh_top_mm": 31.000003807348634,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 31.0,
+        "model_layers": 158,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      }
+    ],
+    "features": [
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "west rail south cap",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 5.8,
+            "path_mm": 12.614173,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.0,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.2,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.4,
+            "path_mm": 6.592,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.6,
+            "path_mm": 15.132,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.8,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.0,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.2,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.4,
+            "path_mm": 15.468,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.6,
+            "path_mm": 14.774,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 13.759573,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "west rail west shoulder",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.6,
+            "path_mm": 16.8,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 16.8,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "west rail east shoulder",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.6,
+            "path_mm": 16.8,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 16.8,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "west rail groove floor",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.4,
+            "path_mm": 15.422666,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "east rail south cap",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 5.8,
+            "path_mm": 12.617187,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.0,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.2,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.4,
+            "path_mm": 6.592,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.6,
+            "path_mm": 15.132,
+            "status": "pass"
+          },
+          {
+            "z_mm": 6.8,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.0,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.2,
+            "path_mm": 15.252,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.4,
+            "path_mm": 15.467664,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.6,
+            "path_mm": 14.774,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 13.759573,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "east rail west shoulder",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.6,
+            "path_mm": 16.8,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 16.8,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "east rail east shoulder",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.6,
+            "path_mm": 16.8,
+            "status": "pass"
+          },
+          {
+            "z_mm": 7.8,
+            "path_mm": 16.8,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      },
+      {
+        "plate": 1,
+        "object_id": "385",
+        "name": "east rail groove floor",
+        "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+        "minimum_path_mm": 1.0,
+        "layers": [
+          {
+            "z_mm": 7.4,
+            "path_mm": 15.423006,
+            "status": "pass"
+          }
+        ],
+        "status": "pass"
+      }
+    ],
+    "scope": "digital planned model paths only, not physical print acceptance"
+  },
+  "matched_both_native_runs": {
+    "usb": {
+      "route": {
+        "lower_at_service_edge": {
+          "model": {
+            "peak_in_section_mm2": 0.0,
+            "occupied_build_layers_mm": []
+          },
+          "support": {
+            "peak_in_section_mm2": 0.0,
+            "occupied_build_layers_mm": []
+          }
+        },
+        "slide_to_stop": {
+          "model": {
+            "peak_in_section_mm2": 0.0,
+            "occupied_build_layers_mm": []
+          },
+          "support": {
+            "peak_in_section_mm2": 0.0,
+            "occupied_build_layers_mm": []
+          }
+        }
+      },
+      "features": {
+        "floor": {
+          "installed_XY_mm": [
+            -42.04,
+            -1.9,
+            -41.55,
+            1.9
+          ],
+          "sampled_build_layers_mm": [
+            14.6
+          ],
+          "area_mm2": 1.862,
+          "min_max_native_model_coverage_fraction": [
+            1.0,
+            1.0
+          ]
+        },
+        "inboard_lip": {
+          "installed_XY_mm": [
+            -41.18,
+            -2.2,
+            -40.55,
+            1.9
+          ],
+          "sampled_build_layers_mm": [
+            14.8,
+            15.0,
+            15.2,
+            15.4
+          ],
+          "area_mm2": 2.583,
+          "min_max_native_model_coverage_fraction": [
+            0.997531,
+            1.0
+          ]
+        },
+        "far_stop": {
+          "installed_XY_mm": [
+            -42.06,
+            2.42,
+            -41.54,
+            2.6
+          ],
+          "sampled_build_layers_mm": [
+            15.0,
+            15.2,
+            15.4,
+            15.6,
+            15.8,
+            16.0,
+            16.2,
+            16.4,
+            16.6,
+            16.8,
+            17.0,
+            17.2,
+            17.4,
+            17.6
+          ],
+          "area_mm2": 0.0936,
+          "min_max_native_model_coverage_fraction": [
+            1.0,
+            1.0
+          ]
+        },
+        "roof": {
+          "installed_XY_mm": [
+            -42.42,
+            -2.28,
+            -41.5,
+            2.28
+          ],
+          "sampled_build_layers_mm": [
+            18.2,
+            18.4,
+            18.6
+          ],
+          "area_mm2": 4.1952,
+          "min_max_native_model_coverage_fraction": [
+            1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    "key_flanks": {
+      "west": {
+        "gap_model_min_max_mm2": [
+          0.0,
+          0.0
+        ],
+        "maximum_gap_support_mm2": 0.0,
+        "minimum_wall_witness_model_mm2": 0.204
+      },
+      "east": {
+        "gap_model_min_max_mm2": [
+          0.0,
+          0.0
+        ],
+        "maximum_gap_support_mm2": 0.0,
+        "minimum_wall_witness_model_mm2": 0.204
+      }
+    },
+    "both_A3_rails": "pass"
+  },
+  "roof_and_bearing": {
+    "bearing_top_build_z_mm": 14.7,
+    "central_roof_underside_build_z_mm": 18.0,
+    "vertical_margin_for_3_20_mm_board_between_bead_layers_mm": 0.1,
+    "first_roof_layer_checked_build_z_mm": 18.2,
+    "longest_individual_centerline_inside_unsupported_slot_mm": 1.3,
+    "checked_installed_xy_mm": [
+      -42.56,
+      -8.6,
+      -41.26,
+      2.405
+    ]
+  },
+  "west_ledge_identical_to_full_automatic_support_control": {
+    "first_ledge_build_z_mm": 14.2,
+    "ledge_model_mm2": 17.00355,
+    "support_build_z_mm": 13.8,
+    "projected_ledge_support_mm2": 8.12065,
+    "covered_fraction": 0.47759
+  },
+  "r0015_control_gcode_sha256": "0fc45f95c71d6ca5a2b9c5ca6509fea3214b7f90775ed6ed9427f79d9d242a6c",
+  "r0015_control": {
+    "route": {
+      "lower_at_service_edge": {
+        "model": {
+          "peak_in_section_mm2": 0.0,
+          "occupied_build_layers_mm": []
+        },
+        "support": {
+          "peak_in_section_mm2": 0.0,
+          "occupied_build_layers_mm": []
+        }
+      },
+      "slide_to_stop": {
+        "model": {
+          "peak_in_section_mm2": 3.536353,
+          "occupied_build_layers_mm": [
+            14.8,
+            15.0,
+            15.2,
+            15.4,
+            15.6,
+            15.8,
+            16.0,
+            16.2,
+            16.4,
+            16.6,
+            16.8,
+            17.0,
+            17.2,
+            17.4,
+            17.6,
+            17.8,
+            18.0
+          ]
+        },
+        "support": {
+          "peak_in_section_mm2": 5.666613,
+          "occupied_build_layers_mm": [
+            14.8,
+            15.0,
+            15.2,
+            15.4,
+            15.6,
+            15.8,
+            16.0,
+            16.2,
+            16.4,
+            16.6,
+            16.8,
+            17.0,
+            17.2
+          ]
+        }
+      }
+    },
+    "features": {
+      "floor": {
+        "installed_XY_mm": [
+          -42.04,
+          -1.9,
+          -41.55,
+          1.9
+        ],
+        "sampled_build_layers_mm": [
+          14.6
+        ],
+        "area_mm2": 1.862,
+        "min_max_native_model_coverage_fraction": [
+          0.998843,
+          0.998843
+        ]
+      },
+      "inboard_lip": {
+        "installed_XY_mm": [
+          -41.18,
+          -2.2,
+          -40.55,
+          1.9
+        ],
+        "sampled_build_layers_mm": [
+          14.8,
+          15.0,
+          15.2,
+          15.4
+        ],
+        "area_mm2": 2.583,
+        "min_max_native_model_coverage_fraction": [
+          0.0,
+          0.0
+        ]
+      },
+      "far_stop": {
+        "installed_XY_mm": [
+          -42.06,
+          2.42,
+          -41.54,
+          2.6
+        ],
+        "sampled_build_layers_mm": [
+          15.0,
+          15.2,
+          15.4,
+          15.6,
+          15.8,
+          16.0,
+          16.2,
+          16.4,
+          16.6,
+          16.8,
+          17.0,
+          17.2,
+          17.4,
+          17.6
+        ],
+        "area_mm2": 0.0936,
+        "min_max_native_model_coverage_fraction": [
+          0.444444,
+          0.445867
+        ]
+      },
+      "roof": {
+        "installed_XY_mm": [
+          -42.42,
+          -2.28,
+          -41.5,
+          2.28
+        ],
+        "sampled_build_layers_mm": [
+          18.2,
+          18.4,
+          18.6
+        ],
+        "area_mm2": 4.1952,
+        "min_max_native_model_coverage_fraction": [
+          0.23913,
+          0.23913
+        ]
+      }
+    }
+  },
+  "automatic_support_control_project_sha256": "a2b2563931a4760a8ed18bbb01c3769088ce8e910571e5b0c8675f3b327d456f",
+  "automatic_support_control_gcode_sha256": "773f27c8867f054f10e4716481fdb87d173d650cee444538097e714d3ce484ef",
+  "automatic_support_control": {
+    "route": {
+      "lower_at_service_edge": {
+        "model": {
+          "peak_in_section_mm2": 0.0,
+          "occupied_build_layers_mm": []
+        },
+        "support": {
+          "peak_in_section_mm2": 0.0,
+          "occupied_build_layers_mm": []
+        }
+      },
+      "slide_to_stop": {
+        "model": {
+          "peak_in_section_mm2": 2.849801,
+          "occupied_build_layers_mm": [
+            14.8
+          ]
+        },
+        "support": {
+          "peak_in_section_mm2": 5.99689,
+          "occupied_build_layers_mm": [
+            14.8,
+            15.0,
+            15.2,
+            15.4,
+            15.6,
+            15.8,
+            16.0,
+            16.2,
+            16.4,
+            16.6,
+            16.8,
+            17.0,
+            17.2,
+            17.4,
+            17.6,
+            17.8
+          ]
+        }
+      }
+    },
+    "features": {
+      "floor": {
+        "installed_XY_mm": [
+          -42.04,
+          -1.9,
+          -41.55,
+          1.9
+        ],
+        "sampled_build_layers_mm": [
+          14.6
+        ],
+        "area_mm2": 1.862,
+        "min_max_native_model_coverage_fraction": [
+          1.0,
+          1.0
+        ]
+      },
+      "inboard_lip": {
+        "installed_XY_mm": [
+          -41.18,
+          -2.2,
+          -40.55,
+          1.9
+        ],
+        "sampled_build_layers_mm": [
+          14.8,
+          15.0,
+          15.2,
+          15.4
+        ],
+        "area_mm2": 2.583,
+        "min_max_native_model_coverage_fraction": [
+          0.997267,
+          1.0
+        ]
+      },
+      "far_stop": {
+        "installed_XY_mm": [
+          -42.06,
+          2.42,
+          -41.54,
+          2.6
+        ],
+        "sampled_build_layers_mm": [
+          15.0,
+          15.2,
+          15.4,
+          15.6,
+          15.8,
+          16.0,
+          16.2,
+          16.4,
+          16.6,
+          16.8,
+          17.0,
+          17.2,
+          17.4,
+          17.6
+        ],
+        "area_mm2": 0.0936,
+        "min_max_native_model_coverage_fraction": [
+          1.0,
+          1.0
+        ]
+      },
+      "roof": {
+        "installed_XY_mm": [
+          -42.42,
+          -2.28,
+          -41.5,
+          2.28
+        ],
+        "sampled_build_layers_mm": [
+          18.2,
+          18.4,
+          18.6
+        ],
+        "area_mm2": 4.1952,
+        "min_max_native_model_coverage_fraction": [
+          1.0,
+          1.0
+        ]
+      }
+    }
+  },
+  "reopened_gcode_sha256": "78f3db2aff17b864dd7aeef8cb8aeb0bf4a81d1a9f44a57c29a72a989298b16f",
+  "reopened_sliced_3mf_sha256": "01fbd63efa9a087d4cd186240f0aef1f6e574df8274734dc6aca09bb3d8f1c9f",
+  "housing_extrusion_context": {
+    "model_mm3": 32816.541,
+    "support_mm3": 9367.039,
+    "brim_mm3": 0.0,
+    "support_layers": 147,
+    "first_model_contact_mm2": 776.24,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 158,
+      "components": 730,
+      "refined_layers": [
+        {
+          "z": 14.2,
+          "raster_flag_count": 1,
+          "refined_component_count": 7
+        }
+      ],
+      "fully_unbacked_components": [
+        {
+          "z": 14.2,
+          "area_mm2": 17.00415,
+          "bbox": [
+            81.595,
+            120.49000000000001,
+            84.505,
+            126.36
+          ]
+        }
+      ]
+    }
+  },
+  "scope": "Nominal deposited-bead footprints. Bridge sag, bead-width variation, support removal, actual retention and inert fit await a physical print."
+}

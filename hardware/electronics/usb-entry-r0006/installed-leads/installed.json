@@ -1,0 +1,141 @@
+{
+  "remove": [
+    "USB-W4A",
+    "USB-W4A-Cu",
+    "USB-W4C",
+    "USB-W4C-Cu",
+    "USB-BOND"
+  ],
+  "add": [
+    {
+      "name": "USB-W4C-Cu",
+      "brep": "USB-W4C-Cu.brep",
+      "sha256": "10e9d1a1b2f6235fd7914be405c5493faecc3ac98648e73598b382147a5da60c",
+      "label": "USB-W4C-Cu",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b57547",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "USB-W4C",
+      "brep": "USB-W4C.brep",
+      "sha256": "3212b7ec786bfa97eaf14b8bfaf3cdcc7dc5bb9d438f42a35cec37fe2fdeab8a",
+      "label": "USB-W4C",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#494b50",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W2-Cu",
+      "brep": "A5-W2-Cu.brep",
+      "sha256": "5931e4c74013b631f47139bcb16678d22ecc4a70ef6ee24fc312ae1f35ac5b11",
+      "label": "A5-W2-Cu",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b57547",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W2",
+      "brep": "A5-W2.brep",
+      "sha256": "5a1438c40e37890c0cba903dc2860cf2d28e1cc489826aef77f51c8129ff6cba",
+      "label": "A5-W2",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b9614e",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W2-solder",
+      "brep": "A5-W2-solder.brep",
+      "sha256": "aa3e99075a6ea4df80ba43043bcef9c0f056c2824ae34c47495585ce12c2852f",
+      "label": "A5-W2-solder",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#aba99c",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W3-Cu",
+      "brep": "A5-W3-Cu.brep",
+      "sha256": "4ebb5feec7273bf62e234464d8ce7d182623005efdadfee2800c0af53611e68e",
+      "label": "A5-W3-Cu",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b57547",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W3",
+      "brep": "A5-W3.brep",
+      "sha256": "1b1d5d550d19a2cb2601492ddfdbd695eb8b7ac01a3f667c87c52bf25a7a740c",
+      "label": "A5-W3",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#494b50",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W3-splice-cover",
+      "brep": "A5-W3-splice-cover.brep",
+      "sha256": "c0f48b50c9205e3f41ff54453adb8adb0f5e2be41bc91e647b72a589ee2e2acd",
+      "label": "A5-W3-splice-cover",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#494b50",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W3-solder",
+      "brep": "A5-W3-solder.brep",
+      "sha256": "4cd0b5074be53e259a4a3a2e04ca42336864a3bcceb4395c59a7d66fbf6c905a",
+      "label": "A5-W3-solder",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#aba99c",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W7-Cu",
+      "brep": "A5-W7-Cu.brep",
+      "sha256": "5c4ff8e767f4f40c072c4d09dc6d72e308a04dd42303a49b6b4fa5fd530bd60e",
+      "label": "A5-W7-Cu",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b57547",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W7",
+      "brep": "A5-W7.brep",
+      "sha256": "b2a2261514923d1c6d7b9d2baf526c2c3d3a85c1281226cedac8acc450f59684",
+      "label": "A5-W7",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b9614e",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "A5-W7-solder",
+      "brep": "A5-W7-solder.brep",
+      "sha256": "c82d4870a2577b21a4c24ec8ab2edb015c576bb0983c3d332bbd1cfe1144ecd0",
+      "label": "A5-W7-solder",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#aba99c",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    },
+    {
+      "name": "USB-BOND",
+      "brep": "USB-BOND.brep",
+      "sha256": "2ed6fefa21411e6346dc1db9d60545677dbfa6ffab631fb9397d6728788bd666",
+      "label": "USB-BOND",
+      "group": "Wiring",
+      "ref": "A5 / A1 / USB status",
+      "color": "#b9614e",
+      "note": "Fixed display-subassembly lead. Nominal solder, pigtail and jacket fit require physical inspection."
+    }
+  ]
+}

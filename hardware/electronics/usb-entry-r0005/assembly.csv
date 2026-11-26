@@ -1,0 +1,8 @@
+A5,A5_net,A1_pin,A1_net,other_end,population
+W1,ENTRY,LRC4-1,VBUS',J5-side land of depopulated LRC4,Single fixed feed from the connector after LRC4 removal
+W2,PMIC,J8-1,VBUS,A1 PCB solder tail and not removable J8 plug,Single fixed protected return to C20 C24 D3 and PMIC
+W3,GND,J8-3,GND,A1 PCB solder tail and not removable J8 plug,Fixed ground return with W1/W2
+W4,LOW_EN,,,Qualified low-current control or isolated test fixture,Open in base assembly until a physical grant source is qualified
+W5,FULL_EN,,,Qualified configured-current control or isolated test fixture,Open in base assembly until a physical grant source is qualified
+W6,FAULT_N,,,Diagnostic fixture only,Open-drain measurement with 10k pull-up to the external 3.3V instrument only while A5 has power
+W7,RAW,,,USB-PCB2 resistor input via replaced USB-W4A,Move previous J8-1 takeoff completely to W7; USB-PCB2 stays fixed and feeds the blue LED

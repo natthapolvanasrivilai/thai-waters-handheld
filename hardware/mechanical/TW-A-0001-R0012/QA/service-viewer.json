@@ -1,0 +1,15 @@
+{
+  "browser": "158.0.4370.33",
+  "tested": [
+    "seated",
+    "actuate without translation",
+    "withdraw",
+    "seated display overlay",
+    "board context",
+    "fit and close-up cameras",
+    "animation and pause",
+    "keyboard",
+    "390-pixel mobile layout"
+  ],
+  "browser_errors": []
+}

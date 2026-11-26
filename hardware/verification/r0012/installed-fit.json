@@ -1,0 +1,77 @@
+{
+  "installed_step_sha256": "9f91fe45a97a491455840506b69689d33e871b7ac336f5e64d5e03faf8719259",
+  "installed_members": 147,
+  "checks": {
+    "cellAlt / changed parts": {
+      "minimum_nominal_mm": 2.70001,
+      "closest": "drvBoard",
+      "touch_or_overlap": []
+    },
+    "cellAlt / enclosure and pack hardware": {
+      "minimum_nominal_mm": 0.5,
+      "closest": "Housing",
+      "touch_or_overlap": []
+    },
+    "cellDrawing / changed parts": {
+      "minimum_nominal_mm": 3.55001,
+      "closest": "drvBoard",
+      "touch_or_overlap": []
+    },
+    "cellDrawing / enclosure and pack hardware": {
+      "minimum_nominal_mm": 0.5,
+      "closest": "Housing",
+      "touch_or_overlap": []
+    },
+    "A4-integration / installed neighbors": {
+      "minimum_nominal_mm": 0.5,
+      "closest": "A1-population",
+      "touch_or_overlap": []
+    },
+    "A5-power / installed neighbors": {
+      "minimum_nominal_mm": 0.80921,
+      "closest": "whVCC",
+      "touch_or_overlap": []
+    },
+    "whVCC / seated hardware": {
+      "minimum_nominal_mm": 0.80921,
+      "closest": "A5-power",
+      "touch_or_overlap": []
+    },
+    "whGND / seated hardware": {
+      "minimum_nominal_mm": 1.94105,
+      "closest": "Housing",
+      "touch_or_overlap": []
+    },
+    "whSDA / seated hardware": {
+      "minimum_nominal_mm": 2.002,
+      "closest": "A5-power",
+      "touch_or_overlap": []
+    },
+    "whSCL / seated hardware": {
+      "minimum_nominal_mm": 1.08738,
+      "closest": "A5-power",
+      "touch_or_overlap": []
+    },
+    "w1VCC / seated hardware": {
+      "minimum_nominal_mm": 2.39708,
+      "closest": "Housing",
+      "touch_or_overlap": []
+    },
+    "w1GND / seated hardware": {
+      "minimum_nominal_mm": 0.60353,
+      "closest": "Housing",
+      "touch_or_overlap": []
+    },
+    "w1SDA / seated hardware": {
+      "minimum_nominal_mm": 0.48852,
+      "closest": "bridge",
+      "touch_or_overlap": []
+    },
+    "w1SCL / seated hardware": {
+      "minimum_nominal_mm": 1.3991,
+      "closest": "bridge",
+      "touch_or_overlap": []
+    }
+  },
+  "scope": "Nominal, seated assembly. Each row lists the tested group. The two battery variants are mutually exclusive. Intersections are retained even below production measurement resolution. Bond strength, jacket flex, temperature, dimensional tolerance and post-life pack swelling require separate verification."
+}

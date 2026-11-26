@@ -1,0 +1,556 @@
+{
+  "geometry_sha256": "225d8dff3fed560d4196bcfaf095775fdebac5a8b50775354da7035273fe91d5",
+  "installed_ledger_sha256": "ffc7a5e4d3fe24220f88a80fb800cd8407029b295d383d2b93ec470e5439675a",
+  "unit": "mm",
+  "parts": {
+    "A1-display": {
+      "source_reference_min_max_mm": [
+        [
+          -46.22,
+          -30.5,
+          15.1
+        ],
+        [
+          46.22,
+          30.5,
+          28.5
+        ]
+      ],
+      "stl_registered_min_max_mm": [
+        [
+          -46.22,
+          -30.5,
+          15.1
+        ],
+        [
+          46.22,
+          30.5,
+          28.5
+        ]
+      ],
+      "maximum_bound_difference_mm": 2e-06,
+      "feature_height_probes": {
+        "USB shell": {
+          "installed_xyz_mm": [
+            -36.6,
+            0,
+            17.7496
+          ],
+          "actual_print_z_mm": 10.7504,
+          "error_mm": 0.0
+        },
+        "J7": {
+          "installed_xyz_mm": [
+            -25.25,
+            23.3,
+            17.6
+          ],
+          "actual_print_z_mm": 10.9,
+          "error_mm": 0.0
+        },
+        "J8": {
+          "installed_xyz_mm": [
+            0,
+            22.9,
+            15.9
+          ],
+          "actual_print_z_mm": 12.6,
+          "error_mm": 0.0
+        },
+        "J9": {
+          "installed_xyz_mm": [
+            -0.69,
+            -21.8,
+            17.6
+          ],
+          "actual_print_z_mm": 10.9,
+          "error_mm": 0.0
+        },
+        "SW reset": {
+          "installed_xyz_mm": [
+            -16.5,
+            -25.1,
+            19.2
+          ],
+          "actual_print_z_mm": 9.3,
+          "error_mm": 0.0
+        }
+      },
+      "four_unthreaded_insert_guides": [
+        {
+          "center_xy_mm": [
+            10.22,
+            54.75
+          ],
+          "xy_diameter_mm": [
+            2.0,
+            2.0
+          ]
+        },
+        {
+          "center_xy_mm": [
+            10.22,
+            6.25
+          ],
+          "xy_diameter_mm": [
+            2.0,
+            2.0
+          ]
+        },
+        {
+          "center_xy_mm": [
+            82.22,
+            54.75
+          ],
+          "xy_diameter_mm": [
+            2.0,
+            2.0
+          ]
+        },
+        {
+          "center_xy_mm": [
+            82.22,
+            6.25
+          ],
+          "xy_diameter_mm": [
+            2.0,
+            2.0
+          ]
+        }
+      ]
+    },
+    "A2-sensor": {
+      "source_reference_min_max_mm": [
+        [
+          39.48,
+          -12.7,
+          5.91
+        ],
+        [
+          44.01,
+          12.7,
+          23.69
+        ]
+      ],
+      "stl_registered_min_max_mm": [
+        [
+          39.48,
+          -12.7,
+          5.91
+        ],
+        [
+          44.01,
+          12.7,
+          23.69
+        ]
+      ],
+      "maximum_bound_difference_mm": 1e-06,
+      "feature_height_probes": {
+        "AS5600 package": {
+          "installed_xyz_mm": [
+            42.55,
+            0,
+            14.8
+          ],
+          "actual_print_z_mm": 3.07,
+          "error_mm": 0.0
+        },
+        "negative-Y socket": {
+          "installed_xyz_mm": [
+            44.01,
+            -10,
+            14.8
+          ],
+          "actual_print_z_mm": 4.53,
+          "error_mm": 0.0
+        },
+        "positive-Y socket": {
+          "installed_xyz_mm": [
+            44.01,
+            10,
+            14.8
+          ],
+          "actual_print_z_mm": 4.53,
+          "error_mm": 0.0
+        }
+      },
+      "sensor_artwork": {
+        "file": "rev-E\\scripts\\inputs\\Adafruit-AS5600.brd",
+        "sha256": "75fb995ef95f4517ba3485d86535f43c094efd8466cd856a4a506356befb7c93",
+        "artwork_outline_mm": [
+          25.4,
+          17.78
+        ],
+        "corner_radius_mm": 2.54,
+        "four_mounts": [
+          {
+            "center_xy_mm": [
+              2.54,
+              15.24
+            ],
+            "xy_diameter_mm": [
+              2.49961,
+              2.49961
+            ]
+          },
+          {
+            "center_xy_mm": [
+              22.86,
+              15.24
+            ],
+            "xy_diameter_mm": [
+              2.49961,
+              2.49961
+            ]
+          },
+          {
+            "center_xy_mm": [
+              2.54,
+              2.54
+            ],
+            "xy_diameter_mm": [
+              2.49961,
+              2.49961
+            ]
+          },
+          {
+            "center_xy_mm": [
+              22.86,
+              2.54
+            ],
+            "xy_diameter_mm": [
+              2.49961,
+              2.49961
+            ]
+          }
+        ],
+        "pitch_mm": [
+          20.32,
+          12.7
+        ],
+        "outer_outline_symmetric_difference_mm2": 0.0080345,
+        "six_wire_holes": [
+          {
+            "center_xy_mm": [
+              6.35,
+              2.54
+            ],
+            "xy_diameter_mm": [
+              0.99984,
+              0.99984
+            ]
+          },
+          {
+            "center_xy_mm": [
+              8.89,
+              2.54
+            ],
+            "xy_diameter_mm": [
+              0.99984,
+              0.99984
+            ]
+          },
+          {
+            "center_xy_mm": [
+              11.43,
+              2.54
+            ],
+            "xy_diameter_mm": [
+              0.99984,
+              0.99984
+            ]
+          },
+          {
+            "center_xy_mm": [
+              13.97,
+              2.54
+            ],
+            "xy_diameter_mm": [
+              0.99984,
+              0.99984
+            ]
+          },
+          {
+            "center_xy_mm": [
+              16.51,
+              2.54
+            ],
+            "xy_diameter_mm": [
+              0.99984,
+              0.99984
+            ]
+          },
+          {
+            "center_xy_mm": [
+              19.05,
+              2.54
+            ],
+            "xy_diameter_mm": [
+              0.99985,
+              0.99984
+            ]
+          }
+        ]
+      }
+    },
+    "A3-haptic": {
+      "source_reference_min_max_mm": [
+        [
+          10.8,
+          -16.8,
+          4.6
+        ],
+        [
+          30.8,
+          3.2,
+          14.36
+        ]
+      ],
+      "stl_registered_min_max_mm": [
+        [
+          10.80001,
+          -16.80001,
+          4.6
+        ],
+        [
+          30.80001,
+          3.19998,
+          14.36
+        ]
+      ],
+      "maximum_bound_difference_mm": 1.5e-05,
+      "feature_height_probes": {
+        "J1 housing": {
+          "installed_xyz_mm": [
+            20.96,
+            -10.0,
+            14.36
+          ],
+          "actual_print_z_mm": 9.76,
+          "error_mm": 0.0
+        },
+        "U1": {
+          "installed_xyz_mm": [
+            20.95,
+            -3,
+            7.295
+          ],
+          "actual_print_z_mm": 2.695,
+          "error_mm": 0.0
+        }
+      },
+      "motor_wire_holes": [
+        {
+          "center_xy_mm": [
+            6.4,
+            18.1
+          ],
+          "xy_diameter_mm": [
+            0.99984,
+            0.99984
+          ]
+        },
+        {
+          "center_xy_mm": [
+            11.9,
+            18.1
+          ],
+          "xy_diameter_mm": [
+            0.99984,
+            0.99984
+          ]
+        }
+      ]
+    },
+    "A4-integration": {
+      "source_reference_min_max_mm": [
+        [
+          13.0,
+          -12.0,
+          16.505
+        ],
+        [
+          36.0,
+          1.0,
+          18.535
+        ]
+      ],
+      "stl_registered_min_max_mm": [
+        [
+          13.0,
+          -12.0,
+          16.505
+        ],
+        [
+          36.0,
+          1.0,
+          18.535
+        ]
+      ],
+      "maximum_bound_difference_mm": 0.0,
+      "feature_height_probes": {
+        "tall package": {
+          "installed_xyz_mm": [
+            31.5,
+            -3.7,
+            16.505
+          ],
+          "actual_print_z_mm": 2.03,
+          "error_mm": 0.0
+        }
+      }
+    },
+    "A5-power": {
+      "source_reference_min_max_mm": [
+        [
+          13.0,
+          3.0,
+          15.455
+        ],
+        [
+          36.0,
+          19.0,
+          17.84
+        ]
+      ],
+      "stl_registered_min_max_mm": [
+        [
+          13.0,
+          3.0,
+          15.455
+        ],
+        [
+          36.0,
+          19.0,
+          17.84
+        ]
+      ],
+      "maximum_bound_difference_mm": 0.0,
+      "feature_height_probes": {
+        "R0006 tall package": {
+          "installed_xyz_mm": [
+            25,
+            7,
+            15.455
+          ],
+          "actual_print_z_mm": 2.385,
+          "error_mm": 0.0
+        }
+      }
+    },
+    "KEY-switch": {
+      "source_reference_min_max_mm": [
+        [
+          -41.5,
+          27.65,
+          7.5
+        ],
+        [
+          -30.5,
+          32.95,
+          17.5
+        ]
+      ],
+      "stl_registered_min_max_mm": [
+        [
+          -41.5,
+          27.65,
+          7.5
+        ],
+        [
+          -30.5,
+          32.95,
+          17.5
+        ]
+      ],
+      "maximum_bound_difference_mm": 0.0,
+      "feature_height_probes": {
+        "unpressed plunger": {
+          "installed_xyz_mm": [
+            -36,
+            32.95,
+            12.5
+          ],
+          "actual_print_z_mm": 5.3,
+          "error_mm": 0.0
+        }
+      }
+    },
+    "USB-PCB1": {
+      "source_reference_min_max_mm": [
+        [
+          -42.352,
+          -2.4,
+          11.5
+        ],
+        [
+          -41.5,
+          2.4,
+          14.7
+        ]
+      ],
+      "stl_registered_min_max_mm": [
+        [
+          -42.352,
+          -2.4,
+          11.5
+        ],
+        [
+          -41.5,
+          2.4,
+          14.7
+        ]
+      ],
+      "maximum_bound_difference_mm": 0.0,
+      "feature_height_probes": {
+        "indicator": {
+          "installed_xyz_mm": [
+            -42.352,
+            0,
+            13.1
+          ],
+          "actual_print_z_mm": 0.852,
+          "error_mm": 0.0
+        }
+      }
+    },
+    "USB-PCB2": {
+      "source_reference_min_max_mm": [
+        [
+          -22.6,
+          17.0,
+          17.6
+        ],
+        [
+          -19.4,
+          19.0,
+          18.65
+        ]
+      ],
+      "stl_registered_min_max_mm": [
+        [
+          -22.6,
+          17.0,
+          17.6
+        ],
+        [
+          -19.4,
+          19.0,
+          18.65
+        ]
+      ],
+      "maximum_bound_difference_mm": 0.0,
+      "feature_height_probes": {
+        "resistor": {
+          "installed_xyz_mm": [
+            -21,
+            18,
+            18.65
+          ],
+          "actual_print_z_mm": 1.05,
+          "error_mm": 0.0
+        }
+      }
+    }
+  }
+}

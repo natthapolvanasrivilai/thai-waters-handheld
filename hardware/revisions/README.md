@@ -1,5 +1,23 @@
 # Hardware revision register
 
+Keep each issued hardware revision in Git. Commit the editable CAD, matching print project and verification records together in a revision-specific folder. Link that folder here and preserve it when a later revision supersedes it.
+
+[TW-A-0004-R0002 board mount review](../electronics/case-board-r0002/README.md) registers the editable rectangular PCB, revised enclosure, BOM and board-only fit print.
+
+[TW-A-0003-R0009 complete enclosure fit](../mechanical/full-fit-r0009/README.md) pairs the registered rectangular board and housing with all plastics and PCB mockups.
+
+[TW-A-0003-R0002 seven-plate DFM trial](../mechanical/reel-dfm-r0001/README.md) registers the reinforced rotor, combined-board housing and saved X1C print process. The fold and spin are digitally checked. First-article cleanup remains open.
+
+[TW-A-0003-R0001 case-board fit kit](../electronics/case-board-r0001/README.md) registers the two printable fit pieces separately from the full-device baseline. The combined auxiliary PCB is TW-P-0034-R0001.
+
+[R0017 keyed cap](../mechanical/TW-A-0001-R0017/README.md) uses TW-P-0013-R0003 with the R0016 housing. Only the cap needs printing.
+
+**Current engineering configuration.** TW-A-0001-R0016 and TW-A-0002-R0006 pair the USB1 side-entry housing with the existing electrical assembly. [USB indicator dry fit](../mechanical/TW-A-0001-R0016/README.md)
+
+TW-A-0001-R0015 pairs the relieved key bay with TW-A-0002-R0006 electronics. [Key installation and physical checks](../mechanical/TW-A-0001-R0015/README.md)
+
+TW-A-0001-R0014 carries A3 directly on two integral floor rails, with TW-A-0002-R0006 electronics. The R20 carrier remains a separate sensor fixture. [R0014 build and fit checks](../mechanical/TW-A-0001-R0014/README.md) · [Prior R0013 seated service review](../../quality/seated-connector-review.md)
+
 Record the exact enclosure and electrical integration IDs on each build traveler. The historical R0008 fit baseline paired **TW-A-0001-R0008** with **TW-A-0002-R0002** (Rev F wiring). Record the firmware version and binary SHA-256 separately. An assembly ID identifies a design configuration. Each physical unit still needs its own serial, option set, incoming part lots and test results.
 
 [R0011 receiver-down fit print](../mechanical/TW-A-0001-R0011/README.md) pairs the existing installed housing surfaces with the revised print definition **TW-P-0001-R0010**. The register keeps a new part revision for the changed print orientation. P17 remains fitted. Physical rail strength, grip fit and support cleanup require an inert print.

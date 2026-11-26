@@ -1,0 +1,36 @@
+{
+  "source_brep_sha256": "85e81e6d5e6c6d8eaa2f6a0d25e455e05f509a3c19a84c44725ae5a9fbe5eb4f",
+  "added_mm3": 135.98070928727628,
+  "removed_mm3": 0.0,
+  "old_midplane_radial_mm": 0.5,
+  "old_front_open": true,
+  "new_radial_mm": 1.85,
+  "new_front_chamfer_min_radial_mm": 1.5,
+  "installed_to_print": [
+    [
+      0.7071067812,
+      0.0,
+      0.7071067812,
+      -47.9322203567
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      -0.0
+    ],
+    [
+      -0.7071067812,
+      0.0,
+      0.7071067812,
+      37.6180808591
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "print_sha256": "10893b42e820905f56f55f01c4d706f0b357de21265a301ad3fbd45884bc6d53"
+}

@@ -59,3 +59,57 @@ TW-P-0027-R0001,Lower service key cover,hardware/mechanical/TW-A-0001-R0010/Prin
 TW-P-0001-R0010,"Housing, receiver-down print orientation",hardware/mechanical/TW-A-0001-R0011/Print/housing-battery-bay.stl,,ccbdd035b46d46a761a75ca0661b0c19c966b78cc7e3c5e46169c9874fb2e922
 TW-P-0026-R0002,R0004 controller electrical ECO specification,hardware/electronics/integration-r0004/README.md,,7406335e0bcb348ca31cfa4a83b2f917bc627c4c414e5ba00f9e41c3b3e85516
 TW-P-0028-R0001,Reworked A3 haptic interconnect placement manifest,hardware/electronics/harness-r0004/installed.json,,0dd0d7a2ea11f4e177605342ff220da0c6683a15d55e4f15733463f295b243ce
+TW-P-0028-R0002,CviLux A3/W4 installed harness definition,hardware/electronics/harness-r0005/installed.json,,847e80118fd80539571716e8be029c103c578a78c839ebb6149177462a8e582c
+TW-P-0029-R0001,R0012 dressed fit-study assembly definition,hardware/mechanical/TW-A-0001-R0012/installed-step.json,,d2bd2f71058ca2d5f4c4aad90b23173990d9b1f6111c3d2f83adcdf9955f50d6
+TW-P-0030-R0001,A3 routed haptic PCB with 2.50 mm J1,hardware/electronics/pcb-haptic-cie-r0001/A3-CIE-R0001.kicad_pcb,,bf6e27eae40be1d4511e3aba462ddbc0ad581bcbdd3b2149c98023096d5da8af
+TW-P-0031-R0001,"A4 routed audio, bus and key PCB",hardware/electronics/pcb-r0004/harness.kicad_pcb,,f55a55680ec3ebf2bf98e6a318fad044182b9c31b241376b53d26665a7c8860b
+TW-P-0032-R0001,A5 routed USB input daughterboard,hardware/electronics/pcb-power-r0004/usb-input.kicad_pcb,,1d201718bc5c16f5f86075ed478696abe0c7d3d0434b7d7769b8b485524c4a07
+TW-P-0028-R0003,CviLux formed service leads for the seated display,hardware/electronics/harness-r0006/installed.json,,085cd74b692ae7c66d54202472c844310615147367fcd60aa13c3bbd16703567
+TW-P-0029-R0002,R0013 dressed service assembly,hardware/mechanical/TW-A-0001-R0013/installed-step.json,,ffc7a5e4d3fe24220f88a80fb800cd8407029b295d383d2b93ec470e5439675a
+TW-P-0030-R0002,A3 rerouted haptic PCB,hardware/electronics/pcb-haptic-cie-r0002/A3-CIE-R0002.kicad_pcb,,703cb2c5fee0528ecb6579708c4d15fe8ff78646c1d427ef827336323d33bddd
+TW-P-0032-R0002,A5 ballasted USB input PCB,hardware/electronics/usb-entry-r0006/usb-input.kicad_pcb,,bff8e08cf1429418861939b073c542ac465bc38efb9d9e73db9c455146d009a1
+TW-P-0033-R0001,"Fitted USB output, ground and status lamp leads",hardware/electronics/usb-entry-r0006/installed-leads/installed.json,,30fc5fb443256677d40d5012bbd2177e414f4cc3c8c7fa4be2db57ca2a66d907
+TW-P-0001-R0011,Housing with integral A3 support rails,hardware/mechanical/TW-A-0001-R0014/Print/housing-battery-bay.stl,,7e719b8ec875275e80b865f8de49a7602a1fe6e3e34f5ffc4ff0a508bcefe4e2
+TW-P-0029-R0003,R0014 dressed assembly with integral A3 rails,hardware/mechanical/TW-A-0001-R0014/installed-step.json,,543b57a79d5900616b9a02dc33f0ee0b11d049f9515eb262e61b7f35acb24cdc
+TW-P-0001-R0012,Housing with switch rim entry relief,hardware/mechanical/TW-A-0001-R0015/Print/housing-battery-bay.stl,,380c0d297fc039e1e09a2bb932df5394e2bb79f863e9f681322f999ee1344670
+TW-P-0029-R0004,R0015 registered power-key fit assembly,hardware/mechanical/TW-A-0001-R0015/installed-step.json,,a269ffd5740080d606489c5c5d0030922cef68f54cdd78231ae5e603e39753a1
+TW-P-0001-R0013,Housing with service-end USB indicator channel,hardware/mechanical/TW-A-0001-R0016/Print/housing-battery-bay.stl,,035f50d7a8170fac53077a72283c0eb772f5163f7fbb7c802ca323e874823b98
+TW-P-0029-R0005,R0016 registered side-entry lamp assembly,hardware/mechanical/TW-A-0001-R0016/installed-step.json,,f532b93c02c8f1984f3498b9b24ef9cd9a8618505801a75e3cb0390235f951f7
+TW-P-0013-R0003,Power cap keyed to existing aperture,hardware/mechanical/TW-A-0001-R0017/Print/power-cap.stl,,88e3fc654f5606dce678211151b7c7d6d107742e1577c2e478a6041302b49bbd
+TW-P-0029-R0006,Installed assembly with keyed cap,hardware/mechanical/TW-A-0001-R0017/installed-step.json,,3f3e6e71bd7e7372d21748e5203416719971581057b0110203aea7b1217cfda6
+TW-P-0001-R0014,Housing with integrated combined-board mounts,hardware/electronics/case-board-r0001/Case-board-R0001-X1C-fit.3mf,3D/Objects/object_1.model,bf08e6b8fb2e4d0323115b6e1abc6c48068f133f39f260740f89a024dfb0de56
+TW-P-0034-R0001,Routed combined control and USB PCB,hardware/electronics/case-board-r0001/case-board.kicad_pcb,,22b0fc8a5d63e7d7b8cf93ea86b88a61e5dde3504efdabbed6125158e66b6230
+TW-P-0035-R0001,Combined PCB outline fit gauge,hardware/electronics/case-board-r0001/Case-board-R0001-X1C-fit.3mf,3D/Objects/gauge_108.model,aed422154785ce177cfd0a4b154342fb33dac169bed2a0f70a308d95fc542b00
+TW-P-0036-R0001,Case board population and installation BOM,hardware/electronics/case-board-r0001/bom.csv,,a4efda1030d6f6007cfb9d9a2d65f6acf911010bd4db307b26ea4002c9d7b921
+TW-P-0007-R0006,Reinforced crank pocket rotor,hardware/mechanical/reel-dfm-r0001/rotor.stl,,10893b42e820905f56f55f01c4d706f0b357de21265a301ad3fbd45884bc6d53
+TW-P-0037-R0001,Seven-plate X1C process and gauge set,hardware/mechanical/reel-dfm-r0001/Thai-Waters-DFM-R0001-X1C.3mf,,58a072dcd4f14b83a02fcd88fbe1f8ee0ba960334c662bdeeb04ccaa8939fb60
+TW-P-0001-R0015,"Housing with lamp posts, service relief and bezel mounts",hardware/mechanical/enclosure-fit-r0003/Thai-Waters-R0003-Enclosure-X1C.3mf,3D/Objects/object_1.model,94c850b7bae49a3d3fa7650209635ff3a3c85a951240576d14d9054ce9f22ab0
+TW-P-0006-R0005,Bezel with four recessed screw seats,hardware/mechanical/enclosure-fit-r0003/Thai-Waters-R0003-Enclosure-X1C.3mf,3D/Objects/object_2.model,b5324f7b1d9fd413cfb464ee66156936110ce8fa09b23ff179cd873c45d6fa68
+TW-P-0007-R0007,Reinforced reel in open-pocket print orientation,hardware/mechanical/enclosure-fit-r0003/Thai-Waters-R0003-Enclosure-X1C.3mf,3D/Objects/object_3.model,831dd0cbdd34cd304d2208c70c246a227d7b436c4dafec177cc636eed403c39b
+TW-P-0035-R0002,Populated combined PCB occupied-space gauge,hardware/mechanical/enclosure-fit-r0003/Thai-Waters-R0003-Enclosure-X1C.3mf,3D/Objects/gauge_108.model,112320125c151ca37b2af95985a70651683b3f6a3c381efe4ff04c839560aa9c
+TW-P-0037-R0002,Seven-plate enclosure fit project,hardware/mechanical/enclosure-fit-r0003/Thai-Waters-R0003-Enclosure-X1C.3mf,,decb53c415f1a33eafd49635c30acf87784dab57a7778e821f133540cd7c93de
+TW-P-0038-R0001,USB lamp support shelf,hardware/mechanical/enclosure-fit-r0003/Thai-Waters-R0003-Enclosure-X1C.3mf,3D/Objects/gauge_142.model,0a08c8f2c13690c7d78477633060bae0ba2459320a4a99da1d6b2ab45b98823c
+TW-P-0039-R0001,Speaker installation gauge with gasket and exits,hardware/mechanical/enclosure-fit-r0003/Thai-Waters-R0003-Enclosure-X1C.3mf,3D/Objects/gauge_144.model,d9bb80caf899c7d543041b4eb6f924237ea8f9af08f2a8f7c5ae89b5738d5666
+TW-P-0040-R0001,Motor and wire-exit gauge,hardware/mechanical/enclosure-fit-r0003/Thai-Waters-R0003-Enclosure-X1C.3mf,3D/Objects/gauge_146.model,01ce16cbd72765d59490a623b36ae2596ed02965fb8f34b40c73423ee41e30c6
+TW-P-0041-R0001,A3 seated plug alternative fit gauge,hardware/mechanical/enclosure-fit-r0003/Thai-Waters-R0003-Enclosure-X1C.3mf,3D/Objects/gauge_148.model,0000c2831faeb47da1cdda4ef59e4899bfbd0c3b713dcd3ac585992c5f8acec5
+TW-P-0001-R0016,Single-window housing with rear fastener access,hardware/mechanical/enclosure-print-r0004/Thai-Waters-R0004-X1C-Color-Fit.3mf,3D/Objects/object_1.model,d4e4278536b00a8a0e518a83b8e3aa81e7fccc38d537c4b67d22df2cee265cae
+TW-P-0006-R0006,Smooth bezel with two hooks and blind pilots,hardware/mechanical/enclosure-print-r0004/Thai-Waters-R0004-X1C-Color-Fit.3mf,3D/Objects/object_2.model,4fceebbc3274519786bc9cc6a0d7ffa79e8eda7a7066534f831c7463bf9cc3d2
+TW-P-0037-R0003,Eight-plate color-separated X1C print project,hardware/mechanical/enclosure-print-r0004/Thai-Waters-R0004-X1C-Color-Fit.3mf,,084176b7ff1e857d779bcacd9940d1a35a510e32d9cf77b1b559c2b1525c1890
+TW-P-0038-R0002,Status shelf with integrated diffuser stops,hardware/mechanical/enclosure-print-r0004/Thai-Waters-R0004-X1C-Color-Fit.3mf,3D/Objects/gauge_142.model,7c9381d5619485c3cb527fd7b163a05bf343673091d5d1057fb3dd160c9609e6
+TW-P-0042-R0001,Single flanged RGB diffuser,hardware/mechanical/enclosure-print-r0004/Thai-Waters-R0004-X1C-Color-Fit.3mf,3D/Objects/object_14.model,95b64e446221c0dbd4651b8799ad59c13e13ff909bd7ca92774a8e1746bcde4f
+TW-P-0043-R0001,Four-terminal RGB carrier envelope gauge,hardware/mechanical/enclosure-print-r0004/Thai-Waters-R0004-X1C-Color-Fit.3mf,3D/Objects/gauge_114.model,1c690df87388749cb9f17b60a8c1aa56a263d0b8291dd671dd1b1fa1edc1fb41
+TW-P-0001-R0017,R0004 housing with protected support passages for PLA,hardware/mechanical/polyterra-fit-r0001/Thai-Waters-R0004-PolyTerra-PLA-SuperTack-X1C.3mf,3D/Objects/object_1.model,7dc91eefc7f5200997b4af01f80463f852a28509780f27d404f2c8ce75e2e36c
+TW-P-0037-R0004,PolyTerra PLA eight-plate X1C process for SuperTack,hardware/mechanical/polyterra-fit-r0001/Thai-Waters-R0004-PolyTerra-PLA-SuperTack-X1C.3mf,,bd35e50bb2b7cb3a9798d53c2ee64de83905259c7bf73e2b3f321ecfdf2e61e2
+TW-P-0001-R0018,Housing with continuous exterior rod-receiver backing,hardware/mechanical/polyterra-fit-r0002/Thai-Waters-R0006-PolyTerra-SuperTack-X1C.3mf,3D/Objects/object_1.model,51cbe27fe443cf6687b983ecfab14bfd830af346a2a2186a1fc24d4e4d51d505
+TW-P-0015-R0003,45-degree grip fixture and tool orientation,hardware/mechanical/polyterra-fit-r0002/Thai-Waters-R0006-PolyTerra-SuperTack-X1C.3mf,3D/Objects/object_12.model,595665ae247958dc9f010077febce1aa9d93dc0d1e9151533a3453cf74845a30
+TW-P-0037-R0005,PolyTerra SuperTack diagonal print process,hardware/mechanical/polyterra-fit-r0002/Thai-Waters-R0006-PolyTerra-SuperTack-X1C.3mf,,0611121fa0b8f6fecd5c7d5ee8e7166f674548e225ad213d411e9f7dc70b8da1
+TW-P-0001-R0019,Housing with obsolete side light pipes removed,hardware/mechanical/polyterra-fit-r0003/Thai-Waters-R0007-PolyTerra-SuperTack-X1C.3mf,3D/Objects/object_1.model,9c64df4cfe7206a3b92c5b8cc5f8fad27bbb86254a6aef5da15059b888faca23
+TW-P-0037-R0006,Single-light angled PLA print project,hardware/mechanical/polyterra-fit-r0003/Thai-Waters-R0007-PolyTerra-SuperTack-X1C.3mf,,af101f1ec1f81f23bee58a0d469af3a5d41a488d3e9a7782450a4e4231b9b896
+TW-P-0001-R0020,Editable STEP master for the single-light housing,hardware/mechanical/step-fit-r0008/housing.step,,68ce56a0eeddf5b23819b52576324a474949d377ba1e60b03041c6522a11448c
+TW-P-0037-R0007,X1C fixture and direct STEP print export,hardware/mechanical/step-fit-r0008/Thai-Waters-R0008-STEP-PolyTerra-SuperTack-X1C.3mf,,e4f92173cecc0126a2544f294427c334e959c349c17462bc7713ccd17fb04372
+TW-P-0034-R0002,Rectangular routed case board,hardware/electronics/case-board-r0002/case-board.kicad_pcb,,aaab9d33b5b04815a3178a40aac9649dac80e361524bcfb1b8363dae45bd1267
+TW-P-0036-R0002,Rectangular case-board BOM,hardware/electronics/case-board-r0002/bom.csv,,39028135e92e29ff541f55cf0335bf9a0e85e09f7d70d63f7906c56e6d75b476
+TW-P-0001-R0021,Enclosure with inset board bearing,hardware/electronics/case-board-r0002/housing.step,,dbea143bbe452069f60fbcec954038f8abf357c15469f1030fbab4adc392f0ce
+TW-P-0035-R0003,Rectangular PCB package-height fit gauge,hardware/electronics/case-board-r0002/pcb-gauge.step,,8259c95ca00ad9f6a05c805d8278c685207b98dba977544d198aca7279192a52
+TW-P-0037-R0008,Board gauge SuperTack fixture,hardware/electronics/case-board-r0002/Case-board-R0002-PolyTerra-SuperTack-X1C.3mf,,ebf97eff70a70a71890224d3c5e10535165df85328bccf367b1e5829ce97495d
+TW-P-0037-R0009,Complete X1C enclosure and PCB fit project,hardware/mechanical/full-fit-r0009/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf,,7a5396b67d74c2e9121fe3478d679fd35a40c035477ef5a74d302e279e8b64a5

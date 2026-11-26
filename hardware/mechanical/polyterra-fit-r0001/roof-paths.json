@@ -1,0 +1,30 @@
+[
+  {
+    "feature": "status window",
+    "z_mm": 17.6,
+    "model_mm2": 9.233,
+    "backed_by_prior_model_mm2": 3.428,
+    "added_span_mm2": 5.805
+  },
+  {
+    "feature": "USB opening above the window",
+    "z_mm": 26.8,
+    "model_mm2": 32.03,
+    "backed_by_prior_model_mm2": 9.888,
+    "added_span_mm2": 22.141
+  },
+  {
+    "feature": "rear left screw shoulder",
+    "z_mm": 26.0,
+    "model_mm2": 20.256,
+    "backed_by_prior_model_mm2": 8.408,
+    "added_span_mm2": 11.847
+  },
+  {
+    "feature": "rear right screw shoulder",
+    "z_mm": 26.0,
+    "model_mm2": 20.258,
+    "backed_by_prior_model_mm2": 8.405,
+    "added_span_mm2": 11.854
+  }
+]

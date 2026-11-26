@@ -1,0 +1,188 @@
+{
+  "features": [
+    {
+      "plate": 1,
+      "object_id": "385",
+      "name": "west rail south cap",
+      "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+      "xy_mm": [
+        [
+          141.76,
+          143.96
+        ],
+        [
+          112.025,
+          114.425
+        ]
+      ],
+      "required_layers_z_mm": [
+        5.8,
+        6.0,
+        6.2,
+        6.4,
+        6.6,
+        6.8,
+        7.0,
+        7.2,
+        7.4,
+        7.6,
+        7.8
+      ],
+      "minimum_path_mm": 1.0
+    },
+    {
+      "plate": 1,
+      "object_id": "385",
+      "name": "west rail west shoulder",
+      "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+      "xy_mm": [
+        [
+          141.41,
+          142.21
+        ],
+        [
+          115.825,
+          121.425
+        ]
+      ],
+      "required_layers_z_mm": [
+        7.6,
+        7.8
+      ],
+      "minimum_path_mm": 1.0
+    },
+    {
+      "plate": 1,
+      "object_id": "385",
+      "name": "west rail east shoulder",
+      "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+      "xy_mm": [
+        [
+          143.51,
+          144.31
+        ],
+        [
+          115.825,
+          121.425
+        ]
+      ],
+      "required_layers_z_mm": [
+        7.6,
+        7.8
+      ],
+      "minimum_path_mm": 1.0
+    },
+    {
+      "plate": 1,
+      "object_id": "385",
+      "name": "west rail groove floor",
+      "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+      "xy_mm": [
+        [
+          142.34,
+          143.38
+        ],
+        [
+          115.825,
+          121.425
+        ]
+      ],
+      "required_layers_z_mm": [
+        7.4
+      ],
+      "minimum_path_mm": 1.0
+    },
+    {
+      "plate": 1,
+      "object_id": "385",
+      "name": "east rail south cap",
+      "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+      "xy_mm": [
+        [
+          149.76,
+          151.96
+        ],
+        [
+          112.025,
+          114.425
+        ]
+      ],
+      "required_layers_z_mm": [
+        5.8,
+        6.0,
+        6.2,
+        6.4,
+        6.6,
+        6.8,
+        7.0,
+        7.2,
+        7.4,
+        7.6,
+        7.8
+      ],
+      "minimum_path_mm": 1.0
+    },
+    {
+      "plate": 1,
+      "object_id": "385",
+      "name": "east rail west shoulder",
+      "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+      "xy_mm": [
+        [
+          149.41,
+          150.21
+        ],
+        [
+          115.825,
+          121.425
+        ]
+      ],
+      "required_layers_z_mm": [
+        7.6,
+        7.8
+      ],
+      "minimum_path_mm": 1.0
+    },
+    {
+      "plate": 1,
+      "object_id": "385",
+      "name": "east rail east shoulder",
+      "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+      "xy_mm": [
+        [
+          151.51,
+          152.31
+        ],
+        [
+          115.825,
+          121.425
+        ]
+      ],
+      "required_layers_z_mm": [
+        7.6,
+        7.8
+      ],
+      "minimum_path_mm": 1.0
+    },
+    {
+      "plate": 1,
+      "object_id": "385",
+      "name": "east rail groove floor",
+      "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+      "xy_mm": [
+        [
+          150.34,
+          151.38
+        ],
+        [
+          115.825,
+          121.425
+        ]
+      ],
+      "required_layers_z_mm": [
+        7.4
+      ],
+      "minimum_path_mm": 1.0
+    }
+  ]
+}

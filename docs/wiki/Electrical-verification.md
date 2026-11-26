@@ -1,8 +1,23 @@
 # Read a circuit trace
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
+**R0004 RGB status.** Carrier routing, three current-limit paths, off-state charging indication and bench verification remain open. [Current electrical and optical interface](../../hardware/mechanical/enclosure-print-r0004/README.md#optical-and-electrical-interface)
 
-## Current R0004 engineering review
+**R0003 electrical baseline.** Both custom layouts passed the current ERC and routing checks. Two 330 mA batteryless starts failed the 3.9 V acceptance threshold. The proposed Waveshare V2 rework and populated measurements are open. [Current circuit results and hardware review](../../hardware/mechanical/enclosure-fit-r0003/README.md#review-of-the-hardware)
+
+R0016 keeps the R0006 electronics. The five USB lamp simulation cases reproduced their registered measurements. The soldered display and lamp still require a workable assembly sequence and bench validation. [Lamp fit and wiring limits](../../hardware/mechanical/TW-A-0001-R0016/README.md) · [Hardware issue #99](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/99)
+
+
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Thai-Waters-handbook.html)
+
+## R0013 fitted electronics
+
+[Rerouted A3, USB entry topology and circuit checks](../../quality/seated-connector-review.md)
+
+## Routed-board verification
+
+[Read the A3, A4 and A5 layout checks and 268 circuit cases](../../hardware/verification/r0012/README.md). The daughterboards implement the haptic, audio, key, bus and part of the USB input circuits. The untouched supplier controller still bypasses the current limiter. The complete controller integration and first powered article remain open.
+
+## R0004 controller baseline
 
 **Engineering hold.** R0004 is a proposed revision, not an installed or released controller. The reference route is a revision-controlled supplier spin of the A1 USB/power controller PCB. Consider an interposer only if the identified incoming board allows interception of raw USB power, both USB data lines and hardware load controls, with verified isolation, service access and fit. A cable harness, audio bench coupon or status-light PCB does not implement those functions. The controller schematic and layout are not released for fabrication.
 

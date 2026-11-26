@@ -1,6 +1,6 @@
 # Working on Thai Waters
 
-Use the repository-owned skills when working on their subjects. Keep them with this personal private project so a fresh checkout carries the product decisions forward.
+Use the repository-owned skills when working on their subjects. This is the owner’s personal project. The owner has opened this repository for rapid prototyping and intends to revisit visibility when the first usable revision is ready for production. Check visibility at publication and ask before changing it.
 
 - [Specimen artwork](.agents/skills/thai-waters-specimen-art/SKILL.md) covers fish illustration, the exact reference plate and the catch-to-journal art pipeline.
 - [Handheld UI](.agents/skills/thai-waters-handheld-ui/SKILL.md) covers thumb controls, Thai typography, pagination and fishing feedback.

@@ -1,0 +1,434 @@
+{
+  "units": "mm and mm3",
+  "source_3mf_sha256": "510fe8e2f1930c18298fb90d9a3b1edf74ac57c71bcb89fc985bed1fc49af50f",
+  "geometry_json_sha256": "225d8dff3fed560d4196bcfaf095775fdebac5a8b50775354da7035273fe91d5",
+  "gauge_stl_sha256": {
+    "A1-display": "779f430b90289bc4d6c4671fc52aa5c9d9d1b1ac997210df472e703b2e74518c",
+    "A2-sensor": "bdddf73c422aba82ed64977cc8c0b92d2d14501a94ecdc8b165778848a1c71f8",
+    "A3-haptic": "4c1af583e9662bf8d797cb25e6bb763c0d8e91c3cb5275bb74353fb8456d2333",
+    "A4-integration": "bb075d9f1b936b8f8a36b869194a9d5c7a15e3cd966e929795a62a64a0e2ae79",
+    "A5-power": "b62ba973cd9d4e8b1e24bdda6621ff6908d51f3d7fd5747ae7f2da3838a08c70",
+    "KEY-switch": "8c05de0627cc2b2d7da304f727232eaf6c36c96140f22e81d403667d49351c8e",
+    "USB-PCB1": "dd9995b3fbfa246b3643eb14a8dff827e07a95578be4c6da470c350926eccb0a",
+    "USB-PCB2": "a78c6f5d742ba80986c1b13d61e09f4505897cf8134686d13e8fe9bd46ebd704"
+  },
+  "dry_spacer_stl_sha256": {
+    "A3-floor-shim": "b7e6bd011a01770e47438ec060a90c5c22aa34976a939c96ea742dab25ea64f3",
+    "A4-display-shim": "7a7ea5a6000ec6d9484cf062d1bc4b66be04f2597ee42574e425416832f61ba8",
+    "A5-display-shim": "4b0f8bfb3d591243d208a755def3bc1480395b0aba03e3a2a5bc123368b128a3"
+  },
+  "r0011_centered_vertex_set_max_error_mm": {
+    "Housing": 2.24e-06,
+    "Bezel": 7e-08,
+    "Rotor": 5.5e-07,
+    "Collar": 1e-08,
+    "Bridge": 5e-08,
+    "Key keeper": 1e-08,
+    "Key cap": 1e-08,
+    "Service cover": 1.1e-07,
+    "U guide": 1e-08,
+    "C guide": 1e-08,
+    "P guide": 1e-08,
+    "PKCELL": 3e-08,
+    "Adafruit": 5e-08
+  },
+  "final_gauges_to_full_case_parts_common_mm3": {
+    "A1-display": {
+      "Housing": 8e-06,
+      "Bezel": 0.0,
+      "Rotor": 0.0,
+      "Collar": 0.0,
+      "Bridge": 0.0,
+      "Key keeper": 0.0,
+      "Key cap": 0.0,
+      "Service cover": 0.0,
+      "U guide": 0.0,
+      "C guide": 0.0,
+      "P guide": 0.0,
+      "PKCELL": 0.0,
+      "Adafruit": 0.0,
+      "A3-floor-shim-1": 0.0,
+      "A3-floor-shim-2": 0.0,
+      "A4-display-shim-1": 0.0,
+      "A4-display-shim-2": 0.0,
+      "A4-display-shim-3": 0.0,
+      "A5-display-shim-1": 1e-06,
+      "A5-display-shim-2": 1e-06,
+      "A5-display-shim-3": 1e-06
+    },
+    "A2-sensor": {
+      "Housing": 0.0,
+      "Bezel": 0.0,
+      "Rotor": 0.0,
+      "Collar": 0.0,
+      "Bridge": 0.0,
+      "Key keeper": 0.0,
+      "Key cap": 0.0,
+      "Service cover": 0.0,
+      "U guide": 0.0,
+      "C guide": 0.0,
+      "P guide": 0.0,
+      "PKCELL": 0.0,
+      "Adafruit": 0.0,
+      "A3-floor-shim-1": 0.0,
+      "A3-floor-shim-2": 0.0,
+      "A4-display-shim-1": 0.0,
+      "A4-display-shim-2": 0.0,
+      "A4-display-shim-3": 0.0,
+      "A5-display-shim-1": 0.0,
+      "A5-display-shim-2": 0.0,
+      "A5-display-shim-3": 0.0
+    },
+    "A3-haptic": {
+      "Housing": 0.0,
+      "Bezel": 0.0,
+      "Rotor": 0.0,
+      "Collar": 0.0,
+      "Bridge": 0.0,
+      "Key keeper": 0.0,
+      "Key cap": 0.0,
+      "Service cover": 0.0,
+      "U guide": 0.0,
+      "C guide": 0.0,
+      "P guide": 0.0,
+      "PKCELL": 0.0,
+      "Adafruit": 0.0,
+      "A3-floor-shim-1": 0.0,
+      "A3-floor-shim-2": 0.0,
+      "A4-display-shim-1": 0.0,
+      "A4-display-shim-2": 0.0,
+      "A4-display-shim-3": 0.0,
+      "A5-display-shim-1": 0.0,
+      "A5-display-shim-2": 0.0,
+      "A5-display-shim-3": 0.0
+    },
+    "A4-integration": {
+      "Housing": 0.0,
+      "Bezel": 0.0,
+      "Rotor": 0.0,
+      "Collar": 0.0,
+      "Bridge": 0.0,
+      "Key keeper": 0.0,
+      "Key cap": 0.0,
+      "Service cover": 0.0,
+      "U guide": 0.0,
+      "C guide": 0.0,
+      "P guide": 0.0,
+      "PKCELL": 0.0,
+      "Adafruit": 0.0,
+      "A3-floor-shim-1": 0.0,
+      "A3-floor-shim-2": 0.0,
+      "A4-display-shim-1": 0.0,
+      "A4-display-shim-2": 0.0,
+      "A4-display-shim-3": 0.0,
+      "A5-display-shim-1": 0.0,
+      "A5-display-shim-2": 0.0,
+      "A5-display-shim-3": 0.0
+    },
+    "A5-power": {
+      "Housing": 0.0,
+      "Bezel": 0.0,
+      "Rotor": 0.0,
+      "Collar": 0.0,
+      "Bridge": 0.0,
+      "Key keeper": 0.0,
+      "Key cap": 0.0,
+      "Service cover": 0.0,
+      "U guide": 0.0,
+      "C guide": 0.0,
+      "P guide": 0.0,
+      "PKCELL": 0.0,
+      "Adafruit": 0.0,
+      "A3-floor-shim-1": 0.0,
+      "A3-floor-shim-2": 0.0,
+      "A4-display-shim-1": 0.0,
+      "A4-display-shim-2": 0.0,
+      "A4-display-shim-3": 0.0,
+      "A5-display-shim-1": 0.0,
+      "A5-display-shim-2": 0.0,
+      "A5-display-shim-3": 0.0
+    },
+    "KEY-switch": {
+      "Housing": 3.5e-05,
+      "Bezel": 0.0,
+      "Rotor": 0.0,
+      "Collar": 0.0,
+      "Bridge": 0.0,
+      "Key keeper": 0.0,
+      "Key cap": 0.0,
+      "Service cover": 0.0,
+      "U guide": 0.0,
+      "C guide": 0.0,
+      "P guide": 0.0,
+      "PKCELL": 0.0,
+      "Adafruit": 0.0,
+      "A3-floor-shim-1": 0.0,
+      "A3-floor-shim-2": 0.0,
+      "A4-display-shim-1": 0.0,
+      "A4-display-shim-2": 0.0,
+      "A4-display-shim-3": 0.0,
+      "A5-display-shim-1": 0.0,
+      "A5-display-shim-2": 0.0,
+      "A5-display-shim-3": 0.0
+    },
+    "USB-PCB1": {
+      "Housing": 0.0,
+      "Bezel": 0.0,
+      "Rotor": 0.0,
+      "Collar": 0.0,
+      "Bridge": 0.0,
+      "Key keeper": 0.0,
+      "Key cap": 0.0,
+      "Service cover": 0.0,
+      "U guide": 0.0,
+      "C guide": 0.0,
+      "P guide": 0.0,
+      "PKCELL": 0.0,
+      "Adafruit": 0.0,
+      "A3-floor-shim-1": 0.0,
+      "A3-floor-shim-2": 0.0,
+      "A4-display-shim-1": 0.0,
+      "A4-display-shim-2": 0.0,
+      "A4-display-shim-3": 0.0,
+      "A5-display-shim-1": 0.0,
+      "A5-display-shim-2": 0.0,
+      "A5-display-shim-3": 0.0
+    },
+    "USB-PCB2": {
+      "Housing": 0.0,
+      "Bezel": 0.0,
+      "Rotor": 0.0,
+      "Collar": 0.0,
+      "Bridge": 0.0,
+      "Key keeper": 0.0,
+      "Key cap": 0.0,
+      "Service cover": 0.0,
+      "U guide": 0.0,
+      "C guide": 0.0,
+      "P guide": 0.0,
+      "PKCELL": 0.0,
+      "Adafruit": 0.0,
+      "A3-floor-shim-1": 0.0,
+      "A3-floor-shim-2": 0.0,
+      "A4-display-shim-1": 0.0,
+      "A4-display-shim-2": 0.0,
+      "A4-display-shim-3": 0.0,
+      "A5-display-shim-1": 0.0,
+      "A5-display-shim-2": 0.0,
+      "A5-display-shim-3": 0.0
+    }
+  },
+  "final_gauge_pairs_common_mm3": {
+    "A1-display / A2-sensor": 0.0,
+    "A1-display / A3-haptic": 0.0,
+    "A1-display / A4-integration": 0.0,
+    "A1-display / A5-power": 0.0,
+    "A1-display / KEY-switch": 0.0,
+    "A1-display / USB-PCB1": 0.0,
+    "A1-display / USB-PCB2": 0.0,
+    "A2-sensor / A3-haptic": 0.0,
+    "A2-sensor / A4-integration": 0.0,
+    "A2-sensor / A5-power": 0.0,
+    "A2-sensor / KEY-switch": 0.0,
+    "A2-sensor / USB-PCB1": 0.0,
+    "A2-sensor / USB-PCB2": 0.0,
+    "A3-haptic / A4-integration": 0.0,
+    "A3-haptic / A5-power": 0.0,
+    "A3-haptic / KEY-switch": 0.0,
+    "A3-haptic / USB-PCB1": 0.0,
+    "A3-haptic / USB-PCB2": 0.0,
+    "A4-integration / A5-power": 0.0,
+    "A4-integration / KEY-switch": 0.0,
+    "A4-integration / USB-PCB1": 0.0,
+    "A4-integration / USB-PCB2": 0.0,
+    "A5-power / KEY-switch": 0.0,
+    "A5-power / USB-PCB1": 0.0,
+    "A5-power / USB-PCB2": 0.0,
+    "KEY-switch / USB-PCB1": 0.0,
+    "KEY-switch / USB-PCB2": 0.0,
+    "USB-PCB1 / USB-PCB2": 0.0
+  },
+  "r20_carrier_stl_sha256": "c8a15e9b920f595b8f186fa4eee1d575c8b90a400fb503c10366ea8cdaac56a9",
+  "r20_to_a2_gauge_common_mm3": 0.0,
+  "r20_gauge_interfaces": {
+    "r20_seat_height_print_Z_mm": 5.95,
+    "r20_pin_tip_print_Z_mm": 7.32,
+    "pin_depth_mm": 1.37,
+    "diagonal_pins": [
+      {
+        "installed_YZ_mm": [
+          10.16,
+          21.15
+        ],
+        "hole_to_pin_center_offset_mm": 0.0,
+        "pin_diameter_across_xy_mm": [
+          2.05,
+          2.05
+        ],
+        "gauge_bore_diameter_across_xy_mm": [
+          2.4996,
+          2.4996
+        ]
+      },
+      {
+        "installed_YZ_mm": [
+          -10.16,
+          8.45
+        ],
+        "hole_to_pin_center_offset_mm": 0.0,
+        "pin_diameter_across_xy_mm": [
+          2.05,
+          2.05
+        ],
+        "gauge_bore_diameter_across_xy_mm": [
+          2.4996,
+          2.4996
+        ]
+      }
+    ],
+    "board_support": [
+      {
+        "installed_YZ_mm": [
+          10.16,
+          8.45
+        ],
+        "contact_patch_mm2": 9.7525
+      },
+      {
+        "installed_YZ_mm": [
+          10.16,
+          21.15
+        ],
+        "contact_patch_mm2": 9.7525
+      },
+      {
+        "installed_YZ_mm": [
+          -10.16,
+          8.45
+        ],
+        "contact_patch_mm2": 9.7525
+      },
+      {
+        "installed_YZ_mm": [
+          -10.16,
+          21.15
+        ],
+        "contact_patch_mm2": 9.5607
+      }
+    ]
+  },
+  "r0011_integral_lands_0p25mm_dry_shim": [
+    {
+      "installed_YZ_mm": [
+        10.16,
+        8.45
+      ],
+      "shoulder_extent_mm": 3.6995,
+      "pin_extent_mm": 0,
+      "shim_supported_board_area_mm2": 5.8465
+    },
+    {
+      "installed_YZ_mm": [
+        10.16,
+        21.15
+      ],
+      "shoulder_extent_mm": 3.6995,
+      "pin_extent_mm": 1.8598,
+      "shim_supported_board_area_mm2": 5.8465
+    },
+    {
+      "installed_YZ_mm": [
+        -10.16,
+        8.45
+      ],
+      "shoulder_extent_mm": 3.6995,
+      "pin_extent_mm": 1.8598,
+      "shim_supported_board_area_mm2": 5.8465
+    },
+    {
+      "installed_YZ_mm": [
+        -10.16,
+        21.15
+      ],
+      "shoulder_extent_mm": 3.6995,
+      "pin_extent_mm": 0,
+      "shim_supported_board_area_mm2": 5.8465
+    }
+  ],
+  "dry_spacer_coverage_at_faces": {
+    "A3-floor-shim-1": {
+      "installed_bottom_top_mm": [
+        2.5,
+        4.6
+      ],
+      "footprint_mm2": 36.0,
+      "lower_coverage_mm2": 36.0,
+      "upper_coverage_mm2": 36.0
+    },
+    "A3-floor-shim-2": {
+      "installed_bottom_top_mm": [
+        2.5,
+        4.6
+      ],
+      "footprint_mm2": 36.0,
+      "lower_coverage_mm2": 36.0,
+      "upper_coverage_mm2": 36.0
+    },
+    "A4-display-shim-1": {
+      "installed_bottom_top_mm": [
+        18.535,
+        21.0
+      ],
+      "footprint_mm2": 9.0,
+      "lower_coverage_mm2": 9.0,
+      "upper_coverage_mm2": 9.0
+    },
+    "A4-display-shim-2": {
+      "installed_bottom_top_mm": [
+        18.535,
+        21.0
+      ],
+      "footprint_mm2": 9.0,
+      "lower_coverage_mm2": 9.0,
+      "upper_coverage_mm2": 9.0
+    },
+    "A4-display-shim-3": {
+      "installed_bottom_top_mm": [
+        18.535,
+        21.0
+      ],
+      "footprint_mm2": 9.0,
+      "lower_coverage_mm2": 9.0,
+      "upper_coverage_mm2": 9.0
+    },
+    "A5-display-shim-1": {
+      "installed_bottom_top_mm": [
+        17.84,
+        21.0
+      ],
+      "footprint_mm2": 9.0,
+      "lower_coverage_mm2": 9.0,
+      "upper_coverage_mm2": 9.0
+    },
+    "A5-display-shim-2": {
+      "installed_bottom_top_mm": [
+        17.84,
+        21.0
+      ],
+      "footprint_mm2": 9.0,
+      "lower_coverage_mm2": 9.0,
+      "upper_coverage_mm2": 9.0
+    },
+    "A5-display-shim-3": {
+      "installed_bottom_top_mm": [
+        17.84,
+        21.0
+      ],
+      "footprint_mm2": 9.0,
+      "lower_coverage_mm2": 9.0,
+      "upper_coverage_mm2": 9.0
+    }
+  },
+  "r20_to_a2_negative_control_plus_1p5_y_common_mm3": 6.283167,
+  "scope": "Nominal final mesh solids in registered poses. Pack variants tested separately. The compliant USB diaphragm, harness, fasteners, tolerance, insertion forces and motion are outside this screen."
+}

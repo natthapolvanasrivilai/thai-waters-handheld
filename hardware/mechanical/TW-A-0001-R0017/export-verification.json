@@ -1,0 +1,17 @@
+{
+  "source_assembly": "TW-A-0001-R0016",
+  "source_step_sha256": "b0747b94259ffa3e3f3ba1794112cf0d99bce4f0d2d7b7db3dd7b04f8a93c2f1",
+  "installed_step_components": 154,
+  "changed_member": "Key cap",
+  "unchanged_installed_members": 153,
+  "added_cap_material_against_overlapping_component_boxes_mm3": {
+    "Housing": 0.0
+  },
+  "step_sha256": "fba1227c21d03e29510cf6f988221c9b4514cc4b533d410db43aa612fa52bd44",
+  "packed_step_sha256": "34ae230d2f9c962381c0f2ecf9ce3f35fe38d6b2ca1d5b80fa94e77c680895dc",
+  "max_bounds_delta_mm": 0.0002,
+  "max_roundtrip_absolute_volume_delta_mm3": 0.00029,
+  "local_dressed_step": "TW-A-0001-R0017-dressed.step",
+  "local_archive": "TW-A-0001-R0017-dressed.step.gz",
+  "sharing": "Full supplier assembly retained locally."
+}

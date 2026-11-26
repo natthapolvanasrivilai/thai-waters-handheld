@@ -1,0 +1,64 @@
+{
+  "source_step_sha256": "9096cb87773e21e6dc5fd4114182ab9818a4c1b762eb9a21e312203e5f3357e4",
+  "local_rail_brep_sha256": "ae66ab30cb6289ddb4919fe5414bdbd486d1a23587c75a6ba7a3049c3754c52e",
+  "source_form_sha256": "2af465b112e3dbcc8f76f7c77f377d2dd1a7ff796b0e8dccc0da29817d66e9dd",
+  "source_overlay_sha256": "c69afaab1c28e31d2382803fde4b4ab86412882f556eb7e8d1e06730b7045f9a",
+  "interval_count": 264,
+  "withdrawal_mm": 8.25,
+  "latch_actuation_degrees": -13.0,
+  "wire_jacket_diameter_mm": 1.42,
+  "flex_rail_bound_by_net": {
+    "VCC": {
+      "lower_bound_mm": 4.87863,
+      "travel_interval_mm": [
+        5.34375,
+        5.375
+      ],
+      "rail_center_x_mm": 18.0
+    },
+    "SCL": {
+      "lower_bound_mm": 5.09088,
+      "travel_interval_mm": [
+        5.34375,
+        5.375
+      ],
+      "rail_center_x_mm": 18.0
+    },
+    "SDA": {
+      "lower_bound_mm": 4.26448,
+      "travel_interval_mm": [
+        0.0,
+        0.03125
+      ],
+      "rail_center_x_mm": 26.0
+    },
+    "GND": {
+      "lower_bound_mm": 4.9566,
+      "travel_interval_mm": [
+        0.0,
+        0.03125
+      ],
+      "rail_center_x_mm": 26.0
+    }
+  },
+  "rocker_to_rail_vertical_bound_mm": 8.11953,
+  "all_rigid_members_to_rail_vertical_bound_mm": 3.25989,
+  "translating_members": [
+    "A3-J1-plug body",
+    "A3-J1-C1",
+    "whVCC-Cu",
+    "A3-J1-C5",
+    "whGND-Cu",
+    "A3-J1-C4",
+    "whSDA-Cu",
+    "A3-J1-C3",
+    "whSCL-Cu",
+    "A3-J1-TPA"
+  ],
+  "pressed_then_withdrawn": true,
+  "inherited_installed_rigid_lower_bound_mm": 0.38711,
+  "inherited_rigid_vs_W1_lower_bound_mm": 3.15568,
+  "inherited_W4_to_seated_lower_bound_mm": 0.49166,
+  "inherited_W4_pair_lower_bound_mm": 0.52372,
+  "scope": "Nominal geometry. Rails modeled with empty channels; adhesive must remain confined within the groove volume and below the bearing plane. Tube radius, chord error and pole motion are subtracted from the 3D gap to the rail at each interval midpoint. Fixed and moving members retain the R0013 datums. Socket/terminal internals, physical flex and grip access remain subject to the prior supplier-model limitations."
+}

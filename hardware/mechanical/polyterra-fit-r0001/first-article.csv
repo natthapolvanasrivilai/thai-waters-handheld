@@ -1,0 +1,28 @@
+plate,part,model layers,first layer mm2,support mm3,check after removal,observed result
+1,Housing - single status window and rear screw access,158,772.759,9459.189,Check the one status opening and rear screw access. Inspect each post root.,Awaiting print
+1,Status shelf with diffuser stops,17,75.129,0.0,Test the low diffuser stop and the shelf screw with the speaker installed.,Awaiting print
+2,Solid-front bezel - concealed hooks,25,2396.138,0.0,"Engage both concealed hooks and check seating, rear pilots and glass clearance.",Awaiting print
+2,Reel rotor - pocket facing up,70,27.548,908.93,Remove support from the accessible face and around the hinge. Inspect both ends of the crank pocket. Rotate fully with crank folded and extended.,Awaiting print
+2,collar_1,12,56.688,0.0,Check collar retention and full-turn clearance.,Awaiting print
+2,grip-screw-keeper_1,13,46.71,0.0,Inspect the thin keeper and cycle the grip screw.,Awaiting print
+2,receiver-nut-keeper_1,6,42.54,0.0,Check nut capture and grip screw alignment without forcing.,Awaiting print
+2,key-board-retainer-west_1,37,68.714,0.0,Check the KEY board remains seated and the plunger returns.,Awaiting print
+2,battery-wire-bridge_1,17,252.439,0.0,Check the bridge closes over dummy leads without imprints.,Awaiting print
+3,rod-grip_1,173,834.902,3941.901,"Slide into the receiver, lock and remove by hand. Inspect the dovetail for peeling.",Awaiting print
+4,Diffuser - opaque PLA fit gauge,19,12.868,0.0,Inspect the broad face and flange. Test the physical seat.,Awaiting print
+5,USB mask - rigid PLA fit gauge,4,78.627,0.0,Flex the plate to lift the perimeter. Check mask outline and placement.,Awaiting print
+5,Service cover - rigid PLA fit gauge,23,227.359,0.0,Check alignment without forcing the rigid cover into a flex fit.,Awaiting print
+6,PKCELL-max-body-with-wire-sockets_1,27,2167.123,0.0,Test maximum pack with dummy lead slack and connector. Remove before trying the other pack.,Awaiting print
+6,Adafruit-258-CAD-with-PCM-and-stubs_1,30,2120.844,0.0,"Test PCM, tail and lead exit in the alternative configuration. Use one gauge at a time.",Awaiting print
+7,A1 display and controller,67,5558.293,0.0,Measure underside for sag. Seat at four controller mounts and verify screen position and pressure.,Awaiting print
+7,A2 reel sensor,23,399.368,0.0,Check reel-wall lands and pin registration. Compare with real A2 when available.,Awaiting print
+7,A3 haptic board,49,373.322,0.0,Check bare board seats flat on the two integral rails. Remove before fitting the mated gauge.,Awaiting print
+7,Combined PCB - populated height gauge,12,852.09,0.0,Package side down. Inspect all three supports and both screw positions. Check display lift.,Awaiting print
+7,Top power switch board,27,103.153,0.0,Install after keyed cap. Check switch orientation and alignment.,Awaiting print
+7,RGB carrier and emitter fit gauge,10,13.338,0.0,Slide the carrier into the shelf; align the emitter to the one diffuser.,Awaiting print
+7,Speaker with gasket and lead exits,35,496.187,0.0,"Check oval rim, gasket height and lead exits. Inspect space under lamp shelf.",Awaiting print
+7,Vibration motor and lead exit,18,86.833,0.0,"Check motor body, cable exit and board clearance.",Awaiting print
+7,A3 alternate - plug seated,54,373.322,0.0,Install in place of bare A3. Seat A1 and inspect plug space. Verify unlatching and extraction separately with a wired sample.,Awaiting print
+8,folding-stem_1,27,6.714,82.192,"Cut the brim while supporting the hinge. Inspect the eye, then cycle the pivot by hand.",Awaiting print
+8,grip_1,47,15.155,0.0,Check grip rotates freely and stays on its axle.,Awaiting print
+8,R0017 keyed power cap,10,34.451,0.0,"Insert from inside before the switch PCB. Check for twisting, binding and free return.",Awaiting print

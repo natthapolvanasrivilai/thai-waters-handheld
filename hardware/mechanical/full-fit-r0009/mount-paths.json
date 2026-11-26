@@ -1,0 +1,102 @@
+{
+  "full": [
+    {
+      "feature": "first screw land",
+      "layers": 21,
+      "minimum": 0.9997,
+      "maximum": 1.0
+    },
+    {
+      "feature": "second screw land",
+      "layers": 21,
+      "minimum": 0.9978,
+      "maximum": 1.0
+    },
+    {
+      "feature": "corner bearing land",
+      "layers": 3,
+      "minimum": 1.0,
+      "maximum": 1.0
+    },
+    {
+      "feature": "stem outer wall east",
+      "layers": 72,
+      "minimum": 0.9986,
+      "maximum": 1.0
+    },
+    {
+      "feature": "stem outer wall west",
+      "layers": 72,
+      "minimum": 0.4268,
+      "maximum": 1.0
+    },
+    {
+      "feature": "stem center infill",
+      "layers": 72,
+      "minimum": 0.5841,
+      "maximum": 1.0
+    },
+    {
+      "feature": "first pilot",
+      "layers": 28,
+      "minimum": 0.0,
+      "maximum": 0.0
+    },
+    {
+      "feature": "second pilot",
+      "layers": 28,
+      "minimum": 0.0,
+      "maximum": 0.0
+    }
+  ],
+  "independent": [
+    {
+      "feature": "first screw land",
+      "layers": 21,
+      "minimum": 0.9997,
+      "maximum": 1.0
+    },
+    {
+      "feature": "second screw land",
+      "layers": 21,
+      "minimum": 0.9978,
+      "maximum": 1.0
+    },
+    {
+      "feature": "corner bearing land",
+      "layers": 3,
+      "minimum": 1.0,
+      "maximum": 1.0
+    },
+    {
+      "feature": "stem outer wall east",
+      "layers": 72,
+      "minimum": 0.9986,
+      "maximum": 1.0
+    },
+    {
+      "feature": "stem outer wall west",
+      "layers": 72,
+      "minimum": 0.4268,
+      "maximum": 1.0
+    },
+    {
+      "feature": "stem center infill",
+      "layers": 72,
+      "minimum": 0.5841,
+      "maximum": 1.0
+    },
+    {
+      "feature": "first pilot",
+      "layers": 28,
+      "minimum": 0.0,
+      "maximum": 0.0
+    },
+    {
+      "feature": "second pilot",
+      "layers": 28,
+      "minimum": 0.0,
+      "maximum": 0.0
+    }
+  ]
+}

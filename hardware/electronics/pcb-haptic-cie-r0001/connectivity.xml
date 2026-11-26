@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>A3-CIE-R0001.kicad_sch</source>
+    <date>2026-11-23T10:56:46</date>
+    <tool>Eeschema 10.0.8</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>A3-CIE-R0001.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>1uF</value>
+      <footprint>TW_Haptic:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="MPN">CL10A105KO8NNNC</field>
+        <field name="MP">CL10A105KO8NNNC</field>
+        <field name="Footprint">TW_Haptic:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <libsource lib="A3_Board" part="C" description="Unpolarized capacitor"/>
+      <property name="MPN" value="CL10A105KO8NNNC"/>
+      <property name="MP" value="CL10A105KO8NNNC"/>
+      <property name="Sheetname" value="A3-CIE-R0001"/>
+      <property name="Sheetfile" value="A3-CIE-R0001.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9c2fba2b-589e-44c5-867d-1e0bbc44a982</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C2">
+      <value>1uF</value>
+      <footprint>TW_Haptic:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="MPN">CL10A105KO8NNNC</field>
+        <field name="MP">CL10A105KO8NNNC</field>
+        <field name="Footprint">TW_Haptic:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <libsource lib="A3_Board" part="C" description="Unpolarized capacitor"/>
+      <property name="MPN" value="CL10A105KO8NNNC"/>
+      <property name="MP" value="CL10A105KO8NNNC"/>
+      <property name="Sheetname" value="A3-CIE-R0001"/>
+      <property name="Sheetfile" value="A3-CIE-R0001.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3e30dbf3-c51b-4b2b-8563-90b34f0dc1c1</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J1">
+      <value>CIEP05P1HK0-NH</value>
+      <footprint>TW_Haptic:CIEP05P1HK0-NH</footprint>
+      <description>CviLux five-position right-angle W4 header, external 3.3 V and ground</description>
+      <fields>
+        <field name="MPN">CIEP05P1HK0-NH</field>
+        <field name="MP">CIEP05P1HK0-NH</field>
+        <field name="Footprint">TW_Haptic:CIEP05P1HK0-NH</field>
+        <field name="Datasheet"/>
+        <field name="Description">CviLux five-position right-angle W4 header, external 3.3 V and ground</field>
+      </fields>
+      <libsource lib="A3_Board" part="W4_CIE_5pin" description="CviLux five-position right-angle W4 header, external 3.3 V and ground"/>
+      <property name="MPN" value="CIEP05P1HK0-NH"/>
+      <property name="MP" value="CIEP05P1HK0-NH"/>
+      <property name="Sheetname" value="A3-CIE-R0001"/>
+      <property name="Sheetfile" value="A3-CIE-R0001.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0292edd7-e5de-4b48-a0c3-9d7256ab5fc8</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R1">
+      <value>2.2K</value>
+      <footprint>TW_Haptic:R_0603_1608Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="MPN">CRT03F7E2201</field>
+        <field name="MP">CL10A105KO8NNNC</field>
+        <field name="Footprint">TW_Haptic:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="A3_Board" part="R" description="Resistor"/>
+      <property name="MPN" value="CRT03F7E2201"/>
+      <property name="MP" value="CL10A105KO8NNNC"/>
+      <property name="Sheetname" value="A3-CIE-R0001"/>
+      <property name="Sheetfile" value="A3-CIE-R0001.kicad_sch"/>
+      <property name="dnp"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d4efabe6-f02e-4e7a-b97c-1f010dd37399</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R2">
+      <value>2.2K</value>
+      <footprint>TW_Haptic:R_0603_1608Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="MPN">CRT03F7E2201</field>
+        <field name="MP">CL10A105KO8NNNC</field>
+        <field name="Footprint">TW_Haptic:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="A3_Board" part="R" description="Resistor"/>
+      <property name="MPN" value="CRT03F7E2201"/>
+      <property name="MP" value="CL10A105KO8NNNC"/>
+      <property name="Sheetname" value="A3-CIE-R0001"/>
+      <property name="Sheetfile" value="A3-CIE-R0001.kicad_sch"/>
+      <property name="dnp"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>be976493-28ba-4d08-8bc8-5db0e449877d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP1">
+      <value>TestPoint</value>
+      <footprint>TW_Haptic:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="MPN"/>
+        <field name="Footprint">TW_Haptic:PinHeader_1x01_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
+      <libsource lib="A3_Board" part="TestPoint" description="test point"/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="A3-CIE-R0001"/>
+      <property name="Sheetfile" value="A3-CIE-R0001.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="dnp"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>762a48a4-cc6f-4cfb-a885-61bbda826d20</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP2">
+      <value>TestPoint</value>
+      <footprint>TW_Haptic:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="MPN"/>
+        <field name="Footprint">TW_Haptic:PinHeader_1x01_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
+      <libsource lib="A3_Board" part="TestPoint" description="test point"/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="A3-CIE-R0001"/>
+      <property name="Sheetfile" value="A3-CIE-R0001.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="dnp"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>af4abc4b-0cfb-4868-a110-183fd03b3e96</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U1">
+      <value>DRV2605LDGSR</value>
+      <footprint>TW_Haptic:SOP50P490X110-10N</footprint>
+      <fields>
+        <field name="MF">Texas Instruments</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">1.1 mm</field>
+        <field name="Package">VSSOP-10 Texas Instruments</field>
+        <field name="Price">None</field>
+        <field name="Check_prices">https://www.snapeda.com/parts/DRV2605LDGSR/Texas+Instruments/view-part/?ref=eda</field>
+        <field name="STANDARD">IPC-7351B</field>
+        <field name="PARTREV">D</field>
+        <field name="SnapEDA_Link">https://www.snapeda.com/parts/DRV2605LDGSR/Texas+Instruments/view-part/?ref=snap</field>
+        <field name="MP">DRV2605LDGSR</field>
+        <field name="Description_1">
+                        
+                            Haptic driver for ERM/LRA with 2-V operation, waveform library &amp; auto-resonance tracking
+                        
+</field>
+        <field name="Availability">In Stock</field>
+        <field name="MANUFACTURER">Texas Instruments</field>
+        <field name="MPN">DRV2605LDGSR</field>
+        <field name="Footprint">TW_Haptic:SOP50P490X110-10N</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="A3_Board" part="DRV2605LDGSR" description=""/>
+      <property name="MF" value="Texas Instruments"/>
+      <property name="MAXIMUM_PACKAGE_HEIGHT" value="1.1 mm"/>
+      <property name="Package" value="VSSOP-10 Texas Instruments"/>
+      <property name="Price" value="None"/>
+      <property name="Check_prices" value="https://www.snapeda.com/parts/DRV2605LDGSR/Texas+Instruments/view-part/?ref=eda"/>
+      <property name="STANDARD" value="IPC-7351B"/>
+      <property name="PARTREV" value="D"/>
+      <property name="SnapEDA_Link" value="https://www.snapeda.com/parts/DRV2605LDGSR/Texas+Instruments/view-part/?ref=snap"/>
+      <property name="MP" value="DRV2605LDGSR"/>
+      <property name="Description_1" value="&#xA;                        &#xA;                            Haptic driver for ERM/LRA with 2-V operation, waveform library &amp; auto-resonance tracking&#xA;                        &#xA;"/>
+      <property name="Availability" value="In Stock"/>
+      <property name="MANUFACTURER" value="Texas Instruments"/>
+      <property name="MPN" value="DRV2605LDGSR"/>
+      <property name="Sheetname" value="A3-CIE-R0001"/>
+      <property name="Sheetfile" value="A3-CIE-R0001.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a2272077-93e9-45be-bd6b-d9077a93dfa4</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="10"/>
+            <pin num="6"/>
+            <pin num="5"/>
+            <pin num="4"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="7"/>
+            <pin num="1"/>
+            <pin num="9"/>
+            <pin num="8"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="A3_Board" part="C">
+      <description>Unpolarized capacitor</description>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="A3_Board" part="DRV2605LDGSR">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">DRV2605LDGSR</field>
+        <field name="Footprint">TW_Haptic:SOP50P490X110-10N</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+        <field name="MF">Texas Instruments</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">1.1 mm</field>
+        <field name="Package">VSSOP-10 Texas Instruments</field>
+        <field name="Price">None</field>
+        <field name="Check_prices">https://www.snapeda.com/parts/DRV2605LDGSR/Texas+Instruments/view-part/?ref=eda</field>
+        <field name="STANDARD">IPC-7351B</field>
+        <field name="PARTREV">D</field>
+        <field name="SnapEDA_Link">https://www.snapeda.com/parts/DRV2605LDGSR/Texas+Instruments/view-part/?ref=snap</field>
+        <field name="MP">DRV2605LDGSR</field>
+        <field name="Description_1">
+                        
+                            Haptic driver for ERM/LRA with 2-V operation, waveform library &amp; auto-resonance tracking
+                        
+</field>
+        <field name="Availability">In Stock</field>
+        <field name="MANUFACTURER">Texas Instruments</field>
+      </fields>
+      <pins>
+        <pin num="1" name="REG" type="output"/>
+        <pin num="2" name="SCL" type="input"/>
+        <pin num="3" name="SDA" type="bidirectional"/>
+        <pin num="4" name="IN/TRIG" type="input"/>
+        <pin num="5" name="EN" type="input"/>
+        <pin num="6" name="VDD/NC" type="power_in"/>
+        <pin num="7" name="OUT+" type="output"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="OUT-" type="output"/>
+        <pin num="10" name="VDD" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="A3_Board" part="R">
+      <description>Resistor</description>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="A3_Board" part="TestPoint">
+      <description>test point</description>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="A3_Board" part="W4_CIE_5pin">
+      <description>CviLux five-position right-angle W4 header, external 3.3 V and ground</description>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">W4_CIE_5pin</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">CviLux five-position right-angle W4 header, external 3.3 V and ground</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="power_out"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="power_out"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="A3_Board">
+      <uri>${KIPRJMOD}/A3_Board.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/SCL" class="Default">
+      <node ref="J1" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="SCL_2" pintype="input"/>
+    </net>
+    <net code="2" name="/SDA" class="Default">
+      <node ref="J1" pin="4" pinfunction="Pin_4_4" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="SDA_3" pintype="bidirectional"/>
+    </net>
+    <net code="3" name="GND" class="Default">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="J1" pin="5" pinfunction="Pin_5_5" pintype="power_out"/>
+      <node ref="U1" pin="4" pinfunction="IN/TRIG_4" pintype="input"/>
+      <node ref="U1" pin="8" pinfunction="GND_8" pintype="power_in"/>
+    </net>
+    <net code="4" name="Net-(U1-OUT+)" class="Default">
+      <node ref="TP1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="7" pinfunction="OUT+_7" pintype="output"/>
+    </net>
+    <net code="5" name="Net-(U1-OUT-)" class="Default">
+      <node ref="TP2" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="9" pinfunction="OUT-_9" pintype="output"/>
+    </net>
+    <net code="6" name="Net-(U1-REG)" class="Default">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="REG_1" pintype="output"/>
+    </net>
+    <net code="7" name="VCC" class="Default">
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1_1" pintype="power_out"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+      <node ref="U1" pin="10" pinfunction="VDD_10" pintype="power_in"/>
+      <node ref="U1" pin="5" pinfunction="EN_5" pintype="input"/>
+      <node ref="U1" pin="6" pinfunction="VDD/NC_6" pintype="power_in"/>
+    </net>
+  </nets>
+</export>

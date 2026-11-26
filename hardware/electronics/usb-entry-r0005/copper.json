@@ -1,0 +1,61 @@
+{
+  "sha256": "49ad025fc07b3be5baf86e7c96b523f28b35122ebcc890427754145919b7d540",
+  "board_thickness_mm": 0.8,
+  "nets": {
+    "ENTRY": {
+      "track_mm": 7.2684017,
+      "vias": 0,
+      "upper_ohm": 0.014993
+    },
+    "FAULT_N": {
+      "track_mm": 15.7956285,
+      "vias": 0,
+      "upper_ohm": 0.0592412
+    },
+    "FULL_EN": {
+      "track_mm": 12.168566,
+      "vias": 2,
+      "upper_ohm": 0.0475835
+    },
+    "GND": {
+      "track_mm": 53.1155604,
+      "vias": 4,
+      "upper_ohm": 0.1134559
+    },
+    "ILIM": {
+      "track_mm": 4.1625,
+      "vias": 0,
+      "upper_ohm": 0.0156114
+    },
+    "LOW_EN": {
+      "track_mm": 11.4559017,
+      "vias": 1,
+      "upper_ohm": 0.0439379
+    },
+    "LOW_OUT": {
+      "track_mm": 2.9176777,
+      "vias": 0,
+      "upper_ohm": 0.0060185
+    },
+    "MID_S": {
+      "track_mm": 17.103757,
+      "vias": 4,
+      "upper_ohm": 0.039172
+    },
+    "PAIR_G": {
+      "track_mm": 16.1338525,
+      "vias": 0,
+      "upper_ohm": 0.0605097
+    },
+    "PMIC": {
+      "track_mm": 17.0551777,
+      "vias": 2,
+      "upper_ohm": 0.0371263
+    },
+    "RAW": {
+      "track_mm": 33.4758062,
+      "vias": 4,
+      "upper_ohm": 0.0729437
+    }
+  }
+}

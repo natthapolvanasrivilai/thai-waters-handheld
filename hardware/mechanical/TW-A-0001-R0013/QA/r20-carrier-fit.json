@@ -1,0 +1,214 @@
+{
+  "r19b_sha256": "dcfc3c9c0725d91c54026f1e65f5b9855a036b35f61483d5b1dfcfb471db546c",
+  "carrier_rebuild_sha256": "90635e6beabca1cdc5b07258c9a44049614d3af9fabae209fd7f3e7908e6579d",
+  "installed_transform": [
+    [
+      0,
+      0,
+      -1,
+      47
+    ],
+    [
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      13.005
+    ]
+  ],
+  "tests": {
+    "A2-chip": {
+      "surface_gap_mm": 5.65326,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 0
+    },
+    "A2-pcb": {
+      "surface_gap_mm": 0.0,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 0
+    },
+    "A2-population": {
+      "surface_gap_mm": 0.2833,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 0
+    },
+    "A2-sockets": {
+      "surface_gap_mm": 1.1251,
+      "common_volume_mm3": 0.0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 0
+    },
+    "A3-J1-header": {
+      "surface_gap_mm": 11.27,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 6
+    },
+    "A4-integration": {
+      "surface_gap_mm": 5.09295,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 62
+    },
+    "A5-W2": {
+      "surface_gap_mm": 5.50847,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "A5-W2-Cu": {
+      "surface_gap_mm": 5.64146,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "A5-W2-solder": {
+      "surface_gap_mm": 5.56661,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 2
+    },
+    "A5-W3": {
+      "surface_gap_mm": 6.9428,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "A5-W3-Cu": {
+      "surface_gap_mm": 7.07579,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "A5-W3-solder": {
+      "surface_gap_mm": 7.00127,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 2
+    },
+    "A5-W3-splice-cover": {
+      "surface_gap_mm": 56.38767,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "A5-W7": {
+      "surface_gap_mm": 11.0731,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "A5-W7-Cu": {
+      "surface_gap_mm": 11.2061,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "A5-W7-solder": {
+      "surface_gap_mm": 11.21363,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 2
+    },
+    "A5-bond": {
+      "surface_gap_mm": 7.47347,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 6
+    },
+    "A5-power": {
+      "surface_gap_mm": 4.48571,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 175
+    },
+    "USB-BOND": {
+      "surface_gap_mm": 58.92447,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "USB-W4C": {
+      "surface_gap_mm": 56.58084,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 2
+    },
+    "USB-W4C-Cu": {
+      "surface_gap_mm": 56.71383,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 3
+    },
+    "drvBoard": {
+      "surface_gap_mm": 9.01511,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "drvParts": {
+      "surface_gap_mm": 13.49772,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 14
+    },
+    "w1GND": {
+      "surface_gap_mm": 6.52191,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 2
+    },
+    "w1SCL": {
+      "surface_gap_mm": 6.52191,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 2
+    },
+    "w1SDA": {
+      "surface_gap_mm": 4.10243,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 2
+    },
+    "w1VCC": {
+      "surface_gap_mm": 2.00692,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 2
+    },
+    "whGND": {
+      "surface_gap_mm": 2.58334,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "whSCL": {
+      "surface_gap_mm": 10.76435,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "whSDA": {
+      "surface_gap_mm": 5.54762,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    },
+    "whVCC": {
+      "surface_gap_mm": 19.28355,
+      "common_volume_mm3": 0,
+      "unresolved_solids": 0,
+      "solids_proven_disjoint_by_native_bounds": 1
+    }
+  },
+  "scope": "Mixed-lineage registration study at nominal seated position; A2 and W1 pose comes from R0012. Positive common volumes require reconciliation before combining configurations.",
+  "overlay_sha256": "c69afaab1c28e31d2382803fde4b4ab86412882f556eb7e8d1e06730b7045f9a"
+}

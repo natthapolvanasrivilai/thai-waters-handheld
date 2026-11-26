@@ -1,0 +1,138 @@
+{
+  "W2": {
+    "conductor_length_mm": 58.03862,
+    "jacket_length_mm": 56.39762,
+    "min_centerline_bend_mm": 0.942,
+    "jacket_od_mm": 0.52,
+    "a5_strip_mm": 1.39,
+    "far_strip_mm": 0.251,
+    "shared_J8_pigtail_mm": 0,
+    "wire_resistance_70C_ohm": 0.023627,
+    "dressing_points_mm": [
+      [
+        34.45,
+        12.0,
+        18.3
+      ],
+      [
+        34.45,
+        12.0,
+        19.3
+      ],
+      [
+        26.0,
+        11.58,
+        19.14
+      ],
+      [
+        -17.35,
+        18.5,
+        18.0
+      ],
+      [
+        -18.6,
+        19.1,
+        18.8
+      ],
+      [
+        -19.06,
+        19.82,
+        20.18
+      ],
+      [
+        -19.06,
+        19.82,
+        20.5
+      ]
+    ]
+  },
+  "W3": {
+    "conductor_length_mm": 56.37755,
+    "jacket_length_mm": 53.58755,
+    "min_centerline_bend_mm": 0.9431,
+    "jacket_od_mm": 0.52,
+    "a5_strip_mm": 1.39,
+    "far_strip_mm": 1.4,
+    "shared_J8_pigtail_mm": 5.25,
+    "wire_resistance_70C_ohm": 0.025088,
+    "dressing_points_mm": [
+      [
+        34.45,
+        5.0,
+        18.3
+      ],
+      [
+        34.45,
+        5.0,
+        19.3
+      ],
+      [
+        26.34,
+        8.86,
+        19.14
+      ],
+      [
+        3.56,
+        10.56,
+        18.46
+      ],
+      [
+        -14.7,
+        17.742536,
+        16.355954
+      ],
+      [
+        -16.161943,
+        17.742536,
+        16.355954
+      ]
+    ]
+  },
+  "W7": {
+    "conductor_length_mm": 55.02517,
+    "jacket_length_mm": 51.87517,
+    "min_centerline_bend_mm": 0.8599,
+    "jacket_od_mm": 0.52,
+    "a5_strip_mm": 1.54,
+    "far_strip_mm": 1.61,
+    "shared_J8_pigtail_mm": 0,
+    "wire_resistance_70C_ohm": 0.0224,
+    "dressing_points_mm": [
+      [
+        30.65,
+        17.3,
+        18.3
+      ],
+      [
+        30.65,
+        17.3,
+        19.22
+      ],
+      [
+        29.4,
+        17.3,
+        19.22
+      ],
+      [
+        15.46,
+        19.06,
+        19.48
+      ],
+      [
+        -17.5,
+        18.1,
+        19.6
+      ],
+      [
+        -19.98,
+        18.47,
+        20.0
+      ],
+      [
+        -19.98,
+        18.47,
+        18.95
+      ]
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+reference,quantity,manufacturer,part_number,description,source
+R1 R2,2,Vishay,CRCW25124R99FKEG,4.99 ohm 1% 1 W 2512 thick film,https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R3 R4,2,Panasonic,ERJ-3EKF1501V,1.50 kilohm 1% 0603,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+R5,1,Panasonic,ERJ-3EKF3303V,330 kilohm 1% 0603,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+R6,1,Panasonic,ERJ-3EKF1003V,100 kilohm 1% 0603,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+D1,1,Nexperia,"BAV170,215",Dual low leakage diode SOT23 common cathode pin 3,https://www.nexperia.com/chemical-content/BAV170.html
+Q1,1,Nexperia,"PMV65XP,215",P-channel MOSFET SOT23 pins G S D,https://www.nexperia.com/chemical-content/PMV65XP.html
+Q2,1,Nexperia,PMV16XNR,N-channel MOSFET SOT23 pins G S D,https://www.nexperia.com/chemical-content/PMV16XN.html
+U101,1,Texas Instruments,TLV3011BIDBVR,Open-drain CC1 comparator with 1.242 V reference SOT-23-6,https://www.ti.com/lit/ds/symlink/tlv3011.pdf
+U102,1,Texas Instruments,TLV3011BIDCKR,Open-drain CC2 comparator SC70-6; U101 reference sets both thresholds,https://www.ti.com/lit/ds/symlink/tlv3011.pdf
+Q101 Q102,2,Nexperia,"PMV65XP,215",Common-source P-channel pair on sole PMIC feed,https://assets.nexperia.com/documents/data-sheet/PMV65XP.pdf
+Q103,1,Nexperia,PMV16XNR,NMOS VBUS-qualified gate pull-down isolation,https://www.nexperia.com/product/PMV16XN
+R101,1,Panasonic,ERA-3AEB104V,100 kohm 0.1% 25 ppm/K upper divider 0603,https://industrial.panasonic.com/ww/products/pt/thin-film-chip-resistors
+R104,1,Panasonic,ERA-3AEB114V,110 kohm 0.1% 25 ppm/K lower divider 0603,https://industrial.panasonic.com/ww/products/pt/thin-film-chip-resistors
+R102,1,Vishay,CRCW251262R0FKEG,62 ohm 1% 1W 2512 main ballast; confirm thermal derating on article,https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R103,1,Panasonic,ERJ-3EKF1003V,100 kohm 1% 0603 pair gate-source pull-up,https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors
+R105,1,YAGEO,RC0603FR-0710ML,10 Mohm 1% 0603 CC1 sense pulldown,https://www.yageo.com/en/Product/Index/rchip
+R106,1,YAGEO,RC0402FR-0710ML,10 Mohm 1% 0402 CC2 sense pulldown,https://www.yageo.com/en/Product/Index/rchip
+R107 R108,2,YAGEO,RC0402FR-07100KL,100 kohm 1% 0402 series CC sense resistors,https://www.yageo.com/en/Product/Index/rchip
+R109,1,YAGEO,RC0402FR-073K3L,3.3 kohm 1% 0402 control-rail ballast,https://www.yageo.com/en/Product/Index/rchip
+FB101,1,Murata,BLM18PG121SN1D,0603 120 ohm at 100 MHz ferrite max 50 milliohm DC resistance,https://pim.murata.com/en-us/pim/details/?partNum=BLM18PG121SN1D
+D101,1,onsemi,ESD5Z6.0T1G,6 V SOD-523 TVS on ballasted input cathode pin 1,https://www.onsemi.com/download/data-sheet/pdf/esd5z2.5-d.pdf
+C101,1,Murata,GRM188R71C104KA01D,100 nF 16 V X7R 0603 U101 at CTRL,https://www.murata.com/en-global/products/capacitor/ceramiccapacitor
+C102,1,Murata,GRM188R71C105KA12D,1 uF 16 V X7R 0603 on PMIC output,https://www.murata.com/en-global/products/capacitor/ceramiccapacitor
+C103,1,Murata,GRM155R71C104KA88D,100 nF 16 V X7R 0402 at U102,https://www.murata.com/en-global/products/capacitor/ceramiccapacitor
+C104 C105,2,Murata,GRM155R71H103KA88D,10 nF 50 V X7R 0402 CC sense capacitors behind R107 and R108,https://www.murata.com/en-global/products/capacitor/ceramiccapacitor
+USB-PCB2 R1,1,YAGEO,RC0603FR-073K6L,3.60 kohm 1% 0603 replacing 2.70 kohm in blue lamp carrier,https://www.yageo.com/en/Product/Index/rchip
+A1 LRC4,0,Waveshare,BTREF1608A3R121,Do not populate on positively identified V2 lot,../usb-entry-r0006/assembly.csv
+W101 W102 W104 W105 W107,as fitted,Jonard Tools,R30R-0100,30 AWG PVDF wire; mark each end by net and inspect actual lands,https://jonard.com/wire-wrapping-wire-30-awg
+W103,as fitted,Jonard Tools,R30BLK-0100,30 AWG PVDF black ground wire,https://jonard.com/wire-wrapping-wire-30-awg
+PCB,1,Custom,Case-board R0002,"32.4 × 35.8 mm overall, 0.8 mm FR4, two copper layers",case-board.kicad_pcb
+Mount screws,2,Accu,SHP-M2-4-V2-A2,M2 × 4 ISO 14583 T6 pan head,../../components/standard-fasteners/README.md

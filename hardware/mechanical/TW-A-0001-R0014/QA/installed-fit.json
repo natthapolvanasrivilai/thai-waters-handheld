@@ -1,0 +1,579 @@
+{
+  "dressed_step_sha256": "736154bed8462ee35f554eb8219495ad4da92870026ce1b03ba1e8a389fda2fb",
+  "housing_brep_sha256": "ae66ab30cb6289ddb4919fe5414bdbd486d1a23587c75a6ba7a3049c3754c52e",
+  "installed_member_count": 154,
+  "members_besides_housing": 153,
+  "additional_pack_option": "cellDrawing: 35.3 x 62.3 x 5.3, checked instead of cellAlt",
+  "incremental_overlap_mm3": 0.0,
+  "rails": {
+    "west": {
+      "center_x_mm": 18.0,
+      "bearing_plane_z_mm": 4.6,
+      "floor_z_mm": 2.5,
+      "bonded_to_floor_footprint_mm2": 36,
+      "hard_land_area_mm2": 26.4,
+      "actual_PCB_supported_area_mm2": 26.25863,
+      "actual_PCB_over_groove_area_mm2": 9.6,
+      "adhesive_capacity_mm3": 3.84,
+      "clear_outlet_prism_length_mm": 1.0,
+      "negative_control_PCB_down_0p25mm_overlap_mm3": 6.56466,
+      "pins_by_increasing_installed_x": [
+        {
+          "center_x_mm": 15.96,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 2.72239
+        },
+        {
+          "center_x_mm": 18.46,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 2.36394
+        },
+        {
+          "center_x_mm": 20.96,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 2.73779
+        },
+        {
+          "center_x_mm": 23.46,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 4.47265
+        },
+        {
+          "center_x_mm": 25.96,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 6.84028
+        }
+      ],
+      "exact_member_comparisons": {
+        "Removable rod grip": {
+          "gap_mm": 1.99,
+          "overlap_mm3": 0.0
+        },
+        "cellAlt": {
+          "gap_mm": 8.4,
+          "overlap_mm3": 0.0
+        },
+        "altTail0": {
+          "gap_mm": 12.67199,
+          "overlap_mm3": 0.0
+        },
+        "altTail1": {
+          "gap_mm": 10.91077,
+          "overlap_mm3": 0.0
+        },
+        "wm0": {
+          "gap_mm": 3.17898,
+          "overlap_mm3": 0.0
+        },
+        "wm0-Cu": {
+          "gap_mm": 3.32698,
+          "overlap_mm3": 0.0
+        },
+        "wm1": {
+          "gap_mm": 1.025,
+          "overlap_mm3": 0.0
+        },
+        "wm1-Cu": {
+          "gap_mm": 1.173,
+          "overlap_mm3": 0.0
+        },
+        "w1VCC": {
+          "gap_mm": 12.8383,
+          "overlap_mm3": 0.0
+        },
+        "w1GND": {
+          "gap_mm": 13.23511,
+          "overlap_mm3": 0.0
+        },
+        "w1SCL": {
+          "gap_mm": 14.28325,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-header": {
+          "gap_mm": 2.36394,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-plug": {
+          "gap_mm": 3.26,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-TPA": {
+          "gap_mm": 6.51,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-spacer": {
+          "gap_mm": 2.27379,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-C1": {
+          "gap_mm": 4.87526,
+          "overlap_mm3": 0.0
+        },
+        "whVCC-Cu": {
+          "gap_mm": 5.58226,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-C5": {
+          "gap_mm": 7.67613,
+          "overlap_mm3": 0.0
+        },
+        "whGND-Cu": {
+          "gap_mm": 8.45201,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-C4": {
+          "gap_mm": 6.05554,
+          "overlap_mm3": 0.0
+        },
+        "whSDA-Cu": {
+          "gap_mm": 6.78694,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-C3": {
+          "gap_mm": 5.03215,
+          "overlap_mm3": 0.0
+        },
+        "whSCL-Cu": {
+          "gap_mm": 5.73915,
+          "overlap_mm3": 0.0
+        },
+        "whVCC": {
+          "gap_mm": 5.07526,
+          "overlap_mm3": 0.0
+        },
+        "whSCL": {
+          "gap_mm": 5.23215,
+          "overlap_mm3": 0.0
+        },
+        "whSDA": {
+          "gap_mm": 6.27994,
+          "overlap_mm3": 0.0
+        },
+        "whGND": {
+          "gap_mm": 7.94501,
+          "overlap_mm3": 0.0
+        },
+        "drvBoard": {
+          "gap_mm": 0.0,
+          "overlap_mm3": 0.0
+        },
+        "drvParts": {
+          "gap_mm": 1.595,
+          "overlap_mm3": 0.0
+        },
+        "cellDrawing": {
+          "gap_mm": 9.25,
+          "overlap_mm3": 0.0
+        }
+      },
+      "bounding_box_distance_lower_bounds_mm": {
+        "Bezel": 23.1999,
+        "Rotor": 24.1,
+        "Stem": 32.3435,
+        "Grip": 31.0542,
+        "Collar": 24.9114,
+        "reel0": 33.0007,
+        "reel1": 33.1308,
+        "reel2": 25.2962,
+        "Key cap": 58.9255,
+        "Retainer": 53.6029,
+        "Key PCB": 54.607,
+        "Switch case": 56.858,
+        "Switch plunger": 59.146,
+        "Trimmed terminals": 55.8309,
+        "Keeper screw": 64.1504,
+        "Grip lock screw": 9.7499,
+        "Grip screw keeper": 17.8572,
+        "Receiver nut": 9.75,
+        "Receiver nut keeper": 8.6656,
+        "A1-touch": 15.5,
+        "A1-mounts": 12.3999,
+        "A1-carrier": 16.3999,
+        "A1-population": 10.4999,
+        "A1-J8": 22.7018,
+        "A1-usb": 50.6371,
+        "A1-k3": 43.3271,
+        "A1-reset": 35.8141,
+        "A1-boot": 28.8542,
+        "A1-J7": 45.1454,
+        "A1-J9": 20.0046,
+        "A1-backing": 18.0,
+        "A2-pcb": 20.0228,
+        "A2-population": 22.4819,
+        "A2-sockets": 22.7209,
+        "A2-chip": 23.3088,
+        "Speaker": 47.0713,
+        "H1-1": 51.7528,
+        "H1-2": 55.3927,
+        "H1-3": 18.3943,
+        "H1-4": 26.988,
+        "H3-1": 32.9303,
+        "H3-2": 34.3933,
+        "H5": 32.5246,
+        "motor": 9.0,
+        "J8plug": 16.0168,
+        "ph": 8.8833,
+        "packplug": 8.947,
+        "j7plug": 46.1458,
+        "j9plug": 20.857,
+        "batt0": 5.4899,
+        "spk0": 18.0204,
+        "batt1": 5.4899,
+        "spk1": 17.0934,
+        "w30": 42.0567,
+        "w31": 40.2817,
+        "shrink0": 11.187,
+        "shrink1": 17.4392,
+        "bridge": 11.3654,
+        "tieS1": 49.2462,
+        "tieS2": 11.7917,
+        "usbSurround": 56.7918,
+        "statusChgGuide": 56.1881,
+        "statusUsbGuide": 59.6752,
+        "statusPwrGuide": 56.4518,
+        "speakerRim": 47.2271,
+        "speakerPoleRing": 49.611,
+        "speakerMagnet": 50.6073,
+        "speakerDiaphragm": 47.588,
+        "speakerCloth": 47.0702,
+        "speakerTerminal0": 58.885,
+        "speakerTerminal1": 54.4983,
+        "speakerGasket": 47.245,
+        "USB-D1": 59.1581,
+        "USB-PCB1": 58.4089,
+        "USB-PCB2": 41.7948,
+        "USB-R1": 42.9054,
+        "USB-W4B-Cu": 39.3268,
+        "USB-W4B": 39.1537,
+        "usbEscutcheonLip": 57.1806,
+        "J7-C1": 48.4403,
+        "J7-C2": 47.3625,
+        "J9-C1": 22.1462,
+        "J9-C2": 23.0717,
+        "termination-W1-GND": 16.4248,
+        "termination-W1-SCL": 17.2531,
+        "termination-W1-SDA": 16.6016,
+        "termination-W1-VCC": 16.4248,
+        "termination-W2-1": 48.7506,
+        "termination-W2-2": 47.6722,
+        "termination-W5-1": 23.5577,
+        "termination-W5-2": 22.636,
+        "PH-TAIL1": 15.5718,
+        "PH-INS1": 14.0669,
+        "PH-TAIL2": 14.1111,
+        "PH-INS2": 12.5315,
+        "serviceCover": 29.4097,
+        "A4-integration": 11.9049,
+        "A4-spacers": 14.15,
+        "A4-bond": 13.9,
+        "A5-spacers": 18.4299,
+        "w1SDA": 4.8508,
+        "tee-VCC-Cu": 18.3734,
+        "tee-VCC-seal": 17.9167,
+        "tee-GND-Cu": 25.1997,
+        "tee-GND-seal": 24.7765,
+        "tee-SDA-Cu": 23.2625,
+        "tee-SDA-seal": 22.8168,
+        "tee-SCL-Cu": 21.538,
+        "tee-SCL-seal": 21.0704,
+        "A5-power": 11.2619,
+        "A5-bond": 18.2482,
+        "USB-W4C-Cu": 33.93,
+        "USB-W4C": 33.7685,
+        "A5-W2-Cu": 16.8192,
+        "A5-W2": 17.3607,
+        "A5-W2-solder": 17.5239,
+        "A5-W3-Cu": 12.6086,
+        "A5-W3": 12.4348,
+        "A5-W3-splice-cover": 38.2563,
+        "A5-W3-solder": 11.9763,
+        "A5-W7-Cu": 21.0422,
+        "A5-W7": 21.8643,
+        "A5-W7-solder": 20.7462,
+        "USB-BOND": 40.9142
+      }
+    },
+    "east": {
+      "center_x_mm": 26.0,
+      "bearing_plane_z_mm": 4.6,
+      "floor_z_mm": 2.5,
+      "bonded_to_floor_footprint_mm2": 36,
+      "hard_land_area_mm2": 26.4,
+      "actual_PCB_supported_area_mm2": 26.11726,
+      "actual_PCB_over_groove_area_mm2": 9.6,
+      "adhesive_capacity_mm3": 3.84,
+      "clear_outlet_prism_length_mm": 1.0,
+      "negative_control_PCB_down_0p25mm_overlap_mm3": 6.52931,
+      "pins_by_increasing_installed_x": [
+        {
+          "center_x_mm": 15.96,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 8.76474
+        },
+        {
+          "center_x_mm": 18.46,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 6.30138
+        },
+        {
+          "center_x_mm": 20.96,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 4.13037
+        },
+        {
+          "center_x_mm": 23.46,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 2.55975
+        },
+        {
+          "center_x_mm": 25.96,
+          "tail_bottom_z_mm": 4.13249,
+          "rail_gap_mm": 2.67239
+        }
+      ],
+      "exact_member_comparisons": {
+        "Removable rod grip": {
+          "gap_mm": 1.99,
+          "overlap_mm3": 0.0
+        },
+        "cellAlt": {
+          "gap_mm": 16.4,
+          "overlap_mm3": 0.0
+        },
+        "wm0": {
+          "gap_mm": 1.94536,
+          "overlap_mm3": 0.0
+        },
+        "wm0-Cu": {
+          "gap_mm": 2.09336,
+          "overlap_mm3": 0.0
+        },
+        "wm1": {
+          "gap_mm": 7.13985,
+          "overlap_mm3": 0.0
+        },
+        "wm1-Cu": {
+          "gap_mm": 7.28785,
+          "overlap_mm3": 0.0
+        },
+        "w1VCC": {
+          "gap_mm": 5.9287,
+          "overlap_mm3": 0.0
+        },
+        "w1GND": {
+          "gap_mm": 6.72152,
+          "overlap_mm3": 0.0
+        },
+        "w1SCL": {
+          "gap_mm": 8.56648,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-header": {
+          "gap_mm": 2.55975,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-plug": {
+          "gap_mm": 3.26,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-TPA": {
+          "gap_mm": 6.51,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-spacer": {
+          "gap_mm": 2.27379,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-C1": {
+          "gap_mm": 9.31301,
+          "overlap_mm3": 0.0
+        },
+        "whVCC-Cu": {
+          "gap_mm": 10.09793,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-C5": {
+          "gap_mm": 4.87716,
+          "overlap_mm3": 0.0
+        },
+        "whGND-Cu": {
+          "gap_mm": 5.58416,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-C4": {
+          "gap_mm": 4.94314,
+          "overlap_mm3": 0.0
+        },
+        "whSDA-Cu": {
+          "gap_mm": 5.65014,
+          "overlap_mm3": 0.0
+        },
+        "A3-J1-C3": {
+          "gap_mm": 5.84047,
+          "overlap_mm3": 0.0
+        },
+        "whSCL-Cu": {
+          "gap_mm": 6.55786,
+          "overlap_mm3": 0.0
+        },
+        "whVCC": {
+          "gap_mm": 9.59093,
+          "overlap_mm3": 0.0
+        },
+        "whSCL": {
+          "gap_mm": 6.05086,
+          "overlap_mm3": 0.0
+        },
+        "whSDA": {
+          "gap_mm": 4.37386,
+          "overlap_mm3": 0.0
+        },
+        "whGND": {
+          "gap_mm": 5.07716,
+          "overlap_mm3": 0.0
+        },
+        "drvBoard": {
+          "gap_mm": 0.0,
+          "overlap_mm3": 0.0
+        },
+        "drvParts": {
+          "gap_mm": 1.595,
+          "overlap_mm3": 0.0
+        },
+        "cellDrawing": {
+          "gap_mm": 17.25,
+          "overlap_mm3": 0.0
+        }
+      },
+      "bounding_box_distance_lower_bounds_mm": {
+        "Bezel": 23.1999,
+        "Rotor": 16.1,
+        "Stem": 24.6354,
+        "Grip": 23.2896,
+        "Collar": 17.0347,
+        "reel0": 25.2873,
+        "reel1": 25.4568,
+        "reel2": 17.7736,
+        "Key cap": 65.6858,
+        "Retainer": 60.5877,
+        "Key PCB": 61.6273,
+        "Switch case": 63.8648,
+        "Switch plunger": 65.9868,
+        "Trimmed terminals": 62.9261,
+        "Keeper screw": 71.4316,
+        "Grip lock screw": 10.8455,
+        "Grip screw keeper": 18.1058,
+        "Receiver nut": 10.6664,
+        "Receiver nut keeper": 9.4029,
+        "A1-touch": 15.5,
+        "A1-mounts": 12.3999,
+        "A1-carrier": 16.3999,
+        "A1-population": 10.4999,
+        "A1-J8": 23.0362,
+        "A1-usb": 58.3996,
+        "A1-k3": 50.6838,
+        "A1-reset": 42.8749,
+        "A1-boot": 35.3861,
+        "A1-J7": 52.0477,
+        "A1-J9": 26.0389,
+        "A1-backing": 18.0,
+        "A2-pcb": 12.0514,
+        "A2-population": 14.9879,
+        "A2-sockets": 15.3441,
+        "A2-chip": 16.078,
+        "Speaker": 55.0711,
+        "H1-1": 59.5848,
+        "H1-2": 62.7722,
+        "H1-3": 13.0519,
+        "H1-4": 23.6717,
+        "H3-1": 25.3536,
+        "H3-2": 27.2268,
+        "H5": 24.8243,
+        "motor": 9.0138,
+        "J8plug": 16.5713,
+        "ph": 8.8557,
+        "packplug": 8.9487,
+        "j7plug": 53.1741,
+        "j9plug": 27.2039,
+        "batt0": 5.4899,
+        "spk0": 25.8181,
+        "batt1": 5.4899,
+        "spk1": 24.7795,
+        "w30": 50.0015,
+        "w31": 48.1257,
+        "shrink0": 17.1216,
+        "shrink1": 24.4974,
+        "bridge": 15.681,
+        "tieS1": 56.84,
+        "tieS2": 16.2224,
+        "altTail0": 7.5508,
+        "altTail1": 7.5508,
+        "usbSurround": 64.6655,
+        "statusChgGuide": 64.1185,
+        "statusUsbGuide": 67.6131,
+        "statusPwrGuide": 64.3497,
+        "speakerRim": 55.2044,
+        "speakerPoleRing": 57.5845,
+        "speakerMagnet": 58.5817,
+        "speakerDiaphragm": 55.571,
+        "speakerCloth": 55.0702,
+        "speakerTerminal0": 66.8653,
+        "speakerTerminal1": 62.4755,
+        "speakerGasket": 55.245,
+        "USB-D1": 67.0917,
+        "USB-PCB1": 66.3597,
+        "USB-PCB2": 48.8386,
+        "USB-R1": 49.919,
+        "USB-W4B-Cu": 47.1687,
+        "USB-W4B": 47.001,
+        "usbEscutcheonLip": 65.0134,
+        "J7-C1": 55.5096,
+        "J7-C2": 54.388,
+        "J9-C1": 28.5008,
+        "J9-C2": 29.5659,
+        "termination-W1-GND": 18.2156,
+        "termination-W1-SCL": 20.9992,
+        "termination-W1-SDA": 19.4491,
+        "termination-W1-VCC": 17.2699,
+        "termination-W2-1": 55.8221,
+        "termination-W2-2": 54.7003,
+        "termination-W5-1": 30.024,
+        "termination-W5-2": 28.9632,
+        "PH-TAIL1": 13.1789,
+        "PH-INS1": 12.2301,
+        "PH-TAIL2": 11.4159,
+        "PH-INS2": 10.4276,
+        "serviceCover": 35.1359,
+        "A4-integration": 11.9049,
+        "A4-spacers": 14.15,
+        "A4-bond": 13.9,
+        "A5-spacers": 18.4299,
+        "w1SDA": 4.8508,
+        "tee-VCC-Cu": 18.3734,
+        "tee-VCC-seal": 17.9167,
+        "tee-GND-Cu": 23.4398,
+        "tee-GND-seal": 22.9842,
+        "tee-SDA-Cu": 22.0874,
+        "tee-SDA-seal": 21.6175,
+        "tee-SCL-Cu": 20.8757,
+        "tee-SCL-seal": 20.393,
+        "A5-power": 11.2619,
+        "A5-bond": 18.2482,
+        "USB-W4C-Cu": 41.7296,
+        "USB-W4C": 41.5727,
+        "A5-W2-Cu": 16.8192,
+        "A5-W2": 17.3607,
+        "A5-W2-solder": 17.5239,
+        "A5-W3-Cu": 12.6086,
+        "A5-W3": 12.4348,
+        "A5-W3-splice-cover": 45.2784,
+        "A5-W3-solder": 11.9763,
+        "A5-W7-Cu": 21.0422,
+        "A5-W7": 21.8643,
+        "A5-W7-solder": 20.7462,
+        "USB-BOND": 47.9321
+      }
+    }
+  },
+  "scope": "Incremental seated-case fit of added material against all 153 other installed children plus a separate maximum drawing battery. Distances are exact CAD shape distances for nearby components and marked Euclidean AABB lower bounds for others. Reported PCB contact area is the volume of a 0.001 mm hard-land penetration divided by its depth; plated holes reduce actual bearing. Dry fit excludes foam, glue and process variation. Electrical isolation, cured retention and shock require physical samples."
+}

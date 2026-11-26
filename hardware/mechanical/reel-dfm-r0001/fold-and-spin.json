@@ -1,0 +1,28 @@
+{
+  "Stem": {
+    "min_sample_mm": 2.4333336006436292,
+    "fold_degrees": 0.0,
+    "continuous_mesh_lower_mm": 2.372843387042868
+  },
+  "Grip": {
+    "min_sample_mm": 2.5350722871584646,
+    "fold_degrees": 0.0,
+    "continuous_mesh_lower_mm": 2.4747517492757516
+  },
+  "reel1": {
+    "min_sample_mm": 0.6439512424632055,
+    "fold_degrees": 0.0,
+    "continuous_mesh_lower_mm": 0.5794211423995981
+  },
+  "Housing": {
+    "full_spin_annulus_clearance_mm": 0.3500000000000014,
+    "common_mm3": 0.0
+  },
+  "Bezel": {
+    "full_spin_annulus_clearance_mm": 0.4301162633521325,
+    "common_mm3": 0.0
+  },
+  "Case-board posts": {
+    "full_spin_annulus_clearance_mm": 11.054293189638273
+  }
+}

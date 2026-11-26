@@ -15,4 +15,52 @@ game/Thai-Waters-play.html -text
 docs/models/*.html -text
 *.brep binary
 *.3mf binary
+hardware/mechanical/pcb-fit-r0013/*.json -text
+hardware/mechanical/pcb-fit-r0013/QA/*.json -text
 *.glb binary
+*.IGS binary
+# Byte-preserve the hashed CAD, electrical sources and reports on every checkout.
+hardware/electronics/harness-r0005/*.json -text
+hardware/electronics/harness-r0005/source-cad/*.json -text
+hardware/electronics/pcb-haptic-cie-r0001/*.kicad_* -text
+hardware/electronics/pcb-r0004/*.kicad_* -text
+hardware/electronics/pcb-power-r0004/*.kicad_* -text
+hardware/mechanical/TW-A-0001-R0012/*.json -text
+hardware/verification/r0012/copper.json -text
+hardware/electronics/pcb-haptic-cie-r0002/*.kicad_* -text
+hardware/electronics/pcb-haptic-cie-r0002/*.json -text
+hardware/electronics/pcb-haptic-cie-r0002/connectivity.xml -text
+hardware/electronics/usb-entry-r0005/*.kicad_* -text
+hardware/electronics/usb-entry-r0005/*.json -text
+hardware/electronics/usb-entry-r0005/connectivity.xml -text
+hardware/electronics/usb-entry-r0005/installed-leads/*.json -text
+hardware/electronics/harness-r0006/*.json -text
+hardware/mechanical/TW-A-0001-R0013/*.json -text
+hardware/verification/r0013/copper.json -text
+hardware/electronics/usb-entry-r0006/*.kicad_* -text
+hardware/electronics/usb-entry-r0006/*.json -text
+hardware/electronics/usb-entry-r0006/connectivity.xml -text
+hardware/electronics/usb-entry-r0006/installed-leads/*.json -text
+
+hardware/mechanical/TW-A-0001-R0014/*.json -text
+hardware/mechanical/TW-A-0001-R0014/QA/*.json -text
+hardware/mechanical/TW-A-0001-R0014/Printing/QA/*.json -text
+
+hardware/mechanical/TW-A-0001-R0015/*.json -text
+hardware/mechanical/TW-A-0001-R0015/QA/*.json -text
+hardware/mechanical/TW-A-0001-R0015/Printing/QA/*.json -text
+
+hardware/mechanical/TW-A-0001-R0016/*.json -text
+hardware/mechanical/TW-A-0001-R0016/QA/*.json -text
+hardware/mechanical/TW-A-0001-R0016/Printing/QA/*.json -text
+hardware/electronics/case-board-r0001/*.kicad_* -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0001/*.json -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0001/bom.csv -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0001/Case-board-R0001-view.html binary
+hardware/mechanical/enclosure-fit-r0003/Enclosure-fit-guide.html binary
+
+hardware/mechanical/enclosure-print-r0004/Enclosure-fit-guide.html binary
+hardware/electronics/case-board-r0002/*.kicad_* -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0002/*.json -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0002/bom.csv -text whitespace=cr-at-eol
+hardware/electronics/case-board-r0002/Mount-review.html binary

@@ -1,0 +1,1189 @@
+(kicad_sch (version 20260101) (generator "eeschema") (uuid "f91a4e0e-da21-56d5-b3d6-11311080316b") (paper "A4")
+(title_block (title "Thai Waters  |  Harness interposer") (rev "R0004") (comment 1 "Assembly evaluation. Part and wire positions are in the PCB directory."))
+(lib_symbols
+
+	(symbol "Device:R"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R"
+			(at 0 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "R_0_1"
+			(rectangle
+				(start -1.016 -2.54)
+				(end 1.016 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "R_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+
+	(symbol "Connector:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+
+	(symbol "Device:D_Dual_CommonCathode_AAK"
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "D"
+			(at 1.27 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D_Dual_CommonCathode_AAK"
+			(at 0 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual diode, common cathode on pin 3"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "diode"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "D_Dual_CommonCathode_AAK_0_1"
+			(polyline
+				(pts
+					(xy -3.81 1.27) (xy -1.27 0) (xy -3.81 -1.27) (xy -3.81 1.27) (xy -3.81 1.27) (xy -3.81 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -3.81 0) (xy 3.81 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 -1.27) (xy -1.27 1.27) (xy -1.27 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 -1.27) (xy 1.27 1.27) (xy 1.27 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.81 -1.27) (xy 1.27 0) (xy 3.81 1.27) (xy 3.81 -1.27) (xy 3.81 -1.27) (xy 3.81 -1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -7.62 0 0)
+				(length 3.81)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 7.62 0 180)
+				(length 3.81)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -5.08 90)
+				(length 2.54)
+				(name "K"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+
+	(symbol "Transistor_FET:Q_NMOS_GSD"
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "Q"
+			(at 5.08 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Q_NMOS_GSD"
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, gate/source/drain"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "transistor NMOS N-MOS N-MOSFET"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "Q_NMOS_GSD_0_1"
+			(polyline
+				(pts
+					(xy 0.254 1.905) (xy 0.254 -1.905)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.254 0) (xy -2.54 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 2.286) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 0.508) (xy 0.762 -0.508)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 -1.27) (xy 0.762 -2.286)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(circle
+				(center 1.651 0)
+				(radius 2.794)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 2.54) (xy 2.54 1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.54 1.778)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(circle
+				(center 2.54 -1.778)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.921 0.381) (xy 3.683 0.381)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "Q_NMOS_GSD_1_1"
+			(pin input line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "G"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 -5.08 90)
+				(length 2.54)
+				(name "S"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 5.08 270)
+				(length 2.54)
+				(name "D"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+
+	(symbol "Transistor_FET:Q_PMOS_GSD"
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "Q"
+			(at 5.08 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Q_PMOS_GSD"
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "P-MOSFET transistor, gate/source/drain"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "transistor PMOS P-MOS P-MOSFET"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "Q_PMOS_GSD_0_1"
+			(polyline
+				(pts
+					(xy 0.254 1.905) (xy 0.254 -1.905)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.254 0) (xy -2.54 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 2.286) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 0.508) (xy 0.762 -0.508)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 -1.27) (xy 0.762 -2.286)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 1.651 0)
+				(radius 2.794)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 2.54) (xy 2.54 1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.54 1.778)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(circle
+				(center 2.54 -1.778)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.921 -0.381) (xy 3.683 -0.381)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "Q_PMOS_GSD_1_1"
+			(pin input line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "G"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 -5.08 90)
+				(length 2.54)
+				(name "S"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 5.08 270)
+				(length 2.54)
+				(name "D"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+)
+(text "Speaker attenuator" (at 20.3200 21.5900 0) (effects (font (size 2 2)) (justify left bottom)) (uuid "1ba4b26c-d4fb-5c76-9603-13f0d63ffbfb"))
+(symbol (lib_id "Connector:TestPoint") (at 31.7500 39.3700 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "ef9f7237-699d-5453-b6f2-dc98d20e6d03") (property "Reference" "J1" (at 31.7500 30.4800 0) (effects (font (size 1.27 1.27)) )) (property "Value" "AMP_P" (at 31.7500 32.5120 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 31.7500 39.3700 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J1") (unit 1)))))
+(symbol (lib_id "Connector:TestPoint") (at 93.9800 39.3700 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "378b2df3-cb06-5588-84bd-a036f5004507") (property "Reference" "J2" (at 93.9800 30.4800 0) (effects (font (size 1.27 1.27)) )) (property "Value" "SPK_P" (at 93.9800 32.5120 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 93.9800 39.3700 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J2") (unit 1)))))
+(symbol (lib_id "Device:R") (at 63.5000 39.3700 90) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "a422ed66-8a09-5386-a103-9ff6891fa4e1") (property "Reference" "R1" (at 63.5000 34.2900 90) (effects (font (size 1.27 1.27)) )) (property "Value" "4.99R" (at 63.5000 36.3220 90) (effects (font (size 1.27 1.27)) )) (property "Footprint" "Resistor_SMD:R_2512_6332Metric" (at 63.5000 39.3700 90) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "R1") (unit 1)))))
+(wire (pts (xy 19.0500 39.3700) (xy 31.7500 39.3700)) (stroke (width 0) (type default)) (uuid "ee8869ae-e1e6-5b91-8eb6-bb2c6550a398"))
+(wire (pts (xy 31.7500 39.3700) (xy 59.6900 39.3700)) (stroke (width 0) (type default)) (uuid "c142ac0f-4c76-507f-b87b-abe1ba176fab"))
+(wire (pts (xy 67.3100 39.3700) (xy 93.9800 39.3700)) (stroke (width 0) (type default)) (uuid "846b99b7-f6d1-5f98-a8a9-944c36bf16f1"))
+(wire (pts (xy 93.9800 39.3700) (xy 104.1400 39.3700)) (stroke (width 0) (type default)) (uuid "d20cb774-9b86-541b-a5d1-ffdd2016806c"))
+(global_label "AMP_P" (shape passive) (at 19.0500 39.3700 180) (effects (font (size 1 1)) (justify right)) (uuid "c4bd8e81-9e0d-5045-ad49-abe193c0ad8c"))
+(global_label "SPK_P" (shape passive) (at 104.1400 39.3700 0) (effects (font (size 1 1)) (justify left)) (uuid "6ff72663-9a09-537b-84e4-4659f41a95f9"))
+(symbol (lib_id "Connector:TestPoint") (at 31.7500 60.9600 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "fe2f6a07-636c-544f-bee3-908c9fcd7599") (property "Reference" "J4" (at 31.7500 52.0700 0) (effects (font (size 1.27 1.27)) )) (property "Value" "AMP_N" (at 31.7500 54.1020 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 31.7500 60.9600 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J4") (unit 1)))))
+(symbol (lib_id "Connector:TestPoint") (at 93.9800 60.9600 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "dc105bfd-1ebf-509a-8fcd-bf415fbcc54f") (property "Reference" "J3" (at 93.9800 52.0700 0) (effects (font (size 1.27 1.27)) )) (property "Value" "SPK_N" (at 93.9800 54.1020 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 93.9800 60.9600 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J3") (unit 1)))))
+(symbol (lib_id "Device:R") (at 63.5000 60.9600 90) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "e2c91251-56aa-5529-a85e-f0794ca4a8e7") (property "Reference" "R2" (at 63.5000 55.8800 90) (effects (font (size 1.27 1.27)) )) (property "Value" "4.99R" (at 63.5000 57.9120 90) (effects (font (size 1.27 1.27)) )) (property "Footprint" "Resistor_SMD:R_2512_6332Metric" (at 63.5000 60.9600 90) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "R2") (unit 1)))))
+(wire (pts (xy 19.0500 60.9600) (xy 31.7500 60.9600)) (stroke (width 0) (type default)) (uuid "fe391e74-d819-58d0-998d-965704c7f9b2"))
+(wire (pts (xy 31.7500 60.9600) (xy 59.6900 60.9600)) (stroke (width 0) (type default)) (uuid "11cc7b82-43ec-5c04-85d3-751fcf095b60"))
+(wire (pts (xy 67.3100 60.9600) (xy 93.9800 60.9600)) (stroke (width 0) (type default)) (uuid "8f3b4a0b-958c-5ee6-970e-9b31ce8e0c86"))
+(wire (pts (xy 93.9800 60.9600) (xy 104.1400 60.9600)) (stroke (width 0) (type default)) (uuid "4c0f6528-ad4a-51d6-aef1-34c88d65f5d7"))
+(global_label "AMP_N" (shape passive) (at 19.0500 60.9600 180) (effects (font (size 1 1)) (justify right)) (uuid "1c3fb4fd-1a6e-5027-a6fc-4006341afca1"))
+(global_label "SPK_N" (shape passive) (at 104.1400 60.9600 0) (effects (font (size 1 1)) (justify left)) (uuid "f5d62eb7-74b6-5386-9e81-16f9e383ca34"))
+(text "J1/J4 to the retained J9 plug. Both speaker outputs float." (at 20.3200 72.3900 0) (effects (font (size 1.3 1.3)) (justify left bottom)) (uuid "b0e43154-33ea-585e-899e-16a31816b276"))
+(text "Shared I2C bus" (at 20.3200 92.7100 0) (effects (font (size 2 2)) (justify left bottom)) (uuid "ebca300c-251a-5d0f-8b64-288c1e862a38"))
+(symbol (lib_id "Connector:TestPoint") (at 63.5000 109.2200 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "7839d348-c62d-542d-b74e-b64f89c598d8") (property "Reference" "J6" (at 58.4200 100.3300 0) (effects (font (size 1.27 1.27)) )) (property "Value" "VCC3V3" (at 58.4200 102.3620 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 63.5000 109.2200 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J6") (unit 1)))))
+(symbol (lib_id "Connector:TestPoint") (at 31.7500 139.7000 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "a1de119a-90ed-5fe4-804d-59682674ac14") (property "Reference" "J5" (at 31.7500 130.8100 0) (effects (font (size 1.27 1.27)) )) (property "Value" "SDA" (at 31.7500 132.8420 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 31.7500 139.7000 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J5") (unit 1)))))
+(symbol (lib_id "Connector:TestPoint") (at 93.9800 139.7000 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "c0cdd914-9f51-5977-8bd3-6e8f37d04829") (property "Reference" "J7" (at 93.9800 130.8100 0) (effects (font (size 1.27 1.27)) )) (property "Value" "SCL" (at 93.9800 132.8420 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 93.9800 139.7000 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J7") (unit 1)))))
+(symbol (lib_id "Device:R") (at 45.7200 123.1900 180) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "55ecdeda-a8f4-535f-b5c5-709bfa995c75") (property "Reference" "R3" (at 52.0700 121.9200 0) (effects (font (size 1.27 1.27)) )) (property "Value" "1.50k" (at 52.0700 123.9520 0) (effects (font (size 1.27 1.27)) )) (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 45.7200 123.1900 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "R3") (unit 1)))))
+(symbol (lib_id "Device:R") (at 80.0100 123.1900 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "a5bed4f3-f9aa-511f-b710-e3961e839a71") (property "Reference" "R4" (at 86.3600 121.9200 0) (effects (font (size 1.27 1.27)) )) (property "Value" "1.50k" (at 86.3600 123.9520 0) (effects (font (size 1.27 1.27)) )) (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 80.0100 123.1900 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "R4") (unit 1)))))
+(wire (pts (xy 45.7200 119.3800) (xy 45.7200 109.2200)) (stroke (width 0) (type default)) (uuid "bc7cbb9f-3b59-5bc2-9c12-24abbce093b1"))
+(wire (pts (xy 45.7200 109.2200) (xy 63.5000 109.2200)) (stroke (width 0) (type default)) (uuid "d09339fc-5ede-5701-8fd0-9a5dbdf19096"))
+(wire (pts (xy 63.5000 109.2200) (xy 80.0100 109.2200)) (stroke (width 0) (type default)) (uuid "4c652ecb-dc68-5307-a0a6-962896351c47"))
+(wire (pts (xy 80.0100 109.2200) (xy 80.0100 119.3800)) (stroke (width 0) (type default)) (uuid "0fee68ff-0bed-5505-96a9-6dbe543d225d"))
+(wire (pts (xy 63.5000 109.2200) (xy 63.5000 101.6000)) (stroke (width 0) (type default)) (uuid "9e93c511-c33b-5fd1-9026-8edf944df40b"))
+(wire (pts (xy 63.5000 101.6000) (xy 69.8500 101.6000)) (stroke (width 0) (type default)) (uuid "c9ae2961-1431-5aaf-8dff-924571a32a67"))
+(global_label "VCC3V3" (shape passive) (at 69.8500 101.6000 0) (effects (font (size 1 1)) (justify left)) (uuid "454f9a0b-91ed-582d-87a4-6f4ebb60edf9"))
+(junction (at 63.5000 109.2200) (diameter 0) (color 0 0 0 0) (uuid "61696d04-b0eb-5d72-917c-566316f7cdd5"))
+(wire (pts (xy 45.7200 127.0000) (xy 45.7200 139.7000)) (stroke (width 0) (type default)) (uuid "5de10099-098c-50ab-8f4e-98fed3d46411"))
+(wire (pts (xy 45.7200 139.7000) (xy 31.7500 139.7000)) (stroke (width 0) (type default)) (uuid "77d5781c-a923-57a8-9add-4f04c6cb7b41"))
+(wire (pts (xy 31.7500 139.7000) (xy 19.0500 139.7000)) (stroke (width 0) (type default)) (uuid "10571b70-a72e-5a91-ab73-b27968532f7d"))
+(global_label "SDA" (shape passive) (at 19.0500 139.7000 180) (effects (font (size 1 1)) (justify right)) (uuid "c79e02b4-f7e3-5e0e-933d-2d57eb90bb80"))
+(wire (pts (xy 80.0100 127.0000) (xy 80.0100 139.7000)) (stroke (width 0) (type default)) (uuid "ba5d47e0-0068-508a-b5d7-285535b25536"))
+(wire (pts (xy 80.0100 139.7000) (xy 93.9800 139.7000)) (stroke (width 0) (type default)) (uuid "339fd87c-0e13-5f14-b305-be0022021f6c"))
+(wire (pts (xy 93.9800 139.7000) (xy 104.1400 139.7000)) (stroke (width 0) (type default)) (uuid "117bb442-58a9-529d-9c5b-c75e5bbc4bad"))
+(global_label "SCL" (shape passive) (at 104.1400 139.7000 0) (effects (font (size 1 1)) (justify left)) (uuid "ef35bdef-bfc2-5ea5-bfb9-58966bc6f3f7"))
+(text "W1 stays intact. Remove the A3 2.2k pull-ups and verify effective resistance." (at 20.3200 153.6700 0) (effects (font (size 1.15 1.15)) (justify left bottom)) (uuid "d1f8da7d-d3ad-577b-9140-28e2d024ca13"))
+(text "Autonomous remote power key" (at 142.2400 21.5900 0) (effects (font (size 2 2)) (justify left bottom)) (uuid "4e65a877-1808-5b9e-8630-754b77b564b9"))
+(symbol (lib_id "Connector:TestPoint") (at 160.0200 44.4500 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "a8a2add8-7c3b-58c6-9d61-2d7b0dcab6ea") (property "Reference" "J8" (at 160.0200 35.5600 0) (effects (font (size 1.27 1.27)) )) (property "Value" "USB_RAW" (at 160.0200 37.5920 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 160.0200 44.4500 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J8") (unit 1)))))
+(symbol (lib_id "Connector:TestPoint") (at 250.1900 44.4500 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "3032214e-0f33-51c9-a54e-3436d7bbbda4") (property "Reference" "J9" (at 250.1900 35.5600 0) (effects (font (size 1.27 1.27)) )) (property "Value" "VBAT" (at 250.1900 37.5920 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 250.1900 44.4500 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J9") (unit 1)))))
+(symbol (lib_id "Device:D_Dual_CommonCathode_AAK") (at 204.4700 44.4500 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "848c2f8b-7a12-5580-ba09-b6754315a827") (property "Reference" "D1" (at 204.4700 36.8300 0) (effects (font (size 1.27 1.27)) )) (property "Value" "BAV170" (at 204.4700 38.8620 0) (effects (font (size 1.27 1.27)) )) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 204.4700 44.4500 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "D1") (unit 1)))))
+(wire (pts (xy 148.5900 44.4500) (xy 160.0200 44.4500)) (stroke (width 0) (type default)) (uuid "812fc7c9-74c5-5e99-80e4-33393b968f4f"))
+(wire (pts (xy 160.0200 44.4500) (xy 196.8500 44.4500)) (stroke (width 0) (type default)) (uuid "8791c6ee-6d15-5eeb-b432-58d016b25572"))
+(wire (pts (xy 212.0900 44.4500) (xy 250.1900 44.4500)) (stroke (width 0) (type default)) (uuid "3fc005c0-42e3-5e7b-a5bb-e2d893b4d959"))
+(wire (pts (xy 250.1900 44.4500) (xy 260.3500 44.4500)) (stroke (width 0) (type default)) (uuid "a78c1563-6e31-55a1-a17c-f14ca4d6c8e7"))
+(global_label "USB_RAW" (shape passive) (at 148.5900 44.4500 180) (effects (font (size 1 1)) (justify right)) (uuid "78721ba2-7ad7-59b3-bbc4-85dcb966b57c"))
+(global_label "VBAT" (shape passive) (at 260.3500 44.4500 0) (effects (font (size 1 1)) (justify left)) (uuid "0b1e7d55-7c52-5de4-8521-5b33e6348f20"))
+(wire (pts (xy 204.4700 49.5300) (xy 204.4700 57.1500)) (stroke (width 0) (type default)) (uuid "410ebccf-08ac-5f7f-a443-c24c8db1a7da"))
+(wire (pts (xy 204.4700 57.1500) (xy 213.3600 57.1500)) (stroke (width 0) (type default)) (uuid "c1dc72c2-dc2c-54a5-9236-15bc17e0c017"))
+(global_label "KEY_AON" (shape passive) (at 213.3600 57.1500 0) (effects (font (size 1 1)) (justify left)) (uuid "7af9e6bf-9562-5a3f-ad59-7aad5df14a55"))
+(symbol (lib_id "Transistor_FET:Q_PMOS_GSD") (at 190.5000 101.6000 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "5249600b-6060-5822-8e0e-82d5e7f00284") (property "Reference" "Q1" (at 201.9300 99.0600 0) (effects (font (size 1.27 1.27)) )) (property "Value" "PMV65XP" (at 201.9300 101.0920 0) (effects (font (size 1.27 1.27)) )) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 190.5000 101.6000 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "Q1") (unit 1)))))
+(symbol (lib_id "Transistor_FET:Q_NMOS_GSD") (at 243.8400 86.3600 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "0e5dfd05-86c3-5887-ba90-924fdc6cce89") (property "Reference" "Q2" (at 255.2700 83.8200 0) (effects (font (size 1.27 1.27)) )) (property "Value" "PMV16XN" (at 255.2700 85.8520 0) (effects (font (size 1.27 1.27)) )) (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 243.8400 86.3600 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "Q2") (unit 1)))))
+(symbol (lib_id "Connector:TestPoint") (at 156.2100 101.6000 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "3cb2b299-df6f-5878-8094-4e0c360e205d") (property "Reference" "J10" (at 156.2100 92.7100 0) (effects (font (size 1.27 1.27)) )) (property "Value" "SW_SENSE" (at 156.2100 94.7420 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 156.2100 101.6000 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J10") (unit 1)))))
+(symbol (lib_id "Connector:TestPoint") (at 257.8100 71.1200 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "dcda01d6-70d9-5136-9aec-fc76a7aa0380") (property "Reference" "J13" (at 257.8100 62.2300 0) (effects (font (size 1.27 1.27)) )) (property "Value" "K3_RAW" (at 257.8100 64.2620 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 257.8100 71.1200 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J13") (unit 1)))))
+(symbol (lib_id "Device:R") (at 170.1800 120.6500 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "29c51aeb-de7f-5d12-bd58-8534b88a45ad") (property "Reference" "R5" (at 176.5300 119.3800 0) (effects (font (size 1.27 1.27)) )) (property "Value" "330k" (at 176.5300 121.4120 0) (effects (font (size 1.27 1.27)) )) (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 170.1800 120.6500 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "R5") (unit 1)))))
+(symbol (lib_id "Device:R") (at 219.7100 106.6800 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "9c379764-6e21-5609-8cbc-4a08c51fdf82") (property "Reference" "R6" (at 226.0600 105.4100 0) (effects (font (size 1.27 1.27)) )) (property "Value" "100k" (at 226.0600 107.4420 0) (effects (font (size 1.27 1.27)) )) (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 219.7100 106.6800 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "R6") (unit 1)))))
+(symbol (lib_id "Connector:TestPoint") (at 190.5000 140.9700 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "a0e6990b-da6f-532c-9a16-cfcadb3d41cf") (property "Reference" "J11" (at 190.5000 132.0800 0) (effects (font (size 1.27 1.27)) )) (property "Value" "GND" (at 190.5000 134.1120 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 190.5000 140.9700 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J11") (unit 1)))))
+(symbol (lib_id "Connector:TestPoint") (at 237.4900 140.9700 0) (unit 1) (in_bom no) (on_board yes) (dnp no) (uuid "1fa0d7f9-bfbe-56ae-bc34-12fb89278552") (property "Reference" "J12" (at 237.4900 132.0800 0) (effects (font (size 1.27 1.27)) )) (property "Value" "GND" (at 237.4900 134.1120 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Footprint" "TW:WireLand" (at 237.4900 140.9700 0) (effects (font (size 1.27 1.27)) (hide yes)))(instances (project "harness" (path "/f91a4e0e-da21-56d5-b3d6-11311080316b" (reference "J12") (unit 1)))))
+(wire (pts (xy 146.0500 101.6000) (xy 156.2100 101.6000)) (stroke (width 0) (type default)) (uuid "67432054-3d5a-56e9-b37e-e57199fc4153"))
+(wire (pts (xy 156.2100 101.6000) (xy 170.1800 101.6000)) (stroke (width 0) (type default)) (uuid "00b1cde5-bd0d-5016-894c-704eec055291"))
+(wire (pts (xy 170.1800 101.6000) (xy 185.4200 101.6000)) (stroke (width 0) (type default)) (uuid "9c7abdcf-2a07-5ea1-a77a-cd198399ecc9"))
+(global_label "SW_SENSE" (shape passive) (at 146.0500 101.6000 180) (effects (font (size 1 1)) (justify right)) (uuid "7c913120-f538-5ba6-b30e-1c4f0ae23550"))
+(wire (pts (xy 170.1800 101.6000) (xy 170.1800 116.8400)) (stroke (width 0) (type default)) (uuid "ced0ee3a-5bc8-55f4-9433-4239baedd5ea"))
+(junction (at 170.1800 101.6000) (diameter 0) (color 0 0 0 0) (uuid "5af17588-7826-545e-bc34-62465d5d6cea"))
+(wire (pts (xy 170.1800 124.4600) (xy 170.1800 128.2700)) (stroke (width 0) (type default)) (uuid "cdc183dd-4c22-5941-b54e-3bfbc266e465"))
+(wire (pts (xy 170.1800 128.2700) (xy 193.0400 128.2700)) (stroke (width 0) (type default)) (uuid "d62d8d38-7e36-5787-b95e-e991fece99d5"))
+(wire (pts (xy 193.0400 128.2700) (xy 193.0400 106.6800)) (stroke (width 0) (type default)) (uuid "594fc638-60b3-5f44-842b-44a5b9711eba"))
+(wire (pts (xy 193.0400 128.2700) (xy 198.1200 128.2700)) (stroke (width 0) (type default)) (uuid "4e1bb906-5c17-5669-bb56-dc6f33085b95"))
+(global_label "KEY_AON" (shape passive) (at 198.1200 128.2700 0) (effects (font (size 1 1)) (justify left)) (uuid "8eef2226-8548-5f3a-85b8-141bba363116"))
+(junction (at 193.0400 128.2700) (diameter 0) (color 0 0 0 0) (uuid "0797440d-1b6e-5ac2-9940-e4e27346cc69"))
+(wire (pts (xy 193.0400 96.5200) (xy 193.0400 86.3600)) (stroke (width 0) (type default)) (uuid "5a3fdf3b-c5ab-5c65-ad9f-04d7c39a13c1"))
+(wire (pts (xy 193.0400 86.3600) (xy 219.7100 86.3600)) (stroke (width 0) (type default)) (uuid "926df1f2-377e-5bf1-bfd2-f7467c9e5766"))
+(wire (pts (xy 219.7100 86.3600) (xy 238.7600 86.3600)) (stroke (width 0) (type default)) (uuid "8801cbfb-085e-5549-8ac1-3b0f9947b33c"))
+(wire (pts (xy 219.7100 86.3600) (xy 219.7100 102.8700)) (stroke (width 0) (type default)) (uuid "befa5ea7-b63a-54bb-a17f-09001131ff54"))
+(junction (at 219.7100 86.3600) (diameter 0) (color 0 0 0 0) (uuid "43b28bb9-0823-541c-b559-66773c8f8732"))
+(wire (pts (xy 193.0400 86.3600) (xy 193.0400 77.4700)) (stroke (width 0) (type default)) (uuid "c0eb5653-70d6-56b9-9140-b553ad868721"))
+(wire (pts (xy 193.0400 77.4700) (xy 186.6900 77.4700)) (stroke (width 0) (type default)) (uuid "73b36e1b-2e80-5baf-b41a-d615818f9ce4"))
+(global_label "N_GATE" (shape passive) (at 186.6900 77.4700 180) (effects (font (size 1 1)) (justify right)) (uuid "a1ed00f5-db04-5674-895f-83ffe86a06a4"))
+(junction (at 193.0400 86.3600) (diameter 0) (color 0 0 0 0) (uuid "fe3e4c6f-96c8-5946-97cf-2309ddb8d72b"))
+(wire (pts (xy 246.3800 81.2800) (xy 246.3800 71.1200)) (stroke (width 0) (type default)) (uuid "ebc92b50-41ff-57c8-b2cd-1ed5469ba16b"))
+(wire (pts (xy 246.3800 71.1200) (xy 257.8100 71.1200)) (stroke (width 0) (type default)) (uuid "08a88495-809a-5628-b7c4-2c3e12a3a56c"))
+(wire (pts (xy 257.8100 71.1200) (xy 262.8900 71.1200)) (stroke (width 0) (type default)) (uuid "a505b42c-e71b-510e-913a-ce8d16ffab7f"))
+(global_label "K3_RAW" (shape passive) (at 262.8900 71.1200 0) (effects (font (size 1 1)) (justify left)) (uuid "e0d0d705-be7e-5cc8-9cd4-fe46fbfccb18"))
+(wire (pts (xy 246.3800 91.4400) (xy 246.3800 140.9700)) (stroke (width 0) (type default)) (uuid "ffbde8c9-c3c6-5d16-9927-967a6698f8ff"))
+(wire (pts (xy 246.3800 140.9700) (xy 260.3500 140.9700)) (stroke (width 0) (type default)) (uuid "db8b7477-5fd9-56a3-9de4-77f0120ec5ea"))
+(global_label "GND" (shape passive) (at 260.3500 140.9700 0) (effects (font (size 1 1)) (justify left)) (uuid "3a0aad6a-61e4-5ff5-ae2d-affe03076ac1"))
+(wire (pts (xy 190.5000 140.9700) (xy 219.7100 140.9700)) (stroke (width 0) (type default)) (uuid "daef9c74-4349-5c6e-bccf-5616f7f90569"))
+(wire (pts (xy 219.7100 140.9700) (xy 237.4900 140.9700)) (stroke (width 0) (type default)) (uuid "0089919d-50d0-52b1-914d-06404fe496d8"))
+(wire (pts (xy 237.4900 140.9700) (xy 246.3800 140.9700)) (stroke (width 0) (type default)) (uuid "c270a778-9845-52a6-939b-dab15622fa69"))
+(wire (pts (xy 219.7100 110.4900) (xy 219.7100 140.9700)) (stroke (width 0) (type default)) (uuid "fb5b86f6-5678-50d3-99c0-079166b08441"))
+(junction (at 219.7100 140.9700) (diameter 0) (color 0 0 0 0) (uuid "eac90086-a6f1-5884-a2d2-36917e3c5550"))
+(junction (at 246.3800 140.9700) (diameter 0) (color 0 0 0 0) (uuid "3638f048-8682-51ed-bca9-0c4dee59bec6"))
+(text "J10/J11 to SW1. J12/J13 to the original K3 contacts." (at 142.2400 153.6700 0) (effects (font (size 1.15 1.15)) (justify left bottom)) (uuid "44f3bb13-9898-5cdf-be3d-71a6f8c26aa1"))
+(sheet_instances (path "/" (page "1"))) (embedded_fonts no))

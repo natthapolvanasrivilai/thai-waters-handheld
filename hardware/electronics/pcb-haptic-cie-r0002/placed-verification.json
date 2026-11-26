@@ -1,0 +1,183 @@
+{
+  "board_sha256": "703cb2c5fee0528ecb6579708c4d15fe8ff78646c1d427ef827336323d33bddd",
+  "native_export_solids": 95,
+  "rotation_z_deg": 90,
+  "translation_mm": [
+    -37.95,
+    -135.15,
+    4.6
+  ],
+  "installed_matches": {
+    "drvParts": {
+      "solids": 14,
+      "max_bound_error_mm": 0.0,
+      "max_volume_error_mm3": 0.0
+    },
+    "drvBoard": {
+      "solids": 1,
+      "max_bound_error_mm": 0.0,
+      "max_volume_error_mm3": 0.0
+    },
+    "fixed_J1": {
+      "solids": 6,
+      "max_bound_error_mm": 1e-07,
+      "max_volume_error_mm3": 4.1e-06
+    }
+  },
+  "installed_board_bounds_mm": [
+    10.800008,
+    -16.800015,
+    4.6,
+    30.800008,
+    3.199985,
+    6.11
+  ],
+  "fitted_populated_bounds_mm": {
+    "U1": [
+      18.5,
+      -4.55,
+      6.195,
+      23.4,
+      -1.55,
+      7.295
+    ],
+    "C1": [
+      25.35,
+      -5.1,
+      6.195,
+      26.95,
+      -4.3,
+      6.995
+    ],
+    "C2": [
+      15.35,
+      -4.75,
+      6.195,
+      16.95,
+      -3.95,
+      6.995
+    ]
+  },
+  "seated_component_clearance": {
+    "U1": {
+      "A3-J1-header": {
+        "distance_mm": 1.60993,
+        "common_mm3": 0.0
+      },
+      "A3-J1-spacer": {
+        "distance_mm": 9.15,
+        "common_mm3": 0.0
+      },
+      "A3-J1-plug": {
+        "distance_mm": 0.565,
+        "common_mm3": 0.0
+      },
+      "A3-J1-TPA": {
+        "distance_mm": 3.815,
+        "common_mm3": 0.0
+      },
+      "wm0": {
+        "distance_mm": 3.49425,
+        "common_mm3": 0.0
+      },
+      "wm0-Cu": {
+        "distance_mm": 2.77822,
+        "common_mm3": 0.0
+      },
+      "wm1": {
+        "distance_mm": 3.84218,
+        "common_mm3": 0.0
+      },
+      "wm1-Cu": {
+        "distance_mm": 3.36644,
+        "common_mm3": 0.0
+      }
+    },
+    "C1": {
+      "A3-J1-header": {
+        "distance_mm": 1.04793,
+        "common_mm3": 0.0
+      },
+      "A3-J1-spacer": {
+        "distance_mm": 8.6,
+        "common_mm3": 0.0
+      },
+      "A3-J1-plug": {
+        "distance_mm": 0.90023,
+        "common_mm3": 0.0
+      },
+      "A3-J1-TPA": {
+        "distance_mm": 4.15293,
+        "common_mm3": 0.0
+      },
+      "wm0": {
+        "distance_mm": 6.28825,
+        "common_mm3": 0.0
+      },
+      "wm0-Cu": {
+        "distance_mm": 6.06836,
+        "common_mm3": 0.0
+      },
+      "wm1": {
+        "distance_mm": 9.84435,
+        "common_mm3": 0.0
+      },
+      "wm1-Cu": {
+        "distance_mm": 9.7615,
+        "common_mm3": 0.0
+      }
+    },
+    "C2": {
+      "A3-J1-header": {
+        "distance_mm": 1.3612,
+        "common_mm3": 0.0
+      },
+      "A3-J1-spacer": {
+        "distance_mm": 8.95,
+        "common_mm3": 0.0
+      },
+      "A3-J1-plug": {
+        "distance_mm": 0.865,
+        "common_mm3": 0.0
+      },
+      "A3-J1-TPA": {
+        "distance_mm": 4.221,
+        "common_mm3": 0.0
+      },
+      "wm0": {
+        "distance_mm": 7.80438,
+        "common_mm3": 0.0
+      },
+      "wm0-Cu": {
+        "distance_mm": 7.65921,
+        "common_mm3": 0.0
+      },
+      "wm1": {
+        "distance_mm": 5.4129,
+        "common_mm3": 0.0
+      },
+      "wm1-Cu": {
+        "distance_mm": 5.12895,
+        "common_mm3": 0.0
+      }
+    }
+  },
+  "project_input_sha256": {
+    "A3-CIE-R0002.kicad_pcb": "703cb2c5fee0528ecb6579708c4d15fe8ff78646c1d427ef827336323d33bddd",
+    "A3-substrate.step": "f1abfebffca9484acce0bd2a2a66f7230d8b9c3f03b310e3d66687af14e52de2",
+    "placed/drvParts.brep": "0841e70b497a5407b2362148ad86a8c549e4fb64249b944d736981c7aaae0df2",
+    "placed/drvBoard.brep": "446a55e409cc8e991b080ede3460595f578fba491a27a9fd02a7e91c3e1c2fa2",
+    "models/DRV2605LDGSR.step": "19155b6d7d3b5cf12a9b47811ae2fb607a40f305d164fab67903fdf304cb4cae",
+    "models/CIEP05P1HK0-NH-mounted.step": "6ffcb8e9ac1c98470c4824d26235a4ec0232f63473be9fe882c50a252412e118"
+  },
+  "fixed_installed_brep_sha256": {
+    "A3-J1-header": "a295e325478623c49ed430463fed17763fef45a4c7e4294e2821eda9e73489e6",
+    "A3-J1-spacer": "8fc0fff40265ed230bcfc8920b8adb768d566c4b67ec9777433ee23617e83baa",
+    "A3-J1-plug": "2ef06982164edda5b862a0ba59b0a712cfe63243b837d4ae9535ded1cefa12bc",
+    "A3-J1-TPA": "0ca6c1f564a304c2b8f57dc32f20f983ea98e92910aa1c8d9b0112bb43dccb52",
+    "wm0": "45e36bea52aeadc75752175d59b43de9d08fcfbb12705d4247847630ab1a76ad",
+    "wm0-Cu": "0457dd1294cf55a6dfd155761ad71de5bafb90dd2bc81b9a4585923907957570",
+    "wm1": "965a9e249b14e48d4371b9a07e2e7efbbb1173e6fc30ac79a8e8eafe21f2b98d",
+    "wm1-Cu": "f819c5f6a03121ad9cb9ba6a13c6621b68daa33793fc77cfc533eb1fdbd9a4a2"
+  }
+}

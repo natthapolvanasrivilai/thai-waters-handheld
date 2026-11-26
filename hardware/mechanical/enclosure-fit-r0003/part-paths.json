@@ -1,0 +1,518 @@
+[
+  {
+    "plate": 1,
+    "name": "Housing - removable lamp shelf",
+    "model_mm3": 34062.172,
+    "support_mm3": 10160.327,
+    "brim_mm3": 0.0,
+    "support_layers": 145,
+    "first_model_contact_mm2": 772.763,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 158,
+      "components": 963,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "Bezel - four recessed screws",
+    "model_mm3": 4303.728,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 2452.361,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 17,
+      "components": 35,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "Reel rotor - pocket facing up",
+    "model_mm3": 1986.122,
+    "support_mm3": 881.104,
+    "brim_mm3": 0.0,
+    "support_layers": 50,
+    "first_model_contact_mm2": 27.548,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 70,
+      "components": 72,
+      "refined_layers": [
+        {
+          "z": 9.4,
+          "raster_flag_count": 1,
+          "refined_component_count": 1
+        }
+      ],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "folding-stem_1",
+    "model_mm3": 202.723,
+    "support_mm3": 0.0,
+    "brim_mm3": 19.902,
+    "support_layers": 0,
+    "first_model_contact_mm2": 2.913,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 76,
+      "components": 78,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "grip_1",
+    "model_mm3": 228.94,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 8.501,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 47,
+      "components": 47,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "collar_1",
+    "model_mm3": 147.944,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 56.688,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 12,
+      "components": 12,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "R0017 keyed power cap",
+    "model_mm3": 39.42,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 34.45,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 10,
+      "components": 12,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "grip-screw-keeper_1",
+    "model_mm3": 77.887,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 47.018,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 8,
+      "components": 8,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "receiver-nut-keeper_1",
+    "model_mm3": 30.648,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 42.713,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 4,
+      "components": 4,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "key-board-retainer-west_1",
+    "model_mm3": 128.954,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 68.714,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 37,
+      "components": 66,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 2,
+    "name": "battery-wire-bridge_1",
+    "model_mm3": 368.192,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 252.439,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 17,
+      "components": 17,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 3,
+    "name": "rod-grip_1",
+    "model_mm3": 15741.138,
+    "support_mm3": 0.0,
+    "brim_mm3": 123.379,
+    "support_layers": 0,
+    "first_model_contact_mm2": 168.67,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 664,
+      "components": 685,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 4,
+    "name": "status-charge-guide_1",
+    "model_mm3": 12.991,
+    "support_mm3": 0.0,
+    "brim_mm3": 19.921,
+    "support_layers": 0,
+    "first_model_contact_mm2": 7.927,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 6,
+      "components": 6,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 4,
+    "name": "status-usb-guide_1",
+    "model_mm3": 8.037,
+    "support_mm3": 0.0,
+    "brim_mm3": 13.102,
+    "support_layers": 0,
+    "first_model_contact_mm2": 5.063,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 6,
+      "components": 6,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 4,
+    "name": "status-power-guide_1",
+    "model_mm3": 12.975,
+    "support_mm3": 0.0,
+    "brim_mm3": 19.908,
+    "support_layers": 0,
+    "first_model_contact_mm2": 7.916,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 6,
+      "components": 6,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 5,
+    "name": "usb-c-shield-mask_1",
+    "model_mm3": 41.641,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 77.416,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 3,
+      "components": 4,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 5,
+    "name": "service-cover_1",
+    "model_mm3": 370.711,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 227.359,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 23,
+      "components": 90,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 6,
+    "name": "PKCELL-max-body-with-wire-sockets_1",
+    "model_mm3": 5301.359,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 2167.123,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 27,
+      "components": 27,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 6,
+    "name": "Adafruit-258-CAD-with-PCM-and-stubs_1",
+    "model_mm3": 5390.527,
+    "support_mm3": 0.0,
+    "brim_mm3": 84.385,
+    "support_layers": 0,
+    "first_model_contact_mm2": 170.609,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 315,
+      "components": 330,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "A1 display and controller",
+    "model_mm3": 17732.909,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 5558.293,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 67,
+      "components": 407,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "A2 reel sensor",
+    "model_mm3": 834.846,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 399.368,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 23,
+      "components": 84,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "A3 haptic board",
+    "model_mm3": 1167.012,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 373.322,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 49,
+      "components": 62,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "Combined PCB - populated height gauge",
+    "model_mm3": 791.603,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 852.09,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 12,
+      "components": 132,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "Top power switch board",
+    "model_mm3": 242.121,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 103.153,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 27,
+      "components": 27,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "USB indicator LED board",
+    "model_mm3": 8.248,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 12.973,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 4,
+      "components": 4,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "USB lamp resistor board",
+    "model_mm3": 3.886,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 6.331,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 5,
+      "components": 5,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "USB lamp shelf - device part",
+    "model_mm3": 128.325,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 75.128,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 17,
+      "components": 25,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "Speaker with gasket and lead exits",
+    "model_mm3": 1457.107,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 496.187,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 35,
+      "components": 47,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "Vibration motor and lead exit",
+    "model_mm3": 248.262,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 86.833,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 18,
+      "components": 18,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  },
+  {
+    "plate": 7,
+    "name": "A3 alternate - plug seated",
+    "model_mm3": 1341.906,
+    "support_mm3": 0.0,
+    "brim_mm3": 0.0,
+    "support_layers": 0,
+    "first_model_contact_mm2": 373.322,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 54,
+      "components": 54,
+      "refined_layers": [],
+      "fully_unbacked_components": []
+    }
+  }
+]

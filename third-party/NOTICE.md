@@ -12,6 +12,10 @@ Atkinson Hyperlegible Next supplies the web and LCD lettering. Its bundled sourc
 
 The [specimen image credits](../game/content/specimen-image-credits.csv) identify third-party reference images, creators, licenses and alterations. The playtest embeds these credits, and the firmware archive includes them in its credits folder. The [artwork register](../game/art-source/coverage.csv) maps each species to a source plate or individual replacement.
 
+## R0012 connector study
+
+CviLux supplies the CIEP header, housing, secondary lock and terminal geometry. The public project includes the source links, hashes, locally runnable model-building scripts and calculated results. The full mesh views and dressed STEP are generated in the local engineering checkout. [CviLux terms](https://www.cvilux.com/tou) · [Exact manufacturer files](../hardware/electronics/harness-r0005/source-cad/source-manifest.json) · [Boardoza derivative license](../hardware/electronics/pcb-haptic-cie-r0001/LICENSE)
+
 ## R0009 hardware model sources
 
 The private assembly includes geometry from Waveshare, Adafruit, Boardoza, SparkFun, Omron/KiCad, Kingbright, supplier catalogues and project-specific machined/formed parts. Purchase SKU, source revision, original license when supplied and installed derivatives are recorded in the [component directories](../hardware/components), [status circuit](../hardware/electronics/usb-status-r0003) and [assembly register](../hardware/mechanical/TW-A-0001-R0009/assembly-parts.json). Standard screw models are derived from the identified cq_warehouse catalogue. Hold external redistribution of supplier models whose terms are unconfirmed. Product ownership and the individual CAD licenses are separate.

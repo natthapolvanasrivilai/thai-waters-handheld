@@ -1,0 +1,178 @@
+{
+  "assembly": "TW-A-0001-R0016",
+  "housing_part": "TW-P-0001-R0013",
+  "parent_brep_sha256": "99381e19cd835f09966deab7f99a6687b334e14a3a5a80bee84fb13e54e3d5ab",
+  "parent_print_sha256": "380c0d297fc039e1e09a2bb932df5394e2bb79f863e9f681322f999ee1344670",
+  "housing_brep_sha256": "aee53daf663c7ee90074fdbfbc9808f9bd17eac61f3f70f15672fe7673ef662d",
+  "housing_step_sha256": "89acd9e20a79cd730d03cfd3af66ff14c01295b45c817155b306ecef0ac9b92d",
+  "print_stl_sha256": "035f50d7a8170fac53077a72283c0eb772f5163f7fbb7c802ca323e874823b98",
+  "cuts_xyz_mm": [
+    [
+      [
+        -42.56,
+        -17.75,
+        11.38
+      ],
+      [
+        -41.26,
+        2.405,
+        14.85
+      ]
+    ],
+    [
+      [
+        -41.53,
+        -3.1,
+        11.38
+      ],
+      [
+        -40.3,
+        -2.23,
+        14.85
+      ]
+    ]
+  ],
+  "additions_xyz_mm": [
+    [
+      [
+        -42.31,
+        -2.65,
+        14.85
+      ],
+      [
+        -41.28,
+        2.65,
+        15.43
+      ]
+    ],
+    [
+      [
+        -42.16,
+        -2.91,
+        10.84
+      ],
+      [
+        -40.37,
+        2.91,
+        11.44
+      ]
+    ],
+    [
+      [
+        -42.16,
+        -2.48,
+        11.37
+      ],
+      [
+        -41.27,
+        2.46,
+        11.5
+      ]
+    ],
+    [
+      [
+        -41.27,
+        -2.9,
+        11.38
+      ],
+      [
+        -40.38,
+        2.9,
+        12.25
+      ]
+    ],
+    [
+      [
+        -42.15,
+        2.4,
+        11.38
+      ],
+      [
+        -41.43,
+        2.65,
+        14.7
+      ]
+    ]
+  ],
+  "removed_mm3": 9.310593,
+  "added_mm3": 10.183112,
+  "change_outside_defined_regions_mm3": 0,
+  "sealed_central_throat_floor_witness_mm": 0.5998,
+  "pcb_floor_datum_mm": 11.5,
+  "far_board_stop_y_mm": 2.4,
+  "inboard_lip_width_mm": 0.89,
+  "inboard_lip_top_mm": 12.25,
+  "exterior_checks": {
+    "pass": true,
+    "regions": [
+      {
+        "name": "floor below west A3 rail",
+        "axis": "z",
+        "plane_mm": 0.8,
+        "outward": -1,
+        "footprint_mm": [
+          [
+            16.5,
+            19.5
+          ],
+          [
+            -12,
+            0
+          ]
+        ],
+        "stock_depth_mm": 1.7,
+        "allowed_protrusions": [],
+        "stock_openings": [],
+        "required_stock_mm3": 61.19999999999999,
+        "missing_stock_mm3": 0,
+        "unexpected_outer_mm3": 0,
+        "unexpected_outer_solids": 0,
+        "max_unexpected_height_mm": 0,
+        "pass": true
+      },
+      {
+        "name": "floor below east A3 rail and existing receiver lip",
+        "axis": "z",
+        "plane_mm": 0.8,
+        "outward": -1,
+        "footprint_mm": [
+          [
+            24.5,
+            27.5
+          ],
+          [
+            -12,
+            0
+          ]
+        ],
+        "stock_depth_mm": 1.7,
+        "allowed_protrusions": [
+          {
+            "name": "existing receiver lip",
+            "reason": "R0009 housing-battery-bay.brep intersects this witness over X26.90..27.50. The receiver sole is at Z-3.20.",
+            "footprint_mm": [
+              [
+                26.9,
+                27.5
+              ],
+              [
+                -12,
+                0
+              ]
+            ],
+            "max_height_mm": 4
+          }
+        ],
+        "stock_openings": [],
+        "required_stock_mm3": 61.19999999999999,
+        "missing_stock_mm3": 0,
+        "unexpected_outer_mm3": 0,
+        "unexpected_outer_solids": 0,
+        "max_unexpected_height_mm": 0,
+        "pass": true
+      }
+    ],
+    "numerical_volume_tol_mm3": 1e-05
+  },
+  "scope": "Nominal housing and reopened print. Sideways withdrawal and as-printed retention require physical qualification."
+}

@@ -1,0 +1,81 @@
+{
+  "sha256": "bff8e08cf1429418861939b073c542ac465bc38efb9d9e73db9c455146d009a1",
+  "board_thickness_mm": 0.8,
+  "nets": {
+    "BALLAST": {
+      "track_mm": 19.7848621,
+      "vias": 2,
+      "upper_ohm": 0.0835686
+    },
+    "CC1": {
+      "track_mm": 4.4107107,
+      "vias": 0,
+      "upper_ohm": 0.0181965
+    },
+    "CC2": {
+      "track_mm": 2.535513,
+      "vias": 0,
+      "upper_ohm": 0.0104603
+    },
+    "CTRL": {
+      "track_mm": 54.5896763,
+      "vias": 4,
+      "upper_ohm": 0.2291024
+    },
+    "ENTRY": {
+      "track_mm": 3.0353815,
+      "vias": 0,
+      "upper_ohm": 0.0125226
+    },
+    "GND": {
+      "track_mm": 60.6933471,
+      "vias": 2,
+      "upper_ohm": 0.2523378
+    },
+    "GRANT_N": {
+      "track_mm": 21.9183918,
+      "vias": 3,
+      "upper_ohm": 0.0933432
+    },
+    "MID_S": {
+      "track_mm": 16.5281501,
+      "vias": 2,
+      "upper_ohm": 0.0701329
+    },
+    "PAIR_G": {
+      "track_mm": 21.6520851,
+      "vias": 2,
+      "upper_ohm": 0.0912718
+    },
+    "PMIC": {
+      "track_mm": 28.2135311,
+      "vias": 4,
+      "upper_ohm": 0.1202868
+    },
+    "RAW": {
+      "track_mm": 7.0354104,
+      "vias": 0,
+      "upper_ohm": 0.0290248
+    },
+    "REF": {
+      "track_mm": 3.355267,
+      "vias": 0,
+      "upper_ohm": 0.0138423
+    },
+    "SENSE1": {
+      "track_mm": 29.117029,
+      "vias": 3,
+      "upper_ohm": 0.1230415
+    },
+    "SENSE2": {
+      "track_mm": 40.1679834,
+      "vias": 3,
+      "upper_ohm": 0.1686325
+    },
+    "THRESH": {
+      "track_mm": 34.8209599,
+      "vias": 6,
+      "upper_ohm": 0.1494914
+    }
+  }
+}

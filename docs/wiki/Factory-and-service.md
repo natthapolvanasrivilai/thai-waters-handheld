@@ -1,6 +1,16 @@
 # Build, record and service a unit
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
+[Current PolyTerra print checks](../../hardware/mechanical/step-fit-r0008/README.md) · [Mechanical assembly sequence](../../hardware/mechanical/enclosure-print-r0004/README.md#fit-sequence) · [Per-part first-article sheet](../../hardware/mechanical/full-fit-r0009/first-article.csv)
+
+[Prototype carton and divider trial, CAD dimensions and printable patterns](../../manufacturing/packaging/fit-tray/README.md)
+
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Thai-Waters-handbook.html)
+
+Trial the USB indicator with the unpowered R0016 case and the leadless Plate 7 gauge. On earlier housings, skip this gauge. Record shelf seating, free withdrawal and support cleanup. [Fit procedure](../../hardware/mechanical/TW-A-0001-R0016/README.md)
+
+For the R0015 key, place the cap from inside, then lower the board and west retainer. Reserve the older cases for a cap-only check. [Step-by-step key fit](../../hardware/mechanical/TW-A-0001-R0015/README.md)
+
+For the R0014 dry fit, run a fingertip along both A3 seats to check for strings, set the unpowered board gauge directly on the hard lands, and check for rocking before seating the display. Use both long strips only with an older flat-floor R0013 shell. [R0014 assembly instructions](../../hardware/mechanical/TW-A-0001-R0014/README.md)
 
 Select **Assembly process** for the ten factory stations and the downloadable unit record. In the 3D viewer, step through the mechanical order to inspect access before routing a harness.
 

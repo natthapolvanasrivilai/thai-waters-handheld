@@ -1,8 +1,36 @@
 # Inspect the assembly and battery pocket
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
+**Current PLA test print.** TW-A-0003-R0009 includes the rectangular PCB and matching case, all enclosure plastics and the PCB and component mockups. The 27 objects occupy eight plates for PolyTerra PLA on the X1 Carbon with a 0.4 mm nozzle and SuperTack. Physical fit awaits printing. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf) · [PLA print sequence and checks](../../hardware/mechanical/full-fit-r0009/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Enclosure-fit-guide.html)
 
-## Current print and inspection checkpoints
+**Optional board-only print.** TW-A-0004-R0002 uses a 32.4 × 35.8 mm PCB with internal screw holes and a tucked-in corner support. The single-plate gauge fits both the R0008 shell and the proposed mount in CAD. [Offline board review](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-guide-2/Mount-review.html) · [Print only the PCB gauge](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-mount-review-1/Case-board-R0002-PolyTerra-SuperTack-X1C.3mf) · [CAD, fit and electrical checks](../../hardware/electronics/case-board-r0002/README.md)
+
+[Case-mounted board fit kit and interactive 3D inspection](../../hardware/electronics/case-board-r0001/README.md). The combined A4/A5 circuit now has a populated PCB, its own housing mounts, a two-plate X1C project and motion checks. The R0017 spacer walkthrough below is for the earlier fit kit.
+
+[R0017 keyed cap and cap-only fit plate](../../hardware/mechanical/TW-A-0001-R0017/README.md) follows the existing power-button opening. Use it with the R0016 housing. [Archived R0017 assembly guide](../models/R0017-PCB-assembly.html)
+
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Thai-Waters-handbook.html)
+
+[A4 and A5 explained, physical mounting and small-part review](../../hardware/mechanical/pcb-fit-display-r0002/README.md)
+
+## USB indicator entry
+
+The R0016 handbook shows the side slot in section. The three older guides show where the attempted insertion meets the USB-C well. The finished lamp is tethered to the display. [R0016 procedure](../../hardware/mechanical/TW-A-0001-R0016/README.md) · [Current 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/reel-dfm-r0001-fit-1/R0017-PCB-assembly.html)
+
+## R0015 power key
+
+Open the PCB assembly guide and select the cap step to follow its two movements. The switch board slides in afterward and the west retainer goes in last. Use R0015 plate 1 to clear the switch rim. [Procedure and evidence](../../hardware/mechanical/TW-A-0001-R0015/README.md) · [R0015 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0015-PCB-assembly.html)
+
+## R0014 integral haptic-board rails
+
+For an existing R0014 case use its corrected standalone sequence. The power board step stops at the obstructed insertion. The plate-1 floor carries A3 directly on two hard lands with open-ended adhesive grooves. The plate-7 PCB gauges also fit the preceding project. [R0014 dry fit and housing](../../hardware/mechanical/TW-A-0001-R0014/README.md) · [Download the 3D guide](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0016-usb-indicator-fit-1/R0014-PCB-assembly.html)
+
+[Current revision and open physical checks](Current-status.md) · [R0014 plate map](../../hardware/mechanical/TW-A-0001-R0014/Printing/plate-7.png) · [Plug motion, installed harness, full assembly and measured clearance](../../quality/seated-connector-review.md)
+
+## Connector service and failed-print investigation
+
+[Open the R0012 service review, circuits, R19b print investigation and packaging trial](../../quality/hardware-review-2026-11-23.md). R0012 identifies the dressed STEP engineering branch. R19b identifies the physical X1C trial. Their housing, reel and light features differ.
+
+## Earlier R0011 print and inspection checkpoints
 
 The R0011 engineering model includes the receiver-down housing, lower service cover and revised haptic harness. Inspect purchased and drawing-derived geometry through the part register. Source fit, retention, tolerances and the unplaced controller power changes have open hardware gates. [Interactive private handbook and dressed STEP](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/r0011-hardware-review-1) · [Terminal selection, routes and clearances](../../hardware/electronics/harness-r0004/README.md) · [STEP round-trip checks](../../hardware/mechanical/TW-A-0001-R0011/export-verification.json)
 

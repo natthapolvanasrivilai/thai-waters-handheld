@@ -1,0 +1,32 @@
+{
+  "check": "Gerber copper connected regions with Excellon via bridges against the 34-pad netlist",
+  "outline_mm": [
+    23,
+    13
+  ],
+  "outer_copper_um": 35,
+  "artwork_networks": 14,
+  "terminal_pads": 34,
+  "drill_xy_diameter_mm_gerber_axes": [
+    [
+      13.062,
+      -8.2,
+      0.3
+    ],
+    [
+      21.037,
+      -3.35,
+      0.3
+    ]
+  ],
+  "nominal_minimum_clearance_mm": 0.275,
+  "nominal_minimum_edge_clearance_mm": 0.55,
+  "plotted_objects": {
+    "F_Mask": 34,
+    "B_Mask": 0,
+    "F_Paste": 21,
+    "F_Silkscreen": 125,
+    "B_Silkscreen": 390
+  },
+  "netlist_match": true
+}

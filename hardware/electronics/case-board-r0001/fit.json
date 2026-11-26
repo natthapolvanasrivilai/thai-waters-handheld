@@ -1,0 +1,136 @@
+{
+  "reference_sha256": "fba1227c21d03e29510cf6f988221c9b4514cc4b533d410db43aa612fa52bd44",
+  "pcb_step_sha256": "3a13cc56e0abf6ab61567404d73853785c46e7e6a33bcf2814458f1549e6dcbe",
+  "installed_pcb_bounds_mm": [
+    6.499999999999853,
+    39.3,
+    -16.5,
+    21.700000000000003,
+    16.154999899999996,
+    18.54
+  ],
+  "tested_reference_members": [
+    "A1-J8",
+    "A1-mounts",
+    "A1-population",
+    "A1-touch",
+    "A5-W2",
+    "A5-W2-Cu",
+    "A5-W2-solder",
+    "A5-W3",
+    "A5-W3-Cu",
+    "A5-W3-solder",
+    "A5-W3-splice-cover",
+    "A5-W7",
+    "A5-W7-Cu",
+    "A5-W7-solder",
+    "Housing",
+    "J8plug",
+    "USB-BOND",
+    "USB-PCB2",
+    "USB-W4C",
+    "USB-W4C-Cu",
+    "altTail0",
+    "altTail1",
+    "batt0",
+    "batt1",
+    "drvBoard",
+    "w1GND",
+    "w1SCL",
+    "w1SDA",
+    "w1VCC",
+    "whGND",
+    "whSCL",
+    "whSDA",
+    "whVCC"
+  ],
+  "seated_overlaps_mm3": {
+    "populated board": {},
+    "screw 1": {},
+    "screw 2": {}
+  },
+  "support_overlaps_mm3": {
+    "boss 1": {},
+    "boss 2": {},
+    "third rest": {}
+  },
+  "board_mount_overlaps_mm3": {
+    "populated board": {}
+  },
+  "legacy_board_intersections_mm3": {
+    "populated board": {
+      "A5-W3-solder": 0.03235,
+      "A5-W2-solder": 0.03235,
+      "A5-W3": 0.00157
+    }
+  },
+  "lead_routes": {
+    "W2": {
+      "length_mm": 57.835,
+      "min_bend_radius_mm": 0.588,
+      "board_end": [
+        34.45,
+        12.0,
+        19.0
+      ],
+      "far_end": [
+        -19.06,
+        19.82,
+        20.751
+      ]
+    },
+    "W3": {
+      "length_mm": 56.211,
+      "min_bend_radius_mm": 0.59,
+      "board_end": [
+        34.45,
+        5.0,
+        19.0
+      ],
+      "far_end": [
+        -17.561943,
+        17.742536,
+        16.355954
+      ]
+    },
+    "W7": {
+      "length_mm": 54.768,
+      "min_bend_radius_mm": 0.415,
+      "board_end": [
+        30.65,
+        17.3,
+        19.0
+      ],
+      "far_end": [
+        -19.98,
+        18.47,
+        17.34
+      ]
+    }
+  },
+  "lead_overlaps_mm3": {
+    "W2 copper": {
+      "A1-J8": 9e-05
+    },
+    "W2 jacket": {},
+    "W2 board fillet": {},
+    "W3 copper": {},
+    "W3 jacket": {},
+    "W3 board fillet": {},
+    "W7 copper": {},
+    "W7 jacket": {},
+    "W7 board fillet": {}
+  },
+  "inter_lead_overlaps_mm3": {
+    "W2 copper": {},
+    "W2 jacket": {},
+    "W2 board fillet": {},
+    "W3 copper": {},
+    "W3 jacket": {},
+    "W3 board fillet": {},
+    "W7 copper": {},
+    "W7 jacket": {},
+    "W7 board fillet": {}
+  },
+  "note": "Nominal static BRep intersection. Bosses fuse to housing. Screws form threads in the printed pilots. Legacy solder, leads and their intentional land contacts are included."
+}

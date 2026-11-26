@@ -1,0 +1,101 @@
+{
+  "assembly": "TW-A-0001-R0016 with TW-P-0013-R0003",
+  "source_housing_sha256": "aee53daf663c7ee90074fdbfbc9808f9bd17eac61f3f70f15672fe7673ef662d",
+  "cap_stl_sha256": "88e3fc654f5606dce678211151b7c7d6d107742e1577c2e478a6041302b49bbd",
+  "housing_steps_mm": [
+    6.0,
+    8.3
+  ],
+  "perimeter_clearance_mm": {
+    "face": 0.25,
+    "flange": 0.3
+  },
+  "insertion_and_press": {
+    "inside drop 24 mm": {
+      "common_mm3": 0,
+      "gap_mm": 0.55
+    },
+    "outward seating 2.50 mm": {
+      "common_mm3": 0,
+      "gap_mm": 0.01
+    },
+    "inward press 0.50 mm": {
+      "common_mm3": 0,
+      "gap_mm": 0.01
+    }
+  },
+  "board_and_keeper_install": {
+    "substrate": {
+      "common_mm3": 0,
+      "gap_mm": 4.35
+    },
+    "switch case": {
+      "common_mm3": 0,
+      "gap_mm": 0.999
+    },
+    "stationary rim": {
+      "common_mm3": 0,
+      "gap_mm": 0.449
+    },
+    "actuator": {
+      "common_mm3": 0,
+      "gap_mm": 0.049
+    },
+    "terminal 1 rear": {
+      "common_mm3": 0,
+      "gap_mm": 5.35
+    },
+    "terminal 1 board": {
+      "common_mm3": 0,
+      "gap_mm": 4.35
+    },
+    "terminal 2 rear": {
+      "common_mm3": 0,
+      "gap_mm": 5.350751
+    },
+    "terminal 2 board": {
+      "common_mm3": 0,
+      "gap_mm": 4.35
+    },
+    "terminal 3 rear": {
+      "common_mm3": 0,
+      "gap_mm": 5.35
+    },
+    "terminal 3 board": {
+      "common_mm3": 0,
+      "gap_mm": 4.35
+    },
+    "terminal 4 rear": {
+      "common_mm3": 0,
+      "gap_mm": 5.35
+    },
+    "terminal 4 board": {
+      "common_mm3": 0,
+      "gap_mm": 4.35
+    },
+    "keeper": {
+      "common_mm3": 0,
+      "gap_mm": 0.8
+    }
+  },
+  "full_press_fixed_part_gaps_mm": {
+    "fixed switch cover": 0.19,
+    "switch body": 0.5,
+    "keeper": 0.3
+  },
+  "rest_plunger_gap_mm": 0.05,
+  "switch_motion_mm": 0.45,
+  "centered_twist_first_interference_deg": {
+    "0": {
+      "-1": -5.396,
+      "1": 5.396
+    },
+    "0.5": {
+      "-1": -5.396,
+      "1": 5.396
+    }
+  },
+  "old_round_cap_90deg_control": "free",
+  "seated_90deg_radial_interference_lower_bound_after_xy_play_mm": 0.663,
+  "scope": "Rigid, nominal CAD. Print variation, side load, wear, electrical switching and return require a physical sample."
+}

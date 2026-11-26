@@ -1,0 +1,38 @@
+{
+  "engine_sha256": "54068911555d46067ff2bdfcd0cf4b1afd3c1330be0586f93911df0a6af88e7c",
+  "routing_sha256": "169dcaec779480fbfb6b93bd43acd32a90e1f5412a090d9d790c356163fd6374",
+  "copper_report_sha256": "90120a2fb98af85ec2e441f28cc3466f6132f08b65ff42a708a817b70367ade6",
+  "board_sha256": {
+    "A3": "703cb2c5fee0528ecb6579708c4d15fe8ff78646c1d427ef827336323d33bddd",
+    "A4": "f55a55680ec3ebf2bf98e6a318fad044182b9c31b241376b53d26665a7c8860b",
+    "A5": "bff8e08cf1429418861939b073c542ac465bc38efb9d9e73db9c455146d009a1"
+  },
+  "historical_cases": 60,
+  "original_candidate_cases": 85,
+  "original_metrics_reproduced": {
+    "WITHIN": 140,
+    "OUTSIDE": 5,
+    "RECORD": 25
+  },
+  "new_postlayout_cases": 38,
+  "postlayout_measurements": 92,
+  "status": {
+    "WITHIN": 75,
+    "RECORD": 15,
+    "OUTSIDE": 2
+  },
+  "outside": [
+    [
+      "control_A1_uninterrupted_VBUS",
+      "port"
+    ],
+    [
+      "control_A3_unremoved_pullup",
+      "sink"
+    ]
+  ],
+  "archive_sha256": "9347884a7d5086332915381620d720e1801f1d4273e6d32e330ef7adf95c39ec",
+  "legacy_USB_copper_sha256": "43406796ccdd8c156ca5861a02d1cdf6ba2fb427420ba13dd0cd7ed8e52e4617",
+  "legacy_USB_board_sha256": "1d201718bc5c16f5f86075ed478696abe0c7d3d0434b7d7769b8b485524c4a07",
+  "scope": "A3/A4 bus and audio used current routed copper. Legacy USB cases replay their original dual-path network. The fitted prototype USB entry has a separate schematic-specific simulation report."
+}

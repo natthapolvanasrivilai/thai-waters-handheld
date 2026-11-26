@@ -1,0 +1,68 @@
+{
+  "sha256": "ebf97eff70a70a71890224d3c5e10535165df85328bccf367b1e5829ce97495d",
+  "native": {
+    "status": "pass",
+    "inputs": {
+      "sliced_3mf_sha256": "53cab6bc6559a9380f4fe4a984cd90998c10a64e9d9184840f3af8424b03d1b0",
+      "native_report_sha256": "acddaeed34535e36a23af45834ef8a2796ecff7268e0c2b8d4190fd6aa48c001"
+    },
+    "warnings": [],
+    "objects": [
+      {
+        "plate": 1,
+        "name": "Rectangular control PCB - component-height gauge",
+        "object_id": "1704",
+        "mesh_bottom_mm": -4.7683716530855236e-08,
+        "mesh_top_mm": 2.400000047683715,
+        "model_bottom_mm": 0.0,
+        "model_top_mm": 2.4,
+        "model_layers": 12,
+        "bottom_tolerance_mm": 0.27,
+        "top_tolerance_mm": 0.27,
+        "status": "pass"
+      }
+    ],
+    "features": [],
+    "scope": "digital planned model paths only, not physical print acceptance"
+  },
+  "model_layers": 12,
+  "bed_contact_mm2": 1125.125,
+  "support_mm3": 0.0,
+  "main_filament_g": 1.6958918571472168,
+  "pilot_checks": [
+    {
+      "installed_xy_mm": [
+        36.0,
+        -14.4
+      ],
+      "open_core_diameter_mm": 1.7,
+      "layers_checked": 4
+    },
+    {
+      "installed_xy_mm": [
+        10.5,
+        3.9
+      ],
+      "open_core_diameter_mm": 1.7,
+      "layers_checked": 4
+    }
+  ],
+  "installed_checks": {
+    "R0008": {
+      "gauge_interference_mm3": 0.0,
+      "seat_contact_mm2_10um_witness": [
+        9.05,
+        9.05,
+        1.62
+      ]
+    },
+    "R0002 mount": {
+      "gauge_interference_mm3": 0.0,
+      "seat_contact_mm2_10um_witness": [
+        9.05,
+        9.05,
+        7.55
+      ]
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "r19b_sha256": "dcfc3c9c0725d91c54026f1e65f5b9855a036b35f61483d5b1dfcfb471db546c",
+  "carrier_print_to_installed_mm": [
+    [
+      0,
+      0,
+      -1,
+      47
+    ],
+    [
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      13.005
+    ]
+  ],
+  "carrier_new_material_mm3": 36.2645,
+  "carrier_material_removed_mm3": 0.0,
+  "rib_bounds": [
+    -28.229999975999988,
+    -8.929999999701977,
+    0.600000024,
+    28.229999975999988,
+    -7.679999999701977,
+    1.42
+  ],
+  "new_material_at_floor_keys_mm3": 0.0,
+  "new_material_at_posts_or_seats_above_1_43_mm3": 0.0,
+  "new_material_below_web_top_mm3": 0.0,
+  "arm_sections": [
+    {
+      "x": -25,
+      "r19b_mm2": 1.248,
+      "r20_mm2": 2.273
+    },
+    {
+      "x": -20,
+      "r19b_mm2": 1.248,
+      "r20_mm2": 2.273
+    },
+    {
+      "x": -15,
+      "r19b_mm2": 1.248,
+      "r20_mm2": 2.273
+    },
+    {
+      "x": -12,
+      "r19b_mm2": 35.7564,
+      "r20_mm2": 36.7814
+    },
+    {
+      "x": 12,
+      "r19b_mm2": 35.7564,
+      "r20_mm2": 36.7814
+    },
+    {
+      "x": 15,
+      "r19b_mm2": 1.248,
+      "r20_mm2": 2.273
+    },
+    {
+      "x": 20,
+      "r19b_mm2": 1.248,
+      "r20_mm2": 2.273
+    },
+    {
+      "x": 25,
+      "r19b_mm2": 1.248,
+      "r20_mm2": 2.273
+    }
+  ],
+  "housing_intersection_mm3": {
+    "R19b_original_carrier": 5.991e-05,
+    "R20_carrier": 5.991e-05,
+    "R20_added_ribs_only": 0.0
+  },
+  "nominal_carrier_floor_sample_intersection_mm3": 0.0,
+  "encoder_shaft_comparison": {
+    "region": "Original rotor X <= -4.75 mm includes blind socket, rear shoulder and original shaft",
+    "original_volume_mm3": 391.05907,
+    "symmetric_difference_mm3": 0.0
+  },
+  "wheel_volume_mm3": {
+    "R19b_folding_rotor": 3029.49,
+    "R20_inert_thumbwheel": 4461.857
+  },
+  "wheel_radius_check": {
+    "axial_positions": 166,
+    "axial_range_mm": [
+      -4.73,
+      3.519
+    ],
+    "maximum_R20_minus_R19b_radius_mm": 0.0
+  },
+  "physical_status": "unprinted; clearances are nominal triangulated R19b values; retention, torque, wear and electronics clearance outside the reviewed regions remain open"
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 297 210"><style>text{font:3.4px sans-serif;fill:#222}rect,path{fill:none;stroke:#222;stroke-width:0.32}.score{stroke:#26738c;stroke-dasharray:2 1}.bay{stroke:#999;stroke-dasharray:1 1}</style>
+<text x="15" y="10">PK2 / inert packout proof / 1:1 / floor layout, milled or hand-cut dummy stock</text>
+<g transform="translate(15,18)">
+<rect width="222" height="142"/>
+<rect x="0" y="0" width="119" height="88" class="bay"/>
+<text x="3" y="8">handheld</text>
+<text x="3" y="14">119 x 88 mm</text>
+<rect x="4.14" y="6.3" width="110.72" height="75.4" class="score"/>
+<rect x="120.5" y="0" width="101.5" height="88" class="bay"/>
+<text x="123.5" y="8">USB cable</text>
+<text x="123.5" y="14">101.5 x 88 mm</text>
+<rect x="0" y="89.5" width="143" height="52.5" class="bay"/>
+<text x="3" y="97.5">detached grip</text>
+<text x="3" y="103.5">143 x 52.5 mm</text>
+<rect x="6.3" y="100.25" width="130.4" height="31.0" class="score"/>
+<rect x="144.5" y="89.5" width="77.5" height="52.5" class="bay"/>
+<text x="147.5" y="97.5">sleeved key</text>
+<text x="147.5" y="103.5">77.5 x 52.5 mm</text>
+</g>
+<text x="15" y="168">Dashed envelopes show nominal CAD. Cable coil and tool sleeve need physical measurements.</text>
+<path d="M15 190v4m0 -2h50m0 -2v4"/>
+<text x="15" y="199">50 mm scale check</text>
+</svg>

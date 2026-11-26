@@ -1,0 +1,31 @@
+plate,printed part,model layers,first layer contact mm2,support mm3,unbacked starts,vertical wall P05 mm,handling and fit check,physical result
+1,Housing - removable lamp shelf,158,772.763,10160.327,0,0.95,Remove support at the receiver and inside the case. Inspect the roots of every post. Hand-start fasteners in prepared pilots and check each for splitting.,Awaiting R0003 print
+2,Bezel - four recessed screws,17,2452.361,0.0,0,1.37,"Place over the A1 gauge. Check for rocking, glass pressure and head projection. Remove and refit all four screws.",Awaiting R0003 print
+2,Reel rotor - pocket facing up,70,27.548,881.104,0,1.45,Remove support from the accessible face and around the hinge. Inspect both ends of the crank pocket. Rotate fully with crank folded and extended.,Awaiting R0003 print
+2,folding-stem_1,76,2.913,0.0,0,1.1,"Cut the brim while supporting the hinge. Inspect the eye, then cycle the pivot by hand.",Awaiting R0003 print
+2,grip_1,47,8.501,0.0,0,1.362,Check grip rotates freely and stays on its axle.,Awaiting R0003 print
+2,collar_1,12,56.688,0.0,0,1.9,Check collar retention and full-turn clearance.,Awaiting R0003 print
+2,R0017 keyed power cap,10,34.45,0.0,0,0.382,"Insert from inside before the switch PCB. Check for twisting, binding and free return.",Awaiting R0003 print
+2,grip-screw-keeper_1,8,47.018,0.0,0,2.66,Inspect the thin keeper and cycle the grip screw.,Awaiting R0003 print
+2,receiver-nut-keeper_1,4,42.713,0.0,0,2.05,Check nut capture and grip screw alignment without forcing.,Awaiting R0003 print
+2,key-board-retainer-west_1,37,68.714,0.0,0,1.03,Check the KEY board remains seated and the plunger returns.,Awaiting R0003 print
+2,battery-wire-bridge_1,17,252.439,0.0,0,1.35,Check the bridge closes over dummy leads without imprints.,Awaiting R0003 print
+3,rod-grip_1,664,168.67,0.0,0,3.9,"Slide into the receiver, lock and remove by hand. Inspect the dovetail for peeling.",Awaiting R0003 print
+4,status-charge-guide_1,6,7.927,0.0,0,0.867,Inspect bends after brim removal. Check the charge channel with an external light.,Awaiting R0003 print
+4,status-usb-guide_1,6,5.063,0.0,0,1.2,Inspect bends after brim removal. Check the USB channel with an external light.,Awaiting R0003 print
+4,status-power-guide_1,6,7.916,0.0,0,0.87,Inspect bends after brim removal. Check the power channel with an external light.,Awaiting R0003 print
+5,usb-c-shield-mask_1,3,77.416,0.0,0,0.509,Peel the flexible mask from its wide edge. Test the USB-C shell and cable insertion.,Awaiting R0003 print
+5,service-cover_1,23,227.359,0.0,0,0.84,"Check edge integrity, access coverage and removal without tearing.",Awaiting R0003 print
+6,PKCELL-max-body-with-wire-sockets_1,27,2167.123,0.0,0,35.3,Test maximum pack with dummy lead slack and connector. Remove before trying the other pack.,Awaiting R0003 print
+6,Adafruit-258-CAD-with-PCM-and-stubs_1,315,170.609,0.0,0,5.0,"Test PCM, tail and lead exit in the alternative configuration. Use one gauge at a time.",Awaiting R0003 print
+7,A1 display and controller,67,5558.293,0.0,0,1.0,Measure underside for sag. Seat at four controller mounts and verify screen position and pressure.,Awaiting R0003 print
+7,A2 reel sensor,23,399.368,0.0,0,1.25,Check reel-wall lands and pin registration. Compare with real A2 when available.,Awaiting R0003 print
+7,A3 haptic board,49,373.322,0.0,0,3.0,Check bare board seats flat on the two integral rails. Remove before fitting the mated gauge.,Awaiting R0003 print
+7,Combined PCB - populated height gauge,12,852.09,0.0,0,0.8,Package side down. Inspect all three supports and both screw positions. Check display lift.,Awaiting R0003 print
+7,Top power switch board,27,103.153,0.0,0,3.498,Install after keyed cap. Check switch orientation and alignment.,Awaiting R0003 print
+7,USB indicator LED board,4,12.973,0.0,0,0.8,Check carrier slides into shelf; establish the soldered lead installation order on a real subassembly.,Awaiting R0003 print
+7,USB lamp resistor board,5,6.331,0.0,0,0.81,Check tiny resistor carrier lands with the USB lamp gauge. Keep both gauges in a parts tray.,Awaiting R0003 print
+7,USB lamp shelf - device part,17,75.128,0.0,0,1.1,"Inspect flat underside, arm and rails. Drop inboard, slide to USB wall, fit one M2 × 6 and check clearance to speaker.",Awaiting R0003 print
+7,Speaker with gasket and lead exits,35,496.187,0.0,0,1.24,"Check oval rim, gasket height and lead exits. Inspect space under lamp shelf.",Awaiting R0003 print
+7,Vibration motor and lead exit,18,86.833,0.0,0,3.0,"Check motor body, cable exit and board clearance.",Awaiting R0003 print
+7,A3 alternate - plug seated,54,373.322,0.0,0,8.389,Install in place of bare A3. Seat A1 and inspect plug space. Verify unlatching and extraction separately with a wired sample.,Awaiting R0003 print

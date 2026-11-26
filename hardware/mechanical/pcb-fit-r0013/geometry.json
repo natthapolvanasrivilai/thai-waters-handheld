@@ -1,0 +1,1230 @@
+{
+  "assembly": "TW-A-0001-R0013",
+  "electrical": "TW-A-0002-R0006",
+  "unit": "mm",
+  "scale": 1,
+  "source_step_sha256": "9096cb87773e21e6dc5fd4114182ab9818a4c1b762eb9a21e312203e5f3357e4",
+  "matrix": "installed_xyz = matrix @ [print_x,print_y,print_z,1]",
+  "parts": {
+    "A1-display": {
+      "file": "meshes/A1-display.stl",
+      "sha256": "779f430b90289bc4d6c4671fc52aa5c9d9d1b1ac997210df472e703b2e74518c",
+      "quantity": 1,
+      "source_nodes": [
+        "A1-J7",
+        "A1-J8",
+        "A1-J9",
+        "A1-backing",
+        "A1-boot",
+        "A1-carrier",
+        "A1-k3",
+        "A1-mounts",
+        "A1-population",
+        "A1-reset",
+        "A1-touch",
+        "A1-usb"
+      ],
+      "print_to_installed_3x4": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -46.22
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          30.5
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          28.5
+        ]
+      ],
+      "print_min_max_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          92.44,
+          61.0,
+          13.4
+        ]
+      ],
+      "installed_min_max_mm": [
+        [
+          -46.22,
+          -30.5,
+          15.1
+        ],
+        [
+          46.22,
+          30.5,
+          28.5
+        ]
+      ],
+      "print_xyz_mm": [
+        92.44,
+        61.0,
+        13.4
+      ],
+      "first_layer_datum_area_mm2": 5607.901,
+      "rigid_connected_components": 1,
+      "watertight": true,
+      "triangles": 6398,
+      "mesh_volume_mm3": 33085.2091,
+      "bore_geometry": [
+        {
+          "center_print_xy_mm": [
+            10.22,
+            54.75
+          ],
+          "diameter_mm": 2.0,
+          "depth_span_print_z_mm": [
+            6.0,
+            11.5
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            82.22,
+            54.75
+          ],
+          "diameter_mm": 2.0,
+          "depth_span_print_z_mm": [
+            6.0,
+            11.5
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            10.22,
+            6.25
+          ],
+          "diameter_mm": 2.0,
+          "depth_span_print_z_mm": [
+            6.0,
+            11.5
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            82.22,
+            6.25
+          ],
+          "diameter_mm": 2.0,
+          "depth_span_print_z_mm": [
+            6.0,
+            11.5
+          ]
+        }
+      ],
+      "feature_bounds_print_min_max_mm": {
+        "substrate": [
+          [
+            7.21128,
+            3.24134,
+            5.9
+          ],
+          [
+            85.22867,
+            57.75877,
+            7.5
+          ]
+        ],
+        "A1-J7": [
+          [
+            17.14175,
+            4.55,
+            7.5
+          ],
+          [
+            24.79175,
+            9.75,
+            10.9
+          ]
+        ],
+        "A1-J8": [
+          [
+            25.609,
+            4.20993,
+            7.49925
+          ],
+          [
+            66.809,
+            10.81077,
+            12.6
+          ]
+        ],
+        "A1-J9": [
+          [
+            41.705,
+            49.75,
+            7.5
+          ],
+          [
+            49.355,
+            54.95,
+            10.9
+          ]
+        ],
+        "A1-k3": [
+          [
+            18.94406,
+            53.69978,
+            7.09874
+          ],
+          [
+            23.49482,
+            57.35082,
+            9.30038
+          ]
+        ],
+        "A1-reset": [
+          [
+            27.44406,
+            53.69978,
+            7.09874
+          ],
+          [
+            31.99482,
+            57.35082,
+            9.30038
+          ]
+        ],
+        "A1-boot": [
+          [
+            35.94406,
+            53.69978,
+            7.09874
+          ],
+          [
+            40.49482,
+            57.35082,
+            9.30038
+          ]
+        ],
+        "USB-C": [
+          [
+            6.21722,
+            26.0296,
+            6.68885
+          ],
+          [
+            13.82,
+            34.9704,
+            10.75039
+          ]
+        ],
+        "population-1": [
+          [
+            41.62,
+            24.2,
+            7.7
+          ],
+          [
+            62.12,
+            36.8,
+            13.40112
+          ]
+        ],
+        "population-2": [
+          [
+            62.81995,
+            42.44738,
+            6.89869
+          ],
+          [
+            78.92005,
+            57.45539,
+            9.3531
+          ]
+        ],
+        "population-3": [
+          [
+            59.72,
+            23.0,
+            7.5
+          ],
+          [
+            65.22,
+            38.0,
+            9.5
+          ]
+        ],
+        "population-4": [
+          [
+            66.30103,
+            45.14828,
+            8.39997
+          ],
+          [
+            77.33897,
+            60.15021,
+            9.50819
+          ]
+        ],
+        "population-5": [
+          [
+            31.07201,
+            18.40016,
+            7.49096
+          ],
+          [
+            35.62212,
+            42.60023,
+            9.50003
+          ]
+        ],
+        "population-6": [
+          [
+            30.36941,
+            18.69758,
+            7.86425
+          ],
+          [
+            32.71437,
+            42.30284,
+            9.50131
+          ]
+        ]
+      },
+      "scope": "R6 glass seated face; flush optical window; LCD, backing and PCB outline; four smooth blind screw guides, three button projections, J7/J8/J9, USB-C shell and separate component-height lands. Solid connector bodies and filled internal/underside spaces. Small passives, flex detail, contacts and insert threads omitted."
+    },
+    "A2-sensor": {
+      "file": "meshes/A2-sensor.stl",
+      "sha256": "bdddf73c422aba82ed64977cc8c0b92d2d14501a94ecdc8b165778848a1c71f8",
+      "quantity": 1,
+      "source_nodes": [
+        "A2-chip",
+        "A2-pcb",
+        "A2-population",
+        "A2-sockets"
+      ],
+      "print_to_installed_3x4": [
+        [
+          0.0,
+          0.0,
+          1.0,
+          39.48
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          -12.7
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          5.91
+        ]
+      ],
+      "print_min_max_mm": [
+        [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        [
+          25.4,
+          17.78,
+          4.53
+        ]
+      ],
+      "installed_min_max_mm": [
+        [
+          39.48,
+          -12.7,
+          5.91
+        ],
+        [
+          44.01,
+          12.7,
+          23.69
+        ]
+      ],
+      "print_xyz_mm": [
+        25.4,
+        17.78,
+        4.53
+      ],
+      "first_layer_datum_area_mm2": 421.743,
+      "rigid_connected_components": 1,
+      "watertight": true,
+      "triangles": 4762,
+      "mesh_volume_mm3": 870.9516,
+      "bore_geometry": [
+        {
+          "center_print_xy_mm": [
+            2.54,
+            15.24
+          ],
+          "diameter_mm": 2.5,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            22.86,
+            15.24
+          ],
+          "diameter_mm": 2.5,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            2.54,
+            2.54
+          ],
+          "diameter_mm": 2.5,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            22.86,
+            2.54
+          ],
+          "diameter_mm": 2.5,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            6.35,
+            2.54
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            8.89,
+            2.54
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            11.43,
+            2.54
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            13.97,
+            2.54
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            16.51,
+            2.54
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            19.05,
+            2.54
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.57
+          ]
+        }
+      ],
+      "feature_bounds_print_min_max_mm": {
+        "substrate": [
+          [
+            -0.00077,
+            -0.00077,
+            0.0
+          ],
+          [
+            25.40077,
+            17.78077,
+            1.57
+          ]
+        ],
+        "socket-1": [
+          [
+            19.877,
+            5.89,
+            1.57
+          ],
+          [
+            24.827,
+            11.89,
+            4.53
+          ]
+        ],
+        "socket-2": [
+          [
+            0.573,
+            5.89,
+            1.57
+          ],
+          [
+            5.523,
+            11.89,
+            4.53
+          ]
+        ],
+        "AS5600-body": [
+          [
+            10.25,
+            6.94,
+            1.56
+          ],
+          [
+            15.15,
+            10.84,
+            3.07
+          ]
+        ]
+      },
+      "scope": "Four nominal locating holes and six wiring holes, rounded board, central IC, opposite STEMMA QT sockets and individual package lands. Socket openings, leads and sub-nozzle vias omitted. Align the wiring-hole row toward the case floor, components and IC facing toward reel magnet and carrier lands."
+    },
+    "A3-haptic": {
+      "file": "meshes/A3-haptic.stl",
+      "sha256": "4c1af583e9662bf8d797cb25e6bb763c0d8e91c3cb5275bb74353fb8456d2333",
+      "quantity": 1,
+      "source_nodes": [
+        "A3-J1-header",
+        "drvBoard",
+        "drvParts"
+      ],
+      "print_to_installed_3x4": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          10.8
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -16.8
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          4.6
+        ]
+      ],
+      "print_min_max_mm": [
+        [
+          1e-05,
+          -1e-05,
+          0.0
+        ],
+        [
+          20.00001,
+          19.99998,
+          9.76
+        ]
+      ],
+      "installed_min_max_mm": [
+        [
+          10.80001,
+          -16.80001,
+          4.6
+        ],
+        [
+          30.80001,
+          3.19998,
+          14.36
+        ]
+      ],
+      "print_xyz_mm": [
+        20.0,
+        20.0,
+        9.76
+      ],
+      "first_layer_datum_area_mm2": 390.654,
+      "rigid_connected_components": 1,
+      "watertight": true,
+      "triangles": 4094,
+      "mesh_volume_mm3": 1764.4559,
+      "bore_geometry": [
+        {
+          "center_print_xy_mm": [
+            6.4,
+            18.1
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.51
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            11.9,
+            18.1
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.51
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            5.16,
+            1.9
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.51
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            7.66,
+            1.9
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.51
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            10.16,
+            1.9
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.51
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            12.66,
+            1.9
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.51
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            15.16,
+            1.9
+          ],
+          "diameter_mm": 1.0,
+          "depth_span_print_z_mm": [
+            0.0,
+            1.51
+          ]
+        }
+      ],
+      "feature_bounds_print_min_max_mm": {
+        "substrate": [
+          [
+            -5e-05,
+            -7e-05,
+            0.0
+          ],
+          [
+            20.00007,
+            20.00004,
+            1.51
+          ]
+        ],
+        "J1 outer molded-body envelope": [
+          [
+            2.71,
+            1.35,
+            1.5
+          ],
+          [
+            17.61,
+            10.8,
+            9.76
+          ]
+        ]
+      },
+      "scope": "R0002 substrate outline and two motor holes; J1 represented by project-authored outer molded-body bounding block to its maximum height with support to the board. No CviLux mesh, mating cavity, plug, lock, contacts, or projecting pin tails. Native installed pins reach 0.4675 mm below the PCB back."
+    },
+    "A4-integration": {
+      "file": "meshes/A4-integration.stl",
+      "sha256": "bb075d9f1b936b8f8a36b869194a9d5c7a15e3cd966e929795a62a64a0e2ae79",
+      "quantity": 1,
+      "source_nodes": [
+        "A4-integration"
+      ],
+      "print_to_installed_3x4": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          13.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          18.535
+        ]
+      ],
+      "print_min_max_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          23.0,
+          13.0,
+          2.03
+        ]
+      ],
+      "installed_min_max_mm": [
+        [
+          13.0,
+          -12.0,
+          16.505
+        ],
+        [
+          36.0,
+          1.0,
+          18.535
+        ]
+      ],
+      "print_xyz_mm": [
+        23.0,
+        13.0,
+        2.03
+      ],
+      "first_layer_datum_area_mm2": 299.0,
+      "rigid_connected_components": 1,
+      "watertight": true,
+      "triangles": 160,
+      "mesh_volume_mm3": 282.0259,
+      "bore_geometry": [],
+      "feature_bounds_print_min_max_mm": {
+        "substrate": [
+          [
+            -0.0,
+            -0.0,
+            0.0
+          ],
+          [
+            23.0,
+            13.0,
+            0.745
+          ]
+        ]
+      },
+      "scope": "Soldered component bodies are individual height blocks. Back copper is flattened to its maximum outward face. No mounting holes; bonded standoffs are separate. Vias, wires and solder omitted."
+    },
+    "A5-power": {
+      "file": "meshes/A5-power.stl",
+      "sha256": "b62ba973cd9d4e8b1e24bdda6621ff6908d51f3d7fd5747ae7f2da3838a08c70",
+      "quantity": 1,
+      "source_nodes": [
+        "A5-power"
+      ],
+      "print_to_installed_3x4": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          13.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          19.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          17.84
+        ]
+      ],
+      "print_min_max_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          23.0,
+          16.0,
+          2.385
+        ]
+      ],
+      "installed_min_max_mm": [
+        [
+          13.0,
+          3.0,
+          15.455
+        ],
+        [
+          36.0,
+          19.0,
+          17.84
+        ]
+      ],
+      "print_xyz_mm": [
+        23.0,
+        16.0,
+        2.385
+      ],
+      "first_layer_datum_area_mm2": 365.309,
+      "rigid_connected_components": 1,
+      "watertight": true,
+      "triangles": 3080,
+      "mesh_volume_mm3": 343.7572,
+      "bore_geometry": [
+        {
+          "center_print_xy_mm": [
+            6.8,
+            14.45
+          ],
+          "diameter_mm": 0.7,
+          "depth_span_print_z_mm": [
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            21.45,
+            14.0
+          ],
+          "diameter_mm": 0.7,
+          "depth_span_print_z_mm": [
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            21.45,
+            7.0
+          ],
+          "diameter_mm": 0.7,
+          "depth_span_print_z_mm": [
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            1.55,
+            3.6
+          ],
+          "diameter_mm": 0.7,
+          "depth_span_print_z_mm": [
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            21.45,
+            3.6
+          ],
+          "diameter_mm": 0.7,
+          "depth_span_print_z_mm": [
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            11.0,
+            1.7
+          ],
+          "diameter_mm": 0.7,
+          "depth_span_print_z_mm": [
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "center_print_xy_mm": [
+            17.65,
+            1.7
+          ],
+          "diameter_mm": 0.7,
+          "depth_span_print_z_mm": [
+            0.0,
+            0.75
+          ]
+        }
+      ],
+      "feature_bounds_print_min_max_mm": {
+        "substrate": [
+          [
+            -0.0,
+            -0.0,
+            0.0
+          ],
+          [
+            23.0,
+            16.0,
+            0.75
+          ]
+        ]
+      },
+      "scope": "R0006 populated layout with individual component-height blocks. Back copper flattened to its maximum outward face. Available 0.70 mm wire holes preserved. Bonded standoffs are separate. Wires, solder and sub-nozzle vias omitted."
+    },
+    "KEY-switch": {
+      "file": "meshes/KEY-switch.stl",
+      "sha256": "8c05de0627cc2b2d7da304f727232eaf6c36c96140f22e81d403667d49351c8e",
+      "quantity": 1,
+      "source_nodes": [
+        "Key PCB",
+        "Switch case",
+        "Switch plunger"
+      ],
+      "print_to_installed_3x4": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -41.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          27.65
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          17.5
+        ]
+      ],
+      "print_min_max_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          11.0,
+          10.0,
+          5.3
+        ]
+      ],
+      "installed_min_max_mm": [
+        [
+          -41.5,
+          27.65,
+          7.5
+        ],
+        [
+          -30.5,
+          32.95,
+          17.5
+        ]
+      ],
+      "print_xyz_mm": [
+        11.0,
+        10.0,
+        5.3
+      ],
+      "first_layer_datum_area_mm2": 110.0,
+      "rigid_connected_components": 1,
+      "watertight": true,
+      "triangles": 634,
+      "mesh_volume_mm3": 255.8296,
+      "bore_geometry": [],
+      "feature_bounds_print_min_max_mm": {
+        "substrate": [
+          [
+            -0.0,
+            -0.0,
+            0.0
+          ],
+          [
+            11.0,
+            10.0,
+            1.0
+          ]
+        ],
+        "switch housing": [
+          [
+            1.86724,
+            2.0,
+            1.0
+          ],
+          [
+            9.13276,
+            8.0,
+            4.35056
+          ]
+        ],
+        "plunger": [
+          [
+            3.75,
+            3.25,
+            4.35
+          ],
+          [
+            7.25,
+            6.75,
+            5.3
+          ]
+        ],
+        "upper rim lands": [
+          [
+            2.5,
+            2.0,
+            4.34944
+          ],
+          [
+            8.5,
+            8.0,
+            4.90025
+          ]
+        ]
+      },
+      "scope": "PCB, switch housing with terminal-side ears and fixed round plunger at its unpressed height. No movable contact or projecting rear leads. Four trimmed terminals extend 0.8 mm below the real PCB; check that space separately."
+    },
+    "USB-PCB1": {
+      "file": "meshes/USB-PCB1.stl",
+      "sha256": "dd9995b3fbfa246b3643eb14a8dff827e07a95578be4c6da470c350926eccb0a",
+      "quantity": 1,
+      "source_nodes": [
+        "USB-D1",
+        "USB-PCB1"
+      ],
+      "print_to_installed_3x4": [
+        [
+          0.0,
+          0.0,
+          -1.0,
+          -41.5
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.4
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          14.7
+        ]
+      ],
+      "print_min_max_mm": [
+        [
+          -0.0,
+          0.0,
+          0.0
+        ],
+        [
+          4.8,
+          3.2,
+          0.852
+        ]
+      ],
+      "installed_min_max_mm": [
+        [
+          -42.352,
+          -2.4,
+          11.5
+        ],
+        [
+          -41.5,
+          2.4,
+          14.7
+        ]
+      ],
+      "print_xyz_mm": [
+        4.8,
+        3.2,
+        0.852
+      ],
+      "first_layer_datum_area_mm2": 15.36,
+      "rigid_connected_components": 1,
+      "watertight": true,
+      "triangles": 30,
+      "mesh_volume_mm3": 9.5386,
+      "bore_geometry": [],
+      "feature_bounds_print_min_max_mm": {
+        "substrate": [
+          [
+            -0.0,
+            -0.0,
+            0.0
+          ],
+          [
+            4.8,
+            3.2,
+            0.6
+          ]
+        ],
+        "USB-D1": [
+          [
+            1.6,
+            1.2,
+            0.59
+          ],
+          [
+            3.2,
+            2.0,
+            0.852
+          ]
+        ]
+      },
+      "scope": "Separate indicator PCB with solid LED outline and installed height. No wires, solder, or optical behavior."
+    },
+    "USB-PCB2": {
+      "file": "meshes/USB-PCB2.stl",
+      "sha256": "a78c6f5d742ba80986c1b13d61e09f4505897cf8134686d13e8fe9bd46ebd704",
+      "quantity": 1,
+      "source_nodes": [
+        "USB-PCB2",
+        "USB-R1"
+      ],
+      "print_to_installed_3x4": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -22.6
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          17.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          17.6
+        ]
+      ],
+      "print_min_max_mm": [
+        [
+          -0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.2,
+          2.0,
+          1.05
+        ]
+      ],
+      "installed_min_max_mm": [
+        [
+          -22.6,
+          17.0,
+          17.6
+        ],
+        [
+          -19.4,
+          19.0,
+          18.65
+        ]
+      ],
+      "print_xyz_mm": [
+        3.2,
+        2.0,
+        1.05
+      ],
+      "first_layer_datum_area_mm2": 6.4,
+      "rigid_connected_components": 1,
+      "watertight": true,
+      "triangles": 36,
+      "mesh_volume_mm3": 4.4305,
+      "bore_geometry": [],
+      "feature_bounds_print_min_max_mm": {
+        "substrate": [
+          [
+            -0.0,
+            -0.0,
+            0.0
+          ],
+          [
+            3.2,
+            2.0,
+            0.6
+          ]
+        ],
+        "USB-R1": [
+          [
+            0.79,
+            0.6,
+            0.59
+          ],
+          [
+            2.41,
+            1.41,
+            1.05
+          ]
+        ]
+      },
+      "scope": "Separate series resistor PCB with its solid resistor outline and installed height. No wires, adhesive, or solder."
+    }
+  }
+}

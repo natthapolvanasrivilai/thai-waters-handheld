@@ -1,0 +1,108 @@
+{
+  "old_sha256": "bf6e27eae40be1d4511e3aba462ddbc0ad581bcbdd3b2149c98023096d5da8af",
+  "new_sha256": "703cb2c5fee0528ecb6579708c4d15fe8ff78646c1d427ef827336323d33bddd",
+  "board_thickness_mm": 1.6,
+  "matching_rounded_outline_segments": 68,
+  "fixed_pad_positions_and_geometries": [
+    "J1",
+    "TP1",
+    "TP2"
+  ],
+  "unchanged_footprint_library": true,
+  "courtyard_rule": "error",
+  "exclusions": [],
+  "original_placement": {
+    "C1": {
+      "xy_mm": [
+        126.05,
+        55.3
+      ],
+      "rotation_deg": 90.0,
+      "dnp": false,
+      "J1_bbox_separation_mm": 0.0
+    },
+    "C2": {
+      "xy_mm": [
+        130.35,
+        62.925
+      ],
+      "rotation_deg": 90.0,
+      "dnp": false,
+      "J1_bbox_separation_mm": 0.13
+    },
+    "U1": {
+      "xy_mm": [
+        128.2,
+        58.8
+      ],
+      "rotation_deg": 0.0,
+      "dnp": false,
+      "J1_bbox_separation_mm": 0.0
+    },
+    "R1": {
+      "xy_mm": [
+        126.05,
+        62.925
+      ],
+      "rotation_deg": -90.0,
+      "dnp": true,
+      "J1_bbox_separation_mm": 0.0
+    },
+    "R2": {
+      "xy_mm": [
+        130.35,
+        55.3
+      ],
+      "rotation_deg": -90.0,
+      "dnp": true,
+      "J1_bbox_separation_mm": 0.13
+    }
+  },
+  "new_placement": {
+    "C1": {
+      "xy_mm": [
+        130.45,
+        64.1
+      ],
+      "rotation_deg": -90.0,
+      "dnp": false,
+      "J1_bbox_separation_mm": 0.23
+    },
+    "C2": {
+      "xy_mm": [
+        130.8,
+        54.1
+      ],
+      "rotation_deg": -90.0,
+      "dnp": false,
+      "J1_bbox_separation_mm": 0.58
+    },
+    "U1": {
+      "xy_mm": [
+        132.1,
+        58.9
+      ],
+      "rotation_deg": 90.0,
+      "dnp": false,
+      "J1_bbox_separation_mm": 0.86
+    },
+    "R1": {
+      "xy_mm": [
+        133.5,
+        65.5
+      ],
+      "rotation_deg": 0.0,
+      "dnp": true,
+      "J1_bbox_separation_mm": 2.53
+    },
+    "R2": {
+      "xy_mm": [
+        133.5,
+        63.65
+      ],
+      "rotation_deg": 0.0,
+      "dnp": true,
+      "J1_bbox_separation_mm": 2.53
+    }
+  }
+}

@@ -14,3 +14,22 @@ TW-A-0002-R0003,,USB status and haptic integration,Independent USB indication an
 TW-A-0001-R0010,,Dressed enclosure with removable lower service cover,"Matched R0009 print set plus P17 opaque TPU cover for PWR, RESET and BOOT.",hardware/mechanical/TW-A-0001-R0010/README.md,R0010-001
 TW-A-0001-R0011,,"Dressed enclosure, receiver-down housing",First-layer-connected rod-grip receiver with lower service cover.,hardware/mechanical/TW-A-0001-R0011/README.md,R0011-001
 TW-A-0002-R0004,,Reworked A3 interconnect and electrical verification candidate,Paired R0011 hardware review. Controller ECO placement and powered qualification remain open.,hardware/electronics/integration-r0004/README.md,R0004-001
+TW-A-0001-R0012,,Dressed enclosure with CviLux service study,147-member engineering configuration in the R0011 enclosure lineage. R19b is a separate physical-fit lineage.,quality/hardware-review-2026-11-23.md,R0012-001
+TW-A-0002-R0005,,CviLux haptics and R0004 daughterboard fit study,"A3, A4 and A5 engineering integration. The proposed A1 controller ECO remains incomplete.",hardware/verification/r0012/README.md,R0005-001
+TW-A-0001-R0013,,Seated-display CviLux service assembly,155 installed components in the engineering STEP. R20 is a separate carrier print.,quality/seated-connector-review.md,R0013-001
+TW-A-0002-R0006,,Seated-service haptics and limited USB input,Rerouted A3 on the seated display installation and A5 with source detection and resistive current limiting.,hardware/verification/r0013/README.md,R0006-001
+TW-A-0001-R0014,,Housing with integral A3 haptic-board seats,Two grooved rails carry the board at its R0013 datum in the R0006 electrical installation.,hardware/mechanical/TW-A-0001-R0014/README.md,R0014-001
+TW-A-0001-R0015,,Housing with inside-loading key and switch rim relief,The switch rim clears the inner wall during board insertion after seating the cap. Paired with TW-A-0002-R0006.,hardware/mechanical/TW-A-0001-R0015/README.md,R0015-001
+TW-A-0001-R0016,,Housing with side-loading USB lamp,The leadless USB indicator slides under the USB well from the service end. Paired with TW-A-0002-R0006.,hardware/mechanical/TW-A-0001-R0016/README.md,R0016-001
+TW-A-0001-R0017,,Keyed power cap in R0016 housing,Retrofit replaces the power cap only. Paired with TW-A-0002-R0006.,hardware/mechanical/TW-A-0001-R0017/README.md,R0017-001
+TW-A-0003-R0001,,Unpowered case-mounted PCB fit kit,Two-plate housing and outline gauge for the combined control and USB PCB.,hardware/electronics/case-board-r0001/README.md,CB0001-001
+TW-A-0004-R0001,,Case-mounted auxiliary PCBA engineering definition,Control and USB circuit with routed layout and installation BOM. Under powered qualification.,hardware/electronics/case-board-r0001/README.md,CB0001-002
+TW-A-0003-R0002,,Seven-plate reinforced reel fit kit,X1C unpowered print trial with reinforced rotor and revised rod grip layer settings.,hardware/mechanical/reel-dfm-r0001/README.md,DFM0001-001
+TW-A-0003-R0003,,Full enclosure unpowered fit kit,"Seven X1C plates with shelf, secured bezel, controller screw access and component envelopes.",hardware/mechanical/enclosure-fit-r0003/README.md,ENC0003-001
+TW-A-0003-R0004,,Single-window enclosure fit and solid-front bezel,Eight X1C plates with rear-access closure and single RGB status diffuser.,hardware/mechanical/enclosure-print-r0004/README.md,ENC0004-001
+TW-A-0003-R0005,,PolyTerra PLA and SuperTack enclosure print configuration,R0004 geometry with local support exclusions and all-PLA gauges.,hardware/mechanical/polyterra-fit-r0001/README.md,PLA0001-001
+TW-A-0003-R0006,,Diagonal housing and handle PLA fit trial,Continuous receiver backing and localized removable support at 45 degrees.,hardware/mechanical/polyterra-fit-r0002/README.md,PLA0002-001
+TW-A-0003-R0007,,Single-light angled enclosure fit print,Two oblique optical sleeves removed; active diffuser and USB well verified.,hardware/mechanical/polyterra-fit-r0003/README.md,PLA0003-001
+TW-A-0003-R0008,,Editable STEP housing and matched print project,Direct full-solid tessellation with unchanged installed dimensions.,hardware/mechanical/step-fit-r0008/README.md,STEP0008-001
+TW-A-0004-R0002,,Rectangular PCB and shell mount review,"Routed populated board with two inboard screws, shaped corner seat and unpowered outline gauge.",hardware/electronics/case-board-r0002/README.md,BOARD0002-001
+TW-A-0003-R0009,,Complete enclosure and PCB fit print,Paired rectangular PCB gauge and revised housing in the eight-plate project.,hardware/mechanical/full-fit-r0009/README.md,KIT0009-001

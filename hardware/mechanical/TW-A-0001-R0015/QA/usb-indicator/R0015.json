@@ -1,0 +1,104 @@
+{
+  "assembly": "TW-A-0001-R0015",
+  "units": "millimetres, cubic millimetres",
+  "frame": "Installed XYZ; +X toward reel, +Z toward removed display. Offsets relative to registered PCB/LED.",
+  "status": "blocked",
+  "waypoints_offset_mm": [],
+  "waypoint_order": "from above the housing to the registered seat",
+  "rejected_vertical": {
+    "handbook_start": {
+      "offset_mm": [
+        0,
+        0,
+        5
+      ],
+      "housing_common_mm3": {
+        "print_gauge": 0.0,
+        "populated_board": 0.0
+      }
+    },
+    "lower_shroud": {
+      "offset_mm": [
+        0,
+        0,
+        1.5
+      ],
+      "housing_common_mm3": {
+        "print_gauge": 0.3673575,
+        "populated_board": 0.3190483
+      }
+    },
+    "upper_roof": {
+      "offset_mm": [
+        0,
+        0,
+        11
+      ],
+      "housing_common_mm3": {
+        "print_gauge": 4.0665596,
+        "populated_board": 3.8651688
+      }
+    },
+    "seated": {
+      "offset_mm": [
+        0,
+        0,
+        0
+      ],
+      "housing_common_mm3": {
+        "print_gauge": 0.0,
+        "populated_board": 0.0
+      }
+    },
+    "first_contact_offset_z_from_above_mm": [
+      13.01001,
+      13.00995
+    ],
+    "first_contact_offset_z_from_handbook_start_mm": [
+      3.95001,
+      3.94995
+    ]
+  },
+  "rejected_horizontal": {
+    "(1, 0, 0)": {
+      "print_gauge": 1.5839969,
+      "populated_board": 1.5839973
+    },
+    "(1, 0, -0.11)": {
+      "print_gauge": 1.2671968,
+      "populated_board": 1.2671973
+    },
+    "(0, 0, -0.15)": {
+      "print_gauge": 0.1152004,
+      "populated_board": 0.1152003
+    }
+  },
+  "sources_sha256": {
+    "hardware/mechanical/TW-A-0001-R0015/part-orientations.json": "98b896e3d7f1a9646b04d16b4c7489fe3ed38aea21fef0d3d6f70e281093588a",
+    "hardware/mechanical/TW-A-0001-R0015/Print/housing-battery-bay.stl": "380c0d297fc039e1e09a2bb932df5394e2bb79f863e9f681322f999ee1344670",
+    "hardware/mechanical/TW-A-0001-R0011/part-orientations.json": "b4c82a80547f97e2e086712fc9423ad7bca86c584a13d37bb47367162d362a98",
+    "hardware/mechanical/TW-A-0001-R0009/Print/status-usb-guide.stl": "a9cfda6d2fcd0031a487e3a490ef514ca4f501d2a45f067178bdfc6e8e97d1b3",
+    "hardware/mechanical/pcb-fit-r0013/geometry.json": "225d8dff3fed560d4196bcfaf095775fdebac5a8b50775354da7035273fe91d5",
+    "hardware/mechanical/pcb-fit-r0013/meshes/USB-PCB1.stl": "dd9995b3fbfa246b3643eb14a8dff827e07a95578be4c6da470c350926eccb0a",
+    "hardware/mechanical/TW-A-0001-R0015/installed-step.json": "a269ffd5740080d606489c5c5d0030922cef68f54cdd78231ae5e603e39753a1",
+    "hardware/electronics/usb-status-r0003/placed/USB-PCB1.brep": "c9d8aa8f0fa70fb1db0443aa8af7d3e905251b6e7a1fffe7092c1f29f2eb9710",
+    "hardware/electronics/usb-status-r0003/placed/USB-D1.brep": "aa66e31e6e961ae4a6566ed4cfd0267942435e52e2823bd62c04e45ada5347d0",
+    "hardware/mechanical/TW-A-0001-R0009/Print/rotor.stl": "9a4adf6cfb23f5846e4c2221b5a362c46cb7e96ae885004b8fd882d0d9cd1cb3",
+    "hardware/mechanical/TW-A-0001-R0009/Print/collar.stl": "23672beb52fe5706187a3ae489d18b48e0c3477f0ecdb736167fd9cb39bd1d2a",
+    "hardware/mechanical/TW-A-0001-R0009/Print/power-cap.stl": "5f568806c412dea751cfd2756eb365d68b1d273782ad58715ec50655ebff0f13",
+    "hardware/mechanical/TW-A-0001-R0009/Print/key-board-retainer-west.stl": "79bf8874347422a7368fd6c18b4a39abf89defa52fee0205a9b513349599c916",
+    "hardware/mechanical/TW-A-0001-R0009/Print/status-charge-guide.stl": "91647ce61b6cb100b4d7c6777f86529c24d7ddb55ff6e72b9f6926f7ccac765e",
+    "hardware/mechanical/TW-A-0001-R0009/Print/status-power-guide.stl": "c58766b2d7500945a5adf90e5d8950970dd391ec6edf4ce613cb7e991b07d60f",
+    "hardware/mechanical/pcb-fit-r0013/meshes/A2-sensor.stl": "bdddf73c422aba82ed64977cc8c0b92d2d14501a94ecdc8b165778848a1c71f8",
+    "hardware/mechanical/pcb-fit-r0013/meshes/A3-haptic.stl": "4c1af583e9662bf8d797cb25e6bb763c0d8e91c3cb5275bb74353fb8456d2333",
+    "hardware/mechanical/pcb-fit-r0013/meshes/KEY-switch.stl": "8c05de0627cc2b2d7da304f727232eaf6c36c96140f22e81d403667d49351c8e"
+  },
+  "seated_guide_gap_mm": 0.298,
+  "scope": "Rigid leadless gauge or rigid PCB and LED. Flexible wiring, hand/tool access, printed tolerances and physical retention are separate.",
+  "all_rigid_routes": {
+    "evidence": "legacy-trap.json",
+    "sha256": "672c5e77d711db58cfbb9a717eaafea103f23743fe6c274ae744bb134d0a3ab2",
+    "result": "All 12 faces of a closed 6-D region around the seat are obstructed. A continuous rigid placement from above the rim to the registered seat cannot exist."
+  },
+  "disposition": "The pocket traps the rigid board at the registered pose. A collision-free insertion into this unmodified housing is impossible."
+}

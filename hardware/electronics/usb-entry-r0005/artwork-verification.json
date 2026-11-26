@@ -1,0 +1,11 @@
+{
+  "verified_nets": 11,
+  "pin_count": 40,
+  "plated_holes": 24,
+  "size_mm": [
+    23,
+    16
+  ],
+  "min_gerber_spacing_mm": 0.25132,
+  "min_gerber_edge_mm": 0.7
+}

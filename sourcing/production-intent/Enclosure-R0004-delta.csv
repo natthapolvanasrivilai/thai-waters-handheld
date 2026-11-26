@@ -1,0 +1,6 @@
+reference,quantity per R0004,part,status,source
+H10,2,Accu SHP-M2-6-V2-A2,Rear bezel screws,https://www.accu.co.uk/torx-pan-head-screws/475309-SHP-M2-6-V2-A2
+H11,1,Accu SHP-M2-6-V2-A2,Shelf screw,https://www.accu.co.uk/torx-pan-head-screws/475309-SHP-M2-6-V2-A2
+OPT1,1,Clear PETG diffuser,Print plate 4,../../hardware/mechanical/enclosure-print-r0004/diffuser.step
+D_STATUS,1,Kingbright APTF1616SEEZGQBDC,Supplier STEP reviewed; candidate for powered qualification,https://www.kingbrightusa.com/product.asp?catalog_name=LED&product_id=APTF1616SEEZGQBDC
+RGB1,1,Four-terminal LED carrier with R/G/B drive,"Fit envelope only; routing, resistors, harness and cost pending",../../hardware/mechanical/enclosure-print-r0004/README.md#optical-and-electrical-interface

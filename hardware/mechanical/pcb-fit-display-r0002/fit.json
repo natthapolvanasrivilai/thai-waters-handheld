@@ -1,0 +1,67 @@
+{
+  "seats": [
+    {
+      "board": "A4-integration",
+      "installed_center_xy_mm": [
+        15.5,
+        -10
+      ],
+      "bearing_z_mm": 18.535,
+      "nominal_height_mm": 2.465,
+      "contact_area_mm2": 9
+    },
+    {
+      "board": "A4-integration",
+      "installed_center_xy_mm": [
+        33.5,
+        -9.5
+      ],
+      "bearing_z_mm": 18.535,
+      "nominal_height_mm": 2.465,
+      "contact_area_mm2": 9
+    },
+    {
+      "board": "A4-integration",
+      "installed_center_xy_mm": [
+        33.5,
+        -1.5
+      ],
+      "bearing_z_mm": 18.535,
+      "nominal_height_mm": 2.465,
+      "contact_area_mm2": 9
+    },
+    {
+      "board": "A5-power",
+      "installed_center_xy_mm": [
+        17.5,
+        16.5
+      ],
+      "bearing_z_mm": 17.84,
+      "nominal_height_mm": 3.16,
+      "contact_area_mm2": 9
+    },
+    {
+      "board": "A5-power",
+      "installed_center_xy_mm": [
+        28.5,
+        14.1
+      ],
+      "bearing_z_mm": 17.84,
+      "nominal_height_mm": 3.16,
+      "contact_area_mm2": 9
+    },
+    {
+      "board": "A5-power",
+      "installed_center_xy_mm": [
+        32.5,
+        17.3
+      ],
+      "bearing_z_mm": 17.84,
+      "nominal_height_mm": 3.16,
+      "contact_area_mm2": 9
+    }
+  ],
+  "one_connected_mesh": true,
+  "project_sha256": "95e2dc8e4e0f4cb10c0e737ef971436a76916fba8b3a60b006a8f9831f543d78",
+  "stl_sha256": "425a2f4c0442acb15677a5b812286494d5cd38ffed1527d3d02216932b452af8"
+}

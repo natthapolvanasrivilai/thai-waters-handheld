@@ -1,0 +1,175 @@
+{
+  "A3": {
+    "sha256": "bf6e27eae40be1d4511e3aba462ddbc0ad581bcbdd3b2149c98023096d5da8af",
+    "board_thickness_mm": 1.6,
+    "nets": {
+      "/SCL": {
+        "track_mm": 12.1908431,
+        "vias": 0,
+        "upper_ohm": 0.0335291
+      },
+      "/SDA": {
+        "track_mm": 13.759626,
+        "vias": 0,
+        "upper_ohm": 0.0378439
+      },
+      "GND": {
+        "track_mm": 17.0195692,
+        "vias": 5,
+        "upper_ohm": 0.0534245
+      },
+      "Net-(U1-OUT+)": {
+        "track_mm": 6.6591883,
+        "vias": 0,
+        "upper_ohm": 0.01254
+      },
+      "Net-(U1-OUT-)": {
+        "track_mm": 8.3717366,
+        "vias": 0,
+        "upper_ohm": 0.0150151
+      },
+      "Net-(U1-REG)": {
+        "track_mm": 4.5516043,
+        "vias": 0,
+        "upper_ohm": 0.0125185
+      },
+      "VCC": {
+        "track_mm": 45.582484,
+        "vias": 2,
+        "upper_ohm": 0.082039
+      }
+    }
+  },
+  "A4": {
+    "sha256": "f55a55680ec3ebf2bf98e6a318fad044182b9c31b241376b53d26665a7c8860b",
+    "board_thickness_mm": 0.8,
+    "nets": {
+      "AMP_N": {
+        "track_mm": 2.370276,
+        "vias": 0,
+        "upper_ohm": 0.0024447
+      },
+      "AMP_P": {
+        "track_mm": 2.370276,
+        "vias": 0,
+        "upper_ohm": 0.0024447
+      },
+      "GND": {
+        "track_mm": 7.3295572,
+        "vias": 0,
+        "upper_ohm": 0.0201589
+      },
+      "K3_RAW": {
+        "track_mm": 4.4338203,
+        "vias": 0,
+        "upper_ohm": 0.0121946
+      },
+      "KEY_AON": {
+        "track_mm": 13.0153688,
+        "vias": 2,
+        "upper_ohm": 0.0377424
+      },
+      "N_GATE": {
+        "track_mm": 6.2050517,
+        "vias": 0,
+        "upper_ohm": 0.0170661
+      },
+      "SCL": {
+        "track_mm": 2.031066,
+        "vias": 0,
+        "upper_ohm": 0.0055862
+      },
+      "SDA": {
+        "track_mm": 2.0931981,
+        "vias": 0,
+        "upper_ohm": 0.005757
+      },
+      "SPK_N": {
+        "track_mm": 9.7397477,
+        "vias": 0,
+        "upper_ohm": 0.0100454
+      },
+      "SPK_P": {
+        "track_mm": 9.7397477,
+        "vias": 0,
+        "upper_ohm": 0.0100454
+      },
+      "SW_SENSE": {
+        "track_mm": 7.5366301,
+        "vias": 0,
+        "upper_ohm": 0.0207284
+      },
+      "USB_RAW": {
+        "track_mm": 2.0258883,
+        "vias": 0,
+        "upper_ohm": 0.0055719
+      },
+      "VBAT": {
+        "track_mm": 8.1366378,
+        "vias": 0,
+        "upper_ohm": 0.0223786
+      },
+      "VCC3V3": {
+        "track_mm": 3.8088835,
+        "vias": 0,
+        "upper_ohm": 0.0104758
+      }
+    }
+  },
+  "A5": {
+    "sha256": "1d201718bc5c16f5f86075ed478696abe0c7d3d0434b7d7769b8b485524c4a07",
+    "board_thickness_mm": 0.8,
+    "nets": {
+      "FAULT_N": {
+        "track_mm": 15.7956285,
+        "vias": 0,
+        "upper_ohm": 0.0592412
+      },
+      "FULL_EN": {
+        "track_mm": 10.918566,
+        "vias": 2,
+        "upper_ohm": 0.0428954
+      },
+      "GND": {
+        "track_mm": 46.5552051,
+        "vias": 4,
+        "upper_ohm": 0.0999235
+      },
+      "ILIM": {
+        "track_mm": 6.1625,
+        "vias": 2,
+        "upper_ohm": 0.0250578
+      },
+      "LOW_EN": {
+        "track_mm": 11.4434017,
+        "vias": 1,
+        "upper_ohm": 0.043891
+      },
+      "LOW_OUT": {
+        "track_mm": 2.9176777,
+        "vias": 0,
+        "upper_ohm": 0.0060185
+      },
+      "MID_S": {
+        "track_mm": 8.603757,
+        "vias": 0,
+        "upper_ohm": 0.0177475
+      },
+      "PAIR_G": {
+        "track_mm": 18.8088525,
+        "vias": 5,
+        "upper_ohm": 0.075406
+      },
+      "PMIC": {
+        "track_mm": 17.1801777,
+        "vias": 0,
+        "upper_ohm": 0.0354387
+      },
+      "RAW": {
+        "track_mm": 28.9926777,
+        "vias": 0,
+        "upper_ohm": 0.0598051
+      }
+    }
+  }
+}

@@ -1,0 +1,1156 @@
+{
+  "project_sha256": "e97c448f1dbbbbe49d49afe43a7d4f6c8b63d1ed3aaf768ee8efb73ced1df806",
+  "enclosure_project_sha256": "510fe8e2f1930c18298fb90d9a3b1edf74ac57c71bcb89fc985bed1fc49af50f",
+  "source_geometry_sha256": "225d8dff3fed560d4196bcfaf095775fdebac5a8b50775354da7035273fe91d5",
+  "original_six_command_sha256": [
+    "f0e837d80af098d9ac7a5a5e59afce54d49ff747fb0f1df193290bf1ea4808ed",
+    "6e70e79a2e7f2606a46413fc3326b3040494f72ca8a56ac4de75dfc92ebe36d6",
+    "0217841f46aac4d4e477400ecc324b2fb15eb255e1d25948d1073f4ae8ef01b3",
+    "85b2918b4cf60ba69a14ad78c0148013eda2c51a0768fca4950799f7495cb85b",
+    "aca549ed60c3b257cc45cdd67887d4c243b65075055781eb9831a4c9276e5045",
+    "688c1cbdd1612a94406e2babf426701db4369ba9d89017f68d39083c9b655297"
+  ],
+  "repacked_six_command_sha256": [
+    "35652a82ca9d7ab655caf221911279892d5ee076249aea1023d4b5e8d6593139",
+    "3e4186932be8a40101eb04567fd36d834f61ec6de35d3babb4afb0d80dd57a30",
+    "0217841f46aac4d4e477400ecc324b2fb15eb255e1d25948d1073f4ae8ef01b3",
+    "f4487e26c1b7379afa3fddc315ec2aa4ee8a70e6776f74c037ce3b33bb36c2bc",
+    "ac10b6677312bf4c219cd44c21a497a42e5bab6edc387bbe1aea85dc78591fd7",
+    "8f13871885fbf8fc3f686ac133dce847916c50b27a7a32932c57aec40d31ce12"
+  ],
+  "plate7_command_sha256": "feb0630409db567010ff502a2efec8f3b332dca831697f85ba946dd16e04aab8",
+  "reopen_command_sha256": "5d76db2d4a13df6bcffc2f2221bbb5615b7d917bce357909614fb053387c9ffa",
+  "runs": {
+    "all": {
+      "native_report_sha256": "1bc630a38ef67b43bfd2140804331d20b52c2f9f273dc2da88cee04ce667a319",
+      "checks": {
+        "status": "pass",
+        "inputs": {
+          "sliced_3mf_sha256": "ceb98eb35dec29b96d4862673db7f9d213984445cd810af7eefba1af5c3fcd0c",
+          "native_report_sha256": "1bc630a38ef67b43bfd2140804331d20b52c2f9f273dc2da88cee04ce667a319"
+        },
+        "warnings": [],
+        "objects": [
+          {
+            "plate": 1,
+            "name": "housing-battery-bay_1",
+            "object_id": "385",
+            "mesh_bottom_mm": -7.348631925196969e-09,
+            "mesh_top_mm": 31.000003807348634,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 31.0,
+            "model_layers": 155,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "bezel_1",
+            "object_id": "386",
+            "mesh_bottom_mm": -3.8418579428878274e-09,
+            "mesh_top_mm": 2.200000043841858,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.2,
+            "model_layers": 11,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "rotor_1",
+            "object_id": "387",
+            "mesh_bottom_mm": 6.20361362280164e-08,
+            "mesh_top_mm": 22.44945913796387,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 22.2,
+            "model_layers": 111,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "folding-stem_1",
+            "object_id": "388",
+            "mesh_bottom_mm": 5.07006845396063e-08,
+            "mesh_top_mm": 15.379396489299317,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 15.2,
+            "model_layers": 76,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "grip_1",
+            "object_id": "389",
+            "mesh_bottom_mm": 5.463256869120414e-08,
+            "mesh_top_mm": 9.300000245367432,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 9.4,
+            "model_layers": 47,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "collar_1",
+            "object_id": "390",
+            "mesh_bottom_mm": 0.0,
+            "mesh_top_mm": 2.5,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.4,
+            "model_layers": 12,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "power-cap_1",
+            "object_id": "391",
+            "mesh_bottom_mm": -2.2604373928203358e-10,
+            "mesh_top_mm": 1.3200000522260438,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 1.4,
+            "model_layers": 7,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "grip-screw-keeper_1",
+            "object_id": "392",
+            "mesh_bottom_mm": 3.1069946615502886e-10,
+            "mesh_top_mm": 1.5900000336893005,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 1.6,
+            "model_layers": 8,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "receiver-nut-keeper_1",
+            "object_id": "393",
+            "mesh_bottom_mm": 3.4465025278151984e-10,
+            "mesh_top_mm": 0.8299999836553498,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 0.8,
+            "model_layers": 4,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "key-board-retainer-west_1",
+            "object_id": "394",
+            "mesh_bottom_mm": 4.9041748440004085e-09,
+            "mesh_top_mm": 7.469999795095825,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 7.4,
+            "model_layers": 37,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 2,
+            "name": "battery-wire-bridge_1",
+            "object_id": "395",
+            "mesh_bottom_mm": -1.8530272871686293e-09,
+            "mesh_top_mm": 3.3299999218530276,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 3.4,
+            "model_layers": 17,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 3,
+            "name": "rod-grip_1",
+            "object_id": "396",
+            "mesh_bottom_mm": 5.1757808705588104e-08,
+            "mesh_top_mm": 130.39999394824218,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 130.4,
+            "model_layers": 652,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 4,
+            "name": "status-charge-guide_1",
+            "object_id": "397",
+            "mesh_bottom_mm": 1.0965322871925309e-07,
+            "mesh_top_mm": 1.1267747783467712,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 1.2,
+            "model_layers": 6,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 4,
+            "name": "status-usb-guide_1",
+            "object_id": "398",
+            "mesh_bottom_mm": 1.0976278730367994e-07,
+            "mesh_top_mm": 1.2000000382372136,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 1.2,
+            "model_layers": 6,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 4,
+            "name": "status-power-guide_1",
+            "object_id": "399",
+            "mesh_bottom_mm": 1.1010061484739708e-07,
+            "mesh_top_mm": 1.128180017899382,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 1.2,
+            "model_layers": 6,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 5,
+            "name": "usb-c-shield-mask_1",
+            "object_id": "400",
+            "mesh_bottom_mm": 9.476837448119113e-08,
+            "mesh_top_mm": 0.5100000852316313,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 0.6,
+            "model_layers": 3,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 5,
+            "name": "service-cover_1",
+            "object_id": "401",
+            "mesh_bottom_mm": -4.63256988325611e-10,
+            "mesh_top_mm": 4.519999980463257,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 4.6,
+            "model_layers": 23,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 6,
+            "name": "PKCELL-max-body-with-wire-sockets_1",
+            "object_id": "402",
+            "mesh_bottom_mm": 4.632568550988481e-09,
+            "mesh_top_mm": 5.300000195367431,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 5.4,
+            "model_layers": 27,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 6,
+            "name": "Adafruit-258-CAD-with-PCM-and-stubs_1",
+            "object_id": "403",
+            "mesh_bottom_mm": 0.0,
+            "mesh_top_mm": 63.0,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 63.0,
+            "model_layers": 315,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A1 display and controller",
+            "object_id": "1701",
+            "mesh_bottom_mm": 7.34862837248329e-10,
+            "mesh_top_mm": 13.399999619265136,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 13.4,
+            "model_layers": 67,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A2 reel sensor",
+            "object_id": "1702",
+            "mesh_bottom_mm": -4.9041748440004085e-09,
+            "mesh_top_mm": 4.530000204904175,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 4.6,
+            "model_layers": 23,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A3 haptic board",
+            "object_id": "1703",
+            "mesh_bottom_mm": -4.4409178556747975e-09,
+            "mesh_top_mm": 9.760000224440919,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 9.8,
+            "model_layers": 49,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A4 integration board",
+            "object_id": "1704",
+            "mesh_bottom_mm": 4.305114487124229e-09,
+            "mesh_top_mm": 2.029999975694885,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.0,
+            "model_layers": 10,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A5 USB power board",
+            "object_id": "1705",
+            "mesh_bottom_mm": 4.76837147544984e-09,
+            "mesh_top_mm": 2.3849999952316283,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.4,
+            "model_layers": 12,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "Top power switch board",
+            "object_id": "1706",
+            "mesh_bottom_mm": 4.632568550988481e-09,
+            "mesh_top_mm": 5.300000195367431,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 5.4,
+            "model_layers": 27,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "USB indicator LED board",
+            "object_id": "1707",
+            "mesh_bottom_mm": 9.53674250681047e-10,
+            "mesh_top_mm": 0.8519999990463256,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 0.8,
+            "model_layers": 4,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "USB lamp resistor board",
+            "object_id": "1708",
+            "mesh_bottom_mm": 3.8418579428878274e-09,
+            "mesh_top_mm": 1.0499999561581421,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 1.0,
+            "model_layers": 5,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A3 floor spacer 1",
+            "object_id": "1709",
+            "mesh_bottom_mm": -2.3162842754942403e-09,
+            "mesh_top_mm": 2.0999999023162843,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.0,
+            "model_layers": 10,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A3 floor spacer 2",
+            "object_id": "1710",
+            "mesh_bottom_mm": -2.3162842754942403e-09,
+            "mesh_top_mm": 2.0999999023162843,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.0,
+            "model_layers": 10,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A4 display spacer 1",
+            "object_id": "1711",
+            "mesh_bottom_mm": 2.9153441882812103e-09,
+            "mesh_top_mm": 2.464999917084656,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.4,
+            "model_layers": 12,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A4 display spacer 2",
+            "object_id": "1712",
+            "mesh_bottom_mm": 2.9153441882812103e-09,
+            "mesh_top_mm": 2.464999917084656,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.4,
+            "model_layers": 12,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A4 display spacer 3",
+            "object_id": "1713",
+            "mesh_bottom_mm": 2.9153441882812103e-09,
+            "mesh_top_mm": 2.464999917084656,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.4,
+            "model_layers": 12,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A5 display spacer 1",
+            "object_id": "1714",
+            "mesh_bottom_mm": -2.9153441882812103e-09,
+            "mesh_top_mm": 3.160000082915344,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 3.2,
+            "model_layers": 16,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A5 display spacer 2",
+            "object_id": "1715",
+            "mesh_bottom_mm": -2.9153441882812103e-09,
+            "mesh_top_mm": 3.160000082915344,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 3.2,
+            "model_layers": 16,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A5 display spacer 3",
+            "object_id": "1716",
+            "mesh_bottom_mm": -2.9153441882812103e-09,
+            "mesh_top_mm": 3.160000082915344,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 3.2,
+            "model_layers": 16,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          }
+        ],
+        "features": [],
+        "scope": "digital planned model paths only, not physical print acceptance"
+      },
+      "plate_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "plate7_grams": 26.83039093017578,
+      "plate7_seconds": 3916.75830078125
+    },
+    "reopen": {
+      "native_report_sha256": "692ef5acc8c678ae99b3ba70b4947420ae600fe8876d10dd52c0512838788b35",
+      "checks": {
+        "status": "pass",
+        "inputs": {
+          "sliced_3mf_sha256": "ba9587b0dd78d9876f3e70a731426125e5c608898967d575d43457684910e2bb",
+          "native_report_sha256": "692ef5acc8c678ae99b3ba70b4947420ae600fe8876d10dd52c0512838788b35"
+        },
+        "warnings": [],
+        "objects": [
+          {
+            "plate": 7,
+            "name": "A1 display and controller",
+            "object_id": "1701",
+            "mesh_bottom_mm": 7.34862837248329e-10,
+            "mesh_top_mm": 13.399999619265136,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 13.4,
+            "model_layers": 67,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A2 reel sensor",
+            "object_id": "1702",
+            "mesh_bottom_mm": -4.9041748440004085e-09,
+            "mesh_top_mm": 4.530000204904175,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 4.6,
+            "model_layers": 23,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A3 haptic board",
+            "object_id": "1703",
+            "mesh_bottom_mm": -4.4409178556747975e-09,
+            "mesh_top_mm": 9.760000224440919,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 9.8,
+            "model_layers": 49,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A4 integration board",
+            "object_id": "1704",
+            "mesh_bottom_mm": 4.305114487124229e-09,
+            "mesh_top_mm": 2.029999975694885,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.0,
+            "model_layers": 10,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A5 USB power board",
+            "object_id": "1705",
+            "mesh_bottom_mm": 4.76837147544984e-09,
+            "mesh_top_mm": 2.3849999952316283,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.4,
+            "model_layers": 12,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "Top power switch board",
+            "object_id": "1706",
+            "mesh_bottom_mm": 4.632568550988481e-09,
+            "mesh_top_mm": 5.300000195367431,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 5.4,
+            "model_layers": 27,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "USB indicator LED board",
+            "object_id": "1707",
+            "mesh_bottom_mm": 9.53674250681047e-10,
+            "mesh_top_mm": 0.8519999990463256,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 0.8,
+            "model_layers": 4,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "USB lamp resistor board",
+            "object_id": "1708",
+            "mesh_bottom_mm": 3.8418579428878274e-09,
+            "mesh_top_mm": 1.0499999561581421,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 1.0,
+            "model_layers": 5,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A3 floor spacer 1",
+            "object_id": "1709",
+            "mesh_bottom_mm": -2.3162842754942403e-09,
+            "mesh_top_mm": 2.0999999023162843,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.0,
+            "model_layers": 10,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A3 floor spacer 2",
+            "object_id": "1710",
+            "mesh_bottom_mm": -2.3162842754942403e-09,
+            "mesh_top_mm": 2.0999999023162843,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.0,
+            "model_layers": 10,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A4 display spacer 1",
+            "object_id": "1711",
+            "mesh_bottom_mm": 2.9153441882812103e-09,
+            "mesh_top_mm": 2.464999917084656,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.4,
+            "model_layers": 12,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A4 display spacer 2",
+            "object_id": "1712",
+            "mesh_bottom_mm": 2.9153441882812103e-09,
+            "mesh_top_mm": 2.464999917084656,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.4,
+            "model_layers": 12,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A4 display spacer 3",
+            "object_id": "1713",
+            "mesh_bottom_mm": 2.9153441882812103e-09,
+            "mesh_top_mm": 2.464999917084656,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 2.4,
+            "model_layers": 12,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A5 display spacer 1",
+            "object_id": "1714",
+            "mesh_bottom_mm": -2.9153441882812103e-09,
+            "mesh_top_mm": 3.160000082915344,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 3.2,
+            "model_layers": 16,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A5 display spacer 2",
+            "object_id": "1715",
+            "mesh_bottom_mm": -2.9153441882812103e-09,
+            "mesh_top_mm": 3.160000082915344,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 3.2,
+            "model_layers": 16,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          },
+          {
+            "plate": 7,
+            "name": "A5 display spacer 3",
+            "object_id": "1716",
+            "mesh_bottom_mm": -2.9153441882812103e-09,
+            "mesh_top_mm": 3.160000082915344,
+            "model_bottom_mm": 0.0,
+            "model_top_mm": 3.2,
+            "model_layers": 16,
+            "bottom_tolerance_mm": 0.27,
+            "top_tolerance_mm": 0.27,
+            "status": "pass"
+          }
+        ],
+        "features": [],
+        "scope": "digital planned model paths only, not physical print acceptance"
+      },
+      "plate_ids": [
+        7
+      ],
+      "plate7_grams": 26.83039093017578,
+      "plate7_seconds": 3916.759033203125
+    }
+  },
+  "plate7_paths": {
+    "1716": {
+      "model_mm3": 25.518,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 7.222,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 16,
+        "components": 16,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1715": {
+      "model_mm3": 25.518,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 7.222,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 16,
+        "components": 16,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1714": {
+      "model_mm3": 25.518,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 7.222,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 16,
+        "components": 16,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1707": {
+      "model_mm3": 8.248,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 12.973,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 4,
+        "components": 4,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1708": {
+      "model_mm3": 3.886,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 6.331,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 5,
+        "components": 5,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1705": {
+      "model_mm3": 334.304,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 349.435,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 12,
+        "components": 79,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1703": {
+      "model_mm3": 1167.012,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 373.322,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 49,
+        "components": 62,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1702": {
+      "model_mm3": 834.846,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 399.368,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 23,
+        "components": 84,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1704": {
+      "model_mm3": 274.224,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 287.248,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 10,
+        "components": 36,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1706": {
+      "model_mm3": 242.121,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 103.153,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 27,
+        "components": 27,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1713": {
+      "model_mm3": 19.054,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 7.222,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 12,
+        "components": 12,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1712": {
+      "model_mm3": 19.054,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 7.222,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 12,
+        "components": 12,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1711": {
+      "model_mm3": 19.054,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 7.222,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 12,
+        "components": 12,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1710": {
+      "model_mm3": 65.567,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 31.522,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 10,
+        "components": 10,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1709": {
+      "model_mm3": 65.567,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 31.522,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 10,
+        "components": 10,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    },
+    "1701": {
+      "model_mm3": 17732.909,
+      "support_mm3": 0.0,
+      "brim_mm3": 0.0,
+      "support_layers": 0,
+      "first_model_contact_mm2": 5558.293,
+      "first_model_contact_regions": 1,
+      "model_component_backing": {
+        "grid_mm": 0.1,
+        "layers": 67,
+        "components": 407,
+        "refined_layers": [],
+        "fully_unbacked_components": []
+      }
+    }
+  },
+  "landmarks": [
+    {
+      "part": "USB-PCB1",
+      "feature": "USB-D1",
+      "z_mm": 0.8,
+      "extrusion_length_mm": 3.052
+    },
+    {
+      "part": "USB-PCB2",
+      "feature": "USB-R1",
+      "z_mm": 0.8,
+      "extrusion_length_mm": 3.096
+    },
+    {
+      "part": "A3-haptic",
+      "feature": "J1 outer molded-body envelope",
+      "z_mm": 5.6,
+      "extrusion_length_mm": 172.505
+    },
+    {
+      "part": "A2-sensor",
+      "feature": "socket-1",
+      "z_mm": 3.0,
+      "extrusion_length_mm": 63.89
+    },
+    {
+      "part": "A2-sensor",
+      "feature": "socket-2",
+      "z_mm": 3.0,
+      "extrusion_length_mm": 63.89
+    },
+    {
+      "part": "A2-sensor",
+      "feature": "AS5600-body",
+      "z_mm": 2.4,
+      "extrusion_length_mm": 47.764
+    },
+    {
+      "part": "KEY-switch",
+      "feature": "switch housing",
+      "z_mm": 2.6,
+      "extrusion_length_mm": 94.693
+    },
+    {
+      "part": "KEY-switch",
+      "feature": "plunger",
+      "z_mm": 4.8,
+      "extrusion_length_mm": 30.571
+    },
+    {
+      "part": "KEY-switch",
+      "feature": "upper rim lands",
+      "z_mm": 4.6,
+      "extrusion_length_mm": 87.016
+    },
+    {
+      "part": "A1-display",
+      "feature": "A1-J7",
+      "z_mm": 9.2,
+      "extrusion_length_mm": 98.917
+    },
+    {
+      "part": "A1-display",
+      "feature": "A1-J8",
+      "z_mm": 10.0,
+      "extrusion_length_mm": 495.608
+    },
+    {
+      "part": "A1-display",
+      "feature": "A1-J9",
+      "z_mm": 9.2,
+      "extrusion_length_mm": 98.99
+    },
+    {
+      "part": "A1-display",
+      "feature": "A1-k3",
+      "z_mm": 8.2,
+      "extrusion_length_mm": 40.424
+    },
+    {
+      "part": "A1-display",
+      "feature": "A1-reset",
+      "z_mm": 8.2,
+      "extrusion_length_mm": 40.424
+    },
+    {
+      "part": "A1-display",
+      "feature": "A1-boot",
+      "z_mm": 8.2,
+      "extrusion_length_mm": 40.424
+    },
+    {
+      "part": "A1-display",
+      "feature": "USB-C",
+      "z_mm": 8.8,
+      "extrusion_length_mm": 96.04
+    }
+  ],
+  "mounting_hole_paths": [
+    {
+      "part": "A2-sensor",
+      "center_gcode_mm": [
+        153.84,
+        170.35
+      ],
+      "nominal_diameter_mm": 2.5,
+      "layers": 7,
+      "minimum_bead_clear_radius_mm": 1.2194
+    },
+    {
+      "part": "A2-sensor",
+      "center_gcode_mm": [
+        174.16,
+        170.35
+      ],
+      "nominal_diameter_mm": 2.5,
+      "layers": 7,
+      "minimum_bead_clear_radius_mm": 1.2198
+    },
+    {
+      "part": "A2-sensor",
+      "center_gcode_mm": [
+        153.84,
+        157.65
+      ],
+      "nominal_diameter_mm": 2.5,
+      "layers": 7,
+      "minimum_bead_clear_radius_mm": 1.2185
+    },
+    {
+      "part": "A2-sensor",
+      "center_gcode_mm": [
+        174.16,
+        157.65
+      ],
+      "nominal_diameter_mm": 2.5,
+      "layers": 7,
+      "minimum_bead_clear_radius_mm": 1.221
+    },
+    {
+      "part": "A1-display",
+      "center_gcode_mm": [
+        47.0,
+        172.25
+      ],
+      "nominal_diameter_mm": 2.0,
+      "layers": 27,
+      "minimum_bead_clear_radius_mm": 0.966
+    },
+    {
+      "part": "A1-display",
+      "center_gcode_mm": [
+        119.0,
+        172.25
+      ],
+      "nominal_diameter_mm": 2.0,
+      "layers": 27,
+      "minimum_bead_clear_radius_mm": 0.9633
+    },
+    {
+      "part": "A1-display",
+      "center_gcode_mm": [
+        47.0,
+        123.75
+      ],
+      "nominal_diameter_mm": 2.0,
+      "layers": 27,
+      "minimum_bead_clear_radius_mm": 0.9668
+    },
+    {
+      "part": "A1-display",
+      "center_gcode_mm": [
+        119.0,
+        123.75
+      ],
+      "nominal_diameter_mm": 2.0,
+      "layers": 27,
+      "minimum_bead_clear_radius_mm": 0.9633
+    }
+  ]
+}

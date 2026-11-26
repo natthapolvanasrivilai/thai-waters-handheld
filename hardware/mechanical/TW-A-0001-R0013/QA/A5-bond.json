@@ -1,0 +1,58 @@
+{
+  "A5_sha256": "1e76d61bb2ac700d589846ba1460b9ffa9345a9a68765cc5820d9dfca9098a96",
+  "original_bond_sha256": "81da646d1b45644048a43df48d30719528685e596d982f8b01f1074fca49bd16",
+  "fitted_bond_sha256": "51f946cc190fee94184fe11b4e63eeadbe14f148099da74322a627ab8a69248f",
+  "pad_results": [
+    {
+      "center_mm": [
+        17.5,
+        16.5,
+        17.924999999999997
+      ],
+      "copper_volume_in_original_bond_mm3": 0.005336
+    },
+    {
+      "center_mm": [
+        17.5,
+        16.5,
+        20.875
+      ],
+      "copper_volume_in_original_bond_mm3": 0.0
+    },
+    {
+      "center_mm": [
+        28.5,
+        14.099999999999998,
+        17.924999999999997
+      ],
+      "copper_volume_in_original_bond_mm3": 0.046888
+    },
+    {
+      "center_mm": [
+        28.5,
+        14.1,
+        20.875
+      ],
+      "copper_volume_in_original_bond_mm3": 0.0
+    },
+    {
+      "center_mm": [
+        32.5,
+        17.299999999999997,
+        17.924999999999997
+      ],
+      "copper_volume_in_original_bond_mm3": 0.03959
+    },
+    {
+      "center_mm": [
+        32.5,
+        17.299999999999997,
+        20.875
+      ],
+      "copper_volume_in_original_bond_mm3": 0.0
+    }
+  ],
+  "nominal_bond_mm": 0.25,
+  "max_back_copper_over_plane_mm": 0.04,
+  "scope": "Conformal insulating adhesive against the back-copper relief. Physical bond thickness, solder mask, cured adhesion and shock remain unmeasured."
+}

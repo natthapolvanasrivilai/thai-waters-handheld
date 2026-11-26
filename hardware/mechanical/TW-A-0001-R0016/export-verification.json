@@ -1,0 +1,23 @@
+{
+  "source_assembly": "TW-A-0001-R0015",
+  "source_step_sha256": "7837fd124ab9696c2dcd6317fa167b7d2dac87e24697480c391c20eedc155432",
+  "installed_step_components": 154,
+  "changed_member": "Housing",
+  "unchanged_installed_members": 153,
+  "new_housing_material_against_overlapping_component_boxes_mm3": {
+    "w30": 0.0,
+    "USB-D1": 0.0,
+    "USB-PCB1": 0.0,
+    "USB-W4B-Cu": 0.0,
+    "USB-W4B": 0.0,
+    "USB-W4C-Cu": 0.0,
+    "USB-W4C": 0.0
+  },
+  "step_sha256": "b0747b94259ffa3e3f3ba1794112cf0d99bce4f0d2d7b7db3dd7b04f8a93c2f1",
+  "packed_step_sha256": "fafd18a91bcabbf833a14f7dfd3bf9ca96c31befb487a64eec86c0ec746bd311",
+  "max_bounds_delta_mm": 0.0002,
+  "max_roundtrip_absolute_volume_delta_mm3": 0.00029,
+  "local_dressed_step": "TW-A-0001-R0016-dressed.step",
+  "local_archive": "TW-A-0001-R0016-dressed.step.gz",
+  "sharing": "Full supplier assembly retained locally."
+}

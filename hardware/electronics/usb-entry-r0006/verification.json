@@ -1,0 +1,13 @@
+{
+  "engine_sha256": "54068911555d46067ff2bdfcd0cf4b1afd3c1330be0586f93911df0a6af88e7c",
+  "board_sha256": "bff8e08cf1429418861939b073c542ac465bc38efb9d9e73db9c455146d009a1",
+  "circuit_cases": 65,
+  "measurements": 189,
+  "statuses": {
+    "PASS": 175,
+    "RECORD": 5,
+    "CONTROL_FAIL": 7,
+    "OPEN_FAIL": 2
+  },
+  "archive_sha256": "8ef78fb74384283f55a5c13c274c714c5f6e543b213da54e01d2c154df736237"
+}

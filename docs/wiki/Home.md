@@ -1,14 +1,16 @@
 # Thai Waters product wiki
 
-[Hardware closure and playtest issues](../../quality/hardware-gate.md) · [Open the private tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
+[**Current project status and next fit check**](Current-status.md) · [Hardware review PR #98](https://github.com/natthapolvanasrivilai/thai-waters-handheld/pull/98) · [Seated connector and USB review](../../quality/seated-connector-review.md)
 
-[Handbook contents](Home.md) · [Repository home](../../README.md) · [Interactive handbook download](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
+[R0012 service review and R20 print trial](../../quality/hardware-review-2026-11-23.md) · [Product tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
 
-This handbook follows a unit from a cast on the simulator through component selection, enclosure fit, programming, factory acceptance and sale. Start with the activity below, or [download the interactive handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html). Open the downloaded HTML in a browser. The playable game, 3D meshes, circuit traces and costing data are embedded. A local copy is also available at [docs/index.html](../index.html) in your checkout.
+[Handbook contents](Home.md) · [Repository home](../../README.md) · [Download the live handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Thai-Waters-handbook.html)
+
+Open the downloaded handbook in a browser or open [docs/index.html](../index.html) from a checkout. The **Current status** tab checks the GitHub project each time. It shows the selected revision, physical observations, open checks and engineering downloads. Links to source files use the displayed commit. A failed check shows the saved release record and its review date. Choose **PCB assembly** to inspect the rectangular PCB mount offline. [Download the standalone PCB mount review](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/case-board-r0002-guide-2/Mount-review.html). The archived tabs preserve the R0011 simulator, 3D meshes, traces and costing. [Original R0011 handbook](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0011-hardware-review-1/Thai-Waters-handbook.html)
 
 [Mechanical design and fit history](Hardware-and-3D.md) · [Known one-unit costs and selling-price research](BOM-and-business.md)
 
-**Next inert fit print · TW-A-0001-R0011.** The rod receiver prints directly on the bed. The lower service opening closes with a removable cover. Read the [print setup](../../hardware/mechanical/TW-A-0001-R0011/PRINT-GUIDE.md), [hardware gate](../../quality/hardware-gate.md) and [electrical verification](Electrical-verification.md) before moving to a populated assembly.
+**Historical R0011 inert fit print.** The rod receiver prints directly on the bed and a removable cover closes the lower service opening. The later R19b X1C trial was withdrawn after support-removal failures. [Current first-article record](../../quality/hardware-review-2026-11-23.md) · [Historical R0011 print setup](../../hardware/mechanical/TW-A-0001-R0011/PRINT-GUIDE.md)
 
 [Current software release, playtest and hardware milestone](Software-and-tests.md#current-release)
 

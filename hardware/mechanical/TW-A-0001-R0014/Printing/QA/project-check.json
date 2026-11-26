@@ -1,0 +1,2166 @@
+{
+  "project": {
+    "parent_sha256": "e97c448f1dbbbbe49d49afe43a7d4f6c8b63d1ed3aaf768ee8efb73ced1df806",
+    "editable_project_sha256": "b8cfc8f26e83b67a921a41a9f0a6d779213486098d7de82f9b7936236d67407f",
+    "housing_stl_sha256": "7e719b8ec875275e80b865f8de49a7602a1fe6e3e34f5ffc4ff0a508bcefe4e2",
+    "native_faces": 86094,
+    "max_native_vertex_axis_error_mm": 5.000000413701855e-09,
+    "filament_presets": [
+      "PolyLite PETG @BBL X1C",
+      "Generic PETG",
+      "Generic TPU"
+    ],
+    "filament_colours": [
+      "#00AE42",
+      "#E0F1F5",
+      "#14161A"
+    ],
+    "instances": {
+      "1": {
+        "385": "housing-battery-bay_1"
+      },
+      "2": {
+        "386": "bezel_1",
+        "387": "rotor_1",
+        "388": "folding-stem_1",
+        "389": "grip_1",
+        "390": "collar_1",
+        "391": "power-cap_1",
+        "392": "grip-screw-keeper_1",
+        "393": "receiver-nut-keeper_1",
+        "394": "key-board-retainer-west_1",
+        "395": "battery-wire-bridge_1"
+      },
+      "3": {
+        "396": "rod-grip_1"
+      },
+      "4": {
+        "397": "status-charge-guide_1",
+        "398": "status-usb-guide_1",
+        "399": "status-power-guide_1"
+      },
+      "5": {
+        "400": "usb-c-shield-mask_1",
+        "401": "service-cover_1"
+      },
+      "6": {
+        "402": "PKCELL-max-body-with-wire-sockets_1",
+        "403": "Adafruit-258-CAD-with-PCM-and-stubs_1"
+      },
+      "7": {
+        "1701": "A1 display and controller",
+        "1702": "A2 reel sensor",
+        "1703": "A3 haptic board",
+        "1704": "A4 integration board",
+        "1705": "A5 USB power board",
+        "1706": "Top power switch board",
+        "1707": "USB indicator LED board",
+        "1708": "USB lamp resistor board",
+        "1711": "A4 display spacer 1",
+        "1712": "A4 display spacer 2",
+        "1713": "A4 display spacer 3",
+        "1714": "A5 display spacer 1",
+        "1715": "A5 display spacer 2",
+        "1716": "A5 display spacer 3"
+      }
+    },
+    "plates": [
+      {
+        "name": "01-housing-opaque-PETG",
+        "bed": "Supertack Plate",
+        "logical_filament_map": "1 1 1"
+      },
+      {
+        "name": "02-parts-opaque-PETG",
+        "bed": "Supertack Plate",
+        "logical_filament_map": "1 1 1"
+      },
+      {
+        "name": "03-rod-grip-opaque-PETG",
+        "bed": "Supertack Plate",
+        "logical_filament_map": "1 1 1"
+      },
+      {
+        "name": "04-clear-PETG-guides",
+        "bed": "Supertack Plate",
+        "logical_filament_map": "1 1 1"
+      },
+      {
+        "name": "05-external-feed-TPU - EXT spool",
+        "bed": "Textured PEI Plate",
+        "logical_filament_map": "1 1 1"
+      },
+      {
+        "name": "06-optional-inert-gauges",
+        "bed": "Supertack Plate",
+        "logical_filament_map": "1 1 1"
+      },
+      {
+        "name": "07 PCB fit gauges - R0014",
+        "bed": "Engineering Plate",
+        "logical_filament_map": "1 1 1"
+      }
+    ]
+  },
+  "plates": [
+    {
+      "id": 1,
+      "objects": 1,
+      "logical_filaments": [
+        {
+          "filament_id": "GFG60",
+          "id": 1,
+          "main_used_g": 53.92914962768555,
+          "total_used_g": 53.92914962768555
+        }
+      ],
+      "seconds": 7569.59326171875,
+      "warning": ""
+    },
+    {
+      "id": 2,
+      "objects": 10,
+      "logical_filaments": [
+        {
+          "filament_id": "GFG60",
+          "id": 1,
+          "main_used_g": 10.02474594116211,
+          "total_used_g": 10.024744987487793
+        }
+      ],
+      "seconds": 2859.437255859375,
+      "warning": ""
+    },
+    {
+      "id": 3,
+      "objects": 1,
+      "logical_filaments": [
+        {
+          "filament_id": "GFG60",
+          "id": 1,
+          "main_used_g": 20.465892791748047,
+          "total_used_g": 20.465892791748047
+        }
+      ],
+      "seconds": 8540.5546875,
+      "warning": ""
+    },
+    {
+      "id": 4,
+      "objects": 3,
+      "logical_filaments": [
+        {
+          "filament_id": "GFG99",
+          "id": 2,
+          "main_used_g": 0.4455426037311554,
+          "total_used_g": 0.4455426037311554
+        }
+      ],
+      "seconds": 505.0126647949219,
+      "warning": ""
+    },
+    {
+      "id": 5,
+      "objects": 2,
+      "logical_filaments": [
+        {
+          "filament_id": "GFU99",
+          "id": 3,
+          "main_used_g": 0.8385363221168518,
+          "total_used_g": 0.8385363221168518
+        }
+      ],
+      "seconds": 788.2075805664062,
+      "warning": ""
+    },
+    {
+      "id": 6,
+      "objects": 2,
+      "logical_filaments": [
+        {
+          "filament_id": "GFG60",
+          "id": 1,
+          "main_used_g": 14.021005630493164,
+          "total_used_g": 14.021005630493164
+        }
+      ],
+      "seconds": 4585.2587890625,
+      "warning": ""
+    },
+    {
+      "id": 7,
+      "objects": 14,
+      "logical_filaments": [
+        {
+          "filament_id": "GFG60",
+          "id": 1,
+          "main_used_g": 26.66385269165039,
+          "total_used_g": 26.66385269165039
+        }
+      ],
+      "seconds": 3887.836669921875,
+      "warning": ""
+    }
+  ],
+  "runs": {
+    "all": {
+      "status": "pass",
+      "inputs": {
+        "sliced_3mf_sha256": "9e85ec1b69154d570b6454d7407e40d98ff76c39672d7275fe9946ce440a7ef8",
+        "native_report_sha256": "ce2d67c40b102211049e67c84caca1f07eb7e023bb98bb0e7d28c64a36cf0ac8",
+        "features_sha256": "3922fb06dfc10c879307244dca48c2a47e9ebe0da1682a0ac52e362a45319acb"
+      },
+      "warnings": [],
+      "objects": [
+        {
+          "plate": 1,
+          "name": "housing-battery-bay_1",
+          "object_id": "385",
+          "mesh_bottom_mm": -7.348631925196969e-09,
+          "mesh_top_mm": 31.000003807348634,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 31.0,
+          "model_layers": 155,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "bezel_1",
+          "object_id": "386",
+          "mesh_bottom_mm": -3.8418579428878274e-09,
+          "mesh_top_mm": 2.200000043841858,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 2.2,
+          "model_layers": 11,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "rotor_1",
+          "object_id": "387",
+          "mesh_bottom_mm": 6.20361362280164e-08,
+          "mesh_top_mm": 22.44945913796387,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 22.2,
+          "model_layers": 111,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "folding-stem_1",
+          "object_id": "388",
+          "mesh_bottom_mm": 5.07006845396063e-08,
+          "mesh_top_mm": 15.379396489299317,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 15.2,
+          "model_layers": 76,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "grip_1",
+          "object_id": "389",
+          "mesh_bottom_mm": 5.463256869120414e-08,
+          "mesh_top_mm": 9.300000245367432,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 9.4,
+          "model_layers": 47,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "collar_1",
+          "object_id": "390",
+          "mesh_bottom_mm": 0.0,
+          "mesh_top_mm": 2.5,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 2.4,
+          "model_layers": 12,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "power-cap_1",
+          "object_id": "391",
+          "mesh_bottom_mm": -2.2604373928203358e-10,
+          "mesh_top_mm": 1.3200000522260438,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 1.4,
+          "model_layers": 7,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "grip-screw-keeper_1",
+          "object_id": "392",
+          "mesh_bottom_mm": 3.1069946615502886e-10,
+          "mesh_top_mm": 1.5900000336893005,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 1.6,
+          "model_layers": 8,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "receiver-nut-keeper_1",
+          "object_id": "393",
+          "mesh_bottom_mm": 3.4465025278151984e-10,
+          "mesh_top_mm": 0.8299999836553498,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 0.8,
+          "model_layers": 4,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "key-board-retainer-west_1",
+          "object_id": "394",
+          "mesh_bottom_mm": 4.9041748440004085e-09,
+          "mesh_top_mm": 7.469999795095825,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 7.4,
+          "model_layers": 37,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 2,
+          "name": "battery-wire-bridge_1",
+          "object_id": "395",
+          "mesh_bottom_mm": -1.8530272871686293e-09,
+          "mesh_top_mm": 3.3299999218530276,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 3.4,
+          "model_layers": 17,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 3,
+          "name": "rod-grip_1",
+          "object_id": "396",
+          "mesh_bottom_mm": 5.1757808705588104e-08,
+          "mesh_top_mm": 130.39999394824218,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 130.4,
+          "model_layers": 652,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 4,
+          "name": "status-charge-guide_1",
+          "object_id": "397",
+          "mesh_bottom_mm": 1.0965322871925309e-07,
+          "mesh_top_mm": 1.1267747783467712,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 1.2,
+          "model_layers": 6,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 4,
+          "name": "status-usb-guide_1",
+          "object_id": "398",
+          "mesh_bottom_mm": 1.0976278730367994e-07,
+          "mesh_top_mm": 1.2000000382372136,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 1.2,
+          "model_layers": 6,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 4,
+          "name": "status-power-guide_1",
+          "object_id": "399",
+          "mesh_bottom_mm": 1.1010061484739708e-07,
+          "mesh_top_mm": 1.128180017899382,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 1.2,
+          "model_layers": 6,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 5,
+          "name": "usb-c-shield-mask_1",
+          "object_id": "400",
+          "mesh_bottom_mm": 9.476837448119113e-08,
+          "mesh_top_mm": 0.5100000852316313,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 0.6,
+          "model_layers": 3,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 5,
+          "name": "service-cover_1",
+          "object_id": "401",
+          "mesh_bottom_mm": -4.63256988325611e-10,
+          "mesh_top_mm": 4.519999980463257,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 4.6,
+          "model_layers": 23,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 6,
+          "name": "PKCELL-max-body-with-wire-sockets_1",
+          "object_id": "402",
+          "mesh_bottom_mm": 4.632568550988481e-09,
+          "mesh_top_mm": 5.300000195367431,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 5.4,
+          "model_layers": 27,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 6,
+          "name": "Adafruit-258-CAD-with-PCM-and-stubs_1",
+          "object_id": "403",
+          "mesh_bottom_mm": 0.0,
+          "mesh_top_mm": 63.0,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 63.0,
+          "model_layers": 315,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A1 display and controller",
+          "object_id": "1701",
+          "mesh_bottom_mm": 7.34862837248329e-10,
+          "mesh_top_mm": 13.399999619265136,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 13.4,
+          "model_layers": 67,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A2 reel sensor",
+          "object_id": "1702",
+          "mesh_bottom_mm": -4.9041748440004085e-09,
+          "mesh_top_mm": 4.530000204904175,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 4.6,
+          "model_layers": 23,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A3 haptic board",
+          "object_id": "1703",
+          "mesh_bottom_mm": -4.4409178556747975e-09,
+          "mesh_top_mm": 9.760000224440919,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 9.8,
+          "model_layers": 49,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A4 integration board",
+          "object_id": "1704",
+          "mesh_bottom_mm": 4.305114487124229e-09,
+          "mesh_top_mm": 2.029999975694885,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 2.0,
+          "model_layers": 10,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A5 USB power board",
+          "object_id": "1705",
+          "mesh_bottom_mm": 4.76837147544984e-09,
+          "mesh_top_mm": 2.3849999952316283,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 2.4,
+          "model_layers": 12,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "Top power switch board",
+          "object_id": "1706",
+          "mesh_bottom_mm": 4.632568550988481e-09,
+          "mesh_top_mm": 5.300000195367431,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 5.4,
+          "model_layers": 27,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "USB indicator LED board",
+          "object_id": "1707",
+          "mesh_bottom_mm": 9.53674250681047e-10,
+          "mesh_top_mm": 0.8519999990463256,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 0.8,
+          "model_layers": 4,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "USB lamp resistor board",
+          "object_id": "1708",
+          "mesh_bottom_mm": 3.8418579428878274e-09,
+          "mesh_top_mm": 1.0499999561581421,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 1.0,
+          "model_layers": 5,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A4 display spacer 1",
+          "object_id": "1711",
+          "mesh_bottom_mm": 2.9153441882812103e-09,
+          "mesh_top_mm": 2.464999917084656,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 2.4,
+          "model_layers": 12,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A4 display spacer 2",
+          "object_id": "1712",
+          "mesh_bottom_mm": 2.9153441882812103e-09,
+          "mesh_top_mm": 2.464999917084656,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 2.4,
+          "model_layers": 12,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A4 display spacer 3",
+          "object_id": "1713",
+          "mesh_bottom_mm": 2.9153441882812103e-09,
+          "mesh_top_mm": 2.464999917084656,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 2.4,
+          "model_layers": 12,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A5 display spacer 1",
+          "object_id": "1714",
+          "mesh_bottom_mm": -2.9153441882812103e-09,
+          "mesh_top_mm": 3.160000082915344,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 3.2,
+          "model_layers": 16,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A5 display spacer 2",
+          "object_id": "1715",
+          "mesh_bottom_mm": -2.9153441882812103e-09,
+          "mesh_top_mm": 3.160000082915344,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 3.2,
+          "model_layers": 16,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        },
+        {
+          "plate": 7,
+          "name": "A5 display spacer 3",
+          "object_id": "1716",
+          "mesh_bottom_mm": -2.9153441882812103e-09,
+          "mesh_top_mm": 3.160000082915344,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 3.2,
+          "model_layers": 16,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        }
+      ],
+      "features": [
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "west rail south cap",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 5.8,
+              "path_mm": 12.613862,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.0,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.2,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.4,
+              "path_mm": 6.592,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.6,
+              "path_mm": 15.132,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.8,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.0,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.2,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.4,
+              "path_mm": 15.468,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.6,
+              "path_mm": 14.774,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 13.759573,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "west rail west shoulder",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.6,
+              "path_mm": 16.8,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 16.8,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "west rail east shoulder",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.6,
+              "path_mm": 16.8,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 16.8,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "west rail groove floor",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.4,
+              "path_mm": 15.422666,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "east rail south cap",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 5.8,
+              "path_mm": 12.617187,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.0,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.2,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.4,
+              "path_mm": 6.592,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.6,
+              "path_mm": 15.132,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.8,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.0,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.2,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.4,
+              "path_mm": 15.467664,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.6,
+              "path_mm": 14.774,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 13.759573,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "east rail west shoulder",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.6,
+              "path_mm": 16.8,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 16.8,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "east rail east shoulder",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.6,
+              "path_mm": 16.8,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 16.8,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "east rail groove floor",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.4,
+              "path_mm": 15.423006,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        }
+      ],
+      "scope": "digital planned model paths only, not physical print acceptance",
+      "rail_footprints": {
+        "gcode_translation_from_installed_mm": [
+          124.86,
+          123.425,
+          3.200001004
+        ],
+        "board_support_area_sum_mm2": 0.0,
+        "board_model_above_seats_area_sum_mm2": 0,
+        "model_layers": [
+          5.8,
+          6.0,
+          6.2,
+          6.4,
+          6.6,
+          6.8,
+          7.0,
+          7.2,
+          7.4,
+          7.6,
+          7.8
+        ],
+        "rails": {
+          "west": [
+            {
+              "z": 5.8,
+              "model_area_mm2": 35.8909,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.46696,
+              "groove_core_model_area_mm2": 6.92696
+            },
+            {
+              "z": 6.0,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.7,
+              "two_perimeter_band_backed_percent": 99.96,
+              "largest_unbacked_gap_width_x_mm": 0.0776,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.2,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.4,
+              "model_area_mm2": 24.5913,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 2.20303,
+              "groove_core_model_area_mm2": 2.11303
+            },
+            {
+              "z": 6.6,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 68.4,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 1.346,
+              "longest_unbacked_centerline_segment_mm": 6.2176,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.8,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.0,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.2,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.4,
+              "model_area_mm2": 35.8953,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.99,
+              "two_perimeter_band_backed_percent": 99.99,
+              "largest_unbacked_gap_width_x_mm": 0.0508,
+              "longest_unbacked_centerline_segment_mm": 0.0292,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01937,
+              "groove_core_model_area_mm2": 6.92937
+            },
+            {
+              "z": 7.6,
+              "model_area_mm2": 26.3324,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.77,
+              "two_perimeter_band_backed_percent": 99.72,
+              "largest_unbacked_gap_width_x_mm": 0.258,
+              "longest_unbacked_centerline_segment_mm": 0.228,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.8,
+              "model_area_mm2": 26.2809,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.97,
+              "two_perimeter_band_backed_percent": 99.99,
+              "largest_unbacked_gap_width_x_mm": 0.0527,
+              "longest_unbacked_centerline_segment_mm": 0.0224,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            }
+          ],
+          "east": [
+            {
+              "z": 5.8,
+              "model_area_mm2": 35.891,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.46696,
+              "groove_core_model_area_mm2": 6.92696
+            },
+            {
+              "z": 6.0,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.7,
+              "two_perimeter_band_backed_percent": 99.96,
+              "largest_unbacked_gap_width_x_mm": 0.0776,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.2,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.4,
+              "model_area_mm2": 24.6026,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 2.09144,
+              "groove_core_model_area_mm2": 2.00144
+            },
+            {
+              "z": 6.6,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 68.43,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 1.346,
+              "longest_unbacked_centerline_segment_mm": 6.8656,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.8,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.0,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.2,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.4,
+              "model_area_mm2": 35.8954,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.99,
+              "two_perimeter_band_backed_percent": 99.99,
+              "largest_unbacked_gap_width_x_mm": 0.0508,
+              "longest_unbacked_centerline_segment_mm": 0.0286,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01937,
+              "groove_core_model_area_mm2": 6.92937
+            },
+            {
+              "z": 7.6,
+              "model_area_mm2": 26.3324,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.77,
+              "two_perimeter_band_backed_percent": 99.72,
+              "largest_unbacked_gap_width_x_mm": 0.257,
+              "longest_unbacked_centerline_segment_mm": 0.227,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.8,
+              "model_area_mm2": 26.2809,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.97,
+              "two_perimeter_band_backed_percent": 99.99,
+              "largest_unbacked_gap_width_x_mm": 0.0527,
+              "longest_unbacked_centerline_segment_mm": 0.0217,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "reopen": {
+      "status": "pass",
+      "inputs": {
+        "sliced_3mf_sha256": "1961800a89b8f27da682ea3f0a3315111a212fe07155bcea5e6d1b64b43d34fc",
+        "native_report_sha256": "aa964610cc2520e6b298ff980f42c41a586ee383a6cc6fc0cf554925f1e8dfac",
+        "features_sha256": "3922fb06dfc10c879307244dca48c2a47e9ebe0da1682a0ac52e362a45319acb"
+      },
+      "warnings": [],
+      "objects": [
+        {
+          "plate": 1,
+          "name": "housing-battery-bay_1",
+          "object_id": "385",
+          "mesh_bottom_mm": -7.348631925196969e-09,
+          "mesh_top_mm": 31.000003807348634,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 31.0,
+          "model_layers": 155,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        }
+      ],
+      "features": [
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "west rail south cap",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 5.8,
+              "path_mm": 12.613862,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.0,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.2,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.4,
+              "path_mm": 6.592,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.6,
+              "path_mm": 15.132,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.8,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.0,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.2,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.4,
+              "path_mm": 15.468,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.6,
+              "path_mm": 14.774,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 13.759573,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "west rail west shoulder",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.6,
+              "path_mm": 16.8,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 16.8,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "west rail east shoulder",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.6,
+              "path_mm": 16.8,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 16.8,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "west rail groove floor",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.4,
+              "path_mm": 15.422666,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "east rail south cap",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 5.8,
+              "path_mm": 12.617187,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.0,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.2,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.4,
+              "path_mm": 6.592,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.6,
+              "path_mm": 15.132,
+              "status": "pass"
+            },
+            {
+              "z_mm": 6.8,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.0,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.2,
+              "path_mm": 15.252,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.4,
+              "path_mm": 15.467664,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.6,
+              "path_mm": 14.774,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 13.759573,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "east rail west shoulder",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.6,
+              "path_mm": 16.8,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 16.8,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "east rail east shoulder",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.6,
+              "path_mm": 16.8,
+              "status": "pass"
+            },
+            {
+              "z_mm": 7.8,
+              "path_mm": 16.8,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        },
+        {
+          "plate": 1,
+          "object_id": "385",
+          "name": "east rail groove floor",
+          "reference": "Installed A3 rail and channel dimensions registered through the saved receiver-down P0001 pose",
+          "minimum_path_mm": 1.0,
+          "layers": [
+            {
+              "z_mm": 7.4,
+              "path_mm": 15.423006,
+              "status": "pass"
+            }
+          ],
+          "status": "pass"
+        }
+      ],
+      "scope": "digital planned model paths only, not physical print acceptance",
+      "rail_footprints": {
+        "gcode_translation_from_installed_mm": [
+          124.86,
+          123.425,
+          3.200001004
+        ],
+        "board_support_area_sum_mm2": 0.0,
+        "board_model_above_seats_area_sum_mm2": 0,
+        "model_layers": [
+          5.8,
+          6.0,
+          6.2,
+          6.4,
+          6.6,
+          6.8,
+          7.0,
+          7.2,
+          7.4,
+          7.6,
+          7.8
+        ],
+        "rails": {
+          "west": [
+            {
+              "z": 5.8,
+              "model_area_mm2": 35.8909,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.46696,
+              "groove_core_model_area_mm2": 6.92696
+            },
+            {
+              "z": 6.0,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.7,
+              "two_perimeter_band_backed_percent": 99.96,
+              "largest_unbacked_gap_width_x_mm": 0.0776,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.2,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.4,
+              "model_area_mm2": 24.5913,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 2.20303,
+              "groove_core_model_area_mm2": 2.11303
+            },
+            {
+              "z": 6.6,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 68.4,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 1.346,
+              "longest_unbacked_centerline_segment_mm": 6.2176,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.8,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.0,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.2,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.4,
+              "model_area_mm2": 35.8953,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.99,
+              "two_perimeter_band_backed_percent": 99.99,
+              "largest_unbacked_gap_width_x_mm": 0.0508,
+              "longest_unbacked_centerline_segment_mm": 0.0292,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01937,
+              "groove_core_model_area_mm2": 6.92937
+            },
+            {
+              "z": 7.6,
+              "model_area_mm2": 26.3324,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.77,
+              "two_perimeter_band_backed_percent": 99.72,
+              "largest_unbacked_gap_width_x_mm": 0.258,
+              "longest_unbacked_centerline_segment_mm": 0.228,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.8,
+              "model_area_mm2": 26.2809,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.97,
+              "two_perimeter_band_backed_percent": 99.99,
+              "largest_unbacked_gap_width_x_mm": 0.0527,
+              "longest_unbacked_centerline_segment_mm": 0.0224,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            }
+          ],
+          "east": [
+            {
+              "z": 5.8,
+              "model_area_mm2": 35.891,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.46696,
+              "groove_core_model_area_mm2": 6.92696
+            },
+            {
+              "z": 6.0,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.7,
+              "two_perimeter_band_backed_percent": 99.96,
+              "largest_unbacked_gap_width_x_mm": 0.0776,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.2,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.4,
+              "model_area_mm2": 24.6026,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 2.09144,
+              "groove_core_model_area_mm2": 2.00144
+            },
+            {
+              "z": 6.6,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 68.43,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 1.346,
+              "longest_unbacked_centerline_segment_mm": 6.8656,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 6.8,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.0,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.2,
+              "model_area_mm2": 35.9526,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01959,
+              "groove_core_model_area_mm2": 6.92959
+            },
+            {
+              "z": 7.4,
+              "model_area_mm2": 35.8954,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.99,
+              "two_perimeter_band_backed_percent": 99.99,
+              "largest_unbacked_gap_width_x_mm": 0.0508,
+              "longest_unbacked_centerline_segment_mm": 0.0286,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.01937,
+              "groove_core_model_area_mm2": 6.92937
+            },
+            {
+              "z": 7.6,
+              "model_area_mm2": 26.3324,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.77,
+              "two_perimeter_band_backed_percent": 99.72,
+              "largest_unbacked_gap_width_x_mm": 0.257,
+              "longest_unbacked_centerline_segment_mm": 0.227,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.8,
+              "model_area_mm2": 26.2809,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 99.97,
+              "two_perimeter_band_backed_percent": 99.99,
+              "largest_unbacked_gap_width_x_mm": 0.0527,
+              "longest_unbacked_centerline_segment_mm": 0.0217,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "baseline": {
+      "status": "pass",
+      "inputs": {
+        "sliced_3mf_sha256": "979fc28ca300365550f8f8105cc2b0d7fcd890d84333bacf557f42748b2b5d03",
+        "native_report_sha256": "a207843fafe0e7b830b67870d38f4487c3b2040133adb7676288730b7a7194af"
+      },
+      "warnings": [],
+      "objects": [
+        {
+          "plate": 1,
+          "name": "housing-battery-bay_1",
+          "object_id": "385",
+          "mesh_bottom_mm": -7.348631925196969e-09,
+          "mesh_top_mm": 31.000003807348634,
+          "model_bottom_mm": 0.0,
+          "model_top_mm": 31.0,
+          "model_layers": 155,
+          "bottom_tolerance_mm": 0.27,
+          "top_tolerance_mm": 0.27,
+          "status": "pass"
+        }
+      ],
+      "features": [],
+      "scope": "digital planned model paths only, not physical print acceptance",
+      "rail_footprints": {
+        "gcode_translation_from_installed_mm": [
+          124.86,
+          123.425,
+          3.200001004
+        ],
+        "board_support_area_sum_mm2": 0.0,
+        "board_model_above_seats_area_sum_mm2": 0,
+        "model_layers": [
+          5.8,
+          6.0,
+          6.2,
+          6.4,
+          6.6,
+          6.8,
+          7.0,
+          7.2,
+          7.4,
+          7.6,
+          7.8
+        ],
+        "rails": {
+          "west": [
+            {
+              "z": 5.8,
+              "model_area_mm2": 36.0,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.47,
+              "groove_core_model_area_mm2": 6.93
+            },
+            {
+              "z": 6.0,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 6.2,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 6.4,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 6.6,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 6.8,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.0,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.2,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.4,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.6,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.8,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            }
+          ],
+          "east": [
+            {
+              "z": 5.8,
+              "model_area_mm2": 36.0,
+              "components": 1,
+              "components_with_model_backing": 1,
+              "model_backed_percent": 100.0,
+              "two_perimeter_band_backed_percent": 100.0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0.0,
+              "groove_through_mouth_model_mm2": 7.47,
+              "groove_core_model_area_mm2": 6.93
+            },
+            {
+              "z": 6.0,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 6.2,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 6.4,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 6.6,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 6.8,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.0,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.2,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.4,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.6,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            },
+            {
+              "z": 7.8,
+              "model_area_mm2": 0.0,
+              "components": 0,
+              "components_with_model_backing": 0,
+              "model_backed_percent": 0,
+              "two_perimeter_band_backed_percent": 0,
+              "largest_unbacked_gap_width_x_mm": 0,
+              "longest_unbacked_centerline_segment_mm": 0,
+              "support_area_mm2": 0,
+              "groove_through_mouth_model_mm2": 0.0,
+              "groove_core_model_area_mm2": 0.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "housing_path_context": {
+    "model_mm3": 32817.121,
+    "support_mm3": 9382.875,
+    "brim_mm3": 0.0,
+    "support_layers": 144,
+    "first_model_contact_mm2": 776.24,
+    "first_model_contact_regions": 1,
+    "model_component_backing": {
+      "grid_mm": 0.1,
+      "layers": 155,
+      "components": 706,
+      "refined_layers": [
+        {
+          "z": 14.2,
+          "raster_flag_count": 1,
+          "refined_component_count": 7
+        }
+      ],
+      "fully_unbacked_components": [
+        {
+          "z": 14.2,
+          "area_mm2": 11.87156,
+          "bbox": [
+            81.595,
+            120.49000000000001,
+            83.625,
+            126.36
+          ]
+        }
+      ]
+    },
+    "usb_end": {
+      "model_layer_top_mm": 14.2,
+      "model_bottom_mm": 14.0,
+      "support_layer_top_mm": 13.8,
+      "model_area_mm2": 11.8709,
+      "model_over_support_mm2": 5.6719,
+      "projected_overlap_pct": 47.78,
+      "shape_matches_R0013": true
+    }
+  },
+  "housing_elevated_components": 1
+}

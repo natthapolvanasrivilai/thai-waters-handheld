@@ -1,8 +1,12 @@
 # Hardware closure before gameplay development
 
-[Private issue tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1)
+**Current PLA test print.** TW-A-0003-R0009 includes the rectangular PCB and matching case, all enclosure plastics and the PCB and component mockups. The 27 objects occupy eight plates for PolyTerra PLA on the X1 Carbon with a 0.4 mm nozzle and SuperTack. Physical fit awaits printing. [PolyTerra PLA X1C project](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Thai-Waters-R0009-Complete-Fit-PolyTerra-SuperTack-X1C.3mf) · [PLA print sequence and checks](../hardware/mechanical/full-fit-r0009/README.md) · [Offline 3D assembly](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/download/r0009-complete-fit-1/Enclosure-fit-guide.html)
 
-**Production and powered-prototype approval are on hold.** The owner requested hardware and electrical closure before further gameplay development. The phone playtest and USB firmware remain at the published [0.9.4 baseline](https://github.com/natthapolvanasrivilai/thai-waters-handheld/releases/tag/firmware-v0.9.4).
+[R0016 USB1 entry and wired assembly limits](../hardware/mechanical/TW-A-0001-R0016/README.md) · [R0015 cap, board and keeper fit](../hardware/mechanical/TW-A-0001-R0015/README.md) · [R0014 integrated A3 supports and physical checks](../hardware/mechanical/TW-A-0001-R0014/README.md) · [R0013 seated service and USB power results](seated-connector-review.md)
+
+[Product issue tracker](https://github.com/natthapolvanasrivilai/thai-waters-handheld/issues/1) · [Latest hardware evidence and open physical checks](hardware-review-2026-11-23.md)
+
+**Production and powered-prototype approval are on hold.** The owner requested hardware closure. The [software build record](../docs/wiki/Software-and-tests.md#current-release) identifies the separately maintained playtest. The table below preserves the earlier hardware findings.
 
 | Hardware finding | Verification needed for closure |
 |---|---|

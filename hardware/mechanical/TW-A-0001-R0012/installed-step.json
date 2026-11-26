@@ -1,0 +1,1930 @@
+{
+  "component_count": 147,
+  "step_sha256": "9f91fe45a97a491455840506b69689d33e871b7ac336f5e64d5e03faf8719259",
+  "components": {
+    "Housing": {
+      "volume_mm3": 39660.26307,
+      "solids": 1,
+      "bounds_mm": [
+        -52.22,
+        58.5,
+        -34.55,
+        39.7,
+        -3.2,
+        27.8
+      ]
+    },
+    "Bezel": {
+      "volume_mm3": 4531.37253,
+      "solids": 1,
+      "bounds_mm": [
+        -49.36,
+        57.86,
+        -33.86,
+        33.86,
+        27.8,
+        30.0
+      ]
+    },
+    "Rotor": {
+      "volume_mm3": 2818.26951,
+      "solids": 1,
+      "bounds_mm": [
+        43.6,
+        57.5,
+        -12.75,
+        12.75,
+        2.05,
+        27.55
+      ]
+    },
+    "Stem": {
+      "volume_mm3": 222.36518,
+      "solids": 1,
+      "bounds_mm": [
+        50.95,
+        56.25,
+        -8.25,
+        10.03,
+        12.15,
+        17.45
+      ]
+    },
+    "Grip": {
+      "volume_mm3": 245.62582,
+      "solids": 1,
+      "bounds_mm": [
+        49.8723,
+        57.3277,
+        -7.95,
+        1.35,
+        11.0723,
+        18.5277
+      ]
+    },
+    "Collar": {
+      "volume_mm3": 168.62499,
+      "solids": 1,
+      "bounds_mm": [
+        44.15,
+        46.65,
+        -6.6,
+        6.6,
+        8.2,
+        21.4
+      ]
+    },
+    "reel0": {
+      "volume_mm3": 39.44906,
+      "solids": 1,
+      "bounds_mm": [
+        51.6,
+        55.6,
+        5.8,
+        9.8,
+        9.6,
+        21.2
+      ]
+    },
+    "reel1": {
+      "volume_mm3": 27.22875,
+      "solids": 1,
+      "bounds_mm": [
+        51.6,
+        55.6,
+        -10.2,
+        -3.6,
+        12.8,
+        16.8
+      ]
+    },
+    "reel2": {
+      "volume_mm3": 70.68583,
+      "solids": 1,
+      "bounds_mm": [
+        43.75,
+        46.25,
+        -3.0,
+        3.0,
+        11.8,
+        17.8
+      ]
+    },
+    "Key cap": {
+      "volume_mm3": 42.14993,
+      "solids": 1,
+      "bounds_mm": [
+        -39.85,
+        -32.15,
+        33.0,
+        34.32,
+        8.65,
+        16.35
+      ]
+    },
+    "Retainer": {
+      "volume_mm3": 134.03663,
+      "solids": 1,
+      "bounds_mm": [
+        -46.15,
+        -29.35,
+        26.85,
+        32.2,
+        11.68,
+        19.15
+      ]
+    },
+    "Key PCB": {
+      "volume_mm3": 106.85841,
+      "solids": 1,
+      "bounds_mm": [
+        -41.5,
+        -30.5,
+        27.65,
+        28.65,
+        7.5,
+        17.5
+      ]
+    },
+    "Switch case": {
+      "volume_mm3": 110.25567,
+      "solids": 1,
+      "bounds_mm": [
+        -39.6328,
+        -32.3672,
+        28.65,
+        32.0,
+        9.5,
+        15.5
+      ]
+    },
+    "Switch plunger": {
+      "volume_mm3": 12.42255,
+      "solids": 2,
+      "bounds_mm": [
+        -39.0,
+        -33.0,
+        32.0,
+        32.95,
+        9.5,
+        15.5
+      ]
+    },
+    "Trimmed terminals": {
+      "volume_mm3": 1.52348,
+      "solids": 4,
+      "bounds_mm": [
+        -39.837,
+        -32.163,
+        26.85,
+        28.65,
+        9.9,
+        15.1
+      ]
+    },
+    "Keeper screw": {
+      "volume_mm3": 29.66567,
+      "solids": 1,
+      "bounds_mm": [
+        -45.2,
+        -41.2,
+        26.7,
+        30.7,
+        13.15,
+        20.75
+      ]
+    },
+    "Removable rod grip": {
+      "volume_mm3": 51763.33093,
+      "solids": 1,
+      "bounds_mm": [
+        1.5,
+        32.5,
+        -125.4,
+        5.0,
+        -34.0377,
+        0.51
+      ]
+    },
+    "Grip lock screw": {
+      "volume_mm3": 116.93588,
+      "solids": 1,
+      "bounds_mm": [
+        14.25,
+        19.75,
+        -27.25,
+        -21.75,
+        -8.1,
+        4.9
+      ]
+    },
+    "Grip screw keeper": {
+      "volume_mm3": 84.50565,
+      "solids": 1,
+      "bounds_mm": [
+        12.49,
+        21.51,
+        -29.01,
+        -19.99,
+        -15.06,
+        -13.47
+      ]
+    },
+    "Receiver nut": {
+      "volume_mm3": 48.36273,
+      "solids": 1,
+      "bounds_mm": [
+        13.8256,
+        20.1744,
+        -27.25,
+        -21.75,
+        2.15,
+        4.55
+      ]
+    },
+    "Receiver nut keeper": {
+      "volume_mm3": 34.27313,
+      "solids": 1,
+      "bounds_mm": [
+        13.15,
+        20.85,
+        -28.35,
+        -20.65,
+        5.12,
+        5.95
+      ]
+    },
+    "A1-touch": {
+      "volume_mm3": 15706.77535,
+      "solids": 1,
+      "bounds_mm": [
+        -46.22,
+        46.22,
+        -30.5,
+        30.5,
+        20.1,
+        28.5
+      ]
+    },
+    "A1-mounts": {
+      "volume_mm3": 179.46812,
+      "solids": 4,
+      "bounds_mm": [
+        -38.0,
+        38.0,
+        -26.25,
+        26.25,
+        17.0,
+        22.5
+      ]
+    },
+    "A1-carrier": {
+      "volume_mm3": 6567.42974,
+      "solids": 1,
+      "bounds_mm": [
+        -39.0087,
+        39.0087,
+        -27.2588,
+        27.2587,
+        21.0,
+        22.6
+      ]
+    },
+    "A1-population": {
+      "volume_mm3": 1326.53964,
+      "solids": 532,
+      "bounds_mm": [
+        -38.7502,
+        38.5,
+        -29.65,
+        25.95,
+        15.1,
+        21.6
+      ]
+    },
+    "A1-J8": {
+      "volume_mm3": 645.52553,
+      "solids": 1,
+      "bounds_mm": [
+        -20.611,
+        20.589,
+        19.6896,
+        26.2896,
+        15.9,
+        21.0
+      ]
+    },
+    "A1-usb": {
+      "volume_mm3": 104.86136,
+      "solids": 1,
+      "bounds_mm": [
+        -40.0,
+        -32.4,
+        -4.47,
+        4.47,
+        17.7496,
+        21.8112
+      ]
+    },
+    "A1-k3": {
+      "volume_mm3": 20.41461,
+      "solids": 1,
+      "bounds_mm": [
+        -27.2756,
+        -22.7256,
+        -26.8498,
+        -23.1998,
+        19.2,
+        21.4
+      ]
+    },
+    "A1-reset": {
+      "volume_mm3": 20.41461,
+      "solids": 1,
+      "bounds_mm": [
+        -18.7756,
+        -14.2256,
+        -26.8498,
+        -23.1998,
+        19.2,
+        21.4
+      ]
+    },
+    "A1-boot": {
+      "volume_mm3": 20.41461,
+      "solids": 1,
+      "bounds_mm": [
+        -10.2756,
+        -5.7256,
+        -26.8498,
+        -23.1998,
+        19.2,
+        21.4
+      ]
+    },
+    "A1-J7": {
+      "volume_mm3": 48.15341,
+      "solids": 1,
+      "bounds_mm": [
+        -29.0783,
+        -21.4283,
+        20.75,
+        25.95,
+        17.6,
+        21.0
+      ]
+    },
+    "A1-J9": {
+      "volume_mm3": 48.15341,
+      "solids": 1,
+      "bounds_mm": [
+        -4.515,
+        3.135,
+        -24.45,
+        -19.25,
+        17.6,
+        21.0
+      ]
+    },
+    "A1-backing": {
+      "volume_mm3": 6135.47994,
+      "solids": 1,
+      "bounds_mm": [
+        -39.0,
+        39.0,
+        -27.25,
+        27.25,
+        22.6,
+        25.1
+      ]
+    },
+    "A2-pcb": {
+      "volume_mm3": 656.79274,
+      "solids": 1,
+      "bounds_mm": [
+        39.48,
+        41.05,
+        -12.7,
+        12.7,
+        5.91,
+        23.69
+      ]
+    },
+    "A2-population": {
+      "volume_mm3": 21.79287,
+      "solids": 21,
+      "bounds_mm": [
+        41.05,
+        42.45,
+        -9.9441,
+        6.287,
+        11.006,
+        19.822
+      ]
+    },
+    "A2-sockets": {
+      "volume_mm3": 88.07526,
+      "solids": 2,
+      "bounds_mm": [
+        41.05,
+        44.01,
+        -12.127,
+        12.127,
+        11.8,
+        17.8
+      ]
+    },
+    "A2-chip": {
+      "volume_mm3": 21.99092,
+      "solids": 1,
+      "bounds_mm": [
+        41.3,
+        42.55,
+        -2.45,
+        2.45,
+        12.85,
+        16.75
+      ]
+    },
+    "Speaker": {
+      "volume_mm3": 1512.16658,
+      "solids": 1,
+      "bounds_mm": [
+        -50.47,
+        -30.57,
+        -14.8,
+        14.8,
+        4.95,
+        7.95
+      ]
+    },
+    "cellAlt": {
+      "volume_mm3": 11069.89748,
+      "solids": 4,
+      "bounds_mm": [
+        -28.9,
+        8.1,
+        -30.65,
+        32.35,
+        3.6,
+        9.6
+      ]
+    },
+    "H1-1": {
+      "volume_mm3": 34.55349,
+      "solids": 1,
+      "bounds_mm": [
+        -38.0,
+        -34.0,
+        -26.25,
+        -22.25,
+        9.4,
+        19.0
+      ]
+    },
+    "H1-2": {
+      "volume_mm3": 34.55349,
+      "solids": 1,
+      "bounds_mm": [
+        -38.0,
+        -34.0,
+        22.25,
+        26.25,
+        9.4,
+        19.0
+      ]
+    },
+    "H1-3": {
+      "volume_mm3": 34.55349,
+      "solids": 1,
+      "bounds_mm": [
+        34.0,
+        38.0,
+        -26.25,
+        -22.25,
+        9.4,
+        19.0
+      ]
+    },
+    "H1-4": {
+      "volume_mm3": 34.55349,
+      "solids": 1,
+      "bounds_mm": [
+        34.0,
+        38.0,
+        22.25,
+        26.25,
+        9.4,
+        19.0
+      ]
+    },
+    "H3-1": {
+      "volume_mm3": 4.75009,
+      "solids": 1,
+      "bounds_mm": [
+        51.1,
+        56.1,
+        5.3,
+        10.3,
+        12.2,
+        12.5
+      ]
+    },
+    "H3-2": {
+      "volume_mm3": 4.75009,
+      "solids": 1,
+      "bounds_mm": [
+        51.1,
+        56.1,
+        5.3,
+        10.3,
+        17.1,
+        17.4
+      ]
+    },
+    "H5": {
+      "volume_mm3": 5.54177,
+      "solids": 1,
+      "bounds_mm": [
+        51.1,
+        56.1,
+        -8.6,
+        -8.25,
+        12.3,
+        17.3
+      ]
+    },
+    "motor": {
+      "volume_mm3": 282.70447,
+      "solids": 3,
+      "bounds_mm": [
+        14.0,
+        24.0,
+        9.0,
+        24.0,
+        3.0,
+        6.55
+      ]
+    },
+    "J8plug": {
+      "volume_mm3": 71.98505,
+      "solids": 1,
+      "bounds_mm": [
+        10.219,
+        20.249,
+        14.7,
+        22.04,
+        10.96,
+        19.7
+      ]
+    },
+    "ph": {
+      "volume_mm3": 79.60578,
+      "solids": 14,
+      "bounds_mm": [
+        20.2,
+        29.7,
+        -26.0,
+        -19.999,
+        8.4,
+        13.0
+      ]
+    },
+    "packplug": {
+      "volume_mm3": 102.87815,
+      "solids": 1,
+      "bounds_mm": [
+        17.475,
+        24.325,
+        -25.9,
+        -20.1,
+        8.4,
+        12.9
+      ]
+    },
+    "j7plug": {
+      "volume_mm3": 29.82891,
+      "solids": 1,
+      "bounds_mm": [
+        -27.378,
+        -23.128,
+        19.75,
+        23.7,
+        17.6,
+        20.8
+      ]
+    },
+    "j9plug": {
+      "volume_mm3": 29.82891,
+      "solids": 1,
+      "bounds_mm": [
+        -2.815,
+        1.435,
+        -22.2,
+        -18.25,
+        17.6,
+        20.8
+      ]
+    },
+    "batt0": {
+      "volume_mm3": 66.55289,
+      "solids": 1,
+      "bounds_mm": [
+        -27.6794,
+        32.65,
+        -24.45,
+        19.75,
+        10.09,
+        19.5
+      ]
+    },
+    "spk0": {
+      "volume_mm3": 32.19042,
+      "solids": 1,
+      "bounds_mm": [
+        -43.17,
+        -0.865,
+        -21.5433,
+        -14.4591,
+        8.7406,
+        19.5
+      ]
+    },
+    "batt1": {
+      "volume_mm3": 64.68746,
+      "solids": 1,
+      "bounds_mm": [
+        -28.4698,
+        31.55,
+        -22.45,
+        19.75,
+        10.09,
+        19.5
+      ]
+    },
+    "spk1": {
+      "volume_mm3": 29.79814,
+      "solids": 1,
+      "bounds_mm": [
+        -38.77,
+        0.385,
+        -20.336,
+        -12.0555,
+        10.3,
+        19.5
+      ]
+    },
+    "w30": {
+      "volume_mm3": 22.52781,
+      "solids": 1,
+      "bounds_mm": [
+        -40.9,
+        -25.2115,
+        -23.8035,
+        27.1553,
+        9.9777,
+        19.3639
+      ]
+    },
+    "w31": {
+      "volume_mm3": 21.4715,
+      "solids": 1,
+      "bounds_mm": [
+        -33.15,
+        -22.842,
+        -23.7784,
+        27.0805,
+        13.25,
+        19.4177
+      ]
+    },
+    "adhH": {
+      "volume_mm3": 151.2,
+      "solids": 2,
+      "bounds_mm": [
+        16.5,
+        27.5,
+        -12.0,
+        0.0,
+        2.5,
+        4.6
+      ]
+    },
+    "shrink0": {
+      "volume_mm3": 9.96953,
+      "solids": 1,
+      "bounds_mm": [
+        4.0,
+        10.0,
+        -15.6552,
+        -13.9448,
+        13.4948,
+        15.2052
+      ]
+    },
+    "shrink1": {
+      "volume_mm3": 9.96953,
+      "solids": 1,
+      "bounds_mm": [
+        -4.0,
+        2.0,
+        -17.1052,
+        -15.3948,
+        13.6748,
+        15.3852
+      ]
+    },
+    "bridge": {
+      "volume_mm3": 426.24533,
+      "solids": 1,
+      "bounds_mm": [
+        -34.3127,
+        13.205,
+        9.6858,
+        21.7824,
+        9.55,
+        12.88
+      ]
+    },
+    "tieS1": {
+      "volume_mm3": 24.78601,
+      "solids": 1,
+      "bounds_mm": [
+        -33.85,
+        -29.85,
+        16.5,
+        20.5,
+        6.75,
+        12.35
+      ]
+    },
+    "tieS2": {
+      "volume_mm3": 24.78601,
+      "solids": 1,
+      "bounds_mm": [
+        8.7423,
+        12.7423,
+        10.9682,
+        14.9682,
+        6.75,
+        12.35
+      ]
+    },
+    "altTail0": {
+      "volume_mm3": 149.3199,
+      "solids": 1,
+      "bounds_mm": [
+        -21.8506,
+        17.975,
+        -24.7,
+        37.25,
+        8.4,
+        12.25
+      ]
+    },
+    "altTail1": {
+      "volume_mm3": 149.3199,
+      "solids": 1,
+      "bounds_mm": [
+        -15.7913,
+        17.975,
+        -22.7,
+        37.25,
+        8.4,
+        14.4
+      ]
+    },
+    "usbSurround": {
+      "volume_mm3": 27.85713,
+      "solids": 1,
+      "bounds_mm": [
+        -39.78,
+        -39.27,
+        -6.94,
+        6.94,
+        15.325,
+        23.335
+      ]
+    },
+    "statusChgGuide": {
+      "volume_mm3": 12.93142,
+      "solids": 1,
+      "bounds_mm": [
+        -49.97,
+        -39.13,
+        -10.621,
+        -5.45,
+        12.5,
+        21.35
+      ]
+    },
+    "statusUsbGuide": {
+      "volume_mm3": 8.73228,
+      "solids": 1,
+      "bounds_mm": [
+        -49.97,
+        -42.65,
+        -0.6,
+        0.6,
+        12.5,
+        13.7
+      ]
+    },
+    "statusPwrGuide": {
+      "volume_mm3": 12.93142,
+      "solids": 1,
+      "bounds_mm": [
+        -49.97,
+        -39.13,
+        5.45,
+        10.579,
+        12.5,
+        21.35
+      ]
+    },
+    "speakerRim": {
+      "volume_mm3": 255.7063,
+      "solids": 1,
+      "bounds_mm": [
+        -50.47,
+        -30.57,
+        -14.8,
+        14.8,
+        8.45,
+        9.35
+      ]
+    },
+    "speakerPoleRing": {
+      "volume_mm3": 35.68849,
+      "solids": 1,
+      "bounds_mm": [
+        -48.12,
+        -32.92,
+        -7.6,
+        7.6,
+        8.95,
+        9.75
+      ]
+    },
+    "speakerMagnet": {
+      "volume_mm3": 109.47822,
+      "solids": 1,
+      "bounds_mm": [
+        -47.12,
+        -33.92,
+        -6.6,
+        6.6,
+        8.95,
+        9.75
+      ]
+    },
+    "speakerDiaphragm": {
+      "volume_mm3": 145.16636,
+      "solids": 1,
+      "bounds_mm": [
+        -50.07,
+        -30.97,
+        -14.4,
+        14.4,
+        7.95,
+        8.45
+      ]
+    },
+    "speakerCloth": {
+      "volume_mm3": 38.34977,
+      "solids": 1,
+      "bounds_mm": [
+        -50.47,
+        -30.57,
+        -14.8,
+        14.8,
+        4.75,
+        4.95
+      ]
+    },
+    "speakerTerminal0": {
+      "volume_mm3": 4.7816,
+      "solids": 1,
+      "bounds_mm": [
+        -43.22,
+        -42.22,
+        -17.7,
+        -12.7,
+        8.95,
+        11.25
+      ]
+    },
+    "speakerTerminal1": {
+      "volume_mm3": 4.7816,
+      "solids": 1,
+      "bounds_mm": [
+        -38.82,
+        -37.82,
+        -17.7,
+        -12.7,
+        8.95,
+        11.25
+      ]
+    },
+    "speakerGasket": {
+      "volume_mm3": 52.70553,
+      "solids": 1,
+      "bounds_mm": [
+        -50.295,
+        -30.745,
+        -14.62,
+        14.62,
+        4.25,
+        4.75
+      ]
+    },
+    "USB-BOND": {
+      "volume_mm3": 4.68146,
+      "solids": 1,
+      "bounds_mm": [
+        -21.9,
+        -18.47,
+        17.25,
+        20.3896,
+        16.99,
+        18.58
+      ]
+    },
+    "USB-D1": {
+      "volume_mm3": 0.27455,
+      "solids": 5,
+      "bounds_mm": [
+        -42.352,
+        -42.101,
+        -0.8,
+        0.8,
+        12.7,
+        13.5
+      ]
+    },
+    "USB-PCB1": {
+      "volume_mm3": 9.0652,
+      "solids": 1,
+      "bounds_mm": [
+        -42.1,
+        -41.5,
+        -2.4,
+        2.4,
+        11.5,
+        14.7
+      ]
+    },
+    "USB-PCB2": {
+      "volume_mm3": 3.6892,
+      "solids": 1,
+      "bounds_mm": [
+        -22.6,
+        -19.4,
+        17.0,
+        19.0,
+        17.6,
+        18.2
+      ]
+    },
+    "USB-R1": {
+      "volume_mm3": 0.57324,
+      "solids": 4,
+      "bounds_mm": [
+        -21.81,
+        -20.19,
+        17.6,
+        18.41,
+        18.2,
+        18.65
+      ]
+    },
+    "USB-W4A-Cu": {
+      "volume_mm3": 0.05928,
+      "solids": 2,
+      "bounds_mm": [
+        -20.107,
+        -18.933,
+        18.343,
+        19.947,
+        17.58,
+        20.75
+      ]
+    },
+    "USB-W4A": {
+      "volume_mm3": 0.61014,
+      "solids": 1,
+      "bounds_mm": [
+        -20.1469,
+        -18.7654,
+        18.2102,
+        20.0479,
+        18.3003,
+        20.6274
+      ]
+    },
+    "USB-W4B-Cu": {
+      "volume_mm3": 0.08665,
+      "solids": 2,
+      "bounds_mm": [
+        -42.14,
+        -21.893,
+        1.573,
+        18.597,
+        12.973,
+        18.23
+      ]
+    },
+    "USB-W4B": {
+      "volume_mm3": 6.12432,
+      "solids": 1,
+      "bounds_mm": [
+        -41.2844,
+        -21.7551,
+        1.3891,
+        18.7298,
+        12.8242,
+        17.4035
+      ]
+    },
+    "USB-W4C-Cu": {
+      "volume_mm3": 0.05624,
+      "solids": 2,
+      "bounds_mm": [
+        -42.14,
+        -16.393,
+        -1.827,
+        19.947,
+        12.973,
+        20.75
+      ]
+    },
+    "USB-W4C": {
+      "volume_mm3": 8.33376,
+      "solids": 1,
+      "bounds_mm": [
+        -41.2885,
+        -16.2489,
+        -2.0203,
+        20.0475,
+        12.8355,
+        20.6258
+      ]
+    },
+    "usbEscutcheonLip": {
+      "volume_mm3": 8.40393,
+      "solids": 1,
+      "bounds_mm": [
+        -39.78,
+        -39.32,
+        -5.22,
+        5.22,
+        17.0,
+        21.66
+      ]
+    },
+    "J7-C1": {
+      "volume_mm3": 1.60597,
+      "solids": 1,
+      "bounds_mm": [
+        -26.328,
+        -25.428,
+        20.0,
+        23.3,
+        18.33,
+        20.03
+      ]
+    },
+    "J7-C2": {
+      "volume_mm3": 1.60597,
+      "solids": 1,
+      "bounds_mm": [
+        -25.078,
+        -24.178,
+        20.0,
+        23.3,
+        18.33,
+        20.03
+      ]
+    },
+    "J9-C1": {
+      "volume_mm3": 1.60597,
+      "solids": 1,
+      "bounds_mm": [
+        -0.515,
+        0.385,
+        -21.8,
+        -18.5,
+        18.33,
+        20.03
+      ]
+    },
+    "J9-C2": {
+      "volume_mm3": 1.60597,
+      "solids": 1,
+      "bounds_mm": [
+        -1.765,
+        -0.865,
+        -21.8,
+        -18.5,
+        18.33,
+        20.03
+      ]
+    },
+    "termination-W1-GND": {
+      "volume_mm3": 0.03387,
+      "solids": 1,
+      "bounds_mm": [
+        16.374,
+        16.624,
+        14.61,
+        15.3,
+        12.105,
+        12.355
+      ]
+    },
+    "termination-W1-SCL": {
+      "volume_mm3": 0.0514,
+      "solids": 1,
+      "bounds_mm": [
+        11.294,
+        11.544,
+        14.6902,
+        15.4098,
+        12.1703,
+        13.2097
+      ]
+    },
+    "termination-W1-SDA": {
+      "volume_mm3": 0.03387,
+      "solids": 1,
+      "bounds_mm": [
+        13.834,
+        14.084,
+        14.61,
+        15.3,
+        12.105,
+        12.355
+      ]
+    },
+    "termination-W1-VCC": {
+      "volume_mm3": 0.03387,
+      "solids": 1,
+      "bounds_mm": [
+        18.914,
+        19.164,
+        14.61,
+        15.3,
+        12.105,
+        12.355
+      ]
+    },
+    "termination-W2-1": {
+      "volume_mm3": 0.14476,
+      "solids": 1,
+      "bounds_mm": [
+        -26.038,
+        -25.718,
+        19.75,
+        21.55,
+        18.89,
+        19.21
+      ]
+    },
+    "termination-W2-2": {
+      "volume_mm3": 0.14476,
+      "solids": 1,
+      "bounds_mm": [
+        -24.788,
+        -24.468,
+        19.75,
+        21.55,
+        18.89,
+        19.21
+      ]
+    },
+    "termination-W5-1": {
+      "volume_mm3": 0.14476,
+      "solids": 1,
+      "bounds_mm": [
+        -1.475,
+        -1.155,
+        -20.05,
+        -18.25,
+        18.89,
+        19.21
+      ]
+    },
+    "termination-W5-2": {
+      "volume_mm3": 0.14476,
+      "solids": 1,
+      "bounds_mm": [
+        -0.225,
+        0.095,
+        -20.05,
+        -18.25,
+        18.89,
+        19.21
+      ]
+    },
+    "PH-TAIL1": {
+      "volume_mm3": 0.14476,
+      "solids": 1,
+      "bounds_mm": [
+        27.8,
+        29.6,
+        -24.16,
+        -23.84,
+        10.38,
+        10.7
+      ]
+    },
+    "PH-INS1": {
+      "volume_mm3": 2.56071,
+      "solids": 1,
+      "bounds_mm": [
+        26.45,
+        30.25,
+        -24.79,
+        -23.21,
+        9.49,
+        11.07
+      ]
+    },
+    "PH-TAIL2": {
+      "volume_mm3": 0.14476,
+      "solids": 1,
+      "bounds_mm": [
+        27.8,
+        29.6,
+        -22.16,
+        -21.84,
+        10.38,
+        10.7
+      ]
+    },
+    "PH-INS2": {
+      "volume_mm3": 2.56071,
+      "solids": 1,
+      "bounds_mm": [
+        26.45,
+        30.25,
+        -22.79,
+        -21.21,
+        9.49,
+        11.07
+      ]
+    },
+    "serviceCover": {
+      "volume_mm3": 375.67022,
+      "solids": 1,
+      "bounds_mm": [
+        -31.4,
+        -2.6,
+        -35.7,
+        -31.18,
+        16.1,
+        24.9
+      ]
+    },
+    "A4-integration": {
+      "volume_mm3": 253.17236,
+      "solids": 62,
+      "bounds_mm": [
+        13.0,
+        36.0,
+        -12.0,
+        1.0,
+        16.505,
+        18.535
+      ],
+      "source_brep": "placed/A4-integration.brep",
+      "source_sha256": "6b61b5a7179baeee6e1d442decb408e16edecc16aa42836b5b121a90e1758ade",
+      "component_label": "A4 populated R0004 integration PCB",
+      "geometry_provenance": "Direct rigid placement of the released populated KiCad PCB STEP, including all board copper and library package solids. Component face points toward the floor."
+    },
+    "A4-spacers": {
+      "volume_mm3": 54.0,
+      "solids": 3,
+      "bounds_mm": [
+        14.0,
+        35.0,
+        -11.5,
+        0.0,
+        18.75,
+        20.75
+      ],
+      "source_brep": "placed/A4-spacers.brep",
+      "source_sha256": "ceee8819d0be3997fa8c29d75d91d21bf368410b92f54aa0ab778523b6997fc1",
+      "component_label": "Three A4 insulating spacers",
+      "geometry_provenance": "Three 3 x 3 x 2 mm electrically insulating blocks between A4 and A1. Verify 0.50 mm nominal A1 component clearance on the received assembly."
+    },
+    "A4-bond": {
+      "volume_mm3": 13.5,
+      "solids": 6,
+      "bounds_mm": [
+        14.0,
+        35.0,
+        -11.5,
+        0.0,
+        18.5,
+        21.0
+      ],
+      "source_brep": "placed/A4-bond.brep",
+      "source_sha256": "5b8c10d2fcb36fc31f31ba96f109d852b5efc6bba44a1f8f8bf700b332bf3a12",
+      "component_label": "Six A4 adhesive bondlines",
+      "geometry_provenance": "Two nominal 0.25 mm insulating adhesive bondlines per support. Check assembled thickness, peel, thermal exposure and pad position on the received unit."
+    },
+    "A5-power": {
+      "volume_mm3": 294.52037,
+      "solids": 12,
+      "bounds_mm": [
+        13.0,
+        36.0,
+        3.0,
+        19.0,
+        15.455,
+        17.8
+      ],
+      "source_brep": "placed/A5-power.brep",
+      "source_sha256": "ec142536050b3f1959974887f51d31429674975a8243631061641d3b57ce6832",
+      "component_label": "A5 populated USB power-entry PCB",
+      "geometry_provenance": "Direct placement of KiCad power daughterboard STEP on the A1 subassembly. The resistor thermal path, six point-to-point wires and controller net isolation need qualification."
+    },
+    "A5-spacers": {
+      "volume_mm3": 72.9,
+      "solids": 3,
+      "bounds_mm": [
+        16.0,
+        34.0,
+        12.6,
+        18.8,
+        18.05,
+        20.75
+      ],
+      "source_brep": "placed/A5-spacers.brep",
+      "source_sha256": "c3f60c663c0ca4dd874cd97f63e9096b1c05da1239e63bfe67db3087f7f6da44",
+      "component_label": "Three A5 insulating spacers",
+      "geometry_provenance": "3 x 3 x 2.7 mm electrically insulating spacers. Qualify bonded footprint, overhang and vibration."
+    },
+    "A5-bond": {
+      "volume_mm3": 13.5,
+      "solids": 6,
+      "bounds_mm": [
+        16.0,
+        34.0,
+        12.6,
+        18.8,
+        17.8,
+        21.0
+      ],
+      "source_brep": "placed/A5-bond.brep",
+      "source_sha256": "81da646d1b45644048a43df48d30719528685e596d982f8b01f1074fca49bd16",
+      "component_label": "Six A5 adhesive bondlines",
+      "geometry_provenance": "Nominal 0.25 mm insulating adhesive bondlines on both faces of each support. Verify temperature and peel retention."
+    },
+    "drvParts": {
+      "volume_mm3": 10.7112,
+      "solids": 14,
+      "bounds_mm": [
+        16.55,
+        25.775,
+        -9.5,
+        -4.4,
+        6.195,
+        7.295
+      ],
+      "source_brep": "placed/drvParts.brep",
+      "source_sha256": "5dbf62cd17b3ba927155bcf7ceeebd7786196fcd39f27be701a78cfb7896a7fc",
+      "component_label": "A3 components after R1/R2 removal",
+      "geometry_provenance": "Boardoza R1.0 source solids. The two R1/R2 pull-ups removed using the native PCB XY coordinates. Central bus pulls reside on A4."
+    },
+    "wm0": {
+      "volume_mm3": 2.22116,
+      "solids": 1,
+      "bounds_mm": [
+        19.2,
+        22.975,
+        1.025,
+        9.0,
+        3.5394,
+        6.315
+      ],
+      "source_brep": "placed/wm0.brep",
+      "source_sha256": "45e36bea52aeadc75752175d59b43de9d08fcfbb12705d4247847630ab1a76ad",
+      "component_label": "wm0 motor lead",
+      "geometry_provenance": "Factory motor stub continued underneath A3 to its plated output hole. Insulation remains below the pad."
+    },
+    "wm0-Cu": {
+      "volume_mm3": 0.10844,
+      "solids": 1,
+      "bounds_mm": [
+        22.573,
+        22.827,
+        1.173,
+        1.427,
+        4.1,
+        6.24
+      ],
+      "source_brep": "placed/wm0-Cu.brep",
+      "source_sha256": "0457dd1294cf55a6dfd155761ad71de5bafb90dd2bc81b9a4585923907957570",
+      "component_label": "wm0 exposed pad end",
+      "geometry_provenance": "Bottom entry into the source-board plated through hole. Solder and trim at the component face."
+    },
+    "wm1": {
+      "volume_mm3": 2.02675,
+      "solids": 1,
+      "bounds_mm": [
+        16.925,
+        18.782,
+        1.025,
+        9.0,
+        3.5394,
+        6.315
+      ],
+      "source_brep": "placed/wm1.brep",
+      "source_sha256": "965a9e249b14e48d4371b9a07e2e7efbbb1173e6fc30ac79a8e8eafe21f2b98d",
+      "component_label": "wm1 motor lead",
+      "geometry_provenance": "Factory motor stub continued underneath A3 to its plated output hole. Insulation remains below the pad."
+    },
+    "wm1-Cu": {
+      "volume_mm3": 0.10844,
+      "solids": 1,
+      "bounds_mm": [
+        17.073,
+        17.327,
+        1.173,
+        1.427,
+        4.1,
+        6.24
+      ],
+      "source_brep": "placed/wm1-Cu.brep",
+      "source_sha256": "f819c5f6a03121ad9cb9ba6a13c6621b68daa33793fc77cfc533eb1fdbd9a4a2",
+      "component_label": "wm1 exposed pad end",
+      "geometry_provenance": "Bottom entry into the source-board plated through hole. Solder and trim at the component face."
+    },
+    "w1VCC": {
+      "volume_mm3": 22.08986,
+      "solids": 2,
+      "bounds_mm": [
+        19.4,
+        39.48,
+        -6.75,
+        18.4,
+        8.05,
+        9.5
+      ],
+      "source_brep": "placed/w1VCC.brep",
+      "source_sha256": "df017dfd7e07b12da986752eee3d25f3b7504e18df5c1adb085eace3b80a5c08",
+      "component_label": "W1 VCC trunk",
+      "geometry_provenance": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run."
+    },
+    "w1GND": {
+      "volume_mm3": 29.56328,
+      "solids": 2,
+      "bounds_mm": [
+        16.099,
+        39.48,
+        -1.67,
+        23.35,
+        8.05,
+        12.63
+      ],
+      "source_brep": "placed/w1GND.brep",
+      "source_sha256": "82de506ee5bf9b06b0ba74160b8cb016058425f3cddacb6c29d2d55c19dd1395",
+      "component_label": "W1 GND trunk",
+      "geometry_provenance": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run."
+    },
+    "w1SDA": {
+      "volume_mm3": 26.41856,
+      "solids": 2,
+      "bounds_mm": [
+        13.559,
+        39.48,
+        3.41,
+        21.7,
+        8.05,
+        12.63
+      ],
+      "source_brep": "placed/w1SDA.brep",
+      "source_sha256": "18100eb088b5a1d0b8ac76d3e21dab8b94eacb1b8dd467d4e0ea8c8895246b87",
+      "component_label": "W1 SDA trunk",
+      "geometry_provenance": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run."
+    },
+    "w1SCL": {
+      "volume_mm3": 27.66207,
+      "solids": 2,
+      "bounds_mm": [
+        11.019,
+        39.48,
+        0.87,
+        20.05,
+        8.05,
+        14.05
+      ],
+      "source_brep": "placed/w1SCL.brep",
+      "source_sha256": "e9b172d66a699989e550e5dfc5da30c99301d8d200cfa8b593a1640159e902b6",
+      "component_label": "W1 SCL trunk",
+      "geometry_provenance": "Fixed 30 AWG trunk from the reel to J8. Tap on the upper transverse run."
+    },
+    "drvBoard": {
+      "volume_mm3": 587.99198,
+      "solids": 1,
+      "bounds_mm": [
+        10.8,
+        30.8,
+        -16.8,
+        3.2,
+        4.6,
+        6.11
+      ],
+      "source_brep": "placed/drvBoard.brep",
+      "source_sha256": "a23f77b2f9aa7c06102dd264d68c51061a80d53c6e3f289e11e30cff291a9fdc",
+      "component_label": "A3 2.50 mm revision substrate",
+      "geometry_provenance": "Installed KiCad A3-substrate.step with the CviLux J1 footprint. Bare substrate STEP is 1.51 mm thick."
+    },
+    "A3-J1-header": {
+      "volume_mm3": 359.41287,
+      "solids": 6,
+      "bounds_mm": [
+        13.51,
+        28.41,
+        -15.55,
+        -6.0,
+        4.1325,
+        14.36
+      ],
+      "source_brep": "placed/A3-J1-header.brep",
+      "source_sha256": "a295e325478623c49ed430463fed17763fef45a4c7e4294e2821eda9e73489e6",
+      "component_label": "CviLux right-angle header",
+      "geometry_provenance": "CIEP05P1HK0-NH manufacturer solid, both molded lock bosses and five integral-model pins."
+    },
+    "A3-J1-plug": {
+      "volume_mm3": 619.21613,
+      "solids": 1,
+      "bounds_mm": [
+        13.76,
+        28.16,
+        -12.45,
+        -2.85,
+        7.86,
+        15.41
+      ],
+      "source_brep": "placed/A3-J1-plug.brep",
+      "source_sha256": "2ef06982164edda5b862a0ba59b0a712cfe63243b837d4ae9535ded1cefa12bc",
+      "component_label": "CviLux five-way latch housing",
+      "geometry_provenance": "CIEP05SL000 unmodified manufacturer solid. Supplied blind pin pockets and flat catch underside limit seating validation."
+    },
+    "A3-J1-TPA": {
+      "volume_mm3": 121.29249,
+      "solids": 1,
+      "bounds_mm": [
+        13.61,
+        28.31,
+        -7.7,
+        0.0,
+        11.11,
+        13.81
+      ],
+      "source_brep": "placed/A3-J1-TPA.brep",
+      "source_sha256": "0ca6c1f564a304c2b8f57dc32f20f983ea98e92910aa1c8d9b0112bb43dccb52",
+      "component_label": "CviLux terminal position assurance",
+      "geometry_provenance": "CIEP05C0010 supplier solid. Both outer slots registered to molded side ears; internal tooth pockets are absent from the supplier plug solid. Lock depth requires supplier or physical confirmation."
+    },
+    "A3-J1-spacer": {
+      "volume_mm3": 32.99049,
+      "solids": 1,
+      "bounds_mm": [
+        13.62,
+        28.3,
+        -15.8,
+        -13.7,
+        6.11,
+        7.51
+      ],
+      "source_brep": "placed/A3-J1-spacer.brep",
+      "source_sha256": "8fc0fff40265ed230bcfc8920b8adb768d566c4b67ec9777433ee23617e83baa",
+      "component_label": "1.40 mm header support",
+      "geometry_provenance": "Unclad insulating drilled shim under the rear header feet. Verify shroud support contact and final solder-tail protrusion."
+    },
+    "A3-J1-C1": {
+      "volume_mm3": 7.2483,
+      "solids": 3,
+      "bounds_mm": [
+        15.05,
+        16.87,
+        -11.75,
+        -3.75,
+        9.45,
+        12.1
+      ],
+      "source_brep": "placed/A3-J1-C1.brep",
+      "source_sha256": "e063d38d3df92018aa5c1dcb4ba15939a0acb73e7a93ddbac69c66baf9224ba6",
+      "component_label": "Cavity 1 VCC terminal",
+      "geometry_provenance": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement."
+    },
+    "whVCC-Cu": {
+      "volume_mm3": 0.20714,
+      "solids": 1,
+      "bounds_mm": [
+        15.757,
+        16.163,
+        -6.95,
+        -5.35,
+        10.157,
+        10.563
+      ],
+      "source_brep": "placed/whVCC-Cu.brep",
+      "source_sha256": "2e1494f17ea25af260d5e54365627512f5282f065bd0e5e70e95e6dd7adbd86a",
+      "component_label": "W4 VCC conductor",
+      "geometry_provenance": "26 AWG nominal copper conductor in the modeled front crimp."
+    },
+    "whVCC": {
+      "volume_mm3": 43.09559,
+      "solids": 1,
+      "bounds_mm": [
+        15.2496,
+        23.6867,
+        -5.35,
+        18.5817,
+        9.65,
+        15.0564
+      ],
+      "source_brep": "placed/whVCC.brep",
+      "source_sha256": "f1ab02594937120c488221cc7aaad946f06a1e862b07549975298da4d5753459",
+      "component_label": "W4 VCC service loop",
+      "geometry_provenance": "Fixed-length bending branch. Crimp end follows plug, other end remains bonded to stationary W1 tap."
+    },
+    "tee-VCC-Cu": {
+      "volume_mm3": 0.39932,
+      "solids": 1,
+      "bounds_mm": [
+        20.6,
+        23.4,
+        17.8115,
+        18.413,
+        8.973,
+        11.2164
+      ],
+      "source_brep": "placed/tee-VCC-Cu.brep",
+      "source_sha256": "bd4cc8d5d2cc6955ba341e5e204eb49fec61b0e2e451b72efb652124fbd6e67c",
+      "component_label": "W1 VCC fixed tap-Cu",
+      "geometry_provenance": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder."
+    },
+    "tee-VCC-seal": {
+      "volume_mm3": 3.08734,
+      "solids": 1,
+      "bounds_mm": [
+        20.6,
+        23.4,
+        17.4183,
+        18.7934,
+        8.65,
+        11.5072
+      ],
+      "source_brep": "placed/tee-VCC-seal.brep",
+      "source_sha256": "d82f6b876dca3a6e0c964bee636c0506a7541008aa8a97e975af7fca1b0df66e",
+      "component_label": "W1 VCC fixed tap-seal",
+      "geometry_provenance": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder."
+    },
+    "A3-J1-C5": {
+      "volume_mm3": 7.2483,
+      "solids": 3,
+      "bounds_mm": [
+        25.05,
+        26.87,
+        -11.75,
+        -3.75,
+        9.45,
+        12.1
+      ],
+      "source_brep": "placed/A3-J1-C5.brep",
+      "source_sha256": "181a235b667548a8d2a23737f66b319065038b4201b5b315d3d9d09787f65174",
+      "component_label": "Cavity 5 GND terminal",
+      "geometry_provenance": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement."
+    },
+    "whGND-Cu": {
+      "volume_mm3": 0.20714,
+      "solids": 1,
+      "bounds_mm": [
+        25.757,
+        26.163,
+        -6.95,
+        -5.35,
+        10.157,
+        10.563
+      ],
+      "source_brep": "placed/whGND-Cu.brep",
+      "source_sha256": "413ba12cbdd8f643f03f24ad1f0c88a508fdf501367b72683da1d4e4dd3b2e10",
+      "component_label": "W4 GND conductor",
+      "geometry_provenance": "26 AWG nominal copper conductor in the modeled front crimp."
+    },
+    "whGND": {
+      "volume_mm3": 47.16332,
+      "solids": 1,
+      "bounds_mm": [
+        25.25,
+        31.3234,
+        -5.35,
+        23.5317,
+        9.65,
+        14.5579
+      ],
+      "source_brep": "placed/whGND.brep",
+      "source_sha256": "fc1a705797ebfe4e27b66872a72dde96f5444cfb4d1dc309b5c6eddf439ea0e8",
+      "component_label": "W4 GND service loop",
+      "geometry_provenance": "Fixed-length bending branch. Crimp end follows plug, other end remains bonded to stationary W1 tap."
+    },
+    "tee-GND-Cu": {
+      "volume_mm3": 0.39932,
+      "solids": 1,
+      "bounds_mm": [
+        28.85,
+        31.65,
+        22.7615,
+        23.3628,
+        10.033,
+        12.2764
+      ],
+      "source_brep": "placed/tee-GND-Cu.brep",
+      "source_sha256": "2ddca97cfca495d20e06c20f5c67cf0d5a87c11d472148c0ea1cbe49c308b325",
+      "component_label": "W1 GND fixed tap-Cu",
+      "geometry_provenance": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder."
+    },
+    "tee-GND-seal": {
+      "volume_mm3": 3.08734,
+      "solids": 1,
+      "bounds_mm": [
+        28.85,
+        31.65,
+        22.3683,
+        23.7434,
+        9.71,
+        12.5672
+      ],
+      "source_brep": "placed/tee-GND-seal.brep",
+      "source_sha256": "8cd8b90eb4d8437c274b9f1210dc885053b8ceb046d49040a10f0bbf33ed84fc",
+      "component_label": "W1 GND fixed tap-seal",
+      "geometry_provenance": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder."
+    },
+    "A3-J1-C4": {
+      "volume_mm3": 7.2483,
+      "solids": 3,
+      "bounds_mm": [
+        22.55,
+        24.37,
+        -11.75,
+        -3.75,
+        9.45,
+        12.1
+      ],
+      "source_brep": "placed/A3-J1-C4.brep",
+      "source_sha256": "433e769f167474fe0777364593fc1bc71514a4450885507769426fa40880a869",
+      "component_label": "Cavity 4 SDA terminal",
+      "geometry_provenance": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement."
+    },
+    "whSDA-Cu": {
+      "volume_mm3": 0.20714,
+      "solids": 1,
+      "bounds_mm": [
+        23.257,
+        23.663,
+        -6.95,
+        -5.35,
+        10.157,
+        10.563
+      ],
+      "source_brep": "placed/whSDA-Cu.brep",
+      "source_sha256": "c1dbf089a312ddd3404483bb327f9aca28327fb10feaa23ca2247ee29cc26341",
+      "component_label": "W4 SDA conductor",
+      "geometry_provenance": "26 AWG nominal copper conductor in the modeled front crimp."
+    },
+    "whSDA": {
+      "volume_mm3": 45.0781,
+      "solids": 1,
+      "bounds_mm": [
+        22.7373,
+        29.2107,
+        -5.35,
+        21.8817,
+        9.357,
+        15.088
+      ],
+      "source_brep": "placed/whSDA.brep",
+      "source_sha256": "36ef6fdf1382e3ddf875d4ebfd5e13a73161086849d47d3c79497f8449cb0b30",
+      "component_label": "W4 SDA service loop",
+      "geometry_provenance": "Fixed-length bending branch. Crimp end follows plug, other end remains bonded to stationary W1 tap."
+    },
+    "tee-SDA-Cu": {
+      "volume_mm3": 0.39932,
+      "solids": 1,
+      "bounds_mm": [
+        26.8,
+        29.6,
+        21.1115,
+        21.713,
+        11.093,
+        13.3364
+      ],
+      "source_brep": "placed/tee-SDA-Cu.brep",
+      "source_sha256": "b2239c4f0c46e094a8c7d7cdfe0bb88c465f0ea524739f043b060a9a440a02e0",
+      "component_label": "W1 SDA fixed tap-Cu",
+      "geometry_provenance": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder."
+    },
+    "tee-SDA-seal": {
+      "volume_mm3": 3.08734,
+      "solids": 1,
+      "bounds_mm": [
+        26.8,
+        29.6,
+        20.7183,
+        22.0934,
+        10.77,
+        13.6272
+      ],
+      "source_brep": "placed/tee-SDA-seal.brep",
+      "source_sha256": "d343a16641ec5dd38fec5e124701937ab1268a9fab95b785eb92657692fa905d",
+      "component_label": "W1 SDA fixed tap-seal",
+      "geometry_provenance": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder."
+    },
+    "A3-J1-C3": {
+      "volume_mm3": 7.2483,
+      "solids": 3,
+      "bounds_mm": [
+        20.05,
+        21.87,
+        -11.75,
+        -3.75,
+        9.45,
+        12.1
+      ],
+      "source_brep": "placed/A3-J1-C3.brep",
+      "source_sha256": "70bb281d17ff57ab7638a74469a6b146125eb95058edd5347e2f5c8a3d2f2f49",
+      "component_label": "Cavity 3 SCL terminal",
+      "geometry_provenance": "CIEPT021PP0 stamped socket nose retained. Two annular closed-wing envelopes are illustrative, pending crimp microsection and measurement."
+    },
+    "whSCL-Cu": {
+      "volume_mm3": 0.20714,
+      "solids": 1,
+      "bounds_mm": [
+        20.757,
+        21.163,
+        -6.95,
+        -5.35,
+        10.157,
+        10.563
+      ],
+      "source_brep": "placed/whSCL-Cu.brep",
+      "source_sha256": "5eaf1e49e51e46c9bb35816769505866a0dbbc594397293dbe4978e812f3b803",
+      "component_label": "W4 SCL conductor",
+      "geometry_provenance": "26 AWG nominal copper conductor in the modeled front crimp."
+    },
+    "whSCL": {
+      "volume_mm3": 42.69678,
+      "solids": 1,
+      "bounds_mm": [
+        20.25,
+        26.9199,
+        -5.35,
+        20.2317,
+        9.5863,
+        16.0026
+      ],
+      "source_brep": "placed/whSCL.brep",
+      "source_sha256": "5c19d56a37ca29d6a7c8d601a5fd0a183fab5283b4581f5a23e8b158afcffda5",
+      "component_label": "W4 SCL service loop",
+      "geometry_provenance": "Fixed-length bending branch. Crimp end follows plug, other end remains bonded to stationary W1 tap."
+    },
+    "tee-SCL-Cu": {
+      "volume_mm3": 0.39932,
+      "solids": 1,
+      "bounds_mm": [
+        24.8,
+        27.6,
+        19.4615,
+        20.0628,
+        12.153,
+        14.3964
+      ],
+      "source_brep": "placed/tee-SCL-Cu.brep",
+      "source_sha256": "d8494df518c276905dbe526164985a2a8ae64a85fc312c803587c010a908e911",
+      "component_label": "W1 SCL fixed tap-Cu",
+      "geometry_provenance": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder."
+    },
+    "tee-SCL-seal": {
+      "volume_mm3": 3.08734,
+      "solids": 1,
+      "bounds_mm": [
+        24.8,
+        27.6,
+        19.0683,
+        20.4434,
+        11.83,
+        14.6872
+      ],
+      "source_brep": "placed/tee-SCL-seal.brep",
+      "source_sha256": "949e5bdd73619f30989faede2c59fa79242282409129d0dc7290c5f74cb9dfcf",
+      "component_label": "W1 SCL fixed tap-seal",
+      "geometry_provenance": "Stationary dressed tee. W4 jacket ends at the overcoat shoulder."
+    }
+  }
+}

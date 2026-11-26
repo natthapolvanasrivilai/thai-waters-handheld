@@ -1,0 +1,12 @@
+reference,quantity,manufacturer,part_number,disposition,source
+J1,1,CviLux,CIEP05P1HK0-NH,Custom 2.50 mm right-angle kinked-tail header,https://www.cvilux.com/uploads/drawings/101/752/CIEP08S.pdf
+U1,1,Texas Instruments,DRV2605LDGSR,Populate VSSOP-10,https://www.ti.com/product/DRV2605L
+C1 C2,2,Samsung Electro-Mechanics,CL10A105KO8NNNC,Populate 1 uF 16 V 0603 per source schematic,https://product.samsungsem.com/mlcc/CL10A105KO8NNN.do
+R1 R2,0,,CRT03F7E2201,DNP both 2.2 kOhm optional pull-ups,../pcb-r0004/bom.csv
+TP1 TP2,0,,,Motor wires solder into plated holes without header pins,connectivity.xml
+PCB,1,Custom,A3-CIE-R0002,20 x 20 mm two-layer 1.60 mm finished PCB engineering hold,A3-CIE-R0002-fab.zip
+J1 support,1,Custom,A3-J1-spacer,1.40 mm unclad insulating shim with five 1.36 mm clearance holes qualification open,../harness-r0005/mate.py
+W4 housing,1,CviLux,CIEP05SL000,Five cavities four populated,https://www.cvilux.com/uploads/drawings/101/750/CIEP04S.pdf
+W4 terminal position assurance,1,CviLux,CIEP05C0010,Rear lock registration requires sample,https://www.cvilux.com/uploads/drawings/101/753/CIEP03S.pdf
+W4 contacts,4,CviLux,CIEPT021PP0,26 AWG branch candidate across cavities 1 3 4 5,https://www.cvilux.com/uploads/drawings/101/749/CIEP06S.pdf
+W4 wire,4,Pico of Canada,8826-0-44,Sample stock for four fixture-cut leads. 26 AWG and 1.30 mm nominal OD. Verify crimp fit and repeated bends before approval.,https://picocanada.com/view_product/8826-0

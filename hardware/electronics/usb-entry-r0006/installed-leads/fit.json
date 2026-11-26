@@ -1,0 +1,302 @@
+{
+  "installed_manifest_sha256": "30fc5fb443256677d40d5012bbd2177e414f4cc3c8c7fa4be2db57ca2a66d907",
+  "fitted_board_sha256": "1e76d61bb2ac700d589846ba1460b9ffa9345a9a68765cc5820d9dfca9098a96",
+  "fitted_bond_sha256": "51f946cc190fee94184fe11b4e63eeadbe14f148099da74322a627ab8a69248f",
+  "lamp_adhesive_relief": {
+    "volume_removed_mm3": 0.539992,
+    "new_volume_outside_original_mm3": 0.0,
+    "contact_mm": {
+      "A1-J8": 0.0,
+      "USB-PCB2": 0.0
+    }
+  },
+  "nominal_metal_contacts": {
+    "W2": {
+      "a5_solder_to_copper_gap_mm": 0.0,
+      "a5_solder_on_assigned_native_pad_mm2": 0.517656,
+      "far_solder_to_copper_gap_mm": 0.0,
+      "far_wetting_to_J8_1_gap_mm": 0.0
+    },
+    "W3": {
+      "a5_solder_to_copper_gap_mm": 0.0,
+      "a5_solder_on_assigned_native_pad_mm2": 0.517656,
+      "far_solder_to_copper_gap_mm": 0.0,
+      "far_solder_to_shared_copper_gap_mm": 0.0,
+      "single_tail_to_J8_3_gap_mm": 0.0
+    },
+    "W7": {
+      "a5_solder_to_copper_gap_mm": 0.0,
+      "a5_solder_on_assigned_native_pad_mm2": 0.517656,
+      "far_solder_to_copper_gap_mm": 0.0,
+      "far_solder_on_lamp_gerber_annulus_mm2": 0.216456,
+      "lamp_fab_sha256": "4333efecc999162adadfa4abb7a8b2d81b43dc7cfabb12d862e7ba10e2204cb2"
+    }
+  },
+  "seated_shell_members_considered": 143,
+  "inside_broadphase": 57,
+  "nearest_reported_within_0_75_mm": {
+    "A5-W2": {
+      "pair": [
+        "A5-W2",
+        "USB-W4C"
+      ],
+      "gap_mm": 0.066841,
+      "method": "native"
+    },
+    "USB-W4C": {
+      "pair": [
+        "A5-W2",
+        "USB-W4C"
+      ],
+      "gap_mm": 0.066841,
+      "method": "native"
+    },
+    "A5-W2-Cu": {
+      "pair": [
+        "A5-W2-Cu",
+        "USB-W4C"
+      ],
+      "gap_mm": 0.200027,
+      "method": "mesh"
+    },
+    "A5-W2-solder": {
+      "pair": [
+        "A1-carrier",
+        "A5-W2-solder"
+      ],
+      "gap_mm": 0.25,
+      "method": "mesh"
+    },
+    "USB-W4C-Cu": {
+      "pair": [
+        "A5-W2",
+        "USB-W4C-Cu"
+      ],
+      "gap_mm": 0.199768,
+      "method": "mesh"
+    },
+    "A5-W3": {
+      "pair": [
+        "A5-W3",
+        "A5-power"
+      ],
+      "gap_mm": 0.464556,
+      "method": "mesh"
+    },
+    "A5-W3-Cu": {
+      "pair": [
+        "A1-population",
+        "A5-W3-Cu"
+      ],
+      "gap_mm": 0.636972,
+      "method": "mesh"
+    },
+    "A5-W3-solder": {
+      "pair": [
+        "A5-W2",
+        "A5-W3-solder"
+      ],
+      "gap_mm": 0.551465,
+      "method": "mesh"
+    },
+    "A5-W3-splice-cover": {
+      "pair": [
+        "A5-W2",
+        "A5-W3-splice-cover"
+      ],
+      "gap_mm": 0.444707,
+      "method": "mesh"
+    },
+    "A5-W7": {
+      "pair": [
+        "A5-W7",
+        "A5-spacers"
+      ],
+      "gap_mm": 0.09,
+      "method": "native"
+    },
+    "A5-W7-Cu": {
+      "pair": [
+        "A5-W7-Cu",
+        "USB-R1"
+      ],
+      "gap_mm": 0.094359,
+      "method": "native"
+    },
+    "A5-W7-solder": {
+      "pair": [
+        "A5-W7-solder",
+        "USB-BOND"
+      ],
+      "gap_mm": 0.289677,
+      "method": "mesh"
+    }
+  },
+  "unwanted_contacts": [],
+  "intended_contacts": [
+    {
+      "pair": [
+        "A1-J8",
+        "A5-W2-Cu"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 8.53e-05,
+      "interface": "fixed J8-1 solder tail",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A1-J8",
+        "A5-W2-solder"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 4.5e-06,
+      "interface": "fixed J8-1 solder tail",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A1-J8",
+        "USB-W4C-Cu"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 3.46e-05,
+      "interface": "retained common J8-3 solder tail",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A5-W2-solder",
+        "A5-power"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 0.0,
+      "interface": "assigned A5 plated landing",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A5-W3-Cu",
+        "USB-W4C-Cu"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 0.0069049,
+      "interface": "single J8-3 pigtail splice",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A5-W3-solder",
+        "A5-power"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 0.0,
+      "interface": "assigned A5 plated landing",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A5-W3-solder",
+        "USB-W4C"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 0.0,
+      "interface": "single J8-3 pigtail splice",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A5-W3-solder",
+        "USB-W4C-Cu"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 0.0,
+      "interface": "single J8-3 pigtail splice",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A5-W3-splice-cover",
+        "USB-W4C"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 0.0,
+      "interface": "single J8-3 pigtail splice",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A5-W7-solder",
+        "A5-power"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 0.0,
+      "interface": "assigned A5 plated landing",
+      "outside_joint_mm3": 0.0
+    },
+    {
+      "pair": [
+        "A5-W7-solder",
+        "USB-PCB2"
+      ],
+      "gap_mm": 0.0,
+      "method": "native",
+      "common_mm3": 0.0,
+      "interface": "lamp resistor input land",
+      "outside_joint_mm3": 0.0
+    }
+  ],
+  "service_minima": {
+    "rigid": {
+      "moving": "TPA",
+      "fixed": "A5-W3",
+      "withdrawal_mm": 8.25,
+      "latch_release_fraction": 1.0,
+      "sampled_mesh_gap_mm": 4.929906,
+      "native_at_sample": {
+        "gap_mm": 4.929906,
+        "moving_xyz_mm": [
+          13.61,
+          8.25,
+          13.81
+        ],
+        "fixed_xyz_mm": [
+          13.58042,
+          9.73406,
+          18.51114
+        ]
+      }
+    },
+    "jacket": {
+      "moving": "SDA",
+      "fixed": "A5-W7-Cu",
+      "withdrawal_mm": 4.25,
+      "latch_release_fraction": 1.0,
+      "sampled_mesh_gap_mm": 0.618628,
+      "native_at_sample": {
+        "gap_mm": 0.61507,
+        "moving_xyz_mm": [
+          30.40304,
+          17.10187,
+          16.17489
+        ],
+        "fixed_xyz_mm": [
+          30.55094,
+          17.22053,
+          16.76
+        ]
+      }
+    }
+  },
+  "scope": "Seated nominal assembly. Native checks below 0.12 mm mesh gap. Nine rocker stations and 133 withdrawal stations, 0.0625 mm spacing. Tabulated minima are sampled."
+}

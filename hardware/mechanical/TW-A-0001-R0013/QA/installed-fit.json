@@ -1,0 +1,52 @@
+{
+  "step_sha256": "9096cb87773e21e6dc5fd4114182ab9818a4c1b762eb9a21e312203e5f3357e4",
+  "checked_members": 155,
+  "seated": {
+    "cellDrawing": {
+      "minimum_nominal_mm": 0.5,
+      "closest": "Housing",
+      "touch_or_overlap": []
+    },
+    "cellAlt": {
+      "minimum_nominal_mm": 0.5,
+      "closest": "Housing",
+      "touch_or_overlap": []
+    },
+    "drvParts": {
+      "minimum_nominal_mm": 0.565,
+      "closest": "A3-J1-plug",
+      "touch_or_overlap": []
+    },
+    "A5 board": {
+      "minimum_nominal_mm": 0.64424,
+      "closest": "whSCL",
+      "touch_or_overlap": []
+    },
+    "whVCC": {
+      "minimum_nominal_mm": 0.70728,
+      "closest": "J8plug",
+      "touch_or_overlap": []
+    },
+    "whSCL": {
+      "minimum_nominal_mm": 0.64424,
+      "closest": "A5-power",
+      "touch_or_overlap": []
+    },
+    "whSDA": {
+      "minimum_nominal_mm": 0.93348,
+      "closest": "A5-power",
+      "touch_or_overlap": []
+    },
+    "whGND": {
+      "minimum_nominal_mm": 1.01323,
+      "closest": "A2-pcb",
+      "touch_or_overlap": []
+    }
+  },
+  "maximum_pack_mm": [
+    35.3,
+    62.3,
+    5.3
+  ],
+  "scope": "Nominal solids. Intended joints and connector internals are assessed separately in the service study. The two packs are alternative installations."
+}

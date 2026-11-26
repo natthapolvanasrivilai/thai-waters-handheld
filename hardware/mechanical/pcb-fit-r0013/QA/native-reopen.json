@@ -1,0 +1,303 @@
+{
+    "error_string": "Success.",
+    "layer_height": 0.20000000298023224,
+    "peak_rss_mb": 229.27734375,
+    "plate_index": 7,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bottom surface": 207.85260009765625,
+                "Bridge": 317.5334167480469,
+                "Custom": 429.8409118652344,
+                "Flush": 29.0,
+                "Gap infill": 3.1291728019714355,
+                "Inner wall": 518.407958984375,
+                "Internal solid infill": 913.1972045898438,
+                "Outer wall": 417.8781433105469,
+                "Overhang wall": 22.851362228393555,
+                "Sparse infill": 338.345703125,
+                "Top surface": 318.49676513671875,
+                "Travel": 415.2897644042969,
+                "Undefined": 400.1558532714844
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFG60",
+                    "id": 1,
+                    "main_used_g": 26.83039093017578,
+                    "total_used_g": 26.83039093017578
+                }
+            ],
+            "id": 7,
+            "layer_filament_change": 0,
+            "main_predication": 3444.08251953125,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 60.99999237060547,
+                        "height": 13.399999618530273,
+                        "width": 92.44000244140625,
+                        "x": 36.779998779296875,
+                        "y": -494.8999938964844,
+                        "z": 7.34862837248329e-10
+                    },
+                    "id": 81,
+                    "name": "A1 display and controller",
+                    "triangle_count": 6398
+                },
+                {
+                    "bbox": {
+                        "depth": 17.78000831604004,
+                        "height": 4.53000020980835,
+                        "width": 25.39999771118164,
+                        "x": 151.3000030517578,
+                        "y": -457.2900085449219,
+                        "z": -4.9041748440004085e-09
+                    },
+                    "id": 85,
+                    "name": "A2 reel sensor",
+                    "triangle_count": 4762
+                },
+                {
+                    "bbox": {
+                        "depth": 19.9999942779541,
+                        "height": 9.760000228881836,
+                        "width": 20.0,
+                        "x": 195.0,
+                        "y": -458.3999938964844,
+                        "z": -4.4409178556747975e-09
+                    },
+                    "id": 89,
+                    "name": "A3 haptic board",
+                    "triangle_count": 4094
+                },
+                {
+                    "bbox": {
+                        "depth": 12.999994277954102,
+                        "height": 2.0299999713897705,
+                        "width": 23.0,
+                        "x": 152.5,
+                        "y": -492.8999938964844,
+                        "z": 4.305114487124229e-09
+                    },
+                    "id": 93,
+                    "name": "A4 integration board",
+                    "triangle_count": 160
+                },
+                {
+                    "bbox": {
+                        "depth": 15.999994277954102,
+                        "height": 2.384999990463257,
+                        "width": 23.0,
+                        "x": 193.5,
+                        "y": -494.3999938964844,
+                        "z": 4.76837147544984e-09
+                    },
+                    "id": 97,
+                    "name": "A5 USB power board",
+                    "triangle_count": 3080
+                },
+                {
+                    "bbox": {
+                        "depth": 10.000024795532227,
+                        "height": 5.300000190734863,
+                        "width": 11.0,
+                        "x": 129.5,
+                        "y": -524.4000244140625,
+                        "z": 4.632568550988481e-09
+                    },
+                    "id": 101,
+                    "name": "Top power switch board",
+                    "triangle_count": 634
+                },
+                {
+                    "bbox": {
+                        "depth": 3.1999998092651367,
+                        "height": 0.8519999980926514,
+                        "width": 4.799993991851807,
+                        "x": 162.60000610351563,
+                        "y": -521.0,
+                        "z": 9.53674250681047e-10
+                    },
+                    "id": 105,
+                    "name": "USB indicator LED board",
+                    "triangle_count": 30
+                },
+                {
+                    "bbox": {
+                        "depth": 2.0000243186950684,
+                        "height": 1.0499999523162842,
+                        "width": 3.2000064849853516,
+                        "x": 192.39999389648438,
+                        "y": -520.4000244140625,
+                        "z": 3.8418579428878274e-09
+                    },
+                    "id": 109,
+                    "name": "USB lamp resistor board",
+                    "triangle_count": 36
+                },
+                {
+                    "bbox": {
+                        "depth": 12.000024795532227,
+                        "height": 2.0999999046325684,
+                        "width": 3.0,
+                        "x": 63.5,
+                        "y": -552.4000244140625,
+                        "z": -2.3162842754942403e-09
+                    },
+                    "id": 113,
+                    "name": "A3 floor spacer 1",
+                    "triangle_count": 12
+                },
+                {
+                    "bbox": {
+                        "depth": 12.000024795532227,
+                        "height": 2.0999999046325684,
+                        "width": 3.0,
+                        "x": 76.5,
+                        "y": -552.4000244140625,
+                        "z": -2.3162842754942403e-09
+                    },
+                    "id": 117,
+                    "name": "A3 floor spacer 2",
+                    "triangle_count": 12
+                },
+                {
+                    "bbox": {
+                        "depth": 3.0000243186950684,
+                        "height": 2.4649999141693115,
+                        "width": 3.0,
+                        "x": 105.5,
+                        "y": -547.9000244140625,
+                        "z": 2.9153441882812103e-09
+                    },
+                    "id": 121,
+                    "name": "A4 display spacer 1",
+                    "triangle_count": 12
+                },
+                {
+                    "bbox": {
+                        "depth": 3.0000243186950684,
+                        "height": 2.4649999141693115,
+                        "width": 3.0,
+                        "x": 116.5,
+                        "y": -547.9000244140625,
+                        "z": 2.9153441882812103e-09
+                    },
+                    "id": 125,
+                    "name": "A4 display spacer 2",
+                    "triangle_count": 12
+                },
+                {
+                    "bbox": {
+                        "depth": 3.0000243186950684,
+                        "height": 2.4649999141693115,
+                        "width": 3.0,
+                        "x": 127.5,
+                        "y": -547.9000244140625,
+                        "z": 2.9153441882812103e-09
+                    },
+                    "id": 129,
+                    "name": "A4 display spacer 3",
+                    "triangle_count": 12
+                },
+                {
+                    "bbox": {
+                        "depth": 3.0000243186950684,
+                        "height": 3.1600000858306885,
+                        "width": 3.0,
+                        "x": 156.5,
+                        "y": -547.9000244140625,
+                        "z": -2.9153441882812103e-09
+                    },
+                    "id": 133,
+                    "name": "A5 display spacer 1",
+                    "triangle_count": 12
+                },
+                {
+                    "bbox": {
+                        "depth": 3.0000243186950684,
+                        "height": 3.1600000858306885,
+                        "width": 3.0,
+                        "x": 167.5,
+                        "y": -547.9000244140625,
+                        "z": -2.9153441882812103e-09
+                    },
+                    "id": 137,
+                    "name": "A5 display spacer 2",
+                    "triangle_count": 12
+                },
+                {
+                    "bbox": {
+                        "depth": 3.0000243186950684,
+                        "height": 3.1600000858306885,
+                        "width": 3.0,
+                        "x": 178.5,
+                        "y": -547.9000244140625,
+                        "z": -2.9153441882812103e-09
+                    },
+                    "id": 141,
+                    "name": "A5 display spacer 3",
+                    "triangle_count": 12
+                }
+            ],
+            "times": {
+                "conflict_check_time": 31,
+                "detect_overhangs_time": 4,
+                "export_gcode_time": 1138,
+                "flush_plan_time": 0,
+                "generate_support_material_time": 29,
+                "infill_generate_time": 117,
+                "infill_time": 203,
+                "ironing_time": 0,
+                "make_perimeters_time": 201,
+                "multifilament_segment_2d_time": 0,
+                "other_slice_time": 4,
+                "prepare_infill_time": 86,
+                "region_split_time": 0,
+                "skirt_brim_time": 0,
+                "slice_layers_time": 51,
+                "sliced_time": 1641,
+                "sliced_time_with_cache": 1138,
+                "support_detect_time": 0,
+                "support_interface_time": 0,
+                "support_normal_generate_time": 0,
+                "support_toolpath_time": 0,
+                "support_tree_generate_time": 0,
+                "toolpath_time": 17,
+                "wall_time": 149,
+                "wipe_tower_time": 7
+            },
+            "total_predication": 3916.759033203125,
+            "triangle_count": 19290,
+            "warning_message": ""
+        }
+    ],
+    "sparse_infill_density": 15.0,
+    "times": {
+        "export_3mf_time": 205,
+        "export_slicedata_time": 0,
+        "export_time": 954,
+        "import_time": 189,
+        "load_slicedata_time": 0,
+        "prepare_time": 192
+    },
+    "upward_compatible_machine": [
+        "Bambu Lab P1S 0.4 nozzle",
+        "Bambu Lab P1P 0.4 nozzle",
+        "Bambu Lab X1 0.4 nozzle",
+        "Bambu Lab X1E 0.4 nozzle",
+        "Bambu Lab A1 0.4 nozzle",
+        "Bambu Lab H2D 0.4 nozzle",
+        "Bambu Lab H2D Pro 0.4 nozzle",
+        "Bambu Lab H2S 0.4 nozzle",
+        "Bambu Lab P2S 0.4 nozzle",
+        "Bambu Lab H2C 0.4 nozzle",
+        "Bambu Lab X2D 0.4 nozzle",
+        "Bambu Lab A2L 0.4 nozzle"
+    ],
+    "wall_loops": 2
+}

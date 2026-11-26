@@ -1,0 +1,466 @@
+[
+  {
+    "part": "grip screw keeper",
+    "layers": [
+      {
+        "z_mm": 0.2,
+        "smallest_island_coverage": 0.879,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 46.71
+      },
+      {
+        "z_mm": 0.32,
+        "smallest_island_coverage": 0.993,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.97
+      },
+      {
+        "z_mm": 0.44,
+        "smallest_island_coverage": 0.99,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.81
+      },
+      {
+        "z_mm": 0.56,
+        "smallest_island_coverage": 0.776,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 41.42
+      },
+      {
+        "z_mm": 0.68,
+        "smallest_island_coverage": 0.992,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.91
+      },
+      {
+        "z_mm": 0.8,
+        "smallest_island_coverage": 0.992,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.89
+      },
+      {
+        "z_mm": 0.92,
+        "smallest_island_coverage": 0.992,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.88
+      },
+      {
+        "z_mm": 1.04,
+        "smallest_island_coverage": 0.992,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.92
+      },
+      {
+        "z_mm": 1.16,
+        "smallest_island_coverage": 0.992,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.88
+      },
+      {
+        "z_mm": 1.28,
+        "smallest_island_coverage": 0.994,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.99
+      },
+      {
+        "z_mm": 1.4,
+        "smallest_island_coverage": 0.994,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 53.0
+      },
+      {
+        "z_mm": 1.52,
+        "smallest_island_coverage": 0.992,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.9
+      },
+      {
+        "z_mm": 1.64,
+        "smallest_island_coverage": 0.991,
+        "open_holes": 1,
+        "shape_mm2": 53.14,
+        "bead_mm2": 52.84
+      }
+    ]
+  },
+  {
+    "part": "receiver nut keeper",
+    "layers": [
+      {
+        "z_mm": 0.2,
+        "smallest_island_coverage": 0.914,
+        "open_holes": 0,
+        "shape_mm2": 46.56,
+        "bead_mm2": 42.54
+      },
+      {
+        "z_mm": 0.32,
+        "smallest_island_coverage": 0.992,
+        "open_holes": 0,
+        "shape_mm2": 46.56,
+        "bead_mm2": 46.17
+      },
+      {
+        "z_mm": 0.44,
+        "smallest_island_coverage": 0.993,
+        "open_holes": 0,
+        "shape_mm2": 46.56,
+        "bead_mm2": 46.24
+      },
+      {
+        "z_mm": 0.56,
+        "smallest_island_coverage": 0.991,
+        "open_holes": 1,
+        "shape_mm2": 36.38,
+        "bead_mm2": 36.23
+      },
+      {
+        "z_mm": 0.68,
+        "smallest_island_coverage": 0.991,
+        "open_holes": 1,
+        "shape_mm2": 36.38,
+        "bead_mm2": 36.24
+      },
+      {
+        "z_mm": 0.8,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 1,
+        "shape_mm2": 36.38,
+        "bead_mm2": 36.19
+      }
+    ]
+  },
+  {
+    "part": "diffuser and flange",
+    "layers": [
+      {
+        "z_mm": 0.2,
+        "smallest_island_coverage": 0.843,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 12.87
+      },
+      {
+        "z_mm": 0.32,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 0.44,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 0.56,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 0.68,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 0.8,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 0.92,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 1.04,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 1.16,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 1.28,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 1.4,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 1.52,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 15.13
+      },
+      {
+        "z_mm": 1.64,
+        "smallest_island_coverage": 0.978,
+        "open_holes": 0,
+        "shape_mm2": 15.26,
+        "bead_mm2": 14.96
+      },
+      {
+        "z_mm": 1.76,
+        "smallest_island_coverage": 0.966,
+        "open_holes": 0,
+        "shape_mm2": 1.92,
+        "bead_mm2": 1.86
+      },
+      {
+        "z_mm": 1.88,
+        "smallest_island_coverage": 0.966,
+        "open_holes": 0,
+        "shape_mm2": 1.92,
+        "bead_mm2": 1.86
+      },
+      {
+        "z_mm": 2.0,
+        "smallest_island_coverage": 0.966,
+        "open_holes": 0,
+        "shape_mm2": 1.92,
+        "bead_mm2": 1.86
+      },
+      {
+        "z_mm": 2.12,
+        "smallest_island_coverage": 0.966,
+        "open_holes": 0,
+        "shape_mm2": 1.92,
+        "bead_mm2": 1.86
+      },
+      {
+        "z_mm": 2.24,
+        "smallest_island_coverage": 0.966,
+        "open_holes": 0,
+        "shape_mm2": 1.92,
+        "bead_mm2": 1.86
+      },
+      {
+        "z_mm": 2.36,
+        "smallest_island_coverage": 0.966,
+        "open_holes": 0,
+        "shape_mm2": 1.92,
+        "bead_mm2": 1.86
+      }
+    ]
+  },
+  {
+    "part": "USB mask perimeter",
+    "layers": [
+      {
+        "z_mm": 0.2,
+        "smallest_island_coverage": 0.887,
+        "open_holes": 1,
+        "shape_mm2": 88.67,
+        "bead_mm2": 78.63
+      },
+      {
+        "z_mm": 0.32,
+        "smallest_island_coverage": 0.984,
+        "open_holes": 1,
+        "shape_mm2": 90.72,
+        "bead_mm2": 89.42
+      },
+      {
+        "z_mm": 0.44,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 2,
+        "shape_mm2": 40.85,
+        "bead_mm2": 40.91
+      },
+      {
+        "z_mm": 0.56,
+        "smallest_island_coverage": 0.989,
+        "open_holes": 2,
+        "shape_mm2": 38.79,
+        "bead_mm2": 38.9
+      }
+    ]
+  },
+  {
+    "part": "RGB board and emitter",
+    "layers": [
+      {
+        "z_mm": 0.2,
+        "smallest_island_coverage": 0.881,
+        "open_holes": 0,
+        "shape_mm2": 15.11,
+        "bead_mm2": 13.34
+      },
+      {
+        "z_mm": 0.32,
+        "smallest_island_coverage": 0.974,
+        "open_holes": 0,
+        "shape_mm2": 15.11,
+        "bead_mm2": 14.8
+      },
+      {
+        "z_mm": 0.44,
+        "smallest_island_coverage": 0.974,
+        "open_holes": 0,
+        "shape_mm2": 15.11,
+        "bead_mm2": 14.8
+      },
+      {
+        "z_mm": 0.56,
+        "smallest_island_coverage": 0.973,
+        "open_holes": 0,
+        "shape_mm2": 15.11,
+        "bead_mm2": 14.8
+      },
+      {
+        "z_mm": 0.68,
+        "smallest_island_coverage": 0.981,
+        "open_holes": 0,
+        "shape_mm2": 2.56,
+        "bead_mm2": 2.51
+      },
+      {
+        "z_mm": 0.8,
+        "smallest_island_coverage": 0.981,
+        "open_holes": 0,
+        "shape_mm2": 2.56,
+        "bead_mm2": 2.51
+      },
+      {
+        "z_mm": 0.92,
+        "smallest_island_coverage": 0.981,
+        "open_holes": 0,
+        "shape_mm2": 2.56,
+        "bead_mm2": 2.51
+      },
+      {
+        "z_mm": 1.04,
+        "smallest_island_coverage": 0.981,
+        "open_holes": 0,
+        "shape_mm2": 2.56,
+        "bead_mm2": 2.51
+      },
+      {
+        "z_mm": 1.16,
+        "smallest_island_coverage": 0.981,
+        "open_holes": 0,
+        "shape_mm2": 2.56,
+        "bead_mm2": 2.51
+      },
+      {
+        "z_mm": 1.28,
+        "smallest_island_coverage": 0.967,
+        "open_holes": 0,
+        "shape_mm2": 2.56,
+        "bead_mm2": 2.47
+      }
+    ]
+  },
+  {
+    "part": "keyed power cap",
+    "layers": [
+      {
+        "z_mm": 0.2,
+        "smallest_island_coverage": 0.904,
+        "open_holes": 1,
+        "shape_mm2": 38.06,
+        "bead_mm2": 34.46
+      },
+      {
+        "z_mm": 0.32,
+        "smallest_island_coverage": 0.986,
+        "open_holes": 0,
+        "shape_mm2": 49.69,
+        "bead_mm2": 49.02
+      },
+      {
+        "z_mm": 0.44,
+        "smallest_island_coverage": 0.991,
+        "open_holes": 0,
+        "shape_mm2": 49.69,
+        "bead_mm2": 49.22
+      },
+      {
+        "z_mm": 0.56,
+        "smallest_island_coverage": 0.994,
+        "open_holes": 0,
+        "shape_mm2": 49.69,
+        "bead_mm2": 49.39
+      },
+      {
+        "z_mm": 0.68,
+        "smallest_island_coverage": 0.991,
+        "open_holes": 0,
+        "shape_mm2": 25.34,
+        "bead_mm2": 25.11
+      },
+      {
+        "z_mm": 0.8,
+        "smallest_island_coverage": 0.994,
+        "open_holes": 0,
+        "shape_mm2": 25.34,
+        "bead_mm2": 25.18
+      },
+      {
+        "z_mm": 0.92,
+        "smallest_island_coverage": 0.981,
+        "open_holes": 0,
+        "shape_mm2": 25.34,
+        "bead_mm2": 24.86
+      },
+      {
+        "z_mm": 1.04,
+        "smallest_island_coverage": 0.993,
+        "open_holes": 0,
+        "shape_mm2": 25.34,
+        "bead_mm2": 25.17
+      },
+      {
+        "z_mm": 1.16,
+        "smallest_island_coverage": 0.96,
+        "open_holes": 1,
+        "shape_mm2": 21.19,
+        "bead_mm2": 20.45
+      },
+      {
+        "z_mm": 1.28,
+        "smallest_island_coverage": 0.956,
+        "open_holes": 1,
+        "shape_mm2": 20.55,
+        "bead_mm2": 19.74
+      }
+    ]
+  }
+]

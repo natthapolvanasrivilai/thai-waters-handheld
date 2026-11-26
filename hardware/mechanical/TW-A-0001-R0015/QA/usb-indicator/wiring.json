@@ -1,0 +1,110 @@
+{
+  "scope": "R0006 nominal seated lamp, supplier emitter, U light pipe, jackets and stripped ends. Lamp solder fillets, manufacturing variation, retention forces and optical output are unmeasured.",
+  "axis": "Lens faces west (-X). W4B anode and W4C cathode exit inboard (+X), at Y +1.70 and -1.70 mm respectively.",
+  "wiring": "W4B terminates at USB2, bonded to the fixed J8 housing. W4C terminates at J8-3 and is tapped by A5-W3. A5-W7 feeds USB2 in R0006.",
+  "service": "The leadless gauge can move independently. The finished lamp is tethered to A1. Support the lamp and display together during handling. A coordinated installation/removal, strain relief, tool access and final retention require a separate full assembly check.",
+  "display_rigid_vertical_translation_with_seated_USB1_mm": 18.0,
+  "length_check_assumptions": "Fixed X and Y; lamp stays seated. Chords ignore all obstructions, bending, the W3 side tap and strain relief. Both entire solder tails count toward available conductor. Each deficit rules out that pose even under these generous assumptions.",
+  "lead_length_negative_control": {
+    "USB-W4B": {
+      "moving_display_solder_tip_mm": [
+        -22.02,
+        18.47,
+        18.23
+      ],
+      "fixed_lamp_solder_tip_mm": [
+        -42.14,
+        1.7,
+        13.1
+      ],
+      "full_conductor_length_mm": 30.54456,
+      "straight_distance_at_18_mm_lift_mm": 34.94344,
+      "minimum_length_deficit_mm": 4.39889,
+      "upper_bound_on_pure_vertical_lift_mm": 10.58377
+    },
+    "USB-W4C": {
+      "moving_display_solder_tip_mm": [
+        -16.52,
+        19.82,
+        20.75
+      ],
+      "fixed_lamp_solder_tip_mm": [
+        -42.14,
+        -1.7,
+        13.1
+      ],
+      "full_conductor_length_mm": 40.34492,
+      "straight_distance_at_18_mm_lift_mm": 42.15943,
+      "minimum_length_deficit_mm": 1.81451,
+      "upper_bound_on_pure_vertical_lift_mm": 14.89368
+    }
+  },
+  "revisions": {
+    "TW-A-0001-R0013": {
+      "seated_distance_to_housing_mm": {
+        "statusUsbGuide": 0.12,
+        "USB-PCB1": 0.1,
+        "USB-D1": 0.299853,
+        "USB-W4B": 0.399481,
+        "USB-W4B-Cu": 0.524623,
+        "USB-W4C": 0.400138,
+        "USB-W4C-Cu": 0.524623
+      },
+      "west_to_east_U_pipe_12_mm_sweep_housing_clearance_mm": 0.12,
+      "seated_emitter_to_light_guide_mm": 0.298
+    },
+    "TW-A-0001-R0014": {
+      "seated_distance_to_housing_mm": {
+        "statusUsbGuide": 0.12,
+        "USB-PCB1": 0.1,
+        "USB-D1": 0.299853,
+        "USB-W4B": 0.399481,
+        "USB-W4B-Cu": 0.524623,
+        "USB-W4C": 0.400138,
+        "USB-W4C-Cu": 0.524623
+      },
+      "west_to_east_U_pipe_12_mm_sweep_housing_clearance_mm": 0.12,
+      "seated_emitter_to_light_guide_mm": 0.298
+    },
+    "TW-A-0001-R0015": {
+      "seated_distance_to_housing_mm": {
+        "statusUsbGuide": 0.12,
+        "USB-PCB1": 0.1,
+        "USB-D1": 0.299853,
+        "USB-W4B": 0.399481,
+        "USB-W4B-Cu": 0.524623,
+        "USB-W4C": 0.400138,
+        "USB-W4C-Cu": 0.524623
+      },
+      "west_to_east_U_pipe_12_mm_sweep_housing_clearance_mm": 0.12,
+      "seated_emitter_to_light_guide_mm": 0.298
+    },
+    "TW-A-0001-R0016": {
+      "seated_distance_to_housing_mm": {
+        "statusUsbGuide": 0.12,
+        "USB-PCB1": 0.0,
+        "USB-D1": 0.299853,
+        "USB-W4B": 0.399481,
+        "USB-W4B-Cu": 0.524623,
+        "USB-W4C": 0.590017,
+        "USB-W4C-Cu": 0.524623
+      },
+      "west_to_east_U_pipe_12_mm_sweep_housing_clearance_mm": 0.12,
+      "seated_emitter_to_light_guide_mm": 0.298
+    }
+  },
+  "input_sha256": {
+    "hardware/mechanical/TW-A-0001-R0009/CAD/status-usb-guide.brep": "53a9f22aadedfc90ca3f70283c28d2aa941b63e6c949ce5092338e26b761ea08",
+    "hardware/electronics/usb-status-r0003/placed/USB-PCB1.brep": "c9d8aa8f0fa70fb1db0443aa8af7d3e905251b6e7a1fffe7092c1f29f2eb9710",
+    "hardware/electronics/usb-status-r0003/placed/USB-D1.brep": "aa66e31e6e961ae4a6566ed4cfd0267942435e52e2823bd62c04e45ada5347d0",
+    "hardware/electronics/usb-status-r0003/placed/USB-W4B.brep": "116d75e648d8d45355b500fe57ec23eb6541bebe02260d31020c685e3cba534c",
+    "hardware/electronics/usb-status-r0003/placed/USB-W4B-Cu.brep": "39340d4da347f1f6adcfc606697b449cf3ee769fd05e51b8c4652aa1366f6492",
+    "hardware/electronics/usb-entry-r0006/installed-leads/USB-W4C.brep": "3212b7ec786bfa97eaf14b8bfaf3cdcc7dc5bb9d438f42a35cec37fe2fdeab8a",
+    "hardware/electronics/usb-entry-r0006/installed-leads/USB-W4C-Cu.brep": "10e9d1a1b2f6235fd7914be405c5493faecc3ac98648e73598b382147a5da60c",
+    "hardware/mechanical/TW-A-0001-R0009/CAD/housing-battery-bay.brep": "8aec1c9df2d2b894b9316144e6fa9924b0adb6e320cf27208812d2fb1b99fc47",
+    "hardware/mechanical/TW-A-0001-R0014/CAD/housing-battery-bay.brep": "ae66ab30cb6289ddb4919fe5414bdbd486d1a23587c75a6ba7a3049c3754c52e",
+    "hardware/mechanical/TW-A-0001-R0015/CAD/housing-battery-bay.brep": "99381e19cd835f09966deab7f99a6687b334e14a3a5a80bee84fb13e54e3d5ab",
+    "hardware/mechanical/TW-A-0001-R0016/CAD/housing-battery-bay.brep": "aee53daf663c7ee90074fdbfbc9808f9bd17eac61f3f70f15672fe7673ef662d",
+    "hardware/electronics/usb-status-r0003/placed/placement.json": "64e00501bc4cee69dcbfa4e6917210f7bf48cb9129286af28eab89009004dadc"
+  }
+}

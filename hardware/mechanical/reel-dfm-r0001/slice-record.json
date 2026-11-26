@@ -1,0 +1,111 @@
+{
+  "project_sha256": "58a072dcd4f14b83a02fcd88fbe1f8ee0ba960334c662bdeeb04ccaa8939fb60",
+  "runs": {
+    "all": {
+      "plate_1": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "27c8ca7b67690edc8650b1f9c9afe027cb8d6cdcb18c529d96666ff51d74c204",
+        "curr_bed_type": "Supertack Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "plate_2": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "074cbffce993f95442b9f4cad1cf7c2d6dd05b4ecdcc796282f554564cc1786f",
+        "curr_bed_type": "Supertack Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "plate_3": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "fdcb4c3a44ca64638e6a689035b0cbf613d0e10ee4bca198253123ff3d9e96ff",
+        "curr_bed_type": "Supertack Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "plate_4": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "cee012799fed3175047b80a32609400222c1a5e27b9df248676acde4b689ea82",
+        "curr_bed_type": "Supertack Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "plate_5": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "63d3116543fb49989d56398548fbe9a8884e0851c88d63a222c23cef081352be",
+        "curr_bed_type": "Textured PEI Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "plate_6": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "0fd40203e26d43df1afe47adc0aace5eb1eb8828501b95631f308b35e572d8db",
+        "curr_bed_type": "Supertack Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "plate_7": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "ac39ddfb30db14412d9b3779063bff7387cd18369ef9320d4dc779e53103f7fd",
+        "curr_bed_type": "Engineering Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "native_return_code": 0,
+      "native_result_sha256": "658aecc73374133d44a9f551b1c627d04a907bacdf498c62e4319e829699205e"
+    },
+    "reopen": {
+      "plate_2": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "074cbffce993f95442b9f4cad1cf7c2d6dd05b4ecdcc796282f554564cc1786f",
+        "curr_bed_type": "Supertack Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "native_return_code": 0,
+      "native_result_sha256": "c911617d24563c91b3da63d7160a2a53da0eff3e9cfc4e5c417d8646f23f27e8"
+    },
+    "before": {
+      "plate_2": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "50214e96e27fc1d3e313f1b6a668a62897130aa030fe445eac030e665aab3fad",
+        "curr_bed_type": "Supertack Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "native_return_code": 0,
+      "native_result_sha256": "b420029848e222fff36889546bfd226081b6f9f2ae1cfe87604e2f60b5134a33"
+    },
+    "oldrod": {
+      "plate_3": {
+        "version": "BambuStudio 02.09.01.70",
+        "sha256": "b5495f5dc494217a77bbb99558538ee648d1f41dbd5f45da11a0fc11fafe94b5",
+        "curr_bed_type": "Supertack Plate",
+        "filament_settings_id": "\"PolyLite PETG @BBL X1C\";\"Generic PETG\";\"Generic TPU\"",
+        "printer_model": "Bambu Lab X1 Carbon",
+        "nozzle_diameter": "0.4",
+        "print_settings_id": "0.20mm Standard @BBL X1C"
+      },
+      "native_return_code": 0,
+      "native_result_sha256": "17dc27946a281dc726ce49f53f7a6dba48c8de401cd192cff81d05e6df914199"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "assembly": "TW-A-0001-R0012",
+  "compressed_sha256": "8bf5cf354f5ae40bfb05e6b31e735f25da9e5887c7ac04c045ffa9d5a830a358",
+  "step_sha256": "9f91fe45a97a491455840506b69689d33e871b7ac336f5e64d5e03faf8719259",
+  "assembly_nodes": 147,
+  "validity": {
+    "tee-GND-seal": true,
+    "tee-SCL-Cu": true,
+    "termination-W1-VCC": true,
+    "tee-SCL-seal": true,
+    "A3-J1-header": true,
+    "tee-SDA-seal": true,
+    "A3-J1-TPA": true,
+    "tee-VCC-Cu": true,
+    "termination-W1-SCL": true,
+    "A5-power": true,
+    "w1VCC": true,
+    "J8plug": true,
+    "tee-VCC-seal": true,
+    "termination-W1-SDA": true,
+    "w1SCL": true,
+    "w1SDA": true,
+    "tee-SDA-Cu": true,
+    "tee-GND-Cu": true,
+    "termination-W1-GND": true,
+    "A4-integration": true,
+    "drvBoard": true,
+    "w1GND": true,
+    "A3-J1-plug": true
+  },
+  "native_minimum_rigid_to_W1": {
+    "gap_mm": 3.24,
+    "moving_xyz_mm": [
+      28.31,
+      3.875,
+      11.22
+    ],
+    "fixed_xyz_mm": [
+      31.55,
+      3.875,
+      11.22
+    ]
+  },
+  "native_minimum_sampled_flex_pair": {
+    "gap_mm": 0.347397,
+    "moving_xyz_mm": [
+      30.6046,
+      19.7564,
+      13.01978
+    ],
+    "fixed_xyz_mm": [
+      30.6046,
+      19.70695,
+      12.67593
+    ]
+  },
+  "seated_supplier_latch_overlap_mm3": 0.968176,
+  "seated_supplier_TPA_overlap_mm3": 10.166906,
+  "fixed_loom_stationary_components": [
+    "J8plug",
+    "tee-GND-Cu",
+    "tee-GND-seal",
+    "tee-SCL-Cu",
+    "tee-SCL-seal",
+    "tee-SDA-Cu",
+    "tee-SDA-seal",
+    "tee-VCC-Cu",
+    "tee-VCC-seal",
+    "termination-W1-GND",
+    "termination-W1-SCL",
+    "termination-W1-SDA",
+    "termination-W1-VCC",
+    "w1GND",
+    "w1SCL",
+    "w1SDA",
+    "w1VCC"
+  ],
+  "source_manifest_sha256": "847e80118fd80539571716e8be029c103c578a78c839ebb6149177462a8e582c",
+  "route_sha256": "082d85517de1b5fe54b499f905aa906d2b50bfa521cd14fd6f6c59855cde824b"
+}

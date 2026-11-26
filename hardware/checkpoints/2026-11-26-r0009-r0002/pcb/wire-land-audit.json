@@ -1,0 +1,500 @@
+{
+  "pcb_sha256": "aaab9d33b5b04815a3178a40aac9649dac80e361524bcfb1b8363dae45bd1267",
+  "scope": "Native PCB land registration only; not solder/wire geometry",
+  "rows": {
+    "J4": {
+      "value_mark": "AMP_N",
+      "pcb_xy_mm": [
+        95.6,
+        113.4
+      ],
+      "mounted_xy_mm": [
+        8.6,
+        -0.6
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "AMP_N",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J12": {
+      "value_mark": "GND",
+      "pcb_xy_mm": [
+        118.2,
+        113.55
+      ],
+      "mounted_xy_mm": [
+        31.2,
+        -0.45
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "GND",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J1": {
+      "value_mark": "AMP_P",
+      "pcb_xy_mm": [
+        95.6,
+        103.6
+      ],
+      "mounted_xy_mm": [
+        8.6,
+        -10.4
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "AMP_P",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J11": {
+      "value_mark": "GND",
+      "pcb_xy_mm": [
+        114.9,
+        113.55
+      ],
+      "mounted_xy_mm": [
+        27.9,
+        -0.45
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "GND",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J9": {
+      "value_mark": "VBAT",
+      "pcb_xy_mm": [
+        121.6,
+        103.45
+      ],
+      "mounted_xy_mm": [
+        34.6,
+        -10.55
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "VBAT",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J2": {
+      "value_mark": "SPK_P",
+      "pcb_xy_mm": [
+        95.6,
+        106.7
+      ],
+      "mounted_xy_mm": [
+        8.6,
+        -7.3
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "SPK_P",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J7": {
+      "value_mark": "SCL",
+      "pcb_xy_mm": [
+        116.6,
+        103.45
+      ],
+      "mounted_xy_mm": [
+        29.6,
+        -10.55
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "SCL",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J6": {
+      "value_mark": "VCC3V3",
+      "pcb_xy_mm": [
+        114.1,
+        103.45
+      ],
+      "mounted_xy_mm": [
+        27.1,
+        -10.55
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "VCC3V3",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J13": {
+      "value_mark": "K3_RAW",
+      "pcb_xy_mm": [
+        121.5,
+        113.55
+      ],
+      "mounted_xy_mm": [
+        34.5,
+        -0.45
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "K3_RAW",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J10": {
+      "value_mark": "SW_SENSE",
+      "pcb_xy_mm": [
+        111.6,
+        113.55
+      ],
+      "mounted_xy_mm": [
+        24.6,
+        -0.45
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "SW_SENSE",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J8": {
+      "value_mark": "PMIC",
+      "pcb_xy_mm": [
+        119.1,
+        103.45
+      ],
+      "mounted_xy_mm": [
+        32.1,
+        -10.55
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "PMIC",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J5": {
+      "value_mark": "SDA",
+      "pcb_xy_mm": [
+        111.6,
+        103.45
+      ],
+      "mounted_xy_mm": [
+        24.6,
+        -10.55
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "SDA",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "J3": {
+      "value_mark": "SPK_N",
+      "pcb_xy_mm": [
+        95.6,
+        110.3
+      ],
+      "mounted_xy_mm": [
+        8.6,
+        -3.7
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "smd",
+          "net": "SPK_N",
+          "land_dims_mm": [
+            "1.8",
+            "1.2"
+          ],
+          "drill_mm": null
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "W104": {
+      "value_mark": "CC1",
+      "pcb_xy_mm": [
+        101.55,
+        129.4
+      ],
+      "mounted_xy_mm": [
+        14.55,
+        15.4
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "thru_hole",
+          "net": "CC1",
+          "land_dims_mm": [
+            "1.7",
+            "1.7"
+          ],
+          "drill_mm": [
+            "0.7"
+          ]
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "W103": {
+      "value_mark": "GND",
+      "pcb_xy_mm": [
+        121.45,
+        119.0
+      ],
+      "mounted_xy_mm": [
+        34.45,
+        5.0
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "thru_hole",
+          "net": "GND",
+          "land_dims_mm": [
+            "1.7",
+            "1.7"
+          ],
+          "drill_mm": [
+            "0.7"
+          ]
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "W106": {
+      "value_mark": "SPARE_NC",
+      "pcb_xy_mm": [
+        121.45,
+        129.4
+      ],
+      "mounted_xy_mm": [
+        34.45,
+        15.4
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "thru_hole",
+          "net": "unconnected-(W106-Pad1)",
+          "land_dims_mm": [
+            "1.7",
+            "1.7"
+          ],
+          "drill_mm": [
+            "0.7"
+          ]
+        }
+      ],
+      "required_missing_evidence": "no conductor per DNP; inspect for unintended protrusion"
+    },
+    "W105": {
+      "value_mark": "CC2",
+      "pcb_xy_mm": [
+        106.8,
+        118.55
+      ],
+      "mounted_xy_mm": [
+        19.8,
+        4.55
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "thru_hole",
+          "net": "CC2",
+          "land_dims_mm": [
+            "1.7",
+            "1.7"
+          ],
+          "drill_mm": [
+            "0.7"
+          ]
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "W102": {
+      "value_mark": "PMIC",
+      "pcb_xy_mm": [
+        121.45,
+        126.0
+      ],
+      "mounted_xy_mm": [
+        34.45,
+        12.0
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "thru_hole",
+          "net": "PMIC",
+          "land_dims_mm": [
+            "1.7",
+            "1.7"
+          ],
+          "drill_mm": [
+            "0.7"
+          ]
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "W101": {
+      "value_mark": "J5_VBUS",
+      "pcb_xy_mm": [
+        111.0,
+        131.3
+      ],
+      "mounted_xy_mm": [
+        24.0,
+        17.3
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "thru_hole",
+          "net": "ENTRY",
+          "land_dims_mm": [
+            "1.7",
+            "1.7"
+          ],
+          "drill_mm": [
+            "0.7"
+          ]
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    },
+    "W107": {
+      "value_mark": "LAMP_CTRL",
+      "pcb_xy_mm": [
+        117.65,
+        131.3
+      ],
+      "mounted_xy_mm": [
+        30.65,
+        17.3
+      ],
+      "pads": [
+        {
+          "pin": "1",
+          "mount": "thru_hole",
+          "net": "CTRL",
+          "land_dims_mm": [
+            "1.7",
+            "1.7"
+          ],
+          "drill_mm": [
+            "0.7"
+          ]
+        }
+      ],
+      "required_missing_evidence": "actual joint protrusion on each populated face and installed wire or mating assembly envelope"
+    }
+  }
+}

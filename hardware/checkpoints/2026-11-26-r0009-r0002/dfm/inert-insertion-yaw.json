@@ -1,0 +1,135 @@
+{
+  "scope": "Exact hash-checked R0009 inert parts; conservative bound over full vertical 32 mm path, all XY translations in disk and all yaw angles within stated limits; level, no tilt or native/physical outcome.",
+  "yaw_axis_xy_mm": [
+    22.7,
+    1.0999999999999996
+  ],
+  "rows": [
+    {
+      "yaw_each_side_deg": 0,
+      "xy_disk_radius_mm": 0,
+      "collisions": []
+    },
+    {
+      "yaw_each_side_deg": 0,
+      "xy_disk_radius_mm": 0.7,
+      "collisions": []
+    },
+    {
+      "yaw_each_side_deg": 0.5,
+      "xy_disk_radius_mm": 0.5,
+      "collisions": []
+    },
+    {
+      "yaw_each_side_deg": 1,
+      "xy_disk_radius_mm": 0.5,
+      "collisions": [
+        [
+          "substrate",
+          0.010815898504558972
+        ]
+      ]
+    },
+    {
+      "yaw_each_side_deg": 1.5,
+      "xy_disk_radius_mm": 0.4,
+      "collisions": [
+        [
+          "substrate",
+          0.120274234703284
+        ]
+      ]
+    },
+    {
+      "yaw_each_side_deg": 2,
+      "xy_disk_radius_mm": 0.2,
+      "collisions": []
+    },
+    {
+      "yaw_each_side_deg": 3,
+      "xy_disk_radius_mm": 0,
+      "collisions": [
+        [
+          "substrate",
+          0.15804067116158435
+        ]
+      ]
+    },
+    {
+      "yaw_each_side_deg": 5,
+      "xy_disk_radius_mm": 0.5,
+      "collisions": [
+        [
+          "substrate",
+          2.970990690604965
+        ]
+      ]
+    }
+  ],
+  "exact_spot_checks": [
+    {
+      "yaw_deg": -1,
+      "xy_offset_mm": [
+        0.5,
+        0
+      ],
+      "overlap_mm3": 0
+    },
+    {
+      "yaw_deg": 1,
+      "xy_offset_mm": [
+        0.5,
+        0
+      ],
+      "overlap_mm3": 0
+    },
+    {
+      "yaw_deg": -1.5,
+      "xy_offset_mm": [
+        0.4,
+        0
+      ],
+      "overlap_mm3": 0
+    },
+    {
+      "yaw_deg": 1.5,
+      "xy_offset_mm": [
+        0.4,
+        0
+      ],
+      "overlap_mm3": 0
+    },
+    {
+      "yaw_deg": -3,
+      "xy_offset_mm": [
+        0,
+        0
+      ],
+      "overlap_mm3": 0
+    },
+    {
+      "yaw_deg": 3,
+      "xy_offset_mm": [
+        0,
+        0
+      ],
+      "overlap_mm3": 0
+    },
+    {
+      "yaw_deg": -5,
+      "xy_offset_mm": [
+        0.5,
+        0
+      ],
+      "overlap_mm3": 1.5610882919232607
+    },
+    {
+      "yaw_deg": 5,
+      "xy_offset_mm": [
+        0.5,
+        0
+      ],
+      "overlap_mm3": 0
+    }
+  ]
+}

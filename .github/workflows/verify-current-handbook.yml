@@ -1,0 +1,34 @@
+name: Verify current handbook
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  handbook:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - run: python3 tools/check_current_handbook.py
+      - if: github.event_name == 'pull_request'
+        env:
+          HANDBOOK_BASE: ${{ github.event.pull_request.base.sha }}
+        run: python3 tools/check_current_handbook.py --base "$HANDBOOK_BASE"
+      - if: (github.event_name == 'push' || github.event.action == 'synchronize') && github.event.before && github.event.before != '0000000000000000000000000000000000000000'
+        env:
+          PREVIOUS_REVISION: ${{ github.event.before }}
+        run: python3 tools/check_current_handbook.py --base "$PREVIOUS_REVISION"
+      - run: npm ci --ignore-scripts --prefix verification/browser-tests
+      - name: Check the downloaded handbook in Chrome
+        env:
+          BROWSER_PATH: /usr/bin/google-chrome
+        run: |
+          node verification/browser-tests/handbook-current.cjs
+          node verification/browser-tests/pcb-assembly.cjs

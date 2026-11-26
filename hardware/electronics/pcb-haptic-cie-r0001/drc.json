@@ -1,0 +1,106 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-23T11:05:14",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.8",
+    "schematic_parity": [],
+    "source": "A3-CIE-R0001.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Courtyards overlap",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 120.25,
+                        "y": 53.91
+                    },
+                    "uuid": "194b4765-4c4c-4078-a30d-1f5cc7818abb"
+                },
+                {
+                    "description": "Footprint C1",
+                    "pos": {
+                        "x": 126.05,
+                        "y": 55.3
+                    },
+                    "uuid": "a804d861-b81a-488f-9f80-bd08dbd26d7d"
+                }
+            ],
+            "severity": "error",
+            "type": "courtyards_overlap"
+        },
+        {
+            "description": "Courtyards overlap",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 120.25,
+                        "y": 53.91
+                    },
+                    "uuid": "194b4765-4c4c-4078-a30d-1f5cc7818abb"
+                },
+                {
+                    "description": "Footprint R1",
+                    "pos": {
+                        "x": 126.05,
+                        "y": 62.925
+                    },
+                    "uuid": "b6bdbafc-7608-41cf-8943-af614440a127"
+                }
+            ],
+            "severity": "error",
+            "type": "courtyards_overlap"
+        },
+        {
+            "description": "Courtyards overlap",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 120.25,
+                        "y": 53.91
+                    },
+                    "uuid": "194b4765-4c4c-4078-a30d-1f5cc7818abb"
+                },
+                {
+                    "description": "Footprint U1",
+                    "pos": {
+                        "x": 128.2,
+                        "y": 58.8
+                    },
+                    "uuid": "db6c6168-ff9c-4bf0-9e08-4e8ba653c1dd"
+                }
+            ],
+            "severity": "error",
+            "type": "courtyards_overlap"
+        }
+    ]
+}
