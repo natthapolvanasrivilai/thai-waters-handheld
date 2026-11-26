@@ -6,6 +6,7 @@ from pathlib import Path
 
 from revision_gate import CHECKS, OWNER, validate
 from release_handbook import digest, render
+from release_tag_probe import classify
 
 
 class GateTest(unittest.TestCase):
@@ -45,7 +46,8 @@ class GateTest(unittest.TestCase):
                                              evidence=[self.ref.copy()])
                             for d, keys in CHECKS.items() for k in keys})
 
-    def run_gate(self, d, private=False, reviews=(), snapshot_change=None, asset_change=None):
+    def run_gate(self, d, private=False, reviews=(), snapshot_change=None, asset_change=None,
+                 phase="pre-publish", tag_probe=None, intended_source=None, intended_tag=None):
         def git(*a):
             return subprocess.check_output(("git", "-C", str(self.root), *a)).decode().strip()
 
@@ -88,7 +90,9 @@ class GateTest(unittest.TestCase):
             asset.update(asset_change)
         try:
             validate(d, self.root, evidence_sha=newest, actual_private=private, reviews=reviews,
-                     release_asset=None if asset_change == {} else asset)
+                     release_asset=None if asset_change == {} or phase == "pre-tag" else asset,
+                     tag_probe=tag_probe, phase=phase, intended_source=intended_source or d["source_commit"],
+                     intended_tag=intended_tag or "v0.9.4")
         finally:
             git("reset", "--mixed", self.sha)
             f.unlink(missing_ok=True)
@@ -223,6 +227,49 @@ class GateTest(unittest.TestCase):
                     render(self.root, d)
             finally:
                 git("reset", "--hard", self.sha)
+
+    def test_pre_tag_passes_without_a_tag_or_draft_for_both_stages(self):
+        for stage, scope in (("prototype", "inert"), ("production", "powered")):
+            self.run_gate(self.doc(stage, scope), True, [self.review()], phase="pre-tag",
+                          tag_probe={"tag_name": "v0.9.4", "status": "missing"})
+
+    def test_pre_tag_rejects_existing_local_tag(self):
+        def git(*a):
+            subprocess.check_output(("git", "-C", str(self.root), *a))
+        # Fixture repo only: detect a preexisting tag even if remote facts disagree.
+        git("tag", "v0.9.4", self.source)
+        try:
+            with self.assertRaisesRegex(ValueError, "existing checkout tag"):
+                self.run_gate(self.doc(), phase="pre-tag",
+                              tag_probe={"tag_name": "v0.9.4", "status": "missing"})
+        finally:
+            git("tag", "-d", "v0.9.4")
+
+    def test_pre_tag_rejects_bad_remote_state_and_intended_commit(self):
+        absent = {"tag_name": "v0.9.4", "status": "missing"}
+        for opts, expected in [({"tag_probe": None}, "authoritative"),
+          ({"tag_probe": {"tag_name": "v0.9.4", "status": "exists"}}, "authoritative"),
+          ({"tag_probe": absent | {"tag_name": "wrong"}}, "authoritative"),
+          ({"tag_probe": absent, "intended_source": self.sha}, "Intended source/tag"),
+          ({"tag_probe": absent, "intended_tag": "wrong"}, "Intended source/tag")]:
+            with self.subTest(opts=opts), self.assertRaisesRegex(ValueError, expected):
+                self.run_gate(self.doc(), phase="pre-tag", **opts)
+
+    def test_pre_tag_still_rejects_stale_snapshot_and_missing_production_review(self):
+        absent = {"tag_name": "v0.9.4", "status": "missing"}
+        with self.assertRaisesRegex(ValueError, "stale/mismatched"):
+            self.run_gate(self.doc(), phase="pre-tag", tag_probe=absent, snapshot_change="stale")
+        with self.assertRaisesRegex(ValueError, "owner approval"):
+            self.run_gate(self.doc("production", "powered"), True, phase="pre-tag", tag_probe=absent)
+
+    def test_tag_probe_fails_closed_on_non_authoritative_error(self):
+        self.assertEqual(classify(b"HTTP/2.0 404 Not Found\r\n", 1), "missing")
+        self.assertEqual(classify(b"HTTP/2.0 200 OK\r\n", 0), "exists")
+        for response, code in [(b"network failure 404", 1), (b"HTTP/2 403 Forbidden\n", 1),
+             (b"HTTP/2 500 Server Error\n", 1), (b"HTTP/2 401 Unauthorized\n", 1),
+             (b"HTTP/2 404 Not Found\n", 0), (b"HTTP/2 200 OK\n", 1)]:
+            with self.assertRaisesRegex(ValueError, "authoritative"):
+                classify(response, code)
 
     def test_pass_without_evidence(self):
         d = self.doc()

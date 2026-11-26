@@ -30,7 +30,8 @@ def git(root, *args):
     return subprocess.check_output(("git", "-C", str(root), *args)).decode().strip()
 
 
-def validate(doc, root, *, actual_private=False, evidence_sha="", reviews=(), release_asset=None):
+def validate(doc, root, *, actual_private=False, evidence_sha="", reviews=(), release_asset=None, tag_probe=None,
+             phase="pre-publish", intended_source=None, intended_tag=None):
     def require(condition, msg):
         if not condition:
             raise ValueError(msg)
@@ -145,14 +146,26 @@ def validate(doc, root, *, actual_private=False, evidence_sha="", reviews=(), re
     require(h.get("sha256") == digest(tracked), "Handbook: snapshot checksum mismatch")
     require(tracked == render(root, doc),
             "Handbook: stale/mismatched content, revision changes, source or evidence status")
-    require(isinstance(release_asset, dict), "Handbook: verified uploaded draft asset required")
-    require(release_asset.get("tag_name") == h["release_tag"] and
-            release_asset.get("tag_commit") == source,
-            "Handbook: GitHub tag does not resolve to exact release source")
-    require(release_asset.get("draft") is True and
-            release_asset.get("prerelease") is (stage == "prototype") and
-            release_asset.get("name") == name and release_asset.get("sha256") == h["sha256"],
-            "Handbook: missing/mismatched uploaded draft asset, digest or release stage")
+    require(phase in ("pre-tag", "pre-publish"), "Unsupported release gate phase")
+    require(intended_source == source and intended_tag == h["release_tag"],
+            "Intended source/tag does not match the exact evidence manifest")
+    if phase == "pre-tag":
+        require(isinstance(tag_probe, dict) and tag_probe.get("tag_name") == intended_tag
+                and tag_probe.get("status") == "missing",
+                "Pre-tag gate requires authoritative proof the exact intended tag does not exist")
+        require(release_asset is None, "Pre-tag gate does not accept existing release assets")
+        exists_in_checkout = subprocess.run(("git", "-C", str(root), "show-ref", "--verify",
+            "--quiet", f"refs/tags/{intended_tag}")).returncode
+        require(exists_in_checkout == 1, "Pre-tag gate rejected an existing checkout tag or ref error")
+    else:
+        require(isinstance(release_asset, dict), "Handbook: verified uploaded draft asset required")
+        require(release_asset.get("tag_name") == h["release_tag"] and
+                release_asset.get("tag_commit") == source,
+                "Handbook: GitHub tag does not resolve to exact release source")
+        require(release_asset.get("draft") is True and
+                release_asset.get("prerelease") is (stage == "prototype") and
+                release_asset.get("name") == name and release_asset.get("sha256") == h["sha256"],
+                "Handbook: missing/mismatched uploaded draft asset, digest or release stage")
 
     if stage == "production":
         require(actual_private is True, "Production promotion and orders require a private repository")
@@ -172,6 +185,9 @@ def main():
     p.add_argument("manifest")
     p.add_argument("evidence_sha")
     p.add_argument("--github-facts", type=Path, help="Protected CI facts; not user-supplied attestations")
+    p.add_argument("--phase", choices=("pre-tag", "pre-publish"), required=True)
+    p.add_argument("--intended-source", required=True)
+    p.add_argument("--intended-tag", required=True)
     a = p.parse_args()
     try:
         if not HEX40.fullmatch(a.evidence_sha):
@@ -185,11 +201,13 @@ def main():
         facts = json.loads(a.github_facts.read_text()) if a.github_facts else {}
         validate(json.loads(manifest), a.root, actual_private=facts.get("private"),
                  evidence_sha=a.evidence_sha, reviews=facts.get("reviews", []),
-                 release_asset=facts.get("release_asset"))
+                 release_asset=facts.get("release_asset"), tag_probe=facts.get("tag_probe"),
+                 phase=a.phase, intended_source=a.intended_source, intended_tag=a.intended_tag)
     except (OSError, KeyError, ValueError, TypeError, subprocess.CalledProcessError) as exc:
         print("REVISION GATE BLOCKED:", exc, file=sys.stderr)
         return 1
-    print("REVISION EVIDENCE PASSED. No promotion, publication, power-on or order was performed.")
+    print(f"{a.phase} gate passed for {a.intended_tag} at {a.intended_source}, evidence {a.evidence_sha}.")
+    print("No tag, release, power-on or order was performed.")
     return 0
 
 

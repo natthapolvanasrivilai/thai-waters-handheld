@@ -5,6 +5,7 @@ on:
       - '.github/workflows/revision-release-gate.yml'
       - 'tools/*revision_gate*'
       - 'tools/release_handbook.py'
+      - 'tools/release_tag_probe.py'
       - '.github/scripts/*nightly*'
       - '.github/workflows/verify-release-artifacts.yml'
       - 'quality/revision-gates/**'
@@ -12,6 +13,20 @@ on:
     branches: [policy/revision-release-constitution]
   workflow_dispatch:
     inputs:
+      phase:
+        description: Validate before tag creation or before draft publication
+        required: true
+        type: choice
+        options: [pre-tag, pre-publish]
+        default: pre-tag
+      intended_tag:
+        description: Exact intended tag name in the evidence manifest
+        required: true
+        type: string
+      intended_source:
+        description: Exact full source SHA intended for this tag
+        required: true
+        type: string
       evidence_sha:
         description: Exact 40-character SHA containing the completed revision manifest
         required: true
@@ -22,11 +37,11 @@ on:
         type: string
       release_id:
         description: GitHub ID of the draft release that already contains the offline handbook asset
-        required: true
+        required: false
         type: string
       handbook_asset:
         description: Exact staged handbook HTML filename
-        required: true
+        required: false
         type: string
       review_pr:
         description: PR number for production (blank for prototype)
@@ -77,6 +92,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ inputs.review_pr }}
           EVIDENCE_SHA: ${{ inputs.evidence_sha }}
+          PHASE: ${{ inputs.phase }}
+          INTENDED_TAG: ${{ inputs.intended_tag }}
           RELEASE_ID: ${{ inputs.release_id }}
           HANDBOOK_ASSET: ${{ inputs.handbook_asset }}
         run: |
@@ -89,10 +106,21 @@ jobs:
             test "$(gh api "$base/pulls/$PR_NUMBER" --jq '.head.sha')" = "$EVIDENCE_SHA"
             gh api --paginate --slurp "$base/pulls/$PR_NUMBER/reviews?per_page=100" --jq 'add' > "$RUNNER_TEMP/reviews.json"
           fi
+          if [[ "$PHASE" == pre-tag ]]; then
+            test -z "$RELEASE_ID" && test -z "$HANDBOOK_ASSET"
+            python3 policy/tools/release_tag_probe.py "$GITHUB_REPOSITORY" "$INTENDED_TAG" \
+              > "$RUNNER_TEMP/tag-probe.json"
+            jq -n --slurpfile p "$RUNNER_TEMP/private.json" --slurpfile r "$RUNNER_TEMP/reviews.json" \
+              --slurpfile t "$RUNNER_TEMP/tag-probe.json" \
+              '{private: $p[0], reviews: $r[0], tag_probe: $t[0]}' > "$RUNNER_TEMP/github-facts.json"
+            exit 0
+          fi
+          [[ "$PHASE" == pre-publish ]]
           [[ "$RELEASE_ID" =~ ^[1-9][0-9]*$ ]]
           [[ "$HANDBOOK_ASSET" =~ ^Pocket-Reel-Handbook-[A-Za-z0-9._-]+\.html$ ]]
           release="$(gh api "$base/releases/$RELEASE_ID")"
           tag="$(jq -er 'select(.draft == true) | .tag_name' <<< "$release")"
+          test "$tag" = "$INTENDED_TAG"
           [[ "$tag" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$ ]]
           obj="$(gh api "$base/git/ref/tags/$tag" --jq '.object')"
           for _ in {1..8}; do
@@ -120,6 +148,10 @@ jobs:
         env:
           EVIDENCE_SHA: ${{ inputs.evidence_sha }}
           MANIFEST: ${{ inputs.manifest }}
+          PHASE: ${{ inputs.phase }}
+          INTENDED_SOURCE: ${{ inputs.intended_source }}
+          INTENDED_TAG: ${{ inputs.intended_tag }}
         run: |
           python3 policy/tools/revision_gate.py evidence "$MANIFEST" "$EVIDENCE_SHA" \
-            --github-facts "$RUNNER_TEMP/github-facts.json"
+            --github-facts "$RUNNER_TEMP/github-facts.json" --phase "$PHASE" \
+            --intended-tag "$INTENDED_TAG" --intended-source "$INTENDED_SOURCE"
